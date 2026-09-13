@@ -41,6 +41,17 @@ python3 tools/build-legal.py <app>/EULA.md <app>/THIRD-PARTY-NOTICES.md
 
 Each flag is optional; a pass with only `--shots` refreshes the app screenshots.
 
+## After changing CSS or JS
+
+```bash
+python3 tools/stamp-assets.py
+```
+
+Every page references `/css/site.css?v=<hash>` and the scripts likewise, so a
+changed file is fetched under a new URL instead of being served from a
+browser's cache. Run it last — after `build-legal.py` or `build-releases.py`
+have written their pages — and commit the restamped HTML with the change.
+
 ## Local preview
 
 ```bash
