@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Third-party notices — CartoVox</title>
+  <meta name="description" content="Third-party components bundled with CartoVox and the licences they remain under.">
+  <link rel="canonical" href="https://cartovox.org/third-party-notices/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/mark-192.png" width="40" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.png" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links doc-nav" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/eula/">Licence</a>
+      <a href="/third-party-notices/">Third-party notices</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" rel="noopener">Join the beta</a>
+  </div>
+</header>
+<main id="main" class="doc">
+  <article class="doc-body">
+<h1>Third-party notices</h1>
+<p>CartoVox includes the third-party components listed below. Each is licensed to you under its own terms, which apply to that component. Where a component's terms conflict with the CartoVox End User License Agreement (<code>EULA.md</code>), that component's terms govern that component.</p>
+<p>This file is incorporated into the End User License Agreement by reference.</p>
+<p><strong>CartoVox version:</strong> 0.8.2 <strong>Inventory generated:</strong> 11 September 2026</p>
+<hr>
+<h2 id="1-how-to-read-this-file">1. How to read this file</h2>
+<ul>
+<li><strong>Component</strong> — the package or asset as it ships.</li>
+<li><strong>Where</strong> — where it lives in an installed copy.</li>
+<li><strong>Licence</strong> — the terms declared by the component's own distribution metadata.</li>
+<li><strong>Full text</strong> — where the complete licence text is retained.</li>
+</ul>
+<p>Every component below is redistributed <strong>unmodified</strong>. CartoVox does not patch, relicense, or sublicense any of them.</p>
+<hr>
+<h2 id="2-python-runtime-libraries">2. Python runtime libraries</h2>
+<table><thead><tr><th>Component</th><th>Version</th><th>Licence</th><th>Where</th></tr></thead><tbody>
+<tr><td>NumPy</td><td>1.26 or later (2.5.2 in the 0.8.2 build)</td><td>BSD-3-Clause (bundles 0BSD, MIT, Zlib, CC0-1.0 components)</td><td><code>_internal/numpy/</code></td></tr>
+<tr><td>Pillow</td><td>10.0 or later (12.3.0 in the 0.8.2 build)</td><td>MIT-CMU (HPND)</td><td><code>_internal/PIL/</code></td></tr>
+<tr><td>Matplotlib</td><td>3.8 or later (3.11.1 in the 0.8.2 build)</td><td>Matplotlib licence (BSD-style, 1.3.0 and later)</td><td><code>_internal/matplotlib/</code></td></tr>
+<tr><td>opencv-python-headless</td><td>4.14.0.94 (pinned)</td><td>Apache-2.0</td><td><code>_internal/cv2/</code></td></tr>
+<tr><td>certifi</td><td>2024.7.4 or later (2026.7.22 in the 0.8.2 build)</td><td>MPL-2.0</td><td><code>_internal/certifi/</code></td></tr>
+<tr><td>pypdf</td><td>5.x–6.x (6.18.0 in the 0.8.2 build)</td><td>BSD-3-Clause</td><td><code>_internal/pypdf/</code></td></tr>
+<tr><td>pywebview</td><td>5.4–6.x (6.2.1 in the 0.8.2 build)</td><td>BSD-3-Clause</td><td><code>_internal/webview/</code></td></tr>
+<tr><td>CPython standard library</td><td>3.12 on Linux; the release Python on macOS and Windows</td><td>PSF-2.0</td><td><code>_internal/</code></td></tr>
+</tbody></table>
+<p><code>requirements.txt</code> uses open-ended ranges, so each build resolves its own versions. The exact version of every component in an installed copy is recorded in the CycloneDX software bill of materials that ships with it at <code>_internal/build-provenance/sbom.cdx.json</code>; that file, not this table, is authoritative for version numbers.</p>
+<h3 id="2-1-components-bundled-inside-the-libraries-above">2.1 Components bundled inside the libraries above</h3>
+<p>Matplotlib, NumPy and Pillow each embed additional third-party material. Their own licence files ship unchanged inside their packages and cover, at least:</p>
+<ul>
+<li><strong>Matplotlib</strong> — AMS and BaKoMa Computer Modern fonts, ColorBrewer colour schemes (Apache-2.0), Qhull, STIX Fonts, Solarized, Yorick/Gist colour maps, and a ResizeObserver polyfill (CC0-1.0). See <code>_internal/matplotlib/LICENSE/</code>.</li>
+<li><strong>NumPy</strong> — a small number of MIT, Zlib, 0BSD and CC0-1.0 sources, enumerated in <code>_internal/numpy/licenses/</code>.</li>
+<li><strong>Pillow</strong> — its own <code>LICENSE</code> file retains the historical PIL notices.</li>
+</ul>
+<h3 id="2-2-note-on-opencv-and-ffmpeg">2.2 Note on OpenCV and FFmpeg</h3>
+<p>The <code>opencv-python-headless</code> wheels bundle an FFmpeg build for video I/O. Those FFmpeg binaries are distributed under LGPL-2.1-or-later with optional components under GPL. CartoVox uses OpenCV for image analysis only and does not invoke FFmpeg, but the binaries are present in the package. If you redistribute CartoVox, or if you require a build without LGPL/GPL components, replace <code>opencv-python-headless</code> with a build compiled without FFmpeg.</p>
+<hr>
+<h2 id="3-desktop-shell-components-linux-builds">3. Desktop shell components (Linux builds)</h2>
+<table><thead><tr><th>Component</th><th>Version</th><th>Licence</th><th>Where</th></tr></thead><tbody>
+<tr><td>PyQt6</td><td>6.9.1</td><td><strong>GPL-3.0-only, or commercial from Riverbank Computing</strong></td><td><code>_internal/PyQt6/</code></td></tr>
+<tr><td>PyQt6-WebEngine</td><td>6.9.0</td><td><strong>GPL-3.0-only, or commercial from Riverbank Computing</strong></td><td><code>_internal/PyQt6/</code></td></tr>
+<tr><td>Qt 6</td><td>6.9.x</td><td>LGPL-3.0-only, GPL-3.0-only, or commercial from The Qt Company</td><td><code>_internal/PyQt6/Qt6/</code></td></tr>
+</tbody></table>
+<p>macOS and Windows builds use the operating system's own web view and do <strong>not</strong> include PyQt6 or Qt.</p>
+<h3 id="3-1-what-this-means-stated-plainly">3.1 What this means, stated plainly</h3>
+<p>PyQt6 is offered by its vendor under the GNU General Public License version 3 <strong>or</strong> a paid commercial licence. It is not offered under the LGPL.</p>
+<p>The GPL-3.0 requires that recipients of a binary be able to obtain the complete corresponding source of the combined work under the GPL, and that no further restrictions be placed on their GPL rights. <strong>The CartoVox End User License Agreement's prohibitions on redistribution, resale, and reverse engineering cannot lawfully restrict those GPL rights in respect of a Linux build that contains PyQt6.</strong></p>
+<p>Two consequences follow:</p>
+<ol>
+<li>The Linux build cannot currently be distributed under a proprietary EULA that prohibits redistribution.</li>
+<li>The full source corresponding to the Qt-linked work must be made available to recipients of the Linux binary, or a commercial Qt/PyQt licence must be purchased.</li>
+</ol>
+<p>The Licensor has deferred the choice between the three lawful resolutions until the 1.0 launch; it does not affect the beta programme. They are:</p>
+<ul>
+<li><strong>Purchase a Riverbank PyQt6 commercial licence</strong> (and a Qt commercial licence if required by the deployment), and record it in <code>docs/reference/licensing.md</code>.</li>
+<li><strong>Replace PyQt6 with PySide6</strong>, which The Qt Company licenses under <strong>LGPL-3.0</strong> and which <code>pywebview</code> supports as an alternative Qt backend. This preserves closed-source distribution with dynamic linking and the usual LGPL relinking obligation.</li>
+<li><strong>Ship the Linux build under GPL-3.0</strong> with complete corresponding source, and license macOS and Windows builds under the proprietary EULA.</li>
+</ul>
+<p>Until one of these is done, <code>EULA.md</code> section 8.3 governs: the third-party licence prevails for that component, and nothing in the Agreement restricts the rights the GPL gives you in respect of the Linux build.</p>
+<hr>
+<h2 id="4-bundled-javascript">4. Bundled JavaScript</h2>
+<table><thead><tr><th>Component</th><th>Version</th><th>Licence</th><th>Where</th></tr></thead><tbody>
+<tr><td>three.js</td><td>r128 (2021)</td><td>MIT</td><td><code>web/vendor/three.min.js</code></td></tr>
+<tr><td>marked</td><td>15.0.12</td><td>MIT</td><td><code>web/vendor/marked.min.js</code></td></tr>
+<tr><td>ProseMirror (model, state, view, markdown, keymap, commands, history, inputrules, schema-list, dropcursor, gapcursor)</td><td>bundled</td><td>MIT</td><td><code>web/vendor/atlas-editor.min.js</code></td></tr>
+<tr><td>markdown-it</td><td>bundled</td><td>MIT</td><td><code>web/vendor/atlas-editor.min.js</code></td></tr>
+</tbody></table>
+<p><code>web/vendor/atlas-editor.min.js</code> is built from <code>tools/atlas-editor/entry.js</code> with esbuild. <code>tools/atlas-editor/NOTICE.txt</code> records the same attribution.</p>
+<hr>
+<h2 id="5-bundled-fonts">5. Bundled fonts</h2>
+<table><thead><tr><th>Font</th><th>Role</th><th>Licence</th><th>Where</th></tr></thead><tbody>
+<tr><td>Inter (variable)</td><td>Interface type</td><td>SIL OFL 1.1</td><td><code>web/vendor/fonts/Inter-Variable.ttf</code></td></tr>
+<tr><td>Newsreader (variable, roman and italic)</td><td>Editorial serif</td><td>SIL OFL 1.1</td><td><code>web/vendor/fonts/Newsreader-*.ttf</code></td></tr>
+<tr><td>Cinzel (variable)</td><td>Display and wordmark</td><td>SIL OFL 1.1</td><td><code>web/vendor/fonts/Cinzel-Variable.ttf</code></td></tr>
+</tbody></table>
+<p>All four TrueType files are the unmodified variable fonts distributed by the <a href="https://github.com/google/fonts" rel="noopener">Google Fonts repository</a>. Beside each sits a WOFF2 conversion of the same file (identical outlines, axes and name table; a Modified Version under the OFL only in format), which the dashboard loads first. The complete, family-specific OFL 1.1 texts ship beside them as <code>OFL-Inter.txt</code>, <code>OFL-Newsreader.txt</code>, and <code>OFL-Cinzel.txt</code>, together with source URLs and SHA-256 hashes for both forms in <code>web/vendor/fonts/README.md</code>.</p>
+<h3 id="5-1-sil-open-font-license-1-1-notice">5.1 SIL Open Font License 1.1 — notice</h3>
+<p>The OFL 1.1 requires that the following be preserved. The full text is in the three <code>OFL-*.txt</code> files named above.</p>
+<blockquote><p><strong>PREAMBLE.</strong> The goals of the Open Font License (OFL) are to stimulate worldwide development of collaborative font projects, to support the font creation efforts of academic and linguistic communities, and to provide a free and open framework in which fonts may be shared and improved in partnership with others.</p>
+<p><strong>PERMISSION &amp; CONDITIONS.</strong> Permission is hereby granted, free of charge, to any person obtaining a copy of the Font Software, to use, study, copy, merge, embed, modify, redistribute, and sell modified and unmodified copies of the Font Software, subject to the following conditions:</p>
+<ol>
+<li>Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.</li>
+<li>Original or Modified Versions of the Font Software may be bundled, redistributed and/or sold with any software, provided that each copy contains the above copyright notice and this license.</li>
+<li>No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder.</li>
+<li>The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version.</li>
+<li>The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.</li>
+</ol></blockquote>
+<p>CartoVox does not alter the fonts' outlines, names or axes, ships each under this licence in both forms, and does not sell them by themselves. The requirement in condition 5 that fonts "must not be distributed under any other license" applies to the font files only, and does not extend to maps, documents, or other output you create with CartoVox.</p>
+<hr>
+<h2 id="6-full-mit-licence-text">6. Full MIT licence text</h2>
+<p>Applies to three.js, marked, ProseMirror, markdown-it, and the MIT-licensed components of NumPy and Matplotlib.</p>
+<pre>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</pre>
+<p>Copyright notices: three.js © 2010–2021 Three.js Authors · marked © 2011–2025 Christopher Jeffrey · ProseMirror © Marijn Haverbeke and others · markdown-it © Vitaly Puzrin and Alex Kocharin.</p>
+<hr>
+<h2 id="7-full-bsd-3-clause-licence-text">7. Full BSD-3-Clause licence text</h2>
+<p>Applies to NumPy, pypdf, and pywebview.</p>
+<pre>Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.</pre>
+<hr>
+<h2 id="8-other-licences-referenced">8. Other licences referenced</h2>
+<p>These are not reproduced here because their full texts ship with their packages. Each is a permissive, non-copyleft licence except where noted in section 3.</p>
+<table><thead><tr><th>Licence</th><th>Applies to</th><th>Full text location</th></tr></thead><tbody>
+<tr><td>MIT-CMU / HPND</td><td>Pillow</td><td><code>_internal/PIL/LICENSE.txt</code></td></tr>
+<tr><td>Matplotlib licence (BSD-style)</td><td>Matplotlib</td><td><code>_internal/matplotlib/LICENSE/LICENSE</code></td></tr>
+<tr><td>Apache-2.0</td><td>OpenCV, ColorBrewer schemes</td><td><code>_internal/cv2/LICENSE.txt</code></td></tr>
+<tr><td>MPL-2.0</td><td>certifi</td><td><code>_internal/certifi/LICENSE</code></td></tr>
+<tr><td>PSF-2.0</td><td>CPython</td><td><code>_internal/</code> Python licence</td></tr>
+<tr><td>SIL OFL 1.1</td><td>Inter, Newsreader, Cinzel, STIX, Computer Modern</td><td><code>web/vendor/fonts/OFL-*.txt</code></td></tr>
+<tr><td>Qhull</td><td>Matplotlib</td><td><code>_internal/matplotlib/LICENSE/LICENSE_QHULL</code></td></tr>
+<tr><td>CC0-1.0</td><td>ResizeObserver polyfill</td><td><code>_internal/matplotlib/LICENSE/</code></td></tr>
+<tr><td><strong>GPL-3.0-only</strong></td><td><strong>PyQt6, PyQt6-WebEngine, Qt 6 (Linux builds only)</strong></td><td><code>_internal/PyQt6/Qt6/</code></td></tr>
+</tbody></table>
+<hr>
+<h2 id="9-maintaining-this-file">9. Maintaining this file</h2>
+<p>This inventory must be regenerated whenever a dependency is added, removed, or has a version range that resolves differently. The packaged build embeds a CycloneDX software bill of materials at <code>_internal/build-provenance/sbom.cdx.json</code>; that SBOM should carry the same licence identifiers as this file.</p>
+<p>See <code>docs/reference/licensing.md</code> for the maintainer checklist and the outstanding items that must be closed before CartoVox is sold.</p>
+  </article>
+  <p class="doc-note">This copy is published for reference. The authoritative text is the one shown inside the application, which you accept on first launch.</p>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+</body>
+</html>
