@@ -3,10 +3,13 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).parent))
 from importlib import import_module
-shoot2 = import_module("02-richer-states")
-from shoot2 import (URL, OUT, CHAPTER_TITLE, PROSE, log, shot, open_workspace, open_world,
-                    answer_text_modal)
 from playwright.sync_api import sync_playwright
+
+# The richer-states pass owns the shared helpers and the prose.
+_rich = import_module("02-richer-states")
+URL, OUT, CHAPTER_TITLE, PROSE = _rich.URL, _rich.OUT, _rich.CHAPTER_TITLE, _rich.PROSE
+log, shot, open_workspace, open_world = _rich.log, _rich.shot, _rich.open_workspace, _rich.open_world
+answer_text_modal = _rich.answer_text_modal
 
 
 def main():

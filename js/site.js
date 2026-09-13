@@ -185,6 +185,26 @@
     });
   }
 
+  /* ── guide contents: mark the section in view ───── */
+  const toc = document.querySelector(".guide-toc .toc-list");
+  if (toc && "IntersectionObserver" in window) {
+    const links = [...toc.querySelectorAll("a[href^='#']")];
+    const byId = new Map(links.map((a) => [a.getAttribute("href").slice(1), a]));
+    const targets = [...byId.keys()].map((id) => document.getElementById(id)).filter(Boolean);
+    let current = null;
+    const io = new IntersectionObserver((entries) => {
+      const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (!visible.length) return;
+      const next = byId.get(visible[0].target.id);
+      if (next === current) return;
+      current && current.classList.remove("is-current");
+      next.classList.add("is-current");
+      current = next;
+      if (toc.scrollHeight > toc.clientHeight) next.scrollIntoView({ block: "nearest" });
+    }, { rootMargin: "-80px 0px -60% 0px", threshold: 0 });
+    targets.forEach((t) => io.observe(t));
+  }
+
   /* ── compare slider ─────────────────────────────── */
   const compare = document.getElementById("compare");
   if (compare) {

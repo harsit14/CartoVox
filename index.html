@@ -60,10 +60,11 @@
     </a>
     <nav class="nav-links" id="nav-links" aria-label="Sections">
       <a href="#how">How it works</a>
-      <a href="#chain">The causal chain</a>
       <a href="#workspaces">Workspaces</a>
       <a href="#atlas">Atlas</a>
       <a href="#write">Write</a>
+      <a href="/features/">Field guide</a>
+      <a href="/releases/">Release notes</a>
       <a href="#faq">FAQ</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" rel="noopener">Join the beta</a>
     </nav>
@@ -440,6 +441,31 @@
     </div>
   </section>
 
+  <!-- ───────────────────────── Hidden in plain sight ───────────────────────── -->
+  <section id="hidden" class="section hidden">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Hidden in plain sight</p>
+        <h2>Most of CartoVox is behind a menu.</h2>
+        <p>
+          Testers keep finding rooms they did not know were there. The <a href="/features/">field guide</a>
+          walks every workspace, menu and panel; these are the ones people most often miss.
+        </p>
+      </div>
+      <div class="hidden-grid reveal">
+        <a class="hidden-card" href="/features/#inspector"><span class="hc-where">World → Map · click a cell</span><span class="hc-name">Explain one climate cell</span><span class="hc-what">Why it is drier than latitude predicts, with the upwind moisture path drawn on the map.</span><span class="hc-go">Read more →</span></a>
+        <a class="hidden-card" href="/features/#planet"><span class="hc-where">World → Map · toolbar</span><span class="hc-name">3D terrain explorer</span><span class="hc-what">Landscape, planet or voxel views of the saved terrain, orbit either hemisphere, export a PNG.</span><span class="hc-go">Read more →</span></a>
+        <a class="hidden-card" href="/features/#render"><span class="hc-where">World → Map · Render</span><span class="hc-name">Render Studio</span><span class="hc-what">Nine recipes, editable layers to 16K, curved captions, stamps, Bézier drawings and scene paper.</span><span class="hc-go">Read more →</span></a>
+        <a class="hidden-card" href="/features/#dock"><span class="hc-where">World → Map · View</span><span class="hc-name">Gott double-disk projection</span><span class="hc-what">Two hemispheres as back-to-back disks — plus Equal Earth, Robinson, Mollweide and nine palettes.</span><span class="hc-go">Read more →</span></a>
+        <a class="hidden-card" href="/features/#nations"><span class="hc-where">Create · below the brief</span><span class="hc-name">Tongues &amp; the Tectonic Director</span><span class="hc-what">Define a language and hear names before the world exists; pin plates, cratons and hotspots.</span><span class="hc-go">Read more →</span></a>
+        <a class="hidden-card" href="/features/#labs"><span class="hc-where">World → Map · Tools</span><span class="hc-name">Weather year &amp; Climate Lab</span><span class="hc-what">An animated year with seeded storms, a what-if for the climate, a review bundle for a specialist.</span><span class="hc-go">Read more →</span></a>
+        <a class="hidden-card" href="/features/#manuscript"><span class="hc-where">Write → Manuscript · Chapter panel</span><span class="hc-name">The world card under a scene</span><span class="hc-what">Date, moon, sunrise, that day's weather and the travel time from the previous scene.</span><span class="hc-go">Read more →</span></a>
+        <a class="hidden-card" href="/features/#reseed"><span class="hc-where">World · How this world was built</span><span class="hc-name">Reseed this world</span><span class="hc-what">Same brief, new seed — everything, the land only, or the story only, with lineage recorded.</span><span class="hc-go">Read more →</span></a>
+      </div>
+      <p class="center reveal" style="margin-top:28px"><a class="btn btn-ghost" href="/features/">Open the full field guide</a></p>
+    </div>
+  </section>
+
   <!-- ───────────────────────── Honest numbers ───────────────────────── -->
   <section class="section honest">
     <div class="wrap">
@@ -454,7 +480,7 @@
       <div class="honest-grid reveal">
         <div class="card">
           <h3>Time</h3>
-          <p>Candidate previews are lightweight — a quick search takes about twenty seconds on a fast machine. A full build with every publication plate has taken <b>20–25 minutes</b> on a high-end Apple Silicon Mac and <b>50–55 minutes</b> on a high-end Windows machine. The progress panel names the phase and plate and recalibrates its estimate as plates finish.</p>
+          <p>Candidate previews are lightweight — a quick search takes about twenty seconds on a fast machine. A full build with every publication plate currently takes about <b>8 minutes</b> on a high-end Apple Silicon Mac and about <b>13 minutes</b> on a high-end Windows machine. The progress panel names the phase and plate and recalibrates its estimate as plates finish.</p>
         </div>
         <div class="card">
           <h3>Disk</h3>
@@ -557,11 +583,11 @@
         </details>
         <details>
           <summary>How big is a world on disk, and how long does it take?</summary>
-          <p>A Quick world is 45–100 MiB; a Full world with every publication plate can reach 883 MiB and take the better part of an hour on a fast Windows machine. The preflight tells you the exact estimate for your settings before anything starts, and you can build the plates later from saved data.</p>
+          <p>A Quick world is 45–100 MiB; a Full world with every publication plate can reach 883 MiB and takes about 8 minutes on a high-end Mac or 13 on a high-end Windows machine. The preflight tells you the exact estimate for your settings before anything starts, and you can build the plates later from saved data.</p>
         </details>
         <details>
           <summary>Where is the manual?</summary>
-          <p>Inside the application, offline — every feature in the order the simulation produces it, the known limits, the licence and the third-party notices. The Help rail is one click from any workspace.</p>
+          <p>Inside the application, offline — every feature in the order the simulation produces it, the known limits, the licence and the third-party notices. The Help rail is one click from any workspace. The same material is on this site as the <a href="/features/">field guide</a>, and every version's changes are in the <a href="/releases/">release notes</a>.</p>
         </details>
         <details>
           <summary>How do I get in?</summary>
@@ -584,8 +610,8 @@
         <h4>Product</h4>
         <a href="#how">How it works</a>
         <a href="#workspaces">Workspaces</a>
-        <a href="#atlas">Atlas</a>
-        <a href="#write">Write</a>
+        <a href="/features/">Field guide</a>
+        <a href="/releases/">Release notes</a>
       </div>
       <div>
         <h4>Beta</h4>

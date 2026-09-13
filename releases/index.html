@@ -1,0 +1,1434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Release notes — CartoVox</title>
+  <meta name="description" content="Every CartoVox release, from the first invited alpha to the current beta: what changed, what it costs, and what stayed compatible.">
+  <link rel="canonical" href="https://cartovox.org/releases/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox release notes">
+  <meta property="og:description" content="Every CartoVox release and what changed in it.">
+  <meta property="og:url" content="https://cartovox.org/releases/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/mark-192.png" width="40" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.png" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/features/">Field guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" rel="noopener">Join the beta</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" rel="noopener">Join the beta</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Versions">
+    <p class="eyebrow">Versions</p>
+    <nav class="toc-list">
+      <a href="#upcoming"><span>Upcoming</span><small>unreleased</small></a>
+      <a href="#v0.8.2"><span>0.8.2</span><small>2026-09-11</small></a>
+      <a href="#v0.8.1"><span>0.8.1</span><small>2026-09-08</small></a>
+      <a href="#v0.8.0"><span>0.8.0</span><small>2026-09-04</small></a>
+      <a href="#v0.7.6"><span>0.7.6</span><small>2026-08-30</small></a>
+      <a href="#v0.7.5"><span>0.7.5</span><small>2026-08-30</small></a>
+      <a href="#v0.7.4"><span>0.7.4</span><small>2026-08-30</small></a>
+      <a href="#v0.7.3"><span>0.7.3</span><small>2026-08-30</small></a>
+      <a href="#v0.7.2"><span>0.7.2</span><small>2026-08-30</small></a>
+      <a href="#v0.7.1"><span>0.7.1</span><small>2026-08-30</small></a>
+      <a href="#v0.7.0"><span>0.7.0</span><small>2026-08-29</small></a>
+      <a href="#v0.6.1"><span>0.6.1</span><small>2026-08-28</small></a>
+      <a href="#v0.6.0"><span>0.6.0</span><small>2026-08-27</small></a>
+      <a href="#v0.5.0"><span>0.5.0</span><small>2026-08-26</small></a>
+      <a href="#v0.4.0"><span>0.4.0</span><small>2026-08-25</small></a>
+      <a href="#v0.3.0"><span>0.3.0</span><small>2026-08-25</small></a>
+      <a href="#v0.2.2"><span>0.2.2</span><small>2026-08-25</small></a>
+      <a href="#v0.2.1"><span>0.2.1</span><small>2026-08-24</small></a>
+      <a href="#v0.2.0"><span>0.2.0</span><small>2026-08-24</small></a>
+      <a href="#v0.1.6"><span>0.1.6</span><small>2026-08-24</small></a>
+      <a href="#v0.1.5"><span>0.1.5</span><small>2026-08-24</small></a>
+      <a href="#v0.1.4"><span>0.1.4</span><small>2026-08-23</small></a>
+      <a href="#v0.1.3"><span>0.1.3</span><small>2026-08-23</small></a>
+      <a href="#v0.1.2"><span>0.1.2</span><small>2026-08-23</small></a>
+      <a href="#v0.1.1"><span>0.1.1</span><small>2026-08-23</small></a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Release notes</p>
+      <h1>Every version, in full.</h1>
+      <p class="lede">What changed, what it costs, and what stayed compatible, from the first invited alpha on 23 August 2026 to the current beta. The same notes are readable offline inside the app under <b>Settings → Release notes</b>.</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2; these notes use its current name throughout. The Atlas tab, Atlas plates and Atlas lettering keep their names — they describe the publication atlas the app draws. Builds are published on the <a href="https://discord.gg/nGNatfuXe" rel="noopener">Discord server</a>.</p>
+    </header>
+    <article class="release" id="upcoming">
+      <header class="release-head">
+        <h2>Upcoming <span class="badge badge-soft">not yet released</span></h2>
+        <p class="release-tag">In development — not yet released</p>
+        
+      </header>
+      <div class="doc-body">
+<p>Atlas Studio is now CartoVox. The name, the logo and every place the old name was written have changed together; the simulation, the worlds it builds and the Atlas plates it draws are untouched.</p>
+<h3 id="the-application-is-now-called-cartovox">The application is now called CartoVox</h3>
+<ul>
+<li>New name and new artwork throughout: the window and browser-tab title, the header mark, the home logo, the installers, the desktop entry and every platform icon. The logo is supplied as two paintings, one for the dark theme and one for the parchment theme, because the plate behind the gold belongs to the drawing.</li>
+<li>The dark theme is now called CartoVox Dark.</li>
+<li>The portable Linux launcher is <code>./run-cartovox</code>, renamed so the script and the <code>CartoVox</code> payload directory beside it cannot collide on a case-insensitive filesystem.</li>
+<li>The Atlas tab, Atlas plates, Atlas lettering and the illustrated-atlas settings keep their names: those name the publication atlas the app draws, not the app.</li>
+</ul>
+<h3 id="settings-saved-files-and-data-move-to-the-new-name">Settings, saved files and data move to the new name</h3>
+<p>There is no automatic migration. Worlds and settings kept under the old name stay where they are and the new build will not read them; move them across by hand if you want them.</p>
+<ul>
+<li>Worlds, settings, logs and update downloads now live under <code>CartoVox</code> in the per-user application-data directory, and under <code>~/.local/share/cartovox</code> on Linux. The override variable is <code>CARTOVOX_DATA_DIR</code>.</li>
+<li>Stored interface preferences use <code>cartovox.*</code> keys, so a browser profile that used the old build starts from defaults.</li>
+<li>Project backups are <code>project_backup.cartovox</code> and coastline tracing drafts are <code>.cartovox-trace.json</code>. World recipes, art packs, tracing drafts, project backups and voxel samples declare <code>cartovox-*</code> formats, so files exported by 0.8.2 or earlier are not accepted.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.8.2">
+      <header class="release-head">
+        <h2>CartoVox 0.8.2</h2>
+        <p class="release-tag">Write with the world beside you</p>
+        <time datetime="2026-09-11">2026-09-11</time>
+      </header>
+      <div class="doc-body">
+<p>Version 0.8.2 includes every CartoVox change implemented after 0.8.1. It turns the manuscript desk into a world-aware word processor, adds a cross-world map gallery and the Gott double-sided projection, expands terrain interchange and coastline tracing, and strengthens data safety, scientific reporting, packaging and first-run licensing.</p>
+<h3 id="world-placement-and-terrain-interchange">World placement and terrain interchange</h3>
+<ul>
+<li>Nations now offer a homeland map pin with a visible search area and plain-language size choices. Exact latitude, longitude and distance fields remain optional, with explanations for authors who want precise control.</li>
+<li>Fixed the More menu beside Compare on candidate world cards being clipped by the card. Drawing tool options and brush controls now scroll within their own rows on smaller screens, while history, Close and save controls remain reachable.</li>
+<li>Import review has a visible Change map action, including while reading a file and after an import error.</li>
+<li>Painted-map import now handles textured blue water, land touching image edges and dark interface borders. Choose the detected frame or use the full image; preview, tracing, generation and saved recipes use the same area.</li>
+<li>Coastline review keeps correction and reading sections open, preserves their scroll positions while recalculating, and leaves the preview open after applying a trace so it can be refined again.</li>
+<li>Coastline tracing saves recoverable local drafts with unfinished outlines, the reference image, viewport and recent undo history. Resume from Create, or save and load portable <code>.atlas-trace.json</code> files. The desktop shell waits for the final tracing save before closing.</li>
+<li>Import GeoJSON land outlines and ASCII or binary STL and OBJ terrain surfaces through coastline review. GeoJSON export now includes land outlines for existing worlds, while saved worlds can export STL and OBJ terrain surfaces.</li>
+<li>Draw your world can save PNG, GeoJSON, STL and OBJ. Complete projects remain portable as <code>.atlas</code> backups. Terrain interchange transfers outlines or elevation surfaces; STL and OBJ use open Z-up surfaces measured in metres.</li>
+</ul>
+<h3 id="a-world-aware-manuscript-word-processor">A world-aware manuscript word processor</h3>
+<ul>
+<li>The manuscript desk is now composed from dedicated editor, storage, binder, world, panel, reader and export modules. The split preserves existing books while giving each writing surface one shared save and history contract.</li>
+<li>Prose Insights measures words, sentence and paragraph shape, repeated word families, dialogue, dialogue tags, adverbs, filter words, phrases, openers and names from the active world. View chapter, book or series results, draw four lenses over the prose, and save reports as CSV, Markdown or JSON.</li>
+<li>Scenes live as durable markers inside chapter text with titles, point of view, place, time and summary in the manuscript manifest. The Chapter panel and binder follow the current scene, scenes can move without losing history, and the Outline view lays out the book by scene.</li>
+<li>Link a scene to a gazetteer place and a day in the world's year. The writing panel can show its date, season, moon, sunrise and sunset, saved weather, climate, realm, culture, language, and distance or travel time from the previous scene. Insert selected facts or a relief crop into the prose.</li>
+<li>Gazetteer names are recognised beside the draft. Open a dossier from a name, create private character pages for unknown people, and check scene order, travel time and climate against the saved world.</li>
+<li>Find and replace supports case, whole words and regular expressions in one chapter or across a book with history. Add anchored notes, named versions, paragraph-and-word diffs and paragraph restore.</li>
+<li>Focus mode, timed sprints, a daily goal and streak, a shortcuts sheet and paragraph styles support longer writing sessions. Styles carry into Read, Word, HTML and EPUB; HTML and EPUB join the existing export formats.</li>
+</ul>
+<h3 id="cleaner-pdf-and-prose-import">Cleaner PDF and prose import</h3>
+<ul>
+<li>PDF import now removes repeating headers and page numbers using a digit-independent signature, joins wrapped lines into paragraphs across page breaks, repairs split hyphenated words and kerned digits, and recognises short capitalised headings. Large novel PDFs import as chapters instead of hundreds of line fragments.</li>
+<li>Dialogue quote style is detected per chapter unless the book fixes it. Single-quote books receive dialogue analysis, and irregular past-tense words count as dialogue tags only when they are actual speech verbs.</li>
+<li>The binder's Open beside action appears on hover, keeping the writing outline quieter when it is not needed.</li>
+</ul>
+<h3 id="gott-double-sided-disk-maps">Gott double-sided disk maps</h3>
+<ul>
+<li>Gott joins Equal Earth, Robinson and Mollweide anywhere Atlas offers a projection. The northern hemisphere occupies one disk and the southern another, with the equator as their shared rim and the southern face mirrored so coastlines meet when printed back to back.</li>
+<li>Server projection, embedded metadata, browser hover readings, overlays, saved Create choices, the map catalogue and PNG export all use the same two-disk geometry. Illustrated world plates fit both disks completely within their layout.</li>
+<li>The Planet panel can switch between a sphere and two interactive disks. Click to choose a disk centre, drag or spin around the shared axis, reset to the poles, and choose a light or dark printable background.</li>
+</ul>
+<h3 id="keeping-saved-work-safe">Keeping saved work safe</h3>
+<ul>
+<li>The numerical world archive is written beside the current file and swapped in only when complete. An interrupted write can no longer leave a truncated archive that later looks healthy.</li>
+<li>Terrain edits render new atlas plates in staging and replace old plates only after a result exists. Failed plates are deferred for later, and cancellation or memory exhaustion keeps the atlas already on disk.</li>
+<li>Terrain edits and accepted erosion settings use the seed recorded by the world. A stale editor with a different seed must reload instead of rebuilding another planet under the same identity.</li>
+<li>An unreadable edits file is reported and preserved beside the world, and saving is refused until it is repaired. Atlas no longer interprets corruption as an empty edit set.</li>
+<li>Re-simulation after terrain editing can be cancelled while computation is still safe to stop. The option disappears before the first world file is rewritten so maps and data cannot diverge.</li>
+<li>Forgetting a saved weather sheet, removing the display cache and deleting a manuscript note now ask first. Write shortcuts no longer fire while typing in a chapter-plan field, search box or note.</li>
+<li>Routes now act on the library root they were given. Test runs are guarded from writing indexes, identities or mutations into the author's real world library.</li>
+</ul>
+<h3 id="map-gallery">Map gallery</h3>
+<ul>
+<li>Library gains a Map gallery showing every illustrated plate, style render and city plan from every saved world on one wall, newest first. Filter by world, kind and lettering, open a sheet in a lightbox, then jump directly to that sheet in its Atlas tab or open the world.</li>
+<li>A sheet drawn before a later terrain edit, rename or canon edit says so. The gallery reads existing files and draws nothing; its thumbnails reuse removable Atlas preview cache entries.</li>
+</ul>
+<h3 id="honest-numbers-and-a-lighter-dashboard">Honest numbers and a lighter dashboard</h3>
+<ul>
+<li>Simulation health now runs the river-network checks used by the scientific validator. Reaches flowing uphill and branching outside the dendritic band produce warnings, while Hack's exponent is reported for context. A world with uphill rivers can no longer score 100.</li>
+<li>Generation progress weights phases by measured wall time. Naming now receives its measured share instead of one percent, preventing a stalled bar and stretching estimate while names are produced.</li>
+<li>The manual records measured Full-build timing and memory: about seven minutes on a fast Apple Silicon Mac and up to about twenty-one minutes on a comparable Windows machine for the documented configuration.</li>
+<li>Static scripts, styles and fonts carry validators, so warm reloads receive 304 responses instead of transferring about 7 MB again. External dashboard scripts are deferred while preserving their execution order.</li>
+<li>Inter, Newsreader and Cinzel now ship as WOFF2 at less than half their previous total size, with the original TrueType files retained as fallback and covered by packaging checks.</li>
+</ul>
+<h3 id="licence-and-installer-contents">Licence and installer contents</h3>
+<ul>
+<li>CartoVox now ships under its End User License Agreement instead of the MIT Licence. The first launch after updating shows the agreement and requires an unchecked affirmative acceptance before Unlock. The accepted EULA version is recorded with the beta key, and changed terms trigger a new prompt.</li>
+<li>The EULA and third-party notices stay readable offline under App settings → Updates &amp; support → Licence. Worlds, maps, atlases, lore and manuscripts created with Atlas remain the author's and may be published or sold without royalty; the application itself remains subject to its licence.</li>
+<li>Every installer carries the EULA and third-party notices. Windows shows the agreement before copying files, macOS places both documents beside the application in the disk image, and Linux installs its copyright and licence record under <code>/usr/share/doc/atlas-studio/</code>.</li>
+<li>Frozen-build verification now checks the legal documents, PDF runtime, font assets, build provenance and packaged coastline detection. Release dependencies include an exact reviewed pypdf pin for the CPython 3.12 builders.</li>
+</ul>
+<h3 id="documentation-and-engineering">Documentation and engineering</h3>
+<ul>
+<li>The README is a focused product front door, with installation, simulation, output, atlas, settings, licensing and known-limit details moved into a linked reference manual.</li>
+<li>A file-referenced competitive polish audit and sequenced remediation plan document the remaining distribution, accessibility, performance, scientific and legal work instead of hiding it from release review.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.8.1">
+      <header class="release-head">
+        <h2>CartoVox 0.8.1</h2>
+        <p class="release-tag">Build, draw, explore and write inside one world</p>
+        <time datetime="2026-09-08">2026-09-08</time>
+      </header>
+      <div class="doc-body">
+<p>Version 0.8.1 brings together every CartoVox change implemented after 0.8.0. It expands mapmaking and writing tools, adds new ways to explore and revise a saved world, and improves generation, scientific validation and desktop reliability.</p>
+<h3 id="geological-survey-map">Geological survey map</h3>
+<ul>
+<li>Terrain &amp; geology adds a Geological survey view with muted bedrock colors, unit contact lines, letter codes, and independently filterable saved tectonic boundaries. It supports the existing projection, drawing-density, inspector, and PNG download controls.</li>
+<li>The reading key explains the eight broad parent-material provinces and distinguishes modelled tectonic traces from surveyed faults or dated formations. Existing worlds with saved bedrock data work immediately; structural traces are omitted when tectonic data is absent.</li>
+</ul>
+<h3 id="render-studio-recipes-layers-and-appearance">Render Studio: recipes, layers and appearance</h3>
+<ul>
+<li>Render Studio adds eight map recipes: Physical atlas, Pastel kingdoms, Banded heightmap, Biome atlas, Antique parchment, Survey blueprint, Print outline and Pure landmass. Save named recipes on this device or share them as Atlas recipe JSON files.</li>
+<li>Reorder composition layers and adjust their opacity, color, line width and size. Labels, compass and scale text support adjustable halos. New export layers add realm colors, land-elevation contours, settlement symbols, a compass rose, an equatorial scale bar and vignette.</li>
+<li>Choose ocean depth bands, contour and coordinate spacing, settlement density, scale units, and grayscale or sepia output. Pastel fantasy, Old paper and Blueprint are also available as shared Map Library palettes. These controls change presentation without re-simulating the saved world.</li>
+<li>Transparent composition exports now retain alpha, and overlapping translucent layers composite correctly. Render manifests retain the selected appearance and resolved palette for reproducibility. Atlas recipe files do not import Azgaar .map worlds or Azgaar style JSON.</li>
+<li>Creating another Render Studio bundle now keeps every composition as a separate saved render, including repeated renders at the same style and resolution. Existing bundles remain viewable and downloadable.</li>
+<li>Concurrent editing-background and composition previews return independent images instead of sharing a preview file.</li>
+<li>Named recipes and each world's last composition keep every embedded stamp once, shared by content, within a stated browser-storage budget. Older last-compositions are dropped first when the budget is exceeded, and a save that cannot fit is refused with the reason instead of failing silently. A layer color override on Stamps and shapes now says that it flattens imported art into silhouettes.</li>
+</ul>
+<h3 id="render-studio-illustrated-terrain-art">Render Studio: illustrated terrain art</h3>
+<ul>
+<li>A new Illustrated realm recipe paints the saved world like a storybook map: watercolour land cover with dark forest floors, olive uplands, snow above each biome's snowline, wet banks and a luminous shoreline; original hand-drawn mountain and hill glyphs placed by saved relief with snow caps, ink creases and hatching; conifer, broadleaf and tropical tree stamps placed by saved canopy and biome; and soft mist over the highest ground. Terrain, canopy and biomes are read, never changed.</li>
+<li>Volcanoes with glowing craters, lava streaks and smoke plumes stand on saved arc and subduction seams, hotspot provinces and the Firelands and Ashlands; dead trees stand on ash, blight, dry country and the treeline; reed tufts fill open wetlands. Ice caps and sea ice crack into floes, salt pans crack, deserts ripple with dunes, grasslands streak, reef shallows show pale turquoise and volcanic ground is dusted with ash.</li>
+<li>Painted land cover, Mountains, hills and volcanoes, Forests and Mountain mist are separate export layers that can be added to any composition and reordered like the others. Mountain and forest layers have Size and Density style controls, saved with recipes.</li>
+<li>The new Illustrated palette pairs sapphire deeps with luminous cyan shallows and gives Render Studio lakes and rivers the same cyan; it is also available in Map colors. Decorative detail now grains the ocean as well as the land.</li>
+<li>Glyphs are placed at sheet fractions from the world's own seed, so a 1K preview carries the same forests and ranges as the 16K export and every tile agrees with its neighbours. Sea ice is painted where the saved annual ice cover is dense.</li>
+</ul>
+<h3 id="render-studio-titles-captions-and-place-labels">Render Studio: titles, captions and place labels</h3>
+<ul>
+<li>Add positioned map titles and captions in Render Studio. Edit text, size and percentage positions, or click a preview to place a caption, compass or scale bar. Captions are included in saved recipes and render manifests.</li>
+<li>Choose serif, italic or display lettering and circle, square, diamond, triangle or star markers. Add saved roads, sea lanes and landmark symbols as separate export layers, with missing-data warnings. Line coordinates are quantized before tiling to prevent join shifts.</li>
+<li>Captions can now rotate, curve upward or downward, use individual typefaces and letter spacing, or follow a copied drawing path. Reverse, reposition or detach the copied path without changing its source artwork. Caption edits have session undo/redo, and render plans report when lettering shrinks to fit a path.</li>
+<li>Render bundles include captions.svg with editable caption lettering alongside the PNG layer. Caption shapes and paths survive recipe export, import and reload. The SVG references font names; PNG layers preserve the exact rendered appearance.</li>
+<li>Render Studio now supports individual place-label editing: search saved names, change display text, choose typography and size, hide a name, or position its text using percentages or a preview click. Reset restores automatic lettering. Edits travel with recipes and render manifests without changing settlement positions or canonical names, and mismatched world/place identities are reported and ignored.</li>
+</ul>
+<h3 id="render-studio-stamps-drawings-artwork-and-scenes">Render Studio: stamps, drawings, artwork and scenes</h3>
+<ul>
+<li>Render Studio adds an interactive Stamps and shapes canvas with twelve original vector symbols. Place and drag artwork, adjust rotation, size, stretch, colors and opacity, then duplicate, hide, lock or reorder objects. Undo/redo covers the last 40 object edits.</li>
+<li>Saved recipes now preserve up to 200 decoration objects. Render bundles include an editable objects.svg decoration layer as well as the composited PNG layer. This artwork does not modify simulated terrain or settlement data.</li>
+<li>Import custom PNG/JPEG/WebP stamps into Render Studio, organize them by name, pack and tags, and share Atlas art packs. Recipes embed the bounded PNG assets so artwork survives moving between computers.</li>
+<li>Draw freeform paths, polygons and brush strokes; edit points, apply solid/dashed/dotted lines, texture artwork and add configurable shadows. Multi-selection supports flat groups, shared dragging, duplication, stacking, scale and rotation, with snapping and canvas zoom.</li>
+<li>Draw smooth Bézier paths and polygons, or smooth an existing drawing. Edit anchors and independent curve handles, split segments without changing their shape, remove anchors, or straighten a drawing, with undo/redo and lock protection.</li>
+<li>Curved artwork retains textures, masks, shadows, transforms and line styles. Recipes preserve handles, objects.svg exports native cubic paths, and tiled PNG rendering preserves joins. Captions can follow a sampled copy of the curve.</li>
+<li>Paint soft colored strokes and round dabs in Render Studio. Artwork supports soft edges and Normal, Multiply or Screen blending, including imported stamps and textured drawings.</li>
+<li>Erase earlier artwork with editable eraser objects, or paint erase/restore masks on a selected stamp. Masks follow transforms and preserve source transparency. Clear, undo, duplicate, hide or reorder edits without changing the underlying map.</li>
+<li>Painting effects persist in compositions, recipes, render manifests and editable objects.svg. PNG masks preserve tiled joins; SVG feathering uses vector bands. Blending and erasing stay within the Stamps and shapes layer.</li>
+<li>The decoration canvas works from the keyboard: arrow keys nudge the selection (Shift for larger steps), Delete removes it, Enter finishes a drawing, Backspace drops its last point and Escape cancels a drawing or mask stroke.</li>
+<li>Create editable keep-interior, woodland-encounter and village-square layouts on scene paper. Choose square/hex encounter grids, colors, spacing and author units. An independent grid layer stays visible above filled floors. Scene output preserves its drawing scale and omits geographic world files.</li>
+</ul>
+<h3 id="map-colors-and-dock">Map colors and dock</h3>
+<ul>
+<li>A compact map dock groups appearance settings under View and secondary actions under Tools. The reading key, hover reading and coordinates stack without covering each other; narrow screens place the dock below the map.</li>
+<li>An open View or Tools menu rises above the map library and other right-edge panels, so its controls can be read and clicked while a panel is open.</li>
+<li>Physical relief now opens with a Natural palette: sage lowlands, sandstone uplands and deep teal water, with softer coastlines, light from two directions and subtle terrain-derived texture.</li>
+<li>Choose Natural, Verdant, Parchment, Dusk, Tropical, Ember, Aurora or Classic from View → Map colors. The choice stays with each world, and live map class swatches and continuous scales follow the selected colors without changing scientific values or classifications.</li>
+<li>Three vibrant palettes add saturated terrain and water: Tropical brings emerald and turquoise, Ember pairs golden and copper land with sapphire seas, and Aurora combines jade lowlands, violet ridges and electric blue water. Their class colors and continuous scales also use richer saturation.</li>
+<li>World cards, relief redraws, globe textures, projection PNG exports and new Render Studio compositions use the saved appearance. Existing illustrated styles and archived generation products keep their own drawing styles.</li>
+<li>Existing worlds with saved numerical fields can use the new appearance immediately; no re-simulation is needed.</li>
+</ul>
+<h3 id="ocean-currents-and-sea-surface-temperatures">Ocean currents and sea-surface temperatures</h3>
+<ul>
+<li>Fix an unstable circulation solve that amplified grid noise into tangled arrows, spurious small gyres and weak apparent wind response. Numerical relaxation and drift scaling are now internal solver constants; the two old settings are removed and reported as unused when loading older configurations.</li>
+<li>Balance the basin-circulation and direct wind-drift terms so gyres retain their return flow and unobstructed circumpolar channels carry wind-driven currents. Currents represent the annual wind response.</li>
+<li>Keep SST transport and mixing over water, preserve the reference climate when currents are absent, and stop stretching tiny temperature residuals into multi-degree anomalies. The final current-induced anomaly retains a zero ocean mean at each latitude.</li>
+<li>Current streamlines now account for longitude spacing with latitude and stop at land.</li>
+<li>Full-world calibration now measures ocean temperature, current speed, adjacent opposing currents, SST anomaly magnitude and zonal bias alongside the existing climate and biome metrics.</li>
+<li>Existing worlds need regeneration or re-simulation to update their saved currents, temperatures and dependent climate fields. Re-rendering a saved map alone only updates arrow presentation.</li>
+</ul>
+<h3 id="weather-year-and-journey-weather">Weather Year and journey weather</h3>
+<ul>
+<li>Weather Year turns the saved seasonal climate into an animated year with selectable frame counts. A radar view follows precipitation and seeded storm systems while preserving the world's solved seasons.</li>
+<li>Adjust storm frequency, intensity and variability with a reproducible seed. Save the result as a named weather sheet that the Weather and Travel panels can share without changing the simulation.</li>
+<li>Route weather now follows a journey from its selected departure day through its wind-adjusted arrival. Saved campaign journeys retain their forecast and timing, and changing the Weather Year frame count keeps the active seed and storm controls.</li>
+</ul>
+<h3 id="3d-terrain-explorer">3D terrain explorer</h3>
+<ul>
+<li>Open a completed world and choose 3D terrain in the World map toolbar. Choose a smooth rectangular landscape, a spherical relief planet, or a refined voxel model.</li>
+<li>Natural terrain colors, continuous slopes, coastal water depth, soft shadows, adjustable sun direction and surface finish make the terrain easier to read. Planets have an optional atmospheric rim. Voxels have fine 100 m terraces, relief smoothing and subtle optional block edges.</li>
+<li>Orbit either hemisphere, pan landscapes, zoom, and switch perspective, orthographic, top/north-pole or low-angle cameras. Inspect terrain for coordinates, elevation, biome, climate and water readings using mouse, keyboard or touch.</li>
+<li>Explore selected regions at four spans, including across the date line. Planet selections open as regional landscapes; returning to planet loads the whole globe. Landscapes, planets and voxels all offer 384, 512, 768, 1,024, 1,536 and 2,048 detail presets, and switching views preserves the selected detail. Indexed voxel faces and compact normals and colors halve large voxel buffer memory. The default stays at 256. Loaded dimensions and native-resolution limits appear beside the detail control, and a 2.1 million sample cap bounds large views.</li>
+<li>Keep biome, elevation, realm and climate colors alongside natural terrain. Adjust vertical relief, smoothing, seafloor relief, water opacity, rivers and lakes. Save any camera view as a PNG. Land above sea level is never drawn below the water surface, so low coasts read as low ground rather than seabed.</li>
+<li>Terrain samples arrive as one packed binary body instead of JSON text: the largest sample is about 40 MB rather than 149 MB, and the server no longer spends seconds serialising it. The detail control states the approximate memory each preset needs.</li>
+<li>Rendering is local and read-only. A background worker builds the meshes and keeps the loaded sample between builds, so relief and smoothing changes no longer copy the whole sample again; closing the viewer releases scene resources and cancels pending work. Reload recovers graphics context loss. Display detail cannot exceed the saved simulation resolution, and lower detail can omit small features. Requires WebGL and current saved terrain fields.</li>
+</ul>
+<h3 id="map-measurement">Map measurement</h3>
+<ul>
+<li>Finish path locks a route at its current points, so two or more points can be measured without closing a shape. Enter also finishes; Undo reopens the route.</li>
+<li>Every leg shows its distance on the map beside the route.</li>
+<li>The reading key and hover reading step aside while measuring, so the measurement readout no longer overlaps them.</li>
+</ul>
+<h3 id="manuscript-writing-desk">Manuscript writing desk</h3>
+<ul>
+<li>Design a complete cover with any saved map, plate or city plan, a custom title, author, subtitle, colors, image fit, shading and text position. Read fits the whole cover on entry, including smaller screens. Edit cover returns directly to its settings.</li>
+<li>Choose a book cover or its map to represent the world in Library cards and the world-switcher menu; the default relief remains available.</li>
+<li>Place individual paragraphs left, center, right or justified, indent blocks and insert explicit page breaks. These choices survive Markdown editing, reader layout and Word export.</li>
+<li>Insert maps with a caption, width and alignment; edit the caption directly from the map. Add web/email links or vault links with separate visible text and destination fields.</li>
+<li>Customize header and footer text, placement and the first chapter page number. The reader previews the furniture; PDF and Word assign page numbers and leave the cover unnumbered. Word exports embed maps at page resolution (no larger than 2,400 pixels on their long side), retain captions and keep web links clickable.</li>
+<li>Plan chapters beside the prose with a synopsis, point of view, setting, labels, private notes, word targets and a named-scene navigator. Chapter cards show status, progress and labels; an icon-only rail control hides the outline.</li>
+<li>Search prose and planning notes across the whole book, replace exact text in the open chapter, duplicate a chapter and track words added in the current session.</li>
+<li>Import a PDF, docx, RTF, OPML, Markdown or plain-text book directly into the current manuscript. Atlas creates the book when needed, detects common chapter, prologue, epilogue and heading boundaries, creates the ordered chapters together and preserves the original upload for recovery.</li>
+<li>Open Style from the manuscript toolbar to change editor zoom, text width and typography, or choose the page size, margins, running furniture and chapter numbering used by Read and Word export.</li>
+<li>Chapter changes and exports wait for the latest writing to save. Failed prose or planning saves keep the chapter open; newer browser drafts survive an earlier save completing.</li>
+<li>Read the whole book as continuous chapters and print through the browser's page layout, so long paragraphs flow across pages. Page size, margins, chapter numbering and typography remain available; supported browsers print the selected running headers and page numbers. Word export now honors font, line spacing and chapter-header choices.</li>
+<li>Manuscript imports keep the original upload and one editable chapter set. Existing Codex articles remain untouched, and ambiguous title-cased lines stay in the prose.</li>
+<li>Checks focus on broken links and unavailable map references, with word-target progress alongside them; new characters and ordinary capitalized words are no longer flagged as unknown names.</li>
+<li>Restore books and chapters from the manuscript Trash panel. Atlas keeps the prose, planning card, order and chapter history together and never empties manuscript trash automatically.</li>
+<li>Search world pages beside the text, read them without leaving the draft and insert a selected page as a portable <code>[[wiki link]]</code> at the caret.</li>
+</ul>
+<h3 id="writer-s-gazetteer">Writer's gazetteer</h3>
+<ul>
+<li>Search every named settlement, realm, culture, tongue, continent, natural region, mountain range, desert, biome, river, lake, sea and place of power in a saved world.</li>
+<li>Open a dossier that gathers location, nature, seasons, people, routes, name roots and story material, while distinguishing measured, generated, canonical and suggested details. Gazetteer reading is local and read-only.</li>
+<li>Open the same dossiers from the Manuscript World panel, Codex wiki links and named features in the cell inspector. Insert a link into the draft, pin a dossier to private notes, copy it, locate it on the map or begin writing with it.</li>
+</ul>
+<h3 id="import-questions-world-placement-and-reseeding">Import questions, world placement and reseeding</h3>
+<ul>
+<li>Imported and traced maps now ask only the questions that the image cannot answer before generation. The neutral choices preserve the detected map; optional answers steer relief, peaks, terrain character, sea depth, wetness, warmth and other applicable world settings.</li>
+<li>Resize an imported or traced map to 5–90% of the world's width, preview planetary land coverage, and choose generated surroundings or ocean only. Drawing annotations follow the resized source.</li>
+<li>Reseed a completed world beside its source with a new seed and choose Everything, World or Story scope. Imported and drawn foundations carry forward when they can be reproduced, lineage is recorded, and Atlas explains when sculpt, feature or deep-time edits cannot be preserved safely.</li>
+</ul>
+<h3 id="coastline-detection-and-assisted-tracing">Coastline detection and assisted tracing</h3>
+<ul>
+<li>Import and Draw now share the same coastline reader. Fixed pale-blue oceans reading as all land, dark continents with lakes being mistaken for line drawings, sepia maps losing their land, and lake marks turning the outside ocean into land.</li>
+<li>Paint land or water directly on either detection preview. Protect finished regions, undo corrections, and retain edits through another detection pass.</li>
+<li>Import traces use the detailed working mask, with selectable smoothing, a minimum island area and a report of removed outlines. Large archipelagos can exceed the former 240-outline limit.</li>
+<li>Magnetic tracing follows nearby image edges between anchors in the import editor and Draw's Outline tool. Manual tracing remains available.</li>
+<li>Auto-detected mask polarity is retained when a confirmed import is prepared for generation.</li>
+<li>The coastline review keeps confirmation and Generate world in a visible action bar above the optional questions, with a separate route to change generation settings.</li>
+<li>Coastline-only drawings generate terrain relief by default, with a separate Keep my elevations option. Regional world completion now matches terrain across an exterior transition instead of making a hard rectangular join.</li>
+<li>Resize an imported or traced map to 5–90% of the world's width, preview its planetary land coverage, and choose generated surroundings or ocean only. Saved recipes retain these choices, and drawing annotations follow the resized map.</li>
+</ul>
+<h3 id="automatic-coastlines-in-draw-your-world">Automatic coastlines in Draw your world</h3>
+<ul>
+<li>Loading a reference image now previews detected land boundaries and islands. Apply the coastline as one undoable change, then continue sculpting and tracing.</li>
+<li>Choose colour-map, line-drawing, light/dark-mask or transparency readings. Adjust cleanup and mark land or water to correct ambiguous map colours, labels and borders.</li>
+<li>Detection runs locally, preserves existing elevations on detected land and supports archipelagos without the hand-drawn outline count limit. Very small features remain limited by image and canvas resolution.</li>
+</ul>
+<h3 id="editable-geography-and-safer-canvas-tools">Editable geography and safer canvas tools</h3>
+<ul>
+<li>Auto Trace converts a reference into editable coastline geometry. Select and refine trace points, and move saved mountain ranges, rivers and land-cover regions without rebuilding the drawing from scratch.</li>
+<li>Selection, deletion, undo and redo now work consistently across tracing and drawing tools. Pan temporarily pauses an active draft, and destructive clear or delete actions require confirmation.</li>
+</ul>
+<h3 id="release-notes-inside-cartovox">Release notes inside CartoVox</h3>
+<ul>
+<li>Browse previous and current release notes in App settings → Release notes, with a version selector and Older / Newer navigation.</li>
+<li>Read bundled history offline. Check for newer notes to fetch future published releases from the release feed, and keep those notes available offline too.</li>
+<li>See which notes describe the running version, an older version, a newer published version, or upcoming work.</li>
+</ul>
+<h3 id="reliability-and-windows-generation-follow-up">Reliability and Windows generation follow-up</h3>
+<ul>
+<li>The desktop shell keeps its native window responsive while simulation and rendering run in the worker process. Startup recovery can reload the local Studio instead of leaving a stranded window.</li>
+<li>Authoring saves wait for the newest draft, surface failures without discarding the open work, and keep completion links tied to the operation that created them. Saved render registration and repeated composition handling are also more reliable.</li>
+<li>Story checks now retain their scope and provenance, scaled maps preserve river geography, active rivers are checked against the saved conditioned surface, and water and tide readings are reported only where they apply.</li>
+<li>Re-simulation honors the saved story seed and painted climate strength. Reseeding carries the latest effective simulation settings and preserves imported foundations when their original image is missing. Worlds with sculpt or feature edits receive an explanation instead of silently losing those edits during reseeding.</li>
+<li>Journey weather follows the actual wind-adjusted trip through arrival. Pending or failed weather requests cannot reuse an older departure's weather when saving a campaign journey. Routes longer than the 400-day planning window remain usable and explain why forecast detail is unavailable. Changing Weather Year's frame count preserves the current seed and storm controls.</li>
+<li>Manuscript map/link removal confirmations remain reachable above the editing UI, cancellation restores the panel, and removing a link keeps its visible words with Undo support.</li>
+<li>Right-click paste works in supported editors after a beta key is configured, and advanced settings can list the named Render Studio recipes saved in the browser.</li>
+<li>Windows generation uses bounded NumPy buffer reuse inside the actual simulation/render worker, with matching local-build packaging and a reproducible Windows comparison tool. Solver settings are unchanged. On one tested Windows machine, Quick generation used 56% less time and Full generation with one world plate used 40% less time; compared arrays and rendered pixels matched. Full runs used the same memory-adjusted atlas quality in every mode.</li>
+</ul>
+<h3 id="portable-generation-and-saved-cell-performance">Portable generation and saved-cell performance</h3>
+<ul>
+<li>Generation reuses identical hydrology topology, fixed climate forcing and style geometry while preserving simulation resolution, solver budgets, precision, seasonal calculations and all rendered styles. Naming retains the same alternatives and conflict scores while rejecting impossible matches earlier.</li>
+<li>Cell inspection reuses small exact data tiles, with content checks before and after reading to detect edits even when timestamps are preserved. Cached tiles are bounded in memory; names and other report metadata remain freshly read.</li>
+<li>A portable comparison mode measures previous/current generation with the same platform allocator and checks saved arrays and rendered pixels across seeds and repeated runs.</li>
+<li>In the reviewed six-world macOS calibration, median build time fell from about 17 seconds to about 13 seconds and median peak memory fell from about 1,022 MB to about 704 MB against the 0.8.0 baseline. Canonical output and scientific metrics remained within their reviewed bounds.</li>
+</ul>
+<h3 id="engineering-and-release-verification">Engineering and release verification</h3>
+<ul>
+<li>Shared saved-world fixtures, provenance helpers and build reporters replace duplicate test and release code. Obsolete redesign prototypes and superseded helpers have been removed while behavioral coverage remains in place.</li>
+<li>Desktop packaging now includes the current runtime dependencies, frozen-source provenance and SBOM checks, and the native Windows allocation helper used by the measured generation path.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.8.0">
+      <header class="release-head">
+        <h2>CartoVox 0.8.0</h2>
+        <p class="release-tag">Worlds you can shape, name and show as you mean them</p>
+        <time datetime="2026-09-04">2026-09-04</time>
+      </header>
+      <div class="doc-body">
+<p>CartoVox 0.8.0 is the professionalization release: a broad pass over creation, the World workspace, maps, authoring, science reporting, import and export, accessibility and reliability, followed by four days of new capability an author asked for.</p>
+<h3 id="draw-and-import-a-whole-world">Draw and import a whole world</h3>
+<ul>
+<li>The blank canvas now takes kingdoms, cities, land cover, roads, landmarks and a reference image, on a full-screen desk with an icon rail.</li>
+<li>Illustrated maps are read as their authors meant them: a hypsometric reading of painted colour, coherent land classes and surface drainage that no longer drowns or speckles a map.</li>
+<li>Importing asks whether the map is the whole planet or one region of it, with a width and centre-latitude to place it.</li>
+</ul>
+<h3 id="maps-shown-un-stretched">Maps shown un-stretched</h3>
+<ul>
+<li>Every world is presented in Equal Earth by default, with Robinson, Mollweide or the stretched grid a click away; data maps, styles, dynamic sheets and the illustrated world plate follow, and every overlay, hover reading and measurement lands on the same spot.</li>
+</ul>
+<h3 id="rivers-deserts-and-the-brief">Rivers, deserts and the brief</h3>
+<ul>
+<li>Rivers follow a continuous course: smooth through the routed cells, wandering where the physics allows, arriving at their trunk on the tangent.</li>
+<li>"Lush" now means few deserts: it weakens subtropical subsidence and strengthens inland moisture recycling instead of only raising rainfall. "Fewer deserts" in a thesis and "Avoid: deserts" reach the same lever, and county-sized desert specks fold into the steppe around them.</li>
+</ul>
+<h3 id="tongues">Tongues</h3>
+<ul>
+<li>Define a language by blending real-language flavours (French, Russian, Latin, Old English, Spanish, Cherokee, Greek, Old Norse, Arabic, Japanese), add words you like, hear names before the world exists, and give the tongue to a realm so its rivers, cities and kingdoms speak it.</li>
+<li>The Nations panel now says that it is where an author's empires go; the setup guide and command palette lead there.</li>
+</ul>
+<h3 id="polish">Polish</h3>
+<ul>
+<li>Custom theme swatches are controls with a picker; the map HUD fits two rows; atlas plate cards select as a whole; the finished-generation dock stays dismissed; a new mark opens the Library desk and watermarks empty workspaces.</li>
+</ul>
+<h3 id="compatibility">Compatibility</h3>
+<ul>
+<li>Windows builds use native peak-memory diagnostics and byte-stable build provenance, fixing test collection and frozen SBOM verification on Windows.</li>
+<li>Atlas is pre-1.0. This release changes the default presentation of every existing world and re-keys the plate cache; no migration shims are kept. Regenerate a world to pick up model changes.</li>
+<li>Generating city plans increases saved-world size and peak generation memory. This is an accepted 0.8.0 cost; the measured cohort and reviewed baseline changes are documented in <code>docs/releases/v0.8.0-validation.md</code>.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.7.6">
+      <header class="release-head">
+        <h2>CartoVox 0.7.6</h2>
+        <p class="release-tag">Reachable and selectable Create setup</p>
+        <time datetime="2026-08-30">2026-08-30</time>
+      </header>
+      <div class="doc-body">
+<p>CartoVox 0.7.6 fixes the remaining interaction problems in the optional Create setup guide. Finite text choices are now real dropdowns, expanded setup controls remain reachable without closing other sections, and the guide's starting-path action opens the route chooser as promised.</p>
+<h3 id="setup-choices-are-selectable">Setup choices are selectable</h3>
+<ul>
+<li>Every exposed setting with a fixed vocabulary now publishes its valid choices through the shared configuration schema.</li>
+<li>The optional setup guide and Advanced Settings both render those values as dropdowns instead of unrestricted text boxes.</li>
+<li>This covers terrain image interpretation, magic source and cost, naming-family rules, apostrophe policy, atlas label density, lake display detail and map palette.</li>
+<li>Friendly labels are displayed while the stable internal values remain unchanged for saved recipes and reproducible builds.</li>
+</ul>
+<h3 id="expanded-create-controls-remain-reachable">Expanded Create controls remain reachable</h3>
+<ul>
+<li>The Create page gains an outer escape scroll when the optional guide or generation-options panel makes the setup surface taller than the window.</li>
+<li>The brief and candidate columns keep their ordinary local scrolling during normal work.</li>
+<li>The generation-options panel has a bounded height and its own scroll fallback, so its last controls are available on shorter displays.</li>
+</ul>
+<h3 id="creation-paths-behave-consistently">Creation paths behave consistently</h3>
+<ul>
+<li>The route summary now carries a stable Creation path caption, making clear that Generate, Import, Deep Time and manual setup are saved choices rather than different application builds.</li>
+<li>Choose how to begin in the setup guide now opens the same three-path chooser as the route bar's Change button.</li>
+<li>Both entry points share one state transition, preventing one control from becoming inert while the other continues to work.</li>
+</ul>
+<h3 id="compatibility-and-distribution">Compatibility and distribution</h3>
+<ul>
+<li>Existing projects, recipes and generated worlds remain readable and are not re-simulated by this update.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data remain on the tester's machine.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.7.5">
+      <header class="release-head">
+        <h2>CartoVox 0.7.5</h2>
+        <p class="release-tag">Reliable installed setup guide and detailed rivers</p>
+        <time datetime="2026-08-30">2026-08-30</time>
+      </header>
+      <div class="doc-body">
+<p>CartoVox 0.7.5 corrects two release-blocking differences between the development dashboard and installed applications. High-detail physical maps now retain their river networks, and packaged apps now include the analysis inputs required by the Create setup guide and Settings help.</p>
+<h3 id="installed-guidance-works-like-the-development-dashboard">Installed guidance works like the development dashboard</h3>
+<ul>
+<li>macOS, Windows and Linux bundles now include the readable Atlas modules used to explain which simulation systems each setting affects.</li>
+<li>The build verifies those packaged analysis inputs byte-for-byte before creating an installer.</li>
+<li>The packaged-app smoke test exercises the authenticated setup-guide endpoint, so an installer cannot pass merely because its static HTML loads.</li>
+<li>Setup-guide loading, failure and retry states remain visible instead of making the button appear unresponsive.</li>
+</ul>
+<h3 id="rivers-survive-high-detail-redraws">Rivers survive high-detail redraws</h3>
+<ul>
+<li>Physical relief and biome maps restore the persisted river network at 2x, 3x and 4x map detail.</li>
+<li>River coordinates, hierarchy and discharge information remain aligned with the enlarged terrain drawing.</li>
+<li>Existing riverless high-detail caches are invalidated automatically and rebuilt when opened.</li>
+<li>Hydrology-graph changes invalidate affected relief and biome drawings instead of leaving stale cached results.</li>
+</ul>
+<h3 id="additional-reliability">Additional reliability</h3>
+<ul>
+<li>Map inspection accepts the current packaged response format and is protected by a browser-to-desktop schema regression check.</li>
+<li>Existing worlds and simulation results remain unchanged; only derived display drawings are rebuilt as needed.</li>
+</ul>
+<h3 id="compatibility-and-distribution">Compatibility and distribution</h3>
+<ul>
+<li>Existing projects remain readable and are not re-simulated by this update.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data remain on the tester's machine.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.7.4">
+      <header class="release-head">
+        <h2>CartoVox 0.7.4</h2>
+        <p class="release-tag">Rivers remain visible at every map detail</p>
+        <time datetime="2026-08-30">2026-08-30</time>
+      </header>
+      <div class="doc-body">
+<p>CartoVox 0.7.4 corrects a release-blocking map redraw problem found before the previous installers were distributed. Physical relief and biome maps now retain their river networks when Atlas switches from the original drawing to 2x, 3x or 4x map detail.</p>
+<h3 id="rivers-survive-high-detail-redraws">Rivers survive high-detail redraws</h3>
+<ul>
+<li>High-detail relief and biome maps now restore the persisted river network from the world's hydrology graph.</li>
+<li>River coordinates scale with the selected drawing density, keeping channels aligned with the terrain at 2x, 3x and 4x.</li>
+<li>Stream hierarchy and discharge information are retained so major rivers remain visually distinct.</li>
+<li>Existing riverless high-detail cache entries are invalidated automatically and rebuilt when opened.</li>
+<li>Hydrology-graph changes now invalidate the affected relief and biome drawings instead of leaving stale cached results.</li>
+</ul>
+<h3 id="reliability-fixes-included">Reliability fixes included</h3>
+<ul>
+<li>Map inspection accepts the current packaged response format and is protected by a browser-to-desktop schema regression check.</li>
+<li>The Create setup guide displays loading and failure states, offers a retry action, and is exercised by the packaged-app smoke test.</li>
+<li>Existing worlds and simulation results remain unchanged; only derived display drawings are rebuilt as needed.</li>
+</ul>
+<h3 id="compatibility-and-distribution">Compatibility and distribution</h3>
+<ul>
+<li>Existing projects remain readable and are not re-simulated by this update.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data remain on the tester's machine.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.7.3">
+      <header class="release-head">
+        <h2>CartoVox 0.7.3</h2>
+        <p class="release-tag">Map inspection and setup guide reliability</p>
+        <time datetime="2026-08-30">2026-08-30</time>
+      </header>
+      <div class="doc-body">
+<p>CartoVox 0.7.3 is a corrective update for two release-blocking interface problems found before the previous installers were distributed. It restores map inspection against the current desktop response format and makes the Create setup guide resilient when its first request is slow or unsuccessful.</p>
+<h3 id="map-inspection-works-with-current-worlds">Map inspection works with current worlds</h3>
+<ul>
+<li>Clicking a map location now accepts every cell-inspection response schema supported by the bundled desktop application.</li>
+<li>The browser and Python response versions are kept in lockstep by a focused regression check, preventing another packaged build from rejecting valid current responses as out of sync.</li>
+<li>Existing worlds and simulation data are unchanged.</li>
+</ul>
+<h3 id="setup-guide-remains-usable">Setup guide remains usable</h3>
+<ul>
+<li>Opening the setup guide now shows its interface immediately while the guide data loads.</li>
+<li>A failed request presents a clear error and Try again action instead of making the button appear unresponsive.</li>
+<li>The packaged-app smoke test now exercises the authenticated setup-guide endpoint, catching failures that browser-only testing could miss.</li>
+</ul>
+<h3 id="compatibility-and-distribution">Compatibility and distribution</h3>
+<ul>
+<li>Existing projects remain readable and are not re-simulated by this update.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data remain on the tester's machine.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.7.2">
+      <header class="release-head">
+        <h2>CartoVox 0.7.2</h2>
+        <p class="release-tag">Reliable setup guidance and clearer candidate actions</p>
+        <time datetime="2026-08-30">2026-08-30</time>
+      </header>
+      <div class="doc-body">
+<p>CartoVox 0.7.2 is a small interface-focused follow-up to 0.7.1. It makes the optional Create setup guide reliable in the desktop app and gives the action that commits a candidate world the visual importance its cost deserves. World generation, saved projects and simulation results are unchanged.</p>
+<h3 id="setup-guide-opens-reliably">Setup guide opens reliably</h3>
+<ul>
+<li>The Setup guide button now keeps both of the interface's hiding mechanisms in sync, preventing a timing-dependent state where the button reported that the guide was expanded while the desktop app still kept it invisible.</li>
+<li>One click now opens the actual five-step guide. Authors no longer have to discover and click a second Show guide control after summoning it.</li>
+<li>Closing and reopening the guide consistently restores the full setup sequence, while the guide's own control can still collapse it when preferred.</li>
+</ul>
+<h3 id="candidate-actions-are-easier-to-understand">Candidate actions are easier to understand</h3>
+<ul>
+<li>Preview, Compare and More now share one compact row on every candidate card.</li>
+<li>Create Quick world, Create full-resolution world or Generate publication atlas occupies a full-width second row according to the active generation settings.</li>
+<li>The creation action now uses the same gold primary treatment as Preview, making it clear that this is the consequential action that commits the selected candidate.</li>
+<li>The two-row hierarchy remains intact at compact card widths.</li>
+</ul>
+<h3 id="compatibility-and-distribution">Compatibility and distribution</h3>
+<ul>
+<li>Existing projects remain readable and are not changed by this update.</li>
+<li>This release changes interface behaviour only; it does not re-simulate worlds, redraw maps or alter authored canon.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data remain on the tester's machine.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.7.1">
+      <header class="release-head">
+        <h2>CartoVox 0.7.1</h2>
+        <p class="release-tag">Deeper world editing, stronger imports, and safer iteration</p>
+        <time datetime="2026-08-30">2026-08-30</time>
+      </header>
+      <div class="doc-body">
+<p>CartoVox 0.7.1 is a focused follow-up to 0.7.0. It expands terrain and feature editing into a practical world-revision workflow, makes external maps easier to interpret before spending simulation time, adds imperial display units, and recovers more safely from interrupted generation. Existing projects remain readable and are never silently rebuilt.</p>
+<h3 id="sculpt-the-world-with-clearer-intent">Sculpt the world with clearer intent</h3>
+<ul>
+<li>Sculpt now previews the likely terrain result directly on the map, with clearer tools, footprints, strength and shape controls before anything is applied.</li>
+<li>Island building supports finer shapes instead of a single blunt circular uplift. Coast, peak, ridge, plateau, basin, strait, river-valley, flatten, smooth and detail tools provide complementary ways to build and refine terrain.</li>
+<li>Select feature reads the editable terrain, water, ecology, settlement, route, realm and magical-region features beneath a point. Clicking the selected feature again now reliably deselects it, including while an earlier lookup is still completing.</li>
+<li>Applied changes create restorable revisions. The interface explains which downstream systems will be rebuilt before re-simulation.</li>
+</ul>
+<h3 id="remove-and-reshape-generated-features">Remove and reshape generated features</h3>
+<ul>
+<li>Land, islands, lakes, rivers, biome regions and mountain terrain can be removed or reshaped through feature-aware operations rather than imprecise map guessing.</li>
+<li>Settlements can be removed or relocated while preserving the distinction between authored intent and generated downstream consequences.</li>
+<li>Routes and realm boundaries can be reshaped with feature-specific controls.</li>
+<li>Magical regions can be selected and edited alongside physical and political features.</li>
+<li>Operations that cannot honestly preserve a generated feature explain the constraint and stage the closest supported world change instead of pretending to edit disconnected pixels.</li>
+</ul>
+<h3 id="deep-time-is-easier-to-author">Deep Time is easier to author</h3>
+<ul>
+<li>The initial subcontinent drawing workspace is larger and opens directly when its custom-drawing card is chosen.</li>
+<li>Authors can change brush width, draw a closed outline and fill the enclosed continent with one action.</li>
+<li>The drawing workspace has explicit back and close actions, so opening it never traps the author in an unwanted step.</li>
+<li>Clearer guidance and previews make early continental composition easier to understand before committing it to the simulation.</li>
+</ul>
+<h3 id="better-external-map-import">Better external-map import</h3>
+<ul>
+<li>The import workshop now distinguishes heightfields, land-and-water masks and coloured illustrated maps more carefully.</li>
+<li>A preview stage shows the interpreted land mask and coastline before generation begins, with controls for inversion, cleanup and interpretation.</li>
+<li>Colour-map handling is more tolerant of labels, borders, decorative water, shaded land and other cartographic detail that previously confused simple colour thresholds.</li>
+<li>Guidance states what geography can be preserved and which terrain, climate, rivers, biomes, settlements and lore Atlas must regenerate.</li>
+</ul>
+<h3 id="safer-generation-and-familiar-units">Safer generation and familiar units</h3>
+<ul>
+<li>Metric and imperial display units are available across world summaries, map inspection and relevant measurements without changing the saved simulation.</li>
+<li>Interrupted or force-closed generation records are detected and can be recovered or removed instead of leaving an undeletable project card.</li>
+<li>Temporary seed previews are kept separate from committed worlds, and failed preview imagery no longer requires deleting all application data to recover the workspace.</li>
+<li>Generation cleanup preserves completed world data and avoids treating an abandoned in-progress record as a valid finished project.</li>
+</ul>
+<h3 id="compatibility-and-distribution">Compatibility and distribution</h3>
+<ul>
+<li>Existing 0.7.0 and older projects remain readable. Feature edits and full re-simulation are deliberate actions that create revisions; opening a world does not rewrite it.</li>
+<li>Terrain edits can change downstream climate, rivers, biomes, settlements, routes, names, lore and maps. Atlas states that scope before applying them.</li>
+<li>External-map interpretation is still an inference from pixels. Always inspect the preview and correct the land mask before committing a long simulation.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data remain on the tester's machine.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.7.0">
+      <header class="release-head">
+        <h2>CartoVox 0.7.0</h2>
+        <p class="release-tag">A map-first World workspace, deeper scientific maps, flexible atlas lettering, and honest quality upgrades</p>
+        <time datetime="2026-08-29">2026-08-29</time>
+      </header>
+      <div class="doc-body">
+<p>CartoVox 0.7.0 makes the generated world itself the centre of the workspace. It adds new climate, geology, water, land and civilisation views; turns natural regions into connected Lands pages; and gives authors clearer choices about atlas labels, drawing quality and simulation quality. Create and Render Studio now explain their consequences where the decision is made. Existing projects remain readable and are never silently re-simulated.</p>
+<h3 id="the-map-is-now-the-world-workspace">The map is now the World workspace</h3>
+<ul>
+<li>World opens around the map rather than treating it as one panel among many. The contextual toolbar keeps Sculpt, Render and the Map Library close to the geography they affect.</li>
+<li>The Map Library can be shown or hidden from that toolbar. The choice is remembered, while the generic panel-collapse behaviour remains available elsewhere.</li>
+<li>World tools behave as modes: an author-opened workbench comes to the front, the right edge presents one active panel, and the inspector has a stable place rather than competing with unrelated controls.</li>
+<li>The globe has its own corner and can be hidden independently. Its spin control is explicitly labelled, and map, globe, dock and bottom-band controls remain reachable in CartoVox Dark and Parchment Light.</li>
+<li>Project findings use readable titles and measured supporting text instead of presenting every result with the same visual urgency.</li>
+<li>Data-map keys, map controls and the selected view stay legible over the map at desktop and compact widths.</li>
+</ul>
+<h3 id="more-of-the-simulated-world-is-visible">More of the simulated world is visible</h3>
+<ul>
+<li>Natural regions groups contiguous landscapes by landform and climate character. Selecting one opens a measured Lands entry with terrain, climate, water, neighbouring regions and connected lore.</li>
+<li>Lands is connected across the map, search and Codex rather than living as a detached regional key. The generated gazetteer can also be exported into the Codex vault.</li>
+<li>Domestication &amp; farming shows wild-crop package strength, actual agricultural cradles and their historical reach. Whether domestication may shape civilisation hearths remains an explicit author choice.</li>
+<li>Köppen climate classification derives conventional climate codes from the world's saved temperatures and seasonal rainfall.</li>
+<li>Sea ice &amp; winter extent separates the persistent ice cap from the potential cold-season fringe and explains the limits of that model.</li>
+<li>Groundwater &amp; aquifers delineates water-bearing bodies, recharge status, saturated thickness and accessibility, including aquifers that can support settlement beneath arid ground.</li>
+<li>Soil properties lets authors switch among fertility, profile depth, free drainage, rockiness and organic carbon without replacing the categorical soil map.</li>
+<li>Crust age &amp; igneous provinces exposes the age of surface crust alongside the footprints of major flood-basalt events.</li>
+<li>Every generated data view has a readable key. New maps remain honestly unavailable when an older project does not contain their required saved fields.</li>
+</ul>
+<h3 id="connected-evidence-and-safer-author-workflows">Connected evidence and safer author workflows</h3>
+<ul>
+<li>Map, inspector, search, Lands, Codex and scientific-export routes now cover substantially more of the numerical fields Atlas saves. Generated sidecars and GIS exports carry the corresponding evidence instead of leaving useful simulation state stranded on disk.</li>
+<li>Late or optional capabilities are routed through the workflows where an author would look for them. A missing capability stays visibly unavailable rather than becoming a link to an empty surface.</li>
+<li>Author canon, locked names, revisions, brief choices and other authored state are protected while switching workflows, rebuilding derived output or returning to Create.</li>
+<li>Lands pages and exported gazetteer records keep stable connections to the map and related Codex material.</li>
+</ul>
+<h3 id="labeled-and-no-label-illustrated-atlases">Labeled and no-label illustrated atlases</h3>
+<ul>
+<li>Create now offers Atlas lettering choices for Labeled only, No labels, or Both versions. The same default is available in App settings.</li>
+<li>The choice applies to world, continent and regional illustrated sheets. A no-label atlas changes only the rendered plate pixels; Atlas still generates names, settlements, lore and searchable features for the world.</li>
+<li>A saved world that creates its illustrated atlas later receives the same lettering options, rather than being forced into a single output style.</li>
+<li>Missing no-label or labeled companions can be drawn later from the saved atlas source without re-running terrain, climate, rivers, settlements, names or lore.</li>
+<li>Labeled sheets can be redrawn from current canon after lore or name edits.</li>
+<li>The Map Library groups labeled and no-label versions beneath one authored sheet name. Small Labeled and No labels controls switch the visible variant instead of filling the library with duplicate titles.</li>
+<li>Deferred rendering, pause-after-current-plate and resume understand the selected variants and preserve completed sheets.</li>
+</ul>
+<h3 id="a-clear-path-from-a-quick-world-to-finished-output">A clear path from a Quick world to finished output</h3>
+<ul>
+<li>A Quick world now offers Best-quality drawings. Eligible maps are rebuilt at 4x drawing density from the exact saved simulation, so the geography, names and lore do not change.</li>
+<li>Authors who want more simulated detail can instead choose Rebuild at full simulation resolution. Atlas creates a separate project from the same seed and saved recipe, runs the complete simulation and rebuilds the Map Library.</li>
+<li>The Quick source project is left untouched. The confirmation explains that the broader geography should remain familiar while exact coastlines, rivers, climate boundaries, settlements, names and generated lore may change on the finer grid.</li>
+<li>Best-quality drawing mode is remembered and used when eligible maps are opened; it does not pretend that extra drawing pixels are extra simulated cells.</li>
+</ul>
+<h3 id="render-studio-says-what-it-creates">Render Studio says what it creates</h3>
+<ul>
+<li>Render Studio identifies itself as a whole-world layered export and now states its scope before rendering.</li>
+<li>One render creates one viewable whole-world composition at the chosen pixel size plus separate editable PNG layers for the checked ingredients.</li>
+<li>It does not render every Map Library map, follow whichever library view is selected, overwrite those maps, re-run the world or add simulation detail below a saved cell.</li>
+<li>Ocean, land, biomes, relief, lakes, rivers, coastline, borders, graticule and labels are compositing ingredients for that one custom sheet. Selecting Biomes therefore adds a biome layer to the composition; it does not create a high-resolution copy of the standalone Biomes library map.</li>
+<li>The plan explains whether the chosen size writes single images or tiled layers, and keeps render pixels beside saved simulation dimensions.</li>
+</ul>
+<h3 id="map-filters-survive-sharper-drawing">Map filters survive sharper drawing</h3>
+<ul>
+<li>Filterable data maps preserve the selected classes, property variant and visible overlays when switching among Original, 2x, 3x and 4x drawing density.</li>
+<li>Rivers, lakes and graticule controls now describe the visible high-density result instead of accidentally exposing an unrelated original PNG underneath.</li>
+<li>Visible classes can be collapsed and expanded at the author's preference. The choice is remembered locally, while the selected-class count remains visible.</li>
+<li>Continuous fields, categorical classes and boundary overlays retain their appropriate resampling rules at every supported density.</li>
+</ul>
+<h3 id="create-puts-the-answer-beside-the-ask">Create puts the answer beside the ask</h3>
+<ul>
+<li>Create collects planet type, geography, brief and detailed constraints on the authoring edge while leaving the main canvas for candidate results and comparison.</li>
+<li>Recipe, seed, Quick mode, atlas finish, lettering and sheet selection remain close to the generation actions without consuming permanent rows of the workspace.</li>
+<li>The optional setup guide is summoned when needed instead of reserving a standing band on every visit.</li>
+<li>Generation preflight asks whether the selected output fits the current disk, reports the estimated range and available space, and reserves a safety margin before a long run begins.</li>
+<li>Run advice is announced where generation starts and remains readable long enough to understand without turning the cost strip into another permanent panel.</li>
+</ul>
+<h3 id="compatibility-and-practical-limits">Compatibility and practical limits</h3>
+<ul>
+<li>Existing projects open unchanged. No migration silently re-simulates a world or rewrites authored canon.</li>
+<li>Older worlds can use newly derived views only when the required saved numerical fields exist. Atlas reports missing prerequisites rather than fabricating a map.</li>
+<li>No-label atlas output removes lettering from illustrated sheets; it is not a switch that disables world naming or lore generation.</li>
+<li>2x–4x map density and 1K–16K Render Studio output improve the drawing. Only the explicit full-simulation rebuild adds simulated cells, and it does so in a separate project because downstream details can change.</li>
+<li>Full generation and publication atlases remain demanding. Quick generation, candidate previews, selective sheets, Draft finish, deferred rendering and stop-after-current-plate remain the practical iteration tools.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data stay on the tester's machine.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.6.1">
+      <header class="release-head">
+        <h2>CartoVox 0.6.1</h2>
+        <p class="release-tag">App settings, saved recipes, accessibility controls, and world provenance</p>
+        <time datetime="2026-08-28">2026-08-28</time>
+      </header>
+      <div class="doc-body">
+<p>CartoVox gains a global App settings surface, a Parchment Light theme, accessibility controls, and saved recipes for combinations you tune in Advanced Settings. The World tab also gains a record of what each world was built with, and says plainly whether its illustrated atlas can still be created. Existing worlds open unchanged and no migration runs.</p>
+<h3 id="app-settings">App settings</h3>
+<ul>
+<li>A gear beside Help &amp; learn, or Ctrl/Cmd + comma, opens a global settings dialog. It is not a fifth author destination: the dashboard stays mounted underneath and is handed back untouched on close.</li>
+<li>Six sections: Appearance, Accessibility, Workspace &amp; layout, Creation defaults, Data &amp; privacy, and Updates &amp; support.</li>
+<li>Changes apply immediately. There is no Save button, because a Save button can disagree with what is already on the screen.</li>
+<li>Every setting is local to this browser or this installed copy. There is no account and no synchronisation; nothing about your preferences is sent anywhere.</li>
+</ul>
+<h3 id="a-second-theme">A second theme</h3>
+<ul>
+<li>Parchment Light joins CartoVox Dark: warm paper rather than a white inversion, with the accent darkened so it reads on paper and warm, shallow shadows in place of black ones.</li>
+<li>Follow system resolves to either theme and re-resolves live when the operating system changes. The choice is stored, not the resolved value, so following the system keeps following it.</li>
+<li>Every text colour in both themes meets WCAG AA against every surface it can appear on. This is computed by the test suite rather than recorded as a remembered number.</li>
+<li>The one deliberate change to CartoVox Dark's appearance is its error colour, which measured 4.13:1 against the lightest surface and now measures 5.25:1. Nothing else about CartoVox Dark moved; a computed-style comparison across 42 elements found that single difference.</li>
+</ul>
+<h3 id="accessibility">Accessibility</h3>
+<ul>
+<li>Text size at 100%, 110% or 125%, driven by a single root scale. Dashboard type is now expressed relative to that scale, so a reader who has already enlarged their browser font is no longer overridden by fixed pixel sizes.</li>
+<li>Comfortable and Compact interface density, which move chrome spacing and control height and never map detail. Touch targets stay at least 44 by 44 on phone layouts.</li>
+<li>Reduced motion, honoured by the interface rather than merely stored. A system request for reduced motion always wins, whatever is chosen here.</li>
+<li>The dialog is a proper modal: focus moves in, stays inside, and returns to the control that opened it. Every control has a visible label and a real form input behind it, so selection is never signalled by colour alone.</li>
+</ul>
+<h3 id="workspace-layout-and-creation-defaults">Workspace, layout and creation defaults</h3>
+<ul>
+<li>Choose where Atlas opens: the Library, Create, or the destination you were last using.</li>
+<li>Choose whether Atlas remembers the section you had open in each destination. Turning it off ignores what was saved rather than erasing it, so turning it back on restores your sections.</li>
+<li>Open or reset the Layout customiser from settings. The Layout drawer remains the fast route and is unchanged; existing hidden-region choices survive this release untouched.</li>
+<li>Hiding the top bar hides the settings button with it, so the fixed Layout handle now also offers a way back to App settings.</li>
+<li>The generation defaults from Create appear here too, editing the same record rather than a copy. Changing either surface updates the other. They are labelled as defaults for new generation runs and never alter a world you have already built.</li>
+</ul>
+<h3 id="saved-recipes-and-safer-iteration">Saved recipes and safer iteration</h3>
+<ul>
+<li>Save the current Advanced Settings sheet as a named recipe: the built-in preset plus only the settings you changed. Recipes appear under Your recipes in the World shape picker and can be exported or imported as bounded, validated JSON.</li>
+<li>The World tab's build record now offers Build another like this. It loads the world's recipe into Create without copying the seed, so the next run follows the same choices without recreating the same world.</li>
+<li>Atlas preserves the settings used by a run before generation begins, including failed or cancelled runs. The completion panel offers Adjust these settings as a direct route back to the sheet.</li>
+<li>Draft settings and the selected recipe survive a reload or desktop restart. The Advanced settings button shows the number of active overrides so restored choices are never invisible.</li>
+<li>Switching presets, loading another recipe, or clearing overrides now asks before discarding unsaved changes and states how many settings would be lost. Deleting a recipe leaves its current values on the sheet.</li>
+<li>Recipes are authored work rather than app preferences, so Reset all app settings does not remove them. Up to 24 named recipes can be stored locally; export is the way to move one between installations.</li>
+</ul>
+<h3 id="workflow-and-interface-fixes">Workflow and interface fixes</h3>
+<ul>
+<li>Create now gives the World Brief and candidate grid a usable minimum height and lets the page scroll on shorter displays instead of crushing the brief into a small internal viewport.</li>
+<li>The Advanced Settings sheet stays intact across reloads and generation runs, and the completion panel provides a clear way back to the settings that produced the run.</li>
+<li>Map inspectors and lab panels keep a readable dark-on-map palette under Parchment Light. Missing colour, background and shadow tokens were replaced with defined semantic tokens and are now guarded by tests.</li>
+<li>The map-resolution notice now lives in the Render Studio bar instead of permanently covering the map. It returns to the map only while that map is fullscreen.</li>
+</ul>
+<h3 id="custom-themes">Custom themes</h3>
+<ul>
+<li>Create, duplicate, rename, apply, export and import themes. A theme is a small JSON file of named colours.</li>
+<li>A theme cannot add styles, fonts, images, links or scripts, cannot reach the file system, and cannot change a world, a map or anything you export. Every value must be a hex colour and is applied as a single custom property, so anything that is not a colour is refused by the same rule.</li>
+<li>Contrast is checked before a theme can be applied. A theme whose text cannot be read is refused, and the message names the pair and the ratio rather than saying "invalid".</li>
+<li>Editing previews a draft; the dashboard keeps the theme you had until you apply. Importing a file previews it too — selecting a file never applies a theme.</li>
+<li>Up to twelve themes, 64 KB per imported file. An imported id never overwrites a theme you already have, and an unreadable saved theme is dropped on load rather than applied.</li>
+<li>Exporting carries the schema version, name, base and colours. No paths, no worlds, no other preferences, no tester identity.</li>
+</ul>
+<h3 id="how-this-world-was-built">How this world was built</h3>
+<ul>
+<li>The World tab gains a "How this world was built" disclosure: seed, preset, grid, whether the world came from an imported heightfield, a Tectonic Director intent or a saved geological history, and the settings that differ from the preset.</li>
+<li>Worlds record all 336 resolved configuration fields, and almost none of them were chosen by anyone. The panel shows the short list an author is responsible for rather than the whole sheet.</li>
+<li>Filesystem paths are deliberately not reported, and the grid is described as an observation rather than a recovered choice: the record stores the resolution a Quick run produced, not the fact that Quick was picked.</li>
+</ul>
+<h3 id="creating-the-illustrated-atlas-later">Creating the illustrated atlas later</h3>
+<ul>
+<li>A world built without the illustrated atlas can usually still grow one, drawn from its saved fields and plate framing without re-running terrain, climate, rivers, settlements, names or lore. That has been possible for some time; what it lacked was any sign of it from the World tab.</li>
+<li>The panel now says which of three situations a world is in: plates already drawn, plates still possible with a pointer to Create publication atlas, or no saved atlas source and a re-simulation needed. Previously the last two were both silence.</li>
+</ul>
+<h3 id="updates-support-and-privacy">Updates, support and privacy</h3>
+<ul>
+<li>Automatic update checking can be turned off. It gates only the once-a-day startup check; Check now keeps working, so declining unprompted network access does not remove your ability to ask.</li>
+<li>Installed-app version, updates, folders, diagnostics and bug reporting now live in Updates &amp; support rather than inside the Manual, which keeps a link to them. There is one support panel to fix rather than two that drift apart.</li>
+<li>About reports the running version and build mode. In a browser tab that now comes from a small read-only endpoint, so the version is answerable outside the installed app for the first time.</li>
+<li>Copy app info copies name, version, build mode and platform for a bug report, and never paths, keys, environment variables, world names or anything you have written.</li>
+<li>Diagnostics bundles are assembled from build and system information plus redacted logs. App settings and custom themes are never read when one is built.</li>
+</ul>
+<h3 id="themes-do-not-change-what-atlas-produces">Themes do not change what Atlas produces</h3>
+<p>Maps, illustrated plates, vector and scientific exports, PNG products and project backups are drawn from the world, not the interface. No simulation or rendering code reads an appearance preference, and the settings surface makes exactly one network request, with no body.</p>
+<p>This was measured. A generated world's 121 files were hashed, five theme switches and text-size and density changes were made with a map, its tools and its inspectors on screen, and the files were hashed again: byte-for-byte identical, with no network requests during the changes.</p>
+<h3 id="compatibility">Compatibility</h3>
+<ul>
+<li>Existing worlds open unchanged. No migration runs and no saved world file is rewritten.</li>
+<li>Existing Layout, collapsed-panel, remembered-section, generation and creation-guide preferences are all preserved.</li>
+<li>CartoVox Dark remains the default, so an installation that never opens settings looks as it did apart from the error-colour correction described above.</li>
+<li>Preferences remain local to one browser or installation, as they already were.</li>
+</ul>
+<h3 id="known-limitations">Known limitations</h3>
+<ul>
+<li>Display-cache usage reporting and cache clearing are not in this release. They need native file-system work whose failure mode is deleting real project data, and that belongs in its own change rather than alongside a settings shell.</li>
+<li>There is no export or import of all preferences. Theme export exists; general portability is not promised until it is built and tested.</li>
+<li>High-contrast theme variants are not included. Both built-in themes meet AA, but a dedicated high-contrast set is separate work.</li>
+<li>Mobile layouts remain for review rather than authoring, as before.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.6.0">
+      <header class="release-head">
+        <h2>CartoVox 0.6.0</h2>
+        <p class="release-tag">a finished worldbuilding workspace with sharper maps, authored causes, visible sculpting, and calmer cartography</p>
+        <time datetime="2026-08-27">2026-08-27</time>
+      </header>
+      <div class="doc-body">
+<p>This is the largest CartoVox product-finishing release so far. It turns the simulation, atlas, lore, and author-control systems into a more coherent workspace: begin with a clear task, understand the cost before committing, inspect or direct important causes, see pending edits before re-simulation, and move between creating, mapping, writing, and managing worlds without fighting the interface. Existing projects remain readable, and author canon continues to survive deliberate re-simulation.</p>
+<h3 id="a-calmer-workspace-built-around-real-tasks">A calmer workspace built around real tasks</h3>
+<ul>
+<li>The dashboard now centers four primary destinations—Create, World, Write, and Library—while Map, Atlas, Travel, Campaign, Lore, and other tools appear in the context where they are useful.</li>
+<li>Create is a true first screen. Authors choose whether to generate, import, or build through deep time, then choose what the world is for before detailed controls appear.</li>
+<li>Primary actions now match the selected route. Quick exploration, candidate search, committed generation, deferred illustrated-atlas work, and publication-quality output are described as different costs and commitments instead of being presented as interchangeable buttons.</li>
+<li>A task-based capability tour points directly to climate investigation, tectonic direction, map import, sculpting, travel, writing, campaigns, publication, and scientific export without burying those systems in equal-weight tabs.</li>
+<li>Generation preflight estimates likely time, disk use, resolution, plate count, and expensive settings before a long run begins. The generation dock keeps progress and recovery actions visible after navigation or reload.</li>
+<li>Compact and desktop layouts were exercised across all four primary workspaces. Collapsible rails, recovery controls, independent panel scrolling, and keyboard-operable tablists make dense tools more usable on smaller screens.</li>
+<li>Floating labs and tool panels now keep pointer and wheel input for themselves, preventing the map underneath from panning, zooming, or selecting while the author interacts with a panel.</li>
+</ul>
+<h3 id="calmer-cartography-and-honest-sharp-viewing">Calmer cartography and honest sharp viewing</h3>
+<ul>
+<li>Illustrated atlases now save both a named world plate and an unlabelled companion with identical geography and framing. Authors can use the clean plate for external artwork without losing the annotated reference.</li>
+<li>Scale-aware label budgets protect major world, continent, realm, settlement, lake, and river names before allowing minor labels to compete for space. Dense sheets remain informative without treating every label as equally important.</li>
+<li>Lake presentation suppresses visually noisy minor and seasonal marks on general relief plates while keeping the complete scientific lake classification available in data views and exports.</li>
+<li>CartoVox now bundles its interface and atlas typography locally, so dashboard and packaged output do not depend on a network font service or platform-specific fallback.</li>
+<li>The World map adds Auto, Original, 2x, 3x, and 4x drawing-density controls. Higher-density views materially reduce raster stair-stepping during zoom without pretending the physical simulation has gained cells.</li>
+<li>An always-visible resolution notice distinguishes drawing pixels from the saved simulation grid and reports approximate simulation-cell scale. Continuous and categorical maps use appropriate scaling paths rather than one misleading resampler.</li>
+<li>High-density maps are generated through a bounded local endpoint, cached per world, pruned under a fixed budget, excluded from project backups, and rebuilt after restore. If a larger drawing fails, Atlas keeps the valid original visible and explains the fallback.</li>
+</ul>
+<h3 id="author-intent-is-visible-on-the-map">Author intent is visible on the map</h3>
+<ul>
+<li>A spherical measurement tool reports great-circle distance using the saved planetary radius, including correct antimeridian and near-pole routes. Measurements are transient and never alter the world.</li>
+<li>Tectonic Director now has an interactive coordinate map for placing plate seeds and shields and connecting requested margins. Preflight checks the draft before it becomes authoritative, and the finished-world audit distinguishes satisfied, compromised, and impossible requests.</li>
+<li>Language-family intent can constrain naming before generation. Locked author choices flow through the stable naming registry, while neutral or omitted intent preserves procedural behavior.</li>
+<li>Creation routes expose whether domestication should influence civilisation hearths instead of leaving that consequence hidden in configuration.</li>
+<li>Terrain sculpting now previews the brush footprint, falloff, bearing, radius, cumulative elevation delta, affected area, raised and lowered cells, and provisional coast crossings before re-simulation.</li>
+<li>Multiple sculpt operations remain visible and ordered through undo and redo. A failed apply retains the complete pending preview, and a successful apply clears it only after the simulation cascade and requested atlas work finish.</li>
+</ul>
+<h3 id="lore-identity-and-author-canon">Lore, identity, and author canon</h3>
+<ul>
+<li>Generated facts, inferred connective material, author canon, unavailable data, and deliberate open questions now have distinct presentation states instead of appearing as accidental empty sections.</li>
+<li>Author Questions are a first-class writing surface, giving intentionally unresolved parts of the world somewhere useful to live.</li>
+<li>Realms, religions, early Chronicle material, political summaries, story hooks, and series-bible material use the active brief more consistently and avoid simulator-facing language in author output.</li>
+<li>Culture names, demonyms, display names, filenames, maps, reports, and lore now share stronger uniqueness and stable-identity rules. Internal hearth identifiers no longer leak into author-facing prose.</li>
+<li>Lore saves refresh the visible world revision immediately. Canon edits create recoverable revisions, rebuild the generated Codex, and remain intact through later terrain re-simulation.</li>
+<li>The shared CartoVox identity, compass-globe artwork, interface typography, screenshots, and product guidance now match across the dashboard, desktop application, installers, and documentation.</li>
+</ul>
+<h3 id="safer-long-running-generation-and-publication">Safer long-running generation and publication</h3>
+<ul>
+<li>Illustrated-atlas memory planning now handles pressure one plate at a time. It can reduce supersampling or width for the plate that exceeds the safe budget, record the compromise, and continue instead of discarding an otherwise valid world.</li>
+<li>Named and unlabelled world plates participate in deferred-atlas planning, pause-after-current-plate, reload, and resume. Completed products are preserved rather than redrawn when remaining plates continue later.</li>
+<li>Candidate search shows every controlled structural variation it evaluated and carries the selected seed and brief into the committed simulation.</li>
+<li>Quick mode and publication finish now disclose what is simulated immediately, what is deferred, and which output bundles will be produced.</li>
+<li>Legacy projects, partial map catalogues, revisions, Lore, backups, imported projects, and restored Trash items were exercised through live round trips. Rebuildable display caches are excluded without removing durable scientific or author data.</li>
+<li>Library identity and recovery paths were hardened so renames, Codex rebuilds, project imports, generation failures, deferred work, and restore operations keep the correct project and revision visible.</li>
+</ul>
+<h3 id="correctness-security-and-release-assurance">Correctness, security, and release assurance</h3>
+<ul>
+<li>Imported Markdown and generated author text received adversarial rendering coverage, and wrong-context inline-script escaping was removed from the dashboard path.</li>
+<li>Deterministic verification now uses an explicit fixed resource policy, so reproducibility output no longer changes with the host machine's momentary free-memory reading. The reference world, Worldbook, and all rendered plates reproduce byte-for-byte under that policy.</li>
+<li>The browser code was split at high-value decision seams for map-workspace and first-run routing behavior, reducing compatibility workarounds while keeping the application fully local.</li>
+<li>Frozen installers now run a bounded packaged-runtime probe that starts the real application service and verifies bundled HTML, JavaScript, fonts, bytes, and MIME types. This specifically guards against a packaged app appearing healthy while the dashboard scripts are blocked.</li>
+<li>Release checksum generation is version-aware and strict: it requires the expected platform matrix, safe unique filenames, exact manifest coverage, ordinary files, and matching lowercase SHA-256 digests before publication.</li>
+</ul>
+<h3 id="compatibility-and-practical-limits">Compatibility and practical limits</h3>
+<ul>
+<li>CartoVox 0.6.0 advances product behavior without silently re-simulating existing worlds. Older projects remain readable; newly derived maps, repaired lore presentation, or refreshed atlas products appear only when their saved inputs exist or after an explicit rebuild.</li>
+<li>Higher map density improves drawing sharpness, not physical simulation resolution. Regional downscaling and full re-simulation remain the tools for new simulated detail.</li>
+<li>Full generation and illustrated publication remain demanding. Use candidate search, Quick mode, Draft atlas finish, selective plates, deferred rendering, or lower drawing density while exploring.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. It uses no account, telemetry, hardware fingerprint, activation server, or automatic report upload. Generated worlds, settings, reports, textures, and author data stay on the tester's machine.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.5.0">
+      <header class="release-head">
+        <h2>CartoVox 0.5.0</h2>
+        <p class="release-tag">guided worldbuilding, climate forensics, author-directed geology, and production rendering</p>
+        <time datetime="2026-08-26">2026-08-26</time>
+      </header>
+      <div class="doc-body">
+<p>This is the current invited technical-alpha build. It turns the simulation systems added through 0.4 into workflows an author can discover and control: choose how to begin, state what the world is for, inspect why the climate behaves as it does, constrain selected nations and tectonic causes, experiment with erosion, and export large layered artwork without confusing drawing resolution with simulation resolution. Existing worlds remain readable; tools that need saved scientific fields explain when an older project must be deliberately re-simulated.</p>
+<h3 id="a-clearer-route-into-atlas">A clearer route into Atlas</h3>
+<ul>
+<li>The Create workspace now begins with three genuinely different paths: generate a new world, import an existing map, or build through geological deep time.</li>
+<li>A second purpose choice tunes the route for campaigning, climate study, an illustrated atlas, a base for external artwork, or writing and worldbuilding. These choices set ordinary visible options rather than hiding a new preset system.</li>
+<li>The candidate search now separates planetary conditions from continental geography, so changing the kind of planet no longer has to masquerade as changing its landmass topology.</li>
+</ul>
+<h3 id="climate-lab-and-explainable-weather">Climate Lab and explainable weather</h3>
+<ul>
+<li>Selecting a map cell can now explain its temperature and rainfall departures using latitude, elevation, continentality, upwind terrain, moisture supply, and the saved circulation fields.</li>
+<li>Climate Lab exposes seasonal temperature, pressure, wind, and rainfall frames; moisture-path inspection; located plausibility checks; and a local review bundle containing the seed, resolved configuration, model response, and findings.</li>
+<li>A bounded what-if comparison estimates how selected climate controls would change the saved world and clearly labels the result as an approximation rather than a full physical re-simulation.</li>
+<li>Seasonal fields are stored compactly so an author can scrub the year without doubling the scientific archive.</li>
+</ul>
+<h3 id="nations-and-tectonics-before-generation">Nations and tectonics before generation</h3>
+<ul>
+<li>Nation Brief lets authors name realms and capitals, request homeland traits, biome preferences, resources, trade goods, and cultures, and check those requests against measured terrain before generation.</li>
+<li>Accepted homeland anchors enter the normal civilisation pipeline as founding hearths; locked names flow through the stable naming registry so maps, reports, and lore agree.</li>
+<li>Tectonic Director now covers craton nuclei, plate seeds, requested convergent/divergent/transform margins, drift and speed, locks, and mantle hotspots.</li>
+<li>Preflight reports contradictory or impossible requests before a long build. A finished-world conflict report then measures which intentions were satisfied, compromised, or impossible instead of merely repeating the input.</li>
+</ul>
+<h3 id="import-workshop-and-erosion-lab">Import Workshop and Erosion Lab</h3>
+<ul>
+<li>Existing-map import now has a preview workshop between choosing an image and committing a world. It detects likely heightfield versus land/water art, supports inversion and cleanup, previews the resulting coast, and states which requested features can be preserved or must be rebuilt.</li>
+<li>Erosion Lab runs the same stream-power, hillslope-diffusion, and floodplain-deposition kernel used by generation on a non-destructive coarse bench.</li>
+<li>The lab compares relief and drainage before and after, visualises what moved, reports mass balance and scale limitations, and changes the world only after an explicit accept-and-re-simulate action.</li>
+<li>Separate fluvial-incision and hillslope-diffusion controls default to the historical behaviour, preserving untouched configurations.</li>
+</ul>
+<h3 id="render-studio-for-artists-and-gis-workflows">Render Studio for artists and GIS workflows</h3>
+<ul>
+<li>Render Studio produces 1K, 2K, 4K, 8K, or tiled 16K output as documented transparent PNG layers with world files, a compositing manifest, and a flattened preview.</li>
+<li>Authors can choose full-colour, monochrome, or coastline-only bases; include biomes, relief, lakes, rivers, coastlines, borders, graticules, and labels; and use local textures from the Atlas data directory.</li>
+<li>Continuous fields are interpolated, categorical fields remain categorical, and deterministic decorative detail is explicitly marked as invented.</li>
+<li>Every bundle records both output-pixel size and underlying simulation-cell size. Render Studio never claims that a larger drawing is a higher-resolution physical simulation.</li>
+<li>Rebuildable Render Studio output is excluded from portable project backups so a single 16K export does not silently bloat the authoritative world archive.</li>
+</ul>
+<h3 id="planet-classification-and-honest-capability-boundaries">Planet classification and honest capability boundaries</h3>
+<ul>
+<li>A versioned planet-class foundation classifies supported terrestrial regimes separately from geography and carries stable machine IDs, familiar names, physical ranges, confidence, references, and capability states.</li>
+<li>The Create workspace and world dossier now state which stages are supported, optional, or inapplicable and list important standing limits such as simplified atmospheric physics, water-only hydrology, and the current Earth/Köppen biome vocabulary.</li>
+<li>Scientific exports include the derived classification and limitations, so downstream analysis retains the context in which a world was generated.</li>
+</ul>
+<h3 id="faster-safer-alpha-feedback">Faster, safer alpha feedback</h3>
+<ul>
+<li>A tester can report the current map or selected cell, describe expected versus observed behaviour, complete a short task-specific checklist, and preview exactly what will be collected.</li>
+<li>Reports are written beside the world and are never uploaded automatically. Generated place names and annotated screenshots remain excluded unless the tester explicitly includes them.</li>
+<li>The new shared compass-globe identity now appears in the web shell, desktop applications, installers, and platform icon assets.</li>
+<li>The Regional Lens panel scrolls independently instead of letting wheel events zoom the map underneath it.</li>
+</ul>
+<h3 id="compatibility-and-verification">Compatibility and verification</h3>
+<ul>
+<li>Project configuration advances to schema version 8 for the separate erosion controls. Missing values migrate to neutral defaults; older worlds are not silently re-simulated.</li>
+<li>Existing projects, revisions, backups, campaigns, Chronicles, lore, imported terrain, extensions, and author decisions remain readable. New climate frames, nation reconciliation, tectonic audits, and render products appear only when their required saved inputs exist or after a deliberate re-simulation.</li>
+<li>This candidate passes 997 automated tests, Python compilation, JavaScript syntax checks, release-version validation, and a browser smoke test of the guided Create workflow with no console errors.</li>
+<li>The tagged build workflow produces and verifies Apple Silicon macOS, Intel macOS, Windows, and Debian/Ubuntu Linux installers. The separate portable-Linux workflow builds against glibc 2.28 for Slackware 15.0 and other non-Debian distributions.</li>
+</ul>
+<p>CartoVox remains limited to invited testers with an offline beta key. Verification uses no account, telemetry, hardware fingerprint, activation server, or network connection. Generated worlds, settings, reports, textures, and author data remain on the tester's machine.</p>
+<p>Full generation is intentionally demanding and may take roughly 20–25 minutes on a current high-end Mac and 50–55 minutes on a current high-end Windows machine, depending on settings and selected atlas plates. Use Preview, candidate search, Quick mode, Draft atlas finish, or selective plates while exploring. Twelve-sample climate, regional work, Erosion Lab acceptance, and large renders require additional time, memory, or disk space.</p>
+      </div>
+    </article>
+    <article class="release" id="v0.4.0">
+      <header class="release-head">
+        <h2>CartoVox 0.4.0</h2>
+        <p class="release-tag">authored tectonics, regional re-simulation, deeper world systems, and portable Linux</p>
+        <time datetime="2026-08-25">2026-08-25</time>
+      </header>
+      <div class="doc-body">
+<p>This is the current invited technical-alpha build. It consolidates the Wave 3 and later simulation work into one release, and adds a verified portable Linux package for Slackware 15.0 and other non-Debian systems. Existing worlds remain readable; new derived surveys appear after generating or deliberately re-simulating a world with this version.</p>
+<h3 id="author-guided-tectonics">Author-guided tectonics</h3>
+<ul>
+<li>Atlas can now accept a tectonic intent document that pins selected plate seeds, craton nuclei, drift bearings, and relative plate speeds before the solver runs.</li>
+<li>Partial intent is supported: authors can constrain only the parts that matter while Atlas fills the remaining plates and cratons procedurally.</li>
+<li>Pinned choices still flow through the normal boundary, orogeny, climate, hydrology, biome, settlement, and resource pipeline rather than being painted over a finished map.</li>
+<li>Finished-world provenance records which features were author supplied, which were procedural, and how requested craton radii were rescaled to the planet's crust budget.</li>
+<li>A local validation endpoint reports what an intent will constrain before committing to a full generation.</li>
+</ul>
+<h3 id="honest-detail-at-regional-scale">Honest detail at regional scale</h3>
+<ul>
+<li>Regional statistical downscaling can refine a selected window at 2x, 4x, or 8x resolution without pretending the entire planet was simulated at that scale.</li>
+<li>Fine terrain is generated while preserving the coarse landscape average; temperature then follows the lapse rate, precipitation responds to windward uplift and rain shadows, and drainage is solved again on the refined surface.</li>
+<li>Every result labels generated terrain separately from downstream simulated consequences.</li>
+<li>Optional data-map rendering can use up to 4x output resolution and deterministic sub-cell coastline detail. It remains off by default so scientific sheets continue to show the authoritative simulation mask unless an author opts in.</li>
+<li>River overlays now scale with enlarged data sheets instead of drifting or shrinking relative to the map.</li>
+</ul>
+<h3 id="calendars-agriculture-groundwater-and-natural-regions">Calendars, agriculture, groundwater, and natural regions</h3>
+<ul>
+<li>Each world can derive a calendar from its own day length, orbital year, moon period, eccentricity, and periapsis. Synodic months, intercalation, weeks, unequal seasons, solstices, and equinoxes are calculated rather than copied from Earth.</li>
+<li>Domestication now models wild founder crops, complementary crop packages, rare agricultural origin centres, and climate-limited spread. The survey is always produced; allowing it to relocate civilisation hearths is an explicit opt-in so old behaviour stays stable.</li>
+<li>Physiographic regions are derived from connected terrain, relief, coasts, moisture, temperature, bedrock, and drainage, then named as natural regions rather than political territories.</li>
+<li>Aquifer surveys estimate connected water-bearing bodies, water-table depth, saturated thickness, storage, recharge, renewable versus fossil groundwater, and whether groundwater can support dry-country settlement.</li>
+<li>These systems are preserved in world reports and scientific arrays for inspection and external analysis.</li>
+</ul>
+<h3 id="biome-traits-and-safer-extensions">Biome traits and safer extensions</h3>
+<ul>
+<li>Civilisation, travel, and settlement logic now ask what terrain does—forested, waterlogged, fevered, parched, aquatic, or impassably cold—instead of hard-coding one biome name list.</li>
+<li>Terran/Koeppen behaviour remains the default, while the trait vocabulary creates a clean path for genuinely different planetary ecologies.</li>
+<li>Optional local extensions can contribute dossier notes, read-only findings, layers, health checks, and search records through a versioned API.</li>
+<li>Extensions are disabled by default and may load only from the user's Atlas data directory. Imported worlds and project backups are never treated as executable code, and one broken extension cannot abort generation.</li>
+</ul>
+<h3 id="library-search-and-data-access">Library search and data access</h3>
+<ul>
+<li>A library-wide index can search world names, realms, settlements, natural regions, lore, Chronicle eras, campaigns, aquifers, and extension notes across every saved world.</li>
+<li>Search uses predictable whole-word and prefix matching rather than silently guessing misspellings.</li>
+<li>The cache now invalidates after generation, renames, campaign or lore edits, imports, restores, migrations, and deletion, preventing stale results after authoring changes.</li>
+<li>New local endpoints expose calendar, domestication, aquifer, physiography, regional downscaling, tectonic-intent validation, and cross-world search data for dashboard and external-tool workflows.</li>
+</ul>
+<h3 id="portable-linux-and-slackware-15-0">Portable Linux and Slackware 15.0</h3>
+<ul>
+<li>Linux releases now include both the existing Debian/Ubuntu x64 <code>.deb</code> and a relocatable x64 portable archive built on the glibc 2.28 compatibility baseline.</li>
+<li>The portable archive is intended for Slackware 15.0 and other non-Debian glibc distributions. Extract it anywhere, run <code>./check-runtime.sh</code>, then start it with <code>./atlas-studio</code>.</li>
+<li>It does not replace the system glibc, install into <code>/usr</code>, or require a private copy of glibc under <code>/opt</code>.</li>
+<li>CI scans every ELF file and rejects the bundle if any component requires a glibc newer than 2.28, checks the bundled Qt/XCB plugin dependencies, and runs the real packaged Qt WebEngine lifecycle through its deterministic offscreen backend.</li>
+<li>Slackware users may still need the distribution's normal X11/XCB, OpenGL/EGL, D-Bus, fontconfig, FreeType, and libxkbcommon packages. The included runtime checker reports missing shared libraries by filename.</li>
+</ul>
+<h3 id="compatibility-and-verification">Compatibility and verification</h3>
+<ul>
+<li>Project configuration advances through explicit migrations for tectonic intent, data-map detail, domestication-aware hearths, extensions, and biome vocabulary. Unknown future schemas still fail clearly.</li>
+<li>Existing projects do not silently gain invented aquifers, physiographic regions, crop origins, or fine-scale terrain. Re-simulation is required for those new generated products; calendars can be derived on demand from an older saved orbit.</li>
+<li>This candidate passes 681 automated tests plus Python compilation, JavaScript syntax checks, release-version validation, workflow parsing, shell syntax checks, and focused compatibility tests before tagging.</li>
+<li>The tagged build workflow produces and verifies Apple Silicon macOS, Intel macOS, Windows, and Debian/Ubuntu Linux installers. A second verified workflow adds the glibc 2.28 portable Linux archive and refreshes the shared SHA-256 manifest on both release portals.</li>
+</ul>
+<p>CartoVox remains limited to invited testers with an offline beta key. Verification uses no account, telemetry, hardware fingerprint, activation server, or network connection. Generated worlds, extensions, settings, and author data remain on the tester's machine.</p>
+<p>Full generation is intentionally demanding and may take roughly 20–25 minutes on a current high-end Mac and 50–55 minutes on a current high-end Windows machine, depending on settings and selected atlas plates. Use Preview, Quick, Draft atlas finish, or selective plates while exploring. Regional downscaling, higher seasonal sample counts, and high-resolution sheets require additional time and memory.</p>
+      </div>
+    </article>
+    <article class="release" id="v0.3.0">
+      <header class="release-head">
+        <h2>CartoVox 0.3.0</h2>
+        <p class="release-tag">planetary variety, sharper cartography, geological history, and campaign discovery</p>
+        <time datetime="2026-08-25">2026-08-25</time>
+      </header>
+      <div class="doc-body">
+<p>This is the current invited technical-alpha build. It combines the Wave 1 and Wave 2 work: broader planetary presets, more faithful climate sampling, high-resolution regional maps, richer geological resources, reusable cartographic annotations, campaign discovery snapshots, and safe migration of older project configurations.</p>
+<h3 id="more-kinds-of-worlds">More kinds of worlds</h3>
+<ul>
+<li>Seven new planetary archetypes join the existing presets, bringing the Create workspace to 14 starting points. The expanded set covers more unusual rotation, atmosphere, ocean, and temperature regimes while remaining compatible with the same world-analysis pipeline.</li>
+<li>Rotation period and atmospheric pressure now propagate consistently through climate configuration instead of being partially lost between preset selection and simulation.</li>
+<li>Presets remain starting points rather than locked templates: seeds and advanced settings can still be changed before generation.</li>
+</ul>
+<h3 id="climate-resolution-and-seasonal-sampling">Climate resolution and seasonal sampling</h3>
+<ul>
+<li>Climate can now be evaluated at 4, 8, or 12 samples per orbital year. Four remains the compatibility-oriented default; higher sample counts reveal shorter wet, dry, hot, and cold transitions for users who want a more detailed seasonal model.</li>
+<li>Annual and seasonal climate summaries use orbital-residence weighting, so eccentric worlds no longer over-count rapidly traversed portions of their orbit.</li>
+<li>Climate sample counts and related settings are preserved in project configuration and scientific exports.</li>
+</ul>
+<h3 id="sharper-regional-and-vector-maps">Sharper regional and vector maps</h3>
+<ul>
+<li>Regional Lens now performs an on-demand high-resolution re-render of the selected area instead of enlarging the base raster. Results are cached by region and settings, and the displayed ground-resolution estimate reflects the rendered output.</li>
+<li>The vector map is now produced from marching-square contours rather than tracing coarse cell rectangles. Coastlines and filled land shapes are smoother, and stale vector outputs are rebuilt when required.</li>
+<li>Large-format map generation keeps the original simulation authoritative while providing cleaner cartography for export and close inspection.</li>
+</ul>
+<h3 id="geological-history-and-resources">Geological history and resources</h3>
+<ul>
+<li>Large igneous provinces and flood-basalt events can now emerge from tectonic and mantle activity, with their surface expression available to later analysis.</li>
+<li>Banded iron formations are modeled as a distinct resource family tied to eligible ancient crust and oxygenation-era windows rather than being placed as generic ore noise.</li>
+<li>Reef-derived limestone now follows warm, shallow marine environments, adding another climate-and-geography-dependent material.</li>
+<li>Scientific exports expose the new geological fields so their provenance can be inspected outside the dashboard.</li>
+</ul>
+<h3 id="campaign-discovery-and-reusable-annotations">Campaign discovery and reusable annotations</h3>
+<ul>
+<li>Campaigns can save discovery snapshots of the world at a point in play, browse them in the dashboard, and compare two snapshots to see what became known or changed.</li>
+<li>Campaign maps, regional projects, Chronicle maps, and lore maps now share one annotation model for markers, labels, lines, areas, visibility, and author metadata. This removes several feature-specific formats and makes future editing tools easier to extend.</li>
+<li>Existing authoring data remains readable; conversion is handled at the boundary rather than requiring manual project edits.</li>
+</ul>
+<h3 id="compatibility-and-recovery">Compatibility and recovery</h3>
+<ul>
+<li>Project configuration now has an explicit schema version and migration pipeline. Older worlds are upgraded in memory through known migrations, and the generated migration report explains what changed.</li>
+<li>Unknown future schema versions fail clearly instead of being silently interpreted by an older build.</li>
+<li>Missing campaigns, regions, maps, and related records now return consistent not-found responses throughout the local API rather than surfacing unhandled lookup errors.</li>
+<li>Existing worlds, revisions, Campaigns, Chronicles, regional projects, beta keys, and author data remain compatible. New scientific layers require generation or a deliberate re-simulation; Atlas does not invent them when an old world is opened.</li>
+</ul>
+<h3 id="verification-and-invited-alpha-access">Verification and invited alpha access</h3>
+<ul>
+<li>This release passes 427 automated tests plus Python compilation, JavaScript syntax checks, release-version validation, and end-to-end world-generation checks before tagging.</li>
+</ul>
+<p>CartoVox remains limited to invited testers with an offline beta key. Verification uses no account, telemetry, hardware fingerprint, activation server, or network connection. Generated worlds and author data stay on the tester's machine.</p>
+<p>Full generation is intentionally demanding and may take roughly 20–25 minutes on a current high-end Mac and 50–55 minutes on a current high-end Windows machine, depending on settings and selected atlas plates. Use Preview, Quick, Draft atlas finish, or selective plates while exploring. Higher seasonal sample counts and high-resolution regional renders require additional time and memory.</p>
+      </div>
+    </article>
+    <article class="release" id="v0.2.2">
+      <header class="release-head">
+        <h2>CartoVox 0.2.2</h2>
+        <p class="release-tag">security, recovery, climate, and offline reliability</p>
+        <time datetime="2026-08-25">2026-08-25</time>
+      </header>
+      <div class="doc-body">
+<p>This is the current invited technical-alpha build. It keeps the complete v0.2 worldbuilding workspace and adds the first broad post-release hardening pass: safer imported projects and local APIs, recoverable storage management, corrected Köppen aridity, persistent player presentation, resilient saved maps, and a less intrusive World workspace.</p>
+<h3 id="security-and-private-local-operation">Security and private local operation</h3>
+<ul>
+<li>Lore from project backups is now treated as untrusted input. Markdown is rendered through an inert-document sanitizer with strict element, attribute, and URL allowlists before it can enter the live dashboard; dangerous HTML, event handlers, images, scripts, embedded documents, forms, styles, and executable URL schemes are removed.</li>
+<li>Wiki links and Lore Editor option lists escape imported names instead of assembling live handlers or option markup from author text.</li>
+<li>Every endpoint that resolves a world now shares one containment check. Crafted world IDs can no longer traverse out of the local library through map files, atlas styles, names, lore overrides, exports, plates, or re-simulation.</li>
+<li>Re-simulation rejects unknown projects, malformed seeds and non-object override data, and refuses concurrent work on the same project instead of interleaving writes.</li>
+<li>JSON writes and responses replace non-finite numbers with valid <code>null</code> values; configuration overrides reject NaN and infinity before they can silently corrupt sea level or other numerical fields.</li>
+<li>Mutation requests have bounded bodies and malformed JSON, invalid numbers, negative or invalid Content-Length values, and over-large input now receive explicit 4xx responses rather than dropping the local connection.</li>
+<li>Atlas no longer loads fonts or executable code from Google Fonts or public CDNs. All dashboard scripts are vendored; a damaged install reports its missing local assets clearly instead of contacting a third party.</li>
+</ul>
+<h3 id="recoverable-trash-and-local-storage">Recoverable Trash and local storage</h3>
+<ul>
+<li>Library now includes a visible Trash with Restore, Delete permanently, Empty trash, disk usage, and expiry information.</li>
+<li>Completed worlds are recoverable for 30 days; cancelled, failed, or incomplete projects are retained for seven days. Expiry is applied when Trash is opened, making deletion predictable rather than running as a hidden background task.</li>
+<li>A 5 GB soft limit produces an explicit review warning but never silently destroys a recent completed world.</li>
+<li>Restoring prefers the original project identity and safely creates a new identity if that ID has since been reused, without overwriting the newer project.</li>
+<li>Update downloads are pruned only after the replacement installer has completed SHA-256 verification, preventing old installers from accumulating while preserving the last usable download if an update fails.</li>
+</ul>
+<h3 id="corrected-k-ppen-dry-climate-classification">Corrected Köppen dry-climate classification</h3>
+<ul>
+<li>New and re-simulated worlds now apply Köppen's actual rainfall-seasonality rule: whether at least 70% of annual precipitation falls in the warm half-year, the cold half-year, or neither.</li>
+<li>The warm and cold halves are ranked per cell from that location's own seasonal temperatures, so hemispheres resolve correctly, and precipitation is weighted by orbital residence time for eccentric orbits.</li>
+<li>The previous classifier measured general seasonality instead of rainfall timing and could assign the cold-season constant to evenly watered ground. The corrected model produces more credible dry, grassland, forest, and Mediterranean transitions.</li>
+<li><code>world_config.json</code> records <code>biome_model_version</code>. Existing saved worlds are never silently reclassified on open; version 1 remains reproducible from its saved configuration, while version 2 is the default for new work.</li>
+</ul>
+<h3 id="presentation-world-workspace-and-map-recovery">Presentation, World workspace, and map recovery</h3>
+<ul>
+<li>Campaign player mode now survives a page reload, application restart, or crash for the same world and campaign. It returns to the saved player-visible layer without exposing the author dashboard.</li>
+<li>Missing or deleted Campaign presentation data fails closed with a clear recovery screen. Player-region links are inert while presenting, and only an explicit Exit presentation action clears the saved state.</li>
+<li>The World workspace's diagnostics and controls can be collapsed into a distraction-free map view. Expanding long health findings no longer pushes the globe below an unreachable viewport.</li>
+<li>Saved worlds recover their generated map catalogue after a local-service interruption instead of remaining in a false “Maps unavailable” state. Project JSON and manifests are served with no-store caching so a restarted local process cannot be confused with a stale cached dashboard.</li>
+<li>Library thumbnails try one known fallback and then show an honest “No preview rendered” state. Missing maps no longer trigger an infinite retry loop against the local server.</li>
+</ul>
+<h3 id="robustness-and-edge-cases">Robustness and edge cases</h3>
+<ul>
+<li>Completed generation jobs are retired from memory while recent logs and every running job remain available for reconnection and cancellation.</li>
+<li>Empty-ocean seed scans no longer index a missing landmass; silhouette measurements use spherical coordinates rather than distorted map-sheet pixels.</li>
+<li>Degenerate one-plate states safely fall back when no boundary anchor candidates exist.</li>
+<li>Latitude-band summaries keep one stable schema even for empty bands and worlds without land.</li>
+<li>Corrupt top-level author records in manifests, Campaign, Chronicle, regional projects, and related editable data degrade safely instead of breaking the whole project.</li>
+<li>World-library, Trash, and HTTP paths now resolve through the same runtime data-root seam, improving portable builds and isolated tests.</li>
+<li>Minor climate, topology documentation, settings-help, filename, and historical-map edge cases found in the audit were cleaned up and covered by regressions.</li>
+</ul>
+<h3 id="cross-platform-verification">Cross-platform verification</h3>
+<ul>
+<li>The regular test workflow now runs on Ubuntu, Windows, and macOS for every push and pull request instead of discovering platform-specific failures only during a release build.</li>
+<li>This release passes 283 automated tests, Python compilation, JavaScript syntax checks, release-version validation, and a reduced end-to-end world generation that produced 122 artifacts with finite core fields, 239 river reaches, seven lakes, and no simulation-health errors.</li>
+</ul>
+<h3 id="compatibility-and-invited-alpha-access">Compatibility and invited alpha access</h3>
+<p>Existing worlds, revisions, Campaigns, Chronicles, regional projects, beta keys, and author data remain compatible. The Köppen correction affects only worlds newly generated or deliberately re-simulated with biome model version 2. Older worlds that predate optional scientific layers remain readable; those layers require a deliberate re-simulation rather than being fabricated on open.</p>
+<p>CartoVox remains limited to invited testers with an offline beta key. Verification uses no account, telemetry, hardware fingerprint, activation server, or network connection. Generated worlds and author data stay on the tester's machine.</p>
+<p>Full generation is intentionally demanding and may take roughly 20–25 minutes on a current high-end Mac and 50–55 minutes on a current high-end Windows machine, depending on settings and selected atlas plates. Use Preview, Quick, Draft atlas finish, or selective plates while exploring.</p>
+      </div>
+    </article>
+    <article class="release" id="v0.2.1">
+      <header class="release-head">
+        <h2>CartoVox 0.2.1</h2>
+        <p class="release-tag">current tester dashboard patch</p>
+        <time datetime="2026-08-24">2026-08-24</time>
+      </header>
+      <div class="doc-body">
+<p>This is the current invited technical-alpha build. It keeps the complete v0.2 worldbuilding upgrade and fixes the crowded dashboard header reported after release.</p>
+<h3 id="dashboard-and-responsive-navigation">Dashboard and responsive navigation</h3>
+<ul>
+<li>World shape, seed, and detailed generation settings now live in a dedicated Generation setup strip at the top of Create instead of competing with every workspace tab in the global header.</li>
+<li>The global header is reserved for CartoVox navigation plus Preview and Generate, preventing controls from merging or covering one another on desktop and laptop windows.</li>
+<li>The section navigation can scroll safely when space is unusually constrained instead of overlapping adjacent actions.</li>
+<li>At phone width, generation setup becomes a compact two-row control so a complete ten-digit seed remains readable and the generation-options menu stays reachable.</li>
+<li>The recipe selector, seed input, Quick mode, atlas selection, plate finish, village density, and sheet-selection controls retain their existing behavior and saved values.</li>
+</ul>
+<h3 id="verification">Verification</h3>
+<ul>
+<li>Responsive browser checks passed at 2048, 1440, 1024, 760, and 390 pixels with no element collisions, horizontal page overflow, or browser-console errors.</li>
+<li>The complete automated suite passes, including a regression that keeps generation controls inside Create and outside the global header.</li>
+<li>The tagged workflow validates v0.2.1 against application and installer metadata, then builds and verifies Apple Silicon macOS, Intel macOS, Windows, and Linux x64 installers with SHA-256 checksums.</li>
+</ul>
+<h3 id="invited-alpha-access">Invited alpha access</h3>
+<p>CartoVox remains limited to invited testers with an offline beta key. Existing worlds and keys remain compatible; installing this patch does not move, upload, or replace locally generated worlds.</p>
+<p>Full generation is intentionally demanding and may take roughly 20–25 minutes on a current high-end Mac and 50–55 minutes on a current high-end Windows machine, depending on settings and selected atlas plates. Use Preview, Quick, Draft atlas finish, or selective plates while exploring.</p>
+      </div>
+    </article>
+    <article class="release" id="v0.2.0">
+      <header class="release-head">
+        <h2>CartoVox 0.2.0</h2>
+        <p class="release-tag">the worldbuilding workspace upgrade</p>
+        <time datetime="2026-08-24">2026-08-24</time>
+      </header>
+      <div class="doc-body">
+<p>This is the largest CartoVox alpha update so far. It moves the project beyond generating a finished world and turns that world into a place an author can explore, revise, present, and use across a long-running story or campaign.</p>
+<h3 id="campaign-and-player-maps">Campaign and player maps</h3>
+<ul>
+<li>Create multiple campaign profiles for one world, each with its own player-facing title and summary.</li>
+<li>Decide exactly which map layers and lore categories players may see, then reveal individual secret places only when the story reaches them.</li>
+<li>Open a focused presentation mode that hides the author dashboard and presents only the permitted map, places, regions, and journeys.</li>
+<li>Save journey routes and regional lenses to a campaign. Route handles can be moved directly on the map without altering the physical simulation.</li>
+<li>Campaign data is stored locally beside the world and is included in revision/checkpoint preservation.</li>
+</ul>
+<h3 id="explore-the-generated-world-in-studio">Explore the generated world in Studio</h3>
+<ul>
+<li>Turn on a filterable Lore overlay for capitals, settlements, ports, passes, places of power, and author story pins. Selecting a marker opens its generated context and author canon without searching output folders.</li>
+<li>Click anywhere—or choose a named atlas region—to open a wrap-aware Regional Lens with a high-resolution crop, several physical views, measured terrain and climate, resources, water features, and nearby named lore.</li>
+<li>Use six curated cartographer desks for royal surveying, blue-water navigation, field naturalism, court history, monastic copying, and forbidden lore. Each desk honestly marks views that were not generated.</li>
+<li>Lore search now returns bounded, relevant excerpts around each match instead of retaining large unrelated sections.</li>
+</ul>
+<h3 id="parent-linked-regional-maps">Parent-linked regional maps</h3>
+<ul>
+<li>Promote any Regional Lens into a durable child-map project without resampling the planet or losing its coordinate system.</li>
+<li>Inherited settlements, realms, places of power, passes, and story pins retain stable parent-world identities even after the child map is edited.</li>
+<li>Add independent regional notes, local pins, and hand-drawn routes; refresh inherited features after the parent world changes.</li>
+<li>Longitude wrapping is preserved at the world seam, and child maps record the parent revision they came from.</li>
+</ul>
+<h3 id="journey-laboratory-2">Journey Laboratory 2</h3>
+<ul>
+<li>Compare Balanced, Fastest, Safer, and Trade-minded routes instead of receiving only one answer.</li>
+<li>Inspect elevation profiles, total ascent and descent, route divergence, seasonal conditions, crossings, hazards, and ocean-current assistance.</li>
+<li>Estimate food, water, pack-animal fodder, practical reserve capacity, and the full demand across the longest dry stretch. Atlas now calls out journeys that need staged caches or resupply.</li>
+<li>Surface named market stops, local geological or ecological goods, realm-border legs, abstract toll exposure, and expected border delay.</li>
+<li>Save a solved route to Campaign and continue adjusting it as an authored story track.</li>
+</ul>
+<h3 id="chronicle-editable-human-history">Chronicle: editable human history</h3>
+<ul>
+<li>Keep geological Deep Time separate from the history of people. Chronicle imports the generated lore timeline into editable eras without changing the tectonic simulation.</li>
+<li>Add settlements, political events, wars, disasters, migrations, borders, and routes as point, line, or area geometry on the world map.</li>
+<li>Play eras in order, select different base maps, and keep persistent consequences visible after the era in which they began.</li>
+<li>Imported events retain stable links to their source lore entries, while authored events remain independently editable.</li>
+</ul>
+<h3 id="deep-time-diagnostics-and-guided-repair">Deep Time, diagnostics and guided repair</h3>
+<ul>
+<li>Deep Time histories now have play/pause, multiple playback speeds, looping, a clear era counter, and a concise account of each era's dominant tectonic events. Promoting an era into a world remains an explicit author decision.</li>
+<li>Simulation-health findings can jump to the relevant layer and cell, prepare a conservative sculpt operation where appropriate, or focus the exact Advanced setting responsible for a configurable condition.</li>
+<li>Repair revisions record whether the original finding resolved, improved, persisted, or worsened instead of treating regeneration as an unmeasured success.</li>
+</ul>
+<h3 id="better-candidate-search-and-generation-ux">Better candidate search and generation UX</h3>
+<ul>
+<li>Changing the starting topology keeps the author's thesis, Must have, Avoid, and non-topology choices instead of silently replacing the brief.</li>
+<li>Candidate scoring distinguishes measured checks from constraints that still require author review; previews are clearly labelled approximate and no longer claim a universal 100% match.</li>
+<li>Preview cards show a building state, explain that cell inspection begins after commitment, clarify comparison scales, use “Remove from comparison,” and keep atlas/completion copy aligned with what was actually generated or skipped.</li>
+<li>Responsive navigation, mobile map sizing, map-category transitions, progress controls, and completed-dialog accessibility received a full polish pass.</li>
+</ul>
+<h3 id="reliability-and-authoring-fixes">Reliability and authoring fixes</h3>
+<ul>
+<li>City renames now use the correct stable <code>cities</code> override bucket and rebuild every dependent export.</li>
+<li>In-progress and failed generations have explicit Library cards and cannot be opened as committed or legacy projects.</li>
+<li>Active generations cannot be removed from the Library, and the server rejects stale or direct deletion requests with HTTP 409 until the worker has terminated.</li>
+<li>Selecting a Journey alternative now recalculates it as the active result used by metrics and Campaign saving.</li>
+<li>Sailing routes use nautical analytics—wind/current effects, open-water legs, port intervals, sea hazards, cargo and water capacity—without seabed ascent, road share, dry-gap or pack-animal language.</li>
+<li>New Campaign profiles reveal only relief by default; every lore category and additional map requires an intentional reveal.</li>
+<li>Regional lenses omit internal hydrology IDs, Chronicle presents readable names instead of Obsidian brackets, checkpoint badges refresh immediately, and singular dashboard copy is grammatical.</li>
+<li>Avoid rules now suppress contradictory maritime story suggestions, world-scale relief uses a stronger stream hierarchy, and Lore search returns bounded relevant context.</li>
+<li>“Complete bundle” is now correctly named “Vector bundle.” A separate complete <code>.atlas</code> project backup preserves simulation, revisions and author state and imports under a safe fresh identity.</li>
+<li>Lore renames are now token-aware and idempotent. Names no longer acquire duplicated suffixes, and regenerated worldbooks, handbooks, timelines, GeoJSON, SVG, vector bundles, and codex pages agree.</li>
+<li>Native <code>prompt()</code> dialogs were replaced with Atlas modals so candidate notes, rejection reasons, and named checkpoints work in embedded desktop webviews.</li>
+<li>Simulation warnings now describe the actual failing state instead of displaying the title of the passing condition.</li>
+<li>Expected browser disconnects during rapid image, region, or SVG changes no longer flood the local server log with secondary tracebacks.</li>
+<li>Candidate continent grammar, Pangaea story signals, quick-map river density, grouped name review, and biome edge cleanup received targeted polish.</li>
+<li>Regional, Campaign, Chronicle, and route files use explicit UTF-8, atomic local writes and are preserved as authoritative project data.</li>
+</ul>
+<h3 id="faster-and-more-controllable-atlas-rendering">Faster and more controllable atlas rendering</h3>
+<ul>
+<li>Choose Draft or Publication finish, world/continent/region sheet groups, and village-label density before a build.</li>
+<li>Progress identifies every plate and recalibrates its estimate from completed plate timings.</li>
+<li>Stop safely after the current plate, keep the completed work, and render deferred plates later from saved world data without re-running the simulation.</li>
+<li>Atlas copy now reflects the real cost: publication plates can take most of a full build rather than merely “a few minutes.”</li>
+</ul>
+<h3 id="linux-desktop-application">Linux desktop application</h3>
+<ul>
+<li>CartoVox now ships as an x64 <code>.deb</code> alongside the Apple Silicon macOS, Intel macOS, and Windows installers.</li>
+<li>The package installs the frozen application under <code>/opt/atlas-studio</code>, adds a safe <code>atlas-studio</code> launcher, icon, and Applications-menu entry, and declares the desktop libraries required by its bundled Qt WebEngine window.</li>
+<li>Testers do not need Python. Worlds, settings, beta access, logs, and verified updates use the standard per-user <code>~/.local/share/atlas-studio/</code> location and remain local.</li>
+<li>The in-app updater recognizes the exact Linux package for the current architecture, downloads it only from the allowlisted release feed, verifies its SHA-256 digest, and opens it through the system package handler. Installation remains an explicit user action.</li>
+<li>The release workflow now builds and smoke-tests Linux under a virtual display, validates Debian metadata and the desktop entry, and publishes the package in the same checksum manifest as the other platforms.</li>
+<li>The Debian package declares the complete Qt XCB runtime set used by the bundled interface, and CI rejects any package whose platform plugin still has an unresolved shared-library dependency.</li>
+</ul>
+<h3 id="compatibility">Compatibility</h3>
+<p>Existing worlds remain readable. Campaigns, child maps, and Chronicles are created only when an author chooses to use them. Older worlds can use these authoring workflows immediately when their saved summaries and numerical fields are available; no physical re-simulation is required. Legacy static maps remain visible where the newer scientific arrays were never generated.</p>
+<h3 id="technical-verification">Technical verification</h3>
+<ul>
+<li>The release includes persistence and API tests for Campaign profiles, spoiler settings, route tracks, regional child maps, inherited feature identity, Chronicle eras/events, stable lore imports, and expanded route analytics.</li>
+<li>The approved reduced-atlas golden baseline is versioned with the repository, preventing stale ignored baselines from producing machine-specific failures.</li>
+<li>It retains the deterministic reduced-world generation, Hydrology V2 topology, revision, export, desktop lifecycle, updater, installer, and responsive dashboard regressions from the 0.1 line.</li>
+<li>The tagged workflow validates that <code>v0.2.0</code> matches desktop and installer metadata, runs the full suite on macOS Apple Silicon, macOS Intel, Windows, and Linux, builds all four platform artifacts, and publishes a SHA-256 manifest.</li>
+</ul>
+<h3 id="invited-alpha-access">Invited alpha access</h3>
+<p>This prerelease remains limited to invited testers with an CartoVox beta key. Verification is offline; no account, telemetry, hardware fingerprint, or activation server is used.</p>
+<p><strong>Full generation is intentionally heavy and may take longer than expected.</strong> On current high-end test machines, a Full world with its atlas takes about <strong>20–25 minutes on macOS</strong> and <strong>50–55 minutes on Windows</strong>. Hardware, world settings, atlas finish, and selected plate count can change that time. Use Preview or Quick while exploring settings, consider Draft or selective plates for review, and keep CartoVox open until the progress log reports completion.</p>
+      </div>
+    </article>
+    <article class="release" id="v0.1.6">
+      <header class="release-head">
+        <h2>CartoVox 0.1.6</h2>
+        <p class="release-tag">invited technical alpha</p>
+        <time datetime="2026-08-24">2026-08-24</time>
+      </header>
+      <div class="doc-body">
+<h3 id="what-changed">What changed</h3>
+<h4 id="correct-world-recipes-and-honest-candidate-scoring">Correct world recipes and honest candidate scoring</h4>
+<ul>
+<li>Generated worlds now retain their actual recipe—such as Inland Sea, Archipelago, or Ice Age—when the initial revision is recorded and when the project is reopened. A later Generate no longer silently falls back to Balanced.</li>
+<li>Selecting a starting silhouette preserves the thesis, story frame, Must have, Avoid, and author notes already written in the brief.</li>
+<li>Candidate cards now distinguish measured checks from constraints that still need author review. Atlas no longer calls a candidate a 100% brief match when part of the request could not be evaluated numerically.</li>
+<li>Candidate previews are explicitly labelled approximate and disclose that the production grid can change small islands, coastline detail, and continent counts.</li>
+</ul>
+<h4 id="lake-topology-and-export-confidence">Lake topology and export confidence</h4>
+<ul>
+<li>Seasonal appearance is now independent from hydraulic topology: a seasonally variable lake can keep its physically solved outlet instead of being incorrectly treated as closed.</li>
+<li>The repeated “lake outlet inconsistent with water regime” health failure is fixed at its source. The same open/closed topology is now used by basin routing, diagnostics, GeoJSON, the scientific bundle, and <code>hydrology_graph.json</code>.</li>
+<li>Lake-outlet health failures now include a View location when a real inconsistency is detected. The hydrology graph schema is version 2 and exports <code>hydrologically_open</code> explicitly.</li>
+<li>A reduced end-to-end world-generation regression now verifies the saved lake graph and simulation-health report together, in addition to the synthetic hydrology suite.</li>
+</ul>
+<h4 id="candidate-and-map-workspace-usability">Candidate and map-workspace usability</h4>
+<ul>
+<li>Candidate previews show a Building preview state and no longer invite cell inspection before a world has been generated and saved.</li>
+<li>Changing a map category immediately opens its first available layer, avoiding a mismatched category, image, and legend.</li>
+<li>Mobile map height follows the map’s real aspect ratio, reducing the large black letterbox seen on narrow screens.</li>
+<li>Compare now says Remove from comparison, explains the coast-complexity scale, and uses the same measured/review badge language as candidate cards.</li>
+<li>Completion messages list what was actually built and explicitly say when the illustrated atlas was skipped. Cancel is removed from keyboard and screen-reader navigation after a run ends.</li>
+<li>The Atlas description now correctly refers to seven cartographic styles.</li>
+</ul>
+<h4 id="better-story-signals-and-cleaner-diagnostics">Better story signals and cleaner diagnostics</h4>
+<ul>
+<li>Ice Age candidates now emphasize refugia, fjords, migration corridors, relict islands, and meltwater landscapes instead of receiving generic rival-continent prompts.</li>
+<li>Realm names that already imply an institution—Sultanate, Caliphate, Province, Kingdom, March, League, and others—now produce a compatible government type and ruler title.</li>
+<li>Cradle selection seeks ecological variety among comparably suitable sites, and rain-fed cultures expose their local niche rather than repeating one identical archetype.</li>
+<li>Repeated continental-crust adjustment notices are deduplicated during candidate searches.</li>
+</ul>
+<h3 id="compatibility">Compatibility</h3>
+<p>Existing worlds remain readable. Opening or revising them no longer changes a saved non-Balanced preset. Re-simulate a Hydrology V2 world if you want the new lake-topology field in <code>hydrology_graph.json</code>, GeoJSON, and regenerated scientific products.</p>
+<h3 id="technical-verification">Technical verification</h3>
+<ul>
+<li>The release is covered by 151 tests, including a real reduced-resolution generation, manifest preservation, lake topology, candidate scoring, brief preservation, lore consistency, and UI regression checks.</li>
+<li>JavaScript syntax, Python compilation, whitespace checks, and desktop/mobile browser interaction were also verified before tagging.</li>
+<li>The tagged workflow repeats the full test suite on macOS Apple Silicon, macOS Intel, and Windows, builds all three installers, and publishes a SHA-256 manifest.</li>
+</ul>
+<h3 id="invited-alpha-access">Invited alpha access</h3>
+<p>This prerelease remains limited to invited testers with an CartoVox beta key. Verification is offline; no account, telemetry, hardware fingerprint, or activation server is used.</p>
+<p><strong>Full generation is intentionally heavy and may take longer than expected.</strong> On current high-end test machines, a Full world with its atlas takes about <strong>20–25 minutes on macOS</strong> and <strong>50–55 minutes on Windows</strong>. Hardware, world settings, and atlas size can change that time. Use Preview or Quick while exploring settings and keep CartoVox open until the progress log reports completion.</p>
+      </div>
+    </article>
+    <article class="release" id="v0.1.5">
+      <header class="release-head">
+        <h2>CartoVox 0.1.5</h2>
+        <p class="release-tag">invited technical alpha</p>
+        <time datetime="2026-08-24">2026-08-24</time>
+      </header>
+      <div class="doc-body">
+<h3 id="what-changed">What changed</h3>
+<h4 id="hydrology-v2">Hydrology V2</h4>
+<ul>
+<li>Terrain depressions are now inventoried with a spherical Priority-Flood hierarchy. Tiny artifacts are filled, shallow obstructions can be hydraulically breached, and substantial basins are preserved instead of treating every hollow the same way.</li>
+<li>Hillslope runoff follows a continuous D-infinity-style bearing and can split between two downslope receivers. It then converges into one directed, loop-free channel graph for rendering, measurement, export, and inspection.</li>
+<li>Rivers no longer run across lake surfaces. Incoming channels stop at the shore; each open lake has one solved outlet, while closed lakes retain water and can become fresh, saline, seasonal, or salt-pan systems.</li>
+<li>Lake levels and regimes now use explicit annual and seasonal water budgets: catchment inflow, direct precipitation, evaporation, seepage, storage, and outflow. Lake-surface rain is not double-counted as terrestrial runoff, and upstream lake outflow is propagated through downstream lake chains.</li>
+</ul>
+<h4 id="seasonal-rivers-and-physical-channel-form">Seasonal rivers and physical channel form</h4>
+<ul>
+<li>Four-season runoff now responds to rain, snow storage and degree-day melt, inherited glacier melt, soil/bedrock permeability, canopy interception, permafrost, groundwater recharge, recession, and baseflow.</li>
+<li>Channels are classified as perennial, seasonal, or ephemeral from mean, low, and peak discharge rather than drainage area alone.</li>
+<li>The directed reach graph reports Strahler order, mean/minimum/peak discharge, permanence, slope, sediment supply, bank cohesion, confinement, bankfull width and depth, floodplain width, and a physically constrained morphology: confined, wandering, meandering, braided, or rare anastomosing.</li>
+<li>Delivered river lines follow continuous flow tangents with seam-safe sub-cell curves, reducing raster right-angle elbows while keeping one canonical topology across the relief map, atlas, SVG, GeoJSON, inspector, and health report.</li>
+</ul>
+<h4 id="dashboard-inspection-and-data-exports">Dashboard, inspection, and data exports</h4>
+<ul>
+<li>New filterable dashboard views expose the 32 largest watersheds, river hierarchy, river permanence, and lake regimes. Their colour keys, river/lake overlays, full-size view, globe texture, and PNG download behave like the existing scientific maps.</li>
+<li>Cell inspection now includes watershed and depression IDs, seasonal runoff and discharge, snowpack, snowmelt, groundwater storage, substrate permeability, permafrost, river regime, stream order, channel form and dimensions, lake depth, regime, and outlet status.</li>
+<li><code>world_data.npz</code> and the scientific GeoTIFF bundle now include the Hydrology V2 fields. <code>hydrology_graph.json</code> preserves depression hierarchy, outlet-defined basins, lake water-balance nodes, and the directed reach network.</li>
+<li>GeoJSON exports now contain attributed river reaches and lake nodes. The layered SVG uses the same canonical river geometry.</li>
+<li>Simulation health now checks standing-water overlap, branch and reach cycles, watershed coverage, lake outlet topology, lake mass conservation, raster hairpins, and delivered sub-cell right-angle turns.</li>
+</ul>
+<h4 id="presets-and-controls">Presets and controls</h4>
+<ul>
+<li>Advanced Settings exposes documented controls for depression conditioning, infiltration, groundwater, snowmelt, river thresholds and permanence, sediment, cohesion, floodplains, meandering, braiding, evaporation, seepage, and lake seasonality.</li>
+<li>Pangaea, archipelago, inland-sea, twin-hemisphere, ice-age, and tropical presets now carry distinct hydrologic behavior instead of changing only terrain and climate.</li>
+<li>The built-in manual and README explain the new maps, inspector fields, author controls, exports, and the model's remaining regional-scale limits.</li>
+</ul>
+<h3 id="compatibility">Compatibility</h3>
+<p>Existing worlds remain readable and keep their original static products. Re-simulate an older world to create Hydrology V2 basin IDs, lake nodes, seasonal discharge, channel morphology, graph exports, and dashboard filters. The legacy Hydrology V1 code path remains available for exact old-model experimentation through Advanced Settings.</p>
+<h3 id="technical-verification">Technical verification</h3>
+<ul>
+<li>The release includes synthetic crater, depression, lake-chain, seasonal snowmelt, channel-DAG, geometry, dashboard, inspector, scientific export, and simulation-health regression coverage.</li>
+<li>The tagged workflow validates the application version, runs the complete test suite on macOS Apple Silicon, macOS Intel, and Windows, builds all installers, and publishes a SHA-256 manifest.</li>
+</ul>
+<h3 id="invited-alpha-access">Invited alpha access</h3>
+<p>This prerelease remains limited to invited testers with an CartoVox beta key. Verification is offline; no account, telemetry, hardware fingerprint, or activation server is used.</p>
+<p><strong>Full generation is intentionally heavy and may take longer than expected.</strong> On current high-end test machines, a Full world with its atlas takes about <strong>20–25 minutes on macOS</strong> and <strong>50–55 minutes on Windows</strong>. Hardware, world settings, and atlas size can change that time. Use Preview or Quick while exploring settings and keep CartoVox open until the progress log reports completion.</p>
+      </div>
+    </article>
+    <article class="release" id="v0.1.4">
+      <header class="release-head">
+        <h2>CartoVox 0.1.4</h2>
+        <p class="release-tag">invited technical alpha</p>
+        <time datetime="2026-08-23">2026-08-23</time>
+      </header>
+      <div class="doc-body">
+<h3 id="what-changed">What changed</h3>
+<h4 id="interactive-scientific-maps">Interactive scientific maps</h4>
+<ul>
+<li>Rainfall, biome, soil, bedrock, resource, and realm colour keys are now interactive. Select individual classes or use <strong>All</strong> and <strong>None</strong> to isolate exactly what you want to inspect.</li>
+<li>Rivers and lakes can be hidden independently, including on the soil and bedrock maps, and a 30 degree reference grid can be added when useful.</li>
+<li>Filtered maps update the 2D workspace, globe texture, full-size view, and PNG download without changing the saved simulation.</li>
+<li>Bedrock now has its own dashboard view. Resource filtering reads every overlapping prospectivity field instead of only the dominant resource class.</li>
+<li>Iron remains rust-red while geothermal prospects are now magenta, eliminating their previous visual ambiguity.</li>
+<li>Large keys have an explicit <strong>More/Less</strong> control, so no class is hidden behind an invisible scroll area.</li>
+</ul>
+<h4 id="dashboard-and-atlas-navigation">Dashboard and atlas navigation</h4>
+<ul>
+<li>Long map and atlas view lists now have visible previous/next controls, keyboard navigation, and automatic active-item reveal. All ten atlas plate choices remain reachable at compact window sizes.</li>
+<li>The generated-map catalogue now distinguishes the clean authoring base, simulated realm territories, soils, and bedrock instead of combining unlike concepts.</li>
+</ul>
+<h4 id="cleaner-cartography">Cleaner cartography</h4>
+<ul>
+<li><strong>Clean land &amp; water base</strong> replaces the misleading blank political map. It contains only white land, blue water, and the outer coastline—no accidental mountain seams or invented internal borders.</li>
+<li><strong>Simulated realm territories</strong> is now a separate map with travel-cost territories, distinct colours, frontiers, and unclaimed wilderness.</li>
+<li>Grimdark maps no longer draw political boundaries as crimson danger lines. Red is reserved for volcanic, blighted, or supernatural hazards.</li>
+<li>Existing compatible worlds automatically rebuild outdated clean-base, realm, and Grimdark styles when opened.</li>
+</ul>
+<h4 id="deep-time-usability-and-resolution">Deep Time usability and resolution</h4>
+<ul>
+<li>The geological-era scrubber has a substantially larger interactive track and thumb, making long 420–600 Myr histories practical to navigate.</li>
+<li>A new <strong>Timeline detail</strong> setting offers a faster standard grid or a sharper detailed tectonic grid.</li>
+<li>Deep Time frames render at higher resolution with smoother terrain, clearer captions, and readable text. Compatible low-resolution histories are upgraded lazily from their saved numerical archive.</li>
+</ul>
+<h3 id="compatibility">Compatibility</h3>
+<p>Older worlds remain readable. Interactive filters appear when the corresponding scientific arrays exist in <code>world_data.npz</code>; otherwise Atlas keeps the original static map and clearly marks products that were never generated. Re-simulate an older world to add missing soil, bedrock, or resource arrays.</p>
+<h3 id="technical-verification">Technical verification</h3>
+<ul>
+<li>132 automated tests pass, including dynamic-map rendering, API isolation, atlas navigation, derived-style refresh, and high-resolution Deep Time reconstruction.</li>
+<li>The release workflow validates that the <code>v0.1.4</code> tag matches the application and installer version, builds macOS Apple Silicon, macOS Intel, and Windows installers, and publishes a SHA-256 manifest.</li>
+</ul>
+<h3 id="invited-alpha-access">Invited alpha access</h3>
+<p>This prerelease is limited to invited testers who received a unique CartoVox beta key. The key is entered once on first launch and verified offline; no account or internet connection is required.</p>
+<p><strong>Full generation is intentionally heavy and may take longer than expected.</strong> On current high-end test machines, a Full world with its atlas takes about <strong>20–25 minutes on macOS</strong> and <strong>50–55 minutes on Windows</strong>. Hardware, world settings, and atlas size can change that time. Use Preview or Quick mode while exploring settings, and leave CartoVox open until the progress log reports completion.</p>
+      </div>
+    </article>
+    <article class="release" id="v0.1.3">
+      <header class="release-head">
+        <h2>CartoVox 0.1.3</h2>
+        <p class="release-tag">invited technical alpha</p>
+        <time datetime="2026-08-23">2026-08-23</time>
+      </header>
+      <div class="doc-body">
+<h3 id="invited-technical-alpha">Invited technical alpha</h3>
+<p>Version 0.1.3 turns the World dashboard into a complete generated-map library. Terrain, geology, annual and seasonal climate, four seasonal wind maps, hydrology, biomes, civilization, every cartographic style, atlas plate, and rendered projection are now organized in one responsive browser. Every available view can be opened at full resolution or downloaded as a PNG; older worlds clearly mark layers that were not generated, while compatible rainfall and style views are rebuilt on demand.</p>
+<p>This prerelease is limited to invited testers who received a unique CartoVox beta key. The key is entered once on first launch and is verified offline; no account or internet connection is required.</p>
+<p><strong>Full generation is intentionally heavy and may take longer than expected.</strong> On the current high-end test machines, a Full world with its atlas takes about <strong>20–25 minutes on macOS</strong> and <strong>50–55 minutes on Windows</strong>. Hardware, world settings, and atlas size can increase or reduce that time. Use Preview or Quick mode while exploring settings, and leave CartoVox open until the progress log reports completion.</p>
+      </div>
+    </article>
+    <article class="release" id="v0.1.2">
+      <header class="release-head">
+        <h2>CartoVox 0.1.2</h2>
+        <p class="release-tag">invited technical alpha</p>
+        <time datetime="2026-08-23">2026-08-23</time>
+      </header>
+      <div class="doc-body">
+<h3 id="invited-technical-alpha">Invited technical alpha</h3>
+<p>Version 0.1.2 fixes the Windows Unicode failure at the end of long generations, restores the map-cell inspector, and serves the requested fixed-band annual rainfall map for both new and existing saved worlds. The updater now prevents installation during active generation and closes the old app service before future updates.</p>
+<p>This prerelease is limited to invited testers who received a unique CartoVox beta key. The key is entered once on first launch and is verified offline; no account or internet connection is required.</p>
+<p><strong>Full generation is intentionally heavy and may take longer than expected.</strong> On the current high-end test machines, a Full world with its atlas takes about <strong>20–25 minutes on macOS</strong> and <strong>50–55 minutes on Windows</strong>. Hardware, world settings, and atlas size can increase or reduce that time. Use Preview or Quick mode while exploring settings, and leave CartoVox open until the progress log reports completion.</p>
+      </div>
+    </article>
+    <article class="release" id="v0.1.1">
+      <header class="release-head">
+        <h2>CartoVox 0.1.1</h2>
+        <p class="release-tag">invited technical alpha</p>
+        <time datetime="2026-08-23">2026-08-23</time>
+      </header>
+      <div class="doc-body">
+<h3 id="invited-technical-alpha">Invited technical alpha</h3>
+<p>CartoVox <code>v0.1.1</code> is the first build distributed through the public beta portal. It is intended for the 50 invited testers who received a unique access key. The key is entered once, verified offline, and stored locally; no account, activation server, telemetry, or hardware fingerprint is used.</p>
+      </div>
+    </article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js" defer></script>
+</body>
+</html>
