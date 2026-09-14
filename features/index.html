@@ -16,7 +16,7 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
   <link rel="apple-touch-icon" href="/img/icon-180.png">
-  <link rel="stylesheet" href="/css/site.css?v=d6c932b640">
+  <link rel="stylesheet" href="/css/site.css?v=5db8d5eb1e">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -24,16 +24,16 @@
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
-      <img class="nav-wordmark" src="/img/wordmark.png" width="142" height="40" alt="CartoVox">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
     </a>
     <nav class="nav-links" id="nav-links" aria-label="Sections">
       <a href="/">Home</a>
       <a href="/features/" aria-current="page">Field guide</a>
       <a href="/releases/">Release notes</a>
       <a href="/#faq">FAQ</a>
-      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" rel="noopener">Join the beta</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
     </nav>
-    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" rel="noopener">Join the beta</a>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -68,6 +68,9 @@
       <a href="#atlas">The illustrated atlas</a>
       <a href="#travel">Journey Laboratory</a>
       <a href="#campaign">Campaign desk</a>
+      <span class="toc-group">Settlements &amp; scenes</span>
+      <a href="#settlements">Settlement Studio</a>
+      <a href="#scenes">Scenes &amp; encounter maps</a>
       <span class="toc-group">Write</span>
       <a href="#codex">Codex &amp; lore</a>
       <a href="#chronicle">Chronicle</a>
@@ -104,8 +107,8 @@
         <a href="/releases/#v0.8.3">release notes</a>.
       </p>
       <ul class="feat">
-        <li><b>Settlement Studio</b> — villages and towns are planned street-first: the street network comes first, blocks become plots, every building faces its street and shares a frontage line. Eight plans (street village, green, crossroads, radial, organic, harbour, hilltop, twin neighbourhoods) are chosen from the approach roads, water and relief the saved world already records; quarters — market, green, craft, townhouse, gentry, manor, temple, dockside, poor quarter, crofts — set their own plot size and forms. Steer density, plot size, coverage, irregularity, the poor-quarter share and how far the countryside reaches; redraw one quarter and leave the rest; place features that turn to face the nearest street. Water systems and approach roads load from the saved hydrology, and the countryside scales with population under an editable land budget. A 57-piece catalogue with roofs built from each building's own footprint; a 40,000-person city generates in about a tenth of the time.</li>
-        <li><b>Scenes and encounter maps</b> — standalone scenes from the Library, no world required, in square, landscape or portrait; parent/child hierarchies to eight levels with clickable hotspots between them; up to 32 named drawing layers with opacity, Normal/Multiply/Screen blending and erase masks; up to 32 scene lights with Warm interior, Moonlit exterior and Dusk moods; Illustrated adventure, Engraved parchment and Clear tabletop art directions applied as one Undo step; original vector kits (village exteriors, stone fortifications, terrain and landscape, rooms and furnishings); a shared structure and art library across worlds; reference images with two-landmark calibration; one 40-step Undo across maps and scenes.</li>
+        <li><b>Settlement Studio</b> — villages and towns planned street-first, with eight plans, quarters that differ, a 57-piece catalogue and roofs built from each building's own footprint. <a href="#settlements">Its own section below</a>.</li>
+        <li><b>Scenes and encounter maps</b> — standalone maps with no world at all, nested scenes, drawing layers, lights and art directions. <a href="#scenes">Its own section below</a>.</li>
         <li><b>Lettering in Render Studio</b> — label saved realms, terrain regions, rivers, roads and sea lanes from a guided chooser; adaptive hierarchy-aware placement that tries eight sides before dropping a lower-priority name, with Spacious, Balanced and Detailed presets, leader lines, forced overlaps and direct nudging; the result leaves as editable <code>labels.svg</code>.</li>
         <li><b>Terrain into artwork</b> — convert saved relief, tectonics, biomes, canopy, wetlands and snowline into editable native mountains, hills, volcanoes, trees and reeds in Light, Balanced or Rich passes; one Undo restores the procedural map, and the simulation is untouched.</li>
         <li><b>Sculpt: Protect area and Preserve terrain</b> — protect a circle from later brushes; keep saved elevation through regeneration, glaciation and erosion; and review a rebuild before Apply, with measured pending changes, preserved areas, the full rebuild scope and a local runtime estimate.</li>
@@ -122,7 +125,7 @@
       <p class="eyebrow">Orientation</p>
       <h2>The desk</h2>
       <p class="section-lede">
-        One window, four destinations, one record. The left rail carries <b>Search</b>, <b>Create</b>,
+        One window, five rooms, one record. The left rail carries <b>Search</b>, <b>Create</b>,
         <b>World</b>, <b>Write</b> and <b>Library</b>; each workspace has its own contextual tabs across the
         top; the bottom of the rail holds <b>Layout</b>, <b>Settings</b> and <b>Help</b>.
       </p>
@@ -502,6 +505,79 @@
       </ul>
     </section>
 
+    <!-- ═══════════════════════ SETTLEMENTS ═══════════════════════ -->
+    <section id="settlements">
+      <p class="eyebrow">Settlement Studio</p>
+      <h2>Villages and towns, planned street-first</h2>
+      <p class="section-lede">
+        The generator used to choose an outline and scatter buildings inside it, so every village
+        came out as the same blob of unaligned boxes. It now lays the street network first, takes
+        the blocks those streets enclose, divides each block into plots, and fits a building to
+        each plot facing its street. The settlement's outline is whatever the finished blocks add
+        up to.
+      </p>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/city-plan.webp" width="1400" height="1092" alt="The city plan of Zhargundbar: streets in rings about the square, seven named quarters, quays on the river and fields beyond the walls" loading="lazy" decoding="async"></div>
+        <figcaption>Every named settlement already has a plan drawn from its own site. Settlement Studio is where you steer and redraw one.</figcaption>
+      </figure>
+
+      <h3 id="settle-plans">The plan comes from the world</h3>
+      <ul class="feat">
+        <li><b>Eight plans that differ in structure</b>, not in jitter — street village, green, crossroads, radial, organic, harbour, hilltop and twin neighbourhoods. Which one you get is chosen from the approach roads, water and relief the saved world already records.</li>
+        <li><b>Quarters set their own rules</b> — market, green, craft, townhouse, gentry, manor, temple, dockside, poor quarter and crofts each carry their own plot size, coverage, setback and building forms. Poor quarters deliberately do not line up, and are grown as one district.</li>
+        <li><b>Every plot faces a street</b>, and every building on one side of a street sits on a shared frontage line, so a row reads as a row.</li>
+        <li><b>Water and roads load automatically</b> from the saved hydrology: the river's real width, ponds, springs, public wells, the mapped groundwater area and the regional approach directions. Every value stays changeable under an explicit override, and <b>Reset</b> restores what the world says.</li>
+        <li><b>The countryside scales with population</b> under an editable land budget: connected farms with strip fields and furrows, readable crop types, orchards, hedges, working buildings and biome woodland. The sheet is sized from the settlement, and the hectares beyond it are reported rather than drawn.</li>
+        <li><b>Bridges are chosen, not sprinkled</b> — roads and walls stop at the water's edge, ordinary roads pass beneath surface water, and river crossings are a spaced set picked by road importance and span. Wall gates appear where roads actually cross.</li>
+        <li><b>A 40,000-person city</b> generates in about a tenth of the time it used to take.</li>
+      </ul>
+
+      <h3 id="settle-art">Artwork that is drawn, not stretched</h3>
+      <ul class="feat">
+        <li><b>Roofs are built from each building's own footprint</b>, with ridges, hips and courses, so an L-shaped or long narrow house gets a roof that fits it. Previously one of six drawings was squashed to whatever rectangle it was given.</li>
+        <li><b>Fifty-seven pieces</b>, up from thirty: eleven tree species, windmills, watermills, granaries, forges, chapels, gatehouses, fountains and troughs, beehives, livestock pens, woodpiles, fences, shrines, stocks, boats, jetties, and vineyard, flax and fallow field treatments.</li>
+        <li><b>Three art directions</b> — Illustrated adventure by default, with engraved and tabletop beside it, matching the application's own.</li>
+        <li><b>Scenery behaves</b> — orchard trees keep their proportions in irregular plots, crop rows follow field boundaries, woodland forms uneven groves, and useful scenery sits near buildings or fields.</li>
+      </ul>
+
+      <h3 id="settle-hand">Designing one by hand</h3>
+      <ul class="feat">
+        <li><b>Steer the generator</b> — street density, plot size, building coverage, irregularity, the share given to poor quarters, and how far the countryside reaches.</li>
+        <li><b>Choose artwork by looking at it</b> — a picker showing the drawings themselves, filtered to what the chosen feature can actually use, with search and an explicit automatic option.</li>
+        <li><b>Place features on the canvas</b> and have them turn to face the nearest street, or scatter a copse of trees in one click that undoes as a single step.</li>
+        <li><b>Draw a quarter on the map and rebuild only that part.</b> The streets and every building outside it stay exactly where they are.</li>
+        <li><b>Edit anything</b> — move, reshape, style, label, add and delete buildings, trees, fields, roads, water and defences, with undo. Edited geometry stays paired with the SVG, PNG and tile exports.</li>
+        <li><b>It explains itself</b> — which planner is active, why a control is unavailable, what each colour channel paints, and an unsaved draft you can restore from the first screen.</li>
+      </ul>
+      <div class="callout">
+        <span class="callout-t">Honest about scope</span>
+        <p>Regional data guides local design. Exact street-level terrain and river banks are authored approximations, not simulated at that scale, and the food-supply report states planning assumptions rather than measured yields.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ SCENES ═══════════════════════ -->
+    <section id="scenes">
+      <p class="eyebrow">Scenes and encounter maps</p>
+      <h2>Maps with no world behind them</h2>
+      <p class="section-lede">
+        A scene is a map that does not need a planet: a keep interior, a woodland encounter, a
+        village square. Create them from the Library, and they get saved documents, versions,
+        PNG and SVG rendering, portable backups and recoverable trash like everything else.
+      </p>
+      <ul class="feat">
+        <li><b>Canvas</b> — square, landscape or portrait, with local author coordinates instead of geography, and square or hex encounter grids with your own colours, spacing and units.</li>
+        <li><b>Nested scenes</b> — parent and child hierarchies up to eight levels, with breadcrumbs, child navigation and clickable hotspots that carry you from one scene to another. Export and import a whole connected tree.</li>
+        <li><b>Drawing layers</b> — up to 32 named layers with saved opacity, Normal, Multiply or Screen blending, and non-destructive erase and restore masks that stay inside their own layer.</li>
+        <li><b>Lighting</b> — Warm interior, Moonlit exterior and Dusk moods; add, drag, name and tune up to 32 lights; adjust overall darkness and shadow colour. It is authored atmosphere, and the app says so rather than implying simulated visibility.</li>
+        <li><b>Art directions</b> — Illustrated adventure, Engraved parchment or Clear tabletop applied to palette, linework, lettering, markers and atmosphere as a single Undo step, previewed before it touches the document.</li>
+        <li><b>Original vector kits</b> — village exteriors, stone fortifications, terrain and landscape, and rooms and furnishings: cottages, longhouses, workshops, shrines, market stalls, wells, gardens, carts, curtain walls, towers, gatehouses, bridges, groves, boulders, reed ponds, fords, beds, tables, hearths, bookcases, chests and rugs.</li>
+        <li><b>A shared library</b> — save any artwork or assembled structure to an on-device catalogue with previews, names and tags, reuse it in any world or scene, and share it as an art pack.</li>
+        <li><b>Drawing tools</b> — Select, Stamp, Path/wall, Area, Brush and Erase with a contextual inspector; Bézier paths with editable handles; groups nested eight deep; snapping with alignment guides; resize and rotate on canvas; align and distribute.</li>
+        <li><b>Reference images</b> — drop a full-detail PNG or JPEG beneath the artwork, or calibrate one onto a whole-world sheet by matching two image landmarks to two world locations.</li>
+        <li><b>One 40-step Undo</b> across world maps and scenes: artwork, captions, layers, masks, lettering, appearance, recipes, canvas and output settings all follow the same labelled timeline.</li>
+      </ul>
+    </section>
+
     <!-- ═══════════════════════ CODEX ═══════════════════════ -->
     <section id="codex">
       <p class="eyebrow">Write → Codex</p>
@@ -757,9 +833,10 @@
 
 <footer class="footer">
   <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds shown here were generated by it. This site sets no cookies and runs no analytics. <a href="/">Home</a> · <a href="/releases/">Release notes</a> · <a href="/eula/">Licence</a> · <a href="https://discord.gg/nGNatfuXe" rel="noopener">Join the beta</a></p>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds shown here were generated by it. This site sets no cookies and runs no analytics. <a href="/">Home</a> · <a href="/releases/">Release notes</a> · <a href="/privacy/">Privacy</a>
+        <a href="/privacy/">Privacy</a> · <a href="/eula/">Licence</a> · <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a></p>
   </div>
 </footer>
-<script src="/js/site.js?v=dcebd2fe92" defer></script>
+<script src="/js/site.js?v=0f042e43a9" defer></script>
 </body>
 </html>

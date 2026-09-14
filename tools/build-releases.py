@@ -151,16 +151,16 @@ PAGE = """<!doctype html>
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
-      <img class="nav-wordmark" src="/img/wordmark.png" width="142" height="40" alt="CartoVox">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
     </a>
     <nav class="nav-links" id="nav-links" aria-label="Sections">
       <a href="/">Home</a>
       <a href="/features/">Field guide</a>
       <a href="/releases/" aria-current="page">Release notes</a>
       <a href="/#faq">FAQ</a>
-      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" rel="noopener">Join the beta</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
     </nav>
-    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" rel="noopener">Join the beta</a>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -176,7 +176,7 @@ PAGE = """<!doctype html>
       <p class="eyebrow">Release notes</p>
       <h1>Every version, in full.</h1>
       <p class="lede">What changed, what it costs, and what stayed compatible, from the first invited alpha on 23 August 2026 to the current beta. The same notes are readable offline inside the app under <b>Settings → Release notes</b>.</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2; these notes use its current name throughout. The Atlas tab, Atlas plates and Atlas lettering keep their names — they describe the publication atlas the app draws. Builds are published on the <a href="https://discord.gg/nGNatfuXe" rel="noopener">Discord server</a>.</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2; these notes use its current name throughout. The Atlas tab, Atlas plates and Atlas lettering keep their names — they describe the publication atlas the app draws. Builds are published on the <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Discord server</a>.</p>
     </header>
 {articles}
   </div>

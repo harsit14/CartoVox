@@ -12,16 +12,22 @@
   const toggle = document.getElementById("nav-toggle");
   const links = document.getElementById("nav-links");
   if (toggle && links) {
-    toggle.addEventListener("click", () => {
-      const open = toggle.getAttribute("aria-expanded") !== "true";
+    const setOpen = (open) => {
       toggle.setAttribute("aria-expanded", String(open));
       links.classList.toggle("is-open", open);
-    });
-    links.addEventListener("click", (event) => {
-      if (event.target.closest("a")) {
-        toggle.setAttribute("aria-expanded", "false");
-        links.classList.remove("is-open");
-      }
+      // A closed menu must be out of the tab order, not merely invisible.
+      links.querySelectorAll("a").forEach((a) => { a.tabIndex = open ? 0 : -1; });
+      if (open) links.querySelector("a")?.focus();
+    };
+    const isOpen = () => toggle.getAttribute("aria-expanded") === "true";
+    const collapsed = window.matchMedia("(max-width: 1040px)");
+    const sync = () => { if (!collapsed.matches) { setOpen(false); links.querySelectorAll("a").forEach((a) => { a.tabIndex = 0; }); } else if (!isOpen()) setOpen(false); };
+    sync();
+    collapsed.addEventListener("change", sync);
+    toggle.addEventListener("click", () => setOpen(!isOpen()));
+    links.addEventListener("click", (event) => { if (event.target.closest("a")) setOpen(false); });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && isOpen()) { setOpen(false); toggle.focus(); }
     });
   }
 

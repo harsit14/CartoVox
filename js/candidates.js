@@ -39,12 +39,23 @@
       lerp(lerp(c(0,0,1), c(1,0,1), u), lerp(c(0,1,1), c(1,1,1), u), v), w);
   };
 
+  /* Starred candidates are the only memory this demo has: their land share and
+     continent size pull the next six seeds toward them. Hard constraints are
+     untouched — taste narrows where it looks, it never edits the verdict. */
+  const taste = [];
+  const meanOf = (key) => taste.reduce((sum, t) => sum + t[key], 0) / taste.length;
+  const bias = () => (taste.length ? { landShare: meanOf("landShare"), scale: meanOf("scale") } : null);
+
   /* one candidate planet */
-  const buildWorld = (seed) => {
+  const buildWorld = (seed, lean) => {
     const rnd = mulberry(seed);
     const s = Math.floor(rnd() * 1e6);
-    const landShare = 0.26 + rnd() * 0.14;
-    const scale = 1.6 + rnd() * 1.2;
+    let landShare = 0.26 + rnd() * 0.14;
+    let scale = 1.6 + rnd() * 1.2;
+    if (lean) {
+      landShare += (lean.landShare - landShare) * 0.62;
+      scale += (lean.scale - scale) * 0.62;
+    }
     const field = new Float32Array(W * H);
     for (let y = 0; y < H; y++) {
       const lat = (y / H - 0.5) * 2;            // -1 .. 1
@@ -88,7 +99,7 @@
     }
     const continents = sizes.filter((n) => n / (W * H) >= MIN_CONTINENT).length;
     const largest = sizes.length ? Math.max(...sizes) / sizes.reduce((a, b) => a + b, 0) : 0;
-    return { seed, field, sea, land, comp, sizes, continents, largest, landShare };
+    return { seed, field, sea, land, comp, sizes, continents, largest, landShare, scale };
   };
 
   /* paint it */
@@ -144,14 +155,27 @@
   const star = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg>';
 
   let searching = false;
+  let lastMatches = null;
+  const note = () => {
+    if (lastMatches === null) return;
+    const line = lastMatches
+      ? `<b>${lastMatches} of 6</b> match the hard constraint. The others are reported as they measured, not as near misses dressed up.`
+      : `<b>0 of 6</b> match. CartoVox would say so and keep searching — it never returns the nearest thing as a match.`;
+    const learned = taste.length
+      ? ` <b>${taste.length} starred.</b> The next six lean toward their land share and continent size; the verdict stays measured either way.`
+      : " Star a candidate and the next six lean toward it.";
+    foot.innerHTML = line + learned;
+  };
+
   const search = () => {
     if (searching) return;
     searching = true;
     button.disabled = true;
     grid.innerHTML = "";
     const base = Math.floor(Math.random() * 900000000) + 100000000;
+    const lean = bias();
     const worlds = [];
-    for (let i = 0; i < 6; i++) worlds.push(buildWorld(base + i * 7919));
+    for (let i = 0; i < 6; i++) worlds.push(buildWorld(base + i * 7919, lean));
     let matches = 0;
     worlds.forEach((world, i) => {
       const li = document.createElement("li");
@@ -166,16 +190,20 @@
       paint(li.querySelector("canvas"), world);
       li.querySelector(".cand-fav").addEventListener("click", (event) => {
         const b = event.currentTarget;
-        b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") === "true" ? "false" : "true");
+        const on = b.getAttribute("aria-pressed") !== "true";
+        b.setAttribute("aria-pressed", String(on));
+        const at = taste.findIndex((t) => t.seed === world.seed);
+        if (on && at === -1) taste.push({ seed: world.seed, landShare: world.landShare, scale: world.scale });
+        if (!on && at !== -1) taste.splice(at, 1);
+        note();
       });
       const delay = reduceMotion ? 0 : 140 + i * 160;
       setTimeout(() => li.classList.add("is-in"), delay);
     });
     const done = reduceMotion ? 0 : 140 + 6 * 160;
+    lastMatches = matches;
     setTimeout(() => {
-      foot.innerHTML = matches
-        ? `<b>${matches} of 6</b> match the hard constraint. The others are reported as they measured, not as near misses dressed up. Star a candidate to teach the next search your taste.`
-        : `<b>0 of 6</b> match. CartoVox would say so and keep searching — it never returns the nearest thing as a match. Search again.`;
+      note();
       button.textContent = "Search again";
       button.disabled = false;
       searching = false;

@@ -32,7 +32,10 @@ STYLES = ("tolkien", "imhof", "modern", "nautical", "ink", "grimdark", "realms",
 
 def save(im: Image.Image, name: str, width: int | None = None, quality: int = 82,
          jpg: bool = False) -> None:
-    im = im.convert("RGB") if not name.endswith(".png") else im
+    # WebP keeps an alpha channel when the source has one: the wordmark and the
+    # lockup sit over a photograph, and a flattened plate would show as a box.
+    if not name.endswith(".png"):
+        im = im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") and name.endswith(".webp") else "RGB")
     if width and im.width > width:
         ratio = width / im.width
         im = im.resize((width, round(im.height * ratio)), Image.LANCZOS)
@@ -59,11 +62,14 @@ def brand(brand_dir: Path) -> None:
     # Soften the keyed edge so the gold glow feathers instead of stepping.
     alpha = keyed.getchannel("A").filter(ImageFilter.GaussianBlur(0.6))
     keyed.putalpha(alpha)
+    # Brand art ships as WebP: the PNG lockup alone outweighed every world plate.
     lockup_crop = keyed.crop((100, 60, 1308, 1340))
     save(lockup_crop, "lockup.png", width=900)
+    save(lockup_crop, "lockup.webp", width=900, quality=88)
     # The lettering alone, for the navigation bar and the footer.
     text = keyed.crop((120, 1000, 1290, 1330))
     save(text, "wordmark.png", width=720)
+    save(text, "wordmark.webp", width=720, quality=88)
     # The gold monogram cut from the lockup, kept for reference; the icons
     # the site actually shows come from icons() and the v2 set.
     mark = Image.open(brand_dir / "CartoVox-1024.png").convert("RGBA")
@@ -122,6 +128,8 @@ def worlds(library: Path) -> None:
     half = globes.width // 2
     save(globes.crop((0, 0, half, half)), "globe.webp", width=544)
     save(Image.open(ixr / "01_relief.png"), "relief.webp", width=1440)
+    # A city plan: the settlement sheet the world draws for a named place.
+    save(Image.open(ixr / "city_plans" / "C1-zhargundbar.png"), "city-plan.webp", width=1600)
 
 
 CHAIN = {

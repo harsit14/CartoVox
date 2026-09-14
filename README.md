@@ -9,6 +9,7 @@ no third-party requests. Cloudflare Pages serves it straight from this repositor
 | Path | What it is |
 | --- | --- |
 | `index.html` | The landing page |
+| `privacy/` | What the site and the app do with your data |
 | `eula/`, `third-party-notices/` | Legal pages, rendered from the app's Markdown by `tools/build-legal.py` |
 | `404.html` | Off the edge of the map |
 | `css/site.css` | All styling; gold on midnight, parchment for the atlas section |
@@ -40,6 +41,7 @@ the transparent header mark.
 python3 tools/build-images.py --brand <app>/assets/app-icon --icons brand --worlds <library>/worlds --shots <shots-dir>
 python3 tools/build-legal.py <app>/EULA.md <app>/THIRD-PARTY-NOTICES.md
 python3 tools/build-releases.py <app>/.github/release-notes
+python3 tools/build-faq-schema.py          # FAQPage JSON-LD, derived from the FAQ markup
 ```
 
 Each flag is optional; a pass with only `--shots` refreshes the app screenshots,
@@ -57,8 +59,18 @@ python3 tools/stamp-assets.py
 
 Every page references `/css/site.css?v=<hash>` and the scripts likewise, so a
 changed file is fetched under a new URL instead of being served from a
-browser's cache. Run it last — after `build-legal.py` or `build-releases.py`
-have written their pages — and commit the restamped HTML with the change.
+browser's cache. Run it last — after `build-legal.py`, `build-releases.py` or
+`build-faq-schema.py` have written their pages — and commit the restamped HTML
+with the change.
+
+## Claims the site makes that can drift
+
+Three numbers on the landing page are measured from the library rather than
+remembered, and are worth re-checking when the worlds behind them change: each
+plate's foundation, seed and major-continent count in *The same sentence, four
+ways in*; the eight style sheets in the atlas section; and the build times under
+*What it costs you*. Everything else on that page is either generated from the
+app's own files or describes behaviour documented in the manual.
 
 ## Local preview
 

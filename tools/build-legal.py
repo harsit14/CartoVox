@@ -121,14 +121,18 @@ def render(markdown: str) -> tuple[str, str]:
             continue
         if re.match(r"^\s{2,}\([a-z]\)", line):
             # Lettered sub-clauses: keep each on its own line inside the paragraph.
+            # A clause is gathered whole before it is formatted, because its
+            # emphasis regularly opens on one line and closes on the next.
             flush_para()
-            out.append('<p class="clauses">')
+            clauses: list[list[str]] = []
             while i < len(lines) and lines[i].strip() and not lines[i].strip().startswith("#"):
-                if re.match(r"^\s{2,}\([a-z]\)", lines[i]):
-                    out.append(f"<span>{inline(lines[i].strip())}</span>")
+                if re.match(r"^\s{2,}\([a-z]\)", lines[i]) or not clauses:
+                    clauses.append([lines[i].strip()])
                 else:
-                    out[-1] = out[-1][:-7] + " " + inline(lines[i].strip()) + "</span>"
+                    clauses[-1].append(lines[i].strip())
                 i += 1
+            out.append('<p class="clauses">')
+            out.extend(f"<span>{inline(' '.join(parts))}</span>" for parts in clauses)
             out.append("</p>")
             continue
         para.append(line); i += 1
@@ -141,7 +145,7 @@ PAGE = """<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{title} — CartoVox</title>
+  <title>{page_title}</title>
   <meta name="description" content="{description}">
   <link rel="canonical" href="https://cartovox.org/{path}/">
   <meta name="theme-color" content="#0b0c10">
@@ -157,14 +161,19 @@ PAGE = """<!doctype html>
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
-      <img class="nav-wordmark" src="/img/wordmark.png" width="142" height="40" alt="CartoVox">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
     </a>
-    <nav class="nav-links doc-nav" aria-label="Sections">
+    <nav class="nav-links doc-nav" id="nav-links" aria-label="Sections">
       <a href="/">Home</a>
+      <a href="/features/">Field guide</a>
+      <a href="/releases/">Release notes</a>
       <a href="/eula/">Licence</a>
       <a href="/third-party-notices/">Third-party notices</a>
+      <a href="/privacy/">Privacy</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
     </nav>
-    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" rel="noopener">Join the beta</a>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 <main id="main" class="doc">
@@ -178,6 +187,7 @@ PAGE = """<!doctype html>
     <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>
 """
@@ -187,7 +197,9 @@ def build(source: Path, path: str, description: str) -> None:
     title, body = render(source.read_text(encoding="utf-8"))
     target = ROOT / path / "index.html"
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(PAGE.format(title=html.escape(title), description=html.escape(description),
+    page_title = title if "CartoVox" in title else f"{title} — CartoVox"
+    target.write_text(PAGE.format(title=html.escape(title), page_title=html.escape(page_title),
+                                  description=html.escape(description),
                                   path=path, body=body), encoding="utf-8")
     print(f"  {target.relative_to(ROOT)} ← {source.name}")
 
