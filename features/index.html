@@ -42,6 +42,7 @@
   <aside class="guide-toc" aria-label="Contents">
     <p class="eyebrow">Contents</p>
     <nav class="toc-list" id="toc">
+      <a href="#new-083">New in 0.8.3</a>
       <a href="#desk">The desk</a>
       <span class="toc-group">Create</span>
       <a href="#create">Four ways in</a>
@@ -90,8 +91,31 @@
         keep telling us they never knew were there. The same material ships inside the app under
         <b>Help</b>, offline.
       </p>
-      <p class="muted small">Current as of the 0.8.2 beta and the CartoVox rename. Version-by-version changes are on the <a href="/releases/">release notes</a> page.</p>
+      <p class="muted small">Current as of the 0.8.3 beta. Version-by-version changes are on the <a href="/releases/">release notes</a> page.</p>
     </header>
+
+    <!-- ═══════════════════════ NEW IN 0.8.3 ═══════════════════════ -->
+    <section id="new-083">
+      <p class="eyebrow">New in 0.8.3</p>
+      <h2>Shape the world, then draw inside it.</h2>
+      <p class="section-lede">
+        0.8.3 is the rename release, and also the largest authoring release since 0.8.0. The short
+        list, before the workspace-by-workspace walk below; the full account is in the
+        <a href="/releases/#v0.8.3">release notes</a>.
+      </p>
+      <ul class="feat">
+        <li><b>Settlement Studio</b> — villages and towns are planned street-first: the street network comes first, blocks become plots, every building faces its street and shares a frontage line. Eight plans (street village, green, crossroads, radial, organic, harbour, hilltop, twin neighbourhoods) are chosen from the approach roads, water and relief the saved world already records; quarters — market, green, craft, townhouse, gentry, manor, temple, dockside, poor quarter, crofts — set their own plot size and forms. Steer density, plot size, coverage, irregularity, the poor-quarter share and how far the countryside reaches; redraw one quarter and leave the rest; place features that turn to face the nearest street. Water systems and approach roads load from the saved hydrology, and the countryside scales with population under an editable land budget. A 57-piece catalogue with roofs built from each building's own footprint; a 40,000-person city generates in about a tenth of the time.</li>
+        <li><b>Scenes and encounter maps</b> — standalone scenes from the Library, no world required, in square, landscape or portrait; parent/child hierarchies to eight levels with clickable hotspots between them; up to 32 named drawing layers with opacity, Normal/Multiply/Screen blending and erase masks; up to 32 scene lights with Warm interior, Moonlit exterior and Dusk moods; Illustrated adventure, Engraved parchment and Clear tabletop art directions applied as one Undo step; original vector kits (village exteriors, stone fortifications, terrain and landscape, rooms and furnishings); a shared structure and art library across worlds; reference images with two-landmark calibration; one 40-step Undo across maps and scenes.</li>
+        <li><b>Lettering in Render Studio</b> — label saved realms, terrain regions, rivers, roads and sea lanes from a guided chooser; adaptive hierarchy-aware placement that tries eight sides before dropping a lower-priority name, with Spacious, Balanced and Detailed presets, leader lines, forced overlaps and direct nudging; the result leaves as editable <code>labels.svg</code>.</li>
+        <li><b>Terrain into artwork</b> — convert saved relief, tectonics, biomes, canopy, wetlands and snowline into editable native mountains, hills, volcanoes, trees and reeds in Light, Balanced or Rich passes; one Undo restores the procedural map, and the simulation is untouched.</li>
+        <li><b>Sculpt: Protect area and Preserve terrain</b> — protect a circle from later brushes; keep saved elevation through regeneration, glaciation and erosion; and review a rebuild before Apply, with measured pending changes, preserved areas, the full rebuild scope and a local runtime estimate.</li>
+        <li><b>Rebuild review</b> — build an isolated comparison draft from pending sculpt edits and see exactly where terrain, climate, coasts, rivers, lakes and biomes changed; review which settlements and routes correspond across the rebuild, pair unmatched ones by hand on synchronized maps, and transfer names, rulers, mottos, culture, faith and place-of-power canon, campaign reveals and regional references into the rebuilt copy — the original world is never written to.</li>
+        <li><b>Codex → Import lore</b> — CSV rows and Markdown files become author-owned vault pages with typed place, character, faction and event records, pins on the world map, and reviewed relationships (Related to, Member of, Located in, Participated in) within and across batches.</li>
+        <li><b>Map</b> — Mercator as a live saved-world view; mountain belts grow as connected systems of ranges with their own grain; drawn cities keep the exact spot chosen on the canvas and a drawn realm absorbs the settlements inside its border.</li>
+        <li><b>Manuscript</b> — imports keep italics and turn notes into native notes; Word export writes real footnotes and delivers tracked changes as a reader sees them.</li>
+        <li><b>The rename</b> — new name and artwork, a new data folder, <code>cartovox-*</code> file formats, and existing beta keys stay valid.</li>
+      </ul>
+    </section>
 
     <!-- ═══════════════════════ THE DESK ═══════════════════════ -->
     <section id="desk">

@@ -29,7 +29,7 @@ DATES = {
     "0.2.2": "2026-08-25", "0.3.0": "2026-08-25", "0.4.0": "2026-08-25", "0.5.0": "2026-08-26",
     "0.6.0": "2026-08-27", "0.6.1": "2026-08-28", "0.7.0": "2026-08-29", "0.7.1": "2026-08-30",
     "0.7.2": "2026-08-30", "0.7.3": "2026-08-30", "0.7.4": "2026-08-30", "0.7.5": "2026-08-30",
-    "0.7.6": "2026-08-30", "0.8.0": "2026-09-04", "0.8.1": "2026-09-08", "0.8.2": "2026-09-11",
+    "0.7.6": "2026-08-30", "0.8.0": "2026-09-04", "0.8.1": "2026-09-08", "0.8.2": "2026-09-11", "0.8.3": "2026-09-14",
 }
 
 RENAMES = [
@@ -108,13 +108,18 @@ def load(notes_dir: Path) -> list[dict]:
             title = pattern.sub(replacement, title)
         # "CartoVox 0.8.2 — Write with the world beside you" → keep the tagline.
         tagline = title.split("—", 1)[1].strip() if "—" in title else ""
+        # Notes from before 0.8.3 were written under the old name; 0.8.3 itself
+        # announces the change and must keep the old name where it says so.
+        written_under_old_name = version_key(version) < (0, 8, 3)
         releases.append({"version": version, "tagline": tagline, "date": DATES.get(version, ""),
-                         "body": clean(body), "released": True})
+                         "body": clean(body, rename_app=written_under_old_name), "released": True})
     releases.sort(key=lambda r: version_key(r["version"]), reverse=True)
     upcoming = notes_dir / "unreleased.txt"
     if upcoming.exists():
         text = upcoming.read_text(encoding="utf-8")
         title, _, body = text.partition("\n")
+        if not re.search(r"^(## |- )", body, re.MULTILINE):
+            return releases  # nothing recorded since the last release
         # The note that announces the rename must keep the old name in it.
         releases.insert(0, {"version": "upcoming", "tagline": "In development — not yet released",
                             "date": "", "body": clean(body, rename_app=False), "released": False})
