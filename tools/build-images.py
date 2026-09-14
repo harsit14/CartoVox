@@ -64,14 +64,41 @@ def brand(brand_dir: Path) -> None:
     # The lettering alone, for the navigation bar and the footer.
     text = keyed.crop((120, 1000, 1290, 1330))
     save(text, "wordmark.png", width=720)
+    # The gold monogram cut from the lockup, kept for reference; the icons
+    # the site actually shows come from icons() and the v2 set.
     mark = Image.open(brand_dir / "CartoVox-1024.png").convert("RGBA")
-    save(mark, "mark-512.png", width=512)
-    save(mark, "mark-192.png", width=192)
-    for size in (64, 180, 192, 512):
-        src = brand_dir / f"CartoVox-{size}.png"
-        Image.open(src).save(IMG / f"icon-{size}.png", optimize=True)
-    (IMG / "favicon.ico").write_bytes((brand_dir / "CartoVox.ico").read_bytes())
-    (ROOT / "favicon.ico").write_bytes((brand_dir / "CartoVox.ico").read_bytes())
+    save(mark, "monogram-512.png", width=512)
+
+
+def _keyed(path: Path, thresh: int = 40) -> Image.Image:
+    """The icon masters sit on an opaque plate; flood the corners transparent."""
+    im = Image.open(path).convert("RGBA")
+    for point in ((0, 0), (im.width - 1, 0), (0, im.height - 1), (im.width - 1, im.height - 1)):
+        ImageDraw.floodfill(im, point, (0, 0, 0, 0), thresh=thresh)
+    return im
+
+
+def icons(brand_dir: Path) -> None:
+    """The v2 icon set: illustrated for large sizes, flat for tiny ones, the
+    navbar mark for the header. Each was drawn for that job."""
+    print("icons")
+    illustrated = _keyed(brand_dir / "icon-illustrated-dark.png")
+    for size in (180, 192, 512):
+        save(illustrated, f"icon-{size}.png", width=size)
+    save(illustrated, "mark-512.png", width=512)
+    simple = _keyed(brand_dir / "icon-simple-dark.png")
+    for size in (16, 32, 48, 64):
+        save(simple, f"icon-{size}.png", width=size)
+    ico_sizes = [(16, 16), (32, 32), (48, 48)]
+    ico = simple.copy()
+    ico.thumbnail((48, 48), Image.LANCZOS)
+    for target in (IMG / "favicon.ico", ROOT / "favicon.ico"):
+        ico.save(target, format="ICO", sizes=ico_sizes)
+    print("  favicon.ico", ico_sizes)
+    # The header mark: trimmed to its own bounds, three pixels per CSS pixel.
+    nav = Image.open(brand_dir / "nav-mark.png").convert("RGBA")
+    nav = nav.crop(nav.getchannel("A").getbbox())
+    save(nav, "nav-mark.png", width=round(nav.width * 120 / nav.height))
 
 
 def worlds(library: Path) -> None:
@@ -141,17 +168,30 @@ def social() -> None:
         world = world.resize((1200, round(world.height * ratio)), Image.LANCZOS)
         top = max(0, (world.height - 630) // 2)
         world = world.crop((0, top, 1200, top + 630))
-        # Darken toward the left so the lockup reads over the sea.
+        # A near-solid dark field on the left for the icon and the name, fading
+        # into the plate on the right; the map is the backdrop, not the subject.
         shade = Image.new("L", (1200, 630), 0)
         draw = ImageDraw.Draw(shade)
         for x in range(1200):
-            value = int(235 * max(0.0, 1 - x / 760) ** 1.2)
+            fade = min(1.0, max(0.0, (x - 430) / 560))
+            value = int(248 * (1 - fade) ** 1.1)
             draw.line([(x, 0), (x, 630)], fill=value)
         dark = Image.new("RGB", (1200, 630), (11, 12, 16))
         card = Image.composite(dark, world, shade)
-    lockup = IMG / "lockup.png"
-    if lockup.exists():
-        mark = Image.open(lockup).convert("RGBA")
+    # The illustrated icon above the gold wordmark: the name has to be on a
+    # card that unfurls in a chat, and the icon is what the app looks like.
+    icon, word = IMG / "mark-512.png", IMG / "wordmark.png"
+    if icon.exists() and word.exists():
+        mark = Image.open(icon).convert("RGBA")
+        mark.thumbnail((330, 330), Image.LANCZOS)
+        name = Image.open(word).convert("RGBA")
+        name.thumbnail((420, 130), Image.LANCZOS)
+        x = 90
+        top = (630 - (mark.height + 24 + name.height)) // 2
+        card.paste(mark, (x + (name.width - mark.width) // 2, top), mark)
+        card.paste(name, (x, top + mark.height + 24), name)
+    elif (IMG / "lockup.png").exists():
+        mark = Image.open(IMG / "lockup.png").convert("RGBA")
         mark.thumbnail((470, 470), Image.LANCZOS)
         card.paste(mark, (70, (630 - mark.height) // 2), mark)
     card.save(IMG / "social-card.jpg", "JPEG", quality=88, optimize=True, progressive=True)
@@ -160,7 +200,8 @@ def social() -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--brand", type=Path)
+    parser.add_argument("--brand", type=Path, help="app-icon dir with the gold lockups")
+    parser.add_argument("--icons", type=Path, help="this repo's brand/ dir with the v2 icon masters")
     parser.add_argument("--worlds", type=Path)
     parser.add_argument("--shots", type=Path)
     parser.add_argument("--chain", type=Path, help="library root; only the chain views")
@@ -168,6 +209,8 @@ def main() -> None:
     args = parser.parse_args()
     if args.brand:
         brand(args.brand)
+    if args.icons:
+        icons(args.icons)
     if args.worlds:
         worlds(args.worlds)
         chain(args.worlds)
@@ -175,7 +218,7 @@ def main() -> None:
         chain(args.chain)
     if args.shots:
         shots(args.shots)
-    if args.social or args.brand or args.worlds:
+    if args.social or args.brand or args.icons or args.worlds:
         social()
 
 

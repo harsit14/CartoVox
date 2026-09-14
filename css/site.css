@@ -112,7 +112,7 @@ p:last-child { margin-bottom: 0; }
 .nav.is-scrolled { background: rgba(11, 12, 16, 0.78); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border-color: var(--line); }
 .nav-inner { width: min(var(--wrap), calc(100% - 40px)); margin-inline: auto; display: flex; align-items: center; gap: 24px; height: 72px; }
 .nav-brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
-.nav-mark { width: 40px; height: 40px; filter: drop-shadow(0 0 10px rgba(217,180,92,0.25)); }
+.nav-mark { width: auto; height: 40px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.55)); }
 .nav-wordmark { height: 40px; width: auto; }
 .nav-links { display: flex; gap: 26px; margin-left: auto; font-family: var(--font-ui); font-size: 0.9rem; }
 .nav-links a { color: var(--text-2); text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
@@ -360,7 +360,7 @@ details p { color: var(--text-2); padding: 0 0 22px; max-width: 70ch; }
 .doc-footer { grid-template-columns: 1fr; }
 .doc-footer .footer-fine { margin: 0; padding: 0; border: 0; }
 .lost { text-align: center; padding-top: 80px; }
-.lost-mark { margin: 0 auto 28px; filter: drop-shadow(0 0 30px rgba(217,180,92,0.3)); }
+.lost-mark { margin: 0 auto 28px; border-radius: 36px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6)); }
 .lost .lede { margin: 0 auto 28px; }
 
 /* ── guide pages (field guide, release notes) ────── */

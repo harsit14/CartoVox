@@ -145,7 +145,7 @@ PAGE = """<!doctype html>
 <header class="nav is-scrolled">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
-      <img class="nav-mark" src="/img/mark-192.png" width="40" height="40" alt="">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
       <img class="nav-wordmark" src="/img/wordmark.png" width="142" height="40" alt="CartoVox">
     </a>
     <nav class="nav-links" id="nav-links" aria-label="Sections">

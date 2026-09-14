@@ -30,16 +30,24 @@ Every push to `main` redeploys. Preview deployments are created for other branch
 
 ## Regenerating images
 
-The sources are not in this repository: the brand lockups live in the app
+Most sources are not in this repository: the gold lockups live in the app
 repository, the world plates in a local CartoVox library, and the studio
-screenshots come from a sandboxed run of the app.
+screenshots come from a sandboxed run of the app. The v2 icon masters are in
+`brand/` here — the illustrated and flat icons on dark and light plates, and
+the transparent header mark.
 
 ```bash
-python3 tools/build-images.py --brand <app>/assets/app-icon --worlds <library>/worlds --shots <shots-dir>
+python3 tools/build-images.py --brand <app>/assets/app-icon --icons brand --worlds <library>/worlds --shots <shots-dir>
 python3 tools/build-legal.py <app>/EULA.md <app>/THIRD-PARTY-NOTICES.md
+python3 tools/build-releases.py <app>/.github/release-notes
 ```
 
-Each flag is optional; a pass with only `--shots` refreshes the app screenshots.
+Each flag is optional; a pass with only `--shots` refreshes the app screenshots,
+and `--icons brand` alone re-derives every favicon, touch icon, the header mark,
+the 404 mark and the social card. Which icon goes where: the illustrated dark
+icon at 180 px and up, the flat dark icon at 64 px and below (it keeps its
+shape in a browser tab), the transparent mark in the header beside the gold
+wordmark, and the gold lockup in the footer.
 
 ## After changing CSS or JS
 
