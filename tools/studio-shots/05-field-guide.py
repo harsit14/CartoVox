@@ -1,4 +1,4 @@
-"""Every `app-*` screenshot the landing page and the field guide use, from 0.9.
+"""Every `app-*` screenshot the landing page and the guide use, from 0.9.
 
 The 0.9 interface moved most of these controls: the World workspace is
 map-first with a World/Maps pill and a command dock, Create is one strip above
@@ -271,6 +271,16 @@ def main():
             close_dock_menus(page)
         step("view-menu", view_menu)
 
+        def export_menu():
+            set_maps_drawer(page, False)
+            close_dock_menus(page)
+            page.evaluate("document.getElementById('btn-export-dropdown')?.click()")
+            page.wait_for_timeout(900)
+            shot(page, "map-export-menu")
+            page.evaluate("document.getElementById('btn-export-dropdown')?.click()")
+            page.wait_for_timeout(400)
+        step("export-menu", export_menu)
+
         def tools_menu():
             set_maps_drawer(page, False)
             open_dock_menu(page, "map-tools-menu")
@@ -352,7 +362,8 @@ def main():
             shot(page, "write-dossier")
             for label, name in (("Naming studio", "codex-naming"),
                                 ("Lands", "codex-lands"),
-                                ("Gazetteer", "codex-gazetteer")):
+                                ("Gazetteer", "codex-gazetteer"),
+                                ("Describe everything", "codex-describe")):
                 codex_section(page, label)
                 shot(page, name)
         step("codex", codex)

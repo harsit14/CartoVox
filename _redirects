@@ -5,7 +5,10 @@
 /licence   /eula/                        301
 /license   /eula/                        301
 
-# The handbook answers "where is it", so every name for it leads there.
+# One guide, and every name for it leads there. /features/ was the field
+# guide until 0.9's documentation was merged into /guide/.
+/features/ /guide/                       301
+/features  /guide/                       301
 /manual    /guide/                       301
 /docs      /guide/                       301
 /help      /guide/                       301

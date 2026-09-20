@@ -9,8 +9,7 @@ no third-party requests. Cloudflare Pages serves it straight from this repositor
 | Path | What it is |
 | --- | --- |
 | `index.html` | The landing page |
-| `guide/` | The handbook: how to use CartoVox, and a searchable index of where each control lives. Current to 0.9 |
-| `features/` | The field guide: the feature inventory, workspace by workspace |
+| `guide/` | The guide: a searchable index of where every control lives, a first world step by step, then every workspace in depth. Current to 0.9 |
 | `privacy/` | What the site and the app do with your data |
 | `eula/`, `third-party-notices/` | Legal pages, rendered from the app's Markdown by `tools/build-legal.py` |
 | `404.html` | Off the edge of the map |
@@ -47,11 +46,8 @@ python3 tools/build-faq-schema.py          # FAQPage JSON-LD, derived from the F
 ```
 
 Screenshot names decide where they land: a PNG called `world-map.png` becomes
-`img/app-world-map.webp` (the landing page and field-guide family), and one
-called `guide-world-map.png` keeps its name as `img/guide-world-map.webp` (the
-handbook's own set, taken against 0.9). They are separate families on purpose —
-refreshing one must not silently restate the other, because the two pages
-document different builds.
+`img/app-world-map.webp`. One family, shared by the landing page and the guide,
+taken in one pass so the two can never document different builds.
 
 Each flag is optional; a pass with only `--shots` refreshes the app screenshots,
 and `--icons brand` alone re-derives every favicon, touch icon, the header mark,
