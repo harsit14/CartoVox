@@ -33,7 +33,7 @@
   <link rel="preload" href="/fonts/Newsreader-Italic-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/img/hero-world.webp" as="image" type="image/webp" media="(min-width: 900px)">
-  <link rel="stylesheet" href="/css/site.css?v=5db8d5eb1e">
+  <link rel="stylesheet" href="/css/site.css?v=291797b5c6">
 
   <script type="application/ld+json">
   {
@@ -42,7 +42,7 @@
     "name": "CartoVox",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "macOS, Windows, Linux",
-    "softwareVersion": "0.8.3",
+    "softwareVersion": "0.9.0",
     "description": "A desktop world simulator for authors and game masters. Write a brief, search reproducible seeds for it, and simulate the winner from plate tectonics upward into an illustrated atlas, a naming system, a history and a manuscript.",
     "url": "https://cartovox.org/",
     "image": "https://cartovox.org/img/social-card.jpg",
@@ -68,7 +68,7 @@
         "name": "Does it need an internet connection or an account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Neither. CartoVox runs entirely on your computer with no account, no cloud service and no telemetry. The only optional network call is a once-a-day check for a newer version, which you can switch off."
+          "text": "Neither. CartoVox runs entirely on your computer with no account, no cloud service and no telemetry. Since 0.9 it makes no network request of its own at all — not even an update check. The only address it opens is the local dashboard it starts itself."
         }
       },
       {
@@ -108,7 +108,7 @@
         "name": "Where is the manual?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Inside the application, offline — every feature in the order the simulation produces it, the known limits, the licence and the third-party notices. The Help rail is one click from any workspace. The same material is on this site as the field guide, and every version's changes are in the release notes."
+          "text": "Inside the application, offline — every feature in the order the simulation produces it, the known limits, the licence and the third-party notices. The Help rail is one click from any workspace. On this site, the handbook is the how-to: a first world step by step, each workspace in turn, every export and keyboard key, and a searchable index of where each control lives. The field guide is the shorter inventory, and every version's changes are in the release notes."
         }
       },
       {
@@ -136,6 +136,7 @@
     <nav class="nav-links" id="nav-links" aria-label="Sections">
       <a href="#how">How it works</a>
       <a href="#workspaces">Workspaces</a>
+      <a href="/guide/">Handbook</a>
       <a href="/features/">Field guide</a>
       <a href="/releases/">Release notes</a>
       <a href="#faq">FAQ</a>
@@ -417,7 +418,7 @@
               <img id="media-world" src="/img/app-world-map.webp" width="1800" height="1125" alt="The World workspace: the physical relief map of Ixrixenrond with the planet globe and the world dossier" loading="lazy" decoding="async">
             </div>
             <div class="thumbs" data-target="media-world">
-              <button type="button" class="thumb is-active" data-src="/img/app-world-map.webp" data-alt="The World workspace: physical relief with the planet globe and world dossier">Map</button>
+              <button type="button" class="thumb is-active" data-src="/img/app-world-map.webp" data-alt="The World workspace: physical relief map-first, with the World/Maps pill, the planet card and the command dock">Map</button>
               <button type="button" class="thumb" data-src="/img/app-world-atlas.webp" data-alt="The Atlas tab: the illustrated world plate beside six cartographer reading desks">Atlas</button>
               <button type="button" class="thumb" data-src="/img/app-map-cell-inspector.webp" data-alt="The cell inspector: Why here? evidence for the biome at a clicked cell">Inspect a cell</button>
               <button type="button" class="thumb" data-src="/img/app-terrain-3d.webp" data-alt="The 3D terrain explorer showing the world as a relief landscape">3D terrain</button>
@@ -605,8 +606,10 @@
         <p class="eyebrow">Hidden in plain sight</p>
         <h2>Most of CartoVox is behind a menu.</h2>
         <p>
-          Testers keep finding rooms they did not know were there. The <a href="/features/">field guide</a>
-          walks every workspace, menu and panel; these are the ones people most often miss.
+          Testers keep finding rooms they did not know were there. The <a href="/guide/">handbook</a> is the
+          how-to — a first world step by step, then a searchable index of where every control lives — and the
+          <a href="/features/">field guide</a> walks every workspace, menu and panel. These are the ones people
+          most often miss.
         </p>
       </div>
       <div class="hidden-grid reveal">
@@ -619,7 +622,7 @@
         <a class="hidden-card" href="/features/#manuscript"><span class="hc-where">Write → Manuscript · Chapter panel</span><span class="hc-name">The world card under a scene</span><span class="hc-what">Date, moon, sunrise, that day's weather and the travel time from the previous scene.</span><span class="hc-go">Read more →</span></a>
         <a class="hidden-card" href="/features/#reseed"><span class="hc-where">World · How this world was built</span><span class="hc-name">Reseed this world</span><span class="hc-what">Same brief, new seed — everything, the land only, or the story only, with lineage recorded.</span><span class="hc-go">Read more →</span></a>
       </div>
-      <p class="center reveal" style="margin-top:28px"><a class="btn btn-ghost" href="/features/">Open the full field guide</a></p>
+      <p class="center reveal" style="margin-top:28px"><a class="btn btn-gold" href="/guide/">Open the handbook</a> <a class="btn btn-ghost" href="/features/">Open the full field guide</a></p>
     </div>
   </section>
 
@@ -705,7 +708,7 @@
           <li><span class="plat">Linux</span><span>Debian/Ubuntu package (.deb), and a portable archive for other glibc 2.28+ x86-64 distributions.</span></li>
         </ul>
         <h3>Updates are your decision</h3>
-        <p class="muted small">CartoVox can check once a day whether a newer version exists and will tell you when one does — installing it is a button you press. It never replaces itself, and the check sends no world or author data. You can turn it off and still ask on demand.</p>
+        <p class="muted small">CartoVox never checks for updates. New builds are announced on the Discord server, which is also where the installer is shared, and installing one is something you choose to do. The application makes no network request of its own.</p>
       </div>
     </div>
   </section>
@@ -724,7 +727,7 @@
         </details>
         <details>
           <summary>Does it need an internet connection or an account?</summary>
-          <p>Neither. CartoVox runs entirely on your computer with no account, no cloud service and no telemetry. The only optional network call is a once-a-day check for a newer version, which you can switch off.</p>
+          <p>Neither. CartoVox runs entirely on your computer with no account, no cloud service and no telemetry. Since 0.9 it makes no network request of its own at all — not even an update check. The only address it opens is the local dashboard it starts itself.</p>
         </details>
         <details>
           <summary>Can I start from a map I already have?</summary>
@@ -744,7 +747,7 @@
         </details>
         <details>
           <summary>Where is the manual?</summary>
-          <p>Inside the application, offline — every feature in the order the simulation produces it, the known limits, the licence and the third-party notices. The Help rail is one click from any workspace. The same material is on this site as the <a href="/features/">field guide</a>, and every version's changes are in the <a href="/releases/">release notes</a>.</p>
+          <p>Inside the application, offline — every feature in the order the simulation produces it, the known limits, the licence and the third-party notices. The Help rail is one click from any workspace. On this site, the <a href="/guide/">handbook</a> is the how-to: a first world step by step, each workspace in turn, every export and keyboard key, and a searchable index of where each control lives. The <a href="/features/">field guide</a> is the shorter inventory, and every version's changes are in the <a href="/releases/">release notes</a>.</p>
         </details>
         <details>
           <summary>How do I get in?</summary>
@@ -791,6 +794,6 @@
 </footer>
 
 <script src="/js/candidates.js?v=7a36bc071a" defer></script>
-<script src="/js/site.js?v=0f042e43a9" defer></script>
+<script src="/js/site.js?v=915173a910" defer></script>
 </body>
 </html>

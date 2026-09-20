@@ -4,3 +4,10 @@
 /download  https://discord.gg/nGNatfuXe  302
 /licence   /eula/                        301
 /license   /eula/                        301
+
+# The handbook answers "where is it", so every name for it leads there.
+/manual    /guide/                       301
+/docs      /guide/                       301
+/help      /guide/                       301
+/handbook  /guide/                       301
+/tutorial  /guide/                       301

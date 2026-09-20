@@ -211,6 +211,35 @@
     targets.forEach((t) => io.observe(t));
   }
 
+  /* ── handbook: narrow the "where is it" index ───── */
+  const lookupInput = document.getElementById("lookup-q");
+  const lookupTable = document.getElementById("lookup");
+  if (lookupInput && lookupTable) {
+    const body = lookupTable.tBodies[0];
+    const rows = [...body.rows];
+    const haystacks = rows.map((row) => row.textContent.toLowerCase());
+    const count = document.getElementById("lookup-count");
+    const empty = body.insertRow();
+    empty.className = "lookup-empty";
+    empty.hidden = true;
+    const cell = empty.insertCell();
+    cell.colSpan = 2;
+    cell.textContent = "Nothing here matches that. Try a plainer word — river, print, name, backup — or ask on Discord.";
+    const filter = () => {
+      const terms = lookupInput.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      let shown = 0;
+      rows.forEach((row, i) => {
+        const hit = terms.every((term) => haystacks[i].includes(term));
+        row.hidden = !hit;
+        if (hit) shown += 1;
+      });
+      empty.hidden = shown !== 0;
+      if (count) count.textContent = terms.length ? `${shown} of ${rows.length}` : `${rows.length} entries`;
+    };
+    lookupInput.addEventListener("input", filter);
+    filter();
+  }
+
   /* ── compare slider ─────────────────────────────── */
   const compare = document.getElementById("compare");
   if (compare) {

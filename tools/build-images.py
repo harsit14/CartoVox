@@ -158,11 +158,18 @@ def chain(library: Path) -> None:
 
 
 def shots(shots_dir: Path) -> None:
+    """Studio screenshots. A `guide-` stem keeps its own name.
+
+    The handbook's shots are taken against a newer build than the landing
+    page's `app-` family, so they are a separate set rather than a silent
+    replacement: refreshing one must never restate the other.
+    """
     print("shots")
     for path in sorted(shots_dir.glob("*.png")):
         if path.stem.startswith("chain-"):
             continue
-        save(Image.open(path), f"app-{path.stem}.webp", width=1800, quality=80)
+        name = path.stem if path.stem.startswith("guide-") else f"app-{path.stem}"
+        save(Image.open(path), f"{name}.webp", width=1800, quality=80)
 
 
 def social() -> None:

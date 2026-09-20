@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Handbook — how to use CartoVox, and where everything is</title>
+  <meta name="description" content="The CartoVox 0.9 handbook: first launch, your first world, briefs and seeds, the three build tiers, importing and drawing a map, the map workspace and its Tools menu, sculpting, journeys, campaigns, towns and battlemaps, naming and describing a world, the manuscript editor, every export, every keyboard key, and a searchable index of where each control lives.">
+  <link rel="canonical" href="https://cartovox.org/guide/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox handbook — how to use it, and where everything is">
+  <meta property="og:description" content="Step-by-step for a first world, then the exact place every control lives. Current to the 0.9 beta.">
+  <meta property="og:url" content="https://cartovox.org/guide/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=291797b5c6">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/" aria-current="page">Handbook</a>
+      <a href="/features/">Field guide</a>
+      <a href="/releases/">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Contents">
+    <p class="eyebrow">Contents</p>
+    <nav class="toc-list" id="toc">
+      <a href="#where"><b>Where is it?</b><small>search</small></a>
+      <span class="toc-group">Start here</span>
+      <a href="#install">First launch</a>
+      <a href="#shape">How the app is laid out</a>
+      <a href="#first">Your first world</a>
+      <span class="toc-group">Making a world</span>
+      <a href="#brief">Writing the brief</a>
+      <a href="#tiers" class="toc-sub">Sketch, Quick, Full</a>
+      <a href="#seeds" class="toc-sub">Searching seeds</a>
+      <a href="#advanced" class="toc-sub">Advanced settings</a>
+      <a href="#atlas-build" class="toc-sub">The illustrated atlas</a>
+      <a href="#import">Importing your own map</a>
+      <a href="#draw" class="toc-sub">Drawing one instead</a>
+      <a href="#deeptime" class="toc-sub">Deep Time</a>
+      <span class="toc-group">Working a finished world</span>
+      <a href="#map">The map and its views</a>
+      <a href="#tools" class="toc-sub">The Tools menu</a>
+      <a href="#inspect" class="toc-sub">Asking the map why</a>
+      <a href="#sculpt" class="toc-sub">Changing the world</a>
+      <a href="#render" class="toc-sub">Render Studio</a>
+      <a href="#travel">Journeys</a>
+      <a href="#campaign" class="toc-sub">Campaigns</a>
+      <a href="#settlements">Towns and battlemaps</a>
+      <span class="toc-group">Names, lore, the book</span>
+      <a href="#canon">Rename &amp; describe everything</a>
+      <a href="#codex" class="toc-sub">The Codex</a>
+      <a href="#chronicle" class="toc-sub">Chronicle</a>
+      <a href="#manuscript">The manuscript editor</a>
+      <span class="toc-group">Reference</span>
+      <a href="#exports">Everything that exports</a>
+      <a href="#settings">Settings</a>
+      <a href="#shortcuts">Keyboard</a>
+      <a href="#files">Where your work lives</a>
+      <a href="#questions">Questions testers ask</a>
+      <a href="#limits">What it does not do</a>
+    </nav>
+  </aside>
+
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Handbook</p>
+      <h1>How to use CartoVox, and where everything is.</h1>
+      <p class="lede">
+        Testers keep asking three questions: <i>where do I find that</i>, <i>is it in there at all</i>, and
+        <i>what does this setting actually do</i>. This page answers all three. It starts with a world built
+        from nothing in about a minute, then walks each workspace in the order you would meet it, and ends
+        with a searchable index of every control and the exact place it lives.
+      </p>
+      <p class="muted small">
+        Current as of the <b>0.9.0</b> beta, checked against a running copy. Screenshots are 0.9 and are of a
+        real generated world. Version-by-version changes are on the <a href="/releases/">release notes</a> page;
+        the <a href="/features/">field guide</a> is the shorter inventory of what exists.
+      </p>
+      <div class="callout">
+        <span class="callout-t">How to read a path</span>
+        <p><b>Bold</b> is a label exactly as the app writes it. <code>World › Tools › Turn world</code> means:
+        the <b>World</b> destination in the left rail, then the <b>Tools</b> menu in the dock along the bottom
+        of the map, then <b>Turn world</b> inside it. If you are ever lost, press <kbd>⌘K</kbd> / <kbd>Ctrl K</kbd>
+        and type what you want — the command palette takes actions as well as names.</p>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════ WHERE IS IT ═══════════════════════ -->
+    <section id="where">
+      <p class="eyebrow">The answer to most questions</p>
+      <h2>Where is it?</h2>
+      <p class="section-lede">
+        Type a word — <i>rivers</i>, <i>print</i>, <i>Foundry</i>, <i>rename</i>, <i>backup</i> — and this table
+        narrows to the rows that mention it. Every path was checked against 0.9.
+      </p>
+      <div class="guide-search">
+        <label class="sr-only" for="lookup-q">Search the index</label>
+        <input type="search" id="lookup-q" placeholder="Search: rivers, atlas, export, rename, tilt, VTT…" autocomplete="off" spellcheck="false">
+        <span id="lookup-count" class="guide-search-count" aria-live="polite"></span>
+      </div>
+      <table class="lookup" id="lookup">
+        <thead><tr><th class="w30">What you want</th><th>Where it is</th></tr></thead>
+        <tbody>
+          <tr><td>Start a world from a written description</td><td><code>Create › Brief</code> — the <b>World thesis</b> box in fold <b>1 Your story</b></td></tr>
+          <tr><td>See what CartoVox produces before committing</td><td><code>Create</code> or an empty <code>Library</code> › <b>Build the example world</b> (Eldrebrenn, a real project in your library)</td></tr>
+          <tr><td>Choose Sketch, Quick or Full</td><td><code>Create › Simulation detail</code>, and as a default in <code>Settings › Creation defaults › First build</code></td></tr>
+          <tr><td>Try a seed without building anything</td><td><code>Create › Preview this seed</code> (approximate, nothing saved)</td></tr>
+          <tr><td>Search many seeds against the brief</td><td><code>Create › Find 6 strong matches</code>, at <b>Quick</b>, <b>Thorough</b> or <b>Deep</b> search depth</td></tr>
+          <tr><td>Compare shortlisted worlds side by side</td><td><code>Create › Compare</code> tab</td></tr>
+          <tr><td>All 306 simulation settings</td><td><code>Create › Advanced settings</code></td></tr>
+          <tr><td>Save this whole setup to reuse</td><td><code>Create › Advanced settings › Save as recipe</code>; <b>Export recipe</b> writes it as a file</td></tr>
+          <tr><td>Import a heightmap or a painted map</td><td><code>Create › Import/Draw › Import my existing map</code></td></tr>
+          <tr><td>Draw coastlines by hand</td><td><code>Create › Import/Draw › Draw my own world</code></td></tr>
+          <tr><td>Decide what happens to rivers on an imported map</td><td>The map review › <b>The rivers on this map</b>: <b>Keep the rivers I drew</b> / <b>Let CartoVox put the rivers</b> / <b>They are not rivers</b></td></tr>
+          <tr><td>Say how much of the planet your map covers</td><td>The map review › <b>Your land on the planet</b>, in <b>% of the planet</b></td></tr>
+          <tr><td>Trim the painted ocean around your coast</td><td>The map review › <b>Ocean kept around your land</b></td></tr>
+          <tr><td>Stop a finished world rebuilding your imported map again</td><td><code>Create › Foundation map › Remove map</code></td></tr>
+          <tr><td>Get back to the coastline check after closing it</td><td><code>Create › Advanced settings</code>, then the <b>Map review</b> / <b>World settings</b> switch</td></tr>
+          <tr><td>Build a geological history first</td><td><code>Create › Deep Time</code> tab</td></tr>
+          <tr><td>Every map of a finished world</td><td><code>World › Maps</code> (the pill at the top left of the map)</td></tr>
+          <tr><td>Change the map's colours, projection or detail</td><td><code>World › View</code> in the dock</td></tr>
+          <tr><td>Turn the world so a split continent is whole</td><td><code>World › Tools › Turn world</code>, then drag sideways; <b>1:1</b> returns it</td></tr>
+          <tr><td>Grid, minimap, split view, time strip, HD region</td><td><code>World › View › Map aids</code></td></tr>
+          <tr><td>Rivers, watersheds, lakes and groundwater</td><td><code>World › Maps › Water &amp; atmosphere</code> — drainage area, watersheds, river hierarchy, river permanence, lake regimes, aquifers</td></tr>
+          <tr><td>Carve a river valley by hand</td><td><code>World › Tools › Sculpt › River valley</code> — click each bend in turn; the whole course is one edit</td></tr>
+          <tr><td>Temperature, rainfall, seasons and Köppen</td><td><code>World › Maps › Climate &amp; seasons</code></td></tr>
+          <tr><td>Winds, ocean currents, tides and ports</td><td><code>World › Maps › Water &amp; atmosphere</code> — four seasonal wind sheets, currents, coastal tides, maritime access</td></tr>
+          <tr><td>Realm borders, roads, farming and trade</td><td><code>World › Maps › Life &amp; settlement</code> — realm territories, landmarks &amp; routes, border friction &amp; trade dependence, domestication &amp; farming, the agricultural calendar</td></tr>
+          <tr><td>Soils, bedrock, ore and oil</td><td><code>World › Maps › Terrain &amp; geology</code> — soils, soil properties, bedrock, geological survey, resource prospectivity</td></tr>
+          <tr><td>What a flood or a sea-level rise would cover</td><td><code>World › Maps › Water &amp; atmosphere › Sea-level scenario explorer</code>, and <b>Floodplain &amp; settlement exposure</b></td></tr>
+          <tr><td>How magic works in this world</td><td><code>Create › Brief › World constraints › Peoples &amp; magic</code>, and the impossible layer in <code>Advanced settings</code></td></tr>
+          <tr><td>Ask a cell what it is and why</td><td>Click any cell on the map — the cell inspector opens</td></tr>
+          <tr><td>Why is it raining here</td><td><code>World › Tools › Explain climate</code>, then click a cell</td></tr>
+          <tr><td>Measure a distance</td><td><code>World › Tools › Measure</code> (key <kbd>M</kbd>)</td></tr>
+          <tr><td>Roads, ports, passes and places of power on one sheet</td><td><code>World › Tools › Landmarks</code> (key <kbd>L</kbd>)</td></tr>
+          <tr><td>Zoom into one region and keep notes on it</td><td><code>World › Tools › Regional lens</code> (key <kbd>R</kbd>)</td></tr>
+          <tr><td>Raise a mountain, cut a strait, move a city</td><td><code>World › Tools › Sculpt</code> (key <kbd>S</kbd>)</td></tr>
+          <tr><td>Draw a circle and say what belongs in it</td><td><code>World › Tools › Sculpt › Describe a region</code></td></tr>
+          <tr><td>Rename one feature everywhere it appears</td><td><code>World › Tools › Sculpt › Select feature</code> › <b>Rename everywhere</b></td></tr>
+          <tr><td>A year of weather as a radar loop</td><td><code>World › Tools › Weather</code> (key <kbd>Y</kbd>)</td></tr>
+          <tr><td>Test a changed tilt, season or ocean</td><td><code>World › Tools › Climate Lab</code> (key <kbd>K</kbd>)</td></tr>
+          <tr><td>Plates, boundaries and what the Tectonic Director got</td><td><code>World › Tools › Tectonics</code> (key <kbd>T</kbd>)</td></tr>
+          <tr><td>Could this world exist?</td><td><code>World › Tools › Advisor</code> (key <kbd>A</kbd>)</td></tr>
+          <tr><td>The world as a landscape, a voxel model or a globe</td><td><code>World › Tools › 3D terrain</code></td></tr>
+          <tr><td>Compose a large layered drawing</td><td><code>World › Tools › Render</code> (key <kbd>N</kbd>)</td></tr>
+          <tr><td>Tilt a finished sheet so ridges stand up</td><td><code>World › Tools › Render › Saved renders</code> › <b>Oblique view</b> on a finished render</td></tr>
+          <tr><td>Put labels on a render</td><td>Render Studio › the lettering chooser, under the layer list</td></tr>
+          <tr><td>The illustrated plates</td><td><code>World › Atlas</code> tab</td></tr>
+          <tr><td>Draw plates you deferred during the build</td><td><code>World › Atlas › Render remaining plates</code></td></tr>
+          <tr><td>Print the atlas as a book</td><td><code>World › Export › Bound atlas, print-ready (PDF)</code></td></tr>
+          <tr><td>Plan a journey between two places</td><td><code>World › Travel</code> tab</td></tr>
+          <tr><td>A player-safe view of the world</td><td><code>World › Campaign</code> tab › <b>Present player view</b></td></tr>
+          <tr><td>A village, town or city plan</td><td><code>World › Scenes</code> › <b>Create or import settlement</b> (Settlement Studio)</td></tr>
+          <tr><td>A battlemap for Foundry, Roll20 or Fantasy Grounds</td><td>Settlement Studio › the export row: <b>Universal VTT (.dd2vtt)</b> or <b>Foundry scene</b></td></tr>
+          <tr><td>An encounter map with no world behind it</td><td><code>Library › Scenes and encounter maps</code></td></tr>
+          <tr><td>Give scene walls a height so they cast shadows</td><td>Scene settings › <b>Height and shadow</b></td></tr>
+          <tr><td>Rename realms, cultures, faiths, settlements in one place</td><td><code>Write › Codex › Rename everything</code></td></tr>
+          <tr><td>Write the prose the generator left blank</td><td><code>Write › Codex › Describe everything</code></td></tr>
+          <tr><td>Everything the world measured about a named thing</td><td><code>Write › Codex › Gazetteer</code></td></tr>
+          <tr><td>Invent a language and hear its names</td><td><code>Create › Brief › Peoples &amp; languages › Language families</code>, and <code>Write › Codex › Naming studio</code></td></tr>
+          <tr><td>Authored history, eras and events you can play</td><td><code>Write › Chronicle</code> tab</td></tr>
+          <tr><td>Write the book</td><td><code>Write › Manuscript</code> tab</td></tr>
+          <tr><td>Import a manuscript you already have</td><td><code>Write › Manuscript › Import book</code> (or <b>Import chapter</b>)</td></tr>
+          <tr><td>Readability and passive voice per chapter</td><td><code>Write › Manuscript › Book › Insights</code></td></tr>
+          <tr><td>Export the book to Word, Markdown, Scrivener, EPUB</td><td><code>Write › Manuscript › Book › Export book…</code></td></tr>
+          <tr><td>An Obsidian vault of the whole world</td><td><code>Write › Codex › Illustrated Obsidian vault (.zip)</code></td></tr>
+          <tr><td>Numeric rasters for QGIS</td><td><code>World › Export › Scientific rasters + metadata (.zip)</code></td></tr>
+          <tr><td>Coastlines as real polygons</td><td><code>World › Export › Coastlines + GIS features (GeoJSON)</code></td></tr>
+          <tr><td>A 3D print or a mesh for Blender</td><td><code>World › Export › Terrain surface (STL)</code> or <b>(OBJ)</b></td></tr>
+          <tr><td>Back the whole project up, or move it to another machine</td><td><code>World › Export › Complete project backup (.cartovox)</code>, restored with <code>Library › Import project backup</code></td></tr>
+          <tr><td>Build the same world again at a finer grid</td><td><code>World › World</code> drawer › <b>Rebuild at full simulation resolution</b></td></tr>
+          <tr><td>The same inputs under a different seed</td><td><code>World › World</code> drawer › <b>How this world was built › Reseed this world</b></td></tr>
+          <tr><td>Load a finished world's settings back into Create</td><td>Same fold › <b>Build another like this</b> or <b>Replicate this world</b></td></tr>
+          <tr><td>What the simulation thinks is wrong with this world</td><td><code>World › World</code> drawer › <b>Simulation health</b></td></tr>
+          <tr><td>Go back to an earlier version of the world</td><td><code>World › World</code> drawer › <b>Revision history</b>; <b>Create named checkpoint</b> marks one</td></tr>
+          <tr><td>A deleted world</td><td><code>Library › Trash</code> — 30 days for a saved world, 7 for a cancelled build</td></tr>
+          <tr><td>Theme, text size, units, density</td><td><code>Settings › Appearance</code> and <code>Accessibility</code> (<kbd>⌘,</kbd> / <kbd>Ctrl ,</kbd>)</td></tr>
+          <tr><td>Turn the helper sentences under controls on or off</td><td><code>Settings › Appearance › Explanations</code></td></tr>
+          <tr><td>Hide the specialist panels (or get them back)</td><td><code>Settings › Workspace &amp; layout › How much to show at once</code></td></tr>
+          <tr><td>Where worlds are stored, and how to move them</td><td><code>Settings › Data &amp; privacy › Change save folder</code></td></tr>
+          <tr><td>Reclaim disk without losing anything</td><td><code>Settings › Data &amp; privacy › Storage and display cache</code></td></tr>
+          <tr><td>Which version am I running</td><td><code>Settings › Updates &amp; support › About</code>; <b>Copy app info</b> for a bug report</td></tr>
+          <tr><td>Release notes, offline</td><td><code>Settings › Release notes</code></td></tr>
+          <tr><td>Report a bug</td><td><code>Settings › Updates &amp; support › Report a bug on Discord</code>, or <code>World › Tools › Report</code> for a specific map</td></tr>
+          <tr><td>The manual inside the app</td><td><b>Help</b>, bottom of the left rail</td></tr>
+          <tr><td>The welcome tour again</td><td><kbd>⌘K</kbd> / <kbd>Ctrl K</kbd> › type <b>Take the tool tour</b></td></tr>
+          <tr><td>Hide the interface and just look at the map</td><td><b>Focus map</b> in the dock (key <kbd>F</kbd>), or fullscreen beside it</td></tr>
+          <tr><td>Undo a terrain edit before it is applied</td><td>The Sculpt panel's own <b>Undo</b> / <b>Redo</b>, and <b>Discard edits</b></td></tr>
+          <tr><td>Print, paper size, dots per inch</td><td><code>World › Export › Bound atlas, print-ready (PDF)</code> — see <a href="#exports">everything that exports</a></td></tr>
+          <tr><td>Keyboard keys</td><td>Press <kbd>?</kbd> on the map, or <kbd>⌘/</kbd> in the manuscript</td></tr>
+        </tbody>
+      </table>
+      <p class="muted small">Nothing matched? The <a href="/features/">field guide</a> lists surfaces this index does not,
+      and the beta <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Discord</a> is the place to ask.</p>
+    </section>
+
+    <!-- ═══════════════════════ FIRST LAUNCH ═══════════════════════ -->
+    <section id="install">
+      <p class="eyebrow">Start here</p>
+      <h2>First launch</h2>
+      <p class="section-lede">
+        Two things stand between installing CartoVox and a world, and both are deliberate.
+      </p>
+      <ul class="feat">
+        <li><b>The licence.</b> The first window is the End User License Agreement. Tick <b>I have read and accept</b>
+          and <b>Unlock</b> becomes available. The same text stays readable at <code>Settings › Updates &amp; support › Licence</code>.</li>
+        <li><b>The access key.</b> Paste the key sent to you and choose <b>Unlock CartoVox</b>. Verification happens
+          entirely on your computer: no account, no activation server, no hardware fingerprint. The key is personal
+          to you and is stored in CartoVox's own application-data folder.</li>
+        <li><b>Then a six-panel tour</b> — what the app simulates, how you describe a world, trying seeds, the three
+          build sizes, drawing the atlas, and a finished world you can open on the spot. It appears once per version
+          and can be closed at any panel. The manual did not go anywhere: it is under <b>Help</b> at the foot of the
+          left rail.</li>
+        <li><b>Unsigned installers.</b> macOS Gatekeeper and Windows SmartScreen will warn you, because the builds are
+          not code-signed yet. Each release publishes checksums; install only the file shared in the beta Discord.</li>
+        <li><b>It makes no network request of its own.</b> No update check, no telemetry, no account. The only address
+          it opens is the loopback dashboard it started itself.</li>
+      </ul>
+      <div class="callout">
+        <span class="callout-t">If you want to see a finished world first</span>
+        <p><b>Build the example world</b> on the Create screen (and on an empty Library) builds <i>Eldrebrenn</i> from a
+        fixed recipe: a complete project with data maps, illustrated plates, dossier, codex and gazetteer. A measured
+        <b>83.9&nbsp;seconds and 179&nbsp;MB</b> on a fast Apple Silicon Mac. It is a real project in your own library —
+        open it, sculpt it, rename its realms, or throw it away. Nothing is built unless you press the button.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ SHAPE ═══════════════════════ -->
+    <section id="shape">
+      <p class="eyebrow">Orientation</p>
+      <h2>How the app is laid out</h2>
+      <p class="section-lede">
+        One window, five destinations, one record. Learn this and nothing is more than two clicks away.
+      </p>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-desk.webp" width="1800" height="1125" alt="The Library: four ways to begin across the top, saved worlds as cards below" loading="lazy" decoding="async"></div>
+        <figcaption>The Library. The four cards are the four ways in; the cards below are your worlds. The left rail is the same in every destination.</figcaption>
+      </figure>
+      <h3>The left rail</h3>
+      <table>
+        <thead><tr><th class="w22">Rail button</th><th>What lives there</th></tr></thead>
+        <tbody>
+          <tr><td><b>Search</b></td><td>A command palette and a library-wide index in one (<kbd>⌘K</kbd> / <kbd>Ctrl K</kbd>). Type a world, realm, settlement, natural region, lore entry, Chronicle era or campaign and jump to it — or type an action, such as “Define a tongue” or “Open Advanced world settings”, and it opens the panel.</td></tr>
+          <tr><td><b>Create</b></td><td>Everything before a world exists: the brief, seed search, Advanced settings, import, drawing, Deep Time. Tabs: <b>Brief</b>, <b>Deep Time</b>, <b>Compare</b>.</td></tr>
+          <tr><td><b>World</b></td><td>The finished world. Tabs: <b>Map</b>, <b>Atlas</b>, <b>Travel</b>, <b>Campaign</b>, <b>Scenes</b>.</td></tr>
+          <tr><td><b>Write</b></td><td>Names, lore and the book. Tabs: <b>Chronicle</b>, <b>Codex</b>, <b>Manuscript</b>.</td></tr>
+          <tr><td><b>Library</b></td><td>Saved worlds, the four ways in, the map gallery, project import, and the trash.</td></tr>
+          <tr><td><b>Layout</b></td><td>Hide regions of the interface — the top bar, rails, panels. Choices persist and a fixed handle always leads back.</td></tr>
+          <tr><td><b>Settings</b></td><td>This installation only: appearance, accessibility, layout, creation defaults, data, support, release notes.</td></tr>
+          <tr><td><b>Help</b></td><td>The five-minute manual, known limits, the licence, third-party notices, and a task-based tour of the tools.</td></tr>
+        </tbody>
+      </table>
+      <h3>Each workspace is a sheet on a desk</h3>
+      <ul class="feat">
+        <li><b>Create</b> is one strip of actions above a folding brief, with the doors into import and drawing in the
+          stage itself.</li>
+        <li><b>World</b> is map-first: the rendered map <i>is</i> the page. A two-segment pill at the top left —
+          <b>World</b>, <b>Maps</b> — opens the drawer beneath it. Everything that acts on the map is in the dock along
+          the bottom: <b>View</b>, <b>Export</b>, <b>Tools</b>, the zoom controls, <b>Focus map</b> and fullscreen.
+          The planet floats top right as its own card and can be put away; the colour key and the coordinate line sit
+          bottom left.</li>
+        <li><b>Write</b> is one strip above the page, with <b>More</b> and <b>Book</b> menus and a single panel switch.</li>
+        <li><b>Workspaces resume.</b> World and Write reopen on the tab you last used. <code>Settings › Workspace &amp;
+          layout</code> can turn that memory off without erasing it.</li>
+        <li><b>A long build keeps running while you work elsewhere.</b> The generation dock shows the phase, the plate
+          and an ETA, and survives navigating away or reloading.</li>
+      </ul>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-world-map.webp" width="1800" height="1125" alt="The World workspace: the map full-width, the World/Maps pill top left, the planet card top right, the dock along the bottom" loading="lazy" decoding="async"></div>
+        <figcaption>The World workspace. The line above the dock reads <code>1440 × 720 drawing · 1440 × 720 simulation · ~26.6 km/cell</code> — drawing density and simulated detail are never confused with each other.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ═══════════════════════ FIRST WORLD ═══════════════════════ -->
+    <section id="first">
+      <p class="eyebrow">Tutorial</p>
+      <h2>Your first world, start to finish</h2>
+      <p class="section-lede">
+        About a minute of computer time, on a machine that can run the app comfortably. Do this once and the rest of
+        the handbook will make sense.
+      </p>
+      <ol class="steps">
+        <li><b>Open Create.</b> If the four doors are showing, choose <b>Generate a new world</b>, then a purpose
+          (campaigning, climate study, an illustrated atlas, artwork, or writing). The purpose tunes which options are
+          visible; it is not a preset. <b>Skip — I know what I want</b> goes straight to the sheet.</li>
+        <li><b>Write two sentences</b> in <b>World thesis</b>: what the world is, what is scarce or contested, and what
+          the map must show. As you type, CartoVox reads it and offers each cue it recognised with its own <b>Apply</b>
+          button — it never edits your brief for you. <b>Use an example thesis</b> writes a worked one for the silhouette
+          you picked.</li>
+        <li><b>Pick a shape.</b> Fold <b>2 Planet &amp; geography</b> holds <b>Planet type</b> (Earth-like, Ice age, Lush
+          and warm, Tilted world, The long day, The long winter, Great moon, Young and violent, Greenhouse ocean, Thin
+          air, Dim star) and <b>Geography</b> (Balanced Earth-like, Pangaea, Shattered Archipelago, Inland Sea, Twin
+          Hemispheres, Rifted Continent, Drowned Interior, Fjordland, Equatorial Belt). They are separate choices, so
+          changing the kind of planet does not have to masquerade as changing its landmasses.</li>
+        <li><b>Set Simulation detail to Sketch.</b> A measured reference build finished in <b>30.5 seconds with an
+          illustrated atlas</b> on a fast Apple Silicon Mac. A Sketch is a real world, not a preview — every stage runs
+          and the saved archive holds the same members.</li>
+        <li><b>Press <span class="nowrap">Preview this seed</span></b> to see one candidate drawn in seconds, or
+          <b>Find 6 strong matches</b> to score a batch of seeds against the brief. Keep the one you like.</li>
+        <li><b>Read the two grey rows</b> above the sheet before you commit: <b>OUTPUT</b> says what you will get,
+          <b>COST</b> says how long and how much disk. The estimate learns from completed builds of the same shape on
+          your own machine.</li>
+        <li><b>Press the gold button.</b> It names what you are committing to — <b>Create Sketch world</b>,
+          <b>Create Quick world</b>, <b>Create full-resolution world</b>, or <b>Generate publication atlas</b>.
+          The build shows you the world as it makes it: land and relief appear about seven seconds into a Quick build,
+          and the map returns wearing its climate and biomes once rainfall and temperature have decided what grows where.</li>
+        <li><b>Open it.</b> The world lands in your Library and opens in <b>World</b>. Click a cell to ask it what it is.
+          Open <b>Maps</b> to see the other fifty-odd views of the same geography. Open <b>Atlas</b> for the illustrated
+          plates.</li>
+      </ol>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-create.webp" width="1800" height="1125" alt="The Create workspace: the action strip, the folding brief with a thesis and its reading, and the candidate search beside it" loading="lazy" decoding="async"></div>
+        <figcaption>Create. The strip carries the route, the setup counter, Advanced settings and the gold button; the brief folds into five numbered sections; the stage beside it is where seeds are previewed and shortlisted.</figcaption>
+      </figure>
+      <div class="callout">
+        <span class="callout-t">A Sketch can be promoted later</span>
+        <p>A coarser world can be rebuilt on a finer grid from <code>World › World</code> drawer › <b>Rebuild at full
+        simulation resolution</b>. That starts a <i>separate</i> project from the same seed and recipe and leaves the
+        original exactly as it was — coastlines, rivers, settlements, names and lore can all move on a finer grid, so
+        the world you liked stays available as the fallback.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ BRIEF ═══════════════════════ -->
+    <section id="brief">
+      <p class="eyebrow">Making a world</p>
+      <h2>Writing a brief the simulation can act on</h2>
+      <p class="section-lede">
+        The brief is five numbered folds. You can ignore all of them and press Generate; each one you fill in narrows
+        what the search will accept.
+      </p>
+      <table>
+        <thead><tr><th class="w26">Fold</th><th>What it holds</th></tr></thead>
+        <tbody>
+          <tr><td><b>1 Your story</b></td><td>The <b>World thesis</b> and its live reading, and <b>Story frame</b> (epic world history, and other frames that shape the emphasis of generated lore).</td></tr>
+          <tr><td><b>2 Planet &amp; geography</b></td><td><b>Planet type</b>, <b>Geography</b>, and <b>Star, orbit &amp; moon</b> — day length, year length, stellar flux, lunar tide. Each fold states what it does <i>not</i> model.</td></tr>
+          <tr><td><b>3 Peoples &amp; languages</b></td><td><b>Nations, cultures and tongues</b> — name realms and capitals before generation, request homeland traits, biomes, resources and trade goods, and drop a homeland pin with a visible search area. <b>Language families</b> blends real-language-inspired flavours by weight and previews a dozen names with glosses before the world exists.</td></tr>
+          <tr><td><b>4 World constraints</b></td><td><b>Land &amp; sea</b>, <b>Climate &amp; water</b>, <b>Peoples &amp; magic</b> — each a row of plain-language choices that summarise themselves in the fold's own header.</td></tr>
+          <tr><td><b>5 Tectonic intent</b></td><td>The <b>Tectonic Director</b>: craton nuclei, plate seeds, requested convergent/divergent/transform margins, drift bearings and speeds, and mantle hotspots. Partial intent is fine. The finished world reports which intentions were satisfied, compromised or impossible.</td></tr>
+        </tbody>
+      </table>
+      <ul class="feat">
+        <li><b>The thesis reading acts on words it knows and says so.</b> Words it read but could not act on are
+          reported back rather than dropped, and <b>Which words does it know?</b> prints its own vocabulary.</li>
+        <li><b>Hard and soft constraints are different things.</b> A standalone continent count in <b>Must have</b>
+          counts connected landmasses of at least 2 million km²; matches come before alternatives, misses state the
+          actual count, and the saved world re-checks itself against the brief after simulation.</li>
+        <li><b>“Lush” means fewer deserts, not more rain.</b> It weakens subtropical subsidence and strengthens inland
+          moisture recycling. “Few deserts” in a thesis and “Avoid: deserts” pull the same lever.</li>
+        <li><b>The setup guide is optional.</b> The strip shows <b>Setup · n/6</b>; <b>Show guide</b> walks the six
+          steps and names which simulation systems each setting affects. <b>Expert view</b> puts it away.</li>
+      </ul>
+
+      <h3 id="tiers">Sketch, Quick, Full — and what a build costs</h3>
+      <table>
+        <thead><tr><th class="w18">Tier</th><th class="w22">Grid</th><th>What it is for</th></tr></thead>
+        <tbody>
+          <tr><td><b>Sketch</b></td><td>Quarter resolution (360 × 180)</td><td>A whole world in about half a minute. Blocky coastlines, every stage run, the same archive members. A fast look at a seed you intend to keep.</td></tr>
+          <tr><td><b>Quick</b></td><td>Half resolution</td><td>Coarser coastlines, much faster. The usual working tier.</td></tr>
+          <tr><td><b>Full</b></td><td>The production grid</td><td>What every published map is drawn from.</td></tr>
+        </tbody>
+      </table>
+      <ul class="feat">
+        <li><b>Every tier runs the same simulation.</b> The difference is how many cells it was evaluated on, and
+          nothing else — the codex, dossier, gazetteer, data maps and exports all work on a Sketch.</li>
+        <li><b>The illustrated atlas is most of the run time whichever tier you choose.</b> Hand-drawn plates are the
+          slow stage; the Create sheet says so above the button.</li>
+        <li><b>The preflight reports disk before it starts</b>, for the chosen grid, finish and sheet set, and keeps a
+          1 GiB reserve. Current reference bands: 45–100 MiB for Quick, 180–360 MiB for Full without illustrated
+          plates, 337–883 MiB for Full with every publication plate. CartoVox warns above 500 MiB.</li>
+        <li><b>Interrupted runs are detected</b> and can be resumed from their stage checkpoint or removed.
+          <b>Stop after this plate</b> finishes the current image cleanly and stores the rest.</li>
+      </ul>
+
+      <h3 id="seeds">Searching seeds, and choosing one</h3>
+      <ul class="feat">
+        <li><b>Preview this seed</b> draws one candidate — approximate, nothing saved. <b>Find 6 strong matches</b>
+          scores reproducible seeds against every measurable requirement. <b>Search depth</b> sets how many it tries:
+          <b>Quick</b> 18 seeds, <b>Thorough</b> 36 (the default), <b>Deep</b> 72. Nothing is saved by a search.</li>
+        <li><b>Candidate cards</b> keep Preview, Compare and More in one row and the consequential build button on its
+          own. They distinguish checks that were <i>measured</i> from constraints that still need your judgement, and
+          previews are labelled approximate because the production grid can change small islands.</li>
+        <li><b>Show 24 controlled variations</b> offers structurally distinct alternatives of the same brief.</li>
+        <li><b>Favourite, reject and annotate.</b> Favourites and rejections become an adjustable <b>taste signal</b> for
+          later searches; hard constraints stay authoritative, and your notes never leave the browser.</li>
+        <li><b>Results survive.</b> A run's settings are kept even when it fails or is cancelled, and <b>Last generated</b>
+          is written automatically in a reserved recipe slot at the start of every run — so the settings behind a
+          disappointing world are never lost.</li>
+      </ul>
+
+      <h3 id="advanced">Advanced settings, presets and recipes</h3>
+      <p>
+        <code>Create › Advanced settings</code> is the whole simulation: <b>306 inputs</b> in twenty groups, in the order
+        the simulation uses them — identity and grid, the planet (23), terrain import, tectonics (plates 9, continents 13,
+        relief 66), presentation of the sphere, climate (temperature 11, circulation 8, rainfall 12, ocean 2), hydrology
+        (44), surface geology and soils, glacial history, geological resources, biomes, the impossible layer (13),
+        civilisation (29), naming (7) and output (31). Nothing is hidden in a module; every field carries a note and its
+        allowed range.
+      </p>
+      <ul class="feat">
+        <li><b>Settings are bounded only where a value would break the simulation</b>, not where it would merely make a
+          strange world. A 62° tilt with tropical poles is reachable.</li>
+        <li><b>Recipes.</b> <b>Save as recipe</b> keeps the preset plus only the settings you changed.
+          <b>Export recipe</b> / <b>Import from file</b> moves one between machines; imports preview and ask before
+          applying. Every generated world also writes a <b>world recipe</b> beside itself — seed, preset, changed
+          settings, brief and thesis, nations, tectonic intent, output options and the imported or drawn foundation map.</li>
+        <li><b>Changing the world shape asks first</b> — “Discard 3 changed settings?” — and <b>Clear overrides</b> says
+          how many it will lose. The sheet survives a reload, and the Create strip carries the override count.</li>
+      </ul>
+
+      <h3 id="atlas-build">The illustrated atlas: finish, plates, lettering</h3>
+      <ul class="feat">
+        <li><b>Plate finish</b> — <b>Draft</b> for faster review, <b>Publication</b> for full detail.</li>
+        <li><b>Atlas plates</b> — choose <b>World plate</b>, <b>Continents</b> and <b>Regions</b> independently.</li>
+        <li><b>Atlas lettering</b> — <b>Labeled only</b>, <b>No labels</b>, or <b>Both versions</b> from the same
+          illustrated base. The missing variant can be added later without re-simulating.</li>
+        <li><b>Lake detail</b> changes relief and illustrated drawing only — scientific views and lake data stay complete.</li>
+        <li><b>Deferred plates are not lost.</b> <code>World › Atlas › Render remaining plates</code> draws them later
+          from saved data, and <b>Best-quality drawings</b> redraws a Quick world's eligible maps at 4× from the exact
+          saved simulation without changing any geography.</li>
+      </ul>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-atlas.webp" width="1800" height="1125" alt="The Atlas tab: reading desks on the left, the plate list on the right" loading="lazy" decoding="async"></div>
+        <figcaption>The Atlas tab. <b>Choose a reading desk</b> groups the maps a particular kind of reader wants — Royal Surveyor, Bluewater Navigator, Field Naturalist, Monastery Copyist — and the plate list below holds the world, continent, region and city sheets in labelled and unlabelled form.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ═══════════════════════ IMPORT ═══════════════════════ -->
+    <section id="import">
+      <p class="eyebrow">Making a world</p>
+      <h2>Bringing in a map you already have</h2>
+      <p class="section-lede">
+        Import and Draw are one door — <code>Create › Import/Draw</code> — because they were always one room. CartoVox
+        keeps your coastline and simulates everything else on top of it: climate, rivers, biomes, settlements, names and lore.
+      </p>
+      <ol class="steps">
+        <li><b>Give it the file.</b> PNG, JPEG, TIFF, numeric height grids, GeoJSON land outlines, shapefiles, GeoTIFFs,
+          Azgaar exports, and OBJ or STL terrain surfaces. Limits scale with free disk and are reported before the import.</li>
+        <li><b>Check the coastline reading.</b> The reader tells pale oceans, dark silhouettes with lakes, sepia maps,
+          painted biome maps and true heightfields apart, and says which way it read your sheet. Correct it with
+          <b>Paint land</b> / <b>Paint water</b>, freeze an area with <b>Protect region</b> (shown in gold), or trace it
+          yourself — <b>Magnetic tracing</b> follows the picture's own edges between the anchors you click.
+          <b>Auto trace</b> offers <b>Fine</b>, <b>Balanced</b> or <b>Smooth</b> outlines and reports what it removed.</li>
+        <li><b>Answer the rivers question.</b> Under <b>The rivers on this map</b>, blue lines are read as rivers where
+          they are narrow — wide water stays a lake or a sea — and the reading is drawn over your map in blue with a
+          count. <b>Keep the rivers I drew</b> cuts each one into the surface as a strictly descending channel, so the
+          hydrology solver's lowest path is your line. <b>Let CartoVox put the rivers</b> still takes them out of the
+          coastline, so your continent is whole, but leaves where the water runs to the terrain, rainfall and slope the
+          simulation solves. <b>They are not rivers</b> keeps the blue as water — right for straits and fjords, and the
+          only answer that leaves an inlet cut into your land. Either way, lakes and inland seas stay water, and the
+          finished world states in plain words which of the three it was built with.</li>
+        <li><b>Say how big your map is.</b> <b>Your land on the planet</b> takes the share you want — <i>4%</i> — and
+          CartoVox resizes the map to reach it, measuring land only and on the sphere, so ground near the poles does not
+          count for more than it is. The panel names the full range your sheet can reach and says plainly when you ask
+          for one it cannot. <b>Ocean kept around your land</b> trims the sea you painted around your own coast, which
+          raises that ceiling; the coastline itself is never touched.</li>
+        <li><b>Answer the questions the map leaves open</b> — where borrowed relief should gather, how high the peaks
+          reach, whether the land is young or worn, how deep the seas are, how wet and warm the world is. Every answer
+          is an ordinary Advanced setting, and an unanswered question keeps the preset.</li>
+        <li><b>Generate.</b> Provenance records that the coastline was imported or traced and over which file.</li>
+      </ol>
+      <div class="callout">
+        <span class="callout-t">Two things that used to catch people out</span>
+        <ul>
+          <li><b>The map stays attached to Create.</b> An imported or drawn map keeps replacing the geography of
+            everything generated from that sheet until you remove it. The <b>Foundation map</b> row on Create names it
+            beside the button that uses it, and <b>Remove map</b> is in that row and in the map review.</li>
+          <li><b>Advanced settings and the map review share a column.</b> Use the <b>Map review</b> / <b>World settings</b>
+            switch above them; <b>Advanced settings</b> opens the settings sheet, and a newly arrived map opens its
+            review, because a coastline wants checking first.</li>
+        </ul>
+      </div>
+
+      <h3 id="draw">Drawing one instead</h3>
+      <ul class="feat">
+        <li><b>A full-screen desk with an icon rail</b>, one button per group: <b>Navigate</b> (pan, zoom, fit, undo),
+          <b>Land</b> (land, water, outlines, islands), <b>Relief</b> (raise, lower, smooth, flatten, ranges),
+          <b>Cover</b> (forest, grassland, desert, wetland, tundra, ice), <b>Water</b> (rivers), <b>Realms</b> (kingdom
+          borders, cities, roads), <b>Annotate</b> (labels and landmarks), <b>World</b> (starting shape, canvas size,
+          graticule, HD region) and <b>Reference</b> (trace over a picture). The ocean wraps east–west, because it is a
+          planet.</li>
+        <li><b>Rivers are carved as descending valleys</b> so the solver has a lowest path to follow, and the finished
+          world reports how much of each drawn river it actually followed rather than claiming it obeyed you. Beside the
+          river tool is the same choice the importer offers: keep the ones you draw, or let CartoVox put them.</li>
+        <li><b>Labels, borders, cities, land cover, roads and landmarks</b> return as an author-canon layer on the
+          finished map. Drawn borders and cities are honoured by the build — and hold their positions against the
+          generator's next pass — and are reported when they cannot be.</li>
+        <li><b>Drop in a reference image</b> and the coastline is previewed automatically; <b>Mark land</b> /
+          <b>Mark water</b> and <b>Detect coastline</b> correct it and <b>Apply coastline</b> is one undoable change.</li>
+        <li><b>Save the drawing</b> as a PNG heightmap, GeoJSON, STL or OBJ and reopen it later. <b>Use this drawing</b>
+          hands it to the same coastline review an import gets.</li>
+      </ul>
+
+      <h3 id="deeptime">Deep Time</h3>
+      <p>
+        <code>Create › Deep Time</code> is the geological foundry. Choose a <b>Duration</b> of 300, 420 or 600 million
+        years, a number of <b>Major plates</b> (5 to 24, twelve by default), a <b>Tectonic tempo</b> from gentle to
+        restless, a crust target, and whether <b>Milankovitch cycles</b> and the opt-in <b>Ice, isostasy &amp; sea
+        level</b> feedback model run. <b>Look ahead</b> keeps the run going past the era you build from, so the timeline
+        shows where those plates go next.
+      </p>
+      <p>
+        Paint an initial supercontinent or let one be built, run the breakup, spreading, subduction, collision, suturing
+        and erosion, then scrub every saved era with play, pause, four speeds and a narration of each era's dominant
+        events. Keeping an era hands the finished world its plate inventory, welded groups, terranes, crust age and
+        thickness, rift progress and relief — and the brief on the Create sheet still decides the climate, peoples and
+        names the world gets on top of it. An import and a Deep Time era cannot be combined: they are competing
+        foundations, and the app says so.
+      </p>
+    </section>
+
+    <!-- ═══════════════════════ MAP ═══════════════════════ -->
+    <section id="map">
+      <p class="eyebrow">Working a finished world</p>
+      <h2>The map, and the fifty-odd views of it</h2>
+      <p class="section-lede">
+        <code>World › Maps</code> opens the catalogue. Every view is the same geography seen a different way, and each
+        carries a reading key and a plain-language statement of how it was made.
+      </p>
+      <table>
+        <thead><tr><th class="w26">Group</th><th>What is in it</th></tr></thead>
+        <tbody>
+          <tr><td><b>Terrain &amp; geology</b> (12)</td><td>Physical relief, four globe views, tectonic plates, crust age &amp; igneous provinces, soils, soil properties, bedrock, geological survey, glacial legacy, resource prospectivity, natural regions, mountain ridge systems.</td></tr>
+          <tr><td><b>Climate &amp; seasons</b> (8)</td><td>Annual temperature, annual rainfall, seasonal range, aridity, Köppen classification, sea ice &amp; winter extent, seasonal temperature, seasonal precipitation.</td></tr>
+          <tr><td><b>Water &amp; atmosphere</b> (17)</td><td>Drainage area, the sea-level scenario explorer, watersheds, groundwater &amp; aquifers, water security, moisture provenance, river hierarchy, floodplain &amp; settlement exposure, river permanence, lake regimes, ocean currents, coastal tides, maritime access &amp; port catchments, and the four seasonal wind sheets.</td></tr>
+          <tr><td><b>Life &amp; settlement</b> (8)</td><td>Biomes, realm territories, border friction &amp; trade dependence, biome key, settlement, landmarks &amp; routes, domestication &amp; farming, agricultural calendar &amp; growing windows.</td></tr>
+          <tr><td><b>Cartography</b> (9)</td><td>Tolkien sepia, antique nautical, modern atlas, clean land &amp; water base, simulated realm territories, black &amp; white print, grimdark, Swiss analytical relief, and a vector sheet that zooms without blurring.</td></tr>
+          <tr><td><b>Atlas plates</b></td><td>The illustrated world, continent, region and city plates, labelled and unlabelled — as many as your world has.</td></tr>
+          <tr><td><b>Projections</b></td><td>The same sheet drawn through the projection choices.</td></tr>
+        </tbody>
+      </table>
+      <h3>The View menu</h3>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-view-menu.webp" width="1800" height="1125" alt="The View menu open above the dock: map colours, projection, detail and the map aids row" loading="lazy" decoding="async"></div>
+        <figcaption><code>World › View</code>. Everything here is presentation: it changes what you are looking at, never what was simulated.</figcaption>
+      </figure>
+      <ul class="feat">
+        <li><b>Planet</b> shows or hides the floating globe card (key <kbd>P</kbd>).</li>
+        <li><b>Map colors</b> is the palette — Natural and the others. <b>Detail</b> is how densely the open map is
+          redrawn from the saved fields; <b>Auto</b> is the default. Drawing density is not simulation detail.</li>
+        <li><b>Projection</b> — <b>Stretched</b> (the simulation's own sheet), <b>Equal Earth</b>, <b>Robinson</b>,
+          <b>Mollweide</b>, <b>Web Mercator</b>, <b>Gott double disk</b>. The meridian a sheet opens at is part of the
+          view, so it resets with the zoom and the pan each time a sheet is shown.</li>
+        <li><b>Map aids</b> — <b>Minimap</b> (<kbd>I</kbd>), <b>Split view</b> (<kbd>V</kbd>), <b>Render</b> (<kbd>N</kbd>),
+          <b>Time strip</b> (<kbd>H</kbd>), <b>HD region</b> (<kbd>D</kbd>), <b>Grid</b> (<kbd>G</kbd>).</li>
+      </ul>
+
+      <h3 id="tools">The Tools menu, one row at a time</h3>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-tools-menu.webp" width="1800" height="1125" alt="The Tools menu open as a grid of fourteen instruments above the dock" loading="lazy" decoding="async"></div>
+        <figcaption><code>World › Tools</code> is the one grid of everything that acts on the world: inspect, measure, shape, render, analyse.</figcaption>
+      </figure>
+      <table>
+        <thead><tr><th class="w22">Tool</th><th class="w8">Key</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><b>Measure</b></td><td><kbd>M</kbd></td><td>Great-circle distances on the sphere, not on the picture.</td></tr>
+          <tr><td><b>Landmarks</b></td><td><kbd>L</kbd></td><td>Roads, sea lanes, settlements, passes, places of power and your own landmarks on one sheet.</td></tr>
+          <tr><td><b>Explain climate</b></td><td><kbd>C</kbd></td><td>Choose a cell and get the measured causes of its climate, including the upwind moisture path.</td></tr>
+          <tr><td><b>Regional lens</b></td><td><kbd>R</kbd></td><td>A temporary close view centred where you choose. It can become a parent-linked child map with its own notes, pins and hand-drawn routes.</td></tr>
+          <tr><td><b>Report</b></td><td>—</td><td>Report something wrong with this map.</td></tr>
+          <tr><td><b>Turn world</b></td><td>—</td><td>Drag sideways to move the meridian the sheet is cut at, so a continent split across the edges can be brought to the middle. It is a mode you enter: off, a drag pans and a scroll zooms. <b>1:1</b> is the way home. Offered only to sheets that can carry a turn — an atlas plate's frame and lettering cannot be re-drawn about another meridian, and the tool greys out and says why.</td></tr>
+          <tr><td><b>3D terrain</b></td><td>—</td><td>The saved terrain as a landscape, a voxel model, or a planet you can drag.</td></tr>
+          <tr><td><b>Sculpt</b></td><td><kbd>S</kbd></td><td>Raise and lower terrain before re-simulating. <a href="#sculpt">Below</a>.</td></tr>
+          <tr><td><b>Render</b></td><td><kbd>N</kbd></td><td>Render Studio: a large layered drawing of this world. <a href="#render">Below</a>.</td></tr>
+          <tr><td><b>Climate Lab</b></td><td><kbd>K</kbd></td><td>Test how this world's climate answers a changed season, tilt or ocean — bounded, and without changing canon.</td></tr>
+          <tr><td><b>Weather</b></td><td><kbd>Y</kbd></td><td>Play a year of weather as a world-wide radar loop: rain, wind, pressure, storms, ice and tides.</td></tr>
+          <tr><td><b>Tectonics</b></td><td><kbd>T</kbd></td><td>The generated plates and boundaries, and which of your tectonic intentions were satisfied, compromised or impossible.</td></tr>
+          <tr><td><b>Erosion Lab</b></td><td><kbd>E</kbd></td><td>What erosion moved, and what it approximates.</td></tr>
+          <tr><td><b>Advisor</b></td><td><kbd>A</kbd></td><td>Planet Advisor: could this world exist? Plates, rivers, climate and biomes checked against each other, where people would thrive, and the chain from soil to polity as maps.</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="inspect">Asking the map why</h3>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-cell-inspector.webp" width="1800" height="1125" alt="The cell inspector open over the map, listing decisive, supporting and uncertain causes for the selected cell" loading="lazy" decoding="async"></div>
+        <figcaption>Click any cell. The inspector separates what was <b>decisive</b> from what was <b>supporting</b> and what is <b>uncertain</b>, and each row jumps to the map that shows it.</figcaption>
+      </figure>
+      <ul class="feat">
+        <li><b>Every map states what kind of thing it is</b> — a simulated field, a deterministic derivative, a proxy, a
+          heuristic, a render-only detail, an authored override, or a reversible scenario — with its scale, its
+          limitations and a provenance JSON you can export.</li>
+        <li><b>Simulation health</b> in the <b>World</b> drawer scores the world out of 100 and explains unusual
+          tectonic, climate, terrain, biome, river and data-integrity signals. A finding can jump to the relevant map
+          and cell, and some can prepare a conservative sculpt brush — but nothing changes the world until you confirm
+          a full re-simulation, and the resulting revision records whether that repair resolved, improved, persisted or
+          worsened its source finding.</li>
+        <li><b>The sea-level scenario explorer</b> previews bounded coastline changes and exposed or submerged area on
+          the sphere without changing canon or re-simulating.</li>
+      </ul>
+
+      <h3 id="sculpt">Changing the world</h3>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-sculpt.webp" width="1800" height="1125" alt="The Sculpt workbench docked to the map with its list of change types and brush shape controls" loading="lazy" decoding="async"></div>
+        <figcaption>Sculpt is four steps in order: choose a change, place it on the map, inspect the terrain result, then <b>Apply &amp; re-simulate</b>.</figcaption>
+      </figure>
+      <ul class="feat">
+        <li><b>The changes</b> — Peak, Ridge, Plateau, Island, Strait, River valley, Basin, Deep water, Coast, Flatten,
+          Smooth, Detail, Protect area, Preserve terrain, Settlement, Story pin, and <b>Describe a region</b>.</li>
+        <li><b>Size a brush on the map.</b> A click places it exactly as the panel describes; holding the pointer and
+          dragging states the footprint in kilometres on the map itself, and releasing hands the pointer the height.
+          A stroke is a row of ordinary nudges spaced on the ground, so the same gesture means the same thing at any zoom.</li>
+        <li><b>Ridge and River valley are trails.</b> Click each peak or bend in turn, hold any one of them to give that
+          summit its own height, and finish on the last point. The whole crest is one edit — previewed, undone, listed
+          and re-simulated as a single record.</li>
+        <li><b>Describe a region</b> is the shape-with-a-sentence tool: draw a circle or a square and say what belongs
+          there. Words naming something CartoVox can place get it placed — a named region on the map, a page in the
+          codex, an entry in the gazetteer, carrying your own words as its lore. Words describing ground —
+          <i>volcanic</i>, <i>highlands</i>, <i>sunken</i> — move the ground through the same sculpt records a hand edit
+          would have written. Words it could not place are reported rather than dropped.</li>
+        <li><b>Select feature</b> acts on generated things: <b>Rename everywhere</b>, <b>Choose new location</b> for a
+          settlement, <b>Reroute around here</b> for a road, and band-by-band reshaping of a classification boundary.</li>
+        <li><b>Nothing changes until you apply.</b> Terrain edits then rebuild climate, rivers, biomes, settlements,
+          routes, names, lore and maps. <b>Build comparison draft</b> makes an isolated draft from the pending edits so
+          you can see exactly what moved before keeping it — the original world is never written to. While a rebuild is
+          running the Library shows the project as <b>Rebuilding edits</b> rather than as finished.</li>
+      </ul>
+
+      <h3 id="render">Render Studio</h3>
+      <ul class="feat">
+        <li><b>One composition per render</b>, from 1K to 16K, with every checked ingredient also written out as its own
+          editable PNG layer. It does not re-run the world or add simulation detail below a saved cell.</li>
+        <li><b>Art direction first, layers second.</b> Choose one visual language, preview it, then apply it as a single
+          undo step; then tune palette, ocean depth bands, relief depth, contour interval, grid spacing, scale-bar units
+          and settlement density.</li>
+        <li><b>Lettering</b> places saved realm, region, river, road and sea-lane names with a hierarchy-aware placer,
+          and leaves as an editable <code>labels.svg</code>.</li>
+        <li><b>Terrain into artwork</b> converts saved relief, tectonics, biomes, canopy, wetlands and snowline into
+          editable vector mountains, hills, volcanoes, trees and reeds. One undo restores the procedural map; the
+          simulation is untouched.</li>
+        <li><b>Oblique view</b> sits beside a finished render in the saved list. It tilts the finished sheet until the
+          terrain has a far side — a river stays in its valley and a name stays on its town, because they are the same
+          pixels. The scale bar, compass and graticule stay flat on the paper, and the picture says on screen and inside
+          the PNG that its vertical scale is invented. Your render is untouched; the oblique is a separate picture beside it.</li>
+        <li><b>Maps are saved with the world</b> and included in its project backup, with their own version history.</li>
+      </ul>
+    </section>
+
+    <!-- ═══════════════════════ TRAVEL ═══════════════════════ -->
+    <section id="travel">
+      <p class="eyebrow">Working a finished world</p>
+      <h2>Journeys</h2>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-travel.webp" width="1800" height="1125" alt="The Travel tab: endpoints, mode, season, objective and party size beside the route map" loading="lazy" decoding="async"></div>
+        <figcaption><code>World › Travel</code> routes between named settlements over the saved terrain, biomes, roads, realms, rivers, seasonal runoff, ocean currents, hazards and resource provinces.</figcaption>
+      </figure>
+      <ul class="feat">
+        <li><b>Mode</b> — On foot, Horseback, Caravan, or Sailing ship. A ship is offered only where both endpoints are
+          reachable by sea, and says so when they are not.</li>
+        <li><b>Season</b> — Typical year, Midwinter, Spring, Midsummer, Autumn. <b>Objective</b> — Balanced, Fastest,
+          Safer, Trade road. <b>Party size</b> feeds supplies.</li>
+        <li><b>Land journeys</b> report elevation, roads, supplies, dry stretches, markets and tolls. <b>Ships</b> instead
+          report wind and current assistance, open-water legs, port intervals, sea hazards, and cargo and potable-water
+          capacity.</li>
+        <li><b>Map beneath the route</b> swaps the sheet the route is drawn on, so you can read it against biomes,
+          rainfall, soils or plates.</li>
+        <li><b>Save journey to campaign</b> keeps it with a campaign profile, and the journey travels into campaign
+          exports with its weather by departure day.</li>
+      </ul>
+
+      <h3 id="campaign">Campaigns and the player view</h3>
+      <ul class="feat">
+        <li><b>A campaign profile</b> carries an author name, a player title and introduction, a player base map, and
+          explicit lists of <b>visible map layers</b> and <b>visible lore categories</b>.</li>
+        <li><b>Secret pins and wonders</b> stay hidden until revealed. <b>Discovery snapshots</b> capture what the table
+          knew at a moment.</li>
+        <li><b>Present player view</b> hides the authoring interface entirely; <b>Player atlas</b> is the shareable
+          reading of the same world. Multiple profiles can sit on one world.</li>
+      </ul>
+    </section>
+
+    <!-- ═══════════════════════ SETTLEMENTS ═══════════════════════ -->
+    <section id="settlements">
+      <p class="eyebrow">Working a finished world</p>
+      <h2>Towns, scenes and battlemaps</h2>
+      <p class="section-lede">
+        Settlement Studio plans a place from its street graph outward: blocks are cut from the streets, lots from the
+        blocks, and buildings placed in the lots — rather than rectangles scattered across a footprint.
+      </p>
+      <ol class="steps">
+        <li><b>Open it</b> from <code>World › Scenes</code> (or <code>Library › Scenes and encounter maps</code>) →
+          <b>Create or import settlement</b>.</li>
+        <li><b>Choose a saved world and a place.</b> Selecting a capital, regional centre, town or village loads its
+          terrain, climate, hydrology, groundwater, farming and approach-road evidence automatically — you do not enter
+          river or water information by hand. A standalone settlement with no world behind it is also possible; it starts
+          from stated assumptions you can edit.</li>
+        <li><b>Pick a plan.</b> Street village along one road, houses around a common green, crossroads town, winding
+          lanes, ring town, two joined neighbourhoods, harbour rows along a quay, hilltop terraces — or let the setting
+          choose. <b>Footprint bias</b> and <b>Building style</b> shape the rest.</li>
+        <li><b>Save it as a scene</b>, then add artwork, labels, hotspots and world links in the scene editor.</li>
+        <li><b>Export for the table.</b> <b>Universal VTT (.dd2vtt)</b> — read by Foundry through the Universal Battlemap
+          Importer, by Roll20 through the community importer, and natively by Fantasy Grounds and Arkenforge — or a
+          <b>Foundry scene</b> that Foundry opens with no module at all. Choose a square of five feet, ten feet, one
+          metre or two; the export tells you how many squares the place is before you open it somewhere it will not fit.</li>
+      </ol>
+      <ul class="feat">
+        <li><b>What blocks line of sight is decided, not guessed.</b> Buildings, town walls, towers and rock block sight;
+          fences and pens go in the objects list, because a waist-high fence stops a cart and not a view; gates become
+          doors that open; roads and fields are not obstacles.</li>
+        <li><b>Only forges are exported as lights.</b> A forge is a fire and the simulation says so. Nothing else in a
+          CartoVox settlement is a light source, and the export says that the rest is the referee's to place.</li>
+        <li><b>Scenes need no world at all.</b> <code>Library › Scenes and encounter maps</code> makes a canvas —
+          square, wide, landscape, portrait or tall — with drawing layers, lights, art directions and nested scenes.</li>
+        <li><b>Height and shadow.</b> Give a wall, tower, column or table a height in your scene's own feet or metres and
+          it stands up, lit by one sun for the whole sheet, so a standing tower and a collapsed one stop looking the
+          same. Twice as tall is twice as long a shadow. Nothing tilts: every footprint stays on the square it is on,
+          and the sheet says the heights are yours rather than measured.</li>
+      </ul>
+    </section>
+
+    <!-- ═══════════════════════ CANON ═══════════════════════ -->
+    <section id="canon">
+      <p class="eyebrow">Names, lore, the book</p>
+      <h2>Rename everything, and describe everything</h2>
+      <p class="section-lede">
+        These two sheets in <code>Write › Codex</code> are the single most-missed part of the application. Before 0.9,
+        two fields out of twenty-six were reachable.
+      </p>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-describe-everything.webp" width="1800" height="1125" alt="The Describe everything sheet: one realm's fields for government, motto, strength, weakness and its ruler" loading="lazy" decoding="async"></div>
+        <figcaption><b>Describe everything</b>. The generator leaves prose blank rather than inventing it, and says how many fields are still open. Those are questions, not missing data.</figcaption>
+      </figure>
+      <ul class="feat">
+        <li><b>Rename everything</b> — every named thing in the world on a single editable sheet: realms, cultures,
+          faiths, places of power, settlements. A canonical name propagates through maps, dossiers, lore, routes,
+          tongues, exports and later revisions.</li>
+        <li><b>Describe everything</b> — the prose of the world in one place. Every culture's diet, burials and taboos;
+          every ruler's character and secret; most of every faith. A typical world ships with roughly a hundred empty
+          fields, and the sheet can show you only those.</li>
+        <li><b>Cities and towns can be described too</b>, and what you write is read back everywhere they are read: the
+          dossier, the vault and search.</li>
+        <li><b>Measured findings are left alone.</b> A place of power's kind is read off the simulation, so the sheet
+          does not offer to edit it.</li>
+        <li><b>Lore is a proposal until you accept it.</b> Geography and measurements are derived; social history,
+          politics and story hooks are explicitly non-canon until you accept or edit them.</li>
+      </ul>
+
+      <h3 id="codex">The Codex</h3>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-codex.webp" width="1800" height="1125" alt="The Codex: seventeen sections down the left, the world's measured author questions on the right" loading="lazy" decoding="async"></div>
+        <figcaption>The Codex opens on the questions the world raises — each one measured, each one with <b>Show on map</b> and <b>Write answer</b>.</figcaption>
+      </figure>
+      <p>
+        Seventeen sections: Overview, Questions this world raises, Your canon, Import lore, Lands, Gazetteer, Realms
+        &amp; geopolitics, Cultures, History, Faith questions, Trade &amp; economy, Places of power, Story hooks, Naming
+        studio, Rename everything, Describe everything, and the Physical dossier. <b>Import lore</b> turns CSV rows and
+        Markdown files into author-owned vault pages with typed place, character, faction and event records, pins on the
+        world map, and reviewed relationships. The <b>Gazetteer</b> is a dossier for every named thing in the world.
+      </p>
+
+      <h3 id="chronicle">Chronicle</h3>
+      <p>
+        Geological <b>Deep Time</b> and human-scale <b>Chronicle</b> are deliberately separate. Chronicle can import the
+        generated lore timeline, add authored eras and point, route or area events, retain persistent consequences, and
+        play the changing historical map forward.
+      </p>
+    </section>
+
+    <!-- ═══════════════════════ MANUSCRIPT ═══════════════════════ -->
+    <section id="manuscript">
+      <p class="eyebrow">Names, lore, the book</p>
+      <h2>The manuscript editor</h2>
+      <p class="section-lede">
+        The book lives inside the same vault as the lore, so a distance, a date or a name cannot drift between your map
+        and your novel.
+      </p>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-manuscript.webp" width="1800" height="1125" alt="The Manuscript tab: the binder on the left, one chapter on the page, the formatting strip above" loading="lazy" decoding="async"></div>
+        <figcaption><code>Write › Manuscript</code>. One strip above the page: the chapter menu, the formatting bar, <b>More</b>, the lenses, <b>Book</b>, the panel switch and <b>Save</b>.</figcaption>
+      </figure>
+      <ul class="feat">
+        <li><b>The binder</b> holds books and chapters with word counts and drafts; <b>New book</b>, <b>Import book</b>,
+          <b>Import chapter</b> and a trash that can be emptied. A book brings its chapters with it.</li>
+        <li><b>The formatting strip</b> keeps nine marks — bold, italic, H2, quotation marks, bullets, <b>Scene</b>,
+          <code>[[ ]]</code> links, undo and redo — because those are pressed as often as bold is. Everything else
+          from the old toolbar is under <b>More</b>: H1, H3, paragraph styles, numbered lists, a scene break, links,
+          alignment, indents, page break, the named styles (plain, first paragraph, verse, letter, epigraph),
+          <b>Note</b>, <b>Focus</b>, <b>Sprint</b>, the shortcut sheet, the lenses and <b>Insert map…</b>. The
+          <b>Chapter</b> menu renames, duplicates, moves and trashes the chapter you are in.</li>
+        <li><b>Lenses</b> (under <b>More</b>) read what you have written: sentence rhythm, dialogue, overused words,
+          dialogue tags, world names, passive voice. <b>Book › Insights</b> scores readability and passive voice per
+          chapter and per book.</li>
+        <li><b>The panel switch</b> — <b>Chapter</b>, <b>World</b>, <b>Find</b>, <b>Style</b>. The World panel puts the
+          world's own names, places and dossiers beside the page, and <b>More › Insert map…</b> drops any sheet,
+          plate or city plan into the text as a captioned figure.</li>
+        <li><b>Read book</b> is a paged reading view; <b>Outline</b> is the structure. <b>Export book…</b> writes a Word
+          document (.docx, with real footnotes), Markdown, a Scrivener package, a web page, or an EPUB.</li>
+        <li><b>It stays quick in a long book.</b> Saving no longer re-reads every chapter in the world: typing in a large
+          imported book went from 832 ms of blocking to 0, opening a chapter with unsaved edits from 279 ms to 38, and a
+          single autosave from 262 ms to 8.</li>
+      </ul>
+    </section>
+
+    <!-- ═══════════════════════ EXPORTS ═══════════════════════ -->
+    <section id="exports">
+      <p class="eyebrow">Reference</p>
+      <h2>Everything that leaves CartoVox</h2>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-export-menu.webp" width="1800" height="1125" alt="The Export menu open above the dock, listing sixteen export formats" loading="lazy" decoding="async"></div>
+        <figcaption><code>World › Export</code>, sixteen entries. Everything else leaves from the panel that owns it.</figcaption>
+      </figure>
+      <table>
+        <thead><tr><th class="w34">What</th><th class="w26">Where</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Current map as PNG — Mercator, Equal Earth, Mollweide, Robinson, Gott double disk</td><td><code>World › Export</code></td><td>The view on screen, drawn through that projection.</td></tr>
+          <tr><td><b>Bound atlas, print-ready (PDF)</b></td><td><code>World › Export</code></td><td>A title page with your world's name and thesis, a contents list, a page per plate at a real paper size, and a colophon that carries the seed. The menu binds at A4; colour is sRGB throughout, with no CMYK separation, no ICC profile, no crop marks and no bleed.</td></tr>
+          <tr><td><b>Scalable vector (SVG)</b></td><td><code>World › Export</code></td><td>Linework that stays sharp at any scale.</td></tr>
+          <tr><td><b>Coastlines + GIS features (GeoJSON)</b></td><td><code>World › Export</code></td><td>Real coastlines: landmasses as polygons with lakes and inland seas as holes, split at the antimeridian as RFC 7946 asks. Rasterised back onto the grid it agrees with the saved land mask to 99.94% of cells.</td></tr>
+          <tr><td><b>Terrain surface (STL / OBJ)</b></td><td><code>World › Export</code></td><td>The whole grid by default. A Full world is about 2.07M triangles and 99 MB.</td></tr>
+          <tr><td><b>Vector bundle (.zip)</b></td><td><code>World › Export</code></td><td>The vector sheets together.</td></tr>
+          <tr><td><b>Scientific rasters + metadata (.zip)</b></td><td><code>World › Export</code></td><td>Numeric GeoTIFFs, world files, a custom spherical CRS, units, provenance, GeoJSON and the lossless NumPy archive — for QGIS or downstream analysis.</td></tr>
+          <tr><td>Provenance JSON — tectonics, orbit &amp; tides, simulation health</td><td><code>World › Export</code></td><td>Which model ran, what it measured, and every scored check with its outcome.</td></tr>
+          <tr><td><b>Complete project backup (.cartovox)</b></td><td><code>World › Export</code></td><td>The whole project, round-trippable through <code>Library › Import project backup</code>.</td></tr>
+          <tr><td>Render bundles</td><td>Render Studio</td><td>Layered, georeferenced, 1K–16K, with an ESRI world file beside each layer.</td></tr>
+          <tr><td>Illustrated Obsidian vault, Scrivener transfer, Ellipsus transfer, Realm handbooks, <code>WORLDBOOK.md</code></td><td><code>Write › Codex</code></td><td>The lore as a linked vault, or as a package your writing tool opens.</td></tr>
+          <tr><td>Book — .docx, .md, Scrivener .zip, .html, .epub</td><td><code>Write › Manuscript › Book › Export book…</code></td><td>Word export writes real footnotes and delivers tracked changes as a reader sees them.</td></tr>
+          <tr><td>Universal VTT (.dd2vtt), Foundry scene</td><td>Settlement Studio</td><td>Walls, doors and the map image, at 5 ft, 10 ft, 1 m or 2 m squares.</td></tr>
+          <tr><td>Campaign exports, journey timelines</td><td><code>World › Campaign</code></td><td>Player-safe, with the weather for the day the party left.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <span class="callout-t">Announced in 0.9, not yet a control</span>
+        <ul>
+          <li><b>Other page sizes for the bound atlas.</b> A5, A4, A3, Letter and Tabloid all work; the menu always
+            asks for A4. The export is a local address ending <code>/export/atlas_pdf?page=a4</code>, and changing that
+            <code>a4</code> binds the same plates at that size — tested, but it means typing an address rather than
+            pressing a button.</li>
+          <li><b>Half, quarter and preview mesh detail.</b> The menu exports the whole grid, which is what most people
+            wanted and never had. The smaller sizes answer to <code>?detail=half</code>, <code>quarter</code> or
+            <code>preview</code> on the same kind of address, and each one downloads under its own name.</li>
+          <li><b>Regional render windows.</b> Render Studio can draw a north/south/west/east window of ground rather than
+            the whole planet, but the panel has no control for it yet — every sheet you can start from the panel is the
+            whole world.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ SETTINGS ═══════════════════════ -->
+    <section id="settings">
+      <p class="eyebrow">Reference</p>
+      <h2>Settings — and which ones matter</h2>
+      <figure class="guide-fig">
+        <div class="window"><img src="/img/guide-settings.webp" width="1800" height="1125" alt="App settings open over the workspace, showing the Appearance section" loading="lazy" decoding="async"></div>
+        <figcaption><kbd>⌘,</kbd> / <kbd>Ctrl ,</kbd> from anywhere. Everything here changes how CartoVox looks and behaves on this computer, and nothing else — it never changes a saved world, its maps, its canon, or anything you export.</figcaption>
+      </figure>
+      <table>
+        <thead><tr><th class="w26">Section</th><th>The controls worth knowing</th></tr></thead>
+        <tbody>
+          <tr><td><b>Appearance</b></td><td><b>Theme</b> — CartoVox Dark, Parchment Light, Follow system — plus custom themes, which are a small JSON file of named colours and nothing else (no styles, fonts, images or scripts; contrast is checked before one can be applied). <b>Interface density</b>. <b>Display units</b> — metric or imperial, for the interface only; saved data, Advanced settings, map artwork and exports stay metric. <b>Explanations</b> — the sentence under each control can stand while CartoVox is new and then fold away, or always show, or always fold.</td></tr>
+          <tr><td><b>Accessibility</b></td><td><b>Text size</b> (100/110/125%) and <b>Motion</b>. A system request for reduced motion is honoured whatever is chosen here.</td></tr>
+          <tr><td><b>Workspace &amp; layout</b></td><td><b>Startup destination</b>. <b>How much to show at once</b> — <b>Everything</b> or <b>Essentials</b>; Essentials keeps the surfaces a world is read from and hides the specialist ones, changes nothing about how a world is simulated or saved, and every hidden thing says how many it is holding and gives them back in one click. <b>Remember the section in each destination</b>. <b>Customize layout…</b> and <b>Show everything</b>.</td></tr>
+          <tr><td><b>Creation defaults</b></td><td><b>First build</b> (Sketch / Quick / Full), <b>Atlas plates</b>, <b>Atlas lettering</b>. Defaults for new runs only — they never alter a world you have already built.</td></tr>
+          <tr><td><b>Data &amp; privacy</b></td><td><b>Change save folder</b> — the installed app copies existing worlds and keeps the old files as a safety copy; it never deletes the former library automatically. <b>Storage and display cache</b> measures where bytes go and removes only the rebuildable display cache, after previewing every file. <b>Optional local diagnostics</b> is off by default and, when on, keeps events in this browser profile alone; nothing is sent anywhere automatically.</td></tr>
+          <tr><td><b>Updates &amp; support</b></td><td><b>About</b>, <b>Copy app info</b> (name, version, build mode and platform — never paths, keys or anything you have written), folder shortcuts, <b>Create diagnostics</b>, and <b>Report a bug on Discord</b>. CartoVox never checks for updates; new builds are announced on the Discord server.</td></tr>
+          <tr><td><b>Release notes</b></td><td>Every version's notes ship inside the build, so the history works offline. A copy shows the history it was built with.</td></tr>
+        </tbody>
+      </table>
+      <p class="muted small">
+        <b>Reset all app settings</b> clears preferences only. Your worlds, maps, lore, revisions, drafts and project
+        backups survive it — including an unsaved sculpt edit or a half-written brief. Preferences are local to one
+        installation; there is no account and no synchronisation.
+      </p>
+    </section>
+
+    <!-- ═══════════════════════ SHORTCUTS ═══════════════════════ -->
+    <section id="shortcuts">
+      <p class="eyebrow">Reference</p>
+      <h2>Keyboard</h2>
+      <h3>Anywhere</h3>
+      <table>
+        <tbody>
+          <tr><td class="w24"><kbd>⌘K</kbd> / <kbd>Ctrl K</kbd></td><td>The command palette — names and actions</td></tr>
+          <tr><td><kbd>⌘,</kbd> / <kbd>Ctrl ,</kbd></td><td>App settings</td></tr>
+          <tr><td><kbd>?</kbd></td><td>The key sheet</td></tr>
+          <tr><td><kbd>Esc</kbd></td><td>Close panels and tips</td></tr>
+        </tbody>
+      </table>
+      <h3>On the map, with a world open and nothing being typed</h3>
+      <table>
+        <tbody>
+          <tr><td class="w24"><kbd>M</kbd> <kbd>L</kbd> <kbd>C</kbd> <kbd>R</kbd></td><td>Measure · Landmarks and routes · Explain climate here · Regional lens</td></tr>
+          <tr><td><kbd>S</kbd> <kbd>N</kbd> <kbd>A</kbd></td><td>Sculpt terrain · Render Studio · Planet Advisor</td></tr>
+          <tr><td><kbd>K</kbd> <kbd>Y</kbd> <kbd>T</kbd> <kbd>E</kbd></td><td>Climate Lab · Weather year · Tectonics audit · Erosion Lab</td></tr>
+          <tr><td><kbd>B</kbd> <kbd>W</kbd> <kbd>X</kbd> <kbd>P</kbd> <kbd>F</kbd></td><td>Map library · World details panel · Export menu · Planet globe · Focus map</td></tr>
+          <tr><td><kbd>I</kbd> <kbd>V</kbd> <kbd>H</kbd> <kbd>D</kbd> <kbd>G</kbd></td><td>Minimap · Split view · Time strip · HD region · Map grid</td></tr>
+          <tr><td><kbd>=</kbd> <kbd>-</kbd> <kbd>0</kbd></td><td>Zoom in · zoom out · actual size, and the world turned back to its own centre</td></tr>
+        </tbody>
+      </table>
+      <h3>In the manuscript</h3>
+      <table>
+        <tbody>
+          <tr><td class="w24"><kbd>⌘S</kbd></td><td>Save now (it autosaves anyway)</td></tr>
+          <tr><td><kbd>⌘B</kbd> <kbd>⌘I</kbd></td><td>Bold, italic</td></tr>
+          <tr><td><kbd>⌘F</kbd> / <kbd>⌘G</kbd></td><td>Find in book / find next in this chapter</td></tr>
+          <tr><td><kbd>⌘⇧F</kbd></td><td>Focus mode</td></tr>
+          <tr><td><kbd>⌘⌥N</kbd></td><td>A note on the selected words</td></tr>
+          <tr><td><kbd>⌘/</kbd></td><td>The full sheet for the editor</td></tr>
+          <tr><td><code>[[</code></td><td>Link a vault page as you type</td></tr>
+          <tr><td><kbd>⌘</kbd>-click a world name</td><td>Open that thing's dossier beside the chapter</td></tr>
+          <tr><td><kbd>Tab</kbd> / <kbd>⇧Tab</kbd></td><td>Indent or outdent a list item</td></tr>
+        </tbody>
+      </table>
+      <h3>On the Render Studio canvas</h3>
+      <table>
+        <tbody>
+          <tr><td class="w24"><kbd>⌘Z</kbd> / <kbd>⌘⇧Z</kbd></td><td>Undo · redo (one history covers artwork, drawing, lettering, appearance and output settings)</td></tr>
+          <tr><td>Arrows · <kbd>⇧</kbd>+arrows</td><td>Nudge the selection, and nudge it further</td></tr>
+          <tr><td><kbd>Delete</kbd></td><td>Remove the selection</td></tr>
+          <tr><td><kbd>Enter</kbd> / <kbd>Esc</kbd></td><td>Finish a drawing · cancel it</td></tr>
+          <tr><td><kbd>⇧</kbd> while rotating</td><td>Snap to 15°</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ═══════════════════════ FILES ═══════════════════════ -->
+    <section id="files">
+      <p class="eyebrow">Reference</p>
+      <h2>Where your work lives</h2>
+      <p class="section-lede">
+        A world is a folder in an open, documented layout — not an account and not a database. Everything below sits
+        under that world's own directory in the CartoVox data folder.
+      </p>
+      <table>
+        <thead><tr><th class="w38">File or folder</th><th>What it is</th></tr></thead>
+        <tbody>
+          <tr><td><code>01_relief.png</code> … <code>20_landmarks_routes.png</code></td><td>The numbered map sheets: relief, biomes, globes, tectonics, biome key, temperature, precipitation, seasonal range, aridity, drainage, currents, civilisation, seasonal panels, winds per season, tidal range, soils, glacial legacy, resources, landmarks and routes</td></tr>
+          <tr><td><code>plates/</code> · <code>styles/</code> · <code>city_plans/</code></td><td>Illustrated sheets labelled and unlabelled, the cartographic style renders, one plan per major settlement</td></tr>
+          <tr><td><code>world_data.npz</code></td><td>Every field as a NumPy array: elevation, biome IDs, precipitation, soils, currents, hydrology and more</td></tr>
+          <tr><td><code>world_summary.json</code> · <code>WORLDBOOK.md</code></td><td>All measurements as structured data, and the measured dossier</td></tr>
+          <tr><td><code>hydrology_graph.json</code></td><td>Depression hierarchy, basins, lake water balances, and the directed river reach graph</td></tr>
+          <tr><td><code>simulation_health.json</code></td><td>Scored, evidence-backed checks with locations and revision-to-revision changes</td></tr>
+          <tr><td><code>world_config.json</code> · world recipe</td><td>The full resolved configuration and the short list you actually chose</td></tr>
+          <tr><td><code>tectonic_provenance.json</code> · <code>orbital_forcing.json</code> · <code>terrain_import.json</code> · <code>lineage.json</code></td><td>Which tectonic model ran and what it measured; the exact orbit and tides; an import's checksum and mapping; where a reseeded world came from</td></tr>
+          <tr><td><code>name_registry.json</code> · <code>lore_overrides.json</code> · <code>overrides.json</code></td><td>Every name with its identity and audit; your lore edits; your terrain edits</td></tr>
+          <tr><td><code>codex/</code></td><td>The Obsidian vault, with <code>novels/</code> holding one Markdown file per chapter beside <code>manuscript.json</code></td></tr>
+          <tr><td><code>project_backup.cartovox</code></td><td>The whole project, round-trippable through the Library</td></tr>
+        </tbody>
+      </table>
+      <ul class="feat">
+        <li><b>Deleted worlds are recoverable for 30 days</b>, cancelled or incomplete generations for 7. Nothing is
+          removed early to save space. <code>Library › Trash</code>.</li>
+        <li><b>A committed project gets its own opaque <code>world_…</code> ID</b>, so generating the same seed twice
+          never overwrites the first project.</li>
+        <li><b>The data folder can be moved</b> from <code>Settings › Data &amp; privacy › Change save folder</code>, and
+          <code>CARTOVOX_DATA_DIR</code> overrides it for a portable or scripted run.</li>
+      </ul>
+    </section>
+
+    <!-- ═══════════════════════ QUESTIONS ═══════════════════════ -->
+    <section id="questions">
+      <p class="eyebrow">Reference</p>
+      <h2>Questions testers keep asking</h2>
+
+      <h4>The gold button is greyed out.</h4>
+      <p>A blocked control says <i>why</i> it is blocked rather than what it would have done — hover it, or reach it by
+      keyboard. The usual reasons are that no brief has been written yet, or that a map is attached and still waiting for
+      its coastline check. In the second case CartoVox offers to remove the map and generate from your settings alone;
+      keeping it leaves you on Create with <b>Review map</b> one keystroke away.</p>
+
+      <h4>I set up a new world and it rebuilt my imported map again.</h4>
+      <p>An imported or drawn map stays attached to the Create sheet after the world it was brought in for is finished.
+      The <b>Foundation map</b> row names it beside the button that uses it; <b>Remove map</b> is in that row.</p>
+
+      <h4>My imported world came out covered in ice, or all mountains.</h4>
+      <p>Heights were being scaled so that far too much of the world sat above 2,000 m; that was fixed in 0.9, and a
+      round-trip of a saved world's own elevation now lands where it started. If it still happens, the questions in the
+      map review — how high the peaks reach, how wet and warm the world is — are the levers, and they are ordinary
+      Advanced settings.</p>
+
+      <h4>The rivers on my map became sea inlets.</h4>
+      <p>That was the old behaviour: the coastline reader saw blue, called it water, and a drawn river became a
+      sea-level fjord slicing the continent. Rivers and lakes are now told apart by width, and you choose whose rivers
+      the world gets. See <a href="#import">importing a map</a>.</p>
+
+      <h4>My continent is much smaller on the planet than the number suggested.</h4>
+      <p>An imported sheet is usually a continent adrift in its author's painted sea, and the old width control resized
+      both. Use the share-of-planet control and the ocean trim together: on a test sheet that is 85% water, trimming took
+      the same coastline from 11.5% of the planet to 34.7% without a pixel of the coast moving.</p>
+
+      <h4>My continent is cut in half by the edge of the map.</h4>
+      <p><code>World › Tools › Turn world</code>, then drag sideways. <b>1:1</b> returns the world to its own centre.
+      The tool is off until you ask for it, because a drag that quietly reprojected every marker and route made ordinary
+      panning feel like the map was fighting back.</p>
+
+      <h4>Where are my illustrated plates?</h4>
+      <p><code>World › Atlas</code>. If you deferred them or stopped the build early, <b>Render remaining plates</b>
+      draws them from saved data without re-simulating anything.</p>
+
+      <h4>How do I print a map, or the whole atlas?</h4>
+      <p>Any view downloads as a PNG from <code>World › Export</code>. The whole illustrated set binds as one
+      print-ready PDF — title page, contents, a page per plate at a real paper size, and a colophon that carries the
+      seed so the world can be rebuilt from the book. Every plate is embedded at its own resolution and the export
+      reports the dots per inch page by page rather than asserting a number.</p>
+
+      <h4>Why is the map a rectangle?</h4>
+      <p>The world is simulated on a sphere and drawn equirectangular: it wraps east–west and the poles are real poles.
+      Plates rotate about Euler poles, winds deflect about a rotation axis, and ocean gyres need enclosed basins with a
+      western boundary — a flat disc has none of those, so on a disc none of the geography could be derived. Use the
+      globe card, the four-globe sheet, or an equal-area projection to check that it reads as a planet.</p>
+
+      <h4>Something looks wrong near the pole.</h4>
+      <p>A long thin landmass near a pole is usually the projection, not the terrain. Measure it on the sphere with
+      <b>Measure</b>, or look at it on the globe.</p>
+
+      <h4>How long will a build take, and how much disk?</h4>
+      <p>The <b>COST</b> row on Create answers for your settings and learns from completed builds of the same shape on
+      your own machine. As orientation: a Sketch with an illustrated atlas measured 30.5 seconds on a fast Apple Silicon
+      Mac, and the example world 83.9 seconds and 179 MB. A Full build with every publication plate is the long one —
+      about eight minutes on a high-end Mac and about thirteen on a high-end Windows machine, with the hand-drawn plates
+      most of that. On disk: 45–100 MiB for a Quick world, 180–360 MiB for a Full one without plates, and 337–883 MiB
+      with every publication plate. The preflight keeps a 1 GiB reserve and warns above 500 MiB.</p>
+
+      <h4>Can I stop a build, or use the app while one runs?</h4>
+      <p>Yes to both. The generation dock keeps a long build running while you work elsewhere and survives a reload.
+      <b>Stop after this plate</b> finishes the current image cleanly and stores the rest; an interrupted run is detected
+      and can be resumed from its stage checkpoint or removed.</p>
+
+      <h4>Nothing has any descriptions. Is that a bug?</h4>
+      <p>No. The generator leaves prose blank rather than inventing it, and <code>Write › Codex › Describe everything</code>
+      says how many fields are open and can show you only those. They are questions left for you, not missing data.</p>
+
+      <h4>How do I change a name everywhere it appears?</h4>
+      <p><code>Write › Codex › Rename everything</code> for the whole world on one sheet, or select the feature on the
+      map and use <b>Rename everywhere</b>. Canonical names propagate through maps, dossiers, lore, routes, tongues,
+      exports and later revisions.</p>
+
+      <h4>Can I move a city, or will the generator move it back?</h4>
+      <p>Move it with <code>Sculpt › Select feature › Choose new location</code>, or place a new one on land with at
+      least 20% saved suitability. Cities and borders you draw hold their positions against the world's own.</p>
+
+      <h4>I changed the terrain and everything else stayed the same.</h4>
+      <p>Terrain edits are pending until <b>Apply &amp; re-simulate</b>, which rebuilds climate, rivers, biomes,
+      settlements, routes, names, lore and maps. <b>Build comparison draft</b> shows you exactly what moved first,
+      without writing to the original world.</p>
+
+      <h4>I rebuilt a Quick world at full resolution and the coastline changed.</h4>
+      <p>Expected, and why the rebuild is a separate project. Broad geography stays familiar, but finer coastlines,
+      rivers, climate boundaries, settlements, names and generated lore can all move on a finer grid. The world you
+      chose stays exactly as it was.</p>
+
+      <h4>Where did my world go?</h4>
+      <p><code>Library › Trash</code>: 30 days for a saved world, 7 for a cancelled or incomplete generation, with the
+      recoverable size shown. Nothing is removed early to save space.</p>
+
+      <h4>I can't find a panel I used yesterday.</h4>
+      <p>Two likely causes. <code>Settings › Workspace &amp; layout › How much to show at once</code> may be set to
+      <b>Essentials</b>, which hides the specialist surfaces; every hidden thing says how many it is holding and gives
+      them back in one click. Or a region is hidden in <b>Layout</b> — <b>Show everything</b> restores it.</p>
+
+      <h4>The little explanations under the controls disappeared.</h4>
+      <p>They fold away after your first few sessions, since by then they are in the way.
+      <code>Settings › Appearance › Explanations</code> overrides it in either direction, and the change moves the page
+      you are looking at rather than the next launch.</p>
+
+      <h4>How do I move my worlds to another computer?</h4>
+      <p><code>World › Export › Complete project backup (.cartovox)</code> per world, restored with
+      <code>Library › Import project backup</code>. To move the whole library on one machine, use
+      <code>Settings › Data &amp; privacy › Change save folder</code> — it copies existing worlds and keeps the old
+      files as a safety copy, and never deletes the former library automatically.</p>
+
+      <h4>Does CartoVox send anything anywhere?</h4>
+      <p>No. There is no account, no telemetry and no update check; the only address it opens is the loopback dashboard
+      it started itself. The optional local diagnostics journal is off by default and stays in your browser profile.</p>
+
+      <h4>Can I sell what I make with it?</h4>
+      <p>Yes. You may publish and sell the worlds, maps and writing you create; you may not copy, share, resell or
+      redistribute the application itself. The licence is at <code>Settings › Updates &amp; support › Licence</code> and
+      <a href="/eula/">on this site</a>.</p>
+
+      <h4>How do I report a bug?</h4>
+      <p><code>Settings › Updates &amp; support › Report a bug on Discord</code>, or <code>World › Tools › Report</code>
+      for a specific map. A useful report includes the seed, preset, tier, any Advanced settings overrides, and the exact
+      simulation-health finding. <b>Copy app info</b> copies name, version, build mode and platform — never paths, keys,
+      world names or anything you have written. <b>Create diagnostics</b> builds an archive of build details and redacted
+      logs, which you can inspect before sharing.</p>
+    </section>
+
+    <!-- ═══════════════════════ LIMITS ═══════════════════════ -->
+    <section id="limits">
+      <p class="eyebrow">Read before you lean on a number</p>
+      <h2>What it does not do</h2>
+      <p class="section-lede">
+        CartoVox documents what it approximates, at length, inside the app under <b>Help</b>. The short version, because
+        it saves arguments at the table:
+      </p>
+      <ul class="feat">
+        <li><b>Desktop is the authoring target.</b> The mobile layout reviews a world; it does not build one.</li>
+        <li><b>Drawing density is not simulation detail.</b> 2×–4× and Render Studio interpolate the same saved cells.
+          Only a full-resolution rebuild adds simulated cells, and it does so in a separate project.</li>
+        <li><b>The default tectonics is one kinematic snapshot</b>, correlated around generated ridge systems. Deep Time
+          transports crust for hundreds of millions of years but does not solve mantle convection.</li>
+        <li><b>Four seasons, not twelve months</b>, so Köppen boundaries are slightly coarser than a real classification.
+          <b>Orbital cycles are forcing</b>, not an N-body integration. <b>Tides are climatological</b>, not a tide table.</li>
+        <li><b>Ocean currents are wind-driven only</b> — there is no thermohaline conveyor. <b>Erosion runs two passes</b>,
+          so valleys look young. <b>Hydrology is regional</b>: a directed reach graph with lake nodes and morphology
+          classes, not fluid dynamics.</li>
+        <li><b>Soils are regional pedology</b>, not laboratory horizons. <b>Resources are prospects, not proven
+          reserves</b> — a high value means the simulated setting can form and preserve that deposit family.</li>
+        <li><b>Glacial history is reconstructed</b>, not integrated through every ice age; small tarns and kettle ponds
+          are reported honestly as a sub-grid density rather than drawn.</li>
+        <li><b>Land needs crust to stand on.</b> Asking for more land than there is continental crust drains the sea
+          until seafloor is exposed, and the run says so.</li>
+        <li><b>Atlas labels are placed, not typeset.</b> A name that will not fit at any rung of its shrink ladder is
+          dropped and reported rather than broken over two lines.</li>
+        <li><b>Generated lore is a proposal.</b> Geography and measurements are derived; social history, politics and
+          story hooks are non-canon until you accept or edit them.</li>
+      </ul>
+      <p class="muted small">
+        Version-by-version model changes are in the <a href="/releases/">release notes</a>, each versioned in the world's
+        own configuration, so a saved world always states which model produced it.
+      </p>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds shown here were generated by it. This site sets no cookies and runs no analytics. <a href="/">Home</a> · <a href="/features/">Field guide</a> · <a href="/releases/">Release notes</a> · <a href="/privacy/">Privacy</a> · <a href="/eula/">Licence</a> · <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a></p>
+  </div>
+</footer>
+<script src="/js/site.js?v=915173a910" defer></script>
+</body>
+</html>
