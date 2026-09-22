@@ -165,7 +165,7 @@ PAGE = """<!doctype html>
     </a>
     <nav class="nav-links doc-nav" id="nav-links" aria-label="Sections">
       <a href="/">Home</a>
-      <a href="/features/">Field guide</a>
+      <a href="/guide/">Guide</a>
       <a href="/releases/">Release notes</a>
       <a href="/eula/">Licence</a>
       <a href="/third-party-notices/">Third-party notices</a>

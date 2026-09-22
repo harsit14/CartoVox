@@ -9,7 +9,7 @@ no third-party requests. Cloudflare Pages serves it straight from this repositor
 | Path | What it is |
 | --- | --- |
 | `index.html` | The landing page |
-| `guide/` | The guide: a searchable index of where every control lives, a first world step by step, then every workspace in depth. Current to 0.9 |
+| `guide/` | The guide: a searchable index of where every control lives, a first world step by step, then every workspace in depth. Current to 0.9.1 |
 | `privacy/` | What the site and the app do with your data |
 | `eula/`, `third-party-notices/` | Legal pages, rendered from the app's Markdown by `tools/build-legal.py` |
 | `404.html` | Off the edge of the map |

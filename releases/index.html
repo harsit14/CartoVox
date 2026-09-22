@@ -40,6 +40,8 @@
   <aside class="guide-toc" aria-label="Versions">
     <p class="eyebrow">Versions</p>
     <nav class="toc-list">
+      <a href="#v0.9.1"><span>0.9.1</span><small>2026-09-21</small></a>
+      <a href="#v0.9.0"><span>0.9.0</span><small>2026-09-20</small></a>
       <a href="#v0.8.3"><span>0.8.3</span><small>2026-09-14</small></a>
       <a href="#v0.8.2"><span>0.8.2</span><small>2026-09-11</small></a>
       <a href="#v0.8.1"><span>0.8.1</span><small>2026-09-08</small></a>
@@ -74,6 +76,314 @@
       <p class="lede">What changed, what it costs, and what stayed compatible, from the first invited alpha on 23 August 2026 to the current beta. The same notes are readable offline inside the app under <b>Settings → Release notes</b>.</p>
       <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2; these notes use its current name throughout. The Atlas tab, Atlas plates and Atlas lettering keep their names — they describe the publication atlas the app draws. Builds are published on the <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Discord server</a>.</p>
     </header>
+    <article class="release" id="v0.9.1">
+      <header class="release-head">
+        <h2>CartoVox 0.9.1</h2>
+        <p class="release-tag">The workflows meet</p>
+        <time datetime="2026-09-21">2026-09-21</time>
+      </header>
+      <div class="doc-body">
+<p>0.9.1 is the integration release after the v0.9 interface overhaul. It does not add another collection of disconnected tools. It makes the paths already on the new survey sheet agree about what they will do, show their progress in the same places, and lead to a result an author can use.</p>
+<h3 id="a-described-region-now-has-one-meaning">A described region now has one meaning</h3>
+<ul>
+<li><strong>Planning, preview, review and execution now use the same terrain operations.</strong> A brief for volcanic ground, highlands, a drowned region or a cave landscape no longer looks free in review and then begins a broad rebuild after Apply. The measured cells, affected systems and cost class come from the operations that execution will actually run.</li>
+<li><strong>Lore-only descriptions stay immediate.</strong> Naming and describing a place without asking CartoVox to alter the ground does not acquire a simulation cost merely because terrain words exist elsewhere in the feature.</li>
+<li><strong>Unknown edit buckets fail closed.</strong> A future edit type cannot quietly appear as zero work simply because the planner has not learned it yet.</li>
+<li><strong>The affected footprint is shared too.</strong> Preservation masks and local regeneration records now describe the same cells shown before Apply.</li>
+</ul>
+<h3 id="one-progress-handoff-for-an-example-world">One progress handoff for an example world</h3>
+<ul>
+<li><strong>Starting the example enters the normal generation runner immediately.</strong> Progress, elapsed time and the current stage appear in the same generation dock used by an ordinary build.</li>
+<li><strong>Cancel, failure and retry are visible where the work is happening.</strong> The example button is no longer the only sign that a several-minute task is running.</li>
+<li><strong>Reloading or navigating does not lose ownership of the job.</strong> A restored session reconnects to the active build, and a completed example opens as a real saved world.</li>
+</ul>
+<h3 id="pdf-export-has-a-setup-not-a-guess">PDF export has a setup, not a guess</h3>
+<ul>
+<li><strong>Quick PDF remains one action.</strong> It produces the familiar A4 atlas without making a routine export slower.</li>
+<li><strong>Planned PDF exposes the choices the exporter already supported:</strong> PDF or ZIP delivery, A4 or A3 paper, lettering, which sheets are included, the expected page count and effective drawing density.</li>
+<li><strong>Limitations are shown before the expensive work starts.</strong> The setup uses the real atlas plan rather than estimating again in the browser.</li>
+<li><strong>Progress ends at the named file.</strong> A successful export presents the generated download instead of leaving the author to infer whether anything happened.</li>
+</ul>
+<h3 id="the-writing-and-scene-workspaces-keep-the-room-they-are-given">The writing and scene workspaces keep the room they are given</h3>
+<ul>
+<li><strong>Hiding chapters on a compact screen now gives the height back to the manuscript.</strong> The editor no longer remains trapped in the short first row while an empty second row occupies most of the viewport.</li>
+<li><strong>The live writing state survives the layout change.</strong> Caret, save status, panel controls and focus behavior remain available when chapters are collapsed or restored.</li>
+<li><strong>Nested controls use the surface they are actually on.</strong> Light sheets and fixed-dark map instruments now provide their own field text, selection, disabled and focus colors, fixing pale text on a pale control without flattening the intended dark instruments.</li>
+<li><strong>Scene Studio joins the saved appearance system.</strong> Theme, text scale and density apply before first paint, and the canvas and inspector arrive ahead of infrequent linking and backup details. Existing scene files, world links, hierarchy, keyboard history and backup behavior remain in place.</li>
+<li><strong>Reading-ease bands render as prose again.</strong> Manuscript insight labels no longer expose escaped markup as part of the score.</li>
+</ul>
+<h3 id="release-evidence-belongs-to-the-exact-candidate">Release evidence belongs to the exact candidate</h3>
+<ul>
+<li><strong>Full source and browser reports record their commit, Git tree and clean or dirty state.</strong> A passing report from a different checkout cannot certify a later build.</li>
+<li><strong>Native verification writes a machine-readable report beside each installer.</strong> It records the artifact size and SHA-256, the host that ran the checks, the install/start/uninstall commands, and the build record read back from the installed payload.</li>
+<li><strong>Build records now include the Git tree as well as the commit.</strong> The Linux compatibility build carries this identity into its container instead of depending on Git being installed there.</li>
+<li><strong>Local staging carries verification evidence with the artifact.</strong> Replacing an installer cannot leave an older passing report attached to new bytes.</li>
+<li><strong><code>release.py certify</code> accounts for every mandatory proof.</strong> It requires the exact version, clean synchronized source, annotated tag, full source and browser runs, production-resolution science review, recovery and upgrade review, destination interoperability, distribution decisions, dependency inputs and all four verified artifacts. A partial run says it is partial.</li>
+<li><strong>Publication fails while that certificate is incomplete.</strong> Existing v0.9 packages and reports remain historical evidence; they are not silently reused for 0.9.1.</li>
+<li><strong>Destination proof opens the files it certifies.</strong> The release gate retains hashed PDF, writing, vault, map, mesh, tabletop and project/scene archive samples, then parses or re-imports each one on the exact candidate. A list of export tests alone cannot stand in for files that another tool can read.</li>
+</ul>
+<h3 id="compatibility-and-boundaries">Compatibility and boundaries</h3>
+<ul>
+<li>Existing worlds, manuscripts and scenes keep their current file formats; this release changes workflow integration and release proof rather than forcing a project migration.</li>
+<li>Production science now has a fixed 1440×720 candidate gate with exact numerical-library versions, saved-field hashes, invariant results, runtime and memory. The current run restores Hack's exponent to its production-scale reference band while retaining the known branching and uphill-reach warnings. Linux now uses pywebview's supported PySide6 backend under the LGPL option, retains the binding's licence metadata, and verifies that the shared Qt libraries remain replaceable. Native Windows and both Linux artifacts still require their exact-candidate platform verification reports.</li>
+<li>Installers remain local release artifacts for the controlled beta. Source, tag and release notes have their own publication boundary.</li>
+</ul>
+<h3 id="tester-fixes-collected-before-release">Tester fixes collected before release</h3>
+<ul>
+<li>Windows map cell inspection waits through a short, bounded replacement window when a saved-world read overlaps an edit. Only the known revision race is retried; malformed coordinates and unrelated failures return immediately. This addresses a v0.9.0 Windows report and still needs a native Windows installer check.</li>
+<li>Select feature now owns its map press rather than panning the map. It inspects an existing feature; Build, Carve and Refine tools place terrain strokes. Dragging while selecting does not place a feature accidentally.</li>
+<li>Sculpt controls can be minimized while a tool stays active, exposing the polar caps beneath the panel. Pending terrain and change rasters use the chosen projection, including the two-hemisphere disk, and selection highlights follow it too. Changing projection discards an old preview and requests a fresh one without moving the authored coordinates.</li>
+<li>Cmd/Ctrl+Z and Shift+Cmd/Ctrl+Z undo and redo pending Sculpt edits while Sculpt is active and no text field has focus. A painted stroke is one undo step even if it placed several stamps.</li>
+<li>Linux packages include the exact reviewed LGPL 3.0 and GPL 3.0 texts, verify those bytes in frozen and installed payloads, and clear the compatibility build environment before resolving pinned dependencies. A shell quoting regression is covered by a focused build-script check.</li>
+</ul>
+      </div>
+    </article>
+    <article class="release" id="v0.9.0">
+      <header class="release-head">
+        <h2>CartoVox 0.9.0</h2>
+        <p class="release-tag">The sheet on the desk</p>
+        <time datetime="2026-09-20">2026-09-20</time>
+      </header>
+      <div class="doc-body">
+<p>0.9.0 is everything implemented after 0.8.3. It was planned as 0.8.4 and outgrew the number: the whole interface has been restated, the map became something you draw on and describe rather than only look at, and every name and every description in a world can now be written on one sheet.</p>
+<h3 id="the-interface-restated-as-a-survey-sheet">The interface, restated as a survey sheet</h3>
+<ul>
+<li><strong>CartoVox stopped looking like a dark dashboard.</strong> Testers said so plainly, and they were right: the plates it draws already had a cartographic voice and the chrome around them did not. The whole interface is now in the language of a real survey sheet — a thumb-index rail, a title block with one sliding brass rule, each workspace a sheet on a desk, floating map cards as dark instruments with a brass top edge, chips as stamps, action cards as ruled indexes, and every measured number set as a tabular figure.</li>
+<li><strong>New type, bundled.</strong> Archivo and DM Mono ship under the OFL beside Newsreader. Inter is gone from every packaging list, hash table and licence notice.</li>
+<li><strong>Square everywhere.</strong> 205 literal corner radii were flattened to the same geometry, and the light theme was rebuilt as a daylight desk rather than an inverted dark one.</li>
+</ul>
+<h3 id="the-map-is-the-page">The map is the page</h3>
+<ul>
+<li><strong>The World workspace is map-first.</strong> The rendered map is the page. A two-segment pill — World, Maps — sits at the top left, directly above the drawer it opens. Everything that acts on the map lives in the bottom dock: its <strong>Tools</strong> menu opens the full grid of inspectors, labs and workbenches, its <strong>View</strong> menu holds the map aids, and <strong>Focus map</strong> stands beside Fullscreen.</li>
+<li><strong>The furniture got out of the way.</strong> The colour scale is one thin line above the coordinate line at the bottom left; the planet floats at the top right as its own card and can be put away. Drawers stop above the key instead of covering it, and dock popovers open clear of the dock's own resolution line.</li>
+<li><strong>Create and Write are sheets too.</strong> Create is one strip above a folding brief, with the doors into the map in the stage itself rather than in a separate panel. Write is one strip above the page, with More and Book menus and a single panel switch.</li>
+<li><strong>Compact widths keep the instruments.</strong> The pill, the key and the dock survive on a phone, with sheets and popovers positioned from clearances the dock publishes rather than from guesses.</li>
+</ul>
+<h3 id="draw-a-shape-and-say-what-belongs-there">Draw a shape, and say what belongs there</h3>
+<p>An author asked for this almost exactly: <em>"it would be really neat to be able to draw a circle or square on the map and then sort of describe what needs to go there … if I put a circle to the north of a town and said that there needs to be a cave system there, or put a circle on one of my islands and say that it's volcanic."</em></p>
+<ul>
+<li><strong>A shape with a sentence attached now does something.</strong> A description naming something CartoVox can place gets it placed: a named region on the map, a page in the codex, an entry in the gazetteer, carrying your own words as its lore. Where the words describe ground rather than a landmark — <em>volcanic</em>, <em>highlands</em>, <em>sunken</em> — the ground moves, through the same sculpt records a hand edit would have written.</li>
+<li><strong>It says what it did not understand.</strong> Words it acted on are listed; words it read and could not place are reported back rather than silently dropped, so a brief never fails quietly.</li>
+</ul>
+<h3 id="sculpting-with-your-hands">Sculpting with your hands</h3>
+<ul>
+<li><strong>Paint terrain instead of stamping it.</strong> A stroke is a row of ordinary nudges, spaced on the ground rather than on the screen, so the same gesture means the same thing at any zoom.</li>
+<li><strong>Size a brush by pressing and dragging on the map</strong>, and draw a mountain range peak by peak — a trail of clicked summits is kept as one range rather than as unrelated dots.</li>
+<li><strong>The places you put on the map stay put.</strong> Cities and borders you draw now hold their positions against the world's own, instead of being displaced by the generator's next pass.</li>
+</ul>
+<h3 id="every-name-and-every-description-on-one-sheet">Every name, and every description, on one sheet</h3>
+<ul>
+<li><strong>Rename anything in the world from one place.</strong> Every named thing — realms, cultures, faiths, places of power, settlements — on a single editable sheet.</li>
+<li><strong>And describe it.</strong> The generator leaves prose blank rather than inventing it, and a typical world ships with <strong>about 107 empty fields</strong>: every culture's diet, burials and taboos, every ruler's character and secret, most of every faith. Those are questions left open, not missing data, and the sheet says so and can show you only those.</li>
+<li><strong>Before this, two fields out of twenty-six were reachable</strong> — a realm's motto and its ruler's name, one realm at a time. The canon engine had always merged per-entity overrides; nothing wrote them.</li>
+<li><strong>Cities and towns can be described too</strong>, and what you write is read back everywhere they are read: the dossier, the vault and search.</li>
+<li><strong>Measured findings are left alone.</strong> A place of power's kind is read off the simulation, so the sheet does not offer to edit it.</li>
+</ul>
+<h3 id="cities-drawn-as-streets-blocks-and-lots">Cities drawn as streets, blocks and lots</h3>
+<ul>
+<li><strong>A settlement is planned from its street graph outward.</strong> Blocks are cut from the streets, lots from the blocks, and buildings placed in the lots — instead of rectangles scattered across a footprint.</li>
+</ul>
+<h3 id="the-maps-you-already-have-read-as-maps">The maps you already have, read as maps</h3>
+<ul>
+<li><strong>Azgaar exports and GeoTIFFs are read as what they are</strong>, rather than as anonymous images.</li>
+<li><strong>Land can be raised from a shapefile.</strong></li>
+<li><strong>An imported map's plates are fitted to the coastline it brought.</strong> Plate boundaries used to cut across the land you supplied; measured against a real import, boundary-on-land fell from <strong>40% to 4.1%</strong>.</li>
+<li><strong>Imported terrain stops reading as ice.</strong> Heights were being scaled so that far too much of the world sat above 2,000 m; a round-trip of a saved world's own elevation now lands where it started.</li>
+<li><strong>You can type your map's own measurements</strong> instead of accepting a guess, and Import and Draw are one door, because they were always one room.</li>
+</ul>
+<h3 id="writing">Writing</h3>
+<ul>
+<li><strong>Readability and passive voice are scored per chapter and per book.</strong></li>
+<li><strong>The Write column has its doors back</strong>, and a book brings its chapters with it.</li>
+<li><strong>The page has a status bar</strong>, opens at the first line, and the trash can be emptied.</li>
+<li><strong>Zoom widens the page</strong>, rather than only enlarging the letters.</li>
+</ul>
+<h3 id="cartovox-makes-no-network-request-of-its-own">CartoVox makes no network request of its own</h3>
+<ul>
+<li><strong>The update check is gone.</strong> It polled a public repository once a day; that repository has been retired, so the check could only ever fail — on every launch of every installed copy. The poll, the installer download it fed and the notification banner are all removed, and <strong>App settings → Updates &amp; support</strong> says where builds are announced instead.</li>
+<li><strong>The only address the application opens is the loopback dashboard it starts itself.</strong> Retiring the poll also removed the last thing that imported a certificate bundle, so that is no longer shipped either.</li>
+</ul>
+<h3 id="every-installer-is-opened-before-anyone-is-given-it">Every installer is opened before anyone is given it</h3>
+<ul>
+<li><strong>Each artifact is now verified on the machine that built it.</strong> The disk image and the app bundle's signature on macOS; a silent install, the installed tree and then the uninstaller on Windows; package metadata, the pinned CPython, the menu entry and Qt's XCB plugin on Linux. In every case the installed copy — not the build tree — is started and driven through real routes, and on the two artifacts a person installs, the world library it wrote has to still be there afterwards. <strong>Removing CartoVox must not remove an author's worlds</strong>, and on Windows that is now proven by running the uninstaller rather than by reading it.</li>
+<li><strong>The payload check is byte-for-byte</strong> against the checkout, so any dropped asset fails — not only the ones somebody remembered to list.</li>
+</ul>
+<h3 id="your-map-s-own-rivers-in-the-world-built-on-it">Your map's own rivers, in the world built on it</h3>
+<ul>
+<li><strong>A river drawn on the map you bring in is now a river.</strong> Until now it was a fjord: the coastline detector sees blue, calls it water, and the line became a sea-level inlet slicing your continent. On a measured test sheet <strong>94% of the drawn river read as ocean</strong>, and not one cell of it reached the simulation as a river.</li>
+<li><strong>Rivers and lakes are told apart by width</strong>, which is how a reader tells them apart: a lake or a sea is wide, a river is narrow wherever you cut across it. Each river is filled back into your coastline as ground, thinned to its centreline, and carried beside the world as a river. Your lakes stay lakes and your ocean stays the ocean.</li>
+<li><strong>You choose whose rivers the world gets.</strong> <em>Keep the rivers I drew</em> cuts each one into the surface as a strictly descending channel, so the ground the hydrology solves has one lowest path and it is your line — the solver is not overruled, it routes water downhill exactly as before. On a generated world from a hand-drawn test map, <strong>9 of 9 rivers were followed, 89% of their drawn cells</strong>, with a mean cut of 96 m.</li>
+<li><strong><em>Let CartoVox put the rivers</strong></em> takes your lines out of the coastline just the same, so your continent is still whole, and then leaves where the water runs to the terrain, rainfall and slope the simulation solves. The same map built that way came out with its own rivers falling on <strong>8 of your 9 lines</strong> anyway, because the coastline you drew is most of what decides where water goes. The world reports that as a measurement, never as a promise.</li>
+<li>A third answer, <strong><em>they are not rivers</strong></em>, keeps the blue as water — right for a sheet whose narrow blue is straits and fjords. It is the only one of the three that leaves an inlet cut into your land, which is why it is not the default.</li>
+<li>The reading is shown over your map in blue with a count, and the world says in plain words which of the three it was built with.</li>
+<li><strong>The blank canvas offers the same choice</strong>, beside the River tool: <em>keep the ones I draw</em> or <em>let CartoVox put them</em>. There is no third answer there, because a stroke drawn with the river tool is a river. It changes the ground and not just the export — the canvas carves a valley along each drawn river, and hands the rivers over means it stops, so the surface you send is the surface you sculpted. Your lines stay on screen and travel with the drawing either way, and switching back and forth returns exactly the ground you started with. A drawing and an imported map in one world may answer differently; each river says which it was.</li>
+<li><strong>A river may cut a valley through a mountain; it may not delete it.</strong> The depth bound covered the channel but not the ground beside it, so a peak standing next to a forced river was sheared to bank level whatever it cost — 3.85 km on a measured world. Both are bounded now, at 400 m, with no loss of follow-through.</li>
+</ul>
+<h3 id="turn-world-a-map-tool-for-moving-the-meridian">Turn world: a map tool for moving the meridian</h3>
+<ul>
+<li><strong>A new tool under Tools on the map: Turn world.</strong> With it on, dragging sideways moves the meridian the sheet is cut at, on and on in both directions, so a continent split across the left and right edges can be brought to the middle. A world map is a cylinder cut open somewhere, and until now where it was cut was final.</li>
+<li><strong>It is off until you ask for it, and a map still opens panning and zooming.</strong> A drag pans; a scroll zooms; nothing is reprojected. Turning is a mode you enter, because a drag that quietly reprojected every marker, route and graticule on the map made ordinary panning feel like the map was fighting back.</li>
+<li><strong>An equirectangular sheet turns without asking the server at all</strong>: its left and right edges are the same meridian, so the picture is tiled, and fifteen full turns of the cylinder land exactly back where they started. Shaped sheets — Equal Earth, Robinson, Mollweide — cannot be tiled, so they are redrawn once, when you let go, rather than on a timer while you are still dragging.</li>
+<li><strong>Everything on the map turns with it.</strong> Markers, routes, the graticule, the hover reading and cell inspection all ask one module where a degree lands on the sheet, and that module now knows the turn, so none of them had to learn about it separately. The overlays are re-projected at most once a frame, and a turn no longer asks for a denser sheet it has no use for — it changes neither the zoom nor the size of the viewport, which are the only two things map detail is chosen from.</li>
+<li>Switching the tool off keeps whatever orientation you chose; snapping back would make the tool pointless. <strong>1:1</strong> is the way home.</li>
+<li><strong>Only the maps that can carry a turn are offered it</strong>: terrain and geology, climate and seasons, water and atmosphere, life and settlement. An atlas plate, a cartography style and a finished projection product each carry a frame, a border and lettering laid out for the meridian they open at, and re-drawing one about another tears all of that off. Within the four groups the same rule excludes the sheets that are several pictures on one plate — the four globes, the seasonal panels, the legend key — and the framed plates whose borders were the visible casualty. On anything else the tool is greyed out and says why.</li>
+<li><strong>Choosing a different projection no longer moves the map.</strong> The meridian a sheet is opened at is part of the view now, so it resets with the zoom and the pan every time a sheet is shown. It used to survive, and only halfway: on any projection the browser cannot tile, the new lens arrived at its own meridian while the markers, routes and graticule stayed at the old one — measured at seventy-nine degrees apart. A sheet already drawn at the right meridian is also no longer fetched again for ever.</li>
+</ul>
+<h3 id="deciding-how-much-of-a-planet-your-map-is">Deciding how much of a planet your map is</h3>
+<ul>
+<li><strong>Say what share of the planet your continent covers, and CartoVox sizes the map to match.</strong> The import panel asked only how wide your sheet should be — a number in the world's units that answers a different question from the one authors actually have. Type <em>4%</em> and it solves for the width that reaches it, measured on the sphere, so ground near the poles does not count for more than it is.</li>
+<li><strong>Trim the ocean you painted around your own coast.</strong> An imported sheet is usually a continent adrift in its author's sea, and the width control was resizing both: at 66% of the world's width, a sheet that is 85% water put a continent on the planet barely a fifth as big as the number suggested. The new control keeps anything from the whole sheet down to a crop tight at the coastline, and the same test map goes from 11.5% of the planet to 34.7% without a pixel of the coast moving.</li>
+<li><strong>The width control no longer has a dead top end.</strong> A sheet taller than 2:1 runs out of canvas height before it runs out of width, and every extra percent past that point was quietly scaled straight back off — the slider moved and the world did not change. It now stops where the poles do, and says why. The panel also reports the full range of shares a given map can reach, and says so plainly when you ask for one it cannot.</li>
+<li><strong>The placement sliders are visible again.</strong> Their rail was painted on the input's own background, which a later stylesheet cleared along with every other field in the panel; what was left was two loose dots on an empty panel. The rail is now drawn on the slider's track, at full width, with the filled part showing the value.</li>
+</ul>
+<h3 id="a-world-sheet-reads-as-a-world-not-as-one-continent">A world sheet reads as a world, not as one continent</h3>
+<ul>
+<li><strong>A map with ice at the poles reads its ocean as ocean again.</strong> The coastline reader learned which colours were sea from the colours crowding the border of the picture. On a whole-world sheet those are the ice caps — the one blue the sea never paints — so the ice was read as the water, the ocean became land, and a planet a quarter covered in continents came back as <strong>80% land in three landmasses</strong>, both in the Draw-your-world coastline preview and in the import review. The sea is now learned from the body of water itself: the blue that reaches an edge of the sheet, wherever it sits in the frame.</li>
+<li>The reported map now reads <strong>26% land in 66 landmasses</strong>, and the import review reports a third of a planet rather than 94.66% of one. Four saved worlds, read back from renders of themselves, agree with the land they were made from <strong>72–91%</strong> where they used to agree 27–41%.</li>
+<li><strong>An island painted close to the colour of the sea keeps its coast.</strong> The reader stretched its idea of "this map's water" to cover every blue the sea happened to touch — including the blue-green land it was being asked to draw a coast around, which then vanished into the water whole, sometimes at twice the distance in hue it was meant to tolerate. It now learns that range from the colours it identified as sea, and a colour the sea merely encloses, never reaching the edge of the sheet itself, is no longer taken for more sea. A stylised island that used to disappear survives from about 12° of hue away from the water instead of 40°. Closer than that, land and shallows are the same colour to any reading, and <strong>Water tolerance</strong> now moves that line: at its default the blue-green island is land, and pushing it past about 60 folds those shallows into the water deliberately.</li>
+<li><strong>A tinted country drawn out to the coast stays on the map.</strong> A pale fill shares the sea's hue and touches the sea, so nothing about where it sits tells them apart — and the reader would take the whole province for more ocean, coastline and all. How washed out a colour may be and still count as water is now measured against the water the map actually paints, rather than taken as a fixed fraction of it, which reached all the way down to a tint. Shallows and depth bands, which are a little paler than the water beside them, are untouched: across eight maps rendered from saved worlds the coasts move by at most a tenth of a percent.</li>
+<li><strong>A map with no coast on it is no longer read inside out.</strong> The same assumption ran the other way on a landlocked sheet — a kingdom with a lake, a river basin, anything whose water never touches the edge of the picture. The page was taken for the ocean and the lake became the only land on it. Where the colour at the edge could not be water and the sheet carries blue somewhere, that blue is now the water and the page is land. A parchment sheet with one lake goes from <strong>3% land to 97%</strong>, and one with rivers and no lake from 2% to 98%. A slate or blue-green margin still outranks an inland blue mark, so a sea drawn in those colours keeps its coast, and the panel says which way it read the sheet.</li>
+</ul>
+<h3 id="maps-of-a-region-not-only-of-a-planet">Maps of a region, not only of a planet</h3>
+<ul>
+<li><strong>Render Studio can now draw a window instead of the whole world.</strong> Give it a north, south, west and east, and you get a sheet of that ground — with its own shape, its own scale, its own rivers and its own georeferencing.</li>
+<li>Until now every sheet was the entire planet. The showcase brief called "coastal region" rendered all of it at 1,024 pixels, with the word "region" doing work the renderer could not do.</li>
+<li>A window takes its own aspect: a sixteen-degree square is drawn square rather than letterboxed into a world's 2:1.</li>
+<li>Opened in QGIS a regional sheet lands on its own window. The ESRI world file beside each layer carries the window's degrees, not the planet's.</li>
+<li><strong>Relief depth finally has somewhere to show.</strong> Cast shadows and sky openness change 0.5% of land on a whole-world sheet and 22.5% at regional scale — the escarpment finally throws a shadow across the ground below it.</li>
+<li>Every existing whole-world sheet is byte-for-byte what it was. The window is a strict generalisation, and a test compares the two.</li>
+</ul>
+<h3 id="the-map-tilted">The map, tilted</h3>
+<ul>
+<li><strong>Oblique view.</strong> Every sheet CartoVox draws is a plan view: straight down, no horizon, nothing in front of anything else. Press it on a finished render and the sheet tilts until the terrain has a far side — ridges stand up, valleys go behind them, and the coast has a horizon.</li>
+<li>It tilts the <em>finished</em> sheet rather than each layer, so nothing comes apart: a river is still in its valley and a name is still on its town, because they are the same pixels they always were. Names are carried with the ground they name, the way a hand-drawn panorama does it.</li>
+<li><strong>How tall the mountains stand is asked for as a share of the picture</strong>, not as a multiplier. "Eight times life size" means nothing without knowing whether a pixel is four hundred metres or nineteen kilometres of ground.</li>
+<li>The sides of the terrain — the faces a top-down map has no colour for — are shaded, so you can see which pixels are the map and which are the camera's.</li>
+<li><strong>The scale bar, compass and graticule stay behind</strong>, and the view says so. They are drawn flat on the paper rather than onto the ground, and a scale bar bent over a hill would promise a measurement the picture cannot keep.</li>
+<li>The picture says what it is, on screen and inside the PNG: horizontal distances are the map's, vertical ones are not to any scale, and nothing on it is measurable off the page.</li>
+<li>A whole world tilts too, and says why its far edge is a wall of polar ice: an equirectangular map stretches each pole across the whole width. A window away from the poles reads as terrain.</li>
+<li>Your render is untouched. The oblique view is a separate picture beside it.</li>
+</ul>
+<h3 id="encounter-maps-with-height">Encounter maps with height</h3>
+<ul>
+<li><strong>Tell a scene how tall each thing is, and it casts a shadow.</strong> A wall, a tower, a fallen column, a table — give it a height in your scene's own feet or metres and it stands up. A standing tower and a collapsed one stop looking the same.</li>
+<li><strong>One sun for the whole sheet</strong>, so every shadow falls the same way. That is what makes a page read as having depth; twelve drop shadows set by hand that disagree about where the light is do not, however deep each one looks.</li>
+<li><strong>Twice as tall is twice as long a shadow.</strong> Your numbers are taken at life size and nothing is stylised — a wall shadows the rubble beside it, not just the floor, and a narrow alley sits back from an open courtyard.</li>
+<li><strong>Nothing tilts.</strong> Every footprint stays exactly where you drew it, the grid still measures, and a token still stands on the square it is on. That is why this is not the oblique camera: a battlemap has to stay playable.</li>
+<li>What stands is what you drew. An unfilled rectangle is a room's walls and casts a wall's shadow; a filled one is a solid block. If your floor and your walls are one filled shape, the control says so by name and tells you how to separate them.</li>
+<li>Off until you ask, and the sheet says in plain words that the heights are yours rather than measured.</li>
+</ul>
+<h3 id="settlements-you-can-play-on">Settlements you can play on</h3>
+<ul>
+<li><strong>Export a settlement as a virtual-tabletop map.</strong> Walls, doors and the map image, as <strong>Universal VTT</strong> (<code>.dd2vtt</code>) — read by Foundry through the Universal Battlemap Importer, by Roll20 through the community importer, and natively by Fantasy Grounds and Arkenforge — or as a <strong>Foundry scene</strong> that Foundry opens with no module at all.</li>
+<li>Buildings, town walls, towers and rock block line of sight. Fences and pens go in the objects list instead, because a waist-high fence stops a cart and not a view. Gates become doors that open. Roads and fields are not obstacles.</li>
+<li><strong>Choose your square</strong>: five feet, ten feet, one metre or two. A settlement is as large as it is, and the export tells you how many squares that is before you open it somewhere it will not fit.</li>
+<li><strong>Only forges are exported as lights.</strong> A forge is a fire and the simulation says so; nothing else in a CartoVox settlement is a light source, and a lantern hung on every door would be invented by the exporter rather than known. The rest is the referee's to place, and the export says so.</li>
+<li>The <code>.dd2vtt</code> carries its map image, and declares the pixel density that image actually has rather than the one a tabletop would prefer.</li>
+</ul>
+<h3 id="the-atlas-bound-as-a-book-you-can-print">The atlas, bound as a book you can print</h3>
+<ul>
+<li><strong>Export the illustrated plates as one print-ready PDF.</strong> A title page with your world's name and your own thesis, a contents list, a page for every plate at a real paper size, and a colophon. The plates were always the expensive artefact; until now they left as a folder of loose PNGs.</li>
+<li><strong>A5, A4, A3, Letter or Tabloid</strong>, with a 12 mm margin. A wide plate turns the page to landscape on its own rather than shrinking to fit an upright one.</li>
+<li><strong>Every plate is embedded at its own resolution.</strong> An eleven-plate world bound at A3 measured 7.3 seconds and prints at 236–365 dots per inch, page by page — the export reports the figure for each one rather than asserting a number.</li>
+<li>The text is text: the contents page is searchable and a printer can ask for the fonts. It letters in the same faces the plates do.</li>
+<li><strong>The colophon says what the file is not.</strong> Colour is sRGB throughout, with no CMYK separation, no ICC profile, no crop marks and no bleed — a press will ask for those, and CartoVox has not produced them. It also carries the seed, so the world can be rebuilt from the book.</li>
+</ul>
+<h3 id="land-that-leaves-cartovox-as-a-coastline">Land that leaves CartoVox as a coastline</h3>
+<ul>
+<li><strong>The GeoJSON export now carries real coastlines.</strong> Land used to be exported as one axis-aligned rectangle per run of wet cells — 8,899 of them for a single saved world. Every rectangle was accurate and the set of them was useless: opened in QGIS it was a staircase that could not be styled as a coast, with no islands or lakes as such.</li>
+<li>The same world now exports as <strong>260 landmasses with 159 lakes and inland seas as holes</strong>, in less than half the bytes. Rasterised back onto the grid it agrees with the saved land mask to <strong>99.94%</strong> of cells; the few that differ are on the coast itself, where marching squares puts the line between cell centres rather than on a cell edge — which is where the simulation actually put it.</li>
+<li>A landmass that crosses the antimeridian is split there, as RFC 7946 asks.</li>
+</ul>
+<h3 id="3d-terrain-at-the-resolution-you-actually-simulated">3D terrain at the resolution you actually simulated</h3>
+<ul>
+<li><strong>OBJ and STL exports now carry the whole grid by default.</strong> They were capped at 256 samples across whatever the world was, which on a Full 1440 × 720 world is <strong>3.2% of the cells</strong> the simulation solved — and nothing said so. That cap was never a limit anyone chose: the module's triangle and vertex ceilings guard <em>imported</em> meshes, and even those allowed four times what the export was taking.</li>
+<li>Choose <strong>Full</strong>, <strong>Half</strong>, <strong>Quarter</strong> or <strong>Preview</strong> detail. A Full world at full detail is 2.07M triangles and about 99 MB; the old fixed size is still there as Preview at 3 MB. The cost is reported before the download rather than discovered after it.</li>
+<li>Each detail downloads under its own name, so two exports of one world are two files rather than one that quietly changed.</li>
+<li><strong>The compass in the planet view reports the place you are looking at.</strong> It used to look broken there, and it was: the globe's camera has no heading — its up vector is the planet's own axis — so the pole always projects straight above the centre and the arrow could not turn however far the globe was dragged. North really is up on a globe, so it says that once and spends the indicator on what dragging does change, reading out the latitude and longitude beneath the centre of the view. Straight down the axis, where the <em>North pole</em> preset parks, it says <strong>over the north pole</strong> rather than inventing a longitude from whichever meridian the camera drifted over.</li>
+</ul>
+<h3 id="watch-the-world-being-made">Watch the world being made</h3>
+<ul>
+<li><strong>A build now shows you the world it is making, instead of only a progress bar.</strong> The land and relief appear about seven seconds into a Quick build — the first moment there is anything to look at — and the map returns wearing its climate and biomes once rainfall and temperature have decided what grows where.</li>
+<li>The pictures are drawn from fields the simulation had already computed, by the same fast renderer the seed previews use. They add a fraction of a second to a build and change nothing about its result: a watched build and an unwatched one produce identical saved fields, and a test proves it.</li>
+<li>A frame that cannot be drawn is skipped in silence. A decorative picture must never be able to fail a world.</li>
+<li>Command-line builds pass no callback and draw nothing at all.</li>
+</ul>
+<h3 id="a-welcome-you-can-look-at">A welcome you can look at</h3>
+<ul>
+<li><strong>The first-run field guide is now an illustrated tour.</strong> Six panels, each one drawing and two sentences: what CartoVox simulates, how you describe the world you want, trying seeds, the three build sizes, drawing the atlas, and finally a finished world you can open on the spot. It replaces a modal of 1,587 words in twenty paragraphs with no pictures at all.</li>
+<li>The drawings are part of the interface rather than screenshots, so they follow your theme and cannot go stale against a redesign.</li>
+<li><strong>The manual did not go anywhere.</strong> It stopped being the greeting, not the manual — it is still under Help, in the footer, and on the first-world card.</li>
+<li>The tour appears once per version and can be dismissed at any panel; the task-finder card waits until you have finished reading rather than stacking on top of it.</li>
+</ul>
+<h3 id="explanations-that-stay-until-you-know-your-way-around">Explanations that stay until you know your way around</h3>
+<ul>
+<li><strong>Most controls carry a sentence saying what they do, and those sentences now stand where they were written</strong> for your first few sessions instead of hiding behind a small "i" that only appears on hover — invisible on a first pass, and unreachable entirely on a touch screen.</li>
+<li>After that they fold away, since by then they are in the way rather than helpful.</li>
+<li><strong>Settings › Appearance › Explanations</strong> overrides it in either direction: always show them, always fold them, or let CartoVox decide. Changing it moves the page you are looking at, not the next launch.</li>
+<li><strong>A button you cannot press now tells you why, not what it does.</strong> Once an explanation had folded onto a control it covered the reason the control was unavailable, so hovering a blocked button said "Scored previews · no world is saved" rather than "Describe a world first." The explanation now stands down while there is a reason to give, and comes back when the button does.</li>
+<li>That answer arrives even when the pointer is already resting on the button as it becomes unavailable — a run starting, a selection emptying — and it can be reached by keyboard, not only by hover.</li>
+</ul>
+<h3 id="a-finished-world-to-look-at-before-you-build-one">A finished world to look at, before you build one</h3>
+<ul>
+<li><strong>The Create screen and the empty Library now offer an example world.</strong> One click builds <em>Eldrebrenn</em> from a fixed recipe: a finished project with its data maps, illustrated atlas plates, dossier, codex and gazetteer. Until now there was no way to see what CartoVox produces without committing to a build and waiting.</li>
+<li><strong>It is a real project, not a sample or a screenshot.</strong> It lands in your own library, and every part of the app works on it — open it, sculpt it, rename its realms, export its plates, or throw it away. It is generated, so it costs nothing in the download and the app still makes no network request.</li>
+<li><strong>The cost is stated before you click, not after.</strong> A measured 83.9 seconds and 179 MB on a fast Apple Silicon Mac. Nothing is built automatically: an app that quietly spends a minute and a half of your processor and 179 MB of your disk on first launch has decided something that was not its to decide.</li>
+<li>The offer disappears once you have a world of your own, and the app will not build a second example beside the first.</li>
+</ul>
+<h3 id="a-sketch-tier-a-whole-world-in-about-half-a-minute">A Sketch tier: a whole world in about half a minute</h3>
+<ul>
+<li><strong>Create now offers three simulation tiers instead of two.</strong> Sketch is a quarter of Quick's resolution — a 360 × 180 grid with reduced moisture and current budgets — and a measured reference build finished in <strong>30.5 seconds with an illustrated atlas</strong> on a fast Apple Silicon Mac. Quick and Full are unchanged.</li>
+<li><strong>A Sketch is a real world, not a preview.</strong> Every stage runs and the saved archive holds the same members, so the codex, the dossier, the gazetteer, the data maps and the exports all work. The difference is how many cells the simulation was evaluated on, and nothing else.</li>
+<li><strong>A Sketch can be promoted one rung at a time.</strong> The saved-world rebuild now takes a target tier, so a Sketch can become Quick without paying for Full. As before, the rebuild starts a separate project and leaves the world you chose exactly as it was — coastlines, rivers, settlements, names and lore can move on a finer grid, so the original stays available as the fallback.</li>
+<li>The Create cost estimate, the setup guide and the saved world recipe all name the tier. An unrecognised tier is refused with a message naming the three that exist, rather than being quietly downgraded.</li>
+<li>The <strong>Quick</strong> checkbox in Create and in Settings is now a three-way choice, because a checkbox cannot hold three answers. The same choice is still reachable from both places and they stay in step.</li>
+</ul>
+<h3 id="a-world-being-rebuilt-no-longer-looks-finished">A world being rebuilt no longer looks finished</h3>
+<ul>
+<li><strong>Applying terrain edits marks the world as rebuilding.</strong> Until now a re-simulation left the project reading <code>completed</code> the whole time it ran, so force-quitting at hour two produced a Library entry that offered every action over a world whose maps and archive no longer agreed. The Library now shows <em>Rebuilding edits</em> while the work is in flight.</li>
+<li><strong>An interrupted rebuild is reported honestly.</strong> A failure before the commit restores the project, because the saved world was never touched. A failure after it reports the project as incomplete: the archive holds rebuilt fields that no revision describes. A force-quit is reconciled on the next start.</li>
+</ul>
+<h3 id="advanced-settings-while-your-map-is-on-the-bench">Advanced settings, while your map is on the bench</h3>
+<ul>
+<li><strong>A confirmed coastline no longer locks you out of Advanced settings.</strong> The map review and the settings sheet shared one column, and the review took all of it: with a map or a drawing open, the sheet was zero pixels tall and nothing could scroll to it. <strong>Advanced settings</strong> looked like it reopened the review because that was the only thing left on the screen.</li>
+<li><strong>The workspace has two named views now</strong> — <em>Map review</em> and <em>World settings</em> — with a switch above them. <strong>Advanced settings</strong> opens the sheet, because that is what it says; a map arriving opens its review, because a coastline wants checking first. Either is one click from the other, and the same switch serves an uploaded map and one drawn on the blank canvas.</li>
+<li>The review scrolls inside its own panel, so its lower half — the reading, the extent choices — is reachable instead of being cut off at the fold.</li>
+<li><strong>Both of the review's columns end inside that panel.</strong> The questions column carried a height guessed from the window while the panel scrolled behind it, so its own box finished below the fold: reaching the last question meant scrolling the panel too, which slid the previews the questions are about out from beside them. The panel holds the height now and hands the rest to the two columns, so one wheel scrolls one thing and the previews stay put.</li>
+<li>The button that read <em>Change generation settings</em> is now <strong>Back to the world brief</strong>. It always went to Create, never to the settings it named.</li>
+</ul>
+<h3 id="the-map-you-imported-stops-following-you-around">The map you imported stops following you around</h3>
+<ul>
+<li><strong>Create says which map your next world will be built on.</strong> An imported or drawn map stays attached to the Create sheet after the world it was brought in for is finished, and it replaces the geography of everything generated from that sheet afterwards. It said so nowhere: the inputs line named the preset, the seed and the brief, so pressing <strong>Generate</strong> quietly rebuilt the imported world again instead of the one you had just set up. A <strong>Foundation map</strong> row now names it beside the button that uses it.</li>
+<li><strong>Removing it takes one click, from Create.</strong> <em>Remove map</em> sits in that row and in the map review itself. Until now the only control that could drop a map was a text link in the Advanced sidebar — hidden behind the <em>Map review</em> view at exactly the moment a blocked <strong>Generate</strong> sent you there.</li>
+<li><strong>A map still waiting for its coastline check no longer traps the button.</strong> Generate used to jump to Advanced settings, land on the settings sheet rather than the review it was pointing at, and leave the map attached, so an ordinary world could not be started at all. It now offers to remove the map and generate from your settings alone; keeping it leaves you on Create, with <em>Review map</em> one keystroke away.</li>
+</ul>
+<h3 id="the-manuscript-editor-stays-quick-in-a-long-book">The Manuscript editor stays quick in a long book</h3>
+<ul>
+<li><strong>Typing in a large imported book no longer stalls.</strong> Saving re-read every chapter in the world to work out where it went, and measuring the open chapter ran on the typing thread. On a big book that blocked typing for <strong>832 ms</strong>; it is now <strong>0 ms</strong>. Opening a chapter with unsaved edits went from <strong>279 ms</strong> to <strong>38 ms</strong>, and a single autosave from <strong>262 ms</strong> to <strong>8 ms</strong>.</li>
+<li><strong>Tooltips that change as you work now say what is true.</strong> A hint was read once and then kept for the rest of the session, so a control whose meaning had moved on went on explaining what it meant when the page first loaded.</li>
+</ul>
+<h3 id="fixes-along-the-way">Fixes along the way</h3>
+<ul>
+<li><strong>A closed trace no longer claims you have unsaved work.</strong></li>
+<li><strong>A harmless resize notice no longer reports that the app failed to start.</strong></li>
+<li><strong>Changing the projection no longer turns the world</strong>, and turning the world is now a tool of its own with panning given back. The turn is offered only to maps that can actually carry one.</li>
+<li><strong>A cell reading can be followed</strong>, and the Sculptor can be closed again.</li>
+<li><strong>The first-run tour shows real maps rather than drawings of maps</strong>, sends you to the door instead of to the sheet the door just left, and no longer covers the tools it is describing. The welcome is a card with a way out: close it, open your own world, or look at the example.</li>
+<li><strong>A blocked control says why it is blocked</strong>, instead of restating what it would have done.</li>
+<li><strong>The thesis reading says what it understood but did not act on</strong>, instead of going quiet, and an opened fold stays open when a cue is applied.</li>
+<li><strong>Advanced settings stay on screen</strong> while your map is on the bench, and stop offering the same choice twice.</li>
+<li><strong>Four faults the browser suite had stopped being able to see</strong> were found and fixed once it could run to the end again: focus dropped when a dialog closed, a paint canvas that could not be zoomed, a compact inspector positioned over the map, and a lost trace-resume.</li>
+</ul>
+<ul>
+<li><strong>The action row at the foot of a scene no longer covers the drawing.</strong> It was pinned to the bottom of its column, so whenever the column grew taller than the window it floated up over the last inches of the canvas. Anything under it could not be clicked — a resize handle there simply did nothing, with no message to say why. The column now lays its rows out so each owns its own band, checked at three widths and four window heights.</li>
+<li><strong>A finished map no longer reads as unsaved the moment you open it.</strong> Render Studio compared the composition on screen against the one on disk using a setting that was written in two different shapes, so they could never match: every sheet was marked unsaved on opening, wrote a fresh revision, and then warned about unsaved work when the page was reloaded.</li>
+<li><strong>Large renders take about a fifth of the memory to view.</strong> Compositing an 8K bundle peaked near 5 GB because every layer was expanded whole; it now works down the sheet a band of rows at a time and peaks under 1 GB. The picture is unchanged, to the byte.</li>
+<li><strong>The Atlas is called the Atlas again.</strong> The rename to CartoVox reached the tab that holds illustrated plates, which names the publication the app draws rather than the app. Its own name is back, in the tab, the gallery and the messages that point at it.</li>
+<li><strong>Two manuscript saves in the same second keep their order.</strong> A history stamp read the clock twice and built its seconds and its milliseconds from different readings, so a save landing on the boundary was stamped as the start of a second rather than its end, and sorted before its own past.</li>
+</ul>
+      </div>
+    </article>
     <article class="release" id="v0.8.3">
       <header class="release-head">
         <h2>CartoVox 0.8.3</h2>

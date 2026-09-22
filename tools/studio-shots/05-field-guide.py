@@ -7,8 +7,7 @@ a folding brief, and Write is one strip above the page. The older passes
 exists, so this pass takes the whole set in one run instead.
 
 Sandbox server on 8098 only, never a real library. Writes 2x PNGs to
-/tmp/cartovox-site/shots/; build-images.py prefixes them `app-` (and leaves
-`guide-` names alone).
+/tmp/cartovox-site/shots/; build-images.py prefixes them `app-`.
 
     CARTOVOX_DATA_DIR=/tmp/cartovox-site-sandbox python3 studio.py --port 8098
     python3 05-field-guide.py
@@ -43,7 +42,10 @@ def step(name, run):
         log(f"  FAILED {name}: {error}")
 
 # The hero world, which build-images.py also derives the causal chain from.
+# The library holds two worlds called Ixrixenrond (one seed, built twice), and
+# only this one is the hero, so it is opened by id rather than by name.
 WORLD = "Ixrixenrond"
+WORLD_ID = "90ae45f361f3"
 BOOK = "The Debt of the Silverpeaks"
 THESIS = ("Three continents share one temperate world, divided by a wide ocean "
           "that only the western peoples have learned to cross. The east is an "
@@ -70,17 +72,25 @@ def dismiss_tour(page):
     }""")
 
 
-def open_world(page, name):
-    """Open the first world with this name.
+def open_world(page, name, world_id=None):
+    """Open a world by id, or else the first world with this name.
 
     The sandbox library can hold two worlds of one name -- a world keeps the
-    name its seed produced, and the same seed was built twice -- so an exact
-    role match is ambiguous and Playwright refuses it.
+    name its seed produced, and the same seed was built twice -- so a name
+    alone can open the wrong one. Pass the id when it matters.
     """
     open_workspace(page, "home", "archive")
-    card = page.get_by_role("button", name=f"Open {name}", exact=True).first
-    card.wait_for(state="visible")
-    card.click()
+    if world_id:
+        # The library re-renders its cards while it settles, so a located
+        # card can be detached by the time it is clicked; click the live one.
+        selector = f'[data-ui-action="open-world"][data-world-id*="{world_id}"]'
+        page.wait_for_selector(selector, state="attached")
+        page.wait_for_timeout(1000)
+        page.evaluate("s => document.querySelector(s).click()", selector)
+    else:
+        card = page.get_by_role("button", name=f"Open {name}", exact=True).first
+        card.wait_for(state="visible")
+        card.click()
     page.locator("#tab-studio.active").wait_for(state="visible")
     page.wait_for_timeout(2500)
 
@@ -237,7 +247,7 @@ def main():
         step("draw", draw)
 
         # ------------------------------------------------------------ world --
-        open_world(page, WORLD)
+        open_world(page, WORLD, WORLD_ID)
 
         def world_map():
             open_workspace(page, "world", "studio")
@@ -276,10 +286,58 @@ def main():
             close_dock_menus(page)
             page.evaluate("document.getElementById('btn-export-dropdown')?.click()")
             page.wait_for_timeout(900)
+            # The menu scrolls; bring the two atlas PDF entries into view.
+            page.evaluate("""() => document.getElementById('btn-dl-atlas-pdf')
+                ?.scrollIntoView({block: 'center'})""")
+            page.wait_for_timeout(400)
             shot(page, "map-export-menu")
             page.evaluate("document.getElementById('btn-export-dropdown')?.click()")
             page.wait_for_timeout(400)
         step("export-menu", export_menu)
+
+        def pdf_setup():
+            """0.9.1: the bound atlas has a setup that reads the real plan."""
+            set_maps_drawer(page, False)
+            close_dock_menus(page)
+            page.evaluate("document.getElementById('btn-dl-atlas-pdf')?.click()")
+            page.locator("#atlas-pdf-modal:not(.hidden)").wait_for(state="visible")
+            try:
+                page.wait_for_function(
+                    """() => !/Reading/.test(document.getElementById(
+                         'atlas-pdf-plan-title')?.textContent || 'Reading')""",
+                    timeout=30000)
+            except Exception as error:
+                log(f"  PDF plan still reading: {error}")
+            page.wait_for_timeout(800)
+            shot(page, "map-pdf-setup")
+            page.evaluate("document.getElementById('btn-atlas-pdf-close')?.click()")
+            page.wait_for_timeout(600)
+        step("pdf-setup", pdf_setup)
+
+        def map_look():
+            """0.9.1: Graphical relief, then back to the world's own look."""
+            set_maps_drawer(page, False)
+            close_dock_menus(page)
+            before = page.evaluate(
+                "document.getElementById('map-style-select')?.value || 'natural'")
+
+            def choose(value):
+                page.evaluate(f"""() => {{
+                  const select = document.getElementById('map-style-select');
+                  select.value = {value!r};
+                  select.dispatchEvent(new Event('change', {{bubbles: true}}));
+                }}""")
+                page.wait_for_timeout(1500)
+                page.wait_for_function(
+                    """() => { const img = document.getElementById('active-map-img');
+                               return img && img.complete && img.naturalWidth > 0; }""",
+                    timeout=60000)
+                page.wait_for_timeout(2500)
+
+            choose("graphical")
+            shot(page, "world-map-graphical")
+            choose(before)
+        step("map-look", map_look)
 
         def tools_menu():
             set_maps_drawer(page, False)
@@ -291,7 +349,10 @@ def main():
         def cell_inspector():
             viewport = page.locator("#map-viewport")
             box = viewport.bounding_box()
-            for fraction in ((0.34, 0.42), (0.5, 0.5), (0.28, 0.55), (0.62, 0.38)):
+            # Land on the hero world first, so Why here? reads a biome
+            # rather than open ocean; the rest are fallbacks.
+            for fraction in ((0.47, 0.30), (0.20, 0.80), (0.34, 0.42), (0.5, 0.5),
+                             (0.28, 0.55), (0.62, 0.38)):
                 page.mouse.click(box["x"] + box["width"] * fraction[0],
                                  box["y"] + box["height"] * fraction[1])
                 page.wait_for_timeout(2200)
@@ -423,8 +484,6 @@ def main():
             }""")
             page.wait_for_timeout(800)
             shot(page, "write-manuscript")
-            # The handbook page shows the same surface, under its own name.
-            shot(page, "guide-manuscript")
         step("manuscript", manuscript)
 
         def book_views():
@@ -445,13 +504,19 @@ def main():
 
         def style_panel():
             # Outline and Insights replace the page; the Style panel sits
-            # beside it, so the editor has to come back first. Leaving the
-            # workspace and returning is the one way back that does not
-            # depend on which view is in front.
+            # beside it, so the editor has to come back first. Since 0.9.1
+            # the view in front survives leaving the workspace, so press its
+            # own "Back to writing" as well.
             open_workspace(page, "write", "dossier")
             page.wait_for_timeout(1200)
             open_workspace(page, "write", "manuscript")
             page.wait_for_timeout(2500)
+            page.evaluate("""() => {
+              const back = [...document.querySelectorAll('#tab-manuscript button')]
+                .find(node => /Back to writing/.test(node.textContent) && node.offsetParent);
+              back && back.click();
+            }""")
+            page.wait_for_timeout(1500)
             page.locator("#tab-manuscript .ProseMirror").first.wait_for(
                 state="visible", timeout=8000)
             page.evaluate("""() => {

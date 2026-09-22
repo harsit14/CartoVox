@@ -30,6 +30,7 @@ DATES = {
     "0.6.0": "2026-08-27", "0.6.1": "2026-08-28", "0.7.0": "2026-08-29", "0.7.1": "2026-08-30",
     "0.7.2": "2026-08-30", "0.7.3": "2026-08-30", "0.7.4": "2026-08-30", "0.7.5": "2026-08-30",
     "0.7.6": "2026-08-30", "0.8.0": "2026-09-04", "0.8.1": "2026-09-08", "0.8.2": "2026-09-11", "0.8.3": "2026-09-14",
+    "0.9.0": "2026-09-20", "0.9.1": "2026-09-21",
 }
 
 RENAMES = [
@@ -46,7 +47,7 @@ RENAMES = [
 DROP_BLOCK = re.compile(
     r"^(Installers are distributed|These installers|These builds|Choose the Apple Silicon|"
     r"Choose the installer|Download only from|Built from private development commit|"
-    r"Built and tested on|Please report problems through)",
+    r"Built and tested on|Please report problems through|Earlier local packaging attempts)",
     re.IGNORECASE)
 DROP_IF_CONTAINS = re.compile(r"GitHub|SHA256SUMS|issue forms|beta portal", re.IGNORECASE)
 INSTALLER_LIST = re.compile(r"^- `?[\w.-]*(\.dmg|\.exe|\.deb|\.tar\.gz)`?", re.MULTILINE)
@@ -155,7 +156,7 @@ PAGE = """<!doctype html>
     </a>
     <nav class="nav-links" id="nav-links" aria-label="Sections">
       <a href="/">Home</a>
-      <a href="/features/">Field guide</a>
+      <a href="/guide/">Guide</a>
       <a href="/releases/" aria-current="page">Release notes</a>
       <a href="/#faq">FAQ</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>

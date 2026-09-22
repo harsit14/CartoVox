@@ -17,10 +17,16 @@ The passes write 2× PNGs to `/tmp/cartovox-site/shots/`. They need Playwright
 with Chromium. Delete the sandbox afterwards: it holds a copy of the worlds.
 
 `05-field-guide.py` supersedes 01–03 for the `app-*` family: those were written
-against 0.8.3 and reach for a toolbar 0.9 removed. It takes all thirty-one
-shots in one run, opens the world named in its `WORLD` constant (the first card
-of that name, since a library can hold two worlds with one name), and writes a
-book of its own prose for the Write shots — no screenshot may show the author's
-own manuscript. Name steps on the command line to retake a few without the
+against 0.8.3 and reach for a toolbar 0.9 removed. It takes all thirty-two
+shots in one run and opens the hero world by the id in its `WORLD_ID` constant —
+the library holds two worlds called Ixrixenrond (one seed, built twice), and
+opening the first card of that name photographs the wrong one. It writes a book
+of its own prose for the Write shots — no screenshot may show the author's own
+manuscript, so strip `codex/novels/` from the sandbox copy before you start.
+
+Run the app at the release the site describes, not at whatever `main` holds:
+`git worktree add --detach /tmp/cartovox-vX.Y.Z vX.Y.Z` and start that tree's
+`studio.py`. Rewrite the sandbox worlds' absolute `out_dir` paths and delete the
+copied `index.json` first, or the copies still point at the real library. Name steps on the command line to retake a few without the
 whole run: `python3 05-field-guide.py view-menu tools-menu`. 01–03 remain for
 the map-only `chain-*` crops and for the helpers and prose 05 imports.
