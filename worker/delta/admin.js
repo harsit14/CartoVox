@@ -63,6 +63,7 @@ border-radius:14px}
 .grid{display:grid;gap:16px;margin-top:16px}
 .g2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
 .g4{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(360px,1fr))}
 .kpis{display:grid;gap:16px;grid-template-columns:minmax(260px,1.4fr) repeat(auto-fit,minmax(170px,1fr))}
 .tile .label{color:var(--ink2);font-size:13px}
 .tile .value{font-size:30px;font-weight:600;margin:4px 0 2px;letter-spacing:-.01em}
@@ -94,6 +95,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .chips button[aria-pressed=true]{background:#26303f;border-color:var(--s1);color:var(--ink)}
 .chips b{font-weight:600;color:var(--muted);margin-left:4px}
 .hb{display:grid;grid-template-columns:minmax(90px,38%) 1fr auto;gap:4px 10px;align-items:center;font-size:13px}
+.hb.wide{grid-template-columns:minmax(120px,60%) 1fr auto}
 .hb .l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2)}
 .hb .l small{color:var(--muted)}
 .hb .t{height:14px;position:relative}
@@ -363,7 +365,7 @@ function adminApp() {
   function hbars(rows, opts = {}) {
     if (!rows.length) return '<p class="empty">Nothing yet.</p>';
     const max = Math.max(...rows.map(r => r.value), 1);
-    return '<div class="hb">' + rows.map(r => `<div class="l" title="${esc(r.title || r.label)}">${esc(r.label)}${r.small ? ` <small>${esc(r.small)}</small>` : ''}</div>`
+    return `<div class="hb${opts.wide ? ' wide' : ''}">` + rows.map(r => `<div class="l" title="${esc(r.title || r.label)}">${esc(r.label)}${r.small ? ` <small>${esc(r.small)}</small>` : ''}</div>`
       + `<div class="t"><div class="b" style="width:${(r.value / max) * 100}%;background:${r.color || opts.color || 'var(--s1)'}" data-tip="${esc(`${num(r.value)} ${opts.unit || ''}\n${r.title || r.label}`)}"></div></div>`
       + `<div class="v">${esc(opts.fmt ? opts.fmt(r.value) : compact(r.value))}${r.after ? `<small>${esc(r.after)}</small>` : ''}</div>`).join('') + '</div>';
   }
@@ -641,12 +643,21 @@ function adminApp() {
     const osRows = tally(d.machines, x => [x.os, x.arch].filter(Boolean).join(' · '));
     const colors = ['var(--s1)', 'var(--s2)', 'var(--s3)'];
     osRows.forEach((r, i) => { r.color = i < 3 ? colors[i] : '#5c6270'; });
-    const card = (title, sub, rows) => `<div class="card"><h2>${title}</h2><div class="sub">${sub}</div>${hbars(rows.slice(0, 8), { unit: 'computers' })}</div>`;
-    return `<section class="grid g4">
+    const card = (title, sub, rows, wide = false) => `<div class="card"><h2>${title}</h2><div class="sub">${sub}</div>${hbars(rows.slice(0, 8), { unit: 'computers', wide })}</div>`;
+    // "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x2504) Direct3D11 …)" reads as its model.
+    const gpuLabel = name => {
+      const angle = /^ANGLE \([^,]+,\s*(.+?)(?:\s+\(0x[0-9a-f]+\))?(?:\s+(?:Direct3D|OpenGL|Vulkan)[^,]*)?(?:,[^,]*)?\)$/i.exec(name);
+      return (angle ? angle[1] : name).replace(/^ANGLE Metal Renderer:\s*/i, '').trim();
+    };
+    const displays = (d.displays || []).map(x => ({ label: `${x.width} × ${x.height}`, small: x.scale && x.scale !== 1 ? `at ${x.scale}×` : '', value: x.computers }));
+    const gpus = (d.gpus || []).map(x => ({ label: gpuLabel(x.gpu), title: x.gpu, value: x.computers }));
+    return `<section class="grid g3">
       ${card('Operating systems', `${num(d.machines.length)} registered computers`, osRows)}
       ${card('App versions', 'What each computer last reported', tally(d.machines, x => [x.app_version, x.release].filter(Boolean).join(' · ')))}
       ${card('Memory', 'Installed RAM (Delta V1 builds reported free memory and are left out)', tally(d.machines, mem))}
       ${card('Window sizes', 'App window at start, in the range', d.screens.map(x => ({ label: `${x.width} × ${x.height}`, value: x.computers })))}
+      ${card('Screens', 'Screen size in the system\'s points, and its pixel density (Delta V2)', displays)}
+      ${card('Graphics', 'The graphics processor each computer\'s web view reports (Delta V2)', gpus, true)}
     </section>`;
   }
 

@@ -446,6 +446,19 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
       SUM(COALESCE(json_extract(props, '$.had_install'), 0)) AS had_install
     FROM events WHERE kind = 'session' AND name = 'unlock' AND at >= ? AND at < ? AND ${scope}
     GROUP BY 1, 2 ORDER BY ok DESC, attempts DESC`, since, until, ...binds);
+  // Screens and graphics processors (EULA 2.1, 6.3(a)): the window event a
+  // Delta V2 page sends once per load.
+  const displays = await rows(`SELECT json_extract(props, '$.screen_width') AS width,
+      json_extract(props, '$.screen_height') AS height,
+      ROUND(json_extract(props, '$.pixel_ratio'), 2) AS scale, COUNT(DISTINCT install_id) AS computers
+    FROM events WHERE kind = 'session' AND name = 'ui:window' AND json_extract(props, '$.screen_width') > 0
+      AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1, 2, 3 ORDER BY computers DESC LIMIT 12`, since, until, ...binds);
+  const gpus = await rows(`SELECT json_extract(props, '$.gpu') AS gpu, COUNT(DISTINCT install_id) AS computers,
+      COUNT(DISTINCT slot) AS testers
+    FROM events WHERE kind = 'session' AND name = 'ui:window' AND COALESCE(json_extract(props, '$.gpu'), '') != ''
+      AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1 ORDER BY computers DESC LIMIT 20`, since, until, ...binds);
   const screens = await rows(`SELECT json_extract(props, '$.width') AS width,
       json_extract(props, '$.height') AS height, COUNT(DISTINCT install_id) AS computers
     FROM events WHERE kind = 'session' AND name = 'ui:window' AND at >= ? AND at < ? AND ${scope}
@@ -487,7 +500,7 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
       previous_since: days ? stamp(sinceMs - days * DAY_MS) : null },
     totals, previous, daily, heatmap, testers, features, performance, failures, errors,
     error_groups: errorGroups, systems, machines, screens, feed: feed.slice(0, 30), sessions, directory,
-    time, gates, unlocks };
+    time, gates, unlocks, displays, gpus };
 }
 
 async function admin(request, env, path) {
