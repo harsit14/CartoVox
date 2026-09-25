@@ -30,7 +30,7 @@ DATES = {
     "0.6.0": "2026-08-27", "0.6.1": "2026-08-28", "0.7.0": "2026-08-29", "0.7.1": "2026-08-30",
     "0.7.2": "2026-08-30", "0.7.3": "2026-08-30", "0.7.4": "2026-08-30", "0.7.5": "2026-08-30",
     "0.7.6": "2026-08-30", "0.8.0": "2026-09-04", "0.8.1": "2026-09-08", "0.8.2": "2026-09-11", "0.8.3": "2026-09-14",
-    "0.9.0": "2026-09-20", "0.9.1": "2026-09-21",
+    "0.9.0": "2026-09-20", "0.9.1": "2026-09-21", "0.9.2": "2026-09-24",
 }
 
 RENAMES = [
@@ -49,7 +49,10 @@ DROP_BLOCK = re.compile(
     r"Choose the installer|Download only from|Built from private development commit|"
     r"Built and tested on|Please report problems through|Earlier local packaging attempts)",
     re.IGNORECASE)
-DROP_IF_CONTAINS = re.compile(r"GitHub|SHA256SUMS|issue forms|beta portal", re.IGNORECASE)
+# The last two keep how the Delta service is hosted and how codes are issued
+# off the public page; the in-app notes still carry them.
+DROP_IF_CONTAINS = re.compile(r"GitHub|SHA256SUMS|issue forms|beta portal|"
+                              r"services/delta-service|delta_access\.issuer", re.IGNORECASE)
 INSTALLER_LIST = re.compile(r"^- `?[\w.-]*(\.dmg|\.exe|\.deb|\.tar\.gz)`?", re.MULTILINE)
 
 
