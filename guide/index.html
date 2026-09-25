@@ -43,6 +43,7 @@
     <p class="eyebrow">Contents</p>
     <nav class="toc-list" id="toc">
       <a href="#where"><b>Where is it?</b><small>search</small></a>
+      <a href="#new-092">New in 0.9.2</a>
       <a href="#new-091">New in 0.9.1</a>
       <a href="#new-090">New in 0.9</a>
       <span class="toc-group">Start here</span>
@@ -103,7 +104,7 @@
         they never knew were there.
       </p>
       <p class="muted small">
-        Current as of <b>0.9.1</b>, checked against a running copy. Version-by-version changes are on the
+        Current as of <b>0.9.2</b>; the screenshots are from 0.9.1. Version-by-version changes are on the
         <a href="/releases/">release notes</a> page. The same material ships inside the app under <b>Help</b>, offline.
       </p>
       <div class="callout">
@@ -151,7 +152,7 @@
           <tr><td>Turn the world so a split continent is whole</td><td><code>World › Tools › Turn world</code>, then drag sideways; <b>1:1</b> returns it</td></tr>
           <tr><td>Grid, minimap, split view, time strip, HD region</td><td><code>World › View › Map aids</code></td></tr>
           <tr><td>Rivers, watersheds, lakes and groundwater</td><td><code>World › Maps › Water &amp; atmosphere</code> — drainage area, watersheds, river hierarchy, river permanence, lake regimes, aquifers</td></tr>
-          <tr><td>Carve a river valley by hand</td><td><code>World › Tools › Sculpt › River valley</code> — click each bend in turn; the whole course is one edit</td></tr>
+          <tr><td>Carve a river valley by hand</td><td><code>World › Tools › Sculpt › Valley</code> — click each bend in turn; the whole course is one edit</td></tr>
           <tr><td>Temperature, rainfall, seasons and Köppen</td><td><code>World › Maps › Climate &amp; seasons</code></td></tr>
           <tr><td>Winds, ocean currents, tides and ports</td><td><code>World › Maps › Water &amp; atmosphere</code> — four seasonal wind sheets, currents, coastal tides, maritime access</td></tr>
           <tr><td>Realm borders, roads, farming and trade</td><td><code>World › Maps › Life &amp; settlement</code> — realm territories, landmarks &amp; routes, border friction &amp; trade dependence, domestication &amp; farming, the agricultural calendar</td></tr>
@@ -166,7 +167,7 @@
           <tr><td>Raise a mountain, cut a strait, move a city</td><td><code>World › Tools › Sculpt</code> (key <kbd>S</kbd>)</td></tr>
           <tr><td>See the map under the Sculpt panel, poles included</td><td><code>World › Tools › Sculpt › Hide controls</code> — the chosen tool stays active</td></tr>
           <tr><td>Draw a circle and say what belongs in it</td><td><code>World › Tools › Sculpt › Describe a region</code></td></tr>
-          <tr><td>Rename one feature everywhere it appears</td><td><code>World › Tools › Sculpt › Select feature</code> › <b>Rename everywhere</b></td></tr>
+          <tr><td>Rename one feature everywhere it appears</td><td><code>World › Tools › Sculpt › Select</code> › <b>Rename everywhere</b></td></tr>
           <tr><td>A year of weather as a radar loop</td><td><code>World › Tools › Weather</code> (key <kbd>Y</kbd>)</td></tr>
           <tr><td>Test a changed tilt, season or ocean</td><td><code>World › Tools › Climate Lab</code> (key <kbd>K</kbd>)</td></tr>
           <tr><td>Plates, boundaries and what the Tectonic Director got</td><td><code>World › Tools › Tectonics</code> (key <kbd>T</kbd>)</td></tr>
@@ -222,6 +223,27 @@
       </table>
       <p class="muted small">Nothing matched? The sections below cover surfaces this index does not name, and the
       <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Discord</a> is the place to ask.</p>
+    </section>
+    <section id="new-092">
+      <p class="eyebrow">New in 0.9.2</p>
+      <h2>The first Delta build.</h2>
+      <p class="section-lede">
+        0.9.2 is Delta V1, shared with invited testers on 24 September 2026. It opens with a personal access code
+        and reports how it is used, and most of what it adds answers what testers asked for: imported maps that keep
+        what you drew, sculpting that changes the ground as you paint, and more ways to take a world to the table.
+        The full account is in the <a href="/releases/#v0.9.2">release notes</a>.
+      </p>
+      <ul class="feat">
+        <li><b>A Delta access code opens it</b> — a short personal code, <code>CVD-XXXX-XXXX-XXXX</code>, in place of the beta keys, which no longer work. The first unlock registers the computer once over the internet, and one code unlocks up to three computers. Taking part includes a usage report — sessions, the tools and exports you use, errors and how long work takes — that never contains your worlds, maps, lore, manuscripts or anything you type. <a href="#install">First launch</a>.</li>
+        <li><b>Imported maps keep what you drew</b> — a GeoJSON file brings its rivers, roads, towns and realm borders as well as its coastline; traced realms come back as traced, and realm borders come out smooth. A map whose land is one flat colour now gets hills and ranges raised inside your coastline, a flat-coloured sea gets shelves, basins and trenches, and whatever you shaded keeps your shading. An <b>Import report</b> lists what was preserved, transformed, uncertain and not carried before you commit. <a href="#import">Import a map</a>.</li>
+        <li><b>A brief that takes no for an answer</b> — Mountains can be <b>None: flat land to sculpt</b>; Civilisation adds <b>Only the places I place</b> and <b>No peoples: physical world</b>; how ragged the coasts are is a setting; and Advanced settings can be searched and undone, each listing the settings it pulls with or against. <a href="#brief">The World Brief</a>.</li>
+        <li><b>Tongues in your own sounds</b> — a tongue's card gains <b>Sounds</b>: its consonants and vowels (a letter may be a cluster, so <code>str</code> is one consonant), its syllable shapes and its stress. Every root is then spelled in them, with the same word for the same meaning wherever it appears. <a href="#brief">The World Brief</a>.</li>
+        <li><b>Sculpting, rebuilt</b> — brushes change the terrain live as you paint, in any projection, with pen pressure and land-only, sea-only and keep-coastline filters. <b>Mountains</b>, <b>Terrace</b> and <b>Level land</b> join the tools, <b>Flatten</b> now brings raised ground down to its target height, and <b>Quick look</b> shows in seconds how rain, rivers and biomes would answer your pending edits. <a href="#sculpt">Sculpt</a>.</li>
+        <li><b>More ways out of the world</b> — the Export menu adds named places for globe tools (KML), a hexcrawl sheet, an interactive map to hand to players, map tiles for GIS and printable solid terrain; a scene exports to virtual tabletops, a campaign makes a player handout, a route downloads as GPX, and render bundles carry the geography as vectors. <a href="#export">Everything that exports</a>.</li>
+        <li><b>On the World map</b> — <b>Hotspots</b> that open a scene, a Codex page or a chapter; a distance scale re-measured as you zoom, pan and turn; <b>Stack</b> in the split view, drawing one map over another with opacity or Multiply; and two maps of the sea, <b>Marine zones</b> and <b>Fisheries &amp; ocean food</b>. <a href="#map">The map</a>.</li>
+        <li><b>Writing and lore</b> — Insights credits dialogue by speaker and reads the book by point of view, and saves its tables as a spreadsheet or a Word appendix; scene checks read the sky, know when characters are born and catch a name its tongue could never form. Imported lore reads Markdown front matter and brings its images, and a relationship can say when it began and ended. <a href="#manuscript">Manuscript</a> · <a href="#codex">Codex</a>.</li>
+        <li><b>Travel and settlements</b> — the journey planner adds an ox wagon, a relay courier and a marching column; the settlement editor outlines any building an edit cut off from the streets, and <b>Reconnect cut-off streets</b> lays lanes back to them as one step. <a href="#travel">Travel</a> · <a href="#settlements">Settlements</a>.</li>
+      </ul>
     </section>
     <section id="new-091">
       <p class="eyebrow">New in 0.9.1</p>
@@ -471,7 +493,7 @@
       <p>The sheet has <b>306 inputs in twenty groups</b>, in the order the simulation uses them, each with a note and its allowed range. Nothing is hidden in a module.</p>
       <figure class="guide-fig">
         <div class="window"><img src="/img/app-create-advanced.webp" width="1800" height="1125" alt="The Advanced world settings sheet open in Create, its twenty groups listed with the number of options in each" loading="lazy" decoding="async"></div>
-        <figcaption>Advanced world settings, grouped in the order the simulation runs and counted: Identity and grid (1), The planet (23), Terrain import (9), Tectonics — plates (9), continents (13) and relief (66), Presentation of the sphere (2), Climate — temperature (11), circulation (8), rainfall (12) and ocean (2), Hydrology (44), Surface geology and soils, Glacial history (7), Geological resources (5), Biomes (13), the impossible layer (13), Civilisation (29), Naming (7) and Output (31). The column on the left keeps Save as recipe, Clear overrides, Import from file, and how many settings the preset set against how many you changed.</figcaption>
+        <figcaption>Advanced world settings, grouped in the order the simulation runs and counted: Identity and grid (1), The planet (23), Terrain import (11), Tectonics — plates (9), continents (15) and relief (67), Presentation of the sphere (2), Climate — temperature (11), circulation (8), rainfall (12) and ocean (2), Hydrology (44), Surface geology and soils, Glacial history (7), Geological resources (5), Biomes (13), the impossible layer (13), Civilisation (30), Naming (7) and Output (31). The column on the left keeps Save as recipe, Clear overrides, Import from file, and how many settings the preset set against how many you changed.</figcaption>
       </figure>
       <ul class="feat">
         <li><b>Planet</b> — radius, gravity, rotation and day length, orbital year, axial tilt, eccentricity and periapsis phase, star luminosity and distance, land share, tides, atmospheric pressure, an explicit greenhouse forcing, ocean salinity, and one dominant moon's mass, distance, period and inclination. Authored year lengths are allowed; a Kepler mismatch is shown, not corrected.</li>
@@ -526,7 +548,7 @@
         <figcaption>A full-screen desk with an icon rail, one button per group: Navigate, Land, Relief, Cover, Water, Realms, Annotate, World and Reference.</figcaption>
       </figure>
       <ul class="feat">
-        <li><b>Brushes</b> — Land, Water, Islands, Outline, Raise, Lower, Smooth, Flatten, with size, strength and hard-edge controls, undo and redo, and a seeded starting shape to sculpt. The ocean wraps east–west, because it is a planet.</li>
+        <li><b>Brushes</b> — Land, Water, Islands, Outline, Raise, Lower, Smooth, Flatten, Mountains, Roughen, with size, strength and hard-edge controls, undo and redo, and a seeded starting shape to sculpt. The ocean wraps east–west, because it is a planet.</li>
         <li><b>Rivers</b> are carved as descending valleys so the hydrology solver has a lowest path; the finished world reports how much of each drawn river it actually followed. Beside the river tool is the same choice the importer offers — <i>keep the ones I draw</i> or <i>let CartoVox put them</i> — with no third answer, because a stroke drawn with the river tool is a river. It changes the ground and not just the export: the canvas carves a valley along each drawn river, handing them over stops it, and switching back and forth returns exactly the ground you started with.</li>
         <li><b>Labels</b> (place, region, sea, mountains, river), <b>kingdom borders</b>, <b>cities</b>, <b>land cover</b>, <b>roads</b> and <b>landmarks</b> return as an author-canon layer on the finished map; drawn borders and cities are honoured by the build and reported when they cannot be.</li>
         <li><b>Reference image</b> — drop a map and the coastline is previewed automatically (colour map, line drawing, light/dark mask or transparency readings); <b>Mark land / Mark water</b> and <b>Detect coastline</b> correct it, <b>Apply coastline</b> is one undoable change. <b>Magnetic outlines</b> follow the picture's edges.</li>
@@ -674,18 +696,18 @@
         <li><b>3D terrain</b> (<b>Tools</b> in the dock) — three views from one saved sample: a rectangular <b>Landscape</b>, a displaced-sphere <b>Planet</b> you can orbit into either hemisphere, and <b>Voxels</b> in 100, 250, 500 or 1,000 m terraces. Detail presets from 96 to 2,048 samples on the longest edge; natural colours or biome, elevation, realm and climate palettes; vertical relief, smoothing, seabed relief, water opacity, rivers and lakes; sun direction and lighting presets; perspective, orthographic, top and low-angle cameras; an inspector that always reports saved cell values; <b>PNG export</b> of any view. Select a region on the planet to open it as a landscape. Rendering is local, in a worker, and never exceeds the saved simulation grid.</li>
       </ul>
 
-      <h3 id="sculpt">Sculpt, Select feature, revisions</h3>
+      <h3 id="sculpt">Sculpt, Select, revisions</h3>
       <figure class="guide-fig">
         <div class="window"><img src="/img/app-map-sculpt.webp" width="1800" height="1125" alt="The Sculpt terrain panel with its navigate, build, carve, refine and story tools, and Hide controls in its title bar" loading="lazy" decoding="async"></div>
         <figcaption>Sculpt terrain in four steps: choose a change, place it on the map, inspect the terrain result, then apply and re-simulate. Nothing changes until you do.</figcaption>
       </figure>
       <ul class="feat">
-        <li><b>Sculpt</b> — Peak, Ridge, Plateau, Island, Strait, River valley, Basin, Deep water, Coast, Flatten, Smooth, Detail, Protect area, Preserve terrain, Settlement, Story pin and <b>Describe a region</b>. The brush previews its footprint, falloff, bearing, radius, cumulative elevation delta, affected area, raised and lowered cells and provisional coast crossings on the map before anything is applied; several operations stack with undo and redo.</li>
-        <li><b>Sculpting with your hands</b> <span class="badge badge-soft">0.9</span> — a click places the brush exactly as the panel describes it; holding the pointer and dragging states the footprint in kilometres on the map itself, and releasing hands the pointer the height, with both numbers read out beside the cursor as they change. A painted stroke is a row of ordinary nudges spaced on the ground rather than on the screen, so the same gesture means the same thing at any zoom. <b>Ridge</b> and <b>River valley</b> are drawn as trails: click each peak or bend in turn, hold any one of them to give that summit its own height, and finish on the last point — the whole crest is one edit, previewed, undone, listed and re-simulated as a single record.</li>
+        <li><b>Sculpt</b> — <b>Paint</b> Raise, Lower, Smooth, Flatten, Mountains, Roughen, Terrace, Land, Sea and Coast; <b>Shape</b> a Peak, Plateau, Basin or Island, or <b>Level land</b>; <b>Draw</b> a Range or a Valley; <b>Guard</b> ground with Protect and Preserve; and place a Settlement, a Story pin or <b>Describe a region</b>. <span class="badge badge-soft">0.9.2</span> Painted strokes change the terrain live on the map as you move, in any projection, with a brush ring, hardness, pen pressure and filters for land only, sea only or keep coastline; a stroke is one edit and one undo. <b>Quick look</b> solves rain, rivers and biomes coarsely with your pending edits in a few seconds and shows before and after, saving nothing. The brush previews its footprint, falloff, bearing, radius, cumulative elevation delta, affected area, raised and lowered cells and provisional coast crossings on the map before anything is applied; several operations stack with undo and redo.</li>
+        <li><b>Sculpting with your hands</b> <span class="badge badge-soft">0.9</span> — a click places the brush exactly as the panel describes it; holding the pointer and dragging states the footprint in kilometres on the map itself, and releasing hands the pointer the height, with both numbers read out beside the cursor as they change. A painted stroke is a row of ordinary nudges spaced on the ground rather than on the screen, so the same gesture means the same thing at any zoom. <b>Range</b> and <b>Valley</b> are drawn as trails: click each peak or bend in turn, hold any one of them to give that summit its own height, and finish on the last point — the whole crest is one edit, previewed, undone, listed and re-simulated as a single record.</li>
         <li><b>Describe a region</b> <span class="badge badge-soft">0.9</span> — draw a circle or a square on the map and say what belongs there. A description naming something CartoVox can place gets it placed: a named region on the map, a page in the codex, an entry in the gazetteer, carrying your own words as its lore. Where the words describe ground rather than a landmark — <i>volcanic</i>, <i>highlands</i>, <i>sunken</i> — the ground moves, through the same sculpt records a hand edit would have written. Words it read and could not place are reported back rather than silently dropped. Since 0.9.1 the review before <b>Apply</b> is measured from the same operations Apply will run, so the cells, the systems to rebuild and the cost it shows are the ones you get; a description that only names a place stays immediate.</li>
         <li><b>Hide controls</b> <span class="badge badge-soft">0.9.1</span> — folds the Sculpt panel away while the chosen tool stays active, so the ground under it, and the polar caps it used to cover, can be worked. Pending terrain and change previews follow the projection you chose, the two-hemisphere disk included, and changing projection asks for a fresh preview without moving anything you placed. <kbd>⌘Z</kbd> and <kbd>⇧⌘Z</kbd> (<kbd>Ctrl</kbd> on Windows and Linux) undo and redo pending edits while Sculpt is open and no text field has focus; a painted stroke is one step.</li>
         <li><b>The places you put on the map stay put</b> — cities and borders you draw hold their positions against the world's own, instead of being displaced by the generator's next pass.</li>
-        <li><b>Select feature</b> reads the editable terrain, water, ecology, settlement, route, realm and magical-region features under a point. Remove or reshape land, islands, lakes, rivers, biome regions and mountain terrain; move or remove settlements; reshape routes and realm borders; edit magical regions. An operation that cannot honestly preserve a generated feature says so and stages the closest supported change. A press in Select feature only ever inspects; Build, Carve and Refine are the tools that place strokes, so dragging while selecting cannot drop a feature by accident.</li>
+        <li><b>Select</b> (<kbd>Q</kbd>) reads the editable terrain, water, ecology, settlement, route, realm and magical-region features under a point. Remove or reshape land, islands, lakes, rivers, biome regions and mountain terrain; move or remove settlements; reshape routes and realm borders; edit magical regions. An operation that cannot honestly preserve a generated feature says so and stages the closest supported change. A press with Select only ever inspects; Paint, Shape and Draw are the tools that place strokes, so dragging while selecting cannot drop a feature by accident.</li>
         <li><b>Re-simulate</b> states which downstream systems will be rebuilt before it runs, uses the world's recorded seed, can be cancelled while it is still safe, renders new plates in staging and swaps them only when they exist. Every apply creates a <b>restorable revision</b> under <code>revisions/r####/</code>; author canon, locked names and lore overrides survive it.</li>
         <li><b>Checkpoints</b> can be named; <b>continuity diffing</b> after a sculpt reports what moved: planet stats, landmass areas, hearth movement in km, realm territory shares and any name that changed.</li>
         <li><b>A world being rebuilt no longer looks finished.</b> Applying terrain edits marks the project <i>Rebuilding edits</i> in the Library while the work is in flight, so a force-quit at hour two cannot leave an entry offering every action over a world whose maps and archive no longer agree. A failure before the commit restores the project; a failure after it reports the project as incomplete; a force-quit is reconciled on the next start.</li>
@@ -717,28 +739,37 @@
 
       <h3 id="export">Everything that exports</h3>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-map-export-menu.webp" width="1800" height="1125" alt="The Export menu open above the dock, scrolled to its two bound-atlas entries among seventeen export formats" loading="lazy" decoding="async"></div>
-        <figcaption><code>World › Export</code>, seventeen entries since 0.9.1 split the bound atlas into a quick export and a setup. Everything else leaves from the panel that owns it.</figcaption>
+        <div class="window"><img src="/img/app-map-export-menu.webp" width="1800" height="1125" alt="The Export menu open above the dock, scrolled to its two bound-atlas entries" loading="lazy" decoding="async"></div>
+        <figcaption><code>World › Export</code>, twenty-two entries since 0.9.2 added KML, a hexcrawl sheet, an interactive map, map tiles and printable terrain (the picture is the 0.9.1 menu). Everything else leaves from the panel that owns it.</figcaption>
       </figure>
       <p>The map dock's <b>Export</b> menu, plus the downloads scattered through the Codex, Atlas and manuscript. Nothing here needs a re-simulation.</p>
       <table>
         <thead><tr><th>What</th><th>Where</th><th>Notes</th></tr></thead>
         <tbody>
           <tr><td>Any map view as PNG</td><td>Map · Export</td><td>In the current projection and palette, with filters applied; <b>Original PNG</b> for the raw sheet</td></tr>
+          <tr><td>Named places for globe tools (KML)</td><td>Map · Export</td><td><span class="badge badge-soft">0.9.2</span> Every settlement, realm, range, river, lake, sea and other named place with a position, one folder per kind, for Google Earth, QGIS and Marble. The coordinates are the world's own degrees, so a distance such a tool measures assumes Earth's radius</td></tr>
+          <tr><td>Hexcrawl sheet (CSV and hex map)</td><td>Map · Export</td><td><span class="badge badge-soft">0.9.2</span> Numbered pointy-top hexes of the width you choose over the view or the whole world, each with its terrain, land share, heights, river, lake or coast, realm and settlements: a spreadsheet, the same rows as JSON and a coloured hex map. The setup counts the hexes first and refuses more than 20,000</td></tr>
+          <tr><td>Interactive map with clickable places (HTML)</td><td>Map · Export</td><td><span class="badge badge-soft">0.9.2</span> One file for players that opens in any browser offline: pan, zoom, search, and a pin for every settlement, realm, range, river, lake, sea, desert, place of power and continent, with kinds you can tick on and off</td></tr>
+          <tr><td>Map tiles for GIS and map apps (MBTiles)</td><td>Map · Export</td><td><span class="badge badge-soft">0.9.2</span> The relief sheet as 256-pixel Web Mercator tiles for QGIS, tile servers and offline map apps, stopping at the zoom the saved sheet can fill</td></tr>
           <tr><td>Coastlines + GIS features (GeoJSON)</td><td>Map · Export</td><td>Real coastlines <span class="badge badge-soft">0.9</span>: landmasses as polygons with lakes and inland seas as holes, split at the antimeridian as RFC 7946 asks. One saved world exports as 260 landmasses with 159 holes in less than half the bytes of the 8,899 rectangles it used to emit, and rasterises back onto the grid agreeing with the saved land mask to 99.94% of cells</td></tr>
           <tr><td>Terrain surface (STL / OBJ)</td><td>Map · Export; Draw</td><td>Open Z-up surfaces in metres including seabed; rescale and add a base for printing. The whole grid by default since 0.9 — about 2.07M triangles and 99 MB for a Full world, where the old fixed cap took 3.2% of the cells and said nothing</td></tr>
+          <tr><td>Printable terrain, solid (STL)</td><td>Map · Export</td><td><span class="badge badge-soft">0.9.2</span> A closed solid in millimetres a slicer can print: the relief on a flat base with walls, the sea as a flat plate or a carved floor. The setup states the finished size, triangle count, file size and how much the heights are exaggerated before anything is made</td></tr>
           <tr><td>Vector bundle (SVG)</td><td>Map · Export</td><td>Layered marching-square coastlines and the canonical river geometry; the unlimited-sharpness option</td></tr>
           <tr><td>Scientific data bundle</td><td>Map · Export</td><td>Numeric GeoTIFFs with TFW/PRJ georeferencing and a custom spherical CRS, data dictionary, provenance, GeoJSON and the lossless <code>world_data.npz</code> for QGIS or NumPy</td></tr>
           <tr><td>Provenance JSON</td><td>Map source card</td><td>The evidence class, method, projection, scale and limits of the view you are looking at</td></tr>
           <tr><td>Web Mercator sheets</td><td>Map · Export</td><td>Square relief and biome exports under <code>projections/mercator/</code></td></tr>
-          <tr><td>Render Studio bundle</td><td>Render</td><td>1K–16K layered PNGs, world files, manifest, captions.svg, objects.svg, flattened preview</td></tr>
+          <tr><td>Render Studio bundle</td><td>Render</td><td>1K–16K layered PNGs, world files, manifest, captions.svg, objects.svg, flattened preview; <span class="badge badge-soft">0.9.2</span> <code>geography.svg</code> with the coastline, lakes, rivers, realm borders, contours and graticule as vectors that sit on their lines in the PNGs</td></tr>
           <tr><td>3D terrain PNG</td><td>3D terrain</td><td>Any camera, any view style</td></tr>
           <tr><td>Illustrated atlas plates</td><td>Atlas</td><td>World, continent and regional sheets at up to 4800 px, labelled and unlabelled, and city plans</td></tr>
           <tr><td>Bound atlas (PDF)</td><td>Map · Export</td><td><span class="badge badge-soft">0.9</span> <b>Quick A4 with labels</b> in one click, or <b>Set up bound atlas…</b> <span class="badge badge-soft">0.9.1</span> for A5, A4, A3, US Letter or US Tabloid, named or unlabelled plates, with the page count, included sheets, expected size and print density shown before it starts. A title page with your world’s name and your own thesis, a contents list, a page for every plate at a real paper size and a colophon that carries the seed. A wide plate turns the page to landscape on its own; every plate is embedded at its own resolution and the export reports the dots per inch page by page. The contents page is searchable text, lettered in the faces the plates use. The colophon says what the file is not: sRGB throughout, no CMYK separation, no ICC profile, no crop marks, no bleed</td></tr>
           <tr><td>Settlement as a battlemap</td><td>Settlement Studio</td><td><span class="badge badge-soft">0.9</span> Universal VTT (<code>.dd2vtt</code>) or a Foundry scene, with walls, doors and line of sight decided from the plan</td></tr>
+          <tr><td>Scene for a virtual tabletop</td><td>Scene Studio</td><td><span class="badge badge-soft">0.9.2</span> <b>Export for a virtual tabletop</b>, beside the scene's backups: Universal VTT or a Foundry scene, one tabletop square per cell of the scene's grid. Shapes at least 1.5 m tall block sight, lower ones block movement only, and the scene's lights come along when its lighting is on</td></tr>
           <tr><td>Climate review bundle</td><td>Climate Lab</td><td>Seed, resolved configuration, model response, findings</td></tr>
           <tr><td>Weather sheet</td><td>Weather year</td><td>A named year of frames Travel and the manuscript can share</td></tr>
           <tr><td>Campaign export</td><td>Campaign</td><td>Player-visible material and journey timelines as Markdown</td></tr>
+          <tr><td>Player handout (HTML)</td><td>Campaign</td><td><span class="badge badge-soft">0.9.2</span> <b>Download player handout</b>: the campaign's player map as an offline page, with only what the campaign shows players — secrets only once revealed, and no lore or notes</td></tr>
+          <tr><td>Route (GPX) · journey (CSV)</td><td>Travel</td><td><span class="badge badge-soft">0.9.2</span> The solved path as a GPS track with the start, the end and each journal entry as waypoints; the travel journal as a spreadsheet, one row per entry</td></tr>
+          <tr><td>Insights report (.xlsx) · Word with the report as an appendix</td><td>Write</td><td><span class="badge badge-soft">0.9.2</span> <b>Save report</b> also writes every table as one workbook; the Book's Export menu adds <b>Word, with the Insights report as an appendix</b>, repeating the latest saved report in the book's own typography</td></tr>
           <tr><td>Obsidian vault (.zip)</td><td>Codex</td><td>Overview, timeline, religions, trade, hooks, one page per realm, culture, place of power and settlement, <code>Tongues.md</code>, the series bible, your novels</td></tr>
           <tr><td>Scrivener transfer · Ellipsus transfer</td><td>Codex</td><td>Writing and Codex material as a Scrivener-shaped project, or an Ellipsus-compatible bundle</td></tr>
           <tr><td>Realm handbooks (.zip)</td><td>Codex</td><td>One handbook per nation: government, capital geography, biome mix, named features, allies and disputes, trade, every event and hook, a writing checklist</td></tr>
@@ -1249,7 +1280,7 @@
       exports and later revisions.</p>
 
       <h4>Can I move a city, or will the generator move it back?</h4>
-      <p>Move it with <code>Sculpt › Select feature › Choose new location</code>, or place a new one on land with at
+      <p>Move it with <code>Sculpt › Select › Choose new location</code>, or place a new one on land with at
       least 20% saved suitability. Cities and borders you draw hold their positions against the world's own.</p>
 
       <h4>I changed the terrain and everything else stayed the same.</h4>

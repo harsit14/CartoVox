@@ -197,8 +197,11 @@ async function events(request, env) {
 }
 
 function authorised(request, env) {
-  const header = request.headers.get('authorization') || '';
-  return Boolean(env.ADMIN_TOKEN) && sameText(header, `Bearer ${env.ADMIN_TOKEN}`);
+  // Both sides trimmed: a secret pasted with a trailing line break or space
+  // could never match a header, and the owner saw only "Not authorised".
+  const token = String(env.ADMIN_TOKEN || '').trim();
+  const header = (request.headers.get('authorization') || '').trim();
+  return Boolean(token) && sameText(header, `Bearer ${token}`);
 }
 
 async function report(env) {
@@ -287,7 +290,7 @@ function table(rows){if(!rows.length)return'<p>Nothing yet.</p>';const keys=Obje
 return'<table><tr>'+keys.map(k=>'<th>'+esc(k)+'</th>').join('')+'</tr>'+rows.map(r=>'<tr>'+keys.map(k=>
 '<td>'+(k==='stack'?'<code>'+esc(r[k])+'</code>':esc(r[k]))+'</td>').join('')+'</tr>').join('')+'</table>';}
 document.getElementById('f').addEventListener('submit',async e=>{e.preventDefault();
-const r=await fetch('/v1/admin/report',{headers:{authorization:'Bearer '+document.getElementById('t').value}});
+const r=await fetch('/v1/admin/report',{headers:{authorization:'Bearer '+document.getElementById('t').value.trim()}});
 const d=await r.json();const out=document.getElementById('out');
 if(!r.ok){out.textContent=d.error;return;}
 out.innerHTML='<p>Generated '+esc(d.generated_at)+'</p>'

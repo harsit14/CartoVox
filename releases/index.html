@@ -15,7 +15,7 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
   <link rel="apple-touch-icon" href="/img/icon-180.png">
-  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site.css?v=291797b5c6">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -450,8 +450,8 @@
 <li><strong>A river drawn on the map you bring in is now a river.</strong> Until now it was a fjord: the coastline detector sees blue, calls it water, and the line became a sea-level inlet slicing your continent. On a measured test sheet <strong>94% of the drawn river read as ocean</strong>, and not one cell of it reached the simulation as a river.</li>
 <li><strong>Rivers and lakes are told apart by width</strong>, which is how a reader tells them apart: a lake or a sea is wide, a river is narrow wherever you cut across it. Each river is filled back into your coastline as ground, thinned to its centreline, and carried beside the world as a river. Your lakes stay lakes and your ocean stays the ocean.</li>
 <li><strong>You choose whose rivers the world gets.</strong> <em>Keep the rivers I drew</em> cuts each one into the surface as a strictly descending channel, so the ground the hydrology solves has one lowest path and it is your line — the solver is not overruled, it routes water downhill exactly as before. On a generated world from a hand-drawn test map, <strong>9 of 9 rivers were followed, 89% of their drawn cells</strong>, with a mean cut of 96 m.</li>
-<li><strong><em>Let CartoVox put the rivers</strong></em> takes your lines out of the coastline just the same, so your continent is still whole, and then leaves where the water runs to the terrain, rainfall and slope the simulation solves. The same map built that way came out with its own rivers falling on <strong>8 of your 9 lines</strong> anyway, because the coastline you drew is most of what decides where water goes. The world reports that as a measurement, never as a promise.</li>
-<li>A third answer, <strong><em>they are not rivers</strong></em>, keeps the blue as water — right for a sheet whose narrow blue is straits and fjords. It is the only one of the three that leaves an inlet cut into your land, which is why it is not the default.</li>
+<li><strong><em>Let CartoVox put the rivers</em></strong> takes your lines out of the coastline just the same, so your continent is still whole, and then leaves where the water runs to the terrain, rainfall and slope the simulation solves. The same map built that way came out with its own rivers falling on <strong>8 of your 9 lines</strong> anyway, because the coastline you drew is most of what decides where water goes. The world reports that as a measurement, never as a promise.</li>
+<li>A third answer, <strong><em>they are not rivers</em></strong>, keeps the blue as water — right for a sheet whose narrow blue is straits and fjords. It is the only one of the three that leaves an inlet cut into your land, which is why it is not the default.</li>
 <li>The reading is shown over your map in blue with a count, and the world says in plain words which of the three it was built with.</li>
 <li><strong>The blank canvas offers the same choice</strong>, beside the River tool: <em>keep the ones I draw</em> or <em>let CartoVox put them</em>. There is no third answer there, because a stroke drawn with the river tool is a river. It changes the ground and not just the export — the canvas carves a valley along each drawn river, and hands the rivers over means it stops, so the surface you send is the surface you sculpted. Your lines stay on screen and travel with the drawing either way, and switching back and forth returns exactly the ground you started with. A drawing and an imported map in one world may answer differently; each river says which it was.</li>
 <li><strong>A river may cut a valley through a mountain; it may not delete it.</strong> The depth bound covered the channel but not the ground beside it, so a peak standing next to a forced river was sheared to bank level whatever it cost — 3.85 km on a measured world. Both are bounded now, at 400 m, with no loss of follow-through.</li>
@@ -2183,6 +2183,6 @@
     <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
-<script src="/js/site.js" defer></script>
+<script src="/js/site.js?v=915173a910" defer></script>
 </body>
 </html>

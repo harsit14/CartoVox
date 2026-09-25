@@ -19,6 +19,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 INLINE = [
     (re.compile(r"`([^`]+)`"), lambda m: f"<code>{html.escape(m.group(1))}</code>"),
+    # ***bold italic*** first, or the two rules below cross their tags.
+    (re.compile(r"\*\*\*(.+?)\*\*\*"), lambda m: f"<strong><em>{m.group(1)}</em></strong>"),
     (re.compile(r"\*\*(.+?)\*\*"), lambda m: f"<strong>{m.group(1)}</strong>"),
     (re.compile(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])"), lambda m: f"<em>{m.group(1)}</em>"),
     (re.compile(r"\[([^\]]+)\]\(([^)\s]+)\)"),
