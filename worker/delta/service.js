@@ -236,6 +236,11 @@ async function report(env) {
 }
 
 async function admin(request, env, path) {
+  // Say which: a secret that never reached the Worker and a wrong password
+  // both used to read "Not authorised", and the two need different fixes.
+  if (!String(env.ADMIN_TOKEN || '').trim()) {
+    return json({ error: 'The admin password (ADMIN_TOKEN) is not set on this service.' }, 503);
+  }
   if (!authorised(request, env)) return json({ error: 'Not authorised.' }, 401);
   if (request.method === 'GET' && path === '/v1/admin/report') return json(await report(env));
   const match = path.match(/^\/v1\/admin\/codes\/(D-\d{3,5})$/);
