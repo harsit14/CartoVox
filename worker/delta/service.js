@@ -211,14 +211,16 @@ const DAY_MS = 86400000;
 const SLOT = /^D-\d{3,5}$/;
 
 // ?days=7|30|90 (anything else: all time), ?tz=<minutes east of UTC> for the
-// owner's own calendar days, ?exclude=D-051,... to leave test codes out.
+// owner's own calendar days, ?exclude=D-051,... to leave test codes out, and
+// ?slot=D-012 for one tester's numbers alone (exclude is then ignored).
 export function reportOptions(url) {
   const days = [7, 30, 90].includes(Number(url.searchParams.get('days')))
     ? Number(url.searchParams.get('days')) : 0;
   const tz = Number(url.searchParams.get('tz') || 0);
   const exclude = (url.searchParams.get('exclude') || '').split(',')
     .map(slot => slot.trim()).filter(slot => SLOT.test(slot)).slice(0, 20);
-  return { days, tz: Number.isInteger(tz) && Math.abs(tz) <= 840 ? tz : 0, exclude };
+  const slot = SLOT.test(url.searchParams.get('slot') || '') ? url.searchParams.get('slot') : null;
+  return { days, tz: Number.isInteger(tz) && Math.abs(tz) <= 840 ? tz : 0, exclude, slot };
 }
 
 // Event times are UTC ISO strings from the app ("2026-09-24T12:00:00+00:00"),
@@ -237,7 +239,7 @@ function round(value, places = 1) {
   return Math.round((Number(value) || 0) * scale) / scale;
 }
 
-async function report(env, { days = 0, tz = 0, exclude = [] } = {}) {
+async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {}) {
   const rows = async (sql, ...binds) => (await env.DB.prepare(sql).bind(...binds).all()).results || [];
   const nowMs = Date.now();
   const todayStart = Date.parse(`${localDay(nowMs, tz)}T00:00:00Z`) - tz * 60000;
@@ -245,8 +247,13 @@ async function report(env, { days = 0, tz = 0, exclude = [] } = {}) {
   const since = days ? stamp(sinceMs) : '0000';
   const until = '9999';
   const shift = `${tz >= 0 ? '+' : ''}${tz} minutes`;
+  if (slot) exclude = [];
   const skipped = new Set(exclude);
-  const notIn = exclude.length ? `slot NOT IN (${exclude.map(() => '?').join(', ')})` : '1 = 1';
+  const inScope = code => (slot ? code === slot : !skipped.has(code));
+  // Which events count: one tester's, or everyone's but the excluded codes.
+  const scope = slot ? 'slot = ?'
+    : exclude.length ? `slot NOT IN (${exclude.map(() => '?').join(', ')})` : '1 = 1';
+  const binds = slot ? [slot] : exclude;
 
   // One pass over the range does the totals, the days, each tester's
   // activity, the performance table and the hour-of-week grid. Feature rows
@@ -261,8 +268,8 @@ async function report(env, { days = 0, tz = 0, exclude = [] } = {}) {
       MAX(json_extract(props, '$.peak_rss_mb')) AS peak,
       SUM(kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed') AS failed,
       MAX(at) AS last_at
-    FROM events WHERE at >= ? AND at < ? AND ${notIn}
-    GROUP BY slot, day, hour, kind, 5`, shift, shift, since, until, ...exclude);
+    FROM events WHERE at >= ? AND at < ? AND ${scope}
+    GROUP BY slot, day, hour, kind, 5`, shift, shift, since, until, ...binds);
 
   const totals = { testers: 0, computers: 0, sessions: 0, hours: 0, errors: 0, runs: 0,
     failed_runs: 0, active_minutes: 0 };
@@ -334,17 +341,19 @@ async function report(env, { days = 0, tz = 0, exclude = [] } = {}) {
           THEN json_extract(props, '$.seconds') END), 0) / 3600.0, 1) AS hours,
         COALESCE(SUM(kind = 'error'), 0) AS errors, COALESCE(SUM(kind = 'perf'), 0) AS runs,
         COALESCE(SUM(kind = 'feature' AND name = 'counts'), 0) AS active_minutes
-      FROM events WHERE at >= ? AND at < ? AND ${notIn}`,
-    stamp(sinceMs - days * DAY_MS), since, ...exclude);
+      FROM events WHERE at >= ? AND at < ? AND ${scope}`,
+    stamp(sinceMs - days * DAY_MS), since, ...binds);
     previous = before || null;
   }
 
-  const codes = (await rows(`SELECT codes.slot, codes.status, codes.max_installs,
+  const directory = await rows(`SELECT codes.slot, codes.status, codes.note, COUNT(installs.id) AS computers
+    FROM codes LEFT JOIN installs ON installs.slot = codes.slot GROUP BY codes.slot ORDER BY codes.slot`);
+  const codes = (await rows(`SELECT codes.slot, codes.status, codes.note, codes.max_installs,
       COUNT(installs.id) AS computers, MAX(installs.last_seen) AS last_seen,
       MIN(installs.first_seen) AS first_seen, MAX(installs.app_version) AS app_version,
       GROUP_CONCAT(DISTINCT installs.os) AS os
     FROM codes LEFT JOIN installs ON installs.slot = codes.slot
-    GROUP BY codes.slot ORDER BY codes.slot`)).filter(code => !skipped.has(code.slot));
+    GROUP BY codes.slot ORDER BY codes.slot`)).filter(code => inScope(code.slot));
   const testers = codes.map(code => {
     const seen = bySlot.get(code.slot);
     return { ...code, sessions: seen?.sessions || 0, hours: round((seen?.seconds || 0) / 3600),
@@ -357,7 +366,7 @@ async function report(env, { days = 0, tz = 0, exclude = [] } = {}) {
 
   const machines = (await rows(`SELECT slot, os, os_version, arch, cpu_count, memory_gb, app_version,
       release, first_seen, last_seen FROM installs ORDER BY last_seen DESC`))
-    .filter(machine => !skipped.has(machine.slot));
+    .filter(machine => inScope(machine.slot));
   totals.computers = machines.filter(machine => machine.last_seen >= since).length;
   const systems = [];
   for (const machine of machines) {
@@ -372,33 +381,41 @@ async function report(env, { days = 0, tz = 0, exclude = [] } = {}) {
       COUNT(DISTINCT events.slot) AS testers
     FROM events, json_each(events.props, '$.counts') AS feature
     WHERE events.kind = 'feature' AND events.name = 'counts' AND events.at >= ? AND events.at < ?
-      AND ${notIn.replace('slot', 'events.slot')}
-    GROUP BY feature.key ORDER BY uses DESC LIMIT 150`, since, until, ...exclude);
+      AND ${scope.replace('slot', 'events.slot')}
+    GROUP BY feature.key ORDER BY uses DESC LIMIT 150`, since, until, ...binds);
   const failures = await rows(`SELECT name, COALESCE(json_extract(props, '$.failure'), '') AS failure,
       COALESCE(json_extract(props, '$.status'), '') AS status, COUNT(*) AS runs
     FROM events WHERE kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed'
-      AND at >= ? AND at < ? AND ${notIn}
-    GROUP BY 1, 2, 3 ORDER BY runs DESC LIMIT 30`, since, until, ...exclude);
+      AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1, 2, 3 ORDER BY runs DESC LIMIT 30`, since, until, ...binds);
   const errors = await rows(`SELECT slot, at, name, json_extract(props, '$.type') AS type,
       json_extract(props, '$.message') AS message, json_extract(props, '$.stack') AS stack
-    FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${notIn}
-    ORDER BY id DESC LIMIT 60`, since, until, ...exclude);
+    FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${scope}
+    ORDER BY id DESC LIMIT 60`, since, until, ...binds);
   const errorGroups = await rows(`SELECT name, json_extract(props, '$.type') AS type,
       json_extract(props, '$.message') AS message, COUNT(*) AS count, COUNT(DISTINCT slot) AS testers,
       GROUP_CONCAT(DISTINCT slot) AS slots, MIN(at) AS first_at, MAX(at) AS last_at,
       MAX(json_extract(props, '$.stack')) AS stack
-    FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${notIn}
-    GROUP BY 1, 2, 3 ORDER BY count DESC, last_at DESC LIMIT 40`, since, until, ...exclude);
+    FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1, 2, 3 ORDER BY count DESC, last_at DESC LIMIT 40`, since, until, ...binds);
   const screens = await rows(`SELECT json_extract(props, '$.width') AS width,
       json_extract(props, '$.height') AS height, COUNT(DISTINCT install_id) AS computers
-    FROM events WHERE kind = 'session' AND name = 'ui:window' AND at >= ? AND at < ? AND ${notIn}
-    GROUP BY 1, 2 ORDER BY computers DESC LIMIT 12`, since, until, ...exclude);
+    FROM events WHERE kind = 'session' AND name = 'ui:window' AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1, 2 ORDER BY computers DESC LIMIT 12`, since, until, ...binds);
   const feed = await rows(`SELECT slot, at, kind, name, json_extract(props, '$.seconds') AS seconds,
       json_extract(props, '$.message') AS message, json_extract(props, '$.status') AS status
-    FROM events WHERE at >= ? AND at < ? AND ${notIn}
+    FROM events WHERE at >= ? AND at < ? AND ${scope}
       AND ((kind = 'session' AND name IN ('start', 'end')) OR kind = 'error'
         OR (kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed'))
-    ORDER BY at DESC LIMIT 30`, since, until, ...exclude);
+    ORDER BY at DESC LIMIT 30`, since, until, ...binds);
+  // One tester's sessions, newest first: when, how long, what happened.
+  const sessions = slot ? await rows(`SELECT session, MIN(at) AS started, MAX(at) AS last_at,
+      MAX(CASE WHEN kind = 'session' AND name = 'end' THEN json_extract(props, '$.seconds') END) AS seconds,
+      SUM(kind = 'feature') AS active_minutes, SUM(kind = 'perf') AS jobs,
+      SUM(kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed') AS unfinished,
+      SUM(kind = 'error') AS errors, MAX(json_extract(props, '$.app_version')) AS app_version
+    FROM events WHERE slot = ? AND at >= ? AND at < ? AND session IS NOT NULL AND session != ''
+    GROUP BY session ORDER BY started DESC LIMIT 60`, slot, since, until) : [];
   for (const machine of machines) {
     if (machine.first_seen >= since) {
       feed.push({ slot: machine.slot, at: machine.first_seen, kind: 'activation', name: machine.os });
@@ -412,10 +429,10 @@ async function report(env, { days = 0, tz = 0, exclude = [] } = {}) {
     testers: job.slots.size })).sort((a, b) => b.runs - a.runs);
 
   return { generated_at: now(),
-    range: { days, tz, exclude, since: days ? stamp(sinceMs) : null,
+    range: { days, tz, exclude, slot, since: days ? stamp(sinceMs) : null,
       previous_since: days ? stamp(sinceMs - days * DAY_MS) : null },
     totals, previous, daily, heatmap, testers, features, performance, failures, errors,
-    error_groups: errorGroups, systems, machines, screens, feed: feed.slice(0, 30) };
+    error_groups: errorGroups, systems, machines, screens, feed: feed.slice(0, 30), sessions, directory };
 }
 
 async function admin(request, env, path) {
@@ -440,12 +457,17 @@ async function admin(request, env, path) {
       updates.push(env.DB.prepare('UPDATE codes SET max_installs = ? WHERE slot = ?')
         .bind(body.max_installs, match[1]));
     }
+    if (typeof body.note === 'string') {
+      // A nickname for the owner's eyes only; blank clears it.
+      const note = body.note.replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, 40);
+      updates.push(env.DB.prepare('UPDATE codes SET note = ? WHERE slot = ?').bind(note || null, match[1]));
+    }
     if (body.free_computers === true) {
       updates.push(env.DB.prepare('DELETE FROM installs WHERE slot = ?').bind(match[1]));
     }
     if (!updates.length) return json({ error: 'Nothing to change.' }, 400);
     await env.DB.batch(updates);
-    const code = await env.DB.prepare('SELECT slot, status, max_installs FROM codes WHERE slot = ?')
+    const code = await env.DB.prepare('SELECT slot, status, max_installs, note FROM codes WHERE slot = ?')
       .bind(match[1]).first();
     return code ? json({ ok: true, code }) : json({ error: 'No such code.' }, 404);
   }

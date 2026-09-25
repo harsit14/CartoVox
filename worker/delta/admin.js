@@ -5,7 +5,9 @@
 //
 // The admin token is asked for once and kept in this browser's localStorage
 // ("Remember on this browser"); a token the service refuses is forgotten.
-// Every number comes from GET /v1/admin/report?days=&tz=&exclude=.
+// Every number comes from GET /v1/admin/report?days=&tz=&exclude=&slot=;
+// #D-012 in the address opens one tester (the back button returns), and a
+// code's nickname is saved with POST /v1/admin/codes/<slot> {note}.
 
 export const ADMIN_HEADERS = {
   'cache-control': 'no-store',
@@ -37,7 +39,7 @@ input[type=password],input[type=search]{padding:6px 10px;border-radius:7px;borde
 background:#0c0e12}
 input[type=checkbox]{accent-color:var(--gold);vertical-align:-2px}
 label{color:var(--ink2);white-space:nowrap;cursor:pointer}
-.top{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;
+.top{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;
 padding:12px 24px;background:rgba(15,17,21,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
 .top h1{margin:0 8px 0 0;font:600 20px Georgia,serif;color:var(--gold)}
 .top h1 small{font:12px system-ui,sans-serif;color:var(--muted);margin-left:6px}
@@ -117,6 +119,19 @@ pre{margin:8px 0 0;padding:10px;background:#0c0e12;border-radius:8px;max-height:
 border-radius:8px;padding:7px 10px;font-size:12.5px;color:var(--ink2);box-shadow:0 6px 20px rgba(0,0,0,.4);
 max-width:320px}
 #tip strong{display:block;color:var(--ink);font-size:14px}
+select{padding:6px 10px;border-radius:7px;border:1px solid var(--line);background:#0c0e12;max-width:210px}
+.link{background:none;border:0;padding:0;color:var(--ink);cursor:pointer;font:inherit;text-align:left}
+.link:hover{color:var(--gold);text-decoration:underline}
+.nick{color:var(--ink2);margin-left:8px}.nick:empty{display:none}
+.pen{background:none;border:0;padding:0 4px;color:var(--muted);font:12px system-ui,-apple-system,sans-serif;cursor:pointer;opacity:.7}
+.pen:hover{color:var(--gold);opacity:1}tr:hover .pen{opacity:1}
+input.nickedit{padding:3px 8px;border-radius:6px;border:1px solid var(--gold);background:#0c0e12;width:170px}
+.profile .pname{font:600 26px Georgia,serif;color:var(--ink);margin:6px 0 4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.profile .pname .code{font:500 14px ui-monospace,Menlo,monospace;color:var(--muted);border:1px solid var(--line);
+border-radius:6px;padding:2px 7px}
+.profile .facts{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--ink2);font-size:13px;margin:6px 0 12px}
+.profile .facts b{color:var(--ink);font-weight:600}
+.back{color:var(--muted);font-size:13px}
 @media (max-width:700px){.top{padding:10px 14px}main{padding:14px}.g2{grid-template-columns:1fr}}
 `;
 
@@ -129,6 +144,7 @@ export const ADMIN_PAGE = `<!doctype html><html lang="en"><head><meta charset="u
     <button type="button" data-days="7">7 days</button><button type="button" data-days="30">30 days</button>
     <button type="button" data-days="90">90 days</button><button type="button" data-days="0">All time</button>
   </div>
+  <select id="who" aria-label="Show one tester"><option value="">Everyone</option></select>
   <label title="The owner's own test code; its rows are production checks">
     <input id="hide-test" type="checkbox" checked> Hide D-051</label>
   <span class="spacer"></span>
@@ -165,7 +181,7 @@ function adminApp() {
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } },
     drop: k => { try { localStorage.removeItem(k); } catch (e) { /* private mode */ } },
   };
-  const state = { token: '', data: null, timer: 0, busy: false, days: 30, today: '',
+  const state = { token: '', data: null, timer: 0, busy: false, days: 30, today: '', slot: '',
     testers: { sort: 'slot', dir: 1, filter: 'all', q: '' },
     features: { area: 'all', q: '', all: false } };
 
@@ -209,6 +225,10 @@ function adminApp() {
     return { top, step: step < 1 && max >= 1 ? 1 : step };
   }
   const areaOf = name => { const p = String(name).split(':'); return p[0] === 'ui' && p.length > 2 ? p[1] : p[0]; };
+  // A code's nickname (the codes table's note), for every place a code shows.
+  const nickOf = slot => (state.data?.directory || []).find(x => x.slot === slot)?.note || '';
+  const plainName = slot => (nickOf(slot) ? `${nickOf(slot)} (${slot})` : slot);
+  const nameHtml = slot => `<strong>${esc(slot)}</strong>${nickOf(slot) ? `<span class="nick">${esc(nickOf(slot))}</span>` : ''}`;
   const restOf = name => { const p = String(name).split(':'); return p.slice(p[0] === 'ui' && p.length > 2 ? 2 : 1).join(':') || name; };
 
   // ---------- charts (plain SVG, sized to their card) ----------
@@ -362,6 +382,7 @@ function adminApp() {
   }
 
   function kpis(d) {
+    if (d.range.slot) return testerKpis(d);
     const t = d.totals; const p = d.previous || {};
     const avg = t.sessions ? (t.hours * 3600) / t.sessions : 0;
     const failRate = t.runs ? Math.round((t.failed_runs / t.runs) * 100) : 0;
@@ -392,6 +413,71 @@ function adminApp() {
     </section>`;
   }
 
+  function testerKpis(d) {
+    const t = d.totals; const p = d.previous || {};
+    const avg = t.sessions ? (t.hours * 3600) / t.sessions : 0;
+    const failRate = t.runs ? Math.round((t.failed_runs / t.runs) * 100) : 0;
+    const spark = f => sparkline(d.daily.slice(-30).map(x => Number(x[f]) || 0));
+    const activeDays = d.daily.filter(x => x.testers > 0).length;
+    return `<section class="kpis">
+      <div class="card tile hero"><div class="label">Hours used</div><div class="value">${compact(t.hours)}</div>
+        <div>${deltaHtml(t.hours, p.hours)}</div><div style="margin-top:8px">${spark('hours')}</div></div>
+      <div class="card tile"><div class="label">Active days</div><div class="value">${num(activeDays)}<span class="note"> / ${num(d.daily.length)}</span></div>
+        <div class="meter"><i style="width:${(activeDays / Math.max(1, d.daily.length)) * 100}%;background:var(--s1)"></i></div>
+        <div class="note">days the app reported anything</div></div>
+      <div class="card tile"><div class="label">Sessions</div><div class="value">${compact(t.sessions)}</div>
+        <div>${deltaHtml(t.sessions, p.sessions)}</div><div class="note">average ${avg ? duration(avg) : '—'} each</div></div>
+      <div class="card tile"><div class="label">Active minutes</div><div class="value">${compact(t.active_minutes)}</div>
+        <div>${deltaHtml(t.active_minutes, p.active_minutes)}</div>${spark('active_minutes')}</div>
+      <div class="card tile"><div class="label">Errors</div><div class="value">${compact(t.errors)}</div>
+        <div>${deltaHtml(t.errors, p.errors, false)}</div><div class="note">${num(d.error_groups.length)} distinct</div></div>
+      <div class="card tile"><div class="label">Jobs run</div><div class="value">${compact(t.runs)}</div>
+        <div class="note">${num(t.failed_runs)} unfinished (${failRate}%)</div>
+        <div class="meter"><i style="width:${t.runs ? 100 - failRate : 0}%;background:var(--s1)"></i><i style="width:${failRate}%;background:var(--serious)"></i></div></div>
+    </section>`;
+  }
+
+  function codeActions(r) {
+    return (r.status === 'revoked'
+      ? `<button type="button" data-act="restore" data-slot="${esc(r.slot)}">Restore</button>`
+      : `<button type="button" data-act="revoke" data-slot="${esc(r.slot)}">Revoke</button>`)
+      + (r.computers ? ` <button type="button" data-act="free" data-slot="${esc(r.slot)}" title="Let this code unlock new computers">Free computers</button>` : '');
+  }
+
+  // One tester: who, since when, on what, and their sessions.
+  function profileSection(d) {
+    const r = d.testers[0] || { slot: d.range.slot, status: 'active', computers: 0, max_installs: 0 };
+    const st = testerStatus(r);
+    const first = d.machines.map(m => m.first_seen).filter(Boolean).sort()[0];
+    const machines = d.machines.length ? `<table><thead><tr><th>System</th><th>Version</th><th class="num">CPUs</th>
+      <th class="num">Memory</th><th>First unlocked</th><th>Last contact</th></tr></thead><tbody>${d.machines.map(m =>
+        `<tr><td>${esc([m.os, m.os_version, m.arch].filter(Boolean).join(' · '))}</td><td>${esc([m.app_version, m.release].filter(Boolean).join(' · '))}</td>
+        <td class="num">${esc(m.cpu_count ?? '—')}</td><td class="num">${m.memory_gb ? esc(m.memory_gb) + ' GB' : '—'}</td>
+        <td title="${esc(when(m.first_seen))}">${esc(ago(m.first_seen))}</td><td title="${esc(when(m.last_seen))}">${esc(ago(m.last_seen))}</td></tr>`).join('')}</tbody></table>`
+      : '<p class="empty">This code has not unlocked a computer yet.</p>';
+    return `<section class="card profile" style="margin-bottom:16px"><div class="head"><div>
+        <button type="button" class="link back" data-open="">← Everyone</button>
+        <h2 class="pname">${esc(r.note || r.slot)}${r.note ? `<span class="code">${esc(r.slot)}</span>` : ''}
+          <button type="button" class="pen" data-nick="${esc(r.slot)}" title="Give this code a nickname">✎ ${r.note ? 'Rename' : 'Add a nickname'}</button></h2>
+        <div class="facts"><span class="pill" style="--c:${st.c}">${st.label}</span>
+          <span>first unlocked <b>${first ? esc(ago(first)) : '—'}</b></span>
+          <span>last contact <b>${r.last_seen ? esc(ago(r.last_seen)) : '—'}</b></span>
+          <span>computers <b>${num(r.computers)} / ${num(r.max_installs)}</b></span></div></div>
+        <div class="acts">${codeActions(r)}</div></div>${machines}</section>`;
+  }
+
+  function sessionsSection(d) {
+    const rows = d.sessions || [];
+    return `<section class="card" style="margin-top:16px"><h2>Sessions</h2><div class="sub">Each time the app was opened in the range, newest first. A session with no length was still open or did not close cleanly.</div>`
+      + (rows.length ? `<div class="scroll" style="max-height:420px"><table><thead><tr><th>Started</th><th class="num">Length</th>
+        <th class="num">Active min</th><th class="num">Jobs</th><th class="num">Unfinished</th><th class="num">Errors</th><th>Version</th></tr></thead><tbody>`
+        + rows.map(x => `<tr><td title="${esc(when(x.started))}">${esc(when(x.started))} <span class="note">· ${esc(ago(x.started))}</span></td>
+          <td class="num">${x.seconds == null ? '—' : esc(duration(x.seconds))}</td><td class="num">${num(x.active_minutes)}</td>
+          <td class="num">${num(x.jobs)}</td><td class="num">${x.unfinished ? `<span style="color:var(--serious)">${num(x.unfinished)}</span>` : '0'}</td>
+          <td class="num">${x.errors ? `<span style="color:#ef6b6b">${num(x.errors)}</span>` : '0'}</td><td>${esc(x.app_version || '')}</td></tr>`).join('')
+        + '</tbody></table></div>' : '<p class="empty">No sessions in this range.</p>') + '</section>';
+  }
+
   function testerStatus(row) {
     if (row.status === 'revoked') return { key: 'revoked', label: 'Revoked', c: 'var(--bad)' };
     if (!row.computers) return { key: 'unused', label: 'Never activated', c: '#555a64' };
@@ -408,7 +494,7 @@ function adminApp() {
   }
 
   const TESTER_COLS = [
-    ['slot', 'Code'], ['status', 'Status'], ['activity', 'Activity', false], ['last_seen', 'Last seen'],
+    ['slot', 'Code · nickname'], ['status', 'Status'], ['activity', 'Activity', false], ['last_seen', 'Last seen'],
     ['hours', 'Hours', true, 'num'], ['sessions', 'Sessions', true, 'num'], ['active_minutes', 'Active min', true, 'num'],
     ['errors', 'Errors', true, 'num'], ['computers', 'Computers', true, 'num'], ['os', 'System'],
     ['app_version', 'Version'], ['actions', '', false]];
@@ -420,8 +506,8 @@ function adminApp() {
     const chips = [['all', 'All'], ['active', 'Active'], ['quiet', 'Quiet'], ['unused', 'Never activated'], ['revoked', 'Revoked']]
       .map(([k, l]) => `<button type="button" data-tfilter="${k}" aria-pressed="${s.filter === k}">${l}<b>${counts[k]}</b></button>`).join('');
     return `<section class="card" style="margin-top:16px"><div class="head"><div><h2>Testers</h2>
-      <div class="sub">Status is for the chosen range: active means the app reported something in it. Click a column to sort.</div></div>
-      <div class="head"><div class="chips">${chips}</div><input id="tq" type="search" placeholder="Find a code, system, version" value="${esc(s.q)}"></div></div>
+      <div class="sub">Status is for the chosen range: active means the app reported something in it. Click a code to see that tester alone, ✎ to nickname it, a column to sort.</div></div>
+      <div class="head"><div class="chips">${chips}</div><input id="tq" type="search" placeholder="Find a code, nickname, system" value="${esc(s.q)}"></div></div>
       <div class="scroll"><table id="tt"><thead><tr>${TESTER_COLS.map(([k, l, sortable = true, cls = '']) =>
         `<th class="${cls}${sortable ? ' sort' : ''}" ${sortable ? `data-sort="${k}"` : ''} ${s.sort === k ? `aria-sort="${s.dir > 0 ? 'ascending' : 'descending'}"` : ''}>${l}</th>`).join('')}</tr></thead>
       <tbody id="tbody"></tbody></table></div></section>`;
@@ -433,7 +519,7 @@ function adminApp() {
     const q = s.q.trim().toLowerCase();
     const maxHours = Math.max(...d.testers.map(r => r.hours), 0.1);
     let rows = d.testers.filter(r => (s.filter === 'all' || testerStatus(r).key === s.filter)
-      && (!q || [r.slot, r.os, r.app_version, testerStatus(r).label].join(' ').toLowerCase().includes(q)));
+      && (!q || [r.slot, r.note, r.os, r.app_version, testerStatus(r).label].join(' ').toLowerCase().includes(q)));
     const val = (r, k) => (k === 'status' ? testerStatus(r).label : k === 'last_seen' ? (r.last_seen || '') : r[k] ?? '');
     rows = rows.slice().sort((a, b) => {
       const x = val(a, s.sort); const y = val(b, s.sort);
@@ -441,7 +527,8 @@ function adminApp() {
     });
     $('tbody').innerHTML = rows.length ? rows.map(r => {
       const st = testerStatus(r);
-      return `<tr><td><strong>${esc(r.slot)}</strong></td>
+      return `<tr><td style="white-space:nowrap"><button type="button" class="link" data-open="${esc(r.slot)}" title="Show ${esc(plainName(r.slot))} alone">${nameHtml(r.slot)}</button>
+          <button type="button" class="pen" data-nick="${esc(r.slot)}" title="${r.note ? 'Rename' : 'Give this code a nickname'}">✎</button></td>
         <td><span class="pill" style="--c:${st.c}">${st.label}</span></td>
         <td>${r.computers ? strip(r.days || {}, keys) : ''}</td>
         <td title="${esc(when(r.last_seen))}">${r.last_seen ? esc(ago(r.last_seen)) : '—'}</td>
@@ -450,10 +537,7 @@ function adminApp() {
         <td class="num">${r.errors ? `<span style="color:#ef6b6b">${num(r.errors)}</span>` : '0'}</td>
         <td class="num">${num(r.computers)} / ${num(r.max_installs)}</td>
         <td>${esc(r.os || '')}</td><td>${esc(r.app_version || '')}</td>
-        <td><div class="acts">${r.status === 'revoked'
-          ? `<button type="button" data-act="restore" data-slot="${esc(r.slot)}">Restore</button>`
-          : `<button type="button" data-act="revoke" data-slot="${esc(r.slot)}">Revoke</button>`}
-          ${r.computers ? `<button type="button" data-act="free" data-slot="${esc(r.slot)}" title="Let this code unlock new computers">Free computers</button>` : ''}</div></td></tr>`;
+        <td><div class="acts">${codeActions(r)}</div></td></tr>`;
     }).join('') : `<tr><td colspan="${TESTER_COLS.length}" class="empty">No testers match.</td></tr>`;
   }
 
@@ -465,7 +549,7 @@ function adminApp() {
     const chips = [['all', 'All']].concat(areaRows.slice(0, 9).map(([a]) => [a, a]))
       .map(([k, l]) => `<button type="button" data-farea="${esc(k)}" aria-pressed="${s.area === k}">${esc(l)}</button>`).join('');
     return `<section class="grid g2">
-      <div class="card"><div class="head"><div><h2>Most used features</h2><div class="sub">Clicks and exports in the range; the grey figure is how many testers used it.</div></div>
+      <div class="card"><div class="head"><div><h2>Most used features</h2><div class="sub">Clicks and exports in the range${d.range.slot ? '' : '; the grey figure is how many testers used it'}.</div></div>
         <input id="fq" type="search" placeholder="Filter features" value="${esc(s.q)}"></div>
         <div class="chips" style="margin-bottom:12px">${chips}</div><div id="flist"></div></div>
       <div class="card"><h2>Feature areas</h2><div class="sub">Uses summed by the part of the app they belong to.</div>
@@ -479,7 +563,7 @@ function adminApp() {
       && (!q || f.name.toLowerCase().includes(q)));
     const shown = s.all ? rows : rows.slice(0, 20);
     $('flist').innerHTML = hbars(shown.map(f => ({ label: restOf(f.name), small: s.area === 'all' ? areaOf(f.name) : '',
-      title: f.name, value: f.uses, after: `${f.testers} ${f.testers === 1 ? 'tester' : 'testers'}` })), { unit: 'uses' })
+      title: f.name, value: f.uses, after: state.data.range.slot ? '' : `${f.testers} ${f.testers === 1 ? 'tester' : 'testers'}` })), { unit: 'uses' })
       + (rows.length > 20 ? `<p><button type="button" id="fall">${s.all ? 'Show top 20' : `Show all ${rows.length}`}</button></p>` : '');
   }
 
@@ -502,12 +586,12 @@ function adminApp() {
 
   function errorsSection(d) {
     const groups = d.error_groups.length ? `<div class="scroll"><table><thead><tr><th class="num">Count</th><th class="num">Testers</th><th>Error</th><th>Where</th><th>Last seen</th></tr></thead><tbody>`
-      + d.error_groups.map(g => `<tr><td class="num"><strong>${num(g.count)}</strong></td><td class="num" title="${esc(g.slots)}">${num(g.testers)}</td>
+      + d.error_groups.map(g => `<tr><td class="num"><strong>${num(g.count)}</strong></td><td class="num" title="${esc(String(g.slots || '').split(',').map(plainName).join(', '))}">${num(g.testers)}</td>
         <td><strong>${esc(g.type || 'Error')}</strong>${g.message ? ': ' + esc(g.message) : ''}${g.stack ? `<details class="more"><summary>Stack</summary><pre>${esc(g.stack)}</pre></details>` : ''}</td>
         <td><code>${esc(g.name)}</code></td><td title="first ${esc(when(g.first_at))}">${esc(ago(g.last_at))}</td></tr>`).join('') + '</tbody></table></div>'
       : '<p class="empty">No errors in this range.</p>';
     const latest = d.errors.length ? `<details class="more"><summary>Latest ${d.errors.length} errors, one by one</summary><table><thead><tr><th>When</th><th>Code</th><th>Where</th><th>Error</th></tr></thead><tbody>`
-      + d.errors.map(e => `<tr><td title="${esc(when(e.at))}">${esc(ago(e.at))}</td><td>${esc(e.slot)}</td><td><code>${esc(e.name)}</code></td><td><strong>${esc(e.type || '')}</strong> ${esc(e.message || '')}${e.stack ? `<pre>${esc(e.stack)}</pre>` : ''}</td></tr>`).join('') + '</tbody></table></details>' : '';
+      + d.errors.map(e => `<tr><td title="${esc(when(e.at))}">${esc(ago(e.at))}</td><td>${esc(plainName(e.slot))}</td><td><code>${esc(e.name)}</code></td><td><strong>${esc(e.type || '')}</strong> ${esc(e.message || '')}${e.stack ? `<pre>${esc(e.stack)}</pre>` : ''}</td></tr>`).join('') + '</tbody></table></details>' : '';
     return `<section class="card" style="margin-top:16px"><h2>Errors</h2><div class="sub">The same type and message from the same place counts as one error.</div>${groups}${latest}</section>`;
   }
 
@@ -530,12 +614,13 @@ function adminApp() {
   }
 
   function feedSection(d) {
+    const who = slot => (d.range.slot ? '' : `<button type="button" class="link" data-open="${esc(slot)}">${nameHtml(slot)}</button> `);
     const line = e => {
-      if (e.kind === 'activation') return ['＋', 'good', `<strong>${esc(e.slot)}</strong> unlocked a new computer${e.name ? ` (${esc(e.name)})` : ''}`];
-      if (e.kind === 'error') return ['!', 'bad', `<strong>${esc(e.slot)}</strong> hit ${esc(e.message || e.name)} <code>${esc(e.name)}</code>`];
-      if (e.kind === 'perf') return ['✕', 'bad', `<strong>${esc(e.slot)}</strong> ${esc(e.name.replace(/^job:/, ''))} did not finish (${esc(e.status)})`];
-      if (e.name === 'end') return ['■', '', `<strong>${esc(e.slot)}</strong> closed the app after ${esc(duration(e.seconds))}`];
-      return ['▶', 'good', `<strong>${esc(e.slot)}</strong> opened the app`];
+      if (e.kind === 'activation') return ['＋', 'good', `${who(e.slot)} unlocked a new computer${e.name ? ` (${esc(e.name)})` : ''}`];
+      if (e.kind === 'error') return ['!', 'bad', `${who(e.slot)} hit ${esc(e.message || e.name)} <code>${esc(e.name)}</code>`];
+      if (e.kind === 'perf') return ['✕', 'bad', `${who(e.slot)} ${esc(e.name.replace(/^job:/, ''))} did not finish (${esc(e.status)})`];
+      if (e.name === 'end') return ['■', '', `${who(e.slot)} closed the app after ${esc(duration(e.seconds))}`];
+      return ['▶', 'good', `${who(e.slot)} opened the app`];
     };
     return `<div class="card"><h2>Recent activity</h2><div class="sub">Openings, closings, new computers, errors and unfinished jobs.</div>`
       + (d.feed.length ? '<ul class="feed">' + d.feed.map(e => { const [ic, cls, text] = line(e);
@@ -553,28 +638,33 @@ function adminApp() {
     const d = state.data;
     if (!d) return;
     const rangeName = d.range.days ? `the last ${d.range.days} days` : 'all time';
-    $('dash').innerHTML = kpis(d)
+    const one = Boolean(d.range.slot);
+    $('dash').innerHTML = (one ? profileSection(d) : '') + kpis(d)
       + `<section class="grid g2">
-          <div class="card"><h2>Active testers per day</h2><div class="sub">Codes that reported anything that day, ${esc(rangeName)}.</div><div class="chart" id="c-testers"></div></div>
+          ${one ? `<div class="card"><h2>Active minutes per day</h2><div class="sub">Minutes with at least one click, ${esc(rangeName)}.</div><div class="chart" id="c-testers"></div></div>`
+          : `<div class="card"><h2>Active testers per day</h2><div class="sub">Codes that reported anything that day, ${esc(rangeName)}.</div><div class="chart" id="c-testers"></div></div>`}
           <div class="card"><h2>Hours used per day</h2><div class="sub">Time the app was open, counted on the day it was closed.</div><div class="chart" id="c-hours"></div></div>
         </section>
         <section class="grid g2">
-          <div class="card"><h2>When testers work</h2><div class="sub">Active minutes by weekday and hour, in your time zone.</div><div class="chart" id="c-heat"></div></div>
+          <div class="card"><h2>When ${one ? 'this tester works' : 'testers work'}</h2><div class="sub">Active minutes by weekday and hour, in your time zone.</div><div class="chart" id="c-heat"></div></div>
           <div class="card"><h2>Problems per day</h2><div class="legend"><span><i style="background:var(--bad)"></i>Errors</span><span><i style="background:var(--serious)"></i>Unfinished jobs</span></div><div class="chart" id="c-problems"></div></div>
         </section>`
       + `<div class="card" style="margin-top:16px">${dailyTable(d)}</div>`
-      + testersSection(d) + featuresSection(d) + performanceSection(d) + errorsSection(d)
+      + (one ? sessionsSection(d) : testersSection(d)) + featuresSection(d) + performanceSection(d) + errorsSection(d)
       + computersSection(d) + `<section class="grid g2">${feedSection(d)}<div class="card"><h2>About these numbers</h2><div class="sub">How to read the dashboard.</div>
         <p class="note" style="color:var(--ink2)">An <strong>active minute</strong> is a minute in which a tester clicked something in the app (the app reports clicks once a minute). <strong>Hours</strong> come from sessions that ended cleanly, so a crash or a forced quit adds none. Days and hours are in your time zone (UTC${d.range.tz >= 0 ? '+' : '−'}${Math.floor(Math.abs(d.range.tz) / 60)}${Math.abs(d.range.tz) % 60 ? ':' + String(Math.abs(d.range.tz) % 60).padStart(2, '0') : ''}). Generated ${esc(when(d.generated_at))}.</p></div></section>`;
     drawCharts();
-    renderTesterRows();
+    if (!one) renderTesterRows();
     renderFeatureList();
   }
 
   function drawCharts() {
     const d = state.data;
     if (!d || !$('c-testers')) return;
-    lineChart($('c-testers'), d.daily, 'testers', { unit: 'active testers', label: 'Active testers per day' });
+    if (d.range.slot) {
+      columnChart($('c-testers'), d.daily, [{ field: 'active_minutes', label: 'active minutes', color: 'var(--s1)' }],
+        { label: 'Active minutes per day' });
+    } else lineChart($('c-testers'), d.daily, 'testers', { unit: 'active testers', label: 'Active testers per day' });
     columnChart($('c-hours'), d.daily, [{ field: 'hours', label: 'hours', color: 'var(--s1)' }],
       { label: 'Hours used per day', fmt: v => (Math.round(v * 10) / 10).toLocaleString() });
     heatmap($('c-heat'), d.heatmap);
@@ -600,10 +690,12 @@ function adminApp() {
     document.querySelectorAll('#range button').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.days) === state.days)));
   }
   async function load() {
-    if (!state.token || state.busy) return;
+    if (!state.token) return;
+    if (state.busy) { state.again = true; return; }
     state.busy = true; $('refresh').disabled = true; $('status').textContent = 'Loading…'; $('dash').classList.add('loading');
     const params = new URLSearchParams({ days: String(state.days), tz: String(-new Date().getTimezoneOffset()) });
-    if ($('hide-test').checked) params.set('exclude', TEST_SLOT);
+    if (state.slot) params.set('slot', state.slot);
+    else if ($('hide-test').checked) params.set('exclude', TEST_SLOT);
     try {
       const r = await fetch('/v1/admin/report?' + params, { headers: { authorization: 'Bearer ' + state.token }, cache: 'no-store' });
       const d = await r.json().catch(() => ({ error: 'The service answered ' + r.status + '.' }));
@@ -613,19 +705,76 @@ function adminApp() {
         $('status').textContent = d.error || ('Failed: ' + r.status); return;
       }
       state.data = d; state.today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-      signedIn(true); render();
+      signedIn(true); fillPicker(); render();
       $('status').textContent = 'Updated ' + new Date().toLocaleTimeString();
     } catch (e) {
       $('status').textContent = 'Could not reach the service; the numbers below may be stale.';
       if (!state.data) { signedIn(false); $('login-msg').textContent = 'Could not reach the service.'; }
     } finally {
       state.busy = false; $('refresh').disabled = false; $('dash').classList.remove('loading');
+      // The range or the tester changed while this report was loading.
+      if (state.again) { state.again = false; load(); }
     }
+  }
+  // The tester picker: activated codes first, each with its nickname.
+  function fillPicker() {
+    const list = (state.data.directory || []).slice()
+      .sort((a, b) => (b.computers > 0) - (a.computers > 0) || a.slot.localeCompare(b.slot));
+    const option = x => `<option value="${esc(x.slot)}">${esc(plainName(x.slot))}${x.status === 'revoked' ? ' — revoked' : ''}</option>`;
+    const used = list.filter(x => x.computers > 0); const unused = list.filter(x => !x.computers);
+    $('who').innerHTML = '<option value="">Everyone</option>'
+      + (used.length ? `<optgroup label="Activated">${used.map(option).join('')}</optgroup>` : '')
+      + (unused.length ? `<optgroup label="Not activated yet">${unused.map(option).join('')}</optgroup>` : '');
+    $('who').value = state.slot;
+    $('hide-test').disabled = Boolean(state.slot);
+    document.title = state.slot ? `${plainName(state.slot)} · CartoVox Delta` : 'CartoVox Delta report';
+  }
+  function openTester(slot) {
+    const next = slot ? '#' + slot : '';
+    if ((location.hash || '') === next) return;
+    if (next) location.hash = next;
+    else history.pushState(null, '', location.pathname);
+    fromAddress();
+  }
+  function fromAddress() {
+    const slot = /^#(D-\d{3,5})$/.exec(location.hash || '');
+    const next = slot ? slot[1] : '';
+    if (next === state.slot && state.data) return;
+    state.slot = next; window.scrollTo(0, 0); load();
+  }
+  // Nickname a code in place: Enter or leaving the field saves, Escape keeps the old one.
+  function editNickname(button) {
+    const slot = button.dataset.nick;
+    const input = document.createElement('input');
+    input.className = 'nickedit'; input.maxLength = 40; input.value = nickOf(slot);
+    input.placeholder = 'Nickname for ' + slot; input.setAttribute('aria-label', 'Nickname for ' + slot);
+    button.replaceWith(input); input.focus(); input.select();
+    let done = false;
+    const finish = async save => {
+      if (done) return; done = true;
+      const note = input.value.trim();
+      if (!save || note === nickOf(slot)) { render(); return; }
+      const r = await fetch('/v1/admin/codes/' + encodeURIComponent(slot), { method: 'POST',
+        headers: { authorization: 'Bearer ' + state.token, 'content-type': 'application/json' }, body: JSON.stringify({ note }) });
+      const d = await r.json().catch(() => ({}));
+      if (r.status === 401) { forget('That token was refused, so this browser has forgotten it. Enter it again.'); return; }
+      if (!r.ok) { $('status').textContent = d.error || `Failed: ${r.status}`; render(); return; }
+      const entry = (state.data.directory || []).find(x => x.slot === slot); if (entry) entry.note = d.code?.note ?? null;
+      state.data.testers.forEach(t => { if (t.slot === slot) t.note = d.code?.note ?? null; });
+      $('status').textContent = note ? `${slot} is now “${note}”.` : `${slot} has no nickname.`;
+      fillPicker(); render();
+    };
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); finish(true); }
+      if (e.key === 'Escape') { e.preventDefault(); finish(false); }
+    });
+    input.addEventListener('blur', () => finish(true));
   }
   async function act(action, slot) {
     const body = action === 'free' ? { free_computers: true } : { status: action === 'revoke' ? 'revoked' : 'active' };
-    const question = action === 'revoke' ? `Revoke ${slot}? Every computer using it locks at its next check-in.`
-      : action === 'restore' ? `Restore ${slot}?` : `Free every computer registered to ${slot}? The tester can then unlock again on new ones.`;
+    const name = plainName(slot);
+    const question = action === 'revoke' ? `Revoke ${name}? Every computer using it locks at its next check-in.`
+      : action === 'restore' ? `Restore ${name}?` : `Free every computer registered to ${name}? The tester can then unlock again on new ones.`;
     if (!window.confirm(question)) return;
     const r = await fetch('/v1/admin/codes/' + encodeURIComponent(slot), { method: 'POST',
       headers: { authorization: 'Bearer ' + state.token, 'content-type': 'application/json' }, body: JSON.stringify(body) });
@@ -673,6 +822,9 @@ function adminApp() {
   $('forget').addEventListener('click', () => forget('Token forgotten on this browser.'));
   $('auto').addEventListener('change', () => { store.set(AUTO, $('auto').checked ? '1' : '0'); schedule(); });
   $('hide-test').addEventListener('change', () => { store.set(HIDE, $('hide-test').checked ? '1' : '0'); load(); });
+  $('who').addEventListener('change', () => openTester($('who').value));
+  window.addEventListener('hashchange', fromAddress);
+  window.addEventListener('popstate', fromAddress);
   $('range').addEventListener('click', e => {
     const b = e.target.closest('button[data-days]');
     if (!b) return;
@@ -703,7 +855,11 @@ function adminApp() {
     if (fa) { state.features.area = fa.dataset.farea; state.features.all = false; document.querySelectorAll('[data-farea]').forEach(b => b.setAttribute('aria-pressed', String(b === fa))); renderFeatureList(); return; }
     if (t.id === 'fall') { state.features.all = !state.features.all; renderFeatureList(); return; }
     const a = t.closest('button[data-act]');
-    if (a) act(a.dataset.act, a.dataset.slot);
+    if (a) { act(a.dataset.act, a.dataset.slot); return; }
+    const pen = t.closest('button[data-nick]');
+    if (pen) { editNickname(pen); return; }
+    const open = t.closest('[data-open]');
+    if (open) openTester(open.dataset.open);
   });
   $('dash').addEventListener('input', e => {
     if (e.target.id === 'tq') { state.testers.q = e.target.value; renderTesterRows(); }
@@ -719,6 +875,7 @@ function adminApp() {
   $('auto').checked = store.get(AUTO) === '1';
   $('hide-test').checked = store.get(HIDE) !== '0';
   state.token = store.get(KEY) || '';
+  state.slot = (/^#(D-\d{3,5})$/.exec(location.hash || '') || [])[1] || '';
   if (state.token) { signedIn(true); schedule(); load(); } else $('t').focus();
 }
 
