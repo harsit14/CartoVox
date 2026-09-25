@@ -1,0 +1,11 @@
+# Served by the Worker or not meant for readers: never uploaded as site files.
+worker/
+tools/
+brand/
+wrangler.jsonc
+README.md
+.assetsignore
+.git
+.gitignore
+node_modules
+.wrangler

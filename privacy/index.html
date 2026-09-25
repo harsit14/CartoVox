@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy — CartoVox</title>
-  <meta name="description" content="What this website and the CartoVox application do with your data: no cookies, no analytics, no account, an optional once-a-day update check, and Discord as the one link that leaves this site.">
+  <meta name="description" content="What this website and the CartoVox application do with your data: no cookies, no analytics, no account; the Delta usage report and exactly what it sends; and Discord as the one link that leaves this site.">
   <link rel="canonical" href="https://cartovox.org/privacy/">
   <meta name="theme-color" content="#0b0c10">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -27,9 +27,9 @@
       <a href="/eula/">Licence</a>
       <a href="/third-party-notices/">Third-party notices</a>
       <a href="/privacy/" aria-current="page">Privacy</a>
-      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Request an invite</a>
     </nav>
-    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Request an invite</a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -43,23 +43,33 @@
       <li><b>No cookies.</b> This site sets none, of any kind, including for preferences. There is nothing to consent to, which is why you were not asked.</li>
       <li><b>No analytics.</b> No page-view counter, no tag manager, no pixel, no session recorder, no A/B testing.</li>
       <li><b>No third-party requests.</b> Every font, script, stylesheet and image is served from this domain. Nothing on a page you load reaches another company. You can confirm it: open your browser's network panel and read the list.</li>
+      <li><b>The Delta service shares this domain.</b> The addresses under <code>/v1/</code> answer the CartoVox application, not your browser: no page on this site calls them, so reading the site sends nothing to them.</li>
       <li><b>No account, no form.</b> There is nothing here to sign up for and nowhere to type your email address, so none is collected.</li>
       <li><b>Server logs.</b> The site is static and served by Cloudflare Pages, which sees the ordinary request information any web server sees — your IP address, the page requested, your browser's user-agent string — and uses it to serve and protect the site. That is Cloudflare's processing, not ours, and no one here builds a profile from it or joins it to anything else.</li>
     </ul>
 
     <h2 id="leaving">The one link that leaves</h2>
     <p>
-      <b>Join the beta</b> opens Discord, which is a different company with its own terms and its own
+      <b>Request an invite</b> opens Discord, which is a different company with its own terms and its own
       data practices. We open it in a new tab so it is obvious you have left. Nothing about you is
       passed along with that click — the link carries an invite code and nothing else. What happens
       once you are on the server is between you and Discord.
     </p>
 
-    <h2 id="the-app">The application</h2>
+    <h2 id="the-app">The application (Delta builds)</h2>
     <ul>
-      <li><b>It runs on your computer.</b> There is no account, no cloud service, no telemetry, no analytics and no crash reporting. Worlds, maps, lore, names, campaigns and manuscripts are files on your own disk.</li>
-      <li><b>Your access key is verified offline</b>, on your machine. There is no activation server and no hardware fingerprint.</li>
-      <li><b>No network request of its own.</b> Since 0.9 there is no update check: CartoVox never asks whether a newer version exists, and the only address it opens is the local dashboard it starts itself. New builds are announced on the Discord server, and installing one is your decision.</li>
+      <li><b>Your work stays on your computer.</b> Worlds, maps, lore, names, campaigns and manuscripts are files on your own disk, and CartoVox never sends them anywhere. There is no account.</li>
+      <li><b>Unlocking registers your computer once.</b> Delta is invite-only. The first time you unlock a Delta build, it sends the Delta service a one-way digest of your access code (never the code itself), a random identifier made for that installation, and the facts listed under <i>sessions</i> below. The service answers whether the code is valid and whether it has been withdrawn. A code can unlock up to three computers.</li>
+      <li><b>The usage report.</b> Taking part in Delta includes a usage report, tied to your access code and installation identifier, sent in the background:
+        <ul>
+          <li><i>sessions</i> — when the app starts and stops, how long it was open, its version, your operating system and its version, processor architecture and cores, installed memory, and window size;</li>
+          <li><i>feature use</i> — which tabs, tools, buttons, settings menus and exports you use and how often, by the app's own names for them, and the kind of work you start (a generation or a rebuild, with its preset);</li>
+          <li><i>errors</i> — error messages and stack traces from CartoVox's own code, with your home folder, your user name and every file path removed;</li>
+          <li><i>performance</i> — how long generations, rebuilds and renders take, how they ended, and peak memory.</li>
+        </ul>
+        It never contains your worlds, maps, lore, manuscripts, file names or anything you type. While you are offline it waits on your computer; a Delta build that has not reached the service for 21 days asks you to connect before it opens.</li>
+      <li><b>Why, where and how long.</b> The report is used only to find defects, see which parts of CartoVox are used, and improve it before release. It is stored in a Cloudflare D1 database run by the project owner, kept until 90 days after the Delta programme ends, and not sold or shared. You can ask on the Discord server to see or delete the report linked to your code.</li>
+      <li><b>Nothing else leaves.</b> There is no update check: CartoVox never asks whether a newer version exists. Apart from the usage report, the only address it opens is the local dashboard it starts itself. New builds are announced on the Discord server, and installing one is your decision.</li>
       <li><b>Diagnostics are yours to send.</b> A diagnostics bundle is assembled locally from build and system information plus redacted logs, and is never uploaded on its own. Read it before you share it.</li>
       <li><b>What you make is yours.</b> The licence claims no ownership of your worlds or your writing, and you may publish and sell them. See the <a href="/eula/">licence</a>, sections 6 and 7.</li>
     </ul>
@@ -71,7 +81,7 @@
       <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Discord server</a>.
     </p>
   </article>
-  <p class="doc-note">Last reviewed 22 September 2026. This page describes what the site and the application do; the <a href="/eula/">End User License Agreement</a> is the binding document.</p>
+  <p class="doc-note">Last reviewed 24 September 2026. This page describes what the site and the application do; the <a href="/eula/">End User License Agreement</a> is the binding document.</p>
 </main>
 <footer class="footer">
   <div class="wrap footer-inner doc-footer">

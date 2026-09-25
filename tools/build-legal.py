@@ -170,9 +170,9 @@ PAGE = """<!doctype html>
       <a href="/eula/">Licence</a>
       <a href="/third-party-notices/">Third-party notices</a>
       <a href="/privacy/">Privacy</a>
-      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Request an invite</a>
     </nav>
-    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Request an invite</a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>

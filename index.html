@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CartoVox — Describe the world. CartoVox finds it.</title>
-  <meta name="description" content="CartoVox is a desktop world simulator for authors and game masters. Write a brief, search reproducible seeds for it, simulate the winner from plate tectonics upward, and receive an illustrated atlas, a naming system, a history and a place to write the book. No account, no cloud, no generative AI.">
+  <meta name="description" content="CartoVox is a desktop world simulator for authors and game masters. Write a brief, search reproducible seeds for it, simulate the winner from plate tectonics upward, and receive an illustrated atlas, a naming system, a history and a place to write the book. No account, no generative AI, and your worlds never leave your computer.">
   <link rel="canonical" href="https://cartovox.org/">
   <meta name="theme-color" content="#0b0c10">
   <meta name="color-scheme" content="dark">
@@ -68,7 +68,7 @@
         "name": "Does it need an internet connection or an account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Neither. CartoVox runs entirely on your computer with no account, no cloud service and no telemetry. Since 0.9 it makes no network request of its own at all — not even an update check. The only address it opens is the local dashboard it starts itself."
+          "text": "There is no account, and your worlds, maps, lore and manuscripts never leave your computer. Delta builds do need the internet once, to register your computer when you first unlock, and then send a usage report tied to your access code — sessions, the tools and exports you use, errors and how long work takes — which waits while you are offline. CartoVox does not check for updates; apart from that report, the only address it opens is the local dashboard it starts itself."
         }
       },
       {
@@ -116,7 +116,7 @@
         "name": "How do I get in?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Join the Discord server. Invitations, builds, checksums and feedback all happen there; a personal access key unlocks the app once, offline."
+          "text": "Join the Discord server. Delta is invite-only: invitations, builds, checksums and feedback all happen there, and a personal Delta access code unlocks the app."
         }
       }
     ]
@@ -139,11 +139,11 @@
       <a href="/guide/">Guide</a>
       <a href="/releases/">Release notes</a>
       <a href="#faq">FAQ</a>
-      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Request an invite</a>
     </nav>
     <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">
       <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 5.6A16 16 0 0 0 15.7 4.4l-.5 1a15 15 0 0 0-4.4 0l-.5-1a16 16 0 0 0-3.9 1.2C3.9 9.3 3.2 12.9 3.5 16.4a16 16 0 0 0 4.8 2.4l1-1.6a10 10 0 0 1-1.6-.8l.4-.3a11.5 11.5 0 0 0 9.8 0l.4.3-1.6.8 1 1.6a16 16 0 0 0 4.8-2.4c.4-4-.7-7.6-2.9-10.8ZM9.5 14.2c-.9 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.8 2-1.7 2Zm5 0c-.9 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.8 2-1.7 2Z"/></svg>
-      Join the beta
+      Request an invite
     </a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -174,13 +174,13 @@
         an illustrated atlas, a naming system, a history, and a place to write the book.
       </p>
       <div class="cta-row">
-        <a class="btn btn-gold btn-lg" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta on Discord</a>
+        <a class="btn btn-gold btn-lg" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Request a Delta invite on Discord</a>
         <a class="btn btn-ghost btn-lg" href="#how">See how a world is built</a>
       </div>
       <ul class="hero-facts" aria-label="At a glance">
         <li>macOS · Windows · Linux</li>
         <li>No account</li>
-        <li>No cloud</li>
+        <li>Your worlds stay on your computer</li>
         <li>No generative AI</li>
       </ul>
     </div>
@@ -196,7 +196,7 @@
       <div class="stat"><span class="stat-n">4800<small>px</small></span><span class="stat-l">publication plates, world to region</span></div>
       <div class="stat"><span class="stat-n">49</span><span class="stat-l">measured map views per world</span></div>
       <div class="stat"><span class="stat-n">8</span><span class="stat-l">cartographic sheets, one geography</span></div>
-      <div class="stat"><span class="stat-n">0</span><span class="stat-l">accounts, servers, or telemetry</span></div>
+      <div class="stat"><span class="stat-n">0</span><span class="stat-l">accounts, or uploads of your work</span></div>
     </div>
   </section>
 
@@ -682,20 +682,30 @@
     </div>
   </section>
 
-  <!-- ───────────────────────── Beta ───────────────────────── -->
+  <!-- ───────────────────────── Delta ───────────────────────── -->
   <section id="beta" class="section beta">
     <div class="wrap beta-inner reveal">
       <div class="beta-copy">
-        <p class="eyebrow">The beta</p>
-        <h2>The beta lives on Discord.</h2>
+        <p class="eyebrow">Delta</p>
+        <h2>Delta is invite-only, and it lives on Discord.</h2>
         <p>
-          CartoVox is in a controlled beta with a small group of invited testers. Builds, release
-          notes, checksums and feedback all happen on the server; each tester receives a personal
-          access key, verified offline on their own computer.
+          The beta has become <strong>Delta</strong>: the programme that takes CartoVox to its
+          final release, open only to people the project owner invites. Invitations, builds, release
+          notes, checksums and feedback all happen on the Discord server. Each tester receives a
+          personal Delta access code (<code>CVD-XXXX-XXXX-XXXX</code>); the first unlock registers
+          the computer over the internet, and a code can unlock up to three. Beta keys ended with
+          Delta. The first Delta build is Delta V1, version 0.9.2.
+        </p>
+        <p>
+          Taking part includes a <strong>usage report</strong>: sessions, the tools and exports you
+          use, errors, and how long work takes, tied to your access code, so CartoVox can be improved
+          before its final release. It never contains your worlds, maps, lore or manuscripts. The
+          <a href="/privacy/#the-app">privacy page</a> and section 6 of the
+          <a href="/eula/">licence</a> list everything it sends.
         </p>
         <a class="btn btn-gold btn-lg" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">
           <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 5.6A16 16 0 0 0 15.7 4.4l-.5 1a15 15 0 0 0-4.4 0l-.5-1a16 16 0 0 0-3.9 1.2C3.9 9.3 3.2 12.9 3.5 16.4a16 16 0 0 0 4.8 2.4l1-1.6a10 10 0 0 1-1.6-.8l.4-.3a11.5 11.5 0 0 0 9.8 0l.4.3-1.6.8 1 1.6a16 16 0 0 0 4.8-2.4c.4-4-.7-7.6-2.9-10.8ZM9.5 14.2c-.9 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.8 2-1.7 2Zm5 0c-.9 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.8 2-1.7 2Z"/></svg>
-          Join the Discord server
+          Request an invite on Discord
         </a>
         <p class="muted small">Installers are currently unsigned, so macOS Gatekeeper and Windows SmartScreen will warn you. Every build ships with checksums; install only what the server publishes.</p>
       </div>
@@ -707,7 +717,7 @@
           <li><span class="plat">Linux</span><span>Debian/Ubuntu package (.deb), and a portable archive for other glibc 2.28+ x86-64 distributions.</span></li>
         </ul>
         <h3>Updates are your decision</h3>
-        <p class="muted small">CartoVox never checks for updates. New builds are announced on the Discord server, which is also where the installer is shared, and installing one is something you choose to do. The application makes no network request of its own.</p>
+        <p class="muted small">CartoVox never checks for updates. New builds are announced on the Discord server, which is also where the installer is shared, and installing one is something you choose to do. Apart from the Delta usage report, the application makes no network request of its own.</p>
       </div>
     </div>
   </section>
@@ -726,7 +736,7 @@
         </details>
         <details>
           <summary>Does it need an internet connection or an account?</summary>
-          <p>Neither. CartoVox runs entirely on your computer with no account, no cloud service and no telemetry. Since 0.9 it makes no network request of its own at all — not even an update check. The only address it opens is the local dashboard it starts itself.</p>
+          <p>There is no account, and your worlds, maps, lore and manuscripts never leave your computer. Delta builds do need the internet once, to register your computer when you first unlock, and then send a usage report tied to your access code — sessions, the tools and exports you use, errors and how long work takes — which waits while you are offline. CartoVox does not check for updates; apart from that report, the only address it opens is the local dashboard it starts itself.</p>
         </details>
         <details>
           <summary>Can I start from a map I already have?</summary>
@@ -750,7 +760,7 @@
         </details>
         <details>
           <summary>How do I get in?</summary>
-          <p>Join the <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Discord server</a>. Invitations, builds, checksums and feedback all happen there; a personal access key unlocks the app once, offline.</p>
+          <p>Join the <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Discord server</a>. Delta is invite-only: invitations, builds, checksums and feedback all happen there, and a personal Delta access code unlocks the app.</p>
         </details>
       </div>
     </div>
@@ -773,9 +783,9 @@
         <a href="/releases/">Release notes</a>
       </div>
       <div>
-        <h4>Beta</h4>
+        <h4>Delta</h4>
         <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Discord server</a>
-        <a href="#beta">Platforms</a>
+        <a href="#beta">Delta and platforms</a>
         <a href="#faq">FAQ</a>
       </div>
       <div>

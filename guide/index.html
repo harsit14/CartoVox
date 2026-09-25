@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The CartoVox guide — how to use it, and everything it does">
-  <meta property="og:description" content="A first world step by step, the exact place every control lives, and every workspace in depth. Current to the 0.9.1 beta.">
+  <meta property="og:description" content="A first world step by step, the exact place every control lives, and every workspace in depth. Current to 0.9.1.">
   <meta property="og:url" content="https://cartovox.org/guide/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -31,9 +31,9 @@
       <a href="/guide/" aria-current="page">Guide</a>
       <a href="/releases/">Release notes</a>
       <a href="/#faq">FAQ</a>
-      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Request an invite</a>
     </nav>
-    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Request an invite</a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -103,7 +103,7 @@
         they never knew were there.
       </p>
       <p class="muted small">
-        Current as of the <b>0.9.1</b> beta, checked against a running copy. Version-by-version changes are on the
+        Current as of <b>0.9.1</b>, checked against a running copy. Version-by-version changes are on the
         <a href="/releases/">release notes</a> page. The same material ships inside the app under <b>Help</b>, offline.
       </p>
       <div class="callout">
@@ -220,7 +220,7 @@
           <tr><td>Keyboard keys</td><td>Press <kbd>?</kbd> on the map, or <kbd>⌘/</kbd> in the manuscript</td></tr>
         </tbody>
       </table>
-      <p class="muted small">Nothing matched? The sections below cover surfaces this index does not name, and the beta
+      <p class="muted small">Nothing matched? The sections below cover surfaces this index does not name, and the
       <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Discord</a> is the place to ask.</p>
     </section>
     <section id="new-091">
@@ -285,17 +285,22 @@
       <ul class="feat">
         <li><b>The licence.</b> The first window is the End User License Agreement. Tick <b>I have read and accept</b>
           and <b>Unlock</b> becomes available. The same text stays readable at <code>Settings › Updates &amp; support › Licence</code>.</li>
-        <li><b>The access key.</b> Paste the key sent to you and choose <b>Unlock CartoVox</b>. Verification happens
-          entirely on your computer: no account, no activation server, no hardware fingerprint. The key is personal
-          to you and is stored in CartoVox's own application-data folder.</li>
+        <li><b>The access code.</b> Delta builds open for a personal Delta access code, <code>CVD-XXXX-XXXX-XXXX</code>
+          (case and dashes do not matter; a typing mistake is caught at once). Type or paste it and choose
+          <b>Unlock CartoVox</b>. The first unlock needs the internet: it registers your computer with the Delta
+          service, and one code unlocks up to three computers. Beta keys ended with Delta. The code is personal to
+          you and is stored in CartoVox's own application-data folder.</li>
         <li><b>Then a six-panel tour</b> — what the app simulates, how you describe a world, trying seeds, the three
           build sizes, drawing the atlas, and a finished world you can open on the spot. It appears once per version
           and can be closed at any panel. The manual did not go anywhere: it is under <b>Help</b> at the foot of the
           left rail.</li>
         <li><b>Unsigned installers.</b> macOS Gatekeeper and Windows SmartScreen will warn you, because the builds are
-          not code-signed yet. Each release publishes checksums; install only the file shared in the beta Discord.</li>
-        <li><b>It makes no network request of its own.</b> No update check, no telemetry, no account. The only address
-          it opens is the loopback dashboard it started itself.</li>
+          not code-signed yet. Each release publishes checksums; install only the file shared on the Discord server.</li>
+        <li><b>The Delta usage report.</b> Taking part in Delta includes a report tied to your access code: sessions,
+          the tools and exports you use, errors, and how long work takes. It never contains your worlds, maps, lore or
+          manuscripts, waits while you are offline, and is listed in full on the <a href="/privacy/#the-app">privacy
+          page</a>. A build that has not reached the service for 21 days asks you to connect. There is no update check
+          and no account.</li>
       </ul>
       <div class="callout">
         <span class="callout-t">If you want to see a finished world first</span>
@@ -1278,8 +1283,11 @@
       files as a safety copy, and never deletes the former library automatically.</p>
 
       <h4>Does CartoVox send anything anywhere?</h4>
-      <p>No. There is no account, no telemetry and no update check; the only address it opens is the loopback dashboard
-      it started itself. The optional local diagnostics journal is off by default and stays in your browser profile.</p>
+      <p>Never your work: worlds, maps, lore and manuscripts stay on your computer, and there is no account and no
+      update check. Delta builds send one thing, a usage report tied to your access code (sessions, the tools and
+      exports you use, errors, and how long work takes), described on the <a href="/privacy/#the-app">privacy page</a>
+      and in section 6 of the licence. The optional local diagnostics journal is off by default and stays in your
+      browser profile.</p>
 
       <h4>Can I sell what I make with it?</h4>
       <p>Yes. You may publish and sell the worlds, maps and writing you create; you may not copy, share, resell or
@@ -1317,7 +1325,7 @@
 
 <footer class="footer">
   <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds shown here were generated by it. This site sets no cookies and runs no analytics. <a href="/">Home</a> · <a href="/guide/">Guide</a> · <a href="/releases/">Release notes</a> · <a href="/privacy/">Privacy</a> · <a href="/eula/">Licence</a> · <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a></p>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds shown here were generated by it. This site sets no cookies and runs no analytics. <a href="/">Home</a> · <a href="/guide/">Guide</a> · <a href="/releases/">Release notes</a> · <a href="/privacy/">Privacy</a> · <a href="/eula/">Licence</a> · <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Request an invite</a></p>
   </div>
 </footer>
 <script src="/js/site.js?v=915173a910" defer></script>

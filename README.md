@@ -2,7 +2,8 @@
 
 The public site for [CartoVox](https://cartovox.org), the desktop world simulator.
 A static site: one landing page, two legal pages, no build step, no framework,
-no third-party requests. Cloudflare Pages serves it straight from this repository.
+no third-party requests. A Cloudflare Worker with static assets serves it straight from this repository,
+together with the Delta service CartoVox's Delta builds talk to (`worker/`).
 
 ## Layout
 
@@ -18,17 +19,36 @@ no third-party requests. Cloudflare Pages serves it straight from this repositor
 | `js/candidates.js` | The toy seed search drawn on canvas in the brief section |
 | `fonts/` | Cinzel, Newsreader and Inter, self-hosted under the SIL Open Font License |
 | `img/` | Every image the site ships, derived by `tools/build-images.py` |
-| `_headers`, `_redirects` | Cloudflare Pages headers (CSP, caching) and short links (`/discord`, `/beta`) |
+| `_headers`, `_redirects` | Static-asset headers (CSP, caching) and short links (`/discord`, `/delta`, `/invite`, `/beta`) |
+| `worker/`, `wrangler.jsonc`, `.assetsignore` | The Worker: static files straight from the assets, and the Delta service (`/v1/…` for the app, `/admin` for the owner's report). The service is copied from the app repository by `tools/sync-delta-service.py` |
 | `robots.txt`, `sitemap.xml`, `site.webmanifest` | The usual furniture |
 
-## Deploying on Cloudflare Pages
+## Deploying on Cloudflare
 
-1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
-2. Pick this repository. Production branch: `main`.
-3. Build settings: framework preset **None**, build command *empty*, build output directory `/`.
-4. **Custom domains** → add `cartovox.org` and `www.cartovox.org`. Cloudflare writes the DNS records itself because the zone is already on Cloudflare.
+The site is the `cartovox` Worker (Workers & Pages → cartovox), connected to this
+repository with Workers Builds: production branch `main`, no build command, deploy
+command `npx wrangler deploy`, which reads `wrangler.jsonc`. The Worker serves the
+repository's files as static assets (minus `.assetsignore`), honours `_headers` and
+`_redirects`, and answers 404s with `404.html`. `cartovox.org` is its custom domain.
 
-Every push to `main` redeploys. Preview deployments are created for other branches.
+Every push to `main` redeploys; other branches get preview versions.
+
+## The Delta service
+
+Delta builds of CartoVox register each computer under an access code and send a
+usage report to `https://cartovox.org/v1/…`. The code is written and tested in
+the app repository (`services/delta-service/`); copy it here with
+
+```bash
+python3 tools/sync-delta-service.py <app>
+```
+
+and push. The D1 database (`cartovox-delta`) is bound in `wrangler.jsonc`; the one
+thing set by hand is the Worker's encrypted **`ADMIN_TOKEN`** secret (Workers & Pages →
+cartovox → Settings → Variables and Secrets), the password for `/admin`. The service creates its
+tables and loads the issued access codes itself on first use. The report is at
+`https://cartovox.org/admin`; revoking a code and reading raw data are described in
+the app repository's `services/delta-service/README.md`.
 
 ## Regenerating images
 

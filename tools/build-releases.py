@@ -133,7 +133,7 @@ PAGE = """<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Release notes — CartoVox</title>
-  <meta name="description" content="Every CartoVox release, from the first invited alpha to the current beta: what changed, what it costs, and what stayed compatible.">
+  <meta name="description" content="Every CartoVox release, from the first invited alpha to the current Delta programme: what changed, what it costs, and what stayed compatible.">
   <link rel="canonical" href="https://cartovox.org/releases/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
@@ -159,9 +159,9 @@ PAGE = """<!doctype html>
       <a href="/guide/">Guide</a>
       <a href="/releases/" aria-current="page">Release notes</a>
       <a href="/#faq">FAQ</a>
-      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Request an invite</a>
     </nav>
-    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Join the beta</a>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Request an invite</a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -176,7 +176,7 @@ PAGE = """<!doctype html>
     <header class="guide-head">
       <p class="eyebrow">Release notes</p>
       <h1>Every version, in full.</h1>
-      <p class="lede">What changed, what it costs, and what stayed compatible, from the first invited alpha on 23 August 2026 to the current beta. The same notes are readable offline inside the app under <b>Settings → Release notes</b>.</p>
+      <p class="lede">What changed, what it costs, and what stayed compatible, from the first invited alpha on 23 August 2026 to the current Delta programme. The same notes are readable offline inside the app under <b>Settings → Release notes</b>.</p>
       <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2; these notes use its current name throughout. The Atlas tab, Atlas plates and Atlas lettering keep their names — they describe the publication atlas the app draws. Builds are published on the <a href="https://discord.gg/nGNatfuXe" target="_blank" rel="noopener">Discord server</a>.</p>
     </header>
 {articles}

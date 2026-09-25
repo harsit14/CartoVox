@@ -1,0 +1,29 @@
+// cartovox.org: the site's static files, and the Delta service at /v1 and /admin.
+// Deployed by Workers Builds (`npx wrangler deploy`) on every push to main.
+{
+  "name": "cartovox",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-09-21",
+  "routes": [{ "pattern": "cartovox.org", "custom_domain": true }],
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    // Only the service reaches the script; every page is served as a file.
+    "run_worker_first": ["/v1/*", "/admin", "/admin/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cartovox-delta",
+      "database_id": "a70fc1fc-e2b0-43cf-a1ce-6bc69e51a6fa"
+    }
+  ],
+  "vars": {
+    // Events one computer may send in 24 hours; beyond it they are dropped.
+    "DAILY_EVENT_LIMIT": "20000"
+  },
+  // ADMIN_TOKEN (the /admin password) is an encrypted secret set in the
+  // dashboard: Workers & Pages -> cartovox -> Settings -> Variables and Secrets.
+  "observability": { "enabled": true }
+}

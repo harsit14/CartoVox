@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+# The Delta service answers the CartoVox application, not readers.
+Disallow: /v1/
+Disallow: /admin
 
 Sitemap: https://cartovox.org/sitemap.xml
