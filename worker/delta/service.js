@@ -5,10 +5,12 @@
 //   POST /v1/events    a batch of usage events (empty = a check-in)
 // Every answer carries the code's status, which is how a code is revoked.
 //
-// The owner reads the results at /admin (a page that asks for the admin
-// token) or through /v1/admin/report; /v1/admin/codes/<slot> revokes,
-// restores or changes how many computers a code may unlock.
+// The owner reads the results at /admin (the dashboard in admin.js, which
+// asks for the admin token once) or through /v1/admin/report;
+// /v1/admin/codes/<slot> revokes, restores or changes how many computers a
+// code may unlock.
 
+import { ADMIN_HEADERS, ADMIN_PAGE, ADMIN_SCRIPT } from './admin.js';
 import CODES from './codes.js';
 
 const KINDS = new Set(['session', 'feature', 'error', 'perf']);
@@ -35,6 +37,7 @@ export const SCHEMA = [
   'CREATE INDEX IF NOT EXISTS events_slot_at ON events(slot, at)',
   'CREATE INDEX IF NOT EXISTS events_kind_name ON events(kind, name)',
   'CREATE INDEX IF NOT EXISTS events_install_received ON events(install_id, received_at)',
+  'CREATE INDEX IF NOT EXISTS events_at ON events(at)',
 ];
 
 const readiness = new WeakMap();
@@ -204,35 +207,215 @@ function authorised(request, env) {
   return Boolean(token) && sameText(header, `Bearer ${token}`);
 }
 
-async function report(env) {
+const DAY_MS = 86400000;
+const SLOT = /^D-\d{3,5}$/;
+
+// ?days=7|30|90 (anything else: all time), ?tz=<minutes east of UTC> for the
+// owner's own calendar days, ?exclude=D-051,... to leave test codes out.
+export function reportOptions(url) {
+  const days = [7, 30, 90].includes(Number(url.searchParams.get('days')))
+    ? Number(url.searchParams.get('days')) : 0;
+  const tz = Number(url.searchParams.get('tz') || 0);
+  const exclude = (url.searchParams.get('exclude') || '').split(',')
+    .map(slot => slot.trim()).filter(slot => SLOT.test(slot)).slice(0, 20);
+  return { days, tz: Number.isInteger(tz) && Math.abs(tz) <= 840 ? tz : 0, exclude };
+}
+
+// Event times are UTC ISO strings from the app ("2026-09-24T12:00:00+00:00"),
+// so a bare "YYYY-MM-DDTHH:MM:SS" bound compares correctly as text and the
+// events_at index keeps a ranged report from reading the whole table.
+function stamp(ms) {
+  return new Date(ms).toISOString().slice(0, 19);
+}
+
+function localDay(ms, tz) {
+  return new Date(ms + tz * 60000).toISOString().slice(0, 10);
+}
+
+function round(value, places = 1) {
+  const scale = 10 ** places;
+  return Math.round((Number(value) || 0) * scale) / scale;
+}
+
+async function report(env, { days = 0, tz = 0, exclude = [] } = {}) {
   const rows = async (sql, ...binds) => (await env.DB.prepare(sql).bind(...binds).all()).results || [];
-  const testers = await rows(`SELECT codes.slot, codes.status, codes.max_installs,
-      COUNT(DISTINCT installs.id) AS computers, MAX(installs.last_seen) AS last_seen,
-      MAX(installs.app_version) AS app_version, GROUP_CONCAT(DISTINCT installs.os) AS os,
-      (SELECT COUNT(*) FROM events WHERE events.slot = codes.slot AND kind = 'session'
-        AND name = 'start') AS sessions,
-      (SELECT ROUND(COALESCE(SUM(json_extract(props, '$.seconds')), 0) / 3600.0, 1) FROM events
-        WHERE events.slot = codes.slot AND kind = 'session' AND name = 'end') AS hours,
-      (SELECT COUNT(*) FROM events WHERE events.slot = codes.slot AND kind = 'error') AS errors
+  const nowMs = Date.now();
+  const todayStart = Date.parse(`${localDay(nowMs, tz)}T00:00:00Z`) - tz * 60000;
+  const sinceMs = days ? todayStart - (days - 1) * DAY_MS : null;
+  const since = days ? stamp(sinceMs) : '0000';
+  const until = '9999';
+  const shift = `${tz >= 0 ? '+' : ''}${tz} minutes`;
+  const skipped = new Set(exclude);
+  const notIn = exclude.length ? `slot NOT IN (${exclude.map(() => '?').join(', ')})` : '1 = 1';
+
+  // One pass over the range does the totals, the days, each tester's
+  // activity, the performance table and the hour-of-week grid. Feature rows
+  // ("counts", flushed once a minute while someone clicks) are the bulk of
+  // the table, so they are also the measure of active minutes.
+  const rollup = await rows(`SELECT slot, date(at, ?) AS day,
+      CASE WHEN kind = 'feature' THEN CAST(strftime('%H', at, ?) AS INTEGER) END AS hour,
+      kind, CASE WHEN kind IN ('session', 'perf') THEN name ELSE '' END AS name,
+      COUNT(*) AS n, COUNT(DISTINCT install_id) AS computers,
+      SUM(json_extract(props, '$.seconds')) AS seconds,
+      MAX(json_extract(props, '$.seconds')) AS longest,
+      MAX(json_extract(props, '$.peak_rss_mb')) AS peak,
+      SUM(kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed') AS failed,
+      MAX(at) AS last_at
+    FROM events WHERE at >= ? AND at < ? AND ${notIn}
+    GROUP BY slot, day, hour, kind, 5`, shift, shift, since, until, ...exclude);
+
+  const totals = { testers: 0, computers: 0, sessions: 0, hours: 0, errors: 0, runs: 0,
+    failed_runs: 0, active_minutes: 0 };
+  const byDay = new Map();
+  const bySlot = new Map();
+  const byJob = new Map();
+  const heatmap = Array.from({ length: 7 }, () => new Array(24).fill(0));
+  const activeSlots = new Set();
+  for (const row of rollup) {
+    if (!row.day) continue;
+    activeSlots.add(row.slot);
+    const day = byDay.get(row.day) || { day: row.day, slots: new Set(), sessions: 0, seconds: 0,
+      errors: 0, runs: 0, failed: 0, active_minutes: 0 };
+    byDay.set(row.day, day);
+    day.slots.add(row.slot);
+    const tester = bySlot.get(row.slot) || { sessions: 0, seconds: 0, errors: 0, runs: 0,
+      active_minutes: 0, last_event: '', days: {} };
+    bySlot.set(row.slot, tester);
+    if (row.last_at > tester.last_event) tester.last_event = row.last_at;
+    if (row.kind === 'session' && row.name === 'start') {
+      day.sessions += row.n; tester.sessions += row.n;
+    } else if (row.kind === 'session' && row.name === 'end') {
+      day.seconds += row.seconds || 0; tester.seconds += row.seconds || 0;
+    } else if (row.kind === 'error') {
+      day.errors += row.n; tester.errors += row.n;
+    } else if (row.kind === 'perf') {
+      day.runs += row.n; day.failed += row.failed || 0; tester.runs += row.n;
+      totals.failed_runs += row.failed || 0;
+      const job = byJob.get(row.name) || { name: row.name, runs: 0, seconds: 0, longest: 0, peak: null,
+        unfinished: 0, slots: new Set() };
+      byJob.set(row.name, job);
+      job.runs += row.n; job.seconds += row.seconds || 0; job.unfinished += row.failed || 0;
+      job.longest = Math.max(job.longest, row.longest || 0);
+      if (row.peak != null) job.peak = Math.max(job.peak || 0, row.peak);
+      job.slots.add(row.slot);
+    } else if (row.kind === 'feature') {
+      day.active_minutes += row.n; tester.active_minutes += row.n;
+      tester.days[row.day] = (tester.days[row.day] || 0) + row.n;
+      if (row.hour != null) heatmap[new Date(`${row.day}T00:00:00Z`).getUTCDay()][row.hour] += row.n;
+    }
+  }
+  for (const day of byDay.values()) {
+    totals.sessions += day.sessions; totals.hours += day.seconds / 3600; totals.errors += day.errors;
+    totals.runs += day.runs; totals.active_minutes += day.active_minutes;
+  }
+  totals.testers = activeSlots.size;
+  totals.hours = round(totals.hours);
+
+  // Every calendar day in the range, empty ones included, so a quiet day
+  // reads as zero instead of vanishing from the chart.
+  const today = localDay(nowMs, tz);
+  const first = days ? localDay(sinceMs, tz) : ([...byDay.keys()].sort()[0] || today);
+  const firstMs = Math.max(Date.parse(`${first}T00:00:00Z`),
+    Date.parse(`${today}T00:00:00Z`) - 399 * DAY_MS);
+  const daily = [];
+  for (let ms = firstMs; ms <= Date.parse(`${today}T00:00:00Z`); ms += DAY_MS) {
+    const key = new Date(ms).toISOString().slice(0, 10);
+    const day = byDay.get(key);
+    daily.push({ day: key, testers: day ? day.slots.size : 0, sessions: day?.sessions || 0,
+      hours: round((day?.seconds || 0) / 3600, 2), errors: day?.errors || 0, runs: day?.runs || 0,
+      failed: day?.failed || 0, active_minutes: day?.active_minutes || 0 });
+  }
+
+  let previous = null;
+  if (days) {
+    const [before] = await rows(`SELECT COUNT(DISTINCT slot) AS testers,
+        COALESCE(SUM(kind = 'session' AND name = 'start'), 0) AS sessions,
+        ROUND(COALESCE(SUM(CASE WHEN kind = 'session' AND name = 'end'
+          THEN json_extract(props, '$.seconds') END), 0) / 3600.0, 1) AS hours,
+        COALESCE(SUM(kind = 'error'), 0) AS errors, COALESCE(SUM(kind = 'perf'), 0) AS runs,
+        COALESCE(SUM(kind = 'feature' AND name = 'counts'), 0) AS active_minutes
+      FROM events WHERE at >= ? AND at < ? AND ${notIn}`,
+    stamp(sinceMs - days * DAY_MS), since, ...exclude);
+    previous = before || null;
+  }
+
+  const codes = (await rows(`SELECT codes.slot, codes.status, codes.max_installs,
+      COUNT(installs.id) AS computers, MAX(installs.last_seen) AS last_seen,
+      MIN(installs.first_seen) AS first_seen, MAX(installs.app_version) AS app_version,
+      GROUP_CONCAT(DISTINCT installs.os) AS os
     FROM codes LEFT JOIN installs ON installs.slot = codes.slot
-    GROUP BY codes.slot ORDER BY codes.slot`);
+    GROUP BY codes.slot ORDER BY codes.slot`)).filter(code => !skipped.has(code.slot));
+  const testers = codes.map(code => {
+    const seen = bySlot.get(code.slot);
+    return { ...code, sessions: seen?.sessions || 0, hours: round((seen?.seconds || 0) / 3600),
+      errors: seen?.errors || 0, runs: seen?.runs || 0, active_minutes: seen?.active_minutes || 0,
+      last_event: seen?.last_event || null, days: seen?.days || {} };
+  });
+  totals.codes_issued = codes.length;
+  totals.codes_activated = codes.filter(code => code.computers > 0).length;
+  totals.codes_revoked = codes.filter(code => code.status === 'revoked').length;
+
+  const machines = (await rows(`SELECT slot, os, os_version, arch, cpu_count, memory_gb, app_version,
+      release, first_seen, last_seen FROM installs ORDER BY last_seen DESC`))
+    .filter(machine => !skipped.has(machine.slot));
+  totals.computers = machines.filter(machine => machine.last_seen >= since).length;
+  const systems = [];
+  for (const machine of machines) {
+    const found = systems.find(row => row.os === machine.os && row.arch === machine.arch
+      && row.app_version === machine.app_version);
+    if (found) found.computers += 1;
+    else systems.push({ os: machine.os, arch: machine.arch, app_version: machine.app_version, computers: 1 });
+  }
+  systems.sort((a, b) => b.computers - a.computers);
+
   const features = await rows(`SELECT feature.key AS name, SUM(feature.value) AS uses,
       COUNT(DISTINCT events.slot) AS testers
     FROM events, json_each(events.props, '$.counts') AS feature
-    WHERE events.kind = 'feature' AND events.name = 'counts'
-    GROUP BY feature.key ORDER BY uses DESC LIMIT 80`);
-  const performance = await rows(`SELECT name, COUNT(*) AS runs,
-      ROUND(AVG(json_extract(props, '$.seconds')), 1) AS mean_seconds,
-      ROUND(MAX(json_extract(props, '$.seconds')), 1) AS longest_seconds,
-      ROUND(MAX(json_extract(props, '$.peak_rss_mb')), 0) AS peak_mb,
-      SUM(json_extract(props, '$.status') != 'completed') AS unfinished
-    FROM events WHERE kind = 'perf' GROUP BY name ORDER BY runs DESC`);
+    WHERE events.kind = 'feature' AND events.name = 'counts' AND events.at >= ? AND events.at < ?
+      AND ${notIn.replace('slot', 'events.slot')}
+    GROUP BY feature.key ORDER BY uses DESC LIMIT 150`, since, until, ...exclude);
+  const failures = await rows(`SELECT name, COALESCE(json_extract(props, '$.failure'), '') AS failure,
+      COALESCE(json_extract(props, '$.status'), '') AS status, COUNT(*) AS runs
+    FROM events WHERE kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed'
+      AND at >= ? AND at < ? AND ${notIn}
+    GROUP BY 1, 2, 3 ORDER BY runs DESC LIMIT 30`, since, until, ...exclude);
   const errors = await rows(`SELECT slot, at, name, json_extract(props, '$.type') AS type,
       json_extract(props, '$.message') AS message, json_extract(props, '$.stack') AS stack
-    FROM events WHERE kind = 'error' ORDER BY id DESC LIMIT 60`);
-  const systems = await rows(`SELECT os, arch, app_version, COUNT(*) AS computers
-    FROM installs GROUP BY os, arch, app_version ORDER BY computers DESC`);
-  return { generated_at: now(), testers, features, performance, errors, systems };
+    FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${notIn}
+    ORDER BY id DESC LIMIT 60`, since, until, ...exclude);
+  const errorGroups = await rows(`SELECT name, json_extract(props, '$.type') AS type,
+      json_extract(props, '$.message') AS message, COUNT(*) AS count, COUNT(DISTINCT slot) AS testers,
+      GROUP_CONCAT(DISTINCT slot) AS slots, MIN(at) AS first_at, MAX(at) AS last_at,
+      MAX(json_extract(props, '$.stack')) AS stack
+    FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${notIn}
+    GROUP BY 1, 2, 3 ORDER BY count DESC, last_at DESC LIMIT 40`, since, until, ...exclude);
+  const screens = await rows(`SELECT json_extract(props, '$.width') AS width,
+      json_extract(props, '$.height') AS height, COUNT(DISTINCT install_id) AS computers
+    FROM events WHERE kind = 'session' AND name = 'ui:window' AND at >= ? AND at < ? AND ${notIn}
+    GROUP BY 1, 2 ORDER BY computers DESC LIMIT 12`, since, until, ...exclude);
+  const feed = await rows(`SELECT slot, at, kind, name, json_extract(props, '$.seconds') AS seconds,
+      json_extract(props, '$.message') AS message, json_extract(props, '$.status') AS status
+    FROM events WHERE at >= ? AND at < ? AND ${notIn}
+      AND ((kind = 'session' AND name IN ('start', 'end')) OR kind = 'error'
+        OR (kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed'))
+    ORDER BY at DESC LIMIT 30`, since, until, ...exclude);
+  for (const machine of machines) {
+    if (machine.first_seen >= since) {
+      feed.push({ slot: machine.slot, at: machine.first_seen, kind: 'activation', name: machine.os });
+    }
+  }
+  feed.sort((a, b) => (Date.parse(b.at) || 0) - (Date.parse(a.at) || 0));
+
+  const performance = [...byJob.values()].map(job => ({ name: job.name, runs: job.runs,
+    mean_seconds: round(job.seconds / job.runs), longest_seconds: round(job.longest),
+    peak_mb: job.peak == null ? null : Math.round(job.peak), unfinished: job.unfinished,
+    testers: job.slots.size })).sort((a, b) => b.runs - a.runs);
+
+  return { generated_at: now(),
+    range: { days, tz, exclude, since: days ? stamp(sinceMs) : null,
+      previous_since: days ? stamp(sinceMs - days * DAY_MS) : null },
+    totals, previous, daily, heatmap, testers, features, performance, failures, errors,
+    error_groups: errorGroups, systems, machines, screens, feed: feed.slice(0, 30) };
 }
 
 async function admin(request, env, path) {
@@ -242,7 +425,9 @@ async function admin(request, env, path) {
     return json({ error: 'The admin password (ADMIN_TOKEN) is not set on this service.' }, 503);
   }
   if (!authorised(request, env)) return json({ error: 'Not authorised.' }, 401);
-  if (request.method === 'GET' && path === '/v1/admin/report') return json(await report(env));
+  if (request.method === 'GET' && path === '/v1/admin/report') {
+    return json(await report(env, reportOptions(new URL(request.url))));
+  }
   const match = path.match(/^\/v1\/admin\/codes\/(D-\d{3,5})$/);
   if (request.method === 'POST' && match) {
     const [body, failure] = await readJson(request);
@@ -266,42 +451,6 @@ async function admin(request, env, path) {
   }
   return json({ error: 'Not found.' }, 404);
 }
-
-const ADMIN_HEADERS = {
-  'cache-control': 'no-store',
-  'x-frame-options': 'DENY',
-  'x-robots-tag': 'noindex, nofollow',
-  'referrer-policy': 'no-referrer',
-  'content-security-policy': "default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; "
-    + "connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
-};
-
-const ADMIN_PAGE = `<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
-<title>CartoVox Delta report</title>
-<style>body{font:14px/1.45 system-ui,sans-serif;margin:24px;background:#111317;color:#e9e4da}
-h1{font:600 26px Georgia,serif;color:#e9c46a}h2{margin-top:28px;color:#e9c46a;font-size:16px}
-table{border-collapse:collapse;width:100%;margin-top:8px}td,th{border-bottom:1px solid #343943;
-padding:5px 8px;text-align:left;vertical-align:top}th{color:#aeb5c1;font-weight:600}
-input,button{font:inherit;padding:6px 10px;border-radius:6px;border:1px solid #464d59;background:#0e1014;
-color:#e9e4da}button{background:#e9c46a;color:#17140d;border:0}code{font-size:12px;color:#aeb5c1;
-white-space:pre-wrap}</style></head><body><h1>CartoVox Delta report</h1>
-<form id="f"><input id="t" type="password" placeholder="Admin token" size="40" autocomplete="current-password">
-<button>Load report</button></form><div id="out"></div>
-<script src="/admin/script"></script></body></html>`;
-
-const ADMIN_SCRIPT = `const esc=v=>String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-function table(rows){if(!rows.length)return'<p>Nothing yet.</p>';const keys=Object.keys(rows[0]);
-return'<table><tr>'+keys.map(k=>'<th>'+esc(k)+'</th>').join('')+'</tr>'+rows.map(r=>'<tr>'+keys.map(k=>
-'<td>'+(k==='stack'?'<code>'+esc(r[k])+'</code>':esc(r[k]))+'</td>').join('')+'</tr>').join('')+'</table>';}
-document.getElementById('f').addEventListener('submit',async e=>{e.preventDefault();
-const r=await fetch('/v1/admin/report',{headers:{authorization:'Bearer '+document.getElementById('t').value.trim()}});
-const d=await r.json();const out=document.getElementById('out');
-if(!r.ok){out.textContent=d.error;return;}
-out.innerHTML='<p>Generated '+esc(d.generated_at)+'</p>'
-+'<h2>Testers</h2>'+table(d.testers)+'<h2>Most used features</h2>'+table(d.features)
-+'<h2>Performance</h2>'+table(d.performance)+'<h2>Latest errors</h2>'+table(d.errors)
-+'<h2>Computers</h2>'+table(d.systems);});`;
 
 export async function handle(request, env) {
     const url = new URL(request.url);

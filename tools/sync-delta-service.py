@@ -24,7 +24,7 @@ def main() -> None:
     source = Path(sys.argv[1]).expanduser() / "services" / "delta-service" / "src"
     target = ROOT / "worker" / "delta"
     target.mkdir(parents=True, exist_ok=True)
-    for name in ("index.js", "codes.js"):
+    for name in ("index.js", "admin.js", "codes.js"):
         shutil.copyfile(source / name, target / ("service.js" if name == "index.js" else name))
         print(f"  worker/delta/{'service.js' if name == 'index.js' else name} <- {name}")
 
