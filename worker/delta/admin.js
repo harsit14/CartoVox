@@ -722,4 +722,8 @@ function adminApp() {
   if (state.token) { signedIn(true); schedule(); load(); } else $('t').focus();
 }
 
-export const ADMIN_SCRIPT = `(${adminApp.toString()})();\n`;
+// Wrangler bundles with esbuild's keepNames, which rewrites every inner
+// function of adminApp as __name(fn, "name"). The helper lives in the
+// Worker's bundle, not the browser, so the page defines its own no-op one;
+// without it the script dies on its first line and nothing responds.
+export const ADMIN_SCRIPT = `var __name = function (fn) { return fn; };\n(${adminApp.toString()})();\n`;
