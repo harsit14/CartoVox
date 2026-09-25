@@ -397,7 +397,7 @@ function adminApp() {
       <div class="card tile"><div class="label">Hours used</div><div class="value">${compact(t.hours)}</div>
         <div>${deltaHtml(t.hours, p.hours)}</div>${spark('hours')}</div>
       <div class="card tile"><div class="label">Sessions</div><div class="value">${compact(t.sessions)}</div>
-        <div>${deltaHtml(t.sessions, p.sessions)}</div><div class="note">average ${avg ? duration(avg) : '—'} each</div></div>
+        <div>${deltaHtml(t.sessions, p.sessions)}</div><div class="note">average ${avg ? duration(avg) : '—'} each${t.unclean ? ` · <span style="color:var(--serious)">${num(t.unclean)} ended without closing</span>` : ''}</div></div>
       <div class="card tile"><div class="label">Active minutes</div><div class="value">${compact(t.active_minutes)}</div>
         <div>${deltaHtml(t.active_minutes, p.active_minutes)}</div>${spark('active_minutes')}</div>
       <div class="card tile"><div class="label">Errors</div><div class="value">${compact(t.errors)}</div>
@@ -426,7 +426,7 @@ function adminApp() {
         <div class="meter"><i style="width:${(activeDays / Math.max(1, d.daily.length)) * 100}%;background:var(--s1)"></i></div>
         <div class="note">days the app reported anything</div></div>
       <div class="card tile"><div class="label">Sessions</div><div class="value">${compact(t.sessions)}</div>
-        <div>${deltaHtml(t.sessions, p.sessions)}</div><div class="note">average ${avg ? duration(avg) : '—'} each</div></div>
+        <div>${deltaHtml(t.sessions, p.sessions)}</div><div class="note">average ${avg ? duration(avg) : '—'} each${t.unclean ? ` · <span style="color:var(--serious)">${num(t.unclean)} ended without closing</span>` : ''}</div></div>
       <div class="card tile"><div class="label">Active minutes</div><div class="value">${compact(t.active_minutes)}</div>
         <div>${deltaHtml(t.active_minutes, p.active_minutes)}</div>${spark('active_minutes')}</div>
       <div class="card tile"><div class="label">Errors</div><div class="value">${compact(t.errors)}</div>
@@ -452,7 +452,7 @@ function adminApp() {
     const machines = d.machines.length ? `<table><thead><tr><th>System</th><th>Version</th><th class="num">CPUs</th>
       <th class="num">Memory</th><th>First unlocked</th><th>Last contact</th></tr></thead><tbody>${d.machines.map(m =>
         `<tr><td>${esc([m.os, m.os_version, m.arch].filter(Boolean).join(' · '))}</td><td>${esc([m.app_version, m.release].filter(Boolean).join(' · '))}</td>
-        <td class="num">${esc(m.cpu_count ?? '—')}</td><td class="num">${m.memory_gb ? esc(m.memory_gb) + ' GB' : '—'}</td>
+        <td class="num">${esc(m.cpu_count ?? '—')}</td><td class="num" title="${m.release === 'Delta V1' ? 'Delta V1 reported free memory, not installed memory' : 'Installed memory'}">${m.memory_gb ? esc(m.memory_gb) + ' GB' + (m.release === 'Delta V1' ? ' free' : '') : '—'}</td>
         <td title="${esc(when(m.first_seen))}">${esc(ago(m.first_seen))}</td><td title="${esc(when(m.last_seen))}">${esc(ago(m.last_seen))}</td></tr>`).join('')}</tbody></table>`
       : '<p class="empty">This code has not unlocked a computer yet.</p>';
     return `<section class="card profile" style="margin-bottom:16px"><div class="head"><div>
@@ -472,7 +472,7 @@ function adminApp() {
       + (rows.length ? `<div class="scroll" style="max-height:420px"><table><thead><tr><th>Started</th><th class="num">Length</th>
         <th class="num">Active min</th><th class="num">Jobs</th><th class="num">Unfinished</th><th class="num">Errors</th><th>Version</th></tr></thead><tbody>`
         + rows.map(x => `<tr><td title="${esc(when(x.started))}">${esc(when(x.started))} <span class="note">· ${esc(ago(x.started))}</span></td>
-          <td class="num">${x.seconds == null ? '—' : esc(duration(x.seconds))}</td><td class="num">${num(x.active_minutes)}</td>
+          <td class="num" title="${x.closed === 0 ? 'Not closed cleanly: the length runs to its last heartbeat' : ''}">${x.seconds == null ? '—' : esc(duration(x.seconds))}${x.closed === 0 && x.seconds != null ? ' <span class="note">· open or crashed</span>' : ''}</td><td class="num">${num(x.active_minutes)}</td>
           <td class="num">${num(x.jobs)}</td><td class="num">${x.unfinished ? `<span style="color:var(--serious)">${num(x.unfinished)}</span>` : '0'}</td>
           <td class="num">${x.errors ? `<span style="color:#ef6b6b">${num(x.errors)}</span>` : '0'}</td><td>${esc(x.app_version || '')}</td></tr>`).join('')
         + '</tbody></table></div>' : '<p class="empty">No sessions in this range.</p>') + '</section>';
@@ -496,7 +496,7 @@ function adminApp() {
   const TESTER_COLS = [
     ['slot', 'Code · nickname'], ['status', 'Status'], ['activity', 'Activity', false], ['last_seen', 'Last seen'],
     ['hours', 'Hours', true, 'num'], ['sessions', 'Sessions', true, 'num'], ['active_minutes', 'Active min', true, 'num'],
-    ['errors', 'Errors', true, 'num'], ['computers', 'Computers', true, 'num'], ['os', 'System'],
+    ['errors', 'Errors', true, 'num'], ['unclean', 'Not closed', true, 'num'], ['computers', 'Computers', true, 'num'], ['os', 'System'],
     ['app_version', 'Version'], ['actions', '', false]];
 
   function testersSection(d) {
@@ -535,6 +535,7 @@ function adminApp() {
         <td class="num"><div class="inbar">${r.hours ? `<i style="width:${Math.max(2, (r.hours / maxHours) * 60)}px"></i>` : ''}${esc(r.hours)}</div></td>
         <td class="num">${num(r.sessions)}</td><td class="num">${num(r.active_minutes)}</td>
         <td class="num">${r.errors ? `<span style="color:#ef6b6b">${num(r.errors)}</span>` : '0'}</td>
+        <td class="num" title="Runs that crashed or were forced to quit (Delta V2 builds report these)">${r.unclean ? `<span style="color:var(--serious)">${num(r.unclean)}</span>` : '0'}</td>
         <td class="num">${num(r.computers)} / ${num(r.max_installs)}</td>
         <td>${esc(r.os || '')}</td><td>${esc(r.app_version || '')}</td>
         <td><div class="acts">${codeActions(r)}</div></td></tr>`;
@@ -567,6 +568,39 @@ function adminApp() {
       + (rows.length > 20 ? `<p><button type="button" id="fall">${s.all ? 'Show top 20' : `Show all ${rows.length}`}</button></p>` : '');
   }
 
+  const UNLOCK_REASONS = { typo: 'a typing mistake in the code', format: 'not an access code', old_beta: 'an old beta key',
+    offline: 'no internet connection', limit: 'the code is on its computer limit', revoked: 'the code was withdrawn',
+    unknown: 'the service does not know the code', licence: 'licence not accepted', storage: 'could not save on the computer',
+    build: 'the build lacks its code list', other: 'another reason' };
+  const GATE_STATES = { unlock: 'asked for a code', accept: 'asked to accept a new licence',
+    connect: 'asked to connect (21-day check-in)', revoked: 'told the code was withdrawn' };
+
+  // Where active minutes go, and how the unlock screen went: Delta V2 builds.
+  function timeAndUnlockSection(d) {
+    const workspaces = (d.time || []).filter(x => x.kind === 'workspace');
+    const tabs = (d.time || []).filter(x => x.kind === 'tab');
+    const total = workspaces.reduce((sum, x) => sum + x.minutes, 0);
+    const rows = list => list.map(x => ({ label: x.name, value: x.minutes,
+      after: total ? `${Math.round((x.minutes / total) * 100)}%` : '' }));
+    const time = workspaces.length
+      ? hbars(rows(workspaces), { unit: 'active minutes', fmt: v => duration(v * 60) })
+        + (tabs.length ? `<details class="more" style="margin-top:10px"><summary>By tab (${tabs.length})</summary>${hbars(rows(tabs.slice(0, 20)), { unit: 'active minutes', fmt: v => duration(v * 60) })}</details>` : '')
+      : '<p class="empty">No workspace time yet: Delta V2 builds report it.</p>';
+    const unlocks = d.unlocks || [];
+    const gates = (d.gates || []).map(g => `${esc(GATE_STATES[g.state] || g.state)} <b>${num(g.shown)}</b>×`).join(' · ');
+    const unlockTable = unlocks.length ? `<table><thead><tr><th>Result</th><th class="num">Attempts</th><th class="num">Testers</th><th class="num">Time on screen</th><th class="num">Longest</th></tr></thead><tbody>`
+      + unlocks.map(u => `<tr><td>${u.ok ? '<span class="pill" style="--c:var(--good)">Unlocked</span>' : `<span class="pill" style="--c:var(--bad)">Refused</span> ${esc(UNLOCK_REASONS[u.reason] || u.reason)}`}</td>
+        <td class="num">${num(u.attempts)}</td><td class="num">${num(u.testers)}</td>
+        <td class="num">${u.mean_seconds_on_gate == null ? '—' : esc(duration(u.mean_seconds_on_gate))}</td>
+        <td class="num">${u.longest_seconds_on_gate == null ? '—' : esc(duration(u.longest_seconds_on_gate))}</td></tr>`).join('')
+      + '</tbody></table>' + (unlocks.some(u => u.ok && u.had_install) ? `<p class="note">${num(unlocks.filter(u => u.ok).reduce((s2, u) => s2 + (u.had_install || 0), 0))} unlocks came from a computer that was already registered.</p>` : '')
+      : '<p class="empty">No unlocks yet: Delta V2 builds report them.</p>';
+    return `<section class="grid g2">
+      <div class="card"><h2>Where time goes</h2><div class="sub">Active minutes by workspace: minutes with a click, key or scroll while the window was in front.</div>${time}</div>
+      <div class="card"><h2>Unlocking</h2><div class="sub">${gates ? `The unlock screen ${gates}.` : 'Each press of Unlock, and how long testers spent on the screen first.'}</div>${unlockTable}</div>
+    </section>`;
+  }
+
   function performanceSection(d) {
     const max = Math.max(...d.performance.map(p => p.longest_seconds), 1);
     const body = d.performance.length ? `<div class="scroll"><table><thead><tr><th>Job</th><th class="num">Runs</th>
@@ -579,19 +613,21 @@ function adminApp() {
         <td class="num">${p.peak_mb == null ? '—' : num(p.peak_mb) + ' MB'}</td>
         <td class="num">${p.unfinished ? `<span style="color:var(--serious)">${num(p.unfinished)} (${rate}%)</span>` : '0'}</td>
         <td class="num">${num(p.testers)}</td></tr>`; }).join('')}</tbody></table></div>` : '<p class="empty">No jobs in this range.</p>';
-    const failures = d.failures.length ? `<details class="more"><summary>Why jobs did not finish (${d.failures.length})</summary><table><thead><tr><th>Job</th><th>Status</th><th>Failure</th><th class="num">Runs</th></tr></thead><tbody>`
-      + d.failures.map(f => `<tr><td>${esc(f.name)}</td><td>${esc(f.status)}</td><td>${esc(f.failure || '—')}</td><td class="num">${num(f.runs)}</td></tr>`).join('') + '</tbody></table></details>' : '';
-    return `<section class="card" style="margin-top:16px"><h2>Performance</h2><div class="sub">Generations, rebuilds and renders: the bar is the mean, the tick the longest run.</div>${body}${failures}</section>`;
+    const failures = d.failures.length ? `<details class="more"><summary>Why jobs did not finish (${d.failures.length})</summary><table><thead><tr><th>Job</th><th>Status</th><th>Failure</th><th class="num">Runs</th><th class="num">Got to</th><th class="num">After</th><th>Message</th></tr></thead><tbody>`
+      + d.failures.map(f => `<tr><td>${esc(f.name)}</td><td>${esc(f.status)}</td><td>${esc(f.failure || '—')}</td><td class="num">${num(f.runs)}</td>
+        <td class="num" title="Mean progress when it stopped (Delta V2 builds report this)">${f.mean_progress == null ? '—' : esc(f.mean_progress) + '%'}</td>
+        <td class="num">${f.mean_seconds == null ? '—' : esc(duration(f.mean_seconds))}</td><td>${f.message ? `<code>${esc(f.message)}</code>` : '—'}</td></tr>`).join('') + '</tbody></table></details>' : '';
+    return `<section class="card" style="margin-top:16px"><h2>Performance</h2><div class="sub">Generations, rebuilds, renders and app startup: the bar is the mean, the tick the longest run.</div>${body}${failures}</section>`;
   }
 
   function errorsSection(d) {
     const groups = d.error_groups.length ? `<div class="scroll"><table><thead><tr><th class="num">Count</th><th class="num">Testers</th><th>Error</th><th>Where</th><th>Last seen</th></tr></thead><tbody>`
       + d.error_groups.map(g => `<tr><td class="num"><strong>${num(g.count)}</strong></td><td class="num" title="${esc(String(g.slots || '').split(',').map(plainName).join(', '))}">${num(g.testers)}</td>
         <td><strong>${esc(g.type || 'Error')}</strong>${g.message ? ': ' + esc(g.message) : ''}${g.stack ? `<details class="more"><summary>Stack</summary><pre>${esc(g.stack)}</pre></details>` : ''}</td>
-        <td><code>${esc(g.name)}</code></td><td title="first ${esc(when(g.first_at))}">${esc(ago(g.last_at))}</td></tr>`).join('') + '</tbody></table></div>'
+        <td><code>${esc(g.name)}</code>${g.place ? `<br><code>${esc(g.place)}</code>` : ''}</td><td title="first ${esc(when(g.first_at))}">${esc(ago(g.last_at))}</td></tr>`).join('') + '</tbody></table></div>'
       : '<p class="empty">No errors in this range.</p>';
     const latest = d.errors.length ? `<details class="more"><summary>Latest ${d.errors.length} errors, one by one</summary><table><thead><tr><th>When</th><th>Code</th><th>Where</th><th>Error</th></tr></thead><tbody>`
-      + d.errors.map(e => `<tr><td title="${esc(when(e.at))}">${esc(ago(e.at))}</td><td>${esc(plainName(e.slot))}</td><td><code>${esc(e.name)}</code></td><td><strong>${esc(e.type || '')}</strong> ${esc(e.message || '')}${e.stack ? `<pre>${esc(e.stack)}</pre>` : ''}</td></tr>`).join('') + '</tbody></table></details>' : '';
+      + d.errors.map(e => `<tr><td title="${esc(when(e.at))}">${esc(ago(e.at))}</td><td>${esc(plainName(e.slot))}</td><td><code>${esc(e.name)}</code>${e.place ? ` <code>${esc(e.place)}</code>` : ''}</td><td><strong>${esc(e.type || '')}</strong> ${esc(e.message || '')}${e.stack ? `<pre>${esc(e.stack)}</pre>` : ''}</td></tr>`).join('') + '</tbody></table></details>' : '';
     return `<section class="card" style="margin-top:16px"><h2>Errors</h2><div class="sub">The same type and message from the same place counts as one error.</div>${groups}${latest}</section>`;
   }
 
@@ -600,7 +636,8 @@ function adminApp() {
       const m = new Map(); list.forEach(x => { const k = key(x); if (k) m.set(k, (m.get(k) || 0) + 1); });
       return [...m.entries()].sort((a, b) => b[1] - a[1]).map(([label, value]) => ({ label, value }));
     };
-    const mem = x => { const g = Number(x.memory_gb); if (!g) return ''; return g <= 8.5 ? '8 GB or less' : g <= 16.5 ? '9–16 GB' : g <= 32.5 ? '17–32 GB' : 'more than 32 GB'; };
+    // Delta V1 sent free memory under this name, so only later builds count.
+    const mem = x => { const g = Number(x.memory_gb); if (!g || x.release === 'Delta V1') return ''; return g <= 8.5 ? '8 GB or less' : g <= 16.5 ? '9–16 GB' : g <= 32.5 ? '17–32 GB' : 'more than 32 GB'; };
     const osRows = tally(d.machines, x => [x.os, x.arch].filter(Boolean).join(' · '));
     const colors = ['var(--s1)', 'var(--s2)', 'var(--s3)'];
     osRows.forEach((r, i) => { r.color = i < 3 ? colors[i] : '#5c6270'; });
@@ -608,7 +645,7 @@ function adminApp() {
     return `<section class="grid g4">
       ${card('Operating systems', `${num(d.machines.length)} registered computers`, osRows)}
       ${card('App versions', 'What each computer last reported', tally(d.machines, x => [x.app_version, x.release].filter(Boolean).join(' · ')))}
-      ${card('Memory', 'Installed RAM', tally(d.machines, mem))}
+      ${card('Memory', 'Installed RAM (Delta V1 builds reported free memory and are left out)', tally(d.machines, mem))}
       ${card('Window sizes', 'App window at start, in the range', d.screens.map(x => ({ label: `${x.width} × ${x.height}`, value: x.computers })))}
     </section>`;
   }
@@ -618,11 +655,15 @@ function adminApp() {
     const line = e => {
       if (e.kind === 'activation') return ['＋', 'good', `${who(e.slot)} unlocked a new computer${e.name ? ` (${esc(e.name)})` : ''}`];
       if (e.kind === 'error') return ['!', 'bad', `${who(e.slot)} hit ${esc(e.message || e.name)} <code>${esc(e.name)}</code>`];
-      if (e.kind === 'perf') return ['✕', 'bad', `${who(e.slot)} ${esc(e.name.replace(/^job:/, ''))} did not finish (${esc(e.status)})`];
+      if (e.kind === 'perf') return ['✕', 'bad', `${who(e.slot)} ${esc(e.name.replace(/^job:/, ''))} did not finish (${esc(e.status)}${e.progress != null ? `, at ${esc(Math.round(e.progress))}%` : ''})`];
       if (e.name === 'end') return ['■', '', `${who(e.slot)} closed the app after ${esc(duration(e.seconds))}`];
+      if (e.name === 'unclean') return ['⚠', 'bad', `${who(e.slot)}'s previous run ended without closing${e.seconds ? ` after ${esc(duration(e.seconds))}` : ''} (crash or forced quit)`];
+      if (e.name === 'unlock') return e.ok
+        ? ['🔓', 'good', `${who(e.slot)} unlocked${e.seconds_on_gate != null ? ` after ${esc(duration(e.seconds_on_gate))} on the unlock screen` : ''}`]
+        : ['✕', 'bad', `${who(e.slot)} could not unlock: ${esc(UNLOCK_REASONS[e.reason] || e.reason || 'refused')}`];
       return ['▶', 'good', `${who(e.slot)} opened the app`];
     };
-    return `<div class="card"><h2>Recent activity</h2><div class="sub">Openings, closings, new computers, errors and unfinished jobs.</div>`
+    return `<div class="card"><h2>Recent activity</h2><div class="sub">Openings, closings, unlocks, crashes, new computers, errors and unfinished jobs.</div>`
       + (d.feed.length ? '<ul class="feed">' + d.feed.map(e => { const [ic, cls, text] = line(e);
         return `<li><span class="ic ${cls}">${ic}</span><span>${text}</span><time title="${esc(when(e.at))}">${esc(ago(e.at))}</time></li>`; }).join('') + '</ul>'
         : '<p class="empty">Nothing in this range.</p>') + '</div>';
@@ -650,9 +691,9 @@ function adminApp() {
           <div class="card"><h2>Problems per day</h2><div class="legend"><span><i style="background:var(--bad)"></i>Errors</span><span><i style="background:var(--serious)"></i>Unfinished jobs</span></div><div class="chart" id="c-problems"></div></div>
         </section>`
       + `<div class="card" style="margin-top:16px">${dailyTable(d)}</div>`
-      + (one ? sessionsSection(d) : testersSection(d)) + featuresSection(d) + performanceSection(d) + errorsSection(d)
+      + (one ? sessionsSection(d) : testersSection(d)) + featuresSection(d) + timeAndUnlockSection(d) + performanceSection(d) + errorsSection(d)
       + computersSection(d) + `<section class="grid g2">${feedSection(d)}<div class="card"><h2>About these numbers</h2><div class="sub">How to read the dashboard.</div>
-        <p class="note" style="color:var(--ink2)">An <strong>active minute</strong> is a minute in which a tester clicked something in the app (the app reports clicks once a minute). <strong>Hours</strong> come from sessions that ended cleanly, so a crash or a forced quit adds none. Days and hours are in your time zone (UTC${d.range.tz >= 0 ? '+' : '−'}${Math.floor(Math.abs(d.range.tz) / 60)}${Math.abs(d.range.tz) % 60 ? ':' + String(Math.abs(d.range.tz) % 60).padStart(2, '0') : ''}). Generated ${esc(when(d.generated_at))}.</p></div></section>`;
+        <p class="note" style="color:var(--ink2)">An <strong>active minute</strong> is a clock minute in which a tester clicked, typed or scrolled while CartoVox was in front (Delta V1 builds could only report minutes with clicks, so their figures run low). <strong>Hours</strong> are how long each run was open: to its clean close, or, for a Delta V2 run that crashed or was forced to quit, to its last five-minute heartbeat (Delta V1 runs that did not close add none). Days and hours are in your time zone (UTC${d.range.tz >= 0 ? '+' : '−'}${Math.floor(Math.abs(d.range.tz) / 60)}${Math.abs(d.range.tz) % 60 ? ':' + String(Math.abs(d.range.tz) % 60).padStart(2, '0') : ''}). Generated ${esc(when(d.generated_at))}.</p></div></section>`;
     drawCharts();
     if (!one) renderTesterRows();
     renderFeatureList();

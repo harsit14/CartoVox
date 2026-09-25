@@ -208,6 +208,9 @@ function authorised(request, env) {
 }
 
 const DAY_MS = 86400000;
+// The per-minute workspace counts a Delta V2 page sends (not the per-tab
+// ones, which count the same minutes again).
+const ACTIVE_KEY = "'ui:time:%' AND key NOT LIKE 'ui:time:tab:%'";
 const SLOT = /^D-\d{3,5}$/;
 
 // ?days=7|30|90 (anything else: all time), ?tz=<minutes east of UTC> for the
@@ -258,11 +261,14 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
   // One pass over the range does the totals, the days, each tester's
   // activity, the performance table and the hour-of-week grid. Feature rows
   // ("counts", flushed once a minute while someone clicks) are the bulk of
-  // the table, so they are also the measure of active minutes.
+  // the table. Active minutes: Delta V2 pages count each minute with input
+  // as ui:time:<workspace>; a Delta V1 row, which has none, counts as one.
   const rollup = await rows(`SELECT slot, date(at, ?) AS day,
       CASE WHEN kind = 'feature' THEN CAST(strftime('%H', at, ?) AS INTEGER) END AS hour,
       kind, CASE WHEN kind IN ('session', 'perf') THEN name ELSE '' END AS name,
       COUNT(*) AS n, COUNT(DISTINCT install_id) AS computers,
+      SUM(CASE WHEN kind = 'feature' THEN COALESCE((SELECT SUM(value)
+        FROM json_each(events.props, '$.counts') WHERE key LIKE ${ACTIVE_KEY}), 1) END) AS active,
       SUM(json_extract(props, '$.seconds')) AS seconds,
       MAX(json_extract(props, '$.seconds')) AS longest,
       MAX(json_extract(props, '$.peak_rss_mb')) AS peak,
@@ -272,7 +278,7 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
     GROUP BY slot, day, hour, kind, 5`, shift, shift, since, until, ...binds);
 
   const totals = { testers: 0, computers: 0, sessions: 0, hours: 0, errors: 0, runs: 0,
-    failed_runs: 0, active_minutes: 0 };
+    failed_runs: 0, active_minutes: 0, unclean: 0 };
   const byDay = new Map();
   const bySlot = new Map();
   const byJob = new Map();
@@ -282,17 +288,17 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
     if (!row.day) continue;
     activeSlots.add(row.slot);
     const day = byDay.get(row.day) || { day: row.day, slots: new Set(), sessions: 0, seconds: 0,
-      errors: 0, runs: 0, failed: 0, active_minutes: 0 };
+      errors: 0, runs: 0, failed: 0, active_minutes: 0, unclean: 0 };
     byDay.set(row.day, day);
     day.slots.add(row.slot);
     const tester = bySlot.get(row.slot) || { sessions: 0, seconds: 0, errors: 0, runs: 0,
-      active_minutes: 0, last_event: '', days: {} };
+      active_minutes: 0, unclean: 0, last_event: '', days: {} };
     bySlot.set(row.slot, tester);
     if (row.last_at > tester.last_event) tester.last_event = row.last_at;
     if (row.kind === 'session' && row.name === 'start') {
       day.sessions += row.n; tester.sessions += row.n;
-    } else if (row.kind === 'session' && row.name === 'end') {
-      day.seconds += row.seconds || 0; tester.seconds += row.seconds || 0;
+    } else if (row.kind === 'session' && row.name === 'unclean') {
+      day.unclean += row.n; tester.unclean += row.n;
     } else if (row.kind === 'error') {
       day.errors += row.n; tester.errors += row.n;
     } else if (row.kind === 'perf') {
@@ -306,14 +312,29 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
       if (row.peak != null) job.peak = Math.max(job.peak || 0, row.peak);
       job.slots.add(row.slot);
     } else if (row.kind === 'feature') {
-      day.active_minutes += row.n; tester.active_minutes += row.n;
-      tester.days[row.day] = (tester.days[row.day] || 0) + row.n;
-      if (row.hour != null) heatmap[new Date(`${row.day}T00:00:00Z`).getUTCDay()][row.hour] += row.n;
+      const minutes = row.active ?? row.n;
+      day.active_minutes += minutes; tester.active_minutes += minutes;
+      tester.days[row.day] = (tester.days[row.day] || 0) + minutes;
+      if (row.hour != null) heatmap[new Date(`${row.day}T00:00:00Z`).getUTCDay()][row.hour] += minutes;
     }
+  }
+
+  // How long each run was open: its clean end, or else the last heartbeat a
+  // Delta V2 app sent before it crashed or was forced to quit. Counted on
+  // the day the run was last heard from.
+  const runs = await rows(`SELECT slot, date(MAX(at), ?) AS day,
+      MAX(json_extract(props, '$.seconds')) AS seconds
+    FROM events WHERE kind = 'session' AND name IN ('end', 'alive') AND at >= ? AND at < ? AND ${scope}
+    GROUP BY slot, session`, shift, since, until, ...binds);
+  for (const run of runs) {
+    const day = byDay.get(run.day);
+    const tester = bySlot.get(run.slot);
+    if (day) day.seconds += run.seconds || 0;
+    if (tester) tester.seconds += run.seconds || 0;
   }
   for (const day of byDay.values()) {
     totals.sessions += day.sessions; totals.hours += day.seconds / 3600; totals.errors += day.errors;
-    totals.runs += day.runs; totals.active_minutes += day.active_minutes;
+    totals.runs += day.runs; totals.active_minutes += day.active_minutes; totals.unclean += day.unclean;
   }
   totals.testers = activeSlots.size;
   totals.hours = round(totals.hours);
@@ -330,20 +351,23 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
     const day = byDay.get(key);
     daily.push({ day: key, testers: day ? day.slots.size : 0, sessions: day?.sessions || 0,
       hours: round((day?.seconds || 0) / 3600, 2), errors: day?.errors || 0, runs: day?.runs || 0,
-      failed: day?.failed || 0, active_minutes: day?.active_minutes || 0 });
+      failed: day?.failed || 0, active_minutes: day?.active_minutes || 0, unclean: day?.unclean || 0 });
   }
 
   let previous = null;
   if (days) {
+    const from = stamp(sinceMs - days * DAY_MS);
     const [before] = await rows(`SELECT COUNT(DISTINCT slot) AS testers,
         COALESCE(SUM(kind = 'session' AND name = 'start'), 0) AS sessions,
-        ROUND(COALESCE(SUM(CASE WHEN kind = 'session' AND name = 'end'
-          THEN json_extract(props, '$.seconds') END), 0) / 3600.0, 1) AS hours,
         COALESCE(SUM(kind = 'error'), 0) AS errors, COALESCE(SUM(kind = 'perf'), 0) AS runs,
-        COALESCE(SUM(kind = 'feature' AND name = 'counts'), 0) AS active_minutes
-      FROM events WHERE at >= ? AND at < ? AND ${scope}`,
-    stamp(sinceMs - days * DAY_MS), since, ...binds);
-    previous = before || null;
+        COALESCE(SUM(CASE WHEN kind = 'feature' THEN COALESCE((SELECT SUM(value)
+          FROM json_each(events.props, '$.counts') WHERE key LIKE ${ACTIVE_KEY}), 1) END), 0) AS active_minutes
+      FROM events WHERE at >= ? AND at < ? AND ${scope}`, from, since, ...binds);
+    const [open] = await rows(`SELECT ROUND(COALESCE(SUM(seconds), 0) / 3600.0, 1) AS hours
+      FROM (SELECT MAX(json_extract(props, '$.seconds')) AS seconds FROM events
+        WHERE kind = 'session' AND name IN ('end', 'alive') AND at >= ? AND at < ? AND ${scope}
+        GROUP BY session)`, from, since, ...binds);
+    previous = before ? { ...before, hours: open?.hours || 0 } : null;
   }
 
   const directory = await rows(`SELECT codes.slot, codes.status, codes.note, COUNT(installs.id) AS computers
@@ -358,6 +382,7 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
     const seen = bySlot.get(code.slot);
     return { ...code, sessions: seen?.sessions || 0, hours: round((seen?.seconds || 0) / 3600),
       errors: seen?.errors || 0, runs: seen?.runs || 0, active_minutes: seen?.active_minutes || 0,
+      unclean: seen?.unclean || 0,
       last_event: seen?.last_event || null, days: seen?.days || {} };
   });
   totals.codes_issued = codes.length;
@@ -377,41 +402,70 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
   }
   systems.sort((a, b) => b.computers - a.computers);
 
-  const features = await rows(`SELECT feature.key AS name, SUM(feature.value) AS uses,
+  const counted = await rows(`SELECT feature.key AS name, SUM(feature.value) AS uses,
       COUNT(DISTINCT events.slot) AS testers
     FROM events, json_each(events.props, '$.counts') AS feature
     WHERE events.kind = 'feature' AND events.name = 'counts' AND events.at >= ? AND events.at < ?
       AND ${scope.replace('slot', 'events.slot')}
-    GROUP BY feature.key ORDER BY uses DESC LIMIT 150`, since, until, ...binds);
+    GROUP BY feature.key ORDER BY uses DESC LIMIT 200`, since, until, ...binds);
+  // Active minutes by workspace and by tab (Delta V2), apart from the clicks.
+  const features = counted.filter(row => !row.name.startsWith('ui:time:')).slice(0, 150);
+  const time = counted.filter(row => row.name.startsWith('ui:time:')).map(row => ({
+    kind: row.name.startsWith('ui:time:tab:') ? 'tab' : 'workspace',
+    name: row.name.replace(/^ui:time:(tab:)?/, ''), minutes: row.uses, testers: row.testers }));
   const failures = await rows(`SELECT name, COALESCE(json_extract(props, '$.failure'), '') AS failure,
-      COALESCE(json_extract(props, '$.status'), '') AS status, COUNT(*) AS runs
+      COALESCE(json_extract(props, '$.status'), '') AS status, COUNT(*) AS runs,
+      ROUND(AVG(json_extract(props, '$.progress')), 0) AS mean_progress,
+      ROUND(AVG(json_extract(props, '$.seconds')), 0) AS mean_seconds,
+      MAX(json_extract(props, '$.message')) AS message
     FROM events WHERE kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed'
       AND at >= ? AND at < ? AND ${scope}
     GROUP BY 1, 2, 3 ORDER BY runs DESC LIMIT 30`, since, until, ...binds);
-  const errors = await rows(`SELECT slot, at, name, json_extract(props, '$.type') AS type,
+  const errors = await rows(`SELECT slot, at, name, json_extract(props, '$.where') AS place,
+      json_extract(props, '$.type') AS type,
       json_extract(props, '$.message') AS message, json_extract(props, '$.stack') AS stack
     FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${scope}
     ORDER BY id DESC LIMIT 60`, since, until, ...binds);
   const errorGroups = await rows(`SELECT name, json_extract(props, '$.type') AS type,
-      json_extract(props, '$.message') AS message, COUNT(*) AS count, COUNT(DISTINCT slot) AS testers,
+      json_extract(props, '$.message') AS message, MAX(json_extract(props, '$.where')) AS place,
+      COUNT(*) AS count, COUNT(DISTINCT slot) AS testers,
       GROUP_CONCAT(DISTINCT slot) AS slots, MIN(at) AS first_at, MAX(at) AS last_at,
       MAX(json_extract(props, '$.stack')) AS stack
     FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${scope}
     GROUP BY 1, 2, 3 ORDER BY count DESC, last_at DESC LIMIT 40`, since, until, ...binds);
+  // The unlock screen (Delta V2): why it came up, and how each Unlock went.
+  const gates = await rows(`SELECT COALESCE(json_extract(props, '$.state'), '') AS state,
+      COUNT(*) AS shown, COUNT(DISTINCT slot) AS testers
+    FROM events WHERE kind = 'session' AND name = 'gate' AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1 ORDER BY shown DESC`, since, until, ...binds);
+  const unlocks = await rows(`SELECT COALESCE(json_extract(props, '$.ok'), 0) AS ok,
+      COALESCE(json_extract(props, '$.reason'), '') AS reason, COUNT(*) AS attempts,
+      COUNT(DISTINCT slot) AS testers,
+      ROUND(AVG(json_extract(props, '$.seconds_on_gate')), 0) AS mean_seconds_on_gate,
+      ROUND(MAX(json_extract(props, '$.seconds_on_gate')), 0) AS longest_seconds_on_gate,
+      SUM(COALESCE(json_extract(props, '$.had_install'), 0)) AS had_install
+    FROM events WHERE kind = 'session' AND name = 'unlock' AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1, 2 ORDER BY ok DESC, attempts DESC`, since, until, ...binds);
   const screens = await rows(`SELECT json_extract(props, '$.width') AS width,
       json_extract(props, '$.height') AS height, COUNT(DISTINCT install_id) AS computers
     FROM events WHERE kind = 'session' AND name = 'ui:window' AND at >= ? AND at < ? AND ${scope}
     GROUP BY 1, 2 ORDER BY computers DESC LIMIT 12`, since, until, ...binds);
   const feed = await rows(`SELECT slot, at, kind, name, json_extract(props, '$.seconds') AS seconds,
-      json_extract(props, '$.message') AS message, json_extract(props, '$.status') AS status
+      json_extract(props, '$.message') AS message, json_extract(props, '$.status') AS status,
+      json_extract(props, '$.ok') AS ok, json_extract(props, '$.reason') AS reason,
+      json_extract(props, '$.seconds_on_gate') AS seconds_on_gate,
+      json_extract(props, '$.progress') AS progress
     FROM events WHERE at >= ? AND at < ? AND ${scope}
-      AND ((kind = 'session' AND name IN ('start', 'end')) OR kind = 'error'
+      AND ((kind = 'session' AND name IN ('start', 'end', 'unclean', 'unlock')) OR kind = 'error'
         OR (kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed'))
     ORDER BY at DESC LIMIT 30`, since, until, ...binds);
   // One tester's sessions, newest first: when, how long, what happened.
   const sessions = slot ? await rows(`SELECT session, MIN(at) AS started, MAX(at) AS last_at,
-      MAX(CASE WHEN kind = 'session' AND name = 'end' THEN json_extract(props, '$.seconds') END) AS seconds,
-      SUM(kind = 'feature') AS active_minutes, SUM(kind = 'perf') AS jobs,
+      MAX(CASE WHEN kind = 'session' AND name IN ('end', 'alive') THEN json_extract(props, '$.seconds') END) AS seconds,
+      MAX(kind = 'session' AND name = 'end') AS closed,
+      SUM(CASE WHEN kind = 'feature' THEN COALESCE((SELECT SUM(value)
+        FROM json_each(events.props, '$.counts') WHERE key LIKE ${ACTIVE_KEY}), 1) END) AS active_minutes,
+      SUM(kind = 'perf') AS jobs,
       SUM(kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed') AS unfinished,
       SUM(kind = 'error') AS errors, MAX(json_extract(props, '$.app_version')) AS app_version
     FROM events WHERE slot = ? AND at >= ? AND at < ? AND session IS NOT NULL AND session != ''
@@ -432,7 +486,8 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
     range: { days, tz, exclude, slot, since: days ? stamp(sinceMs) : null,
       previous_since: days ? stamp(sinceMs - days * DAY_MS) : null },
     totals, previous, daily, heatmap, testers, features, performance, failures, errors,
-    error_groups: errorGroups, systems, machines, screens, feed: feed.slice(0, 30), sessions, directory };
+    error_groups: errorGroups, systems, machines, screens, feed: feed.slice(0, 30), sessions, directory,
+    time, gates, unlocks };
 }
 
 async function admin(request, env, path) {
