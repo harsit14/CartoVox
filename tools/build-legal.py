@@ -110,15 +110,37 @@ def render(markdown: str) -> tuple[str, str]:
         if re.match(r"^\s*[-*] ", line):
             flush_para()
             out.append("<ul>")
+            # Each item is a run of parts: text, or a nested list whose own
+            # items are indented by two. A continuation line indented by four
+            # carries on the nested item; one indented by two returns to the
+            # outer item, after its nested list.
+            items: list[list] = []
             while i < len(lines) and (re.match(r"^\s*[-*] ", lines[i]) or (lines[i].startswith("  ") and lines[i].strip() and not re.match(r"^\s*[-*] ", lines[i]))):
-                if re.match(r"^\s*[-*] ", lines[i]):
-                    item = [re.sub(r"^\s*[-*] ", "", lines[i])]
-                    i += 1
-                    while i < len(lines) and lines[i].startswith("  ") and lines[i].strip() and not re.match(r"^\s*[-*] ", lines[i]):
-                        item.append(lines[i].strip()); i += 1
-                    out.append(f"<li>{inline(' '.join(item))}</li>")
+                current = lines[i]
+                indent = len(current) - len(current.lstrip())
+                if re.match(r"^\s*[-*] ", current) and (indent < 2 or not items):
+                    items.append([[re.sub(r"^\s*[-*] ", "", current)]])
+                elif re.match(r"^\s*[-*] ", current):
+                    parts = items[-1]
+                    if not isinstance(parts[-1], dict):
+                        parts.append({"nested": []})
+                    parts[-1]["nested"].append([re.sub(r"^\s*[-*] ", "", current)])
+                elif isinstance(items[-1][-1], dict) and indent >= 4:
+                    items[-1][-1]["nested"][-1].append(current.strip())
+                elif isinstance(items[-1][-1], dict):
+                    items[-1].append([current.strip()])
                 else:
-                    i += 1
+                    items[-1][-1].append(current.strip())
+                i += 1
+            for parts in items:
+                rendered = []
+                for part in parts:
+                    if isinstance(part, dict):
+                        rendered.append("<ul>" + "".join(
+                            f"<li>{inline(' '.join(child))}</li>" for child in part["nested"]) + "</ul>")
+                    else:
+                        rendered.append(inline(" ".join(part)))
+                out.append(f"<li>{' '.join(rendered)}</li>")
             out.append("</ul>")
             continue
         if re.match(r"^\s{2,}\([a-z]\)", line):
