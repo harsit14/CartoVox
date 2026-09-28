@@ -11,7 +11,7 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
   <link rel="apple-touch-icon" href="/img/icon-180.png">
-  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site.css?v=291797b5c6">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -39,7 +39,7 @@
 <h1>Third-party notices</h1>
 <p>CartoVox includes the third-party components listed below. Each is licensed to you under its own terms, which apply to that component. Where a component's terms conflict with the CartoVox End User License Agreement (<code>EULA.md</code>), that component's terms govern that component.</p>
 <p>This file is incorporated into the End User License Agreement by reference.</p>
-<p><strong>CartoVox version:</strong> Delta V2 (upcoming) <strong>Inventory generated:</strong> 21 September 2026</p>
+<p><strong>CartoVox version:</strong> Delta V3 <strong>Inventory generated:</strong> 21 September 2026</p>
 <hr>
 <h2 id="1-how-to-read-this-file">1. How to read this file</h2>
 <ul>
@@ -58,6 +58,8 @@
 <tr><td>opencv-python-headless</td><td>4.14.0.94 (pinned)</td><td>Apache-2.0</td><td><code>_internal/cv2/</code></td></tr>
 <tr><td>pypdf</td><td>5.x–6.x (6.18.0 in the 0.9.1 build inputs)</td><td>BSD-3-Clause</td><td><code>_internal/pypdf/</code></td></tr>
 <tr><td>pywebview</td><td>5.4–6.x (6.2.1 in the 0.9.1 build inputs)</td><td>BSD-3-Clause</td><td><code>_internal/webview/</code></td></tr>
+<tr><td>pywinrt: winrt-runtime, winrt-Windows.Media.Ocr, winrt-Windows.Graphics.Imaging, winrt-Windows.Storage.Streams, winrt-Windows.Globalization, winrt-Windows.Foundation</td><td>3.2.1 (pinned), Windows builds only</td><td>MIT (Copyright (c) Microsoft Corporation; Copyright (c) 2021-2025 David Lechner)</td><td><code>_internal/winrt/</code></td></tr>
+<tr><td>typing_extensions (required by winrt-runtime)</td><td>4.12 or later, Windows builds only</td><td>PSF-2.0</td><td><code>_internal/</code></td></tr>
 <tr><td>CPython standard library</td><td>3.12 on Linux; the release Python on macOS and Windows</td><td>PSF-2.0</td><td><code>_internal/</code></td></tr>
 </tbody></table>
 <p><code>requirements.txt</code> uses open-ended ranges, so each build resolves its own versions. The exact version of every component in an installed copy is recorded in the CycloneDX software bill of materials that ships with it at <code>_internal/build-provenance/sbom.cdx.json</code>; that file, not this table, is authoritative for version numbers.</p>
@@ -120,7 +122,7 @@
 <p>CartoVox does not alter the fonts' outlines, names or axes, ships each under this licence in both forms, and does not sell them by themselves. The requirement in condition 5 that fonts "must not be distributed under any other license" applies to the font files only, and does not extend to maps, documents, or other output you create with CartoVox.</p>
 <hr>
 <h2 id="6-full-mit-licence-text">6. Full MIT licence text</h2>
-<p>Applies to three.js, marked, ProseMirror, markdown-it, and the MIT-licensed components of NumPy and Matplotlib.</p>
+<p>Applies to three.js, marked, ProseMirror, markdown-it, pywinrt (Windows builds), and the MIT-licensed components of NumPy and Matplotlib.</p>
 <pre>Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the &quot;Software&quot;), to deal
 in the Software without restriction, including without limitation the rights
@@ -193,6 +195,6 @@ POSSIBILITY OF SUCH DAMAGE.</pre>
     <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
-<script src="/js/site.js" defer></script>
+<script src="/js/site.js?v=915173a910" defer></script>
 </body>
 </html>
