@@ -103,11 +103,12 @@ wordmark, and the gold lockup in the footer.
 python3 tools/stamp-assets.py
 ```
 
-Every page references `/css/site.css?v=<hash>` and the scripts likewise, so a
-changed file is fetched under a new URL instead of being served from a
-browser's cache. Run it last — after `build-legal.py`, `build-releases.py` or
-`build-faq-schema.py` have written their pages. It refreshes the sitemap after
-restamping, so commit the restamped HTML and sitemap together.
+Every page references `/css/site.css?v=<hash>` and the scripts likewise;
+self-hosted font URLs carry hashes too. Changed files therefore get new URLs
+instead of being served from a browser's one-year cache. Run this last — after
+`build-legal.py`, `build-releases.py`, `build-faq-schema.py`, or font subsetting
+have written their outputs. It refreshes the sitemap after restamping, so
+commit the restamped HTML and sitemap together.
 
 ## Claims the site makes that can drift
 
