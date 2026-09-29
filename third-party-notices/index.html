@@ -52,15 +52,15 @@
 <hr>
 <h2 id="2-python-runtime-libraries">2. Python runtime libraries</h2>
 <table><thead><tr><th>Component</th><th>Version</th><th>Licence</th><th>Where</th></tr></thead><tbody>
-<tr><td>NumPy</td><td>1.26 or later (2.5.2 in the 0.9.1 build inputs)</td><td>BSD-3-Clause (bundles 0BSD, MIT, Zlib, CC0-1.0 components)</td><td><code>_internal/numpy/</code></td></tr>
-<tr><td>Pillow</td><td>10.0 or later (12.3.0 in the 0.9.1 build inputs)</td><td>MIT-CMU (HPND)</td><td><code>_internal/PIL/</code></td></tr>
-<tr><td>Matplotlib</td><td>3.8 or later (3.11.1 in the 0.9.1 build inputs)</td><td>Matplotlib licence (BSD-style, 1.3.0 and later)</td><td><code>_internal/matplotlib/</code></td></tr>
+<tr><td>NumPy</td><td>2.5.3 or later within 2.x (2.5.3 in the build inputs)</td><td>BSD-3-Clause (bundles 0BSD, MIT, Zlib, CC0-1.0 components)</td><td><code>_internal/numpy/</code></td></tr>
+<tr><td>Pillow</td><td>12.3.0 or later within 12.x (12.3.0 in the build inputs)</td><td>MIT-CMU (HPND)</td><td><code>_internal/PIL/</code></td></tr>
+<tr><td>Matplotlib</td><td>3.11.2 or later within 3.11 (3.11.2 in the build inputs)</td><td>Matplotlib licence (BSD-style, 1.3.0 and later)</td><td><code>_internal/matplotlib/</code></td></tr>
 <tr><td>opencv-python-headless</td><td>4.14.0.94 (pinned)</td><td>Apache-2.0</td><td><code>_internal/cv2/</code></td></tr>
-<tr><td>pypdf</td><td>5.x–6.x (6.18.0 in the 0.9.1 build inputs)</td><td>BSD-3-Clause</td><td><code>_internal/pypdf/</code></td></tr>
-<tr><td>pywebview</td><td>5.4–6.x (6.2.1 in the 0.9.1 build inputs)</td><td>BSD-3-Clause</td><td><code>_internal/webview/</code></td></tr>
-<tr><td>pywinrt: winrt-runtime, winrt-Windows.Media.Ocr, winrt-Windows.Graphics.Imaging, winrt-Windows.Storage.Streams, winrt-Windows.Globalization, winrt-Windows.Foundation</td><td>3.2.1 (pinned), Windows builds only</td><td>MIT (Copyright (c) Microsoft Corporation; Copyright (c) 2021-2025 David Lechner)</td><td><code>_internal/winrt/</code></td></tr>
+<tr><td>pypdf</td><td>6.19 or later within 6.x (6.19.0 in the build inputs)</td><td>BSD-3-Clause</td><td><code>_internal/pypdf/</code></td></tr>
+<tr><td>pywebview</td><td>5.4–6.x (6.2.1 in the build inputs)</td><td>BSD-3-Clause</td><td><code>_internal/webview/</code></td></tr>
+<tr><td>pywinrt: winrt-runtime, winrt-Windows.Media.Ocr, winrt-Windows.Graphics.Imaging, winrt-Windows.Storage.Streams, winrt-Windows.Globalization, winrt-Windows.Foundation, winrt-Windows.Foundation.Collections</td><td>3.2.1 (pinned), Windows builds only</td><td>MIT (Copyright (c) Microsoft Corporation; Copyright (c) 2021-2025 David Lechner)</td><td><code>_internal/winrt/</code></td></tr>
 <tr><td>typing_extensions (required by winrt-runtime)</td><td>4.12 or later, Windows builds only</td><td>PSF-2.0</td><td><code>_internal/</code></td></tr>
-<tr><td>CPython standard library</td><td>3.12 on Linux; the release Python on macOS and Windows</td><td>PSF-2.0</td><td><code>_internal/</code></td></tr>
+<tr><td>CPython standard library</td><td>3.12 (3.12.14 in the build inputs)</td><td>PSF-2.0</td><td><code>_internal/</code></td></tr>
 </tbody></table>
 <p><code>requirements.txt</code> uses open-ended ranges, so each build resolves its own versions. The exact version of every component in an installed copy is recorded in the CycloneDX software bill of materials that ships with it at <code>_internal/build-provenance/sbom.cdx.json</code>; that file, not this table, is authoritative for version numbers.</p>
 <h3 id="2-1-components-bundled-inside-the-libraries-above">2.1 Components bundled inside the libraries above</h3>
@@ -75,9 +75,9 @@
 <hr>
 <h2 id="3-desktop-shell-components-linux-builds">3. Desktop shell components (Linux builds)</h2>
 <table><thead><tr><th>Component</th><th>Version</th><th>Licence</th><th>Where</th></tr></thead><tbody>
-<tr><td>PySide6, Essentials, Addons and shiboken6</td><td>6.9.1</td><td>LGPL-3.0-only, GPL-2.0-only, GPL-3.0-only, or commercial from The Qt Company</td><td><code>_internal/PySide6/</code> and matching <code>_internal/*.dist-info/</code></td></tr>
-<tr><td>Qt 6</td><td>6.9.1</td><td>LGPL-3.0-only, GPL-2.0-only, GPL-3.0-only, or commercial from The Qt Company</td><td><code>_internal/PySide6/Qt/</code></td></tr>
-<tr><td>Qt WebEngine's Chromium code</td><td>Qt 6.9.1 bundle</td><td>BSD and other licences; the most restrictive bundled Chromium component is LGPL-2.1</td><td><code>_internal/PySide6/Qt/</code></td></tr>
+<tr><td>PySide6, Essentials, Addons and shiboken6</td><td>6.9.3</td><td>LGPL-3.0-only, GPL-2.0-only, GPL-3.0-only, or commercial from The Qt Company</td><td><code>_internal/PySide6/</code> and matching <code>_internal/*.dist-info/</code></td></tr>
+<tr><td>Qt 6</td><td>6.9.3</td><td>LGPL-3.0-only, GPL-2.0-only, GPL-3.0-only, or commercial from The Qt Company</td><td><code>_internal/PySide6/Qt/</code></td></tr>
+<tr><td>Qt WebEngine's Chromium code</td><td>Qt 6.9.3 bundle</td><td>BSD and other licences; the most restrictive bundled Chromium component is LGPL-2.1</td><td><code>_internal/PySide6/Qt/</code></td></tr>
 </tbody></table>
 <p>macOS and Windows builds use the operating system's own web view and do <strong>not</strong> include PySide6, PyQt6 or Qt. The frozen-build and installed-artifact checks reject either Python Qt binding on those platforms.</p>
 <h3 id="3-1-the-licence-choice-used-by-cartovox">3.1 The licence choice used by CartoVox</h3>
