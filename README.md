@@ -16,13 +16,14 @@ together with the Delta service CartoVox's Delta builds talk to (`worker/`).
 | `eula/`, `third-party-notices/` | Legal pages, rendered from the app's Markdown by `tools/build-legal.py` |
 | `404.html` | Off the edge of the map |
 | `css/site.css` | All styling; gold on midnight, parchment for the atlas section |
-| `js/site.js` | Navigation, reveals, the causal chain, showcase tabs, the compare slider |
+| `js/site.js` | Navigation, the causal chain, showcase tabs, the compare slider |
 | `js/candidates.js` | The toy seed search drawn on canvas in the brief section |
-| `fonts/` | Cinzel, Newsreader and Inter, self-hosted under the SIL Open Font License |
+| `fonts/` | Subsetted Cinzel, Newsreader and Inter for the published pages |
+| `font-sources/` | Unserved OFL font originals used to rebuild the subsets |
 | `img/` | Every image the site ships, derived by `tools/build-images.py` |
 | `_headers`, `_redirects` | Static-asset headers (CSP, caching) and short links (`/discord`, `/delta`, `/invite`, `/beta`) |
 | `worker/`, `wrangler.jsonc`, `.assetsignore` | The Worker: static files straight from the assets, and the Delta service (`/v1/…` for the app, `/admin` for the owner's report). The service is copied from the app repository by `tools/sync-delta-service.py` |
-| `robots.txt`, `sitemap.xml`, `site.webmanifest` | The usual furniture |
+| `robots.txt`, `sitemap.xml`, `site.webmanifest` | Crawl controls; the sitemap is generated from indexable canonical pages |
 
 ## Deploying on Cloudflare
 
@@ -51,6 +52,12 @@ tables and loads the issued access codes itself on first use. The report is at
 `https://cartovox.org/admin`; revoking a code and reading raw data are described in
 the app repository's `services/delta-service/README.md`.
 
+In the `cartovox.org` Cloudflare zone, **Always Use HTTPS** is enabled and HSTS
+is set to 12 months. Cloudflare serves HSTS for the whole domain, including
+Worker responses. Subdomains and preload are off because they have not been
+audited. Keep HTTPS available before changing these settings; HSTS stays in
+visitors' browsers for its max age.
+
 ## Regenerating images
 
 Most sources are not in this repository: the gold lockups live in the app
@@ -64,6 +71,8 @@ python3 tools/build-images.py --brand <app>/assets/app-icon --icons brand --worl
 python3 tools/build-legal.py <app>/EULA.md <app>/THIRD-PARTY-NOTICES.md
 python3 tools/build-releases.py <app>/.github/release-notes --through 0.9.4
 python3 tools/build-faq-schema.py          # FAQPage JSON-LD, derived from the FAQ markup
+python3 tools/subset-fonts.py              # Rebuild self-hosted fonts after copy changes
+python3 tools/build-sitemap.py             # Also runs after build-releases.py and stamp-assets.py
 ```
 
 Screenshot names decide where they land: a PNG called `world-map.png` becomes
@@ -75,6 +84,11 @@ testers. It keeps later development notes and `unreleased.txt` off the public
 site. Recheck the released note's date against the app repository before
 regenerating; the 0.9.4 tag still contains an earlier date that was corrected
 after release.
+
+The sitemap includes every canonical HTML page unless it has a `noindex` meta
+tag. Its `lastmod` dates come from Git; locally edited pages use today's UTC
+date. Regenerate it after editing site copy so release details and legal pages
+stay in sync with their indexability.
 
 Each flag is optional; a pass with only `--shots` refreshes the app screenshots,
 and `--icons brand` alone re-derives every favicon, touch icon, the header mark,
@@ -92,16 +106,16 @@ python3 tools/stamp-assets.py
 Every page references `/css/site.css?v=<hash>` and the scripts likewise, so a
 changed file is fetched under a new URL instead of being served from a
 browser's cache. Run it last — after `build-legal.py`, `build-releases.py` or
-`build-faq-schema.py` have written their pages — and commit the restamped HTML
-with the change.
+`build-faq-schema.py` have written their pages. It refreshes the sitemap after
+restamping, so commit the restamped HTML and sitemap together.
 
 ## Claims the site makes that can drift
 
 Three numbers on the landing page are measured from the library rather than
 remembered, and are worth re-checking when the worlds behind them change: each
-plate's foundation, seed and major-continent count in *The same sentence, four
-ways in*; the eight style sheets in the atlas section; and the build times under
-*What it costs you*. Everything else on that page is either generated from the
+plate's foundation, seed and major-continent count in *Four honest outcomes*;
+the eight style sheets in the atlas section; and the build times under
+*Time, storage and access*. Everything else on that page is either generated from the
 app's own files or describes behaviour documented in the manual.
 
 ## Local preview

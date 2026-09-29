@@ -2,6 +2,7 @@
 worker/
 tools/
 brand/
+font-sources/
 wrangler.jsonc
 README.md
 .assetsignore
@@ -9,3 +10,18 @@ README.md
 .gitignore
 node_modules
 .wrangler
+
+# Retain originals and unused captures locally, without publishing them.
+img/app-world-map-ocean_currents.webp
+img/app-world-map-tectonics.webp
+img/app-world-map-amashima.webp
+img/app-world-map-biomes.webp
+img/app-world-map-landmarks_routes.webp
+img/app-world-planet.webp
+img/relief.webp
+img/globes.webp
+img/icon-16.png
+img/icon-48.png
+img/lockup.png
+img/wordmark.png
+img/mark-512.png

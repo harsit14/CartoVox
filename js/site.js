@@ -1,6 +1,7 @@
 /* cartovox.org — page behaviour. No dependencies, no network, no storage. */
 (() => {
   "use strict";
+  document.documentElement.classList.add("has-js");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ── navigation ─────────────────────────────────── */
@@ -29,22 +30,6 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && isOpen()) { setOpen(false); toggle.focus(); }
     });
-  }
-
-  /* ── reveal on scroll ───────────────────────────── */
-  const revealables = document.querySelectorAll(".reveal");
-  if (reduceMotion || !("IntersectionObserver" in window)) {
-    revealables.forEach((node) => node.classList.add("is-visible"));
-  } else {
-    const io = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          io.unobserve(entry.target);
-        }
-      }
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-    revealables.forEach((node) => io.observe(node));
   }
 
   /* ── the brief, typed once it is in view ────────── */
@@ -85,6 +70,7 @@
   const chainFrame = chainImg && chainImg.parentElement;
   if (chainList && chainImg) {
     const nodes = [...chainList.querySelectorAll(".chain-node")];
+    nodes.forEach((node, i) => node.setAttribute("aria-pressed", String(i === 0)));
     const cache = new Map();
     const preload = (view) => {
       if (cache.has(view)) return cache.get(view);
@@ -121,13 +107,15 @@
     if (!reduceMotion && "IntersectionObserver" in window) {
       const io = new IntersectionObserver((entries) => {
         const on = entries.some((e) => e.isIntersecting);
-        if (on && !timer && !chainList.dataset.touched) timer = setInterval(() => show(current + 1, false), 3800);
+        if (on && !timer && !chainList.dataset.touched) {
+          preload(nodes[(current + 1) % nodes.length].dataset.view);
+          timer = setInterval(() => show(current + 1, false), 3800);
+        }
         if (!on) stop();
       }, { threshold: 0.35 });
       io.observe(chainList);
       chainList.addEventListener("click", () => { chainList.dataset.touched = "1"; });
     }
-    show(0, false);
   }
 
   /* ── workspace showcase ─────────────────────────── */

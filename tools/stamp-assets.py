@@ -3,7 +3,7 @@
 
     python3 tools/stamp-assets.py
 
-Browsers and the edge are told to keep css/ and js/ for a while, so a changed
+Browsers and the edge are told to keep css/ and js/ for a year, so a changed
 stylesheet under the same URL would keep serving the old one until that
 expires. Every HTML file therefore references `/css/site.css?v=<hash>`; a
 change to the file changes the hash, and the new page fetches the new file.
@@ -13,6 +13,8 @@ from __future__ import annotations
 
 import hashlib
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,6 +40,7 @@ def main() -> None:
     for rel, digest in stamps.items():
         print(f"  {rel} → ?v={digest}")
     print(f"  {changed} page(s) restamped")
+    subprocess.run([sys.executable, str(ROOT / "tools" / "build-sitemap.py")], check=True)
 
 
 if __name__ == "__main__":

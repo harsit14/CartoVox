@@ -15,6 +15,7 @@ from __future__ import annotations
 import html
 import importlib.util
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -272,6 +273,7 @@ def main() -> None:
         mobile_fallback='<a href="#v0.9.4">Latest release</a>', articles="\n".join(cards),
     ), encoding="utf-8")
     print(f"  releases/index.html + {len(releases)} full notes")
+    subprocess.run([sys.executable, str(ROOT / "tools" / "build-sitemap.py")], check=True)
 
 
 if __name__ == "__main__":
