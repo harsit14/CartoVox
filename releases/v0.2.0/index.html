@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.2.0 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.2.0 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.2.0/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.2.0 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.2.0 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.2.0/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-24</p>
+      <h1>CartoVox 0.2.0</h1>
+      <p class="lede">the worldbuilding workspace upgrade</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.2.0"><div class="doc-body">
+<p>This is the largest CartoVox alpha update so far. It moves the project beyond generating a finished world and turns that world into a place an author can explore, revise, present, and use across a long-running story or campaign.</p>
+<h3 id="campaign-and-player-maps">Campaign and player maps</h3>
+<ul>
+<li>Create multiple campaign profiles for one world, each with its own player-facing title and summary.</li>
+<li>Decide exactly which map layers and lore categories players may see, then reveal individual secret places only when the story reaches them.</li>
+<li>Open a focused presentation mode that hides the author dashboard and presents only the permitted map, places, regions, and journeys.</li>
+<li>Save journey routes and regional lenses to a campaign. Route handles can be moved directly on the map without altering the physical simulation.</li>
+<li>Campaign data is stored locally beside the world and is included in revision/checkpoint preservation.</li>
+</ul>
+<h3 id="explore-the-generated-world-in-studio">Explore the generated world in Studio</h3>
+<ul>
+<li>Turn on a filterable Lore overlay for capitals, settlements, ports, passes, places of power, and author story pins. Selecting a marker opens its generated context and author canon without searching output folders.</li>
+<li>Click anywhere—or choose a named atlas region—to open a wrap-aware Regional Lens with a high-resolution crop, several physical views, measured terrain and climate, resources, water features, and nearby named lore.</li>
+<li>Use six curated cartographer desks for royal surveying, blue-water navigation, field naturalism, court history, monastic copying, and forbidden lore. Each desk honestly marks views that were not generated.</li>
+<li>Lore search now returns bounded, relevant excerpts around each match instead of retaining large unrelated sections.</li>
+</ul>
+<h3 id="parent-linked-regional-maps">Parent-linked regional maps</h3>
+<ul>
+<li>Promote any Regional Lens into a durable child-map project without resampling the planet or losing its coordinate system.</li>
+<li>Inherited settlements, realms, places of power, passes, and story pins retain stable parent-world identities even after the child map is edited.</li>
+<li>Add independent regional notes, local pins, and hand-drawn routes; refresh inherited features after the parent world changes.</li>
+<li>Longitude wrapping is preserved at the world seam, and child maps record the parent revision they came from.</li>
+</ul>
+<h3 id="journey-laboratory-2">Journey Laboratory 2</h3>
+<ul>
+<li>Compare Balanced, Fastest, Safer, and Trade-minded routes instead of receiving only one answer.</li>
+<li>Inspect elevation profiles, total ascent and descent, route divergence, seasonal conditions, crossings, hazards, and ocean-current assistance.</li>
+<li>Estimate food, water, pack-animal fodder, practical reserve capacity, and the full demand across the longest dry stretch. Atlas now calls out journeys that need staged caches or resupply.</li>
+<li>Surface named market stops, local geological or ecological goods, realm-border legs, abstract toll exposure, and expected border delay.</li>
+<li>Save a solved route to Campaign and continue adjusting it as an authored story track.</li>
+</ul>
+<h3 id="chronicle-editable-human-history">Chronicle: editable human history</h3>
+<ul>
+<li>Keep geological Deep Time separate from the history of people. Chronicle imports the generated lore timeline into editable eras without changing the tectonic simulation.</li>
+<li>Add settlements, political events, wars, disasters, migrations, borders, and routes as point, line, or area geometry on the world map.</li>
+<li>Play eras in order, select different base maps, and keep persistent consequences visible after the era in which they began.</li>
+<li>Imported events retain stable links to their source lore entries, while authored events remain independently editable.</li>
+</ul>
+<h3 id="deep-time-diagnostics-and-guided-repair">Deep Time, diagnostics and guided repair</h3>
+<ul>
+<li>Deep Time histories now have play/pause, multiple playback speeds, looping, a clear era counter, and a concise account of each era's dominant tectonic events. Promoting an era into a world remains an explicit author decision.</li>
+<li>Simulation-health findings can jump to the relevant layer and cell, prepare a conservative sculpt operation where appropriate, or focus the exact Advanced setting responsible for a configurable condition.</li>
+<li>Repair revisions record whether the original finding resolved, improved, persisted, or worsened instead of treating regeneration as an unmeasured success.</li>
+</ul>
+<h3 id="better-candidate-search-and-generation-ux">Better candidate search and generation UX</h3>
+<ul>
+<li>Changing the starting topology keeps the author's thesis, Must have, Avoid, and non-topology choices instead of silently replacing the brief.</li>
+<li>Candidate scoring distinguishes measured checks from constraints that still require author review; previews are clearly labelled approximate and no longer claim a universal 100% match.</li>
+<li>Preview cards show a building state, explain that cell inspection begins after commitment, clarify comparison scales, use “Remove from comparison,” and keep atlas/completion copy aligned with what was actually generated or skipped.</li>
+<li>Responsive navigation, mobile map sizing, map-category transitions, progress controls, and completed-dialog accessibility received a full polish pass.</li>
+</ul>
+<h3 id="reliability-and-authoring-fixes">Reliability and authoring fixes</h3>
+<ul>
+<li>City renames now use the correct stable <code>cities</code> override bucket and rebuild every dependent export.</li>
+<li>In-progress and failed generations have explicit Library cards and cannot be opened as committed or legacy projects.</li>
+<li>Active generations cannot be removed from the Library, and the server rejects stale or direct deletion requests with HTTP 409 until the worker has terminated.</li>
+<li>Selecting a Journey alternative now recalculates it as the active result used by metrics and Campaign saving.</li>
+<li>Sailing routes use nautical analytics—wind/current effects, open-water legs, port intervals, sea hazards, cargo and water capacity—without seabed ascent, road share, dry-gap or pack-animal language.</li>
+<li>New Campaign profiles reveal only relief by default; every lore category and additional map requires an intentional reveal.</li>
+<li>Regional lenses omit internal hydrology IDs, Chronicle presents readable names instead of Obsidian brackets, checkpoint badges refresh immediately, and singular dashboard copy is grammatical.</li>
+<li>Avoid rules now suppress contradictory maritime story suggestions, world-scale relief uses a stronger stream hierarchy, and Lore search returns bounded relevant context.</li>
+<li>“Complete bundle” is now correctly named “Vector bundle.” A separate complete <code>.atlas</code> project backup preserves simulation, revisions and author state and imports under a safe fresh identity.</li>
+<li>Lore renames are now token-aware and idempotent. Names no longer acquire duplicated suffixes, and regenerated worldbooks, handbooks, timelines, GeoJSON, SVG, vector bundles, and codex pages agree.</li>
+<li>Native <code>prompt()</code> dialogs were replaced with Atlas modals so candidate notes, rejection reasons, and named checkpoints work in embedded desktop webviews.</li>
+<li>Simulation warnings now describe the actual failing state instead of displaying the title of the passing condition.</li>
+<li>Expected browser disconnects during rapid image, region, or SVG changes no longer flood the local server log with secondary tracebacks.</li>
+<li>Candidate continent grammar, Pangaea story signals, quick-map river density, grouped name review, and biome edge cleanup received targeted polish.</li>
+<li>Regional, Campaign, Chronicle, and route files use explicit UTF-8, atomic local writes and are preserved as authoritative project data.</li>
+</ul>
+<h3 id="faster-and-more-controllable-atlas-rendering">Faster and more controllable atlas rendering</h3>
+<ul>
+<li>Choose Draft or Publication finish, world/continent/region sheet groups, and village-label density before a build.</li>
+<li>Progress identifies every plate and recalibrates its estimate from completed plate timings.</li>
+<li>Stop safely after the current plate, keep the completed work, and render deferred plates later from saved world data without re-running the simulation.</li>
+<li>Atlas copy now reflects the real cost: publication plates can take most of a full build rather than merely “a few minutes.”</li>
+</ul>
+<h3 id="linux-desktop-application">Linux desktop application</h3>
+<ul>
+<li>CartoVox now ships as an x64 <code>.deb</code> alongside the Apple Silicon macOS, Intel macOS, and Windows installers.</li>
+<li>The package installs the frozen application under <code>/opt/atlas-studio</code>, adds a safe <code>atlas-studio</code> launcher, icon, and Applications-menu entry, and declares the desktop libraries required by its bundled Qt WebEngine window.</li>
+<li>Testers do not need Python. Worlds, settings, beta access, logs, and verified updates use the standard per-user <code>~/.local/share/atlas-studio/</code> location and remain local.</li>
+<li>The in-app updater recognizes the exact Linux package for the current architecture, downloads it only from the allowlisted release feed, verifies its SHA-256 digest, and opens it through the system package handler. Installation remains an explicit user action.</li>
+<li>The release workflow now builds and smoke-tests Linux under a virtual display, validates Debian metadata and the desktop entry, and publishes the package in the same checksum manifest as the other platforms.</li>
+<li>The Debian package declares the complete Qt XCB runtime set used by the bundled interface, and CI rejects any package whose platform plugin still has an unresolved shared-library dependency.</li>
+</ul>
+<h3 id="compatibility">Compatibility</h3>
+<p>Existing worlds remain readable. Campaigns, child maps, and Chronicles are created only when an author chooses to use them. Older worlds can use these authoring workflows immediately when their saved summaries and numerical fields are available; no physical re-simulation is required. Legacy static maps remain visible where the newer scientific arrays were never generated.</p>
+<h3 id="technical-verification">Technical verification</h3>
+<ul>
+<li>The release includes persistence and API tests for Campaign profiles, spoiler settings, route tracks, regional child maps, inherited feature identity, Chronicle eras/events, stable lore imports, and expanded route analytics.</li>
+<li>The approved reduced-atlas golden baseline is versioned with the repository, preventing stale ignored baselines from producing machine-specific failures.</li>
+<li>It retains the deterministic reduced-world generation, Hydrology V2 topology, revision, export, desktop lifecycle, updater, installer, and responsive dashboard regressions from the 0.1 line.</li>
+<li>The tagged workflow validates that <code>v0.2.0</code> matches desktop and installer metadata, runs the full suite on macOS Apple Silicon, macOS Intel, Windows, and Linux, builds all four platform artifacts, and publishes a SHA-256 manifest.</li>
+</ul>
+<h3 id="invited-alpha-access">Invited alpha access</h3>
+<p>This prerelease remains limited to invited testers with an CartoVox beta key. Verification is offline; no account, telemetry, hardware fingerprint, or activation server is used.</p>
+<p><strong>Full generation is intentionally heavy and may take longer than expected.</strong> On current high-end test machines, a Full world with its atlas takes about <strong>20–25 minutes on macOS</strong> and <strong>50–55 minutes on Windows</strong>. Hardware, world settings, atlas finish, and selected plate count can change that time. Use Preview or Quick while exploring settings, consider Draft or selective plates for review, and keep CartoVox open until the progress log reports completion.</p>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

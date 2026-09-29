@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.7.1 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.7.1 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.7.1/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.7.1 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.7.1 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.7.1/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-30</p>
+      <h1>CartoVox 0.7.1</h1>
+      <p class="lede">Deeper world editing, stronger imports, and safer iteration</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.7.1"><div class="doc-body">
+<p>CartoVox 0.7.1 is a focused follow-up to 0.7.0. It expands terrain and feature editing into a practical world-revision workflow, makes external maps easier to interpret before spending simulation time, adds imperial display units, and recovers more safely from interrupted generation. Existing projects remain readable and are never silently rebuilt.</p>
+<h3 id="sculpt-the-world-with-clearer-intent">Sculpt the world with clearer intent</h3>
+<ul>
+<li>Sculpt now previews the likely terrain result directly on the map, with clearer tools, footprints, strength and shape controls before anything is applied.</li>
+<li>Island building supports finer shapes instead of a single blunt circular uplift. Coast, peak, ridge, plateau, basin, strait, river-valley, flatten, smooth and detail tools provide complementary ways to build and refine terrain.</li>
+<li>Select feature reads the editable terrain, water, ecology, settlement, route, realm and magical-region features beneath a point. Clicking the selected feature again now reliably deselects it, including while an earlier lookup is still completing.</li>
+<li>Applied changes create restorable revisions. The interface explains which downstream systems will be rebuilt before re-simulation.</li>
+</ul>
+<h3 id="remove-and-reshape-generated-features">Remove and reshape generated features</h3>
+<ul>
+<li>Land, islands, lakes, rivers, biome regions and mountain terrain can be removed or reshaped through feature-aware operations rather than imprecise map guessing.</li>
+<li>Settlements can be removed or relocated while preserving the distinction between authored intent and generated downstream consequences.</li>
+<li>Routes and realm boundaries can be reshaped with feature-specific controls.</li>
+<li>Magical regions can be selected and edited alongside physical and political features.</li>
+<li>Operations that cannot honestly preserve a generated feature explain the constraint and stage the closest supported world change instead of pretending to edit disconnected pixels.</li>
+</ul>
+<h3 id="deep-time-is-easier-to-author">Deep Time is easier to author</h3>
+<ul>
+<li>The initial subcontinent drawing workspace is larger and opens directly when its custom-drawing card is chosen.</li>
+<li>Authors can change brush width, draw a closed outline and fill the enclosed continent with one action.</li>
+<li>The drawing workspace has explicit back and close actions, so opening it never traps the author in an unwanted step.</li>
+<li>Clearer guidance and previews make early continental composition easier to understand before committing it to the simulation.</li>
+</ul>
+<h3 id="better-external-map-import">Better external-map import</h3>
+<ul>
+<li>The import workshop now distinguishes heightfields, land-and-water masks and coloured illustrated maps more carefully.</li>
+<li>A preview stage shows the interpreted land mask and coastline before generation begins, with controls for inversion, cleanup and interpretation.</li>
+<li>Colour-map handling is more tolerant of labels, borders, decorative water, shaded land and other cartographic detail that previously confused simple colour thresholds.</li>
+<li>Guidance states what geography can be preserved and which terrain, climate, rivers, biomes, settlements and lore Atlas must regenerate.</li>
+</ul>
+<h3 id="safer-generation-and-familiar-units">Safer generation and familiar units</h3>
+<ul>
+<li>Metric and imperial display units are available across world summaries, map inspection and relevant measurements without changing the saved simulation.</li>
+<li>Interrupted or force-closed generation records are detected and can be recovered or removed instead of leaving an undeletable project card.</li>
+<li>Temporary seed previews are kept separate from committed worlds, and failed preview imagery no longer requires deleting all application data to recover the workspace.</li>
+<li>Generation cleanup preserves completed world data and avoids treating an abandoned in-progress record as a valid finished project.</li>
+</ul>
+<h3 id="compatibility-and-distribution">Compatibility and distribution</h3>
+<ul>
+<li>Existing 0.7.0 and older projects remain readable. Feature edits and full re-simulation are deliberate actions that create revisions; opening a world does not rewrite it.</li>
+<li>Terrain edits can change downstream climate, rivers, biomes, settlements, routes, names, lore and maps. Atlas states that scope before applying them.</li>
+<li>External-map interpretation is still an inference from pixels. Always inspect the preview and correct the land mask before committing a long simulation.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data remain on the tester's machine.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

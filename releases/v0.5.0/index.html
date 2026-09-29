@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.5.0 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.5.0 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.5.0/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.5.0 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.5.0 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.5.0/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-26</p>
+      <h1>CartoVox 0.5.0</h1>
+      <p class="lede">guided worldbuilding, climate forensics, author-directed geology, and production rendering</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.5.0"><div class="doc-body">
+<p>This is the current invited technical-alpha build. It turns the simulation systems added through 0.4 into workflows an author can discover and control: choose how to begin, state what the world is for, inspect why the climate behaves as it does, constrain selected nations and tectonic causes, experiment with erosion, and export large layered artwork without confusing drawing resolution with simulation resolution. Existing worlds remain readable; tools that need saved scientific fields explain when an older project must be deliberately re-simulated.</p>
+<h3 id="a-clearer-route-into-atlas">A clearer route into Atlas</h3>
+<ul>
+<li>The Create workspace now begins with three genuinely different paths: generate a new world, import an existing map, or build through geological deep time.</li>
+<li>A second purpose choice tunes the route for campaigning, climate study, an illustrated atlas, a base for external artwork, or writing and worldbuilding. These choices set ordinary visible options rather than hiding a new preset system.</li>
+<li>The candidate search now separates planetary conditions from continental geography, so changing the kind of planet no longer has to masquerade as changing its landmass topology.</li>
+</ul>
+<h3 id="climate-lab-and-explainable-weather">Climate Lab and explainable weather</h3>
+<ul>
+<li>Selecting a map cell can now explain its temperature and rainfall departures using latitude, elevation, continentality, upwind terrain, moisture supply, and the saved circulation fields.</li>
+<li>Climate Lab exposes seasonal temperature, pressure, wind, and rainfall frames; moisture-path inspection; located plausibility checks; and a local review bundle containing the seed, resolved configuration, model response, and findings.</li>
+<li>A bounded what-if comparison estimates how selected climate controls would change the saved world and clearly labels the result as an approximation rather than a full physical re-simulation.</li>
+<li>Seasonal fields are stored compactly so an author can scrub the year without doubling the scientific archive.</li>
+</ul>
+<h3 id="nations-and-tectonics-before-generation">Nations and tectonics before generation</h3>
+<ul>
+<li>Nation Brief lets authors name realms and capitals, request homeland traits, biome preferences, resources, trade goods, and cultures, and check those requests against measured terrain before generation.</li>
+<li>Accepted homeland anchors enter the normal civilisation pipeline as founding hearths; locked names flow through the stable naming registry so maps, reports, and lore agree.</li>
+<li>Tectonic Director now covers craton nuclei, plate seeds, requested convergent/divergent/transform margins, drift and speed, locks, and mantle hotspots.</li>
+<li>Preflight reports contradictory or impossible requests before a long build. A finished-world conflict report then measures which intentions were satisfied, compromised, or impossible instead of merely repeating the input.</li>
+</ul>
+<h3 id="import-workshop-and-erosion-lab">Import Workshop and Erosion Lab</h3>
+<ul>
+<li>Existing-map import now has a preview workshop between choosing an image and committing a world. It detects likely heightfield versus land/water art, supports inversion and cleanup, previews the resulting coast, and states which requested features can be preserved or must be rebuilt.</li>
+<li>Erosion Lab runs the same stream-power, hillslope-diffusion, and floodplain-deposition kernel used by generation on a non-destructive coarse bench.</li>
+<li>The lab compares relief and drainage before and after, visualises what moved, reports mass balance and scale limitations, and changes the world only after an explicit accept-and-re-simulate action.</li>
+<li>Separate fluvial-incision and hillslope-diffusion controls default to the historical behaviour, preserving untouched configurations.</li>
+</ul>
+<h3 id="render-studio-for-artists-and-gis-workflows">Render Studio for artists and GIS workflows</h3>
+<ul>
+<li>Render Studio produces 1K, 2K, 4K, 8K, or tiled 16K output as documented transparent PNG layers with world files, a compositing manifest, and a flattened preview.</li>
+<li>Authors can choose full-colour, monochrome, or coastline-only bases; include biomes, relief, lakes, rivers, coastlines, borders, graticules, and labels; and use local textures from the Atlas data directory.</li>
+<li>Continuous fields are interpolated, categorical fields remain categorical, and deterministic decorative detail is explicitly marked as invented.</li>
+<li>Every bundle records both output-pixel size and underlying simulation-cell size. Render Studio never claims that a larger drawing is a higher-resolution physical simulation.</li>
+<li>Rebuildable Render Studio output is excluded from portable project backups so a single 16K export does not silently bloat the authoritative world archive.</li>
+</ul>
+<h3 id="planet-classification-and-honest-capability-boundaries">Planet classification and honest capability boundaries</h3>
+<ul>
+<li>A versioned planet-class foundation classifies supported terrestrial regimes separately from geography and carries stable machine IDs, familiar names, physical ranges, confidence, references, and capability states.</li>
+<li>The Create workspace and world dossier now state which stages are supported, optional, or inapplicable and list important standing limits such as simplified atmospheric physics, water-only hydrology, and the current Earth/Köppen biome vocabulary.</li>
+<li>Scientific exports include the derived classification and limitations, so downstream analysis retains the context in which a world was generated.</li>
+</ul>
+<h3 id="faster-safer-alpha-feedback">Faster, safer alpha feedback</h3>
+<ul>
+<li>A tester can report the current map or selected cell, describe expected versus observed behaviour, complete a short task-specific checklist, and preview exactly what will be collected.</li>
+<li>Reports are written beside the world and are never uploaded automatically. Generated place names and annotated screenshots remain excluded unless the tester explicitly includes them.</li>
+<li>The new shared compass-globe identity now appears in the web shell, desktop applications, installers, and platform icon assets.</li>
+<li>The Regional Lens panel scrolls independently instead of letting wheel events zoom the map underneath it.</li>
+</ul>
+<h3 id="compatibility-and-verification">Compatibility and verification</h3>
+<ul>
+<li>Project configuration advances to schema version 8 for the separate erosion controls. Missing values migrate to neutral defaults; older worlds are not silently re-simulated.</li>
+<li>Existing projects, revisions, backups, campaigns, Chronicles, lore, imported terrain, extensions, and author decisions remain readable. New climate frames, nation reconciliation, tectonic audits, and render products appear only when their required saved inputs exist or after a deliberate re-simulation.</li>
+<li>This candidate passes 997 automated tests, Python compilation, JavaScript syntax checks, release-version validation, and a browser smoke test of the guided Create workflow with no console errors.</li>
+<li>The tagged build workflow produces and verifies Apple Silicon macOS, Intel macOS, Windows, and Debian/Ubuntu Linux installers. The separate portable-Linux workflow builds against glibc 2.28 for Slackware 15.0 and other non-Debian distributions.</li>
+</ul>
+<p>CartoVox remains limited to invited testers with an offline beta key. Verification uses no account, telemetry, hardware fingerprint, activation server, or network connection. Generated worlds, settings, reports, textures, and author data remain on the tester's machine.</p>
+<p>Full generation is intentionally demanding and may take roughly 20–25 minutes on a current high-end Mac and 50–55 minutes on a current high-end Windows machine, depending on settings and selected atlas plates. Use Preview, candidate search, Quick mode, Draft atlas finish, or selective plates while exploring. Twelve-sample climate, regional work, Erosion Lab acceptance, and large renders require additional time, memory, or disk space.</p>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.7.6 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.7.6 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.7.6/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.7.6 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.7.6 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.7.6/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-30</p>
+      <h1>CartoVox 0.7.6</h1>
+      <p class="lede">Reachable and selectable Create setup</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.7.6"><div class="doc-body">
+<p>CartoVox 0.7.6 fixes the remaining interaction problems in the optional Create setup guide. Finite text choices are now real dropdowns, expanded setup controls remain reachable without closing other sections, and the guide's starting-path action opens the route chooser as promised.</p>
+<h3 id="setup-choices-are-selectable">Setup choices are selectable</h3>
+<ul>
+<li>Every exposed setting with a fixed vocabulary now publishes its valid choices through the shared configuration schema.</li>
+<li>The optional setup guide and Advanced Settings both render those values as dropdowns instead of unrestricted text boxes.</li>
+<li>This covers terrain image interpretation, magic source and cost, naming-family rules, apostrophe policy, atlas label density, lake display detail and map palette.</li>
+<li>Friendly labels are displayed while the stable internal values remain unchanged for saved recipes and reproducible builds.</li>
+</ul>
+<h3 id="expanded-create-controls-remain-reachable">Expanded Create controls remain reachable</h3>
+<ul>
+<li>The Create page gains an outer escape scroll when the optional guide or generation-options panel makes the setup surface taller than the window.</li>
+<li>The brief and candidate columns keep their ordinary local scrolling during normal work.</li>
+<li>The generation-options panel has a bounded height and its own scroll fallback, so its last controls are available on shorter displays.</li>
+</ul>
+<h3 id="creation-paths-behave-consistently">Creation paths behave consistently</h3>
+<ul>
+<li>The route summary now carries a stable Creation path caption, making clear that Generate, Import, Deep Time and manual setup are saved choices rather than different application builds.</li>
+<li>Choose how to begin in the setup guide now opens the same three-path chooser as the route bar's Change button.</li>
+<li>Both entry points share one state transition, preventing one control from becoming inert while the other continues to work.</li>
+</ul>
+<h3 id="compatibility-and-distribution">Compatibility and distribution</h3>
+<ul>
+<li>Existing projects, recipes and generated worlds remain readable and are not re-simulated by this update.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data remain on the tester's machine.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

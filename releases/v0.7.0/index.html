@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.7.0 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.7.0 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.7.0/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.7.0 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.7.0 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.7.0/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-29</p>
+      <h1>CartoVox 0.7.0</h1>
+      <p class="lede">A map-first World workspace, deeper scientific maps, flexible atlas lettering, and honest quality upgrades</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.7.0"><div class="doc-body">
+<p>CartoVox 0.7.0 makes the generated world itself the centre of the workspace. It adds new climate, geology, water, land and civilisation views; turns natural regions into connected Lands pages; and gives authors clearer choices about atlas labels, drawing quality and simulation quality. Create and Render Studio now explain their consequences where the decision is made. Existing projects remain readable and are never silently re-simulated.</p>
+<h3 id="the-map-is-now-the-world-workspace">The map is now the World workspace</h3>
+<ul>
+<li>World opens around the map rather than treating it as one panel among many. The contextual toolbar keeps Sculpt, Render and the Map Library close to the geography they affect.</li>
+<li>The Map Library can be shown or hidden from that toolbar. The choice is remembered, while the generic panel-collapse behaviour remains available elsewhere.</li>
+<li>World tools behave as modes: an author-opened workbench comes to the front, the right edge presents one active panel, and the inspector has a stable place rather than competing with unrelated controls.</li>
+<li>The globe has its own corner and can be hidden independently. Its spin control is explicitly labelled, and map, globe, dock and bottom-band controls remain reachable in CartoVox Dark and Parchment Light.</li>
+<li>Project findings use readable titles and measured supporting text instead of presenting every result with the same visual urgency.</li>
+<li>Data-map keys, map controls and the selected view stay legible over the map at desktop and compact widths.</li>
+</ul>
+<h3 id="more-of-the-simulated-world-is-visible">More of the simulated world is visible</h3>
+<ul>
+<li>Natural regions groups contiguous landscapes by landform and climate character. Selecting one opens a measured Lands entry with terrain, climate, water, neighbouring regions and connected lore.</li>
+<li>Lands is connected across the map, search and Codex rather than living as a detached regional key. The generated gazetteer can also be exported into the Codex vault.</li>
+<li>Domestication &amp; farming shows wild-crop package strength, actual agricultural cradles and their historical reach. Whether domestication may shape civilisation hearths remains an explicit author choice.</li>
+<li>Köppen climate classification derives conventional climate codes from the world's saved temperatures and seasonal rainfall.</li>
+<li>Sea ice &amp; winter extent separates the persistent ice cap from the potential cold-season fringe and explains the limits of that model.</li>
+<li>Groundwater &amp; aquifers delineates water-bearing bodies, recharge status, saturated thickness and accessibility, including aquifers that can support settlement beneath arid ground.</li>
+<li>Soil properties lets authors switch among fertility, profile depth, free drainage, rockiness and organic carbon without replacing the categorical soil map.</li>
+<li>Crust age &amp; igneous provinces exposes the age of surface crust alongside the footprints of major flood-basalt events.</li>
+<li>Every generated data view has a readable key. New maps remain honestly unavailable when an older project does not contain their required saved fields.</li>
+</ul>
+<h3 id="connected-evidence-and-safer-author-workflows">Connected evidence and safer author workflows</h3>
+<ul>
+<li>Map, inspector, search, Lands, Codex and scientific-export routes now cover substantially more of the numerical fields Atlas saves. Generated sidecars and GIS exports carry the corresponding evidence instead of leaving useful simulation state stranded on disk.</li>
+<li>Late or optional capabilities are routed through the workflows where an author would look for them. A missing capability stays visibly unavailable rather than becoming a link to an empty surface.</li>
+<li>Author canon, locked names, revisions, brief choices and other authored state are protected while switching workflows, rebuilding derived output or returning to Create.</li>
+<li>Lands pages and exported gazetteer records keep stable connections to the map and related Codex material.</li>
+</ul>
+<h3 id="labeled-and-no-label-illustrated-atlases">Labeled and no-label illustrated atlases</h3>
+<ul>
+<li>Create now offers Atlas lettering choices for Labeled only, No labels, or Both versions. The same default is available in App settings.</li>
+<li>The choice applies to world, continent and regional illustrated sheets. A no-label atlas changes only the rendered plate pixels; Atlas still generates names, settlements, lore and searchable features for the world.</li>
+<li>A saved world that creates its illustrated atlas later receives the same lettering options, rather than being forced into a single output style.</li>
+<li>Missing no-label or labeled companions can be drawn later from the saved atlas source without re-running terrain, climate, rivers, settlements, names or lore.</li>
+<li>Labeled sheets can be redrawn from current canon after lore or name edits.</li>
+<li>The Map Library groups labeled and no-label versions beneath one authored sheet name. Small Labeled and No labels controls switch the visible variant instead of filling the library with duplicate titles.</li>
+<li>Deferred rendering, pause-after-current-plate and resume understand the selected variants and preserve completed sheets.</li>
+</ul>
+<h3 id="a-clear-path-from-a-quick-world-to-finished-output">A clear path from a Quick world to finished output</h3>
+<ul>
+<li>A Quick world now offers Best-quality drawings. Eligible maps are rebuilt at 4x drawing density from the exact saved simulation, so the geography, names and lore do not change.</li>
+<li>Authors who want more simulated detail can instead choose Rebuild at full simulation resolution. Atlas creates a separate project from the same seed and saved recipe, runs the complete simulation and rebuilds the Map Library.</li>
+<li>The Quick source project is left untouched. The confirmation explains that the broader geography should remain familiar while exact coastlines, rivers, climate boundaries, settlements, names and generated lore may change on the finer grid.</li>
+<li>Best-quality drawing mode is remembered and used when eligible maps are opened; it does not pretend that extra drawing pixels are extra simulated cells.</li>
+</ul>
+<h3 id="render-studio-says-what-it-creates">Render Studio says what it creates</h3>
+<ul>
+<li>Render Studio identifies itself as a whole-world layered export and now states its scope before rendering.</li>
+<li>One render creates one viewable whole-world composition at the chosen pixel size plus separate editable PNG layers for the checked ingredients.</li>
+<li>It does not render every Map Library map, follow whichever library view is selected, overwrite those maps, re-run the world or add simulation detail below a saved cell.</li>
+<li>Ocean, land, biomes, relief, lakes, rivers, coastline, borders, graticule and labels are compositing ingredients for that one custom sheet. Selecting Biomes therefore adds a biome layer to the composition; it does not create a high-resolution copy of the standalone Biomes library map.</li>
+<li>The plan explains whether the chosen size writes single images or tiled layers, and keeps render pixels beside saved simulation dimensions.</li>
+</ul>
+<h3 id="map-filters-survive-sharper-drawing">Map filters survive sharper drawing</h3>
+<ul>
+<li>Filterable data maps preserve the selected classes, property variant and visible overlays when switching among Original, 2x, 3x and 4x drawing density.</li>
+<li>Rivers, lakes and graticule controls now describe the visible high-density result instead of accidentally exposing an unrelated original PNG underneath.</li>
+<li>Visible classes can be collapsed and expanded at the author's preference. The choice is remembered locally, while the selected-class count remains visible.</li>
+<li>Continuous fields, categorical classes and boundary overlays retain their appropriate resampling rules at every supported density.</li>
+</ul>
+<h3 id="create-puts-the-answer-beside-the-ask">Create puts the answer beside the ask</h3>
+<ul>
+<li>Create collects planet type, geography, brief and detailed constraints on the authoring edge while leaving the main canvas for candidate results and comparison.</li>
+<li>Recipe, seed, Quick mode, atlas finish, lettering and sheet selection remain close to the generation actions without consuming permanent rows of the workspace.</li>
+<li>The optional setup guide is summoned when needed instead of reserving a standing band on every visit.</li>
+<li>Generation preflight asks whether the selected output fits the current disk, reports the estimated range and available space, and reserves a safety margin before a long run begins.</li>
+<li>Run advice is announced where generation starts and remains readable long enough to understand without turning the cost strip into another permanent panel.</li>
+</ul>
+<h3 id="compatibility-and-practical-limits">Compatibility and practical limits</h3>
+<ul>
+<li>Existing projects open unchanged. No migration silently re-simulates a world or rewrites authored canon.</li>
+<li>Older worlds can use newly derived views only when the required saved numerical fields exist. Atlas reports missing prerequisites rather than fabricating a map.</li>
+<li>No-label atlas output removes lettering from illustrated sheets; it is not a switch that disables world naming or lore generation.</li>
+<li>2x–4x map density and 1K–16K Render Studio output improve the drawing. Only the explicit full-simulation rebuild adds simulated cells, and it does so in a separate project because downstream details can change.</li>
+<li>Full generation and publication atlases remain demanding. Quick generation, candidate previews, selective sheets, Draft finish, deferred rendering and stop-after-current-plate remain the practical iteration tools.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data stay on the tester's machine.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

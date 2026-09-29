@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.7.2 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.7.2 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.7.2/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.7.2 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.7.2 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.7.2/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-30</p>
+      <h1>CartoVox 0.7.2</h1>
+      <p class="lede">Reliable setup guidance and clearer candidate actions</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.7.2"><div class="doc-body">
+<p>CartoVox 0.7.2 is a small interface-focused follow-up to 0.7.1. It makes the optional Create setup guide reliable in the desktop app and gives the action that commits a candidate world the visual importance its cost deserves. World generation, saved projects and simulation results are unchanged.</p>
+<h3 id="setup-guide-opens-reliably">Setup guide opens reliably</h3>
+<ul>
+<li>The Setup guide button now keeps both of the interface's hiding mechanisms in sync, preventing a timing-dependent state where the button reported that the guide was expanded while the desktop app still kept it invisible.</li>
+<li>One click now opens the actual five-step guide. Authors no longer have to discover and click a second Show guide control after summoning it.</li>
+<li>Closing and reopening the guide consistently restores the full setup sequence, while the guide's own control can still collapse it when preferred.</li>
+</ul>
+<h3 id="candidate-actions-are-easier-to-understand">Candidate actions are easier to understand</h3>
+<ul>
+<li>Preview, Compare and More now share one compact row on every candidate card.</li>
+<li>Create Quick world, Create full-resolution world or Generate publication atlas occupies a full-width second row according to the active generation settings.</li>
+<li>The creation action now uses the same gold primary treatment as Preview, making it clear that this is the consequential action that commits the selected candidate.</li>
+<li>The two-row hierarchy remains intact at compact card widths.</li>
+</ul>
+<h3 id="compatibility-and-distribution">Compatibility and distribution</h3>
+<ul>
+<li>Existing projects remain readable and are not changed by this update.</li>
+<li>This release changes interface behaviour only; it does not re-simulate worlds, redraw maps or alter authored canon.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data remain on the tester's machine.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

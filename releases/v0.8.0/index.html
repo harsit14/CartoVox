@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.8.0 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.8.0 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.8.0/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.8.0 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.8.0 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.8.0/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-09-04</p>
+      <h1>CartoVox 0.8.0</h1>
+      <p class="lede">Worlds you can shape, name and show as you mean them</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.8.0"><div class="doc-body">
+<p>CartoVox 0.8.0 is the professionalization release: a broad pass over creation, the World workspace, maps, authoring, science reporting, import and export, accessibility and reliability, followed by four days of new capability an author asked for.</p>
+<h3 id="draw-and-import-a-whole-world">Draw and import a whole world</h3>
+<ul>
+<li>The blank canvas now takes kingdoms, cities, land cover, roads, landmarks and a reference image, on a full-screen desk with an icon rail.</li>
+<li>Illustrated maps are read as their authors meant them: a hypsometric reading of painted colour, coherent land classes and surface drainage that no longer drowns or speckles a map.</li>
+<li>Importing asks whether the map is the whole planet or one region of it, with a width and centre-latitude to place it.</li>
+</ul>
+<h3 id="maps-shown-un-stretched">Maps shown un-stretched</h3>
+<ul>
+<li>Every world is presented in Equal Earth by default, with Robinson, Mollweide or the stretched grid a click away; data maps, styles, dynamic sheets and the illustrated world plate follow, and every overlay, hover reading and measurement lands on the same spot.</li>
+</ul>
+<h3 id="rivers-deserts-and-the-brief">Rivers, deserts and the brief</h3>
+<ul>
+<li>Rivers follow a continuous course: smooth through the routed cells, wandering where the physics allows, arriving at their trunk on the tangent.</li>
+<li>"Lush" now means few deserts: it weakens subtropical subsidence and strengthens inland moisture recycling instead of only raising rainfall. "Fewer deserts" in a thesis and "Avoid: deserts" reach the same lever, and county-sized desert specks fold into the steppe around them.</li>
+</ul>
+<h3 id="tongues">Tongues</h3>
+<ul>
+<li>Define a language by blending real-language flavours (French, Russian, Latin, Old English, Spanish, Cherokee, Greek, Old Norse, Arabic, Japanese), add words you like, hear names before the world exists, and give the tongue to a realm so its rivers, cities and kingdoms speak it.</li>
+<li>The Nations panel now says that it is where an author's empires go; the setup guide and command palette lead there.</li>
+</ul>
+<h3 id="polish">Polish</h3>
+<ul>
+<li>Custom theme swatches are controls with a picker; the map HUD fits two rows; atlas plate cards select as a whole; the finished-generation dock stays dismissed; a new mark opens the Library desk and watermarks empty workspaces.</li>
+</ul>
+<h3 id="compatibility">Compatibility</h3>
+<ul>
+<li>Windows builds use native peak-memory diagnostics and byte-stable build provenance, fixing test collection and frozen SBOM verification on Windows.</li>
+<li>Atlas is pre-1.0. This release changes the default presentation of every existing world and re-keys the plate cache; no migration shims are kept. Regenerate a world to pick up model changes.</li>
+<li>Generating city plans increases saved-world size and peak generation memory. This is an accepted 0.8.0 cost; the measured cohort and reviewed baseline changes are documented in <code>docs/releases/v0.8.0-validation.md</code>.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.1.5 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.1.5 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.1.5/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.1.5 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.1.5 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.1.5/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-24</p>
+      <h1>CartoVox 0.1.5</h1>
+      <p class="lede">invited technical alpha</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.1.5"><div class="doc-body">
+<h3 id="what-changed">What changed</h3>
+<h4 id="hydrology-v2">Hydrology V2</h4>
+<ul>
+<li>Terrain depressions are now inventoried with a spherical Priority-Flood hierarchy. Tiny artifacts are filled, shallow obstructions can be hydraulically breached, and substantial basins are preserved instead of treating every hollow the same way.</li>
+<li>Hillslope runoff follows a continuous D-infinity-style bearing and can split between two downslope receivers. It then converges into one directed, loop-free channel graph for rendering, measurement, export, and inspection.</li>
+<li>Rivers no longer run across lake surfaces. Incoming channels stop at the shore; each open lake has one solved outlet, while closed lakes retain water and can become fresh, saline, seasonal, or salt-pan systems.</li>
+<li>Lake levels and regimes now use explicit annual and seasonal water budgets: catchment inflow, direct precipitation, evaporation, seepage, storage, and outflow. Lake-surface rain is not double-counted as terrestrial runoff, and upstream lake outflow is propagated through downstream lake chains.</li>
+</ul>
+<h4 id="seasonal-rivers-and-physical-channel-form">Seasonal rivers and physical channel form</h4>
+<ul>
+<li>Four-season runoff now responds to rain, snow storage and degree-day melt, inherited glacier melt, soil/bedrock permeability, canopy interception, permafrost, groundwater recharge, recession, and baseflow.</li>
+<li>Channels are classified as perennial, seasonal, or ephemeral from mean, low, and peak discharge rather than drainage area alone.</li>
+<li>The directed reach graph reports Strahler order, mean/minimum/peak discharge, permanence, slope, sediment supply, bank cohesion, confinement, bankfull width and depth, floodplain width, and a physically constrained morphology: confined, wandering, meandering, braided, or rare anastomosing.</li>
+<li>Delivered river lines follow continuous flow tangents with seam-safe sub-cell curves, reducing raster right-angle elbows while keeping one canonical topology across the relief map, atlas, SVG, GeoJSON, inspector, and health report.</li>
+</ul>
+<h4 id="dashboard-inspection-and-data-exports">Dashboard, inspection, and data exports</h4>
+<ul>
+<li>New filterable dashboard views expose the 32 largest watersheds, river hierarchy, river permanence, and lake regimes. Their colour keys, river/lake overlays, full-size view, globe texture, and PNG download behave like the existing scientific maps.</li>
+<li>Cell inspection now includes watershed and depression IDs, seasonal runoff and discharge, snowpack, snowmelt, groundwater storage, substrate permeability, permafrost, river regime, stream order, channel form and dimensions, lake depth, regime, and outlet status.</li>
+<li><code>world_data.npz</code> and the scientific GeoTIFF bundle now include the Hydrology V2 fields. <code>hydrology_graph.json</code> preserves depression hierarchy, outlet-defined basins, lake water-balance nodes, and the directed reach network.</li>
+<li>GeoJSON exports now contain attributed river reaches and lake nodes. The layered SVG uses the same canonical river geometry.</li>
+<li>Simulation health now checks standing-water overlap, branch and reach cycles, watershed coverage, lake outlet topology, lake mass conservation, raster hairpins, and delivered sub-cell right-angle turns.</li>
+</ul>
+<h4 id="presets-and-controls">Presets and controls</h4>
+<ul>
+<li>Advanced Settings exposes documented controls for depression conditioning, infiltration, groundwater, snowmelt, river thresholds and permanence, sediment, cohesion, floodplains, meandering, braiding, evaporation, seepage, and lake seasonality.</li>
+<li>Pangaea, archipelago, inland-sea, twin-hemisphere, ice-age, and tropical presets now carry distinct hydrologic behavior instead of changing only terrain and climate.</li>
+<li>The built-in manual and README explain the new maps, inspector fields, author controls, exports, and the model's remaining regional-scale limits.</li>
+</ul>
+<h3 id="compatibility">Compatibility</h3>
+<p>Existing worlds remain readable and keep their original static products. Re-simulate an older world to create Hydrology V2 basin IDs, lake nodes, seasonal discharge, channel morphology, graph exports, and dashboard filters. The legacy Hydrology V1 code path remains available for exact old-model experimentation through Advanced Settings.</p>
+<h3 id="technical-verification">Technical verification</h3>
+<ul>
+<li>The release includes synthetic crater, depression, lake-chain, seasonal snowmelt, channel-DAG, geometry, dashboard, inspector, scientific export, and simulation-health regression coverage.</li>
+<li>The tagged workflow validates the application version, runs the complete test suite on macOS Apple Silicon, macOS Intel, and Windows, builds all installers, and publishes a SHA-256 manifest.</li>
+</ul>
+<h3 id="invited-alpha-access">Invited alpha access</h3>
+<p>This prerelease remains limited to invited testers with an CartoVox beta key. Verification is offline; no account, telemetry, hardware fingerprint, or activation server is used.</p>
+<p><strong>Full generation is intentionally heavy and may take longer than expected.</strong> On current high-end test machines, a Full world with its atlas takes about <strong>20–25 minutes on macOS</strong> and <strong>50–55 minutes on Windows</strong>. Hardware, world settings, and atlas size can change that time. Use Preview or Quick while exploring settings and keep CartoVox open until the progress log reports completion.</p>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

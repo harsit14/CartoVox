@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.9.1 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.9.1 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.9.1/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.9.1 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.9.1 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.9.1/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-09-21</p>
+      <h1>CartoVox 0.9.1</h1>
+      <p class="lede">The workflows meet</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.9.1"><div class="doc-body">
+<p>0.9.1 is the integration release after the v0.9 interface overhaul. It does not add another collection of disconnected tools. It makes the paths already on the new survey sheet agree about what they will do, show their progress in the same places, and lead to a result an author can use.</p>
+<h3 id="a-described-region-now-has-one-meaning">A described region now has one meaning</h3>
+<ul>
+<li><strong>Planning, preview, review and execution now use the same terrain operations.</strong> A brief for volcanic ground, highlands, a drowned region or a cave landscape no longer looks free in review and then begins a broad rebuild after Apply. The measured cells, affected systems and cost class come from the operations that execution will actually run.</li>
+<li><strong>Lore-only descriptions stay immediate.</strong> Naming and describing a place without asking CartoVox to alter the ground does not acquire a simulation cost merely because terrain words exist elsewhere in the feature.</li>
+<li><strong>Unknown edit buckets fail closed.</strong> A future edit type cannot quietly appear as zero work simply because the planner has not learned it yet.</li>
+<li><strong>The affected footprint is shared too.</strong> Preservation masks and local regeneration records now describe the same cells shown before Apply.</li>
+</ul>
+<h3 id="one-progress-handoff-for-an-example-world">One progress handoff for an example world</h3>
+<ul>
+<li><strong>Starting the example enters the normal generation runner immediately.</strong> Progress, elapsed time and the current stage appear in the same generation dock used by an ordinary build.</li>
+<li><strong>Cancel, failure and retry are visible where the work is happening.</strong> The example button is no longer the only sign that a several-minute task is running.</li>
+<li><strong>Reloading or navigating does not lose ownership of the job.</strong> A restored session reconnects to the active build, and a completed example opens as a real saved world.</li>
+</ul>
+<h3 id="pdf-export-has-a-setup-not-a-guess">PDF export has a setup, not a guess</h3>
+<ul>
+<li><strong>Quick PDF remains one action.</strong> It produces the familiar A4 atlas without making a routine export slower.</li>
+<li><strong>Planned PDF exposes the choices the exporter already supported:</strong> PDF or ZIP delivery, A4 or A3 paper, lettering, which sheets are included, the expected page count and effective drawing density.</li>
+<li><strong>Limitations are shown before the expensive work starts.</strong> The setup uses the real atlas plan rather than estimating again in the browser.</li>
+<li><strong>Progress ends at the named file.</strong> A successful export presents the generated download instead of leaving the author to infer whether anything happened.</li>
+</ul>
+<h3 id="the-writing-and-scene-workspaces-keep-the-room-they-are-given">The writing and scene workspaces keep the room they are given</h3>
+<ul>
+<li><strong>Hiding chapters on a compact screen now gives the height back to the manuscript.</strong> The editor no longer remains trapped in the short first row while an empty second row occupies most of the viewport.</li>
+<li><strong>The live writing state survives the layout change.</strong> Caret, save status, panel controls and focus behavior remain available when chapters are collapsed or restored.</li>
+<li><strong>Nested controls use the surface they are actually on.</strong> Light sheets and fixed-dark map instruments now provide their own field text, selection, disabled and focus colors, fixing pale text on a pale control without flattening the intended dark instruments.</li>
+<li><strong>Scene Studio joins the saved appearance system.</strong> Theme, text scale and density apply before first paint, and the canvas and inspector arrive ahead of infrequent linking and backup details. Existing scene files, world links, hierarchy, keyboard history and backup behavior remain in place.</li>
+<li><strong>Reading-ease bands render as prose again.</strong> Manuscript insight labels no longer expose escaped markup as part of the score.</li>
+</ul>
+<h3 id="release-evidence-belongs-to-the-exact-candidate">Release evidence belongs to the exact candidate</h3>
+<ul>
+<li><strong>Full source and browser reports record their commit, Git tree and clean or dirty state.</strong> A passing report from a different checkout cannot certify a later build.</li>
+<li><strong>Native verification writes a machine-readable report beside each installer.</strong> It records the artifact size and SHA-256, the host that ran the checks, the install/start/uninstall commands, and the build record read back from the installed payload.</li>
+<li><strong>Build records now include the Git tree as well as the commit.</strong> The Linux compatibility build carries this identity into its container instead of depending on Git being installed there.</li>
+<li><strong>Local staging carries verification evidence with the artifact.</strong> Replacing an installer cannot leave an older passing report attached to new bytes.</li>
+<li><strong><code>release.py certify</code> accounts for every mandatory proof.</strong> It requires the exact version, clean synchronized source, annotated tag, full source and browser runs, production-resolution science review, recovery and upgrade review, destination interoperability, distribution decisions, dependency inputs and all four verified artifacts. A partial run says it is partial.</li>
+<li><strong>Publication fails while that certificate is incomplete.</strong> Existing v0.9 packages and reports remain historical evidence; they are not silently reused for 0.9.1.</li>
+<li><strong>Destination proof opens the files it certifies.</strong> The release gate retains hashed PDF, writing, vault, map, mesh, tabletop and project/scene archive samples, then parses or re-imports each one on the exact candidate. A list of export tests alone cannot stand in for files that another tool can read.</li>
+</ul>
+<h3 id="compatibility-and-boundaries">Compatibility and boundaries</h3>
+<ul>
+<li>Existing worlds, manuscripts and scenes keep their current file formats; this release changes workflow integration and release proof rather than forcing a project migration.</li>
+<li>Production science now has a fixed 1440×720 candidate gate with exact numerical-library versions, saved-field hashes, invariant results, runtime and memory. The current run restores Hack's exponent to its production-scale reference band while retaining the known branching and uphill-reach warnings. Linux now uses pywebview's supported PySide6 backend under the LGPL option, retains the binding's licence metadata, and verifies that the shared Qt libraries remain replaceable. Native Windows and both Linux artifacts still require their exact-candidate platform verification reports.</li>
+<li>Installers remain local release artifacts for the controlled beta. Source, tag and release notes have their own publication boundary.</li>
+</ul>
+<h3 id="tester-fixes-collected-before-release">Tester fixes collected before release</h3>
+<ul>
+<li>Windows map cell inspection waits through a short, bounded replacement window when a saved-world read overlaps an edit. Only the known revision race is retried; malformed coordinates and unrelated failures return immediately. This addresses a v0.9.0 Windows report and still needs a native Windows installer check.</li>
+<li>Select feature now owns its map press rather than panning the map. It inspects an existing feature; Build, Carve and Refine tools place terrain strokes. Dragging while selecting does not place a feature accidentally.</li>
+<li>Sculpt controls can be minimized while a tool stays active, exposing the polar caps beneath the panel. Pending terrain and change rasters use the chosen projection, including the two-hemisphere disk, and selection highlights follow it too. Changing projection discards an old preview and requests a fresh one without moving the authored coordinates.</li>
+<li>Cmd/Ctrl+Z and Shift+Cmd/Ctrl+Z undo and redo pending Sculpt edits while Sculpt is active and no text field has focus. A painted stroke is one undo step even if it placed several stamps.</li>
+<li>Linux packages include the exact reviewed LGPL 3.0 and GPL 3.0 texts, verify those bytes in frozen and installed payloads, and clear the compatibility build environment before resolving pinned dependencies. A shell quoting regression is covered by a focused build-script check.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

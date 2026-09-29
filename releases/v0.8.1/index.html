@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.8.1 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.8.1 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.8.1/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.8.1 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.8.1 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.8.1/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-09-08</p>
+      <h1>CartoVox 0.8.1</h1>
+      <p class="lede">Build, draw, explore and write inside one world</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.8.1"><div class="doc-body">
+<p>Version 0.8.1 brings together every CartoVox change implemented after 0.8.0. It expands mapmaking and writing tools, adds new ways to explore and revise a saved world, and improves generation, scientific validation and desktop reliability.</p>
+<h3 id="geological-survey-map">Geological survey map</h3>
+<ul>
+<li>Terrain &amp; geology adds a Geological survey view with muted bedrock colors, unit contact lines, letter codes, and independently filterable saved tectonic boundaries. It supports the existing projection, drawing-density, inspector, and PNG download controls.</li>
+<li>The reading key explains the eight broad parent-material provinces and distinguishes modelled tectonic traces from surveyed faults or dated formations. Existing worlds with saved bedrock data work immediately; structural traces are omitted when tectonic data is absent.</li>
+</ul>
+<h3 id="render-studio-recipes-layers-and-appearance">Render Studio: recipes, layers and appearance</h3>
+<ul>
+<li>Render Studio adds eight map recipes: Physical atlas, Pastel kingdoms, Banded heightmap, Biome atlas, Antique parchment, Survey blueprint, Print outline and Pure landmass. Save named recipes on this device or share them as Atlas recipe JSON files.</li>
+<li>Reorder composition layers and adjust their opacity, color, line width and size. Labels, compass and scale text support adjustable halos. New export layers add realm colors, land-elevation contours, settlement symbols, a compass rose, an equatorial scale bar and vignette.</li>
+<li>Choose ocean depth bands, contour and coordinate spacing, settlement density, scale units, and grayscale or sepia output. Pastel fantasy, Old paper and Blueprint are also available as shared Map Library palettes. These controls change presentation without re-simulating the saved world.</li>
+<li>Transparent composition exports now retain alpha, and overlapping translucent layers composite correctly. Render manifests retain the selected appearance and resolved palette for reproducibility. Atlas recipe files do not import Azgaar .map worlds or Azgaar style JSON.</li>
+<li>Creating another Render Studio bundle now keeps every composition as a separate saved render, including repeated renders at the same style and resolution. Existing bundles remain viewable and downloadable.</li>
+<li>Concurrent editing-background and composition previews return independent images instead of sharing a preview file.</li>
+<li>Named recipes and each world's last composition keep every embedded stamp once, shared by content, within a stated browser-storage budget. Older last-compositions are dropped first when the budget is exceeded, and a save that cannot fit is refused with the reason instead of failing silently. A layer color override on Stamps and shapes now says that it flattens imported art into silhouettes.</li>
+</ul>
+<h3 id="render-studio-illustrated-terrain-art">Render Studio: illustrated terrain art</h3>
+<ul>
+<li>A new Illustrated realm recipe paints the saved world like a storybook map: watercolour land cover with dark forest floors, olive uplands, snow above each biome's snowline, wet banks and a luminous shoreline; original hand-drawn mountain and hill glyphs placed by saved relief with snow caps, ink creases and hatching; conifer, broadleaf and tropical tree stamps placed by saved canopy and biome; and soft mist over the highest ground. Terrain, canopy and biomes are read, never changed.</li>
+<li>Volcanoes with glowing craters, lava streaks and smoke plumes stand on saved arc and subduction seams, hotspot provinces and the Firelands and Ashlands; dead trees stand on ash, blight, dry country and the treeline; reed tufts fill open wetlands. Ice caps and sea ice crack into floes, salt pans crack, deserts ripple with dunes, grasslands streak, reef shallows show pale turquoise and volcanic ground is dusted with ash.</li>
+<li>Painted land cover, Mountains, hills and volcanoes, Forests and Mountain mist are separate export layers that can be added to any composition and reordered like the others. Mountain and forest layers have Size and Density style controls, saved with recipes.</li>
+<li>The new Illustrated palette pairs sapphire deeps with luminous cyan shallows and gives Render Studio lakes and rivers the same cyan; it is also available in Map colors. Decorative detail now grains the ocean as well as the land.</li>
+<li>Glyphs are placed at sheet fractions from the world's own seed, so a 1K preview carries the same forests and ranges as the 16K export and every tile agrees with its neighbours. Sea ice is painted where the saved annual ice cover is dense.</li>
+</ul>
+<h3 id="render-studio-titles-captions-and-place-labels">Render Studio: titles, captions and place labels</h3>
+<ul>
+<li>Add positioned map titles and captions in Render Studio. Edit text, size and percentage positions, or click a preview to place a caption, compass or scale bar. Captions are included in saved recipes and render manifests.</li>
+<li>Choose serif, italic or display lettering and circle, square, diamond, triangle or star markers. Add saved roads, sea lanes and landmark symbols as separate export layers, with missing-data warnings. Line coordinates are quantized before tiling to prevent join shifts.</li>
+<li>Captions can now rotate, curve upward or downward, use individual typefaces and letter spacing, or follow a copied drawing path. Reverse, reposition or detach the copied path without changing its source artwork. Caption edits have session undo/redo, and render plans report when lettering shrinks to fit a path.</li>
+<li>Render bundles include captions.svg with editable caption lettering alongside the PNG layer. Caption shapes and paths survive recipe export, import and reload. The SVG references font names; PNG layers preserve the exact rendered appearance.</li>
+<li>Render Studio now supports individual place-label editing: search saved names, change display text, choose typography and size, hide a name, or position its text using percentages or a preview click. Reset restores automatic lettering. Edits travel with recipes and render manifests without changing settlement positions or canonical names, and mismatched world/place identities are reported and ignored.</li>
+</ul>
+<h3 id="render-studio-stamps-drawings-artwork-and-scenes">Render Studio: stamps, drawings, artwork and scenes</h3>
+<ul>
+<li>Render Studio adds an interactive Stamps and shapes canvas with twelve original vector symbols. Place and drag artwork, adjust rotation, size, stretch, colors and opacity, then duplicate, hide, lock or reorder objects. Undo/redo covers the last 40 object edits.</li>
+<li>Saved recipes now preserve up to 200 decoration objects. Render bundles include an editable objects.svg decoration layer as well as the composited PNG layer. This artwork does not modify simulated terrain or settlement data.</li>
+<li>Import custom PNG/JPEG/WebP stamps into Render Studio, organize them by name, pack and tags, and share Atlas art packs. Recipes embed the bounded PNG assets so artwork survives moving between computers.</li>
+<li>Draw freeform paths, polygons and brush strokes; edit points, apply solid/dashed/dotted lines, texture artwork and add configurable shadows. Multi-selection supports flat groups, shared dragging, duplication, stacking, scale and rotation, with snapping and canvas zoom.</li>
+<li>Draw smooth Bézier paths and polygons, or smooth an existing drawing. Edit anchors and independent curve handles, split segments without changing their shape, remove anchors, or straighten a drawing, with undo/redo and lock protection.</li>
+<li>Curved artwork retains textures, masks, shadows, transforms and line styles. Recipes preserve handles, objects.svg exports native cubic paths, and tiled PNG rendering preserves joins. Captions can follow a sampled copy of the curve.</li>
+<li>Paint soft colored strokes and round dabs in Render Studio. Artwork supports soft edges and Normal, Multiply or Screen blending, including imported stamps and textured drawings.</li>
+<li>Erase earlier artwork with editable eraser objects, or paint erase/restore masks on a selected stamp. Masks follow transforms and preserve source transparency. Clear, undo, duplicate, hide or reorder edits without changing the underlying map.</li>
+<li>Painting effects persist in compositions, recipes, render manifests and editable objects.svg. PNG masks preserve tiled joins; SVG feathering uses vector bands. Blending and erasing stay within the Stamps and shapes layer.</li>
+<li>The decoration canvas works from the keyboard: arrow keys nudge the selection (Shift for larger steps), Delete removes it, Enter finishes a drawing, Backspace drops its last point and Escape cancels a drawing or mask stroke.</li>
+<li>Create editable keep-interior, woodland-encounter and village-square layouts on scene paper. Choose square/hex encounter grids, colors, spacing and author units. An independent grid layer stays visible above filled floors. Scene output preserves its drawing scale and omits geographic world files.</li>
+</ul>
+<h3 id="map-colors-and-dock">Map colors and dock</h3>
+<ul>
+<li>A compact map dock groups appearance settings under View and secondary actions under Tools. The reading key, hover reading and coordinates stack without covering each other; narrow screens place the dock below the map.</li>
+<li>An open View or Tools menu rises above the map library and other right-edge panels, so its controls can be read and clicked while a panel is open.</li>
+<li>Physical relief now opens with a Natural palette: sage lowlands, sandstone uplands and deep teal water, with softer coastlines, light from two directions and subtle terrain-derived texture.</li>
+<li>Choose Natural, Verdant, Parchment, Dusk, Tropical, Ember, Aurora or Classic from View → Map colors. The choice stays with each world, and live map class swatches and continuous scales follow the selected colors without changing scientific values or classifications.</li>
+<li>Three vibrant palettes add saturated terrain and water: Tropical brings emerald and turquoise, Ember pairs golden and copper land with sapphire seas, and Aurora combines jade lowlands, violet ridges and electric blue water. Their class colors and continuous scales also use richer saturation.</li>
+<li>World cards, relief redraws, globe textures, projection PNG exports and new Render Studio compositions use the saved appearance. Existing illustrated styles and archived generation products keep their own drawing styles.</li>
+<li>Existing worlds with saved numerical fields can use the new appearance immediately; no re-simulation is needed.</li>
+</ul>
+<h3 id="ocean-currents-and-sea-surface-temperatures">Ocean currents and sea-surface temperatures</h3>
+<ul>
+<li>Fix an unstable circulation solve that amplified grid noise into tangled arrows, spurious small gyres and weak apparent wind response. Numerical relaxation and drift scaling are now internal solver constants; the two old settings are removed and reported as unused when loading older configurations.</li>
+<li>Balance the basin-circulation and direct wind-drift terms so gyres retain their return flow and unobstructed circumpolar channels carry wind-driven currents. Currents represent the annual wind response.</li>
+<li>Keep SST transport and mixing over water, preserve the reference climate when currents are absent, and stop stretching tiny temperature residuals into multi-degree anomalies. The final current-induced anomaly retains a zero ocean mean at each latitude.</li>
+<li>Current streamlines now account for longitude spacing with latitude and stop at land.</li>
+<li>Full-world calibration now measures ocean temperature, current speed, adjacent opposing currents, SST anomaly magnitude and zonal bias alongside the existing climate and biome metrics.</li>
+<li>Existing worlds need regeneration or re-simulation to update their saved currents, temperatures and dependent climate fields. Re-rendering a saved map alone only updates arrow presentation.</li>
+</ul>
+<h3 id="weather-year-and-journey-weather">Weather Year and journey weather</h3>
+<ul>
+<li>Weather Year turns the saved seasonal climate into an animated year with selectable frame counts. A radar view follows precipitation and seeded storm systems while preserving the world's solved seasons.</li>
+<li>Adjust storm frequency, intensity and variability with a reproducible seed. Save the result as a named weather sheet that the Weather and Travel panels can share without changing the simulation.</li>
+<li>Route weather now follows a journey from its selected departure day through its wind-adjusted arrival. Saved campaign journeys retain their forecast and timing, and changing the Weather Year frame count keeps the active seed and storm controls.</li>
+</ul>
+<h3 id="3d-terrain-explorer">3D terrain explorer</h3>
+<ul>
+<li>Open a completed world and choose 3D terrain in the World map toolbar. Choose a smooth rectangular landscape, a spherical relief planet, or a refined voxel model.</li>
+<li>Natural terrain colors, continuous slopes, coastal water depth, soft shadows, adjustable sun direction and surface finish make the terrain easier to read. Planets have an optional atmospheric rim. Voxels have fine 100 m terraces, relief smoothing and subtle optional block edges.</li>
+<li>Orbit either hemisphere, pan landscapes, zoom, and switch perspective, orthographic, top/north-pole or low-angle cameras. Inspect terrain for coordinates, elevation, biome, climate and water readings using mouse, keyboard or touch.</li>
+<li>Explore selected regions at four spans, including across the date line. Planet selections open as regional landscapes; returning to planet loads the whole globe. Landscapes, planets and voxels all offer 384, 512, 768, 1,024, 1,536 and 2,048 detail presets, and switching views preserves the selected detail. Indexed voxel faces and compact normals and colors halve large voxel buffer memory. The default stays at 256. Loaded dimensions and native-resolution limits appear beside the detail control, and a 2.1 million sample cap bounds large views.</li>
+<li>Keep biome, elevation, realm and climate colors alongside natural terrain. Adjust vertical relief, smoothing, seafloor relief, water opacity, rivers and lakes. Save any camera view as a PNG. Land above sea level is never drawn below the water surface, so low coasts read as low ground rather than seabed.</li>
+<li>Terrain samples arrive as one packed binary body instead of JSON text: the largest sample is about 40 MB rather than 149 MB, and the server no longer spends seconds serialising it. The detail control states the approximate memory each preset needs.</li>
+<li>Rendering is local and read-only. A background worker builds the meshes and keeps the loaded sample between builds, so relief and smoothing changes no longer copy the whole sample again; closing the viewer releases scene resources and cancels pending work. Reload recovers graphics context loss. Display detail cannot exceed the saved simulation resolution, and lower detail can omit small features. Requires WebGL and current saved terrain fields.</li>
+</ul>
+<h3 id="map-measurement">Map measurement</h3>
+<ul>
+<li>Finish path locks a route at its current points, so two or more points can be measured without closing a shape. Enter also finishes; Undo reopens the route.</li>
+<li>Every leg shows its distance on the map beside the route.</li>
+<li>The reading key and hover reading step aside while measuring, so the measurement readout no longer overlaps them.</li>
+</ul>
+<h3 id="manuscript-writing-desk">Manuscript writing desk</h3>
+<ul>
+<li>Design a complete cover with any saved map, plate or city plan, a custom title, author, subtitle, colors, image fit, shading and text position. Read fits the whole cover on entry, including smaller screens. Edit cover returns directly to its settings.</li>
+<li>Choose a book cover or its map to represent the world in Library cards and the world-switcher menu; the default relief remains available.</li>
+<li>Place individual paragraphs left, center, right or justified, indent blocks and insert explicit page breaks. These choices survive Markdown editing, reader layout and Word export.</li>
+<li>Insert maps with a caption, width and alignment; edit the caption directly from the map. Add web/email links or vault links with separate visible text and destination fields.</li>
+<li>Customize header and footer text, placement and the first chapter page number. The reader previews the furniture; PDF and Word assign page numbers and leave the cover unnumbered. Word exports embed maps at page resolution (no larger than 2,400 pixels on their long side), retain captions and keep web links clickable.</li>
+<li>Plan chapters beside the prose with a synopsis, point of view, setting, labels, private notes, word targets and a named-scene navigator. Chapter cards show status, progress and labels; an icon-only rail control hides the outline.</li>
+<li>Search prose and planning notes across the whole book, replace exact text in the open chapter, duplicate a chapter and track words added in the current session.</li>
+<li>Import a PDF, docx, RTF, OPML, Markdown or plain-text book directly into the current manuscript. Atlas creates the book when needed, detects common chapter, prologue, epilogue and heading boundaries, creates the ordered chapters together and preserves the original upload for recovery.</li>
+<li>Open Style from the manuscript toolbar to change editor zoom, text width and typography, or choose the page size, margins, running furniture and chapter numbering used by Read and Word export.</li>
+<li>Chapter changes and exports wait for the latest writing to save. Failed prose or planning saves keep the chapter open; newer browser drafts survive an earlier save completing.</li>
+<li>Read the whole book as continuous chapters and print through the browser's page layout, so long paragraphs flow across pages. Page size, margins, chapter numbering and typography remain available; supported browsers print the selected running headers and page numbers. Word export now honors font, line spacing and chapter-header choices.</li>
+<li>Manuscript imports keep the original upload and one editable chapter set. Existing Codex articles remain untouched, and ambiguous title-cased lines stay in the prose.</li>
+<li>Checks focus on broken links and unavailable map references, with word-target progress alongside them; new characters and ordinary capitalized words are no longer flagged as unknown names.</li>
+<li>Restore books and chapters from the manuscript Trash panel. Atlas keeps the prose, planning card, order and chapter history together and never empties manuscript trash automatically.</li>
+<li>Search world pages beside the text, read them without leaving the draft and insert a selected page as a portable <code>[[wiki link]]</code> at the caret.</li>
+</ul>
+<h3 id="writer-s-gazetteer">Writer's gazetteer</h3>
+<ul>
+<li>Search every named settlement, realm, culture, tongue, continent, natural region, mountain range, desert, biome, river, lake, sea and place of power in a saved world.</li>
+<li>Open a dossier that gathers location, nature, seasons, people, routes, name roots and story material, while distinguishing measured, generated, canonical and suggested details. Gazetteer reading is local and read-only.</li>
+<li>Open the same dossiers from the Manuscript World panel, Codex wiki links and named features in the cell inspector. Insert a link into the draft, pin a dossier to private notes, copy it, locate it on the map or begin writing with it.</li>
+</ul>
+<h3 id="import-questions-world-placement-and-reseeding">Import questions, world placement and reseeding</h3>
+<ul>
+<li>Imported and traced maps now ask only the questions that the image cannot answer before generation. The neutral choices preserve the detected map; optional answers steer relief, peaks, terrain character, sea depth, wetness, warmth and other applicable world settings.</li>
+<li>Resize an imported or traced map to 5–90% of the world's width, preview planetary land coverage, and choose generated surroundings or ocean only. Drawing annotations follow the resized source.</li>
+<li>Reseed a completed world beside its source with a new seed and choose Everything, World or Story scope. Imported and drawn foundations carry forward when they can be reproduced, lineage is recorded, and Atlas explains when sculpt, feature or deep-time edits cannot be preserved safely.</li>
+</ul>
+<h3 id="coastline-detection-and-assisted-tracing">Coastline detection and assisted tracing</h3>
+<ul>
+<li>Import and Draw now share the same coastline reader. Fixed pale-blue oceans reading as all land, dark continents with lakes being mistaken for line drawings, sepia maps losing their land, and lake marks turning the outside ocean into land.</li>
+<li>Paint land or water directly on either detection preview. Protect finished regions, undo corrections, and retain edits through another detection pass.</li>
+<li>Import traces use the detailed working mask, with selectable smoothing, a minimum island area and a report of removed outlines. Large archipelagos can exceed the former 240-outline limit.</li>
+<li>Magnetic tracing follows nearby image edges between anchors in the import editor and Draw's Outline tool. Manual tracing remains available.</li>
+<li>Auto-detected mask polarity is retained when a confirmed import is prepared for generation.</li>
+<li>The coastline review keeps confirmation and Generate world in a visible action bar above the optional questions, with a separate route to change generation settings.</li>
+<li>Coastline-only drawings generate terrain relief by default, with a separate Keep my elevations option. Regional world completion now matches terrain across an exterior transition instead of making a hard rectangular join.</li>
+<li>Resize an imported or traced map to 5–90% of the world's width, preview its planetary land coverage, and choose generated surroundings or ocean only. Saved recipes retain these choices, and drawing annotations follow the resized map.</li>
+</ul>
+<h3 id="automatic-coastlines-in-draw-your-world">Automatic coastlines in Draw your world</h3>
+<ul>
+<li>Loading a reference image now previews detected land boundaries and islands. Apply the coastline as one undoable change, then continue sculpting and tracing.</li>
+<li>Choose colour-map, line-drawing, light/dark-mask or transparency readings. Adjust cleanup and mark land or water to correct ambiguous map colours, labels and borders.</li>
+<li>Detection runs locally, preserves existing elevations on detected land and supports archipelagos without the hand-drawn outline count limit. Very small features remain limited by image and canvas resolution.</li>
+</ul>
+<h3 id="editable-geography-and-safer-canvas-tools">Editable geography and safer canvas tools</h3>
+<ul>
+<li>Auto Trace converts a reference into editable coastline geometry. Select and refine trace points, and move saved mountain ranges, rivers and land-cover regions without rebuilding the drawing from scratch.</li>
+<li>Selection, deletion, undo and redo now work consistently across tracing and drawing tools. Pan temporarily pauses an active draft, and destructive clear or delete actions require confirmation.</li>
+</ul>
+<h3 id="release-notes-inside-cartovox">Release notes inside CartoVox</h3>
+<ul>
+<li>Browse previous and current release notes in App settings → Release notes, with a version selector and Older / Newer navigation.</li>
+<li>Read bundled history offline. Check for newer notes to fetch future published releases from the release feed, and keep those notes available offline too.</li>
+<li>See which notes describe the running version, an older version, a newer published version, or upcoming work.</li>
+</ul>
+<h3 id="reliability-and-windows-generation-follow-up">Reliability and Windows generation follow-up</h3>
+<ul>
+<li>The desktop shell keeps its native window responsive while simulation and rendering run in the worker process. Startup recovery can reload the local Studio instead of leaving a stranded window.</li>
+<li>Authoring saves wait for the newest draft, surface failures without discarding the open work, and keep completion links tied to the operation that created them. Saved render registration and repeated composition handling are also more reliable.</li>
+<li>Story checks now retain their scope and provenance, scaled maps preserve river geography, active rivers are checked against the saved conditioned surface, and water and tide readings are reported only where they apply.</li>
+<li>Re-simulation honors the saved story seed and painted climate strength. Reseeding carries the latest effective simulation settings and preserves imported foundations when their original image is missing. Worlds with sculpt or feature edits receive an explanation instead of silently losing those edits during reseeding.</li>
+<li>Journey weather follows the actual wind-adjusted trip through arrival. Pending or failed weather requests cannot reuse an older departure's weather when saving a campaign journey. Routes longer than the 400-day planning window remain usable and explain why forecast detail is unavailable. Changing Weather Year's frame count preserves the current seed and storm controls.</li>
+<li>Manuscript map/link removal confirmations remain reachable above the editing UI, cancellation restores the panel, and removing a link keeps its visible words with Undo support.</li>
+<li>Right-click paste works in supported editors after a beta key is configured, and advanced settings can list the named Render Studio recipes saved in the browser.</li>
+<li>Windows generation uses bounded NumPy buffer reuse inside the actual simulation/render worker, with matching local-build packaging and a reproducible Windows comparison tool. Solver settings are unchanged. On one tested Windows machine, Quick generation used 56% less time and Full generation with one world plate used 40% less time; compared arrays and rendered pixels matched. Full runs used the same memory-adjusted atlas quality in every mode.</li>
+</ul>
+<h3 id="portable-generation-and-saved-cell-performance">Portable generation and saved-cell performance</h3>
+<ul>
+<li>Generation reuses identical hydrology topology, fixed climate forcing and style geometry while preserving simulation resolution, solver budgets, precision, seasonal calculations and all rendered styles. Naming retains the same alternatives and conflict scores while rejecting impossible matches earlier.</li>
+<li>Cell inspection reuses small exact data tiles, with content checks before and after reading to detect edits even when timestamps are preserved. Cached tiles are bounded in memory; names and other report metadata remain freshly read.</li>
+<li>A portable comparison mode measures previous/current generation with the same platform allocator and checks saved arrays and rendered pixels across seeds and repeated runs.</li>
+<li>In the reviewed six-world macOS calibration, median build time fell from about 17 seconds to about 13 seconds and median peak memory fell from about 1,022 MB to about 704 MB against the 0.8.0 baseline. Canonical output and scientific metrics remained within their reviewed bounds.</li>
+</ul>
+<h3 id="engineering-and-release-verification">Engineering and release verification</h3>
+<ul>
+<li>Shared saved-world fixtures, provenance helpers and build reporters replace duplicate test and release code. Obsolete redesign prototypes and superseded helpers have been removed while behavioral coverage remains in place.</li>
+<li>Desktop packaging now includes the current runtime dependencies, frozen-source provenance and SBOM checks, and the native Windows allocation helper used by the measured generation path.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

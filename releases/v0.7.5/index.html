@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.7.5 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.7.5 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.7.5/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.7.5 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.7.5 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.7.5/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-30</p>
+      <h1>CartoVox 0.7.5</h1>
+      <p class="lede">Reliable installed setup guide and detailed rivers</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.7.5"><div class="doc-body">
+<p>CartoVox 0.7.5 corrects two release-blocking differences between the development dashboard and installed applications. High-detail physical maps now retain their river networks, and packaged apps now include the analysis inputs required by the Create setup guide and Settings help.</p>
+<h3 id="installed-guidance-works-like-the-development-dashboard">Installed guidance works like the development dashboard</h3>
+<ul>
+<li>macOS, Windows and Linux bundles now include the readable Atlas modules used to explain which simulation systems each setting affects.</li>
+<li>The build verifies those packaged analysis inputs byte-for-byte before creating an installer.</li>
+<li>The packaged-app smoke test exercises the authenticated setup-guide endpoint, so an installer cannot pass merely because its static HTML loads.</li>
+<li>Setup-guide loading, failure and retry states remain visible instead of making the button appear unresponsive.</li>
+</ul>
+<h3 id="rivers-survive-high-detail-redraws">Rivers survive high-detail redraws</h3>
+<ul>
+<li>Physical relief and biome maps restore the persisted river network at 2x, 3x and 4x map detail.</li>
+<li>River coordinates, hierarchy and discharge information remain aligned with the enlarged terrain drawing.</li>
+<li>Existing riverless high-detail caches are invalidated automatically and rebuilt when opened.</li>
+<li>Hydrology-graph changes invalidate affected relief and biome drawings instead of leaving stale cached results.</li>
+</ul>
+<h3 id="additional-reliability">Additional reliability</h3>
+<ul>
+<li>Map inspection accepts the current packaged response format and is protected by a browser-to-desktop schema regression check.</li>
+<li>Existing worlds and simulation results remain unchanged; only derived display drawings are rebuilt as needed.</li>
+</ul>
+<h3 id="compatibility-and-distribution">Compatibility and distribution</h3>
+<ul>
+<li>Existing projects remain readable and are not re-simulated by this update.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. Worlds, maps, settings, reports, textures and author data remain on the tester's machine.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

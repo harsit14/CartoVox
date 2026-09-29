@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Render every release note into releases/index.html.
+"""Render a compact release index and one page per release.
 
-    python3 tools/build-releases.py <app-repo>/.github/release-notes
+    python3 tools/build-releases.py <app-repo>/.github/release-notes --through 0.9.4
 
 Each note is a text file: a title line, then Markdown. The rendering keeps the
 notes whole except for two things. The application was called Atlas Studio
@@ -102,10 +102,12 @@ def version_key(name: str) -> tuple:
     return tuple(int(part) for part in name.split("."))
 
 
-def load(notes_dir: Path) -> list[dict]:
+def load(notes_dir: Path, through: str | None = None) -> list[dict]:
     releases = []
     for path in notes_dir.glob("v*.txt"):
         version = path.stem[1:]
+        if through and version_key(version) > version_key(through):
+            continue
         text = path.read_text(encoding="utf-8")
         title, _, body = text.partition("\n")
         for pattern, replacement in RENAMES:
@@ -126,7 +128,7 @@ def load(notes_dir: Path) -> list[dict]:
                          "body": clean(body, rename_app=written_under_old_name), "released": True})
     releases.sort(key=lambda r: version_key(r["version"]), reverse=True)
     upcoming = notes_dir / "unreleased.txt"
-    if upcoming.exists():
+    if upcoming.exists() and not through:
         text = upcoming.read_text(encoding="utf-8")
         title, _, body = text.partition("\n")
         if not re.search(r"^(## |- )", body, re.MULTILINE):
@@ -137,19 +139,25 @@ def load(notes_dir: Path) -> list[dict]:
     return releases
 
 
+HIGHLIGHTS = {
+    "0.9.4": "Shape a world while it builds, explore deposits and species, bring in hand-drawn maps, and refine a region with more detail.",
+    "0.9.3": "A world with history: realm relations, campaign player views, new projections, scenes and writing tools.",
+    "0.9.2": "The first Delta build adds access codes, live sculpting, deeper authoring and clearer world reports.",
+}
+
 PAGE = """<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Release notes — CartoVox</title>
-  <meta name="description" content="Every CartoVox release, from the first invited alpha to the current Delta programme: what changed, what it costs, and what stayed compatible.">
-  <link rel="canonical" href="https://cartovox.org/releases/">
+  <title>{page_title}</title>
+  <meta name="description" content="{page_description}">
+  <link rel="canonical" href="{canonical}">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CartoVox release notes">
-  <meta property="og:description" content="Every CartoVox release and what changed in it.">
-  <meta property="og:url" content="https://cartovox.org/releases/">
+  <meta property="og:title" content="{page_title}">
+  <meta property="og:description" content="{page_description}">
+  <meta property="og:url" content="{canonical}">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
@@ -176,18 +184,19 @@ PAGE = """<!doctype html>
   </div>
 </header>
 <main id="main" class="guide">
-  <aside class="guide-toc" aria-label="Versions">
-    <p class="eyebrow">Versions</p>
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">{nav_label}</p>
     <nav class="toc-list">
 {toc}
     </nav>
   </aside>
   <div class="guide-body">
     <header class="guide-head">
-      <p class="eyebrow">Release notes</p>
-      <h1>Every version, in full.</h1>
-      <p class="lede">What changed, what it costs, and what stayed compatible, from the first invited alpha on 23 August 2026 to the current Delta programme. The same notes are readable offline inside the app under <b>Settings → Release notes</b>.</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2; these notes use its current name throughout. The Atlas tab, Atlas plates and Atlas lettering keep their names — they describe the publication atlas the app draws. Builds are published on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>.</p>
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{heading}</h1>
+      <p class="lede">{intro}</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>{mobile_nav_label}</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">{mobile_fallback}</nav></details>
     </header>
 {articles}
   </div>
@@ -204,10 +213,11 @@ PAGE = """<!doctype html>
 
 
 def main() -> None:
-    if len(sys.argv) != 2:
+    if len(sys.argv) not in (2, 4) or (len(sys.argv) == 4 and sys.argv[2] != "--through"):
         sys.exit(__doc__)
-    releases = load(Path(sys.argv[1]))
-    toc, articles = [], []
+    through = sys.argv[3] if len(sys.argv) == 4 else None
+    releases = load(Path(sys.argv[1]), through)
+    toc, cards = [], []
     for release in releases:
         rid = "upcoming" if not release["released"] else f"v{release['version']}"
         label = "Upcoming" if not release["released"] else (release.get("name") or release["version"])
@@ -216,7 +226,7 @@ def main() -> None:
         _, body_html = build_legal.render(demote(release["body"]))
         heading = "Upcoming" if not release["released"] else f"CartoVox {release.get('name') or release['version']}"
         badge = "" if release["released"] else ' <span class="badge badge-soft">not yet released</span>'
-        articles.append(f"""    <article class="release" id="{rid}">
+        article = f"""    <article class="release" id="{rid}">
       <header class="release-head">
         <h2>{html.escape(heading)}{badge}</h2>
         {f'<p class="release-tag">{html.escape(release["tagline"])}</p>' if release["tagline"] else ''}
@@ -225,11 +235,43 @@ def main() -> None:
       <div class="doc-body">
 {body_html}
       </div>
+    </article>"""
+        url = f"/releases/{rid}/"
+        summary = HIGHLIGHTS.get(release["version"], release["tagline"] or "Read the complete changes and compatibility notes.")
+        cards.append(f"""    <article class="release-card" id="{rid}">
+      <div><span class="experience-index">{html.escape(date or 'In development')}</span><h2>{html.escape(heading)}{badge}</h2>
+      <p>{html.escape(summary)}</p></div>
+      <a class="btn btn-ghost" href="{url}">Read full notes <span aria-hidden="true">↗</span></a>
     </article>""")
+        nearby = [r for r in releases if r is not release and r["released"]][:3]
+        detail_toc = ['      <a href="/releases/">All release notes</a>'] + [
+            f'      <a href="/releases/{"v" + r["version"]}/">{html.escape(r.get("name") or r["version"])}</a>'
+            for r in nearby
+        ]
+        detail = PAGE.format(
+            page_title=html.escape(f"{heading} — full release notes"),
+            page_description=html.escape(f"The full CartoVox {label} release notes: changes, compatibility and known limits."),
+            canonical=f"https://cartovox.org{url}", nav_label="Releases", toc="\n".join(detail_toc),
+            eyebrow=html.escape(f"Full release notes · {date}" if date else "Full release notes"), heading=html.escape(heading),
+            intro=html.escape(summary), mobile_nav_label="Browse releases",
+            mobile_fallback='<a href="/releases/">All release notes</a>',
+            articles=f'    <article class="release release-detail" id="{rid}"><div class="doc-body">\n{body_html}\n      </div></article>',
+        )
+        detail_target = ROOT / "releases" / rid / "index.html"
+        detail_target.parent.mkdir(parents=True, exist_ok=True)
+        detail_target.write_text(detail, encoding="utf-8")
     target = ROOT / "releases" / "index.html"
     target.parent.mkdir(exist_ok=True)
-    target.write_text(PAGE.format(toc="\n".join(toc), articles="\n".join(articles)), encoding="utf-8")
-    print(f"  releases/index.html ← {len(releases)} notes")
+    target.write_text(PAGE.format(
+        page_title="Release notes — CartoVox",
+        page_description="The CartoVox release archive. See what changed in Delta V3 and browse complete notes for every release.",
+        canonical="https://cartovox.org/releases/", nav_label="Versions", toc="\n".join(toc),
+        eyebrow="Release notes", heading="What changed, version by version.",
+        intro="Start with the latest Delta release, or open any version for its complete changes and compatibility notes.",
+        mobile_nav_label="Browse all versions",
+        mobile_fallback='<a href="#v0.9.4">Latest release</a>', articles="\n".join(cards),
+    ), encoding="utf-8")
+    print(f"  releases/index.html + {len(releases)} full notes")
 
 
 if __name__ == "__main__":

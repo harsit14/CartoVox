@@ -193,6 +193,13 @@
 
   /* ── guide contents: mark the section in view ───── */
   const toc = document.querySelector(".guide-toc .toc-list");
+  const mobileToc = document.querySelector(".mobile-contents .mobile-toc");
+  if (toc && mobileToc) {
+    mobileToc.replaceChildren(...[...toc.children].map((item) => item.cloneNode(true)));
+    mobileToc.addEventListener("click", (event) => {
+      if (event.target.closest("a")) mobileToc.closest("details").open = false;
+    });
+  }
   if (toc && "IntersectionObserver" in window) {
     const links = [...toc.querySelectorAll("a[href^='#']")];
     const byId = new Map(links.map((a) => [a.getAttribute("href").slice(1), a]));

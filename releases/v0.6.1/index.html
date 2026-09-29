@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.6.1 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.6.1 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.6.1/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.6.1 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.6.1 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.6.1/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-28</p>
+      <h1>CartoVox 0.6.1</h1>
+      <p class="lede">App settings, saved recipes, accessibility controls, and world provenance</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.6.1"><div class="doc-body">
+<p>CartoVox gains a global App settings surface, a Parchment Light theme, accessibility controls, and saved recipes for combinations you tune in Advanced Settings. The World tab also gains a record of what each world was built with, and says plainly whether its illustrated atlas can still be created. Existing worlds open unchanged and no migration runs.</p>
+<h3 id="app-settings">App settings</h3>
+<ul>
+<li>A gear beside Help &amp; learn, or Ctrl/Cmd + comma, opens a global settings dialog. It is not a fifth author destination: the dashboard stays mounted underneath and is handed back untouched on close.</li>
+<li>Six sections: Appearance, Accessibility, Workspace &amp; layout, Creation defaults, Data &amp; privacy, and Updates &amp; support.</li>
+<li>Changes apply immediately. There is no Save button, because a Save button can disagree with what is already on the screen.</li>
+<li>Every setting is local to this browser or this installed copy. There is no account and no synchronisation; nothing about your preferences is sent anywhere.</li>
+</ul>
+<h3 id="a-second-theme">A second theme</h3>
+<ul>
+<li>Parchment Light joins CartoVox Dark: warm paper rather than a white inversion, with the accent darkened so it reads on paper and warm, shallow shadows in place of black ones.</li>
+<li>Follow system resolves to either theme and re-resolves live when the operating system changes. The choice is stored, not the resolved value, so following the system keeps following it.</li>
+<li>Every text colour in both themes meets WCAG AA against every surface it can appear on. This is computed by the test suite rather than recorded as a remembered number.</li>
+<li>The one deliberate change to CartoVox Dark's appearance is its error colour, which measured 4.13:1 against the lightest surface and now measures 5.25:1. Nothing else about CartoVox Dark moved; a computed-style comparison across 42 elements found that single difference.</li>
+</ul>
+<h3 id="accessibility">Accessibility</h3>
+<ul>
+<li>Text size at 100%, 110% or 125%, driven by a single root scale. Dashboard type is now expressed relative to that scale, so a reader who has already enlarged their browser font is no longer overridden by fixed pixel sizes.</li>
+<li>Comfortable and Compact interface density, which move chrome spacing and control height and never map detail. Touch targets stay at least 44 by 44 on phone layouts.</li>
+<li>Reduced motion, honoured by the interface rather than merely stored. A system request for reduced motion always wins, whatever is chosen here.</li>
+<li>The dialog is a proper modal: focus moves in, stays inside, and returns to the control that opened it. Every control has a visible label and a real form input behind it, so selection is never signalled by colour alone.</li>
+</ul>
+<h3 id="workspace-layout-and-creation-defaults">Workspace, layout and creation defaults</h3>
+<ul>
+<li>Choose where Atlas opens: the Library, Create, or the destination you were last using.</li>
+<li>Choose whether Atlas remembers the section you had open in each destination. Turning it off ignores what was saved rather than erasing it, so turning it back on restores your sections.</li>
+<li>Open or reset the Layout customiser from settings. The Layout drawer remains the fast route and is unchanged; existing hidden-region choices survive this release untouched.</li>
+<li>Hiding the top bar hides the settings button with it, so the fixed Layout handle now also offers a way back to App settings.</li>
+<li>The generation defaults from Create appear here too, editing the same record rather than a copy. Changing either surface updates the other. They are labelled as defaults for new generation runs and never alter a world you have already built.</li>
+</ul>
+<h3 id="saved-recipes-and-safer-iteration">Saved recipes and safer iteration</h3>
+<ul>
+<li>Save the current Advanced Settings sheet as a named recipe: the built-in preset plus only the settings you changed. Recipes appear under Your recipes in the World shape picker and can be exported or imported as bounded, validated JSON.</li>
+<li>The World tab's build record now offers Build another like this. It loads the world's recipe into Create without copying the seed, so the next run follows the same choices without recreating the same world.</li>
+<li>Atlas preserves the settings used by a run before generation begins, including failed or cancelled runs. The completion panel offers Adjust these settings as a direct route back to the sheet.</li>
+<li>Draft settings and the selected recipe survive a reload or desktop restart. The Advanced settings button shows the number of active overrides so restored choices are never invisible.</li>
+<li>Switching presets, loading another recipe, or clearing overrides now asks before discarding unsaved changes and states how many settings would be lost. Deleting a recipe leaves its current values on the sheet.</li>
+<li>Recipes are authored work rather than app preferences, so Reset all app settings does not remove them. Up to 24 named recipes can be stored locally; export is the way to move one between installations.</li>
+</ul>
+<h3 id="workflow-and-interface-fixes">Workflow and interface fixes</h3>
+<ul>
+<li>Create now gives the World Brief and candidate grid a usable minimum height and lets the page scroll on shorter displays instead of crushing the brief into a small internal viewport.</li>
+<li>The Advanced Settings sheet stays intact across reloads and generation runs, and the completion panel provides a clear way back to the settings that produced the run.</li>
+<li>Map inspectors and lab panels keep a readable dark-on-map palette under Parchment Light. Missing colour, background and shadow tokens were replaced with defined semantic tokens and are now guarded by tests.</li>
+<li>The map-resolution notice now lives in the Render Studio bar instead of permanently covering the map. It returns to the map only while that map is fullscreen.</li>
+</ul>
+<h3 id="custom-themes">Custom themes</h3>
+<ul>
+<li>Create, duplicate, rename, apply, export and import themes. A theme is a small JSON file of named colours.</li>
+<li>A theme cannot add styles, fonts, images, links or scripts, cannot reach the file system, and cannot change a world, a map or anything you export. Every value must be a hex colour and is applied as a single custom property, so anything that is not a colour is refused by the same rule.</li>
+<li>Contrast is checked before a theme can be applied. A theme whose text cannot be read is refused, and the message names the pair and the ratio rather than saying "invalid".</li>
+<li>Editing previews a draft; the dashboard keeps the theme you had until you apply. Importing a file previews it too — selecting a file never applies a theme.</li>
+<li>Up to twelve themes, 64 KB per imported file. An imported id never overwrites a theme you already have, and an unreadable saved theme is dropped on load rather than applied.</li>
+<li>Exporting carries the schema version, name, base and colours. No paths, no worlds, no other preferences, no tester identity.</li>
+</ul>
+<h3 id="how-this-world-was-built">How this world was built</h3>
+<ul>
+<li>The World tab gains a "How this world was built" disclosure: seed, preset, grid, whether the world came from an imported heightfield, a Tectonic Director intent or a saved geological history, and the settings that differ from the preset.</li>
+<li>Worlds record all 336 resolved configuration fields, and almost none of them were chosen by anyone. The panel shows the short list an author is responsible for rather than the whole sheet.</li>
+<li>Filesystem paths are deliberately not reported, and the grid is described as an observation rather than a recovered choice: the record stores the resolution a Quick run produced, not the fact that Quick was picked.</li>
+</ul>
+<h3 id="creating-the-illustrated-atlas-later">Creating the illustrated atlas later</h3>
+<ul>
+<li>A world built without the illustrated atlas can usually still grow one, drawn from its saved fields and plate framing without re-running terrain, climate, rivers, settlements, names or lore. That has been possible for some time; what it lacked was any sign of it from the World tab.</li>
+<li>The panel now says which of three situations a world is in: plates already drawn, plates still possible with a pointer to Create publication atlas, or no saved atlas source and a re-simulation needed. Previously the last two were both silence.</li>
+</ul>
+<h3 id="updates-support-and-privacy">Updates, support and privacy</h3>
+<ul>
+<li>Automatic update checking can be turned off. It gates only the once-a-day startup check; Check now keeps working, so declining unprompted network access does not remove your ability to ask.</li>
+<li>Installed-app version, updates, folders, diagnostics and bug reporting now live in Updates &amp; support rather than inside the Manual, which keeps a link to them. There is one support panel to fix rather than two that drift apart.</li>
+<li>About reports the running version and build mode. In a browser tab that now comes from a small read-only endpoint, so the version is answerable outside the installed app for the first time.</li>
+<li>Copy app info copies name, version, build mode and platform for a bug report, and never paths, keys, environment variables, world names or anything you have written.</li>
+<li>Diagnostics bundles are assembled from build and system information plus redacted logs. App settings and custom themes are never read when one is built.</li>
+</ul>
+<h3 id="themes-do-not-change-what-atlas-produces">Themes do not change what Atlas produces</h3>
+<p>Maps, illustrated plates, vector and scientific exports, PNG products and project backups are drawn from the world, not the interface. No simulation or rendering code reads an appearance preference, and the settings surface makes exactly one network request, with no body.</p>
+<p>This was measured. A generated world's 121 files were hashed, five theme switches and text-size and density changes were made with a map, its tools and its inspectors on screen, and the files were hashed again: byte-for-byte identical, with no network requests during the changes.</p>
+<h3 id="compatibility">Compatibility</h3>
+<ul>
+<li>Existing worlds open unchanged. No migration runs and no saved world file is rewritten.</li>
+<li>Existing Layout, collapsed-panel, remembered-section, generation and creation-guide preferences are all preserved.</li>
+<li>CartoVox Dark remains the default, so an installation that never opens settings looks as it did apart from the error-colour correction described above.</li>
+<li>Preferences remain local to one browser or installation, as they already were.</li>
+</ul>
+<h3 id="known-limitations">Known limitations</h3>
+<ul>
+<li>Display-cache usage reporting and cache clearing are not in this release. They need native file-system work whose failure mode is deleting real project data, and that belongs in its own change rather than alongside a settings shell.</li>
+<li>There is no export or import of all preferences. Theme export exists; general portability is not promised until it is built and tested.</li>
+<li>High-contrast theme variants are not included. Both built-in themes meet AA, but a dedicated high-contrast set is separate work.</li>
+<li>Mobile layouts remain for review rather than authoring, as before.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

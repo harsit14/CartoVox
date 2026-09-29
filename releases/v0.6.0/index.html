@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.6.0 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.6.0 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.6.0/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.6.0 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.6.0 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.6.0/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-27</p>
+      <h1>CartoVox 0.6.0</h1>
+      <p class="lede">a finished worldbuilding workspace with sharper maps, authored causes, visible sculpting, and calmer cartography</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.6.0"><div class="doc-body">
+<p>This is the largest CartoVox product-finishing release so far. It turns the simulation, atlas, lore, and author-control systems into a more coherent workspace: begin with a clear task, understand the cost before committing, inspect or direct important causes, see pending edits before re-simulation, and move between creating, mapping, writing, and managing worlds without fighting the interface. Existing projects remain readable, and author canon continues to survive deliberate re-simulation.</p>
+<h3 id="a-calmer-workspace-built-around-real-tasks">A calmer workspace built around real tasks</h3>
+<ul>
+<li>The dashboard now centers four primary destinations—Create, World, Write, and Library—while Map, Atlas, Travel, Campaign, Lore, and other tools appear in the context where they are useful.</li>
+<li>Create is a true first screen. Authors choose whether to generate, import, or build through deep time, then choose what the world is for before detailed controls appear.</li>
+<li>Primary actions now match the selected route. Quick exploration, candidate search, committed generation, deferred illustrated-atlas work, and publication-quality output are described as different costs and commitments instead of being presented as interchangeable buttons.</li>
+<li>A task-based capability tour points directly to climate investigation, tectonic direction, map import, sculpting, travel, writing, campaigns, publication, and scientific export without burying those systems in equal-weight tabs.</li>
+<li>Generation preflight estimates likely time, disk use, resolution, plate count, and expensive settings before a long run begins. The generation dock keeps progress and recovery actions visible after navigation or reload.</li>
+<li>Compact and desktop layouts were exercised across all four primary workspaces. Collapsible rails, recovery controls, independent panel scrolling, and keyboard-operable tablists make dense tools more usable on smaller screens.</li>
+<li>Floating labs and tool panels now keep pointer and wheel input for themselves, preventing the map underneath from panning, zooming, or selecting while the author interacts with a panel.</li>
+</ul>
+<h3 id="calmer-cartography-and-honest-sharp-viewing">Calmer cartography and honest sharp viewing</h3>
+<ul>
+<li>Illustrated atlases now save both a named world plate and an unlabelled companion with identical geography and framing. Authors can use the clean plate for external artwork without losing the annotated reference.</li>
+<li>Scale-aware label budgets protect major world, continent, realm, settlement, lake, and river names before allowing minor labels to compete for space. Dense sheets remain informative without treating every label as equally important.</li>
+<li>Lake presentation suppresses visually noisy minor and seasonal marks on general relief plates while keeping the complete scientific lake classification available in data views and exports.</li>
+<li>CartoVox now bundles its interface and atlas typography locally, so dashboard and packaged output do not depend on a network font service or platform-specific fallback.</li>
+<li>The World map adds Auto, Original, 2x, 3x, and 4x drawing-density controls. Higher-density views materially reduce raster stair-stepping during zoom without pretending the physical simulation has gained cells.</li>
+<li>An always-visible resolution notice distinguishes drawing pixels from the saved simulation grid and reports approximate simulation-cell scale. Continuous and categorical maps use appropriate scaling paths rather than one misleading resampler.</li>
+<li>High-density maps are generated through a bounded local endpoint, cached per world, pruned under a fixed budget, excluded from project backups, and rebuilt after restore. If a larger drawing fails, Atlas keeps the valid original visible and explains the fallback.</li>
+</ul>
+<h3 id="author-intent-is-visible-on-the-map">Author intent is visible on the map</h3>
+<ul>
+<li>A spherical measurement tool reports great-circle distance using the saved planetary radius, including correct antimeridian and near-pole routes. Measurements are transient and never alter the world.</li>
+<li>Tectonic Director now has an interactive coordinate map for placing plate seeds and shields and connecting requested margins. Preflight checks the draft before it becomes authoritative, and the finished-world audit distinguishes satisfied, compromised, and impossible requests.</li>
+<li>Language-family intent can constrain naming before generation. Locked author choices flow through the stable naming registry, while neutral or omitted intent preserves procedural behavior.</li>
+<li>Creation routes expose whether domestication should influence civilisation hearths instead of leaving that consequence hidden in configuration.</li>
+<li>Terrain sculpting now previews the brush footprint, falloff, bearing, radius, cumulative elevation delta, affected area, raised and lowered cells, and provisional coast crossings before re-simulation.</li>
+<li>Multiple sculpt operations remain visible and ordered through undo and redo. A failed apply retains the complete pending preview, and a successful apply clears it only after the simulation cascade and requested atlas work finish.</li>
+</ul>
+<h3 id="lore-identity-and-author-canon">Lore, identity, and author canon</h3>
+<ul>
+<li>Generated facts, inferred connective material, author canon, unavailable data, and deliberate open questions now have distinct presentation states instead of appearing as accidental empty sections.</li>
+<li>Author Questions are a first-class writing surface, giving intentionally unresolved parts of the world somewhere useful to live.</li>
+<li>Realms, religions, early Chronicle material, political summaries, story hooks, and series-bible material use the active brief more consistently and avoid simulator-facing language in author output.</li>
+<li>Culture names, demonyms, display names, filenames, maps, reports, and lore now share stronger uniqueness and stable-identity rules. Internal hearth identifiers no longer leak into author-facing prose.</li>
+<li>Lore saves refresh the visible world revision immediately. Canon edits create recoverable revisions, rebuild the generated Codex, and remain intact through later terrain re-simulation.</li>
+<li>The shared CartoVox identity, compass-globe artwork, interface typography, screenshots, and product guidance now match across the dashboard, desktop application, installers, and documentation.</li>
+</ul>
+<h3 id="safer-long-running-generation-and-publication">Safer long-running generation and publication</h3>
+<ul>
+<li>Illustrated-atlas memory planning now handles pressure one plate at a time. It can reduce supersampling or width for the plate that exceeds the safe budget, record the compromise, and continue instead of discarding an otherwise valid world.</li>
+<li>Named and unlabelled world plates participate in deferred-atlas planning, pause-after-current-plate, reload, and resume. Completed products are preserved rather than redrawn when remaining plates continue later.</li>
+<li>Candidate search shows every controlled structural variation it evaluated and carries the selected seed and brief into the committed simulation.</li>
+<li>Quick mode and publication finish now disclose what is simulated immediately, what is deferred, and which output bundles will be produced.</li>
+<li>Legacy projects, partial map catalogues, revisions, Lore, backups, imported projects, and restored Trash items were exercised through live round trips. Rebuildable display caches are excluded without removing durable scientific or author data.</li>
+<li>Library identity and recovery paths were hardened so renames, Codex rebuilds, project imports, generation failures, deferred work, and restore operations keep the correct project and revision visible.</li>
+</ul>
+<h3 id="correctness-security-and-release-assurance">Correctness, security, and release assurance</h3>
+<ul>
+<li>Imported Markdown and generated author text received adversarial rendering coverage, and wrong-context inline-script escaping was removed from the dashboard path.</li>
+<li>Deterministic verification now uses an explicit fixed resource policy, so reproducibility output no longer changes with the host machine's momentary free-memory reading. The reference world, Worldbook, and all rendered plates reproduce byte-for-byte under that policy.</li>
+<li>The browser code was split at high-value decision seams for map-workspace and first-run routing behavior, reducing compatibility workarounds while keeping the application fully local.</li>
+<li>Frozen installers now run a bounded packaged-runtime probe that starts the real application service and verifies bundled HTML, JavaScript, fonts, bytes, and MIME types. This specifically guards against a packaged app appearing healthy while the dashboard scripts are blocked.</li>
+<li>Release checksum generation is version-aware and strict: it requires the expected platform matrix, safe unique filenames, exact manifest coverage, ordinary files, and matching lowercase SHA-256 digests before publication.</li>
+</ul>
+<h3 id="compatibility-and-practical-limits">Compatibility and practical limits</h3>
+<ul>
+<li>CartoVox 0.6.0 advances product behavior without silently re-simulating existing worlds. Older projects remain readable; newly derived maps, repaired lore presentation, or refreshed atlas products appear only when their saved inputs exist or after an explicit rebuild.</li>
+<li>Higher map density improves drawing sharpness, not physical simulation resolution. Regional downscaling and full re-simulation remain the tools for new simulated detail.</li>
+<li>Full generation and illustrated publication remain demanding. Use candidate search, Quick mode, Draft atlas finish, selective plates, deferred rendering, or lower drawing density while exploring.</li>
+<li>CartoVox remains local and limited to invited testers with an offline beta key. It uses no account, telemetry, hardware fingerprint, activation server, or automatic report upload. Generated worlds, settings, reports, textures, and author data stay on the tester's machine.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

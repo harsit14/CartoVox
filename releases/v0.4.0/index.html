@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.4.0 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.4.0 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.4.0/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.4.0 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.4.0 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.4.0/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-25</p>
+      <h1>CartoVox 0.4.0</h1>
+      <p class="lede">authored tectonics, regional re-simulation, deeper world systems, and portable Linux</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.4.0"><div class="doc-body">
+<p>This is the current invited technical-alpha build. It consolidates the Wave 3 and later simulation work into one release, and adds a verified portable Linux package for Slackware 15.0 and other non-Debian systems. Existing worlds remain readable; new derived surveys appear after generating or deliberately re-simulating a world with this version.</p>
+<h3 id="author-guided-tectonics">Author-guided tectonics</h3>
+<ul>
+<li>Atlas can now accept a tectonic intent document that pins selected plate seeds, craton nuclei, drift bearings, and relative plate speeds before the solver runs.</li>
+<li>Partial intent is supported: authors can constrain only the parts that matter while Atlas fills the remaining plates and cratons procedurally.</li>
+<li>Pinned choices still flow through the normal boundary, orogeny, climate, hydrology, biome, settlement, and resource pipeline rather than being painted over a finished map.</li>
+<li>Finished-world provenance records which features were author supplied, which were procedural, and how requested craton radii were rescaled to the planet's crust budget.</li>
+<li>A local validation endpoint reports what an intent will constrain before committing to a full generation.</li>
+</ul>
+<h3 id="honest-detail-at-regional-scale">Honest detail at regional scale</h3>
+<ul>
+<li>Regional statistical downscaling can refine a selected window at 2x, 4x, or 8x resolution without pretending the entire planet was simulated at that scale.</li>
+<li>Fine terrain is generated while preserving the coarse landscape average; temperature then follows the lapse rate, precipitation responds to windward uplift and rain shadows, and drainage is solved again on the refined surface.</li>
+<li>Every result labels generated terrain separately from downstream simulated consequences.</li>
+<li>Optional data-map rendering can use up to 4x output resolution and deterministic sub-cell coastline detail. It remains off by default so scientific sheets continue to show the authoritative simulation mask unless an author opts in.</li>
+<li>River overlays now scale with enlarged data sheets instead of drifting or shrinking relative to the map.</li>
+</ul>
+<h3 id="calendars-agriculture-groundwater-and-natural-regions">Calendars, agriculture, groundwater, and natural regions</h3>
+<ul>
+<li>Each world can derive a calendar from its own day length, orbital year, moon period, eccentricity, and periapsis. Synodic months, intercalation, weeks, unequal seasons, solstices, and equinoxes are calculated rather than copied from Earth.</li>
+<li>Domestication now models wild founder crops, complementary crop packages, rare agricultural origin centres, and climate-limited spread. The survey is always produced; allowing it to relocate civilisation hearths is an explicit opt-in so old behaviour stays stable.</li>
+<li>Physiographic regions are derived from connected terrain, relief, coasts, moisture, temperature, bedrock, and drainage, then named as natural regions rather than political territories.</li>
+<li>Aquifer surveys estimate connected water-bearing bodies, water-table depth, saturated thickness, storage, recharge, renewable versus fossil groundwater, and whether groundwater can support dry-country settlement.</li>
+<li>These systems are preserved in world reports and scientific arrays for inspection and external analysis.</li>
+</ul>
+<h3 id="biome-traits-and-safer-extensions">Biome traits and safer extensions</h3>
+<ul>
+<li>Civilisation, travel, and settlement logic now ask what terrain does—forested, waterlogged, fevered, parched, aquatic, or impassably cold—instead of hard-coding one biome name list.</li>
+<li>Terran/Koeppen behaviour remains the default, while the trait vocabulary creates a clean path for genuinely different planetary ecologies.</li>
+<li>Optional local extensions can contribute dossier notes, read-only findings, layers, health checks, and search records through a versioned API.</li>
+<li>Extensions are disabled by default and may load only from the user's Atlas data directory. Imported worlds and project backups are never treated as executable code, and one broken extension cannot abort generation.</li>
+</ul>
+<h3 id="library-search-and-data-access">Library search and data access</h3>
+<ul>
+<li>A library-wide index can search world names, realms, settlements, natural regions, lore, Chronicle eras, campaigns, aquifers, and extension notes across every saved world.</li>
+<li>Search uses predictable whole-word and prefix matching rather than silently guessing misspellings.</li>
+<li>The cache now invalidates after generation, renames, campaign or lore edits, imports, restores, migrations, and deletion, preventing stale results after authoring changes.</li>
+<li>New local endpoints expose calendar, domestication, aquifer, physiography, regional downscaling, tectonic-intent validation, and cross-world search data for dashboard and external-tool workflows.</li>
+</ul>
+<h3 id="portable-linux-and-slackware-15-0">Portable Linux and Slackware 15.0</h3>
+<ul>
+<li>Linux releases now include both the existing Debian/Ubuntu x64 <code>.deb</code> and a relocatable x64 portable archive built on the glibc 2.28 compatibility baseline.</li>
+<li>The portable archive is intended for Slackware 15.0 and other non-Debian glibc distributions. Extract it anywhere, run <code>./check-runtime.sh</code>, then start it with <code>./atlas-studio</code>.</li>
+<li>It does not replace the system glibc, install into <code>/usr</code>, or require a private copy of glibc under <code>/opt</code>.</li>
+<li>CI scans every ELF file and rejects the bundle if any component requires a glibc newer than 2.28, checks the bundled Qt/XCB plugin dependencies, and runs the real packaged Qt WebEngine lifecycle through its deterministic offscreen backend.</li>
+<li>Slackware users may still need the distribution's normal X11/XCB, OpenGL/EGL, D-Bus, fontconfig, FreeType, and libxkbcommon packages. The included runtime checker reports missing shared libraries by filename.</li>
+</ul>
+<h3 id="compatibility-and-verification">Compatibility and verification</h3>
+<ul>
+<li>Project configuration advances through explicit migrations for tectonic intent, data-map detail, domestication-aware hearths, extensions, and biome vocabulary. Unknown future schemas still fail clearly.</li>
+<li>Existing projects do not silently gain invented aquifers, physiographic regions, crop origins, or fine-scale terrain. Re-simulation is required for those new generated products; calendars can be derived on demand from an older saved orbit.</li>
+<li>This candidate passes 681 automated tests plus Python compilation, JavaScript syntax checks, release-version validation, workflow parsing, shell syntax checks, and focused compatibility tests before tagging.</li>
+<li>The tagged build workflow produces and verifies Apple Silicon macOS, Intel macOS, Windows, and Debian/Ubuntu Linux installers. A second verified workflow adds the glibc 2.28 portable Linux archive and refreshes the shared SHA-256 manifest on both release portals.</li>
+</ul>
+<p>CartoVox remains limited to invited testers with an offline beta key. Verification uses no account, telemetry, hardware fingerprint, activation server, or network connection. Generated worlds, extensions, settings, and author data remain on the tester's machine.</p>
+<p>Full generation is intentionally demanding and may take roughly 20–25 minutes on a current high-end Mac and 50–55 minutes on a current high-end Windows machine, depending on settings and selected atlas plates. Use Preview, Quick, Draft atlas finish, or selective plates while exploring. Regional downscaling, higher seasonal sample counts, and high-resolution sheets require additional time and memory.</p>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

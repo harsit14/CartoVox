@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.2.1 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.2.1 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.2.1/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.2.1 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.2.1 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.2.1/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-24</p>
+      <h1>CartoVox 0.2.1</h1>
+      <p class="lede">current tester dashboard patch</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.2.1"><div class="doc-body">
+<p>This is the current invited technical-alpha build. It keeps the complete v0.2 worldbuilding upgrade and fixes the crowded dashboard header reported after release.</p>
+<h3 id="dashboard-and-responsive-navigation">Dashboard and responsive navigation</h3>
+<ul>
+<li>World shape, seed, and detailed generation settings now live in a dedicated Generation setup strip at the top of Create instead of competing with every workspace tab in the global header.</li>
+<li>The global header is reserved for CartoVox navigation plus Preview and Generate, preventing controls from merging or covering one another on desktop and laptop windows.</li>
+<li>The section navigation can scroll safely when space is unusually constrained instead of overlapping adjacent actions.</li>
+<li>At phone width, generation setup becomes a compact two-row control so a complete ten-digit seed remains readable and the generation-options menu stays reachable.</li>
+<li>The recipe selector, seed input, Quick mode, atlas selection, plate finish, village density, and sheet-selection controls retain their existing behavior and saved values.</li>
+</ul>
+<h3 id="verification">Verification</h3>
+<ul>
+<li>Responsive browser checks passed at 2048, 1440, 1024, 760, and 390 pixels with no element collisions, horizontal page overflow, or browser-console errors.</li>
+<li>The complete automated suite passes, including a regression that keeps generation controls inside Create and outside the global header.</li>
+<li>The tagged workflow validates v0.2.1 against application and installer metadata, then builds and verifies Apple Silicon macOS, Intel macOS, Windows, and Linux x64 installers with SHA-256 checksums.</li>
+</ul>
+<h3 id="invited-alpha-access">Invited alpha access</h3>
+<p>CartoVox remains limited to invited testers with an offline beta key. Existing worlds and keys remain compatible; installing this patch does not move, upload, or replace locally generated worlds.</p>
+<p>Full generation is intentionally demanding and may take roughly 20–25 minutes on a current high-end Mac and 50–55 minutes on a current high-end Windows machine, depending on settings and selected atlas plates. Use Preview, Quick, Draft atlas finish, or selective plates while exploring.</p>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

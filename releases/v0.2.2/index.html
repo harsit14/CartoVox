@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.2.2 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.2.2 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.2.2/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.2.2 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.2.2 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.2.2/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-25</p>
+      <h1>CartoVox 0.2.2</h1>
+      <p class="lede">security, recovery, climate, and offline reliability</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.2.2"><div class="doc-body">
+<p>This is the current invited technical-alpha build. It keeps the complete v0.2 worldbuilding workspace and adds the first broad post-release hardening pass: safer imported projects and local APIs, recoverable storage management, corrected Köppen aridity, persistent player presentation, resilient saved maps, and a less intrusive World workspace.</p>
+<h3 id="security-and-private-local-operation">Security and private local operation</h3>
+<ul>
+<li>Lore from project backups is now treated as untrusted input. Markdown is rendered through an inert-document sanitizer with strict element, attribute, and URL allowlists before it can enter the live dashboard; dangerous HTML, event handlers, images, scripts, embedded documents, forms, styles, and executable URL schemes are removed.</li>
+<li>Wiki links and Lore Editor option lists escape imported names instead of assembling live handlers or option markup from author text.</li>
+<li>Every endpoint that resolves a world now shares one containment check. Crafted world IDs can no longer traverse out of the local library through map files, atlas styles, names, lore overrides, exports, plates, or re-simulation.</li>
+<li>Re-simulation rejects unknown projects, malformed seeds and non-object override data, and refuses concurrent work on the same project instead of interleaving writes.</li>
+<li>JSON writes and responses replace non-finite numbers with valid <code>null</code> values; configuration overrides reject NaN and infinity before they can silently corrupt sea level or other numerical fields.</li>
+<li>Mutation requests have bounded bodies and malformed JSON, invalid numbers, negative or invalid Content-Length values, and over-large input now receive explicit 4xx responses rather than dropping the local connection.</li>
+<li>Atlas no longer loads fonts or executable code from Google Fonts or public CDNs. All dashboard scripts are vendored; a damaged install reports its missing local assets clearly instead of contacting a third party.</li>
+</ul>
+<h3 id="recoverable-trash-and-local-storage">Recoverable Trash and local storage</h3>
+<ul>
+<li>Library now includes a visible Trash with Restore, Delete permanently, Empty trash, disk usage, and expiry information.</li>
+<li>Completed worlds are recoverable for 30 days; cancelled, failed, or incomplete projects are retained for seven days. Expiry is applied when Trash is opened, making deletion predictable rather than running as a hidden background task.</li>
+<li>A 5 GB soft limit produces an explicit review warning but never silently destroys a recent completed world.</li>
+<li>Restoring prefers the original project identity and safely creates a new identity if that ID has since been reused, without overwriting the newer project.</li>
+<li>Update downloads are pruned only after the replacement installer has completed SHA-256 verification, preventing old installers from accumulating while preserving the last usable download if an update fails.</li>
+</ul>
+<h3 id="corrected-k-ppen-dry-climate-classification">Corrected Köppen dry-climate classification</h3>
+<ul>
+<li>New and re-simulated worlds now apply Köppen's actual rainfall-seasonality rule: whether at least 70% of annual precipitation falls in the warm half-year, the cold half-year, or neither.</li>
+<li>The warm and cold halves are ranked per cell from that location's own seasonal temperatures, so hemispheres resolve correctly, and precipitation is weighted by orbital residence time for eccentric orbits.</li>
+<li>The previous classifier measured general seasonality instead of rainfall timing and could assign the cold-season constant to evenly watered ground. The corrected model produces more credible dry, grassland, forest, and Mediterranean transitions.</li>
+<li><code>world_config.json</code> records <code>biome_model_version</code>. Existing saved worlds are never silently reclassified on open; version 1 remains reproducible from its saved configuration, while version 2 is the default for new work.</li>
+</ul>
+<h3 id="presentation-world-workspace-and-map-recovery">Presentation, World workspace, and map recovery</h3>
+<ul>
+<li>Campaign player mode now survives a page reload, application restart, or crash for the same world and campaign. It returns to the saved player-visible layer without exposing the author dashboard.</li>
+<li>Missing or deleted Campaign presentation data fails closed with a clear recovery screen. Player-region links are inert while presenting, and only an explicit Exit presentation action clears the saved state.</li>
+<li>The World workspace's diagnostics and controls can be collapsed into a distraction-free map view. Expanding long health findings no longer pushes the globe below an unreachable viewport.</li>
+<li>Saved worlds recover their generated map catalogue after a local-service interruption instead of remaining in a false “Maps unavailable” state. Project JSON and manifests are served with no-store caching so a restarted local process cannot be confused with a stale cached dashboard.</li>
+<li>Library thumbnails try one known fallback and then show an honest “No preview rendered” state. Missing maps no longer trigger an infinite retry loop against the local server.</li>
+</ul>
+<h3 id="robustness-and-edge-cases">Robustness and edge cases</h3>
+<ul>
+<li>Completed generation jobs are retired from memory while recent logs and every running job remain available for reconnection and cancellation.</li>
+<li>Empty-ocean seed scans no longer index a missing landmass; silhouette measurements use spherical coordinates rather than distorted map-sheet pixels.</li>
+<li>Degenerate one-plate states safely fall back when no boundary anchor candidates exist.</li>
+<li>Latitude-band summaries keep one stable schema even for empty bands and worlds without land.</li>
+<li>Corrupt top-level author records in manifests, Campaign, Chronicle, regional projects, and related editable data degrade safely instead of breaking the whole project.</li>
+<li>World-library, Trash, and HTTP paths now resolve through the same runtime data-root seam, improving portable builds and isolated tests.</li>
+<li>Minor climate, topology documentation, settings-help, filename, and historical-map edge cases found in the audit were cleaned up and covered by regressions.</li>
+</ul>
+<h3 id="cross-platform-verification">Cross-platform verification</h3>
+<ul>
+<li>The regular test workflow now runs on Ubuntu, Windows, and macOS for every push and pull request instead of discovering platform-specific failures only during a release build.</li>
+<li>This release passes 283 automated tests, Python compilation, JavaScript syntax checks, release-version validation, and a reduced end-to-end world generation that produced 122 artifacts with finite core fields, 239 river reaches, seven lakes, and no simulation-health errors.</li>
+</ul>
+<h3 id="compatibility-and-invited-alpha-access">Compatibility and invited alpha access</h3>
+<p>Existing worlds, revisions, Campaigns, Chronicles, regional projects, beta keys, and author data remain compatible. The Köppen correction affects only worlds newly generated or deliberately re-simulated with biome model version 2. Older worlds that predate optional scientific layers remain readable; those layers require a deliberate re-simulation rather than being fabricated on open.</p>
+<p>CartoVox remains limited to invited testers with an offline beta key. Verification uses no account, telemetry, hardware fingerprint, activation server, or network connection. Generated worlds and author data stay on the tester's machine.</p>
+<p>Full generation is intentionally demanding and may take roughly 20–25 minutes on a current high-end Mac and 50–55 minutes on a current high-end Windows machine, depending on settings and selected atlas plates. Use Preview, Quick, Draft atlas finish, or selective plates while exploring.</p>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

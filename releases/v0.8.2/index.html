@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.8.2 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.8.2 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.8.2/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.8.2 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.8.2 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.8.2/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-09-11</p>
+      <h1>CartoVox 0.8.2</h1>
+      <p class="lede">Write with the world beside you</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.8.2"><div class="doc-body">
+<p>Version 0.8.2 includes every CartoVox change implemented after 0.8.1. It turns the manuscript desk into a world-aware word processor, adds a cross-world map gallery and the Gott double-sided projection, expands terrain interchange and coastline tracing, and strengthens data safety, scientific reporting, packaging and first-run licensing.</p>
+<h3 id="world-placement-and-terrain-interchange">World placement and terrain interchange</h3>
+<ul>
+<li>Nations now offer a homeland map pin with a visible search area and plain-language size choices. Exact latitude, longitude and distance fields remain optional, with explanations for authors who want precise control.</li>
+<li>Fixed the More menu beside Compare on candidate world cards being clipped by the card. Drawing tool options and brush controls now scroll within their own rows on smaller screens, while history, Close and save controls remain reachable.</li>
+<li>Import review has a visible Change map action, including while reading a file and after an import error.</li>
+<li>Painted-map import now handles textured blue water, land touching image edges and dark interface borders. Choose the detected frame or use the full image; preview, tracing, generation and saved recipes use the same area.</li>
+<li>Coastline review keeps correction and reading sections open, preserves their scroll positions while recalculating, and leaves the preview open after applying a trace so it can be refined again.</li>
+<li>Coastline tracing saves recoverable local drafts with unfinished outlines, the reference image, viewport and recent undo history. Resume from Create, or save and load portable <code>.atlas-trace.json</code> files. The desktop shell waits for the final tracing save before closing.</li>
+<li>Import GeoJSON land outlines and ASCII or binary STL and OBJ terrain surfaces through coastline review. GeoJSON export now includes land outlines for existing worlds, while saved worlds can export STL and OBJ terrain surfaces.</li>
+<li>Draw your world can save PNG, GeoJSON, STL and OBJ. Complete projects remain portable as <code>.atlas</code> backups. Terrain interchange transfers outlines or elevation surfaces; STL and OBJ use open Z-up surfaces measured in metres.</li>
+</ul>
+<h3 id="a-world-aware-manuscript-word-processor">A world-aware manuscript word processor</h3>
+<ul>
+<li>The manuscript desk is now composed from dedicated editor, storage, binder, world, panel, reader and export modules. The split preserves existing books while giving each writing surface one shared save and history contract.</li>
+<li>Prose Insights measures words, sentence and paragraph shape, repeated word families, dialogue, dialogue tags, adverbs, filter words, phrases, openers and names from the active world. View chapter, book or series results, draw four lenses over the prose, and save reports as CSV, Markdown or JSON.</li>
+<li>Scenes live as durable markers inside chapter text with titles, point of view, place, time and summary in the manuscript manifest. The Chapter panel and binder follow the current scene, scenes can move without losing history, and the Outline view lays out the book by scene.</li>
+<li>Link a scene to a gazetteer place and a day in the world's year. The writing panel can show its date, season, moon, sunrise and sunset, saved weather, climate, realm, culture, language, and distance or travel time from the previous scene. Insert selected facts or a relief crop into the prose.</li>
+<li>Gazetteer names are recognised beside the draft. Open a dossier from a name, create private character pages for unknown people, and check scene order, travel time and climate against the saved world.</li>
+<li>Find and replace supports case, whole words and regular expressions in one chapter or across a book with history. Add anchored notes, named versions, paragraph-and-word diffs and paragraph restore.</li>
+<li>Focus mode, timed sprints, a daily goal and streak, a shortcuts sheet and paragraph styles support longer writing sessions. Styles carry into Read, Word, HTML and EPUB; HTML and EPUB join the existing export formats.</li>
+</ul>
+<h3 id="cleaner-pdf-and-prose-import">Cleaner PDF and prose import</h3>
+<ul>
+<li>PDF import now removes repeating headers and page numbers using a digit-independent signature, joins wrapped lines into paragraphs across page breaks, repairs split hyphenated words and kerned digits, and recognises short capitalised headings. Large novel PDFs import as chapters instead of hundreds of line fragments.</li>
+<li>Dialogue quote style is detected per chapter unless the book fixes it. Single-quote books receive dialogue analysis, and irregular past-tense words count as dialogue tags only when they are actual speech verbs.</li>
+<li>The binder's Open beside action appears on hover, keeping the writing outline quieter when it is not needed.</li>
+</ul>
+<h3 id="gott-double-sided-disk-maps">Gott double-sided disk maps</h3>
+<ul>
+<li>Gott joins Equal Earth, Robinson and Mollweide anywhere Atlas offers a projection. The northern hemisphere occupies one disk and the southern another, with the equator as their shared rim and the southern face mirrored so coastlines meet when printed back to back.</li>
+<li>Server projection, embedded metadata, browser hover readings, overlays, saved Create choices, the map catalogue and PNG export all use the same two-disk geometry. Illustrated world plates fit both disks completely within their layout.</li>
+<li>The Planet panel can switch between a sphere and two interactive disks. Click to choose a disk centre, drag or spin around the shared axis, reset to the poles, and choose a light or dark printable background.</li>
+</ul>
+<h3 id="keeping-saved-work-safe">Keeping saved work safe</h3>
+<ul>
+<li>The numerical world archive is written beside the current file and swapped in only when complete. An interrupted write can no longer leave a truncated archive that later looks healthy.</li>
+<li>Terrain edits render new atlas plates in staging and replace old plates only after a result exists. Failed plates are deferred for later, and cancellation or memory exhaustion keeps the atlas already on disk.</li>
+<li>Terrain edits and accepted erosion settings use the seed recorded by the world. A stale editor with a different seed must reload instead of rebuilding another planet under the same identity.</li>
+<li>An unreadable edits file is reported and preserved beside the world, and saving is refused until it is repaired. Atlas no longer interprets corruption as an empty edit set.</li>
+<li>Re-simulation after terrain editing can be cancelled while computation is still safe to stop. The option disappears before the first world file is rewritten so maps and data cannot diverge.</li>
+<li>Forgetting a saved weather sheet, removing the display cache and deleting a manuscript note now ask first. Write shortcuts no longer fire while typing in a chapter-plan field, search box or note.</li>
+<li>Routes now act on the library root they were given. Test runs are guarded from writing indexes, identities or mutations into the author's real world library.</li>
+</ul>
+<h3 id="map-gallery">Map gallery</h3>
+<ul>
+<li>Library gains a Map gallery showing every illustrated plate, style render and city plan from every saved world on one wall, newest first. Filter by world, kind and lettering, open a sheet in a lightbox, then jump directly to that sheet in its Atlas tab or open the world.</li>
+<li>A sheet drawn before a later terrain edit, rename or canon edit says so. The gallery reads existing files and draws nothing; its thumbnails reuse removable Atlas preview cache entries.</li>
+</ul>
+<h3 id="honest-numbers-and-a-lighter-dashboard">Honest numbers and a lighter dashboard</h3>
+<ul>
+<li>Simulation health now runs the river-network checks used by the scientific validator. Reaches flowing uphill and branching outside the dendritic band produce warnings, while Hack's exponent is reported for context. A world with uphill rivers can no longer score 100.</li>
+<li>Generation progress weights phases by measured wall time. Naming now receives its measured share instead of one percent, preventing a stalled bar and stretching estimate while names are produced.</li>
+<li>The manual records measured Full-build timing and memory: about seven minutes on a fast Apple Silicon Mac and up to about twenty-one minutes on a comparable Windows machine for the documented configuration.</li>
+<li>Static scripts, styles and fonts carry validators, so warm reloads receive 304 responses instead of transferring about 7 MB again. External dashboard scripts are deferred while preserving their execution order.</li>
+<li>Inter, Newsreader and Cinzel now ship as WOFF2 at less than half their previous total size, with the original TrueType files retained as fallback and covered by packaging checks.</li>
+</ul>
+<h3 id="licence-and-installer-contents">Licence and installer contents</h3>
+<ul>
+<li>CartoVox now ships under its End User License Agreement instead of the MIT Licence. The first launch after updating shows the agreement and requires an unchecked affirmative acceptance before Unlock. The accepted EULA version is recorded with the beta key, and changed terms trigger a new prompt.</li>
+<li>The EULA and third-party notices stay readable offline under App settings → Updates &amp; support → Licence. Worlds, maps, atlases, lore and manuscripts created with Atlas remain the author's and may be published or sold without royalty; the application itself remains subject to its licence.</li>
+<li>Every installer carries the EULA and third-party notices. Windows shows the agreement before copying files, macOS places both documents beside the application in the disk image, and Linux installs its copyright and licence record under <code>/usr/share/doc/atlas-studio/</code>.</li>
+<li>Frozen-build verification now checks the legal documents, PDF runtime, font assets, build provenance and packaged coastline detection. Release dependencies include an exact reviewed pypdf pin for the CPython 3.12 builders.</li>
+</ul>
+<h3 id="documentation-and-engineering">Documentation and engineering</h3>
+<ul>
+<li>The README is a focused product front door, with installation, simulation, output, atlas, settings, licensing and known-limit details moved into a linked reference manual.</li>
+<li>A file-referenced competitive polish audit and sequenced remediation plan document the remaining distribution, accessibility, performance, scientific and legal work instead of hiding it from release review.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

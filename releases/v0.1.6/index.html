@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.1.6 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.1.6 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.1.6/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.1.6 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.1.6 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.1.6/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-24</p>
+      <h1>CartoVox 0.1.6</h1>
+      <p class="lede">invited technical alpha</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.1.6"><div class="doc-body">
+<h3 id="what-changed">What changed</h3>
+<h4 id="correct-world-recipes-and-honest-candidate-scoring">Correct world recipes and honest candidate scoring</h4>
+<ul>
+<li>Generated worlds now retain their actual recipe—such as Inland Sea, Archipelago, or Ice Age—when the initial revision is recorded and when the project is reopened. A later Generate no longer silently falls back to Balanced.</li>
+<li>Selecting a starting silhouette preserves the thesis, story frame, Must have, Avoid, and author notes already written in the brief.</li>
+<li>Candidate cards now distinguish measured checks from constraints that still need author review. Atlas no longer calls a candidate a 100% brief match when part of the request could not be evaluated numerically.</li>
+<li>Candidate previews are explicitly labelled approximate and disclose that the production grid can change small islands, coastline detail, and continent counts.</li>
+</ul>
+<h4 id="lake-topology-and-export-confidence">Lake topology and export confidence</h4>
+<ul>
+<li>Seasonal appearance is now independent from hydraulic topology: a seasonally variable lake can keep its physically solved outlet instead of being incorrectly treated as closed.</li>
+<li>The repeated “lake outlet inconsistent with water regime” health failure is fixed at its source. The same open/closed topology is now used by basin routing, diagnostics, GeoJSON, the scientific bundle, and <code>hydrology_graph.json</code>.</li>
+<li>Lake-outlet health failures now include a View location when a real inconsistency is detected. The hydrology graph schema is version 2 and exports <code>hydrologically_open</code> explicitly.</li>
+<li>A reduced end-to-end world-generation regression now verifies the saved lake graph and simulation-health report together, in addition to the synthetic hydrology suite.</li>
+</ul>
+<h4 id="candidate-and-map-workspace-usability">Candidate and map-workspace usability</h4>
+<ul>
+<li>Candidate previews show a Building preview state and no longer invite cell inspection before a world has been generated and saved.</li>
+<li>Changing a map category immediately opens its first available layer, avoiding a mismatched category, image, and legend.</li>
+<li>Mobile map height follows the map’s real aspect ratio, reducing the large black letterbox seen on narrow screens.</li>
+<li>Compare now says Remove from comparison, explains the coast-complexity scale, and uses the same measured/review badge language as candidate cards.</li>
+<li>Completion messages list what was actually built and explicitly say when the illustrated atlas was skipped. Cancel is removed from keyboard and screen-reader navigation after a run ends.</li>
+<li>The Atlas description now correctly refers to seven cartographic styles.</li>
+</ul>
+<h4 id="better-story-signals-and-cleaner-diagnostics">Better story signals and cleaner diagnostics</h4>
+<ul>
+<li>Ice Age candidates now emphasize refugia, fjords, migration corridors, relict islands, and meltwater landscapes instead of receiving generic rival-continent prompts.</li>
+<li>Realm names that already imply an institution—Sultanate, Caliphate, Province, Kingdom, March, League, and others—now produce a compatible government type and ruler title.</li>
+<li>Cradle selection seeks ecological variety among comparably suitable sites, and rain-fed cultures expose their local niche rather than repeating one identical archetype.</li>
+<li>Repeated continental-crust adjustment notices are deduplicated during candidate searches.</li>
+</ul>
+<h3 id="compatibility">Compatibility</h3>
+<p>Existing worlds remain readable. Opening or revising them no longer changes a saved non-Balanced preset. Re-simulate a Hydrology V2 world if you want the new lake-topology field in <code>hydrology_graph.json</code>, GeoJSON, and regenerated scientific products.</p>
+<h3 id="technical-verification">Technical verification</h3>
+<ul>
+<li>The release is covered by 151 tests, including a real reduced-resolution generation, manifest preservation, lake topology, candidate scoring, brief preservation, lore consistency, and UI regression checks.</li>
+<li>JavaScript syntax, Python compilation, whitespace checks, and desktop/mobile browser interaction were also verified before tagging.</li>
+<li>The tagged workflow repeats the full test suite on macOS Apple Silicon, macOS Intel, and Windows, builds all three installers, and publishes a SHA-256 manifest.</li>
+</ul>
+<h3 id="invited-alpha-access">Invited alpha access</h3>
+<p>This prerelease remains limited to invited testers with an CartoVox beta key. Verification is offline; no account, telemetry, hardware fingerprint, or activation server is used.</p>
+<p><strong>Full generation is intentionally heavy and may take longer than expected.</strong> On current high-end test machines, a Full world with its atlas takes about <strong>20–25 minutes on macOS</strong> and <strong>50–55 minutes on Windows</strong>. Hardware, world settings, and atlas size can change that time. Use Preview or Quick while exploring settings and keep CartoVox open until the progress log reports completion.</p>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>

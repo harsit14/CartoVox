@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 0.1.4 — full release notes</title>
+  <meta name="description" content="The full CartoVox 0.1.4 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.1.4/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 0.1.4 — full release notes">
+  <meta property="og:description" content="The full CartoVox 0.1.4 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.1.4/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=0cc8ee9b35">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-08-23</p>
+      <h1>CartoVox 0.1.4</h1>
+      <p class="lede">invited technical alpha</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.1.4"><div class="doc-body">
+<h3 id="what-changed">What changed</h3>
+<h4 id="interactive-scientific-maps">Interactive scientific maps</h4>
+<ul>
+<li>Rainfall, biome, soil, bedrock, resource, and realm colour keys are now interactive. Select individual classes or use <strong>All</strong> and <strong>None</strong> to isolate exactly what you want to inspect.</li>
+<li>Rivers and lakes can be hidden independently, including on the soil and bedrock maps, and a 30 degree reference grid can be added when useful.</li>
+<li>Filtered maps update the 2D workspace, globe texture, full-size view, and PNG download without changing the saved simulation.</li>
+<li>Bedrock now has its own dashboard view. Resource filtering reads every overlapping prospectivity field instead of only the dominant resource class.</li>
+<li>Iron remains rust-red while geothermal prospects are now magenta, eliminating their previous visual ambiguity.</li>
+<li>Large keys have an explicit <strong>More/Less</strong> control, so no class is hidden behind an invisible scroll area.</li>
+</ul>
+<h4 id="dashboard-and-atlas-navigation">Dashboard and atlas navigation</h4>
+<ul>
+<li>Long map and atlas view lists now have visible previous/next controls, keyboard navigation, and automatic active-item reveal. All ten atlas plate choices remain reachable at compact window sizes.</li>
+<li>The generated-map catalogue now distinguishes the clean authoring base, simulated realm territories, soils, and bedrock instead of combining unlike concepts.</li>
+</ul>
+<h4 id="cleaner-cartography">Cleaner cartography</h4>
+<ul>
+<li><strong>Clean land &amp; water base</strong> replaces the misleading blank political map. It contains only white land, blue water, and the outer coastline—no accidental mountain seams or invented internal borders.</li>
+<li><strong>Simulated realm territories</strong> is now a separate map with travel-cost territories, distinct colours, frontiers, and unclaimed wilderness.</li>
+<li>Grimdark maps no longer draw political boundaries as crimson danger lines. Red is reserved for volcanic, blighted, or supernatural hazards.</li>
+<li>Existing compatible worlds automatically rebuild outdated clean-base, realm, and Grimdark styles when opened.</li>
+</ul>
+<h4 id="deep-time-usability-and-resolution">Deep Time usability and resolution</h4>
+<ul>
+<li>The geological-era scrubber has a substantially larger interactive track and thumb, making long 420–600 Myr histories practical to navigate.</li>
+<li>A new <strong>Timeline detail</strong> setting offers a faster standard grid or a sharper detailed tectonic grid.</li>
+<li>Deep Time frames render at higher resolution with smoother terrain, clearer captions, and readable text. Compatible low-resolution histories are upgraded lazily from their saved numerical archive.</li>
+</ul>
+<h3 id="compatibility">Compatibility</h3>
+<p>Older worlds remain readable. Interactive filters appear when the corresponding scientific arrays exist in <code>world_data.npz</code>; otherwise Atlas keeps the original static map and clearly marks products that were never generated. Re-simulate an older world to add missing soil, bedrock, or resource arrays.</p>
+<h3 id="technical-verification">Technical verification</h3>
+<ul>
+<li>132 automated tests pass, including dynamic-map rendering, API isolation, atlas navigation, derived-style refresh, and high-resolution Deep Time reconstruction.</li>
+<li>The release workflow validates that the <code>v0.1.4</code> tag matches the application and installer version, builds macOS Apple Silicon, macOS Intel, and Windows installers, and publishes a SHA-256 manifest.</li>
+</ul>
+<h3 id="invited-alpha-access">Invited alpha access</h3>
+<p>This prerelease is limited to invited testers who received a unique CartoVox beta key. The key is entered once on first launch and verified offline; no account or internet connection is required.</p>
+<p><strong>Full generation is intentionally heavy and may take longer than expected.</strong> On current high-end test machines, a Full world with its atlas takes about <strong>20–25 minutes on macOS</strong> and <strong>50–55 minutes on Windows</strong>. Hardware, world settings, and atlas size can change that time. Use Preview or Quick mode while exploring settings, and leave CartoVox open until the progress log reports completion.</p>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=1f5ab13912" defer></script>
+</body>
+</html>
