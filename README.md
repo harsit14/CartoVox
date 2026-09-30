@@ -25,6 +25,10 @@ together with the Delta service CartoVox's Delta builds talk to (`worker/`).
 | `worker/`, `wrangler.jsonc`, `.assetsignore` | The Worker: static files straight from the assets, and the Delta service (`/v1/…` for the app, `/admin` for the owner's report). The service is copied from the app repository by `tools/sync-delta-service.py` |
 | `robots.txt`, `sitemap.xml`, `site.webmanifest` | Crawl controls; the sitemap is generated from indexable canonical pages |
 
+## Community voices
+
+The landing page quotes Discord members only after permission for public attribution is confirmed. Keep their wording intact, name the author as shown in the server, and link each excerpt to its original message so visitors can read the context. The owner confirmed permission for the four members quoted in the September 2026 community section. A Discord message link from a private Delta channel is readable only by invited testers; note that on the page. Do not use a member's map, avatar, or other artwork without separate permission.
+
 ## Deploying on Cloudflare
 
 The site is the `cartovox` Worker (Workers & Pages → cartovox), connected to this
