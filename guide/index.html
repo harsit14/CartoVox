@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The CartoVox guide — how to use it, and everything it does</title>
-  <meta name="description" content="The CartoVox Delta V3 guide: find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Codex and manuscript editor. Includes exports, shortcuts and known limits.">
+  <meta name="description" content="The CartoVox Delta V4 guide: find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
   <link rel="canonical" href="https://cartovox.org/guide/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The CartoVox guide — how to use it, and everything it does">
-  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V3; screenshots captured from the released build.">
+  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V4; screenshots captured from released builds.">
   <meta property="og:url" content="https://cartovox.org/guide/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -43,6 +43,7 @@
     <p class="eyebrow">Contents</p>
     <nav class="toc-list" id="toc">
       <a href="#where"><b>Where is it?</b><small>search</small></a>
+      <a href="#new-v4">New in Delta V4</a>
       <a href="#new-v3">New in Delta V3</a>
       <a href="#new-v2">New in Delta V2</a>
       <a href="#new-092">New in Delta V1</a>
@@ -81,7 +82,7 @@
       <a href="#settlements">Settlement Studio</a>
       <a href="#scenes">Scenes &amp; encounter maps</a>
       <span class="toc-group">Write</span>
-      <a href="#codex">Codex &amp; lore</a>
+      <a href="#codex">Compendium &amp; lore</a>
       <a href="#chronicle">Chronicle</a>
       <a href="#manuscript">Manuscript</a>
       <span class="toc-group">Around the edges</span>
@@ -106,7 +107,7 @@
         they never knew were there.
       </p>
       <p class="muted small">
-        Current as of <b>Delta V3</b>; the key workspace screenshots are from Delta V3, while some deeper reference images are from 0.9.1. Version-by-version changes are on the
+        Current as of <b>Delta V4</b>; the key workspace screenshots are from Delta V3, while some deeper reference images are from 0.9.1. Version-by-version changes are on the
         <a href="/releases/">release notes</a> page. The same material ships inside the app under <b>Help</b>, offline.
       </p>
       <details class="mobile-contents">
@@ -167,6 +168,9 @@
           <tr><td>Temperature, rainfall, seasons and Köppen</td><td><code>World › Maps › Climate &amp; seasons</code></td></tr>
           <tr><td>Winds, ocean currents, tides and ports</td><td><code>World › Maps › Water &amp; atmosphere</code> — four seasonal wind sheets, currents, coastal tides, maritime access</td></tr>
           <tr><td>Realm borders, roads, farming and trade</td><td><code>World › Maps › Life &amp; settlement</code> — realm territories, landmarks &amp; routes, border friction &amp; trade dependence, domestication &amp; farming, the agricultural calendar</td></tr>
+          <tr><td>Choose whose realms and towns a saved world has</td><td><code>World › World</code> drawer › <b>Realms &amp; settlements</b> › <b>Change</b>: <b>Generated realms</b> / <b>Only the realms I draw</b> / <b>No realm borders</b>, and <b>Generated towns</b> / <b>Only the places I place</b> / <b>No peoples — a physical world</b></td></tr>
+          <tr><td>Clear generated realms and keep the towns</td><td><code>World › World</code> drawer › <b>Realms &amp; settlements</b> › <b>Clear generated realms</b>; also at the top of the Sculptor's <b>Realm</b> tool, and in <kbd>⌘K</kbd> / <kbd>Ctrl K</kbd></td></tr>
+          <tr><td>Only the realms I draw, or no realms, for a new world</td><td><code>Create › Brief › Peoples &amp; languages › Nations, cultures and tongues</code> › <b>Realms &amp; settlements</b></td></tr>
           <tr><td>Soils, bedrock, ore and oil</td><td><code>World › Maps › Terrain &amp; geology</code> — soils, soil properties, bedrock, geological survey, resource prospectivity</td></tr>
           <tr><td>What a flood or a sea-level rise would cover</td><td><code>World › Maps › Water &amp; atmosphere › Sea-level scenario explorer</code>, and <b>Floodplain &amp; settlement exposure</b></td></tr>
           <tr><td>How magic works in this world</td><td><code>Create › Brief › World constraints › Peoples &amp; magic</code>, and the impossible layer in <code>Advanced settings</code></td></tr>
@@ -179,6 +183,9 @@
           <tr><td>See the map under the Sculpt panel, poles included</td><td><code>World › Tools › Sculpt › Hide controls</code> — the chosen tool stays active</td></tr>
           <tr><td>Draw a circle and say what belongs in it</td><td><code>World › Tools › Sculpt › Describe a region</code></td></tr>
           <tr><td>Rename one feature everywhere it appears</td><td><code>World › Tools › Sculpt › Select</code> › <b>Rename everywhere</b></td></tr>
+          <tr><td>Draw a realm's border on a world you already have (Realm tool)</td><td><code>World › Tools › Sculpt</code> › <b>Realm</b>, under Story: trace the border, name the realm and its capital, then <b>Found the realms you drew</b></td></tr>
+          <tr><td>Remove one realm</td><td><code>World › Tools › Sculpt › Select</code>, click the realm › <b>Remove</b> <i>its name</i>; its capital stays as a town</td></tr>
+          <tr><td>Paint a forest or a clearing</td><td><code>World › Tools › Sculpt</code> › <b>Forest</b> or <b>Clearing</b>, under Paint; the land a stroke reaches is hatched as you paint</td></tr>
           <tr><td>A year of weather as a radar loop</td><td><code>World › Tools › Weather</code> (key <kbd>Y</kbd>)</td></tr>
           <tr><td>Test a changed tilt, season or ocean</td><td><code>World › Tools › Climate Lab</code> (key <kbd>K</kbd>)</td></tr>
           <tr><td>Plates, boundaries and what the Tectonic Director got</td><td><code>World › Tools › Tectonics</code> (key <kbd>T</kbd>)</td></tr>
@@ -189,27 +196,32 @@
           <tr><td>Put labels on a render</td><td>Render Studio › the lettering chooser, under the layer list</td></tr>
           <tr><td>The illustrated plates</td><td><code>World › Atlas</code> tab</td></tr>
           <tr><td>Draw plates you deferred during the build</td><td><code>World › Atlas › Render remaining plates</code></td></tr>
-          <tr><td>Print the atlas as a book</td><td><code>World › Export › Bound atlas — quick A4 with labels (PDF)</code>, or <b>Set up bound atlas (PDF)…</b> to choose the paper and the lettering first</td></tr>
+          <tr><td>Print the atlas as a book</td><td><code>World › Export › Bound atlas, quick A4 with labels</code>, or <b>Set up the bound atlas…</b> to choose the paper and the lettering first</td></tr>
           <tr><td>Plan a journey between two places</td><td><code>World › Travel</code> tab</td></tr>
           <tr><td>A player-safe view of the world</td><td><code>World › Campaign</code> tab › <b>Present player view</b></td></tr>
-          <tr><td>A village, town or city plan</td><td><code>World › Scenes</code> › <b>Create or import settlement</b> (Settlement Studio)</td></tr>
+          <tr><td>A village, town or city plan</td><td><code>World › Scenes</code> › <b>New settlement from</b> <i>your world</i> (Settlement Studio, with the world already chosen)</td></tr>
+          <tr><td>Plan this settlement: a street plan of one particular town</td><td><b>Plan this settlement</b> on a town, capital or port on the world map, or on a city's page in the gazetteer; the saved scene appears under <b>Linked scenes</b> on its card</td></tr>
           <tr><td>A battlemap for Foundry, Roll20 or Fantasy Grounds</td><td>Settlement Studio › the export row: <b>Universal VTT (.dd2vtt)</b> or <b>Foundry scene</b></td></tr>
           <tr><td>An encounter map with no world behind it</td><td><code>Library › Scenes and encounter maps</code></td></tr>
           <tr><td>Give scene walls a height so they cast shadows</td><td>Scene settings › <b>Height and shadow</b></td></tr>
-          <tr><td>Rename realms, cultures, faiths, settlements in one place</td><td><code>Write › Codex › Rename everything</code></td></tr>
-          <tr><td>Write the prose the generator left blank</td><td><code>Write › Codex › Describe everything</code></td></tr>
-          <tr><td>Everything the world measured about a named thing</td><td><code>Write › Codex › Gazetteer</code></td></tr>
-          <tr><td>Invent a language and hear its names</td><td><code>Create › Brief › Peoples &amp; languages › Language families</code>, and <code>Write › Codex › Naming studio</code></td></tr>
+          <tr><td>The Compendium, the world's encyclopedia (the Codex before Delta V4)</td><td><code>Write › Compendium</code>; typing <b>codex</b> in <kbd>⌘K</kbd> / <kbd>Ctrl K</kbd> still finds it</td></tr>
+          <tr><td>Rename realms, cultures, faiths, settlements in one place</td><td><code>Write › Compendium › Rename everything</code></td></tr>
+          <tr><td>Write the prose the generator left blank</td><td><code>Write › Compendium › Describe everything</code></td></tr>
+          <tr><td>Everything the world measured about a named thing</td><td><code>Write › Compendium › Gazetteer</code></td></tr>
+          <tr><td>Invent a language and hear its names</td><td><code>Create › Brief › Peoples &amp; languages › Language families</code>, and <code>Write › Compendium › Naming studio</code></td></tr>
+          <tr><td>Lexicon: every root in the world's tongues, its meaning and the names built on it</td><td><code>Write › Compendium › Lexicon</code>; change a meaning, respell, add or lock a root, <b>Export CSV</b> or <b>Export Markdown</b></td></tr>
+          <tr><td>Allowed and Forbidden language families</td><td>For a new world, <code>Create › Brief › Peoples &amp; languages › Language families</code> › <b>Families it may name in</b>: <b>Allowed</b>, <b>Any</b> or <b>Never</b> per family. For a saved world, <code>Write › Compendium › Lexicon</code> › <b>Families this world names in</b>; only the names are rebuilt</td></tr>
           <tr><td>Authored history, eras and events you can play</td><td><code>Write › Chronicle</code> tab</td></tr>
           <tr><td>Write the book</td><td><code>Write › Manuscript</code> tab</td></tr>
           <tr><td>Import a manuscript you already have</td><td><code>Write › Manuscript › Import book</code> (or <b>Import chapter</b>)</td></tr>
           <tr><td>Readability and passive voice per chapter</td><td><code>Write › Manuscript › Book › Insights</code></td></tr>
           <tr><td>Export the book to Word, Markdown, Scrivener, EPUB</td><td><code>Write › Manuscript › Book › Export book…</code></td></tr>
-          <tr><td>An Obsidian vault of the whole world</td><td><code>Write › Codex › Illustrated Obsidian vault (.zip)</code></td></tr>
-          <tr><td>Numeric rasters for QGIS</td><td><code>World › Export › Scientific rasters + metadata (.zip)</code></td></tr>
-          <tr><td>Coastlines as real polygons</td><td><code>World › Export › Coastlines + GIS features (GeoJSON)</code></td></tr>
-          <tr><td>A 3D print or a mesh for Blender</td><td><code>World › Export › Terrain surface (STL)</code> or <b>(OBJ)</b></td></tr>
-          <tr><td>Back the whole project up, or move it to another machine</td><td><code>World › Export › Complete project backup (.cartovox)</code>, restored with <code>Library › Import project backup</code></td></tr>
+          <tr><td>An Obsidian vault of the whole world</td><td><code>Write › Compendium › Illustrated Obsidian vault (.zip)</code>; it unzips to a <code>Compendium</code> folder</td></tr>
+          <tr><td>Vector map: SVG with named layers, or a vector PDF, for Illustrator, Affinity or Inkscape</td><td><code>World › Export › Vector map for Illustrator, Affinity, Inkscape…</code>; <b>Vector map, usual layers</b> saves the SVG straight away</td></tr>
+          <tr><td>Numeric rasters for QGIS</td><td><code>World › Export › Scientific rasters and metadata</code></td></tr>
+          <tr><td>Coastlines as real polygons</td><td><code>World › Export › Coastlines and GIS features</code> (GeoJSON)</td></tr>
+          <tr><td>A 3D print or a mesh for Blender</td><td><code>World › Export › Terrain surface</code> › <b>STL</b>, <b>OBJ</b> or <b>glTF, textured</b>; <b>Printable terrain or globe…</b> for a solid to print</td></tr>
+          <tr><td>Back the whole project up, or move it to another machine</td><td><code>World › Export › Complete project backup</code> (<code>.cartovox</code>), restored with <code>Library › Import project backup</code></td></tr>
           <tr><td>Build the same world again at a finer grid</td><td><code>World › World</code> drawer › <b>Rebuild at full simulation resolution</b></td></tr>
           <tr><td>The same inputs under a different seed</td><td><code>World › World</code> drawer › <b>How this world was built › Reseed this world</b></td></tr>
           <tr><td>Load a finished world's settings back into Create</td><td>Same fold › <b>Build another like this</b> or <b>Replicate this world</b></td></tr>
@@ -228,12 +240,38 @@
           <tr><td>The welcome tour again</td><td><kbd>⌘K</kbd> / <kbd>Ctrl K</kbd> › type <b>Take the tool tour</b></td></tr>
           <tr><td>Hide the interface and just look at the map</td><td><b>Focus map</b> in the dock (key <kbd>F</kbd>), or fullscreen beside it</td></tr>
           <tr><td>Undo a terrain edit before it is applied</td><td>The Sculpt panel's own <b>Undo</b> / <b>Redo</b>, or <kbd>⌘Z</kbd> / <kbd>⇧⌘Z</kbd> while Sculpt is open; <b>Discard edits</b> drops them all</td></tr>
-          <tr><td>Print, paper size, dots per inch</td><td><code>World › Export › Set up bound atlas (PDF)…</code> — A5 to US Tabloid, with the page count, file size and dots per inch shown before anything is made; see <a href="#export">everything that exports</a></td></tr>
+          <tr><td>Print, paper size, dots per inch</td><td><code>World › Export › Set up the bound atlas…</code> — A5 to US Tabloid, with the page count, file size and dots per inch shown before anything is made; see <a href="#export">everything that exports</a></td></tr>
           <tr><td>Keyboard keys</td><td>Press <kbd>?</kbd> on the map, or <kbd>⌘/</kbd> in the manuscript</td></tr>
         </tbody>
       </table>
       <p class="muted small">Nothing matched? The sections below cover surfaces this index does not name, and the
       <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord</a> is the place to ask.</p>
+    </section>
+    <section id="new-v4">
+      <p class="eyebrow">New in Delta V4</p>
+      <h2>Realms you draw, towns built around their water.</h2>
+      <p class="section-lede">
+        Delta V4 was shared with invited testers on 29 September 2026. Your access code keeps working. The licence is
+        now version 2.2, so the first start shows it once more with your code filled in; it adds vector maps,
+        settlement plans, Compendium pages and lexicons to what is yours, and says which fonts a PDF export embeds.
+        Settlements from a saved world are now planned around their water, coast and roads, so generate a saved one
+        again to get the new plan, and a world made by an earlier Delta build says so before an edit rebuilds it. The
+        full account is in the <a href="/releases/#v0.9.5">release notes</a>.
+      </p>
+      <ul class="feat">
+        <li><b>A vector map for your drawing program</b>: <b>Vector map for Illustrator, Affinity, Inkscape…</b> in the Export menu writes one SVG with named layers, or a vector PDF, in the projection and turn you are looking at. Sea depths, land, lakes, realm fills and borders, contours, coastline, rivers, roads, the graticule, settlements and places of power are each a layer of paths you can restyle, every name is text you can edit, and the paper runs from A4 to A0. <a href="#export">Everything that exports</a>.</li>
+        <li><b>The Export menu is sorted</b> into Pictures, Vector and print, Games and tabletop, 3D and printing, GIS and data, and Provenance and backup, with a format badge on every row, the seven projections on one row, and a fade that says <i>More formats below</i> when something is out of sight. It works from the keyboard and can be read in Parchment Light. <a href="#export">Everything that exports</a>.</li>
+        <li><b>Take a saved world's realms away and keep its towns</b>: the World drawer has a <b>Realms &amp; settlements</b> row that says whose realms these are. <b>Clear generated realms</b> keeps every town, road and port; <b>Change</b> chooses the realms and the towns separately, down to a physical world with no peoples, and prices the rebuild from the world's own last build. A rebuild that changes only realms, towns, roads or the nation brief now starts at the peoples, so terrain, climate, rivers and biomes stay exactly as they were. <a href="#sculpt">Sculpt</a>.</li>
+        <li><b>Draw your own realms on a world you already have</b>: the Sculptor's <b>Realm</b> tool traces a border and names the realm and its capital, and <b>Found the realms you drew</b> rebuilds the peoples. Select a realm and choose <b>Remove</b> to take one away: its capital stays as an ordinary town, and its neighbours and the wilderness take its ground. <a href="#sculpt">Sculpt</a>.</li>
+        <li><b>Settlements from your worlds, easy to find again</b>: <code>World › Scenes</code> has <b>New settlement from</b> <i>your world</i> beside <b>Create scene</b>, and towns, capitals and ports on the map, and cities in the gazetteer, have <b>Plan this settlement</b>. It opens Settlement Studio on that place, and the scene you save is linked back to the town. <a href="#settlements">Settlements</a>.</li>
+        <li><b>Towns built around their water</b>: the river is laid down before the streets, at the width of the reach by the town, and the streets stop at quays. Bridges cross at the narrowest point, from a street to a street. There is one wall, with gates where the roads come in. Towns by the sea or a lake have that shore, and a seaport gets a harbour. Farmland lies in belts along the roads out of town, and rivers, lakes and bays carry the names your world gave them. Saved scenes keep their old plan until you generate them again. <a href="#settle-plans">The plan comes from the world</a>.</li>
+        <li><b>The Codex is now the Compendium</b>: <code>Write › Compendium</code>, with the Obsidian vault, Scrivener and Ellipsus bundles under the new name. Typing <i>codex</i> in the command palette still takes you there, and vaults exported under the old name still sync back. <a href="#codex">The Compendium</a>.</li>
+        <li><b>The Lexicon</b>: <code>Write › Compendium › Lexicon</code> shows every root in your world's tongues, what it means, whether it begins or ends names, and every name built on it. Change a meaning, respell a root after seeing every rename it causes, add roots of your own or lock the ones you love, and export the lexicon as CSV or Markdown. <a href="#lexicon">The Lexicon</a>.</li>
+        <li><b>Allowed and Forbidden language families that work</b>: one row per family, <b>Allowed</b>, <b>Any</b> or <b>Never</b>, with a sentence saying what the world will do. A saved world changes its families at the top of the Lexicon, and only the names are rebuilt: names in a tongue you took away are drawn again, and names you chose stay yours. Storms, manor seats and rulers now keep to the world's own tongues. <a href="#nations">Nations and tongues</a>.</li>
+        <li><b>Forest painting shows as you paint</b>: a <b>Forest</b> stroke hatches the land it reaches green, and a <b>Clearing</b> stroke brown. The status line counts the land painted, and a stroke that only crosses the sea says it changes nothing. The woodland itself grows when the world is re-simulated; <b>Quick look</b> previews it. <a href="#sculpt">Sculpt</a>.</li>
+        <li><b>The reading under the map is no longer cut off</b>: the distance scale comes first, the height and biome under your pointer get the room they need, and on a small window they take a second row. <a href="#inspector">The cell inspector</a>.</li>
+        <li><b>Worlds say which build made them</b>: before an edit rebuilds a world made by an earlier Delta build, the world page, the Sculptor's edit plan and the rebuild review say so, because the newer generator gives different continents and coasts. Mark ground with <b>Preserve</b>, or build a comparison draft first. Worlds from before Delta V4 read as <i>Made with an earlier Delta build</i>. <a href="#sculpt">Sculpt</a>.</li>
+      </ul>
     </section>
     <section id="new-v3">
       <p class="eyebrow">New in Delta V3</p>
@@ -261,7 +299,7 @@
         <li><b>Scenes in isometric</b>: walls, doors, floors and stairs stand up as lit blocks, live beside the plan. <b>Step inside a building</b> furnishes any building floor by floor, and child scenes follow their parent's world, sun and darkness. <a href="#scenes">Scenes</a>.</li>
         <li><b>Sculpting keeps up</b>: a 110-stroke review that used to time out after 30 seconds now takes about two. Towns, landmarks and borders stay on the map while you sculpt and can be dragged to stage a move, overlays line up in every projection, and what you wrote about lakes, ranges and rivers follows them through a rebuild. <a href="#sculpt">Sculpt</a>.</li>
         <li><b>The science</b>: <b>Paint plates</b> in Deep Time, and supercontinents now break up. Land ice follows the warmest season, so tundra and boreal forest grow near the poles. Wetlands come as bog and fen, marsh, swamp forest and salt marsh. A region brief can ask for white gypsum, red or black volcanic sand, and stream order carries through lakes. <a href="#deeptime">Deep Time</a> · <a href="#health">Simulation health</a>.</li>
-        <li><b>Writing and lore</b>: native Scrivener <code>.scriv</code> import, two editable panes side by side, <b>Edit</b> on every generated Codex entry with lore scoped to the world, regions or a point, provinces divided up to four levels deep, an edited Obsidian vault brought back, and lore imported from spreadsheets with attachments. <a href="#manuscript">Manuscript</a> · <a href="#codex">Codex</a>.</li>
+        <li><b>Writing and lore</b>: native Scrivener <code>.scriv</code> import, two editable panes side by side, <b>Edit</b> on every generated Codex (now the Compendium) entry with lore scoped to the world, regions or a point, provinces divided up to four levels deep, an edited Obsidian vault brought back, and lore imported from spreadsheets with attachments. <a href="#manuscript">Manuscript</a> · <a href="#codex">Codex</a>.</li>
         <li><b>At the table</b>: a player atlas drawn under the campaign's fog, printable token sheets, and characters revealed to players one by one. Towns on hills terrace up the slope, fountains are fed by conduits, and generated streets no longer run through buildings. <a href="#campaign">Campaigns</a> · <a href="#settlements">Settlements</a>.</li>
         <li><b>New exports</b>: a printable <b>Globe</b> STL, hollow or solid, whole or in halves; an offline map carrying full dossiers; and an <b>illustrated hex map</b> that paints every hex as a textured tile with its stamps, rivers and towns, sized so a VTT grid can match it. <a href="#export">Everything that exports</a>.</li>
       </ul>
@@ -387,7 +425,7 @@
       <div class="callout">
         <span class="callout-t">If you want to see a finished world first</span>
         <p><b>Build the example world</b> on the Create screen (and on an empty Library) builds <i>Eldrebrenn</i> from a
-        fixed recipe: a complete project with data maps, illustrated plates, dossier, codex and gazetteer. A measured
+        fixed recipe: a complete project with data maps, illustrated plates, dossier, Compendium and gazetteer. A measured
         <b>83.9&nbsp;seconds and 179&nbsp;MB</b> on a fast Apple Silicon Mac. It is a real project in your own library —
         open it, sculpt it, rename its realms, or throw it away. Nothing is built unless you press the button.</p>
       </div>
@@ -409,7 +447,7 @@
           <tr><td><b>Search</b></td><td>A command palette and a library-wide index in one (<kbd>⌘K</kbd> / <kbd>Ctrl K</kbd>). Type a world, realm, settlement, natural region, lore entry, Chronicle era or campaign and jump to it — or type an action, such as “Define a tongue” or “Open Advanced world settings”, and it opens the panel.</td></tr>
           <tr><td><b>Create</b></td><td>Everything before a world exists: the brief, seed search, Advanced settings, import, drawing, Deep Time. Tabs: <b>Brief</b>, <b>Deep Time</b>, <b>Compare</b>.</td></tr>
           <tr><td><b>World</b></td><td>The finished world. Tabs: <b>Map</b>, <b>Atlas</b>, <b>Travel</b>, <b>Campaign</b>, <b>Scenes</b>.</td></tr>
-          <tr><td><b>Write</b></td><td>Names, lore and the book. Tabs: <b>Chronicle</b>, <b>Codex</b>, <b>Manuscript</b>.</td></tr>
+          <tr><td><b>Write</b></td><td>Names, lore and the book. Tabs: <b>Chronicle</b>, <b>Compendium</b> (called the Codex before Delta V4), <b>Manuscript</b>.</td></tr>
           <tr><td><b>Library</b></td><td>Saved worlds, the four ways in, the map gallery, project import, and the trash.</td></tr>
           <tr><td><b>Layout</b></td><td>Hide regions of the interface — the top bar, rails, panels. Choices persist and a fixed handle always leads back.</td></tr>
           <tr><td><b>Settings</b></td><td>This installation only: appearance, accessibility, layout, creation defaults, data, support, release notes.</td></tr>
@@ -535,6 +573,8 @@
       <ul class="feat">
         <li><b>Nation Brief</b> — name realms and capitals before generation; request homeland traits, biome preferences, resources, trade goods and cultures; drop a <b>homeland pin</b> on a map with a visible search area and plain-language size choices (exact latitude, longitude and distance stay optional). Accepted homelands enter the civilisation pipeline as founding hearths; locked names flow through the naming registry so maps, dossiers and lore agree.</li>
         <li><b>Tongues</b> — define a language by blending ten real-language-inspired flavours (French, Russian, Latin, Old English, Spanish, Cherokee, Greek, Old Norse, Arabic, Japanese) by weight, describe it in a sentence and watch the chips follow, add words you like, and <b>preview a dozen names</b> with glosses and pronunciation before the world exists. A tongue travels with the brief and can be preferred or locked to a realm.</li>
+        <li><b>Realms &amp; settlements</b> <span class="badge badge-soft">Delta V4</span> — which realms and towns CartoVox invents, beside the realms you name: generated realms and towns (sparse, balanced or dense), <b>Generated towns, only the realms I draw</b>, <b>Only the realms and places I make</b>, or <b>No peoples — a physical world</b>. It used to be <i>Civilisation</i>, down in Peoples &amp; magic; searching for realms, nations, kingdoms or civilization finds it here now. A saved world makes the same choice from its World drawer (<a href="#sculpt">below</a>).</li>
+        <li><b>Families it may name in</b> <span class="badge badge-soft">Delta V4</span> — under <b>Language families</b>, one row per family with <b>Allowed</b>, <b>Any</b> or <b>Never</b>, and a sentence saying what your world will do. They were two cramped lists that lost your other choices on a plain click. For a world already built, choose them at the top of <code>Write › Compendium › Lexicon</code>: only the names are rebuilt, in about half the time the old full rebuild took, and names you chose yourself stay yours.</li>
         <li><b>Tectonic Director</b> — an interactive coordinate map for craton nuclei, plate seeds, requested convergent, divergent and transform margins, drift bearings and speeds, locks and mantle hotspots. Partial intent is fine; CartoVox fills the rest. <b>Preflight</b> flags contradictory requests before a long build, and the finished world reports which intentions were <i>satisfied</i>, <i>compromised</i> or <i>impossible</i>.</li>
         <li><b>Domestication</b> — whether wild-crop packages may relocate civilisation hearths is an explicit choice on the route, not a hidden setting.</li>
       </ul>
@@ -575,7 +615,7 @@
         </tbody>
       </table>
       <ul class="feat">
-        <li><b>Every tier runs the same simulation</b>, and saves the same archive members, so the codex, dossier, gazetteer, data maps and exports all work on a Sketch. The difference is how many cells the simulation was evaluated on, and nothing else. The same three-way choice is in Create and in <b>Settings → Creation defaults → First build</b>, and the two stay in step.</li>
+        <li><b>Every tier runs the same simulation</b>, and saves the same archive members, so the Compendium, dossier, gazetteer, data maps and exports all work on a Sketch. The difference is how many cells the simulation was evaluated on, and nothing else. The same three-way choice is in Create and in <b>Settings → Creation defaults → First build</b>, and the two stay in step.</li>
         <li><b>A Sketch can be promoted one rung at a time.</b> The saved-world rebuild takes a target tier, so a Sketch can become Quick without paying for Full. As before, the rebuild starts a separate project and leaves the world you chose exactly as it was. An unrecognised tier is refused with a message naming the three that exist, rather than quietly downgraded.</li>
         <li><b>Preflight</b> reports the expected output range and free disk for the chosen grid, finish and sheet set, keeps a 1 GiB reserve, and learns from completed builds of the same shape on this machine. Reference bands: 45–100 MiB Quick, 180–360 MiB Full without plates, 337–883 MiB with every publication plate.</li>
         <li><b>A build shows you the world it is making.</b> Land and relief appear about seven seconds into a Quick build, and the map returns wearing its climate and biomes once rainfall and temperature have decided what grows where. The pictures come from fields the simulation had already computed, add a fraction of a second, and change nothing: a watched build and an unwatched one produce identical saved fields. A frame that cannot be drawn is skipped in silence.</li>
@@ -682,7 +722,7 @@
         <li><b>Explain one climate cell</b> — why it is warmer, colder, wetter or drier than latitude predicts: elevation, continentality, upwind terrain, moisture supply and the saved circulation, with the upwind moisture path traced on the map.</li>
         <li><b>Read the dossier</b> for the settlement, realm, natural region or biome under the click, straight from the gazetteer.</li>
         <li><b>Rename</b> the feature at the clicked cell, <b>move or remove</b> a settlement, or <b>place a named settlement</b> on any land with at least 20% saved suitability. Canonical names propagate to maps, dossiers, lore, routes, tongues and exports.</li>
-        <li>The hover reading, the reading key and the coordinates stack without covering each other; the inspector retries with fresh data if a revision changes underneath it.</li>
+        <li>The hover reading, the reading key and the coordinates stack without covering each other; the inspector retries with fresh data if a revision changes underneath it. <span class="badge badge-soft">Delta V4</span> The height and biome under your pointer are no longer cut off (<i>212 m · Sub…</i>) on a big window: the distance scale comes first, the reading gets the room it needs, and on a small window it takes a second row.</li>
       </ul>
 
       <h3 id="dock">The pill, the dock, and the View and Tools menus</h3>
@@ -762,13 +802,18 @@
         <figcaption>Sculpt terrain in four steps: choose a change, place it on the map, inspect the terrain result, then apply and re-simulate. Nothing changes until you do.</figcaption>
       </figure>
       <ul class="feat">
-        <li><b>Sculpt</b> — <b>Paint</b> Raise, Lower, Smooth, Flatten, Mountains, Roughen, Terrace, Land, Sea and Coast; <b>Shape</b> a Peak, Plateau, Basin or Island, or <b>Level land</b>; <b>Draw</b> a Range or a Valley; <b>Guard</b> ground with Protect and Preserve; and place a Settlement, a Story pin or <b>Describe a region</b>. <span class="badge badge-soft">0.9.2</span> Painted strokes change the terrain live on the map as you move, in any projection, with a brush ring, hardness, pen pressure and filters for land only, sea only or keep coastline; a stroke is one edit and one undo. <b>Quick look</b> solves rain, rivers and biomes coarsely with your pending edits in a few seconds and shows before and after, saving nothing. The brush previews its footprint, falloff, bearing, radius, cumulative elevation delta, affected area, raised and lowered cells and provisional coast crossings on the map before anything is applied; several operations stack with undo and redo.</li>
+        <li><b>Sculpt</b> — <b>Paint</b> Raise, Lower, Smooth, Flatten, Mountains, Roughen, Terrace, Land, Sea, Coast, Forest and Clearing; <b>Shape</b> a Peak, Plateau, Basin or Island, or <b>Level land</b>; <b>Draw</b> a Range or a Valley; <b>Guard</b> ground with Protect and Preserve; and place a Settlement, a Story pin, a <b>Realm</b> or <b>Describe a region</b>. <span class="badge badge-soft">0.9.2</span> Painted strokes change the terrain live on the map as you move, in any projection, with a brush ring, hardness, pen pressure and filters for land only, sea only or keep coastline; a stroke is one edit and one undo. <b>Quick look</b> solves rain, rivers and biomes coarsely with your pending edits in a few seconds and shows before and after, saving nothing. The brush previews its footprint, falloff, bearing, radius, cumulative elevation delta, affected area, raised and lowered cells and provisional coast crossings on the map before anything is applied; several operations stack with undo and redo.</li>
         <li><b>Sculpting with your hands</b> <span class="badge badge-soft">0.9</span> — a click places the brush exactly as the panel describes it; holding the pointer and dragging states the footprint in kilometres on the map itself, and releasing hands the pointer the height, with both numbers read out beside the cursor as they change. A painted stroke is a row of ordinary nudges spaced on the ground rather than on the screen, so the same gesture means the same thing at any zoom. <b>Range</b> and <b>Valley</b> are drawn as trails: click each peak or bend in turn, hold any one of them to give that summit its own height, and finish on the last point — the whole crest is one edit, previewed, undone, listed and re-simulated as a single record.</li>
-        <li><b>Describe a region</b> <span class="badge badge-soft">0.9</span> — draw a circle or a square on the map and say what belongs there. A description naming something CartoVox can place gets it placed: a named region on the map, a page in the codex, an entry in the gazetteer, carrying your own words as its lore. Where the words describe ground rather than a landmark — <i>volcanic</i>, <i>highlands</i>, <i>sunken</i> — the ground moves, through the same sculpt records a hand edit would have written. Words it read and could not place are reported back rather than silently dropped. Since 0.9.1 the review before <b>Apply</b> is measured from the same operations Apply will run, so the cells, the systems to rebuild and the cost it shows are the ones you get; a description that only names a place stays immediate.</li>
+        <li><b>Describe a region</b> <span class="badge badge-soft">0.9</span> — draw a circle or a square on the map and say what belongs there. A description naming something CartoVox can place gets it placed: a named region on the map, a page in the Compendium, an entry in the gazetteer, carrying your own words as its lore. Where the words describe ground rather than a landmark — <i>volcanic</i>, <i>highlands</i>, <i>sunken</i> — the ground moves, through the same sculpt records a hand edit would have written. Words it read and could not place are reported back rather than silently dropped. Since 0.9.1 the review before <b>Apply</b> is measured from the same operations Apply will run, so the cells, the systems to rebuild and the cost it shows are the ones you get; a description that only names a place stays immediate.</li>
         <li><b>Hide controls</b> <span class="badge badge-soft">0.9.1</span> — folds the Sculpt panel away while the chosen tool stays active, so the ground under it, and the polar caps it used to cover, can be worked. Pending terrain and change previews follow the projection you chose, the two-hemisphere disk included, and changing projection asks for a fresh preview without moving anything you placed. <kbd>⌘Z</kbd> and <kbd>⇧⌘Z</kbd> (<kbd>Ctrl</kbd> on Windows and Linux) undo and redo pending edits while Sculpt is open and no text field has focus; a painted stroke is one step.</li>
+        <li><b>Forest and Clearing show as you paint</b> <span class="badge badge-soft">Delta V4</span> — they move no ground, so the live map used to show only a thin line. Now the land a Forest stroke reaches is hatched green and a Clearing stroke brown, on land only; the status line counts the land painted so far, each stroke in the pending list shows its land, and a stroke that only crosses the sea says it changes nothing. The woodland grows when you review and re-simulate, and <b>Quick look</b> previews it.</li>
+        <li><b>Realms on a world you already have</b> <span class="badge badge-soft">Delta V4</span> — the <code>World › World</code> drawer has a <b>Realms &amp; settlements</b> row that says whose realms these are (<i>Generated realms · 67 realms</i>). <b>Clear generated realms</b> keeps every town, road and port and grows only the realms you draw or describe; with none drawn, all the land is unclaimed, and the world keeps its name and languages. <b>Change</b> sets <b>Realms</b> (Generated realms / Only the realms I draw / No realm borders) and <b>Towns and settlements</b> (Generated towns / Only the places I place / No peoples — a physical world), and says what the rebuild will cost, priced from the world's own last build. The same choice is at the top of the <b>Realm</b> tool, in the Lore editor, and in <kbd>⌘K</kbd> / <kbd>Ctrl K</kbd>.</li>
+        <li><b>The Realm tool</b> <span class="badge badge-soft">Delta V4</span> — under Story: click the corners of a border, close it, name the realm and its capital, and click inside for the capital or press <kbd>Enter</kbd> to let CartoVox choose. <b>Found the realms you drew</b> rebuilds the peoples, and the land inside the border is that realm's. To take one realm away, select it and choose <b>Remove</b> <i>its name</i> (or <b>Remove all generated realms</b>): its capital stays as an ordinary town, its neighbours take the ground they reach, the wilderness takes the rest, and the removal holds through later rebuilds.</li>
+        <li><b>Changing the peoples keeps the planet</b> <span class="badge badge-soft">Delta V4</span> — a rebuild whose only changes are realms, towns, roads or the nation brief starts at the peoples: terrain, climate, rivers and biomes are kept exactly as they were, file for file. On a Sketch world that took 11–22 seconds instead of 31–42. Renaming a natural region no longer sends the next rebuild back to the peoples.</li>
         <li><b>The places you put on the map stay put</b> — cities and borders you draw hold their positions against the world's own, instead of being displaced by the generator's next pass.</li>
         <li><b>Select</b> (<kbd>Q</kbd>) reads the editable terrain, water, ecology, settlement, route, realm and magical-region features under a point. Remove or reshape land, islands, lakes, rivers, biome regions and mountain terrain; move or remove settlements; reshape routes and realm borders; edit magical regions. An operation that cannot honestly preserve a generated feature says so and stages the closest supported change. A press with Select only ever inspects; Paint, Shape and Draw are the tools that place strokes, so dragging while selecting cannot drop a feature by accident.</li>
         <li><b>Re-simulate</b> states which downstream systems will be rebuilt before it runs, uses the world's recorded seed, can be cancelled while it is still safe, renders new plates in staging and swaps them only when they exist. Every apply creates a <b>restorable revision</b> under <code>revisions/r####/</code>; author canon, locked names and lore overrides survive it.</li>
+        <li><b>Worlds say which build made them</b> <span class="badge badge-soft">Delta V4</span> — before an edit rebuilds a world made by an earlier Delta build, the world page, the Sculptor's edit plan and the rebuild review say so. The rebuild simulates the planet again with the newer generator, so continents and coasts come out differently and your edits are replayed onto the new ground. Mark areas with <b>Preserve</b> to keep them, or build a comparison draft first and keep the original untouched. Worlds made before Delta V4 carry no record and read as <i>Made with an earlier Delta build</i>. The Sculptor's live terrain is drawn on the saved map, not on the ground the rebuild will start from, and now says so.</li>
         <li><b>Checkpoints</b> can be named; <b>continuity diffing</b> after a sculpt reports what moved: planet stats, landmass areas, hearth movement in km, realm territory shares and any name that changed.</li>
         <li><b>A world being rebuilt no longer looks finished.</b> Applying terrain edits marks the project <i>Rebuilding edits</i> in the Library while the work is in flight, so a force-quit at hour two cannot leave an entry offering every action over a world whose maps and archive no longer agree. A failure before the commit restores the project; a failure after it reports the project as incomplete; a force-quit is reconciled on the next start.</li>
       </ul>
@@ -800,9 +845,15 @@
       <h3 id="export">Everything that exports</h3>
       <figure class="guide-fig">
         <div class="window"><img src="/img/app-map-export-menu.webp" width="1800" height="1125" alt="The Export menu open above the dock, scrolled to its two bound-atlas entries" loading="lazy" decoding="async"></div>
-        <figcaption><code>World › Export</code>, twenty-two entries since 0.9.2 added KML, a hexcrawl sheet, an interactive map, map tiles and printable terrain (the picture is the 0.9.1 menu). Everything else leaves from the panel that owns it.</figcaption>
+        <figcaption><code>World › Export</code> as it was in 0.9.1. Since Delta V4 the menu is sorted into six labelled sections — Pictures, Vector and print, Games and tabletop, 3D and printing, GIS and data, Provenance and backup — with a format badge on every row, choices such as the seven projections on one row, and a fade that says <i>More formats below</i> whenever something is out of sight. Everything else leaves from the panel that owns it.</figcaption>
       </figure>
-      <p>The map dock's <b>Export</b> menu, plus the downloads scattered through the Codex, Atlas and manuscript. Nothing here needs a re-simulation.</p>
+      <p>The map dock's <b>Export</b> menu, plus the downloads scattered through the Compendium, Atlas and manuscript. Nothing here needs a re-simulation.</p>
+      <p><b>A vector map to finish in a drawing program</b> <span class="badge badge-soft">Delta V4</span>. <b>Vector map for Illustrator, Affinity, Inkscape…</b>, first under <b>Vector and print</b>, writes one SVG with named layers, or a PDF on one vector page, drawn in the projection and turn you are looking at. Choose the land as elevation bands in the map's own colours, as biomes, or as one flat colour; paper from A4 to A0; and which layers to include: sea depths, land, lakes and salt pans, realm fills and borders, elevation contours every 1,000 m, coastline, rivers, roads and sea lanes, the graticule, settlements, places of power, names, and the frame and title. Every line is a path you can restyle and every name is text you can edit; the layers show up by name in Inkscape, Illustrator and Affinity. <b>Vector map, usual layers</b> saves the same SVG with its usual layers straight away.</p>
+      <ul class="feat">
+        <li><b>What it does not do yet.</b> Cahill and Waterman butterflies are drawn equirectangular for now, and the file and the dialog both say so. The PDF keeps everything as vectors but has no layers, and names that follow a river or a range in the SVG sit straight in the PDF.</li>
+        <li><b>Fonts.</b> A PDF embeds the parts of the typefaces it uses, all of which ship with CartoVox under licences that let you sell the document; an SVG only names its typefaces and embeds none, so your drawing program substitutes its own. Section 7.5 of the <a href="/eula/">licence</a> says so in full.</li>
+        <li><b>The flat whole-world sheet</b> is still in the <b>Vector bundle</b> and in the Maps drawer, and no longer breaks on a name with <code>&amp;</code> or <code>&lt;</code>.</li>
+      </ul>
       <table>
         <thead><tr><th>What</th><th>Where</th><th>Notes</th></tr></thead>
         <tbody>
@@ -814,14 +865,15 @@
           <tr><td>Coastlines + GIS features (GeoJSON)</td><td>Map · Export</td><td>Real coastlines <span class="badge badge-soft">0.9</span>: landmasses as polygons with lakes and inland seas as holes, split at the antimeridian as RFC 7946 asks. One saved world exports as 260 landmasses with 159 holes in less than half the bytes of the 8,899 rectangles it used to emit, and rasterises back onto the grid agreeing with the saved land mask to 99.94% of cells</td></tr>
           <tr><td>Terrain surface (STL / OBJ)</td><td>Map · Export; Draw</td><td>Open Z-up surfaces in metres including seabed; rescale and add a base for printing. The whole grid by default since 0.9 — about 2.07M triangles and 99 MB for a Full world, where the old fixed cap took 3.2% of the cells and said nothing</td></tr>
           <tr><td>Printable terrain, solid (STL)</td><td>Map · Export</td><td><span class="badge badge-soft">0.9.2</span> A closed solid in millimetres a slicer can print: the relief on a flat base with walls, the sea as a flat plate or a carved floor. The setup states the finished size, triangle count, file size and how much the heights are exaggerated before anything is made</td></tr>
-          <tr><td>Vector bundle (SVG)</td><td>Map · Export</td><td>Layered marching-square coastlines and the canonical river geometry; the unlimited-sharpness option</td></tr>
+          <tr><td>Vector map (SVG with named layers, or PDF)</td><td>Map · Export</td><td><span class="badge badge-soft">Delta V4</span> <b>Vector map for Illustrator, Affinity, Inkscape…</b> chooses the format, land fill, layers and paper; <b>Vector map, usual layers</b> saves the SVG at once. Drawn in the map's own projection and turn, A4 to A0</td></tr>
+          <tr><td>Vector bundle (ZIP)</td><td>Map · Export</td><td>The flat world sheet as SVG, with GeoJSON: layered marching-square coastlines and the canonical river geometry; the unlimited-sharpness option</td></tr>
           <tr><td>Scientific data bundle</td><td>Map · Export</td><td>Numeric GeoTIFFs with TFW/PRJ georeferencing and a custom spherical CRS, data dictionary, provenance, GeoJSON and the lossless <code>world_data.npz</code> for QGIS or NumPy</td></tr>
           <tr><td>Provenance JSON</td><td>Map source card</td><td>The evidence class, method, projection, scale and limits of the view you are looking at</td></tr>
           <tr><td>Web Mercator sheets</td><td>Map · Export</td><td>Square relief and biome exports under <code>projections/mercator/</code></td></tr>
           <tr><td>Render Studio bundle</td><td>Render</td><td>1K–16K layered PNGs, world files, manifest, captions.svg, objects.svg, flattened preview; <span class="badge badge-soft">0.9.2</span> <code>geography.svg</code> with the coastline, lakes, rivers, realm borders, contours and graticule as vectors that sit on their lines in the PNGs</td></tr>
           <tr><td>3D terrain PNG</td><td>3D terrain</td><td>Any camera, any view style</td></tr>
           <tr><td>Illustrated atlas plates</td><td>Atlas</td><td>World, continent and regional sheets at up to 4800 px, labelled and unlabelled, and city plans</td></tr>
-          <tr><td>Bound atlas (PDF)</td><td>Map · Export</td><td><span class="badge badge-soft">0.9</span> <b>Quick A4 with labels</b> in one click, or <b>Set up bound atlas…</b> <span class="badge badge-soft">0.9.1</span> for A5, A4, A3, US Letter or US Tabloid, named or unlabelled plates, with the page count, included sheets, expected size and print density shown before it starts. A title page with your world’s name and your own thesis, a contents list, a page for every plate at a real paper size and a colophon that carries the seed. A wide plate turns the page to landscape on its own; every plate is embedded at its own resolution and the export reports the dots per inch page by page. The contents page is searchable text, lettered in the faces the plates use. The colophon says what the file is not: sRGB throughout, no CMYK separation, no ICC profile, no crop marks, no bleed</td></tr>
+          <tr><td>Bound atlas (PDF)</td><td>Map · Export</td><td><span class="badge badge-soft">0.9</span> <b>Bound atlas, quick A4 with labels</b> in one click, or <b>Set up the bound atlas…</b> <span class="badge badge-soft">0.9.1</span> for A5, A4, A3, US Letter or US Tabloid, named or unlabelled plates, with the page count, included sheets, expected size and print density shown before it starts. A title page with your world’s name and your own thesis, a contents list, a page for every plate at a real paper size and a colophon that carries the seed. A wide plate turns the page to landscape on its own; every plate is embedded at its own resolution and the export reports the dots per inch page by page. The contents page is searchable text, lettered in the faces the plates use. The colophon says what the file is not: sRGB throughout, no CMYK separation, no ICC profile, no crop marks, no bleed</td></tr>
           <tr><td>Settlement as a battlemap</td><td>Settlement Studio</td><td><span class="badge badge-soft">0.9</span> Universal VTT (<code>.dd2vtt</code>) or a Foundry scene, with walls, doors and line of sight decided from the plan</td></tr>
           <tr><td>Scene for a virtual tabletop</td><td>Scene Studio</td><td><span class="badge badge-soft">0.9.2</span> <b>Export for a virtual tabletop</b>, beside the scene's backups: Universal VTT or a Foundry scene, one tabletop square per cell of the scene's grid. Shapes at least 1.5 m tall block sight, lower ones block movement only, and the scene's lights come along when its lighting is on</td></tr>
           <tr><td>Climate review bundle</td><td>Climate Lab</td><td>Seed, resolved configuration, model response, findings</td></tr>
@@ -830,10 +882,10 @@
           <tr><td>Player handout (HTML)</td><td>Campaign</td><td><span class="badge badge-soft">0.9.2</span> <b>Download player handout</b>: the campaign's player map as an offline page, with only what the campaign shows players — secrets only once revealed, and no lore or notes</td></tr>
           <tr><td>Route (GPX) · journey (CSV)</td><td>Travel</td><td><span class="badge badge-soft">0.9.2</span> The solved path as a GPS track with the start, the end and each journal entry as waypoints; the travel journal as a spreadsheet, one row per entry</td></tr>
           <tr><td>Insights report (.xlsx) · Word with the report as an appendix</td><td>Write</td><td><span class="badge badge-soft">0.9.2</span> <b>Save report</b> also writes every table as one workbook; the Book's Export menu adds <b>Word, with the Insights report as an appendix</b>, repeating the latest saved report in the book's own typography</td></tr>
-          <tr><td>Obsidian vault (.zip)</td><td>Codex</td><td>Overview, timeline, religions, trade, hooks, one page per realm, culture, place of power and settlement, <code>Tongues.md</code>, the series bible, your novels</td></tr>
-          <tr><td>Scrivener transfer · Ellipsus transfer</td><td>Codex</td><td>Writing and Codex material as a Scrivener-shaped project, or an Ellipsus-compatible bundle</td></tr>
-          <tr><td>Realm handbooks (.zip)</td><td>Codex</td><td>One handbook per nation: government, capital geography, biome mix, named features, allies and disputes, trade, every event and hook, a writing checklist</td></tr>
-          <tr><td><code>WORLDBOOK.md</code></td><td>Codex</td><td>The measured dossier, including every name with its roots, meaning and pronunciation</td></tr>
+          <tr><td>Obsidian vault (.zip)</td><td>Compendium</td><td>Unzips to a <code>Compendium</code> folder. Overview, timeline, religions, trade, hooks, one page per realm, culture, place of power and settlement, <code>Tongues.md</code>, the series bible, your novels</td></tr>
+          <tr><td>Scrivener transfer · Ellipsus transfer</td><td>Compendium</td><td>Writing and Compendium material as a Scrivener-shaped project, or an Ellipsus-compatible bundle</td></tr>
+          <tr><td>Realm handbooks (.zip)</td><td>Compendium</td><td>One handbook per nation: government, capital geography, biome mix, named features, allies and disputes, trade, every event and hook, a writing checklist</td></tr>
+          <tr><td><code>WORLDBOOK.md</code></td><td>Compendium</td><td>The measured dossier, including every name with its roots, meaning and pronunciation</td></tr>
           <tr><td>Book exports</td><td>Manuscript</td><td>Word (.docx) with running headers, page numbers, embedded maps, real footnotes and tracked changes; Markdown; Scrivener package; self-contained web page; EPUB 3</td></tr>
           <tr><td>Insights report</td><td>Manuscript</td><td>CSV per table, Markdown and JSON</td></tr>
           <tr><td>Project backup (<code>.cartovox</code>)</td><td>Library · Map</td><td>The complete round-trip project: fields, products, revisions, lore, campaigns, Chronicle, regional state. Import it from the Library under a fresh identity</td></tr>
@@ -920,8 +972,8 @@
         came out as the same blob of unaligned boxes. It now lays the street network first, takes
         the blocks those streets enclose, divides each block into plots, and fits a building to
         each plot facing its street. The settlement's outline is whatever the finished blocks add
-        up to. Open it from <code>World › Scenes</code>, or from <code>Library › Scenes and encounter maps</code>,
-        with <b>Create or import settlement</b>.
+        up to. Open it from <code>World › Scenes</code> › <b>New settlement from</b> <i>your world</i>, from
+        <b>Plan this settlement</b> on a town, or from <code>Library › Scenes and encounter maps</code>.
       </p>
       <figure class="guide-fig">
         <div class="window"><img src="/img/city-plan.webp" width="1400" height="1092" alt="The city plan of Zhargundbar: streets in rings about the square, seven named quarters, quays on the river and fields beyond the walls" loading="lazy" decoding="async"></div>
@@ -929,13 +981,25 @@
       </figure>
 
       <h3 id="settle-plans">The plan comes from the world</h3>
+      <p><span class="badge badge-soft">Delta V4</span> <b>From one of your worlds.</b> <code>World › Scenes</code> has
+      <b>New settlement from</b> <i>your world</i> beside <b>Create scene</b>, and Settlement Studio opens with that world
+      already chosen and its places loaded; opened without a link, it shows its world picker straight away whenever
+      you have a saved world. Towns, capitals and ports on the world map, and cities in the gazetteer, have
+      <b>Plan this settlement</b>: it opens the Studio with that exact place selected, and the scene you save is linked
+      to the town, so it appears under <b>Linked scenes</b> on its card. Settlements come out differently from Delta V3;
+      saved scenes keep what they have until you generate them again.</p>
       <ul class="feat">
         <li><b>Eight plans that differ in structure</b>, not in jitter — street village, green, crossroads, radial, organic, harbour, hilltop and twin neighbourhoods. Which one you get is chosen from the approach roads, water and relief the saved world already records.</li>
         <li><b>Quarters set their own rules</b> — market, green, craft, townhouse, gentry, manor, temple, dockside, poor quarter and crofts each carry their own plot size, coverage, setback and building forms. Poor quarters deliberately do not line up, and are grown as one district.</li>
         <li><b>Every plot faces a street</b>, and every building on one side of a street sits on a shared frontage line, so a row reads as a row.</li>
-        <li><b>Water and roads load automatically</b> from the saved hydrology: the river's real width, ponds, springs, public wells, the mapped groundwater area and the regional approach directions. Every value stays changeable under an explicit override, and <b>Reset</b> restores what the world says.</li>
-        <li><b>The countryside scales with population</b> under an editable land budget: connected farms with strip fields and furrows, readable crop types, orchards, hedges, working buildings and biome woodland. The sheet is sized from the settlement, and the hectares beyond it are reported rather than drawn.</li>
-        <li><b>Bridges are chosen, not sprinkled</b> — roads and walls stop at the water's edge, ordinary roads pass beneath surface water, and river crossings are a spaced set picked by road importance and span. Wall gates appear where roads actually cross.</li>
+        <li><b>Water and roads load automatically</b> from the saved hydrology and routes, and every value stays changeable under an explicit override; <b>Reset</b> restores what the world says.</li>
+        <li><b>The water comes first</b> <span class="badge badge-soft">Delta V4</span> — the river is laid down before the streets, at the width of the reach by the town (from its average flow, about 40 m at 100 m³/s, and never more than about a third of the town), rather than the widest channel in the whole map cell. The streets stop at riverside quays, the market stands by the bridgehead, the town stretches along its bank, and the river keeps its bends past the town. Ponds appear only where there is no river or lake nearby, out in the fields.</li>
+        <li><b>Coasts and lake shores</b> <span class="badge badge-soft">Delta V4</span> — a town next to the sea or a lake in its world has that shore. A seaport gets a harbour by its market, with piers, boats and a breakwater with a light, and a lake runs off the sheet as a real shoreline.</li>
+        <li><b>Water carries its own name, or none</b> — rivers, lakes and bays are labelled with the names your world gave them, and the river's name follows the river. A tributary does not borrow its main river's name.</li>
+        <li><b>The countryside scales with population</b> under an editable land budget, in belts: gardens and orchards at the town's edge, then open-field strips, then hedged enclosures and pasture, with water meadows along the river and nothing ploughed on steep ground. Every town has roads leaving it, toward its nearest neighbours when the world draws none, and the fields are strips along lanes off those roads, with copses and woods beyond. The sheet is sized from the settlement, and the hectares beyond it are reported rather than drawn.</li>
+        <li><b>Bridges that are bridges</b> — a bridge goes where a main street or a road meets the river, at the narrowest point nearby, square to the flow, from a street on one bank to a street on the other, with parapets and piers. River towns always have one.</li>
+        <li><b>One wall around the town</b> — a single circuit that hugs the built-up town, with a gate for every approach road, ending in towers at the water's edge; the far bank is walled too when a real part of the town stands there.</li>
+        <li><b>Housing matches the population</b> — blocks are built up around every street, each house takes its plot's whole frontage with a garden behind, there is a market square, and the principal church stands in its own churchyard. The outermost blocks are left as gardens and orchards rather than overshooting the number of houses the people need.</li>
         <li><b>A 40,000-person city</b> generates in about a tenth of the time it used to take.</li>
       </ul>
 
@@ -993,27 +1057,29 @@
       </ul>
     </section>
     <section id="codex">
-      <p class="eyebrow">Write → Codex</p>
-      <h2>Codex and lore</h2>
+      <p class="eyebrow">Write → Compendium</p>
+      <h2>The Compendium and lore</h2>
       <p class="section-lede">
-        Measured geography, suggested lore and your own decisions in one place. Generated social history is a
+        Your world's encyclopedia of places, peoples, realms and lore: measured geography, suggested lore and your own
+        decisions in one place. Until Delta V4 it was called the Codex, and typing <i>codex</i> in the command palette
+        still finds it. Generated social history is a
         proposal until you accept or rewrite it; everything you write survives re-simulation.
       </p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-write-dossier.webp" width="1800" height="1125" alt="The Codex with its section list and the measured questions the world raises" loading="lazy" decoding="async"></div>
-        <figcaption>Seventeen sections down the left; the downloads — vault, transfers, handbooks, worldbook — at the bottom of that column. The Codex opens on the questions the world raises, each measured, each with Show on map and Write answer.</figcaption>
+        <div class="window"><img src="/img/app-write-dossier.webp" width="1800" height="1125" alt="The Compendium, under its earlier name, the Codex, with its section list and the measured questions the world raises" loading="lazy" decoding="async"></div>
+        <figcaption>The Compendium in an earlier build, when it was still called the Codex and had seventeen sections. The downloads — vault, transfers, handbooks, worldbook — sit at the bottom of the section list, and it opens on the questions the world raises, each measured, each with Show on map and Write answer.</figcaption>
       </figure>
       <ul class="feat">
-        <li><b>Seventeen sections</b> — Overview, Questions this world raises, Your canon, Import lore, Lands, Gazetteer, Realms &amp; geopolitics, Cultures, History, Faith questions, Trade &amp; economy, Places of power, Story hooks, Naming studio, <b>Rename everything</b>, <b>Describe everything</b>, Physical dossier.</li>
+        <li><b>Twenty-two sections</b> — Overview, Questions this world raises, Your canon, Your lore, Import lore, Lands, Gazetteer, Web of relations, Reader’s companion, Realms &amp; geopolitics, Cultures, History, Faith questions, Trade &amp; economy, Places of power, Story hooks, Naming studio, <b>Rename everything</b>, <b>Lexicon</b>, Old names in your books, <b>Describe everything</b>, Physical dossier.</li>
         <li><b>Questions this world raises</b> — measured author questions the simulation cannot answer (who decides how water is shared, what proves a right to the frontier), each with <b>Show on map</b> and <b>Write answer</b>. They are a first-class writing surface, not empty sections.</li>
         <li><b>Rename everything</b> <span class="badge badge-soft">0.9</span> — every named thing in the world on a single editable sheet: realms, cultures, faiths, places of power, settlements. A canonical name propagates through maps, dossiers, lore, routes, tongues, exports and later revisions.</li>
         <li><b>Describe everything</b> <span class="badge badge-soft">0.9</span> — the prose of the world in one place: every realm's government, motto, strength and weakness, its ruler's title, character and secret; every culture's diet, burials and taboos; most of every faith; and cities and towns, whose descriptions are read back in the dossier, the vault and search. The generator leaves prose blank rather than inventing it, so a typical world ships with about a hundred empty fields — questions left open, not missing data — and the sheet says how many and can show you only those. Measured findings are left alone: a place of power's kind is read off the simulation, so the sheet does not offer to edit it. Before 0.9 exactly two fields out of twenty-six were reachable, a realm's motto and its ruler's name, one realm at a time.</li>
         <li><b>Lore Editor</b> (under Your canon) — rename the world or any realm, city, place of power, culture, religion, continent or ocean; append timeline events, story hooks and private notes; or paste raw JSON. Renames rewrite every cross-reference and are idempotent at name boundaries; lore, handbooks, the worldbook, GeoJSON, SVG and the vector bundle refresh together, and raster labels are marked for a later redraw.</li>
         <li><b>Naming studio</b> — every name with its stable feature ID, generated form, pronunciation, gloss, alternatives, lock status and reader-confusion audit. Names come from language families whose morphemes carry meanings (<i>khaz</i> — stone-born); a glacier is built from words for ice, a name that collides with somewhere a reader has heard of is refused, and border rivers are named twice, once in each bank's tongue. <b>Name review</b> lists high-conflict names to settle.</li>
-        <li><b>Lands</b> — one connected page per natural region with terrain, climate, water, neighbours and lore, reachable from the map, search and the Codex.</li>
+        <li><b>Lands</b> — one connected page per natural region with terrain, climate, water, neighbours and lore, reachable from the map, search and the Compendium.</li>
         <li><b>Gazetteer</b> — a writer's dossier for every settlement, realm, culture, tongue, continent, natural region, range, desert, biome, river, lake, sea and place of power: where it is and what it is like, the name's roots and the names it nearly had, a season-by-season table of temperature, rain, daylight and wind, the river at its door and how it floods, soils, crops, ore and groundwater, who holds it, the sky and calendar, neighbours with distances and travel days by foot, horse, caravan or ship, landmarks within reach, and every hook, question, faith, trade route and event that names it. A sensory palette turns measurements into what a character would see, hear, smell and feel. Every fact carries its status: measured, derived, suggested, canon or prompt. <b>Write with it</b> carries a dossier into the manuscript.</li>
         <li><b>Characters</b> — private pages under <code>codex/characters/</code> with aliases, pronouns, home, realm, culture, tongue, birth and role; they become gazetteer entries the manuscript recognises.</li>
-        <li><b>Downloads</b> — the Illustrated Obsidian vault, Scrivener and Ellipsus transfers, realm handbooks and <code>WORLDBOOK.md</code>.</li>
+        <li><b>Downloads</b> — the Illustrated Obsidian vault (it unzips to a <code>Compendium</code> folder; vaults exported under the old name still sync back), Scrivener and Ellipsus transfers, realm handbooks and <code>WORLDBOOK.md</code>.</li>
       </ul>
       <figure class="guide-fig">
         <div class="window"><img src="/img/app-codex-describe.webp" width="1800" height="1125" alt="The Describe everything sheet: one realm's fields for government, motto, strength, weakness and its ruler" loading="lazy" decoding="async"></div>
@@ -1033,11 +1099,25 @@
         <div class="window"><img src="/img/app-codex-gazetteer.webp" width="1800" height="1125" alt="The Gazetteer: a searchable index of every settlement, realm, people, land, water and place of power" loading="lazy" decoding="async"></div>
         <figcaption>The Gazetteer index. Every chip opens a dossier assembled from the saved simulation.</figcaption>
       </figure>
+      <h3 id="lexicon">The Lexicon <span class="badge badge-soft">Delta V4</span></h3>
+      <p><code>Write › Compendium › Lexicon</code> shows every root in your world's tongues: what it means, whether it
+      begins or ends names, and every name built on it, each a link to its gazetteer page. Search it, or show only the
+      roots in use.</p>
+      <ul class="feat">
+        <li><b>Change a meaning</b> in place, or <b>respell a root</b>: <b>Preview renames</b> shows every name the new
+          spelling would change before anything happens, and names you chose yourself are left alone.</li>
+        <li><b>Add a root</b> of your own to a tongue, or <b>Lock</b> the ones you love so every rebuild keeps them. Your
+          roots are kept in the world folder, and rebuilds speak your words.</li>
+        <li><b>Families this world names in</b>, at the top, sets the Allowed and Forbidden language families of a world
+          you have already built. Only the names are rebuilt: names in a tongue you took away are drawn again, places
+          that now speak a newly allowed tongue get names in it, and names you chose stay yours.</li>
+        <li><b>Export CSV</b> or <b>Export Markdown</b> takes the whole lexicon with you.</li>
+      </ul>
       <div class="callout">
         <span class="callout-t">Easy to miss</span>
         <ul>
-          <li>Every <code>[[link]]</code> in a Codex page opens that thing's dossier in place.</li>
-          <li>The vault is a real Obsidian vault: generated pages live under <code>codex/_generated/</code> and rebuilding deletes only that folder, so anything you write elsewhere in it survives.</li>
+          <li>Every <code>[[link]]</code> in a Compendium page opens that thing's dossier in place.</li>
+          <li>The vault is a real Obsidian vault: in the world folder it is still <code>codex/</code>, generated pages live under <code>codex/_generated/</code> and rebuilding deletes only that folder, so anything you write elsewhere in it survives.</li>
           <li>Story hooks, rulers and events you add are stored as overrides beside the terrain edits, which is why a re-simulation gives them back.</li>
         </ul>
       </div>
@@ -1250,7 +1330,7 @@
           <tr><td><code>world_config.json</code> · world recipe</td><td>The full resolved configuration (339 fields) and the short list you actually chose</td></tr>
           <tr><td><code>tectonic_provenance.json</code> · <code>orbital_forcing.json</code> · <code>terrain_import.json</code> · <code>lineage.json</code></td><td>Which tectonic model ran and what it measured; the exact orbit and tides; an import's checksum and mapping; where a reseeded world came from</td></tr>
           <tr><td><code>name_registry.json</code> · <code>name_choices.json</code> · <code>lore_overrides.json</code> · <code>overrides.json</code></td><td>Every name with its identity and audit; accepted names kept apart from terrain; your lore edits; your terrain edits</td></tr>
-          <tr><td><code>codex/</code></td><td>The Obsidian vault: <code>_generated/</code> pages, <code>novels/</code> with one Markdown file per chapter and <code>manuscript.json</code>, <code>characters/</code>, the series bible</td></tr>
+          <tr><td><code>codex/</code></td><td>The Compendium as an Obsidian vault (the folder keeps the Codex’s name): <code>_generated/</code> pages, <code>novels/</code> with one Markdown file per chapter and <code>manuscript.json</code>, <code>characters/</code>, the series bible</td></tr>
           <tr><td><code>handbooks/</code> · <code>revisions/r####/</code> · <code>snapshots/</code></td><td>Realm handbooks; the authoritative revision history; measurement snapshots for continuity diffing</td></tr>
           <tr><td><code>projections/</code> · <code>previews/</code> · <code>@2x</code>–<code>@4x</code> caches</td><td>Projection sources and rebuildable display caches — left out of backups, trimmed under a 512 MiB per-world budget, rebuilt on demand</td></tr>
           <tr><td><code>renders/manuscript/</code> · <code>exports/</code></td><td>Book exports, insights reports, figure crops; STL, OBJ, GeoJSON, scientific bundles</td></tr>
@@ -1300,10 +1380,10 @@
       draws them from saved data without re-simulating anything.</p>
 
       <h4>How do I print a map, or the whole atlas?</h4>
-      <p>Any view downloads as a PNG from <code>World › Export</code>. The whole illustrated set binds as one
+      <p>Any view downloads as a PNG from <code>World › Export</code>, or as an editable vector map, an SVG with named layers or a vector PDF from A4 to A0, from <b>Vector map for Illustrator, Affinity, Inkscape…</b>. The whole illustrated set binds as one
       print-ready PDF — title page, contents, a page per plate at a real paper size, and a colophon that carries the
-      seed so the world can be rebuilt from the book. <b>Bound atlas — quick A4 with labels</b> makes it in one
-      click; <b>Set up bound atlas (PDF)…</b> chooses another paper size or unlabelled plates and shows the page
+      seed so the world can be rebuilt from the book. <b>Bound atlas, quick A4 with labels</b> makes it in one
+      click; <b>Set up the bound atlas…</b> chooses another paper size or unlabelled plates and shows the page
       count, file size and print density before it starts. Every plate is embedded at its own resolution and the export
       reports the dots per inch page by page rather than asserting a number.</p>
 
@@ -1331,11 +1411,11 @@
       and can be resumed from its stage checkpoint or removed.</p>
 
       <h4>Nothing has any descriptions. Is that a bug?</h4>
-      <p>No. The generator leaves prose blank rather than inventing it, and <code>Write › Codex › Describe everything</code>
+      <p>No. The generator leaves prose blank rather than inventing it, and <code>Write › Compendium › Describe everything</code>
       says how many fields are open and can show you only those. They are questions left for you, not missing data.</p>
 
       <h4>How do I change a name everywhere it appears?</h4>
-      <p><code>Write › Codex › Rename everything</code> for the whole world on one sheet, or select the feature on the
+      <p><code>Write › Compendium › Rename everything</code> for the whole world on one sheet, or select the feature on the
       map and use <b>Rename everywhere</b>. Canonical names propagate through maps, dossiers, lore, routes, tongues,
       exports and later revisions.</p>
 
@@ -1368,7 +1448,7 @@
       you are looking at rather than the next launch.</p>
 
       <h4>How do I move my worlds to another computer?</h4>
-      <p><code>World › Export › Complete project backup (.cartovox)</code> per world, restored with
+      <p><code>World › Export › Complete project backup</code> per world, restored with
       <code>Library › Import project backup</code>. To move the whole library on one machine, use
       <code>Settings › Data &amp; privacy › Change save folder</code> — it copies existing worlds and keeps the old
       files as a safety copy, and never deletes the former library automatically.</p>

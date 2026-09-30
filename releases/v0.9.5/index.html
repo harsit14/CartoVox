@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox Delta V4 — full release notes</title>
+  <meta name="description" content="The full CartoVox Delta V4 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.9.5/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox Delta V4 — full release notes">
+  <meta property="og:description" content="The full CartoVox Delta V4 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.9.5/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=5d0e5f5f99">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+      <a href="/releases/v0.9.3/">Delta V2</a>
+      <a href="/releases/v0.9.2/">Delta V1</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-09-29</p>
+      <h1>CartoVox Delta V4</h1>
+      <p class="lede">Draw your own realms on a saved world, plan settlements around their water, export layered vector maps, and steer your tongues in the Lexicon.</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.9.5"><div class="doc-body">
+<p>Delta V4 is the fourth Delta release, shared with invited testers on 29 September 2026. Your Delta access code keeps working; the licence is now version 2.2, so the first start shows it once more with your code filled in. Everything below is new or fixed since Delta V3. Settlements from a saved world come out differently: the town is planned around its water, coast and roads now, so generate a saved settlement again to get the new plan (scenes you already saved keep what they have). A world made by an earlier Delta build now says so before an edit rebuilds it, because the rebuild simulates the planet with the newer generator and its continents come out differently; <em>Rebuilds</em> says how to keep what you have.</p>
+<h3 id="delta">Delta</h3>
+<ul>
+<li><strong>Licence 2.2, accepted once.</strong> Your Delta access code keeps working; the first start of Delta V4 shows the licence again with your code filled in. What changed: section 7 names the new kinds of output that are yours (vector maps, settlement plans, Compendium pages and vaults, lexicons), a new 7.5 says which fonts a PDF export embeds and that their licences let you sell the document, and 3.2 names the DejaVu fonts' licence beside the Open Font License. Nothing about the usage report or your data changed.</li>
+<li><strong>The third-party notices are complete.</strong> They now list the libraries CartoVox's own libraries depend on (contourpy, fontTools, kiwisolver, python-dateutil and others), the DejaVu fonts inside Matplotlib, and the PyInstaller launcher and the licence exception that lets it ship with CartoVox, and they say which fonts end up inside the files you export.</li>
+</ul>
+<h3 id="write-and-the-compendium">Write and the Compendium</h3>
+<ul>
+<li><strong>The Codex is now the Compendium.</strong> A plainer name for what it is: your world's encyclopedia of places, peoples, realms and lore. The Write tab, its pages, the Obsidian vault you download (it now unzips to a Compendium folder) and the Scrivener and Ellipsus bundles all use the new name. Typing "codex" in the command palette still takes you there, and vaults you exported under the old name still sync back.</li>
+<li><strong>The Lexicon.</strong> Write › Compendium › Lexicon shows every root in your world's tongues: what it means, whether it begins or ends names, and every name built on it, each a link to its gazetteer page. Change a meaning, respell a root (you see every rename before it happens, and names you chose yourself are left alone), add your own roots or lock the ones you love. Your roots are kept in the world folder, rebuilds speak your words, and the whole lexicon exports as CSV or Markdown.</li>
+</ul>
+<h3 id="names-and-tongues">Names and tongues</h3>
+<ul>
+<li><strong>Allowed and Forbidden language families you can actually set.</strong> The two cramped boxes, where a plain click threw away your other choices and the selection vanished once you clicked elsewhere, are now one row per family with <strong>Allowed</strong>, <strong>Any</strong> and <strong>Never</strong>, and a sentence saying what your world will do.</li>
+<li><strong>A built world can change its languages.</strong> The families are at the top of the Lexicon for a saved world. Only the names are rebuilt: names in a tongue you took away are drawn again, places that now speak a newly allowed tongue get names in it, and names you chose stay yours. It used to keep every old name, and re-simulated the planet to do it; now it starts at the names, about half the time.</li>
+<li><strong>Every name follows the rules.</strong> Storms, manor seats and rulers are named only in your world's own tongues; storms used to borrow from every family, forbidden ones included.</li>
+<li><strong>Renaming a natural region no longer makes the next rebuild start from the peoples.</strong></li>
+</ul>
+<h3 id="rebuilds">Rebuilds</h3>
+<ul>
+<li><strong>Worlds remember which build made them.</strong> Before an edit rebuilds a world made by an earlier Delta build, the world page, the Sculptor's edit plan and the rebuild review say so: the planet is re-simulated with the newer generator, so continents and coasts come out differently, and your edits are replayed onto the new ground. Mark areas with Preserve to keep them, or build a comparison draft first and keep the original untouched. Worlds made before Delta V4 carry no record and read as "Made with an earlier Delta build".</li>
+<li><strong>The Sculptor's live terrain says what it is.</strong> It is drawn on the saved map; applying re-simulates the world from its seed and replays your edits, so the preview is not the ground the rebuild starts from.</li>
+</ul>
+<h3 id="sculpt">Sculpt</h3>
+<ul>
+<li><strong>Painting forests shows on the map as you paint.</strong> Forest and Clearing move no ground, so the live map used to show nothing but a thin line while you painted. Now the land a Forest stroke reaches is hatched green, and a Clearing stroke brown, on land only, as you paint. The status line counts the land painted so far, the message after a stroke says how much land it covers and that the woodland grows after Review &amp; re-simulate (Quick look previews it), and each stroke in the pending list shows its land. A stroke that only crosses the sea says it changes nothing.</li>
+</ul>
+<h3 id="maps">Maps</h3>
+<ul>
+<li><strong>The reading under the map is no longer cut off.</strong> The height and biome under your pointer shared a fixed-width line with the distance scale, and the scale grew with the window, so a bigger window showed less ("212 m · Sub…"). The scale now comes first, the reading gets the room it needs, and on a small window it takes a second row.</li>
+</ul>
+<h3 id="realms-and-peoples">Realms and peoples</h3>
+<ul>
+<li><strong>Take a saved world's generated realms away and keep its towns.</strong> The world panel (Active world) has a <strong>Realms &amp; settlements</strong> row that says whose realms these are ("Generated realms · 67 realms"). <strong>Clear generated realms</strong> keeps every town, road and port and grows only the realms you draw or describe; with none drawn, all the land is unclaimed, and the world keeps its name and languages. <strong>Change</strong> sets <strong>Realms</strong> (Generated realms / Only the realms I draw / No realm borders) and <strong>Towns and settlements</strong> (Generated towns / Only the places I place / No peoples — a physical world), and tells you what the rebuild will cost, priced from the world's own last build. The same choice is at the top of the Sculptor's <strong>Realm</strong> tool (<strong>Clear</strong> / <strong>Keep generated realms</strong>), beside <strong>Remove</strong> on a selected realm (<strong>Remove all generated realms</strong>), in the Lore editor, and in Cmd-K ("Realms &amp; settlements for this world", "Clear generated realms").</li>
+<li><strong>Changing a world's peoples no longer re-simulates the planet.</strong> A rebuild whose only changes are realms, towns, roads or the nation brief now starts at the peoples: the terrain, climate, rivers and biomes are kept exactly as they were, file for file. On a Sketch world that took 11–22 seconds instead of 31–42.</li>
+<li><strong>Draw your own realms on a world you already have.</strong> The Sculptor's Story tools have a <strong>Realm</strong> tool: click the corners of a border, close it, name the realm and its capital, and click inside for the capital (or press Enter to let CartoVox choose). <strong>Found the realms you drew</strong> rebuilds the peoples, and the land inside the border is that realm's. A traced realm with no capital is now founded inside its border; it used to be left out.</li>
+<li><strong>Remove one realm.</strong> Select a realm in the Sculptor and choose <strong>Remove</strong> <em>its name</em>. Its capital stays as an ordinary town, its neighbours take the ground they reach, the wilderness takes the rest, and the removal holds through later rebuilds.</li>
+<li><strong>Only the places I place means that.</strong> With nothing placed there are no capitals and no realms (it used to invent one); a realm you describe by name alone still gets a capital, and a capital you place with the Sculptor is the realm, with no invented one beside it.</li>
+<li><strong>A world with towns and no realms reads properly.</strong> The Compendium, handbooks, gazetteer, worldbook and GeoJSON say plainly that there are no realms yet, instead of printing empty headings.</li>
+<li><strong>Easier to find on Create.</strong> The brief's "Civilisation" is now <strong>Realms &amp; settlements</strong>, under Nations, cultures and tongues, where realms are decided; searching for realms, nations, kingdoms or civilization finds it, and it offers <strong>Only the realms I draw</strong> (generated towns, your realms) beside <strong>Only the realms and places I make</strong>. Choosing to bring your own lore no longer throws away a Sparse or Dense choice.</li>
+</ul>
+<h3 id="exports">Exports</h3>
+<ul>
+<li><strong>A vector map for Illustrator, Affinity and Inkscape.</strong> The Export menu has <strong>Vector map for Illustrator, Affinity, Inkscape…</strong>, which writes one SVG with named layers, or a vector PDF, drawn in the projection and turn you are looking at. Sea depths, elevation bands (or biomes, or one flat land colour), lakes, realm fills and borders, contours, coastline, rivers, roads, sea lanes, the graticule, settlements and places of power are each their own layer, as paths you can restyle, and every name is text you can edit. Layers show up by name in Inkscape, Illustrator and Affinity; the paper is A4 to A0. Cahill and Waterman butterflies are drawn equirectangular for now, and the file and the dialog both say so. The PDF keeps everything as vectors but has no layers, and names that follow a river or range in the SVG sit straight in the PDF.</li>
+<li><strong>Vector map, usual layers</strong> (the old Scalable vector (SVG) item) gives you the layered map straight away, in the map's own projection. The flat whole-world sheet is still in the Vector bundle and the Map Library.</li>
+<li><strong>The Export menu is sorted.</strong> Its twenty-odd formats sat in one long list in no order, with nothing to say more were hidden below. They are now in labelled sections — Pictures, Vector and print, Games and tabletop, 3D and printing, GIS and data, Provenance and backup — with a format badge on every row, choices such as the seven projections on one row, two columns that fit the window, and a fade with "More formats below" whenever something is out of sight. It works from the keyboard, and it is readable in Parchment Light, where it used to be pale text on pale paper.</li>
+<li><strong>Some exports have new names in the sorted menu.</strong> The seven "Current map — … PNG" items are one row, <strong>Current map as a picture</strong>, with a projection to pick; Tectonic, Orbit &amp; tides and Simulation health are one row, <strong>How this world was made</strong>; the three terrain files are <strong>Terrain surface</strong> (STL, OBJ, glTF). <strong>Bound atlas, quick A4 with labels</strong> and <strong>Set up the bound atlas…</strong> are the two atlas PDFs, <strong>Coastlines and GIS features</strong> is the GeoJSON, <strong>Scientific rasters and metadata</strong> the science zip, and <strong>Complete project backup</strong> the .cartovox file.</li>
+<li><strong>The flat SVG sheet no longer breaks on a name with "&amp;" or "&lt;",</strong> and a redrawn sheet keeps its capitals, roads and places of power.</li>
+</ul>
+<h3 id="scenes">Scenes</h3>
+<ul>
+<li><strong>Building a settlement from one of your worlds is easy to find again.</strong> It never went away, but it sat behind a small link and a folded heading, and the page it opened had forgotten which world you came from. The Scenes tab now has <strong>New settlement from</strong> <em>your world</em> beside <strong>Create scene</strong>, and Settlement Studio opens with that world already chosen and its places loaded.</li>
+<li><strong>Plan this settlement.</strong> Towns, capitals and ports on the world map, and cities in the gazetteer, have a <strong>Plan this settlement</strong> button. It opens Settlement Studio with that exact place selected, and the scene you save is linked to the town, so it appears under <strong>Linked scenes</strong> on its card.</li>
+<li><strong>The world picker opens by itself.</strong> Opened without a link, Settlement Studio shows its world picker straight away whenever you have a saved world, rather than folding it under a heading.</li>
+</ul>
+<h3 id="settlements">Settlements</h3>
+<ul>
+<li><strong>Towns from a saved world sit beside their river instead of being cut in two by it.</strong> The town used to be planned on dry ground and the river drawn through it afterwards, at the width of the widest channel anywhere in a 26 km map cell, so a village stream could be wider than the whole walled town and houses and streets simply vanished under it. Now the water is laid down first, at the width of the reach by the town (from its average flow, about 40 m at 100 m³/s, and never more than about a third of the town), and the streets stop at riverside quays.</li>
+<li><strong>Bridges that are bridges.</strong> A bridge goes where a main street or a road meets the river, at the narrowest point nearby, square to the flow, from a street on one bank to a street on the other, with parapets and piers. River towns always have one.</li>
+<li><strong>One wall around the town.</strong> Walls are a single circuit with gates where the roads come in, ending in towers at the water's edge; the far bank is walled too when a real part of the town stands there. Ponds appear only where there is no river or lake nearby, out in the fields, and never on a wall or in the river.</li>
+<li><strong>Roads out, and fields along them.</strong> Every town has roads leaving it, toward its nearest neighbours when the world draws none, and the fields are strips along lanes off those roads, thinning with distance, with copses and woods beyond. Most towns in a world used to have no road at all, so their gates and farmland had nothing to grow from.</li>
+<li><strong>Streets with houses along them.</strong> Blocks are built up around every street, each house takes its plot's whole frontage with a garden behind, towns have a market square, and far fewer houses are thin slivers. Place labels are readable at full-sheet view, and the river's name follows the river. Settlements come out differently from Delta V3; saved scenes keep what they have until you generate them again.</li>
+<li><strong>Towns on the coast and by lakes.</strong> A town next to the sea or a lake in its world now has that shore; no town from a saved world used to be drawn on a coast at all. A seaport gets a harbour by its market, with piers, boats and a breakwater with a light, and a lake runs off the sheet as a real shoreline.</li>
+<li><strong>River towns grow at their crossing.</strong> The market stands by the bridgehead, the town stretches along its bank, only a small suburb crosses a river the town does not straddle, and the river keeps its bends past the town instead of running ruler-straight.</li>
+<li><strong>Water carries its own name, or none.</strong> Rivers, lakes and bays are labelled with the names your world gave them (a tributary does not borrow its main river's name); the old "perennial river", "Spring" and "Fish pond" labels are gone.</li>
+<li><strong>Walls hug the town and housing matches the population.</strong> Walls no longer take in empty ground, every approach road gets a gate, and a town draws about as many houses as its people need, with the outermost blocks left as gardens and orchards rather than overshooting. Cores are denser, and the principal church stands in its own churchyard, sized to the place.</li>
+<li><strong>Farmland in belts.</strong> Gardens and orchards at the town's edge, then open-field strips, then hedged enclosures and pasture, with water meadows along the river and nothing ploughed on steep ground. The straight blue irrigation lines that crossed the fields are short and stay by the bank.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=8bd18c805b" defer></script>
+</body>
+</html>

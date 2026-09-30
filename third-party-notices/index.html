@@ -39,7 +39,7 @@
 <h1>Third-party notices</h1>
 <p>CartoVox includes the third-party components listed below. Each is licensed to you under its own terms, which apply to that component. Where a component's terms conflict with the CartoVox End User License Agreement (<code>EULA.md</code>), that component's terms govern that component.</p>
 <p>This file is incorporated into the End User License Agreement by reference.</p>
-<p><strong>CartoVox version:</strong> Delta V3 <strong>Inventory generated:</strong> 21 September 2026</p>
+<p><strong>CartoVox version:</strong> Delta V4 <strong>Inventory generated:</strong> 29 September 2026</p>
 <hr>
 <h2 id="1-how-to-read-this-file">1. How to read this file</h2>
 <ul>
@@ -66,12 +66,32 @@
 <h3 id="2-1-components-bundled-inside-the-libraries-above">2.1 Components bundled inside the libraries above</h3>
 <p>Matplotlib, NumPy and Pillow each embed additional third-party material. Their own licence files ship unchanged inside their packages and cover, at least:</p>
 <ul>
-<li><strong>Matplotlib</strong> — AMS and BaKoMa Computer Modern fonts, ColorBrewer colour schemes (Apache-2.0), Qhull, STIX Fonts, Solarized, Yorick/Gist colour maps, and a ResizeObserver polyfill (CC0-1.0). See <code>_internal/matplotlib/LICENSE/</code>.</li>
+<li><strong>Matplotlib</strong> — AMS and BaKoMa Computer Modern fonts, ColorBrewer colour schemes (Apache-2.0), Qhull, STIX Fonts, Solarized, Yorick/Gist colour maps, and a ResizeObserver polyfill (CC0-1.0). See <code>_internal/matplotlib/LICENSE/</code>. It also ships the <strong>DejaVu</strong> fonts (Bitstream Vera and Arev font licences; the DejaVu changes are in the public domain), whose text is <code>_internal/matplotlib/mpl-data/fonts/ttf/LICENSE_DEJAVU</code>, and the STIX fonts (SIL OFL 1.1). CartoVox embeds subsets of DejaVu Serif and STIX General in the PDF files it writes; see section 5.2.</li>
 <li><strong>NumPy</strong> — a small number of MIT, Zlib, 0BSD and CC0-1.0 sources, enumerated in <code>_internal/numpy/licenses/</code>.</li>
 <li><strong>Pillow</strong> — its own <code>LICENSE</code> file retains the historical PIL notices.</li>
 </ul>
 <h3 id="2-2-note-on-opencv-and-ffmpeg">2.2 Note on OpenCV and FFmpeg</h3>
 <p>The <code>opencv-python-headless</code> wheels bundle an FFmpeg build for video I/O. Those FFmpeg binaries are distributed under LGPL-2.1-or-later with optional components under GPL. CartoVox uses OpenCV for image analysis only and does not invoke FFmpeg, but the binaries are present in the package. If you redistribute CartoVox, or if you require a build without LGPL/GPL components, replace <code>opencv-python-headless</code> with a build compiled without FFmpeg.</p>
+<h3 id="2-3-libraries-the-components-above-depend-on">2.3 Libraries the components above depend on</h3>
+<p>These are installed because a library in the table above requires them. They ship unmodified, as compiled modules or inside the application's Python archive, with their distribution metadata where the packager keeps it.</p>
+<table><thead><tr><th>Component</th><th>Version</th><th>Licence</th><th>Needed by</th></tr></thead><tbody>
+<tr><td>contourpy</td><td>1.4.0</td><td>BSD-3-Clause</td><td>Matplotlib (also traces CartoVox's vector map bands)</td></tr>
+<tr><td>cycler</td><td>0.12.1</td><td>BSD-3-Clause</td><td>Matplotlib</td></tr>
+<tr><td>kiwisolver</td><td>1.5.1</td><td>BSD-3-Clause</td><td>Matplotlib</td></tr>
+<tr><td>fontTools</td><td>4.66.0</td><td>MIT</td><td>Matplotlib (font subsetting for PDF)</td></tr>
+<tr><td>pyparsing</td><td>3.3.3</td><td>MIT</td><td>Matplotlib</td></tr>
+<tr><td>python-dateutil</td><td>2.9.0.post0</td><td>Apache-2.0 or BSD-3-Clause (dual)</td><td>Matplotlib</td></tr>
+<tr><td>six</td><td>1.17.0</td><td>MIT</td><td>python-dateutil</td></tr>
+<tr><td>packaging</td><td>26.3</td><td>Apache-2.0 or BSD-2-Clause (dual)</td><td>Matplotlib</td></tr>
+<tr><td>bottle</td><td>0.13.4</td><td>MIT</td><td>pywebview</td></tr>
+<tr><td>proxy_tools</td><td>0.1.0</td><td>MIT</td><td>pywebview</td></tr>
+<tr><td>PyObjC (core, Cocoa, Quartz, Security, UniformTypeIdentifiers, WebKit)</td><td>12.2.2, macOS builds only</td><td>MIT</td><td>pywebview</td></tr>
+<tr><td>pythonnet and clr-loader</td><td>3.1.0 and 0.3.1, Windows builds only</td><td>MIT</td><td>pywebview</td></tr>
+<tr><td>cffi and pycparser</td><td>2.1.1 and 3.0, Windows builds only</td><td>MIT and BSD-3-Clause</td><td>clr-loader</td></tr>
+<tr><td>QtPy</td><td>2.4.3, Linux builds only</td><td>MIT</td><td>pywebview</td></tr>
+</tbody></table>
+<h3 id="2-4-the-application-launcher">2.4 The application launcher</h3>
+<p>The installed application is packaged with <strong>PyInstaller</strong> 6.22.3. The small launcher program it adds (the "bootloader") is licensed under the GNU General Public License version 2 or later <strong>with the PyInstaller bootloader exception</strong>, which allows it to be distributed with a program under any licence, including a proprietary one, provided the bootloader itself is not modified. CartoVox uses it unmodified. PyInstaller's other parts run only when a build is made and are not part of the installed application.</p>
 <hr>
 <h2 id="3-desktop-shell-components-linux-builds">3. Desktop shell components (Linux builds)</h2>
 <table><thead><tr><th>Component</th><th>Version</th><th>Licence</th><th>Where</th></tr></thead><tbody>
@@ -120,9 +140,11 @@
 <li>The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.</li>
 </ol></blockquote>
 <p>CartoVox does not alter the fonts' outlines, names or axes, ships each under this licence in both forms, and does not sell them by themselves. The requirement in condition 5 that fonts "must not be distributed under any other license" applies to the font files only, and does not extend to maps, documents, or other output you create with CartoVox.</p>
+<h3 id="5-2-fonts-inside-the-files-cartovox-writes">5.2 Fonts inside the files CartoVox writes</h3>
+<p>PDF files CartoVox writes (the vector map and the bound atlas) embed subsets of fonts that ship with Matplotlib: DejaVu Serif (Bitstream Vera and Arev font licences) and STIX General (SIL OFL 1.1). Both licences allow the fonts to be embedded in documents that are sold or distributed; the fonts remain under their licences and the documents do not. SVG files CartoVox writes name the fonts they ask for (for example Georgia, then a generic serif) and embed none, so nothing of a system font is copied into them.</p>
 <hr>
 <h2 id="6-full-mit-licence-text">6. Full MIT licence text</h2>
-<p>Applies to three.js, marked, ProseMirror, markdown-it, pywinrt (Windows builds), and the MIT-licensed components of NumPy and Matplotlib.</p>
+<p>Applies to three.js, marked, ProseMirror, markdown-it, pywinrt (Windows builds), fontTools, pyparsing, six, bottle, proxy_tools, PyObjC (macOS builds), pythonnet, clr-loader and cffi (Windows builds), QtPy (Linux builds), and the MIT-licensed components of NumPy and Matplotlib.</p>
 <pre>Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the &quot;Software&quot;), to deal
 in the Software without restriction, including without limitation the rights
@@ -143,7 +165,7 @@ THE SOFTWARE.</pre>
 <p>Copyright notices: three.js © 2010–2021 Three.js Authors · marked © 2011–2025 Christopher Jeffrey · ProseMirror © Marijn Haverbeke and others · markdown-it © Vitaly Puzrin and Alex Kocharin.</p>
 <hr>
 <h2 id="7-full-bsd-3-clause-licence-text">7. Full BSD-3-Clause licence text</h2>
-<p>Applies to NumPy, pypdf, and pywebview.</p>
+<p>Applies to NumPy, pypdf, pywebview, contourpy, cycler, kiwisolver, pycparser (Windows builds), and python-dateutil (which may also be used under Apache-2.0).</p>
 <pre>Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
 
@@ -180,6 +202,9 @@ POSSIBILITY OF SUCH DAMAGE.</pre>
 <tr><td>SIL OFL 1.1</td><td>Archivo, DM Mono, Newsreader, Cinzel, STIX, Computer Modern</td><td><code>web/vendor/fonts/OFL-*.txt</code></td></tr>
 <tr><td>Qhull</td><td>Matplotlib</td><td><code>_internal/matplotlib/LICENSE/LICENSE_QHULL</code></td></tr>
 <tr><td>CC0-1.0</td><td>ResizeObserver polyfill</td><td><code>_internal/matplotlib/LICENSE/</code></td></tr>
+<tr><td>Bitstream Vera and Arev font licences</td><td>DejaVu fonts</td><td><code>_internal/matplotlib/mpl-data/fonts/ttf/LICENSE_DEJAVU</code></td></tr>
+<tr><td>Apache-2.0 or BSD-2-Clause</td><td>packaging</td><td>its distribution metadata</td></tr>
+<tr><td>GPL-2.0-or-later with the PyInstaller bootloader exception</td><td>PyInstaller bootloader</td><td>https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt</td></tr>
 <tr><td>LGPL-3.0-only and GPL-3.0-only</td><td>PySide6 and Qt 6 (Linux builds only)</td><td><code>_internal/third-party-licenses/qt/</code></td></tr>
 <tr><td>BSD and other Chromium notices</td><td>Qt WebEngine (Linux builds only)</td><td><code>_internal/PySide6/Qt/resources/</code> and matching distribution metadata</td></tr>
 </tbody></table>

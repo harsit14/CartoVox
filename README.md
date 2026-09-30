@@ -69,7 +69,7 @@ the transparent header mark.
 ```bash
 python3 tools/build-images.py --brand <app>/assets/app-icon --icons brand --worlds <library>/worlds --shots <shots-dir>
 python3 tools/build-legal.py <app>/EULA.md <app>/THIRD-PARTY-NOTICES.md
-python3 tools/build-releases.py <app>/.github/release-notes --through 0.9.4
+python3 tools/build-releases.py <app>/.github/release-notes --through 0.9.5
 python3 tools/build-faq-schema.py          # FAQPage JSON-LD, derived from the FAQ markup
 python3 tools/subset-fonts.py              # Rebuild self-hosted fonts after copy changes
 python3 tools/build-sitemap.py             # Also runs after build-releases.py and stamp-assets.py

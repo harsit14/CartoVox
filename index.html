@@ -71,7 +71,7 @@
         "name": "Can I sell what I make with it?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Worlds, maps, atlases, names, chronicles and manuscripts generated for you are yours, including for novels, game products, prints and commercial client work, with no royalty and no attribution. The application itself is proprietary and may not be redistributed; the full terms are in the licence."
+          "text": "Yes. Worlds, maps (vector maps included), atlases, settlement plans, names and lexicons, chronicles, Compendium pages and manuscripts generated for you are yours, including for novels, game products, prints and commercial client work, with no royalty and no attribution. The application itself is proprietary and may not be redistributed; the full terms are in the licence."
         }
       },
       {
@@ -207,9 +207,9 @@
   <section class="stats reveal" aria-label="Key figures">
     <div class="wrap stats-grid">
       <div class="stat"><span class="stat-n">4800<small>px</small></span><span class="stat-l">publication plates, world to region</span></div>
-      <div class="stat"><span class="stat-n">25</span><span class="stat-l">mineral and gem types pinned to their geology in Delta V3</span></div>
-      <div class="stat"><span class="stat-n">85</span><span class="stat-l">traded goods grounded in climate and resources in Delta V3</span></div>
-      <div class="stat"><span class="stat-n">69</span><span class="stat-l">plant and animal species in Delta V3</span></div>
+      <div class="stat"><span class="stat-n">25</span><span class="stat-l">mineral and gem types pinned to their geology, since Delta V3</span></div>
+      <div class="stat"><span class="stat-n">85</span><span class="stat-l">traded goods grounded in climate and resources, since Delta V3</span></div>
+      <div class="stat"><span class="stat-n">69</span><span class="stat-l">plant and animal species, since Delta V3</span></div>
     </div>
   </section>
 
@@ -408,7 +408,7 @@
         <h2>Create the world. Explore it. Then write in it.</h2>
         <p>
           CartoVox is a single desktop application with three workspaces that share one record.
-          Rename a settlement once and it changes in the atlas, the dossier, the routes, the codex
+          Rename a settlement once and it changes in the atlas, the dossier, the routes, the Compendium
           and every export — because there is only one place it lives.
         </p>
       </div>
@@ -422,7 +422,7 @@
             <span class="showcase-tab-n">World</span><span class="showcase-tab-d">Map, atlas, travel, campaign</span>
           </button>
           <button role="tab" id="tab-write" aria-selected="false" aria-controls="panel-write" class="showcase-tab" tabindex="-1">
-            <span class="showcase-tab-n">Write</span><span class="showcase-tab-d">Codex, chronicle, manuscript</span>
+            <span class="showcase-tab-n">Write</span><span class="showcase-tab-d">Compendium, chronicle, manuscript</span>
           </button>
         </div>
 
@@ -479,7 +479,7 @@
           <div class="showcase-copy">
             <h3>The book lives in the same vault as the map.</h3>
             <ul class="ticks">
-              <li><b>Codex</b> — realms, cultures, trade, faith, places of power, and the measured questions the world raises.</li>
+              <li><b>Compendium</b> — the world's encyclopedia: realms, cultures, trade, faith, places of power, a lexicon of its tongues, and the measured questions the world raises.</li>
               <li><b>Chronicle</b> — a human-scale timeline you can author and play forward on the map, with consequences that persist.</li>
               <li><b>Manuscript</b> — a word processor inside the world: <code>[[</code> links to any place, scenes on the map, checks that catch a distance or a date drifting.</li>
               <li><b>Exports</b> — Word, Markdown, Scrivener, EPUB, HTML; an Obsidian vault; realm handbooks; the whole worldbook.</li>
@@ -488,10 +488,10 @@
           </div>
           <div class="showcase-media">
             <div class="window">
-              <img id="media-write" src="/img/app-write-dossier.webp" width="1800" height="1125" alt="The Codex: measured author questions the world raises, with Show on map and Write answer actions" loading="lazy" decoding="async">
+              <img id="media-write" src="/img/app-write-dossier.webp" width="1800" height="1125" alt="The Compendium, under its earlier name, the Codex: measured author questions the world raises, with Show on map and Write answer actions" loading="lazy" decoding="async">
             </div>
             <div class="thumbs" data-target="media-write">
-              <button type="button" class="thumb is-active" data-src="/img/app-write-dossier.webp" data-alt="The Codex: measured author questions with Show on map and Write answer actions">Codex</button>
+              <button type="button" class="thumb is-active" data-src="/img/app-write-dossier.webp" data-alt="The Compendium, under its earlier name, the Codex: measured author questions with Show on map and Write answer actions">Compendium</button>
               <button type="button" class="thumb" data-src="/img/app-write-chronicle.webp" data-alt="The Chronicle: eras and events on a timeline that plays on the map">Chronicle</button>
               <button type="button" class="thumb" data-src="/img/app-write-manuscript.webp" data-alt="The Manuscript editor with a chapter in progress">Manuscript</button>
             </div>
@@ -531,6 +531,8 @@
             <li><b>Eight plans, not eight jitters</b> — street village, green, crossroads, radial, organic, harbour, hilltop and twin neighbourhoods.</li>
             <li><b>Quarters that differ</b> — market, craft, townhouse, gentry, manor, temple, dockside, poor quarter and crofts each set their own plot size and building forms. Poor quarters deliberately do not line up.</li>
             <li><b>Drawn, not stretched</b> — roofs are built from each building's own footprint, so an L-shaped house gets a roof that fits. Fifty-seven pieces: eleven tree species, mills, forges, chapels, jetties, vineyards.</li>
+            <li><b>Built around its water</b> — the river is laid down before the streets, bridges cross where a road meets it, a seaport gets its harbour, and farmland lies in belts along the roads out of town.</li>
+            <li><b>Any town on your world</b> — <b>Plan this settlement</b> on a town, capital or port opens the Studio on that place, and the plan is saved as a scene linked back to it.</li>
             <li><b>Redraw one quarter</b> and every street and building outside it stays where it was.</li>
             <li><b>Encounter scenes</b> — standalone maps with no world at all, parent and child scenes with clickable hotspots, up to 32 lights, layers that blend and erase.</li>
           </ul>
@@ -632,7 +634,7 @@
         <ul class="ticks">
           <li><b>Names come from tongues</b> — language families you define, so a coast sounds like its people.</li>
           <li><b>History you can play</b> — the Chronicle turns eras and events into a changing historical map.</li>
-          <li><b>Questions, measured</b> — the Codex asks what the simulation cannot answer: who rules, who is allowed, what proves the right.</li>
+          <li><b>Questions, measured</b> — the Compendium asks what the simulation cannot answer: who rules, who is allowed, what proves the right.</li>
           <li><b>Leaves as a book</b> — Word with real footnotes and tracked changes, Markdown, Scrivener, EPUB, HTML.</li>
         </ul>
       </div>
@@ -641,7 +643,7 @@
           <img src="/img/app-write-manuscript.webp" width="1800" height="1125" alt="The Manuscript editor: a chapter in progress beside the book's outline" loading="lazy" decoding="async">
         </div>
         <div class="window window-tall window-offset">
-          <img src="/img/app-write-dossier.webp" width="1800" height="1125" alt="The Codex: measured questions the world raises, each with Show on map and Write answer" loading="lazy" decoding="async">
+          <img src="/img/app-write-dossier.webp" width="1800" height="1125" alt="The Compendium, under its earlier name, the Codex: measured questions the world raises, each with Show on map and Write answer" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -716,8 +718,9 @@
         <p class="eyebrow">Your worlds are yours</p>
         <h2>Publish it. Print it. Sell it.</h2>
         <p>
-          Everything CartoVox generates for you — worlds, maps, atlases, gazetteers, chronicles,
-          codex vaults, names and manuscripts — belongs to you. Use it commercially with no royalty
+          Everything CartoVox generates for you — worlds, maps and vector maps, atlases, settlement
+          plans, gazetteers, chronicles, Compendium pages and vaults, lexicons, names and manuscripts —
+          belongs to you. Use it commercially with no royalty
           and no attribution. Your work is a file on your disk in an open, documented layout: an
           Obsidian-compatible vault, GeoJSON, SVG, OBJ and STL terrain, GeoTIFFs, and a scientific
           archive you can read with NumPy.
@@ -793,7 +796,7 @@
         </details>
         <details>
           <summary>Can I sell what I make with it?</summary>
-          <p>Yes. Worlds, maps, atlases, names, chronicles and manuscripts generated for you are yours, including for novels, game products, prints and commercial client work, with no royalty and no attribution. The application itself is proprietary and may not be redistributed; the full terms are in the <a href="/eula/">licence</a>.</p>
+          <p>Yes. Worlds, maps (vector maps included), atlases, settlement plans, names and lexicons, chronicles, Compendium pages and manuscripts generated for you are yours, including for novels, game products, prints and commercial client work, with no royalty and no attribution. The application itself is proprietary and may not be redistributed; the full terms are in the <a href="/eula/">licence</a>.</p>
         </details>
         <details>
           <summary>Is the simulation scientifically accurate?</summary>
