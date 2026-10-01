@@ -30,3 +30,24 @@ Run the app at the release the site describes, not at whatever `main` holds:
 copied `index.json` first, or the copies still point at the real library. Name steps on the command line to retake a few without the
 whole run: `python3 05-field-guide.py view-menu tools-menu`. 01–03 remain for
 the map-only `chain-*` crops and for the helpers and prose 05 imports.
+
+## Discovery-card details
+
+`06-discovery-cards.py` fills the seven formerly text-only cards on the landing
+page: three decision maps, Climate Lab, the reseed panel, language families and
+a manuscript scene world card. These screenshots were captured from the
+released `v0.9.5` source (Delta V4) with a temporary copy of the hero world.
+The script writes original sample prose and links a scene in the sandbox;
+it must never run against the author's live library.
+
+After preparing the sandbox as above and starting it on port 8101:
+
+```bash
+python3 06-discovery-cards.py --url http://127.0.0.1:8101/
+python3 ../build-images.py --shots /tmp/cartovox-discovery-shots
+```
+
+Pass task names (`water_security`, `agricultural_calendar`,
+`floodplain_exposure`, `climate_lab`, `reseed`, `languages`, `scene_world`)
+to capture a subset. All card images use the same 16:10 frame as the earlier
+product screenshots.

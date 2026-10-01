@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The CartoVox guide — how to use it, and everything it does</title>
-  <meta name="description" content="The CartoVox Delta V4 guide: find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
+  <meta name="description" content="The CartoVox Delta V4 guide: follow your first hour, find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
   <link rel="canonical" href="https://cartovox.org/guide/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
@@ -16,7 +16,7 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
   <link rel="apple-touch-icon" href="/img/icon-180.png">
-  <link rel="stylesheet" href="/css/site.css?v=9f50818548">
+  <link rel="stylesheet" href="/css/site.css?v=71ff971cef">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -42,6 +42,7 @@
   <aside class="guide-toc" aria-label="Contents">
     <p class="eyebrow">Contents</p>
     <nav class="toc-list" id="toc">
+      <a href="#first-hour"><b>Your first hour</b><small>start here</small></a>
       <a href="#where"><b>Where is it?</b><small>search</small></a>
       <a href="#new-v4">New in Delta V4</a>
       <a href="#new-v3">New in Delta V3</a>
@@ -68,6 +69,7 @@
       <a href="#map">The map</a>
       <a href="#views" class="toc-sub">54 views</a>
       <a href="#inspector" class="toc-sub">Cell inspector</a>
+      <a href="#decision-maps" class="toc-sub">Decision maps</a>
       <a href="#dock" class="toc-sub">View &amp; Tools menus</a>
       <a href="#labs" class="toc-sub">Labs &amp; the Regional lens</a>
       <a href="#planet" class="toc-sub">Planet &amp; 3D terrain</a>
@@ -100,20 +102,18 @@
       <p class="eyebrow">The guide</p>
       <h1>How to use CartoVox, and everything it does.</h1>
       <p class="lede">
-        Testers keep asking three questions: <i>where do I find that</i>, <i>is it in there at all</i>, and
-        <i>what does this setting actually do</i>. This page answers all three. It opens with a searchable index of
-        where every control lives, builds a world from nothing in about a minute, and then walks every workspace,
-        menu and panel in the order the causal chain produces them — including the ones testers keep telling us
-        they never knew were there.
+        Start with one world and follow it from a desert cell to an atlas plate and a chapter.
+        Your first hour below gives you nine things to try, each with a visible result. Then use
+        the searchable control index or the workspace reference whenever you need a particular tool.
       </p>
       <p class="muted small">
-        Current as of <b>Delta V4</b>; the key workspace screenshots are from Delta V3, while some deeper reference images are from 0.9.1. Version-by-version changes are on the
-        <a href="/releases/">release notes</a> page. The same material ships inside the app under <b>Help</b>, offline.
+        Current as of <b>Delta V4 (0.9.5)</b>, the latest distributed release; the key workspace screenshots are from Delta V3, while some deeper reference images are from 0.9.1. Version-by-version changes are on the
+        <a href="/releases/">release notes</a> page. The app also includes an offline manual under <b>Help</b>.
       </p>
       <details class="mobile-contents">
         <summary>Browse the guide</summary>
         <nav class="toc-list mobile-toc" aria-label="Guide sections">
-          <a href="#where">Find a control</a><a href="#first">Build your first world</a>
+          <a href="#first-hour">Your first hour</a><a href="#where">Find a control</a><a href="#first">Build your first world</a>
           <a href="#create">Create</a><a href="#map">Explore the map</a>
           <a href="#atlas">Illustrated atlas</a><a href="#campaign">Campaigns</a>
           <a href="#manuscript">Manuscript</a><a href="#limits">Known limits</a>
@@ -127,6 +127,68 @@
         and type what you want — the command palette takes actions as well as names.</p>
       </div>
     </header>
+
+    <section id="first-hour" aria-labelledby="first-hour-title">
+      <p class="eyebrow">Start here · Delta V4</p>
+      <h2 id="first-hour-title">Your first hour with CartoVox</h2>
+      <p class="section-lede">You only need three ideas to begin: the views share one world, you can ask
+        why a place is the way it is, and your edits have a review and a way back. Try these nine steps
+        at your own pace. Build and export times depend on your computer and the outputs you choose.</p>
+      <p>First, <a href="#install">install and unlock the app</a> with your Delta code. Keep the example
+        world for exploration; make your own Sketch for the editing steps.</p>
+      <ol class="steps first-hour-steps">
+        <li><b>Open the example and ask why a desert is dry.</b> On <b>Create</b> or an empty <b>Library</b>,
+          choose <b>Build the example world</b>. Once it opens in <b>World</b>, click a dry land cell.
+          Then choose <code>World › Tools › Explain climate</code> and click there again.
+          <span class="step-result">Look for: the measured roles of elevation, upwind terrain and moisture supply.</span>
+          <a href="#inspector">The inspector and climate explanation →</a></li>
+        <li><b>See the same coastline drawn two ways.</b> Open <code>World › Maps › Cartography</code>
+          and choose <b>Tolkien sepia</b>, then <b>Swiss analytical relief</b>.
+          <span class="step-result">Look for: the same land and ranges, expressed as ink and shaded relief.</span>
+          <a href="#atlas">Atlas styles and plates →</a></li>
+        <li><b>Find a question for your story.</b> In <code>World › Maps › Water &amp; atmosphere</code>,
+          open <b>Water security &amp; drought resilience</b>. Read the map key and click a land cell.
+          <span class="step-result">Look for: a place where water supply could matter, and the evidence behind the reading.</span>
+          <a href="#decision-maps">Three decision maps to try →</a></li>
+        <li><b>Build a small world of your own.</b> Open <b>Create</b>, choose <b>Generate a new world</b>
+          and a purpose, then write a sentence in <b>World thesis</b>. Set <b>Simulation detail</b> to
+          <b>Sketch</b>, review <b>OUTPUT</b> and <b>COST</b>, and choose <b>Create Sketch world</b>.
+          <span class="step-result">Look for: a saved world in your Library, ready to edit.</span>
+          <a href="#first">The full first-world walkthrough →</a></li>
+        <li><b>Give a settlement your own name.</b> Click one on your new world's map and use <b>Rename</b>.
+          Open its dossier in the gazetteer, then view or generate a labelled atlas plate.
+          <span class="step-result">Look for: your chosen name in the dossier and the refreshed map. Exports you saved earlier are snapshots.</span>
+          <a href="#inspector">Selecting and renaming a place →</a></li>
+        <li><b>Sculpt a valley and review the consequences.</b> Open <code>World › Tools › Sculpt</code>,
+          choose <b>Valley</b> and click its bends. Use <b>Quick look</b> or <b>Build comparison draft</b>
+          to inspect the effect before <b>Apply &amp; re-simulate</b>. Read the rebuild review.
+          <span class="step-result">Look for: changed terrain and downstream rivers or climate, a restorable revision, and your chosen name wherever its place survives.</span>
+          <a href="#sculpt">Sculpt, revisions and rebuild cautions →</a></li>
+        <li><b>Plan a journey between two towns.</b> Open <b>World › Travel</b>, choose the start,
+          destination and travel mode, then solve the route.
+          <span class="step-result">Look for: a route across the terrain and its computed distance and travel time.</span>
+          <a href="#travel">Journey Laboratory →</a></li>
+        <li><b>Write a chapter beside a place.</b> Open <b>Write › Manuscript</b>, create a book or chapter,
+          and type <code>[[</code> followed by a place name to insert a link. Pin a scene to a place
+          and give it a date, then use <b>Run checks</b>.
+          <span class="step-result">Look for: a linked place and a scene world card; review any continuity suggestions.</span>
+          <a href="#manuscript">The manuscript desk →</a></li>
+        <li><b>Take something out of the app.</b> In the World map's <b>Export</b> menu, save an atlas
+          plate and use <b>Vector map, usual layers</b> for an SVG. A Sketch without illustrated plates
+          can generate them later; read the cost before starting.
+          <span class="step-result">Look for: an image you can share and a vector map you can open in another drawing tool.</span>
+          <a href="#export">Export choices →</a></li>
+      </ol>
+      <div class="callout">
+        <span class="callout-t">Edits are reviewable; geography can change</span>
+        <p>Re-simulation rebuilds the affected systems. Names and author work follow surviving places;
+          removed places need review. A finer-grid rebuild or a rebuild with a newer generator can
+          change coastlines and settlement positions. Keep a comparison draft or backup when you
+          want to preserve the original. <a href="#sculpt">Read the rebuild details</a>.</p>
+      </div>
+      <p>For more guided tasks, open <b>Help</b> in the app and choose the task-based capability tour.
+        For a specific control, use <a href="#where">the searchable index below</a>.</p>
+    </section>
 
     <section id="where">
       <p class="eyebrow">The answer to most questions</p>
@@ -711,6 +773,22 @@
           <li>Every generated data view has a <b>Why here?</b> reading on click, and the Map source card's <b>Provenance</b> download says what kind of evidence you are looking at.</li>
         </ul>
       </div>
+
+      <h3 id="decision-maps">What this world means: three maps to try</h3>
+      <p>Open the <b>Maps</b> pill at the top left of the World map. These views are readings of the
+        saved simulation, with source methods and limits shown beside them. Use them to find a
+        question for your setting, then decide what its people do about it.</p>
+      <ul class="feat">
+        <li><b>Where is water scarce?</b> <code>Water &amp; atmosphere › Water security &amp; drought resilience</code>.
+          Read the key and inspect a cell before imagining reservoirs, migration or disputes over a supply.</li>
+        <li><b>When can people grow food?</b> <code>Life &amp; settlement › Agricultural calendar &amp; growing windows</code>.
+          Compare places with different growing windows, then consider seasons of work, storage and trade.</li>
+        <li><b>Which towns face flooding?</b> <code>Water &amp; atmosphere › Floodplain &amp; settlement exposure</code>.
+          Follow the exposed ground to a settlement and use its dossier to build the local story.</li>
+      </ul>
+      <p class="small muted">These are worldbuilding and planning interpretations, not real-world forecasts.
+        If an older world lacks the required saved fields, its view is marked unavailable.
+        The in-app capability tour also has an <b>Explore the decision maps</b> task.</p>
 
       <h3 id="inspector">The cell inspector</h3>
       <figure class="guide-fig">
@@ -1486,7 +1564,7 @@
         <li><b>Land needs crust to stand on.</b> Asking for more land than there is continental crust drains the sea until seafloor is exposed, and the run says so.</li>
         <li><b>Atlas labels are placed, not typeset</b>: a name that will not fit at any rung of its shrink ladder is dropped and reported rather than broken over two lines. Stamps are procedural; mountains read as massifs rather than chains; sub-cell coastline crinkle is a deliberate, switchable invention.</li>
         <li><b>A long thin landmass near the pole is usually the projection</b>, not the terrain — measure it on the sphere.</li>
-        <li><b>Reproducibility is checked two ways</b>: the same seed in two processes must give byte-identical plates, and a seed must render identically whether or not another world was drawn first.</li>
+        <li><b>Reproducibility applies to the physical world</b>: keep the seed, saved configuration and simulation version. Rendering checks compare separate processes within the same software environment; changes in fonts or rendering libraries can shift lettering or other pixels across environments.</li>
         <li><b>Publication cost depends on the selected outputs.</b> A Full build with every plate currently takes about 8 minutes on a high-end Apple Silicon Mac and about 13 minutes on a high-end Windows machine; the preflight measures your own machine as it goes.</li>
       </ul>
       <p class="muted small">Version-by-version model changes are recorded in the <a href="/releases/">release notes</a>, each versioned in the world's configuration so a saved world always states which model produced it.</p>

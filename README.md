@@ -1,6 +1,7 @@
 # cartovox.org
 
-The public site for [CartoVox](https://cartovox.org), the desktop world simulator.
+The public site for [CartoVox](https://cartovox.org): simulate a planet, draw its
+illustrated atlas, and write beside the same world in a desktop studio.
 A static site: a landing page, guide, release archive and legal pages, no build step, no framework,
 no third-party requests. A Cloudflare Worker with static assets serves it straight from this repository,
 together with the Delta service CartoVox's Delta builds talk to (`worker/`).
@@ -25,9 +26,53 @@ together with the Delta service CartoVox's Delta builds talk to (`worker/`).
 | `worker/`, `wrangler.jsonc`, `.assetsignore` | The Worker: static files straight from the assets, and the Delta service (`/v1/…` for the app, `/admin` for the owner's report). The service is copied from the app repository by `tools/sync-delta-service.py` |
 | `robots.txt`, `sitemap.xml`, `site.webmanifest` | Crawl controls; the sitemap is generated from indexable canonical pages |
 
+## Positioning and onboarding
+
+Lead with the connected workflow: planet → atlas → manuscript. The first map
+comparison uses real renders of Ixrixenrond already shipped in `img/`, whose
+common source is recorded in `tools/build-images.py`. Keep their attribution
+and do not substitute unrelated coastlines or invented product screenshots.
+
+`/guide/#first-hour` is the newcomer route: nine tasks with app paths, visible
+results and links to the reference. Keep it aligned with the latest distributed
+build (currently Delta V4, 0.9.5), rather than unreleased development work.
+The audience cards and decision-map links offer other entrances to that guide.
+
+Bound the promises: continuity checks flag supported scene and link issues;
+they do not guarantee all prose agrees with the world. Rebuilds can change
+geography, and author work follows surviving places. Reproducibility describes
+the physical simulation with the same seed, saved settings and simulation
+version; cross-environment pixel identity is not promised. Delta is free for
+invited testers; future pricing and a 1.0 date remain unannounced.
+
 ## Community voices
 
 The landing page quotes Discord members only after permission for public attribution is confirmed. Keep their wording intact, name the author as shown in the server, and link each excerpt to its original message so visitors can read the context. The owner confirmed permission for the four members quoted in the September 2026 community section. A Discord message link from a private Delta channel is readable only by invited testers; note that on the page. Do not use a member's map, avatar, or other artwork without separate permission.
+
+The October 2026 community-world feature credits **Just Call me Ed**. The
+owner supplied the artwork with the creator's permission for promotional use,
+then supplied Ed's exact comparison comment. The latest map is made in
+CartoVox; the previous iteration is made in **Azgaar's Map Generator** and must
+always be labelled as such. Keep the comment verbatim and retain the creator's
+credit. No world title, comment date or original-post URL was supplied; do not
+invent those. The original PNGs remain in `img/community-world*.png`;
+responsive WebP derivatives preserve the artwork and link to those originals.
+The account of several days of Draw and Sculpt work comes from the owner.
+
+The owner also supplied **Hope C.**'s map of **Einea** and full feedback for
+this promotional section. Preserve the wording and emphasis, credit both the
+map and comment to Hope C., and present the climate observations as the
+creator's work in progress. No comment date or original-message URL was
+supplied; do not invent either. `img/community-einea.png` is the original,
+with responsive WebP derivatives for the page.
+
+The owner supplied four **Unshavendillon** images for a **Valestria** showcase:
+terrain, illustrated atlas, overhead 3D terrain and angled 3D terrain. The
+world name and “Year 3166” come from the illustrated map. This expands the
+existing permissioned September 26, 2026 quote into a showcase, retaining its
+original Discord message link and date rather than repeating it in a separate
+quote card. Keep the supplied wording intact, including “Cartovox”. Originals
+are `img/community-valestria-*.png`; the WebP versions preserve whole images.
 
 ## Deploying on Cloudflare
 
