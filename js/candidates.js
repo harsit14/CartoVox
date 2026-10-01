@@ -159,11 +159,11 @@
   const note = () => {
     if (lastMatches === null) return;
     const line = lastMatches
-      ? `<b>${lastMatches} of 6</b> match the hard constraint. The others are reported as they measured, not as near misses dressed up.`
-      : `<b>0 of 6</b> match. CartoVox would say so and keep searching — it never returns the nearest thing as a match.`;
+      ? `<b>${lastMatches} of 6</b> match the three-continent target.`
+      : `<b>0 of 6</b> match. Search again.`;
     const learned = taste.length
-      ? ` <b>${taste.length} starred.</b> The next six lean toward their land share and continent size; the verdict stays measured either way.`
-      : " Star a candidate and the next six lean toward it.";
+      ? ` <b>${taste.length} starred.</b> Future seeds favour similar land share and continent size.`
+      : " Star favourites to guide the next search.";
     foot.innerHTML = line + learned;
   };
 

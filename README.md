@@ -45,6 +45,12 @@ the physical simulation with the same seed, saved settings and simulation
 version; cross-environment pixel identity is not promised. Delta is free for
 invited testers; future pricing and a 1.0 date remain unannounced.
 
+Keep homepage copy brief: direct section labels, one outcome per feature, and
+one or two sentences per introduction. Put reference detail in the guide.
+Every homepage section has an anchor and an accessible heading. The longer
+creator comments use native “Read feedback” disclosures; preserve the full
+quotes, credits, source links and artwork when editing the surrounding copy.
+
 ## Community voices
 
 The landing page quotes Discord members only after permission for public attribution is confirmed. Keep their wording intact, name the author as shown in the server, and link each excerpt to its original message so visitors can read the context. The owner confirmed permission for the four members quoted in the September 2026 community section. A Discord message link from a private Delta channel is readable only by invited testers; note that on the page. Do not use a member's map, avatar, or other artwork without separate permission.
