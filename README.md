@@ -35,7 +35,7 @@ and do not substitute unrelated coastlines or invented product screenshots.
 
 `/guide/#first-hour` is the newcomer route: nine tasks with app paths, visible
 results and links to the reference. Keep it aligned with the latest distributed
-build (currently Delta V4, 0.9.5), rather than unreleased development work.
+build (currently Delta V5, 0.9.6), rather than unreleased development work.
 The audience cards and decision-map links offer other entrances to that guide.
 
 Bound the promises: continuity checks flag supported scene and link issues;
@@ -124,7 +124,7 @@ the transparent header mark.
 ```bash
 python3 tools/build-images.py --brand <app>/assets/app-icon --icons brand --worlds <library>/worlds --shots <shots-dir>
 python3 tools/build-legal.py <app>/EULA.md <app>/THIRD-PARTY-NOTICES.md
-python3 tools/build-releases.py <app>/.github/release-notes --through 0.9.5
+python3 tools/build-releases.py <app>/.github/release-notes --through 0.9.6
 python3 tools/build-faq-schema.py          # FAQPage JSON-LD, derived from the FAQ markup
 python3 tools/subset-fonts.py              # Rebuild self-hosted fonts after copy changes
 python3 tools/build-sitemap.py             # Also runs after build-releases.py and stamp-assets.py
