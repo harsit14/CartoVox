@@ -39,7 +39,7 @@
 <h1>Third-party notices</h1>
 <p>CartoVox includes the third-party components listed below. Each is licensed to you under its own terms, which apply to that component. Where a component's terms conflict with the CartoVox End User License Agreement (<code>EULA.md</code>), that component's terms govern that component.</p>
 <p>This file is incorporated into the End User License Agreement by reference.</p>
-<p><strong>CartoVox version:</strong> Delta V5 <strong>Inventory generated:</strong> 29 September 2026</p>
+<p><strong>CartoVox version:</strong> Delta V6 <strong>Inventory generated:</strong> 29 September 2026</p>
 <hr>
 <h2 id="1-how-to-read-this-file">1. How to read this file</h2>
 <ul>
@@ -56,13 +56,15 @@
 <tr><td>Pillow</td><td>12.3.0 or later within 12.x (12.3.0 in the build inputs)</td><td>MIT-CMU (HPND)</td><td><code>_internal/PIL/</code></td></tr>
 <tr><td>Matplotlib</td><td>3.11.2 or later within 3.11 (3.11.2 in the build inputs)</td><td>Matplotlib licence (BSD-style, 1.3.0 and later)</td><td><code>_internal/matplotlib/</code></td></tr>
 <tr><td>opencv-python-headless</td><td>4.14.0.94 (pinned)</td><td>Apache-2.0</td><td><code>_internal/cv2/</code></td></tr>
+<tr><td>uharfbuzz (bundled HarfBuzz)</td><td>0.56.2 (pinned)</td><td>Apache-2.0; HarfBuzz MIT-style copyright</td><td><code>_internal/uharfbuzz*dist-info/licenses/</code>, <code>_internal/third-party-licenses/contextual/</code></td></tr>
+<tr><td>python-bidi (unmodified library)</td><td>0.6.11 (pinned)</td><td>LGPL-3.0-or-later; embedded Rust components retain their own notices</td><td><code>_internal/python_bidi*dist-info/licenses/</code></td></tr>
 <tr><td>pypdf</td><td>6.19 or later within 6.x (6.19.0 in the build inputs)</td><td>BSD-3-Clause</td><td><code>_internal/pypdf/</code></td></tr>
 <tr><td>pywebview</td><td>5.4–6.x (6.2.1 in the build inputs)</td><td>BSD-3-Clause</td><td><code>_internal/webview/</code></td></tr>
 <tr><td>pywinrt: winrt-runtime, winrt-Windows.Media.Ocr, winrt-Windows.Graphics.Imaging, winrt-Windows.Storage.Streams, winrt-Windows.Globalization, winrt-Windows.Foundation, winrt-Windows.Foundation.Collections</td><td>3.2.1 (pinned), Windows builds only</td><td>MIT (Copyright (c) Microsoft Corporation; Copyright (c) 2021-2025 David Lechner)</td><td><code>_internal/winrt/</code></td></tr>
 <tr><td>typing_extensions (required by winrt-runtime)</td><td>4.12 or later, Windows builds only</td><td>PSF-2.0</td><td><code>_internal/</code></td></tr>
 <tr><td>CPython standard library</td><td>3.12 (3.12.14 in the build inputs)</td><td>PSF-2.0</td><td><code>_internal/</code></td></tr>
 </tbody></table>
-<p><code>requirements.txt</code> uses open-ended ranges, so each build resolves its own versions. The exact version of every component in an installed copy is recorded in the CycloneDX software bill of materials that ships with it at <code>_internal/build-provenance/sbom.cdx.json</code>; that file, not this table, is authoritative for version numbers.</p>
+<p>Source-development requirements include version ranges. Release builds use the exact platform-marked pins in <code>desktop/build/lock-py312.txt</code>; the build refuses to freeze an environment whose installed versions differ from that lock. The exact version of every component in an installed copy is recorded in the CycloneDX software bill of materials that ships with it at <code>_internal/build-provenance/sbom.cdx.json</code>; that file, not this table, is authoritative for version numbers.</p>
 <h3 id="2-1-components-bundled-inside-the-libraries-above">2.1 Components bundled inside the libraries above</h3>
 <p>Matplotlib, NumPy and Pillow each embed additional third-party material. Their own licence files ship unchanged inside their packages and cover, at least:</p>
 <ul>
@@ -212,6 +214,9 @@ POSSIBILITY OF SUCH DAMAGE.</pre>
 <h2 id="9-maintaining-this-file">9. Maintaining this file</h2>
 <p>This inventory must be regenerated whenever a dependency is added, removed, or has a version range that resolves differently. The packaged build embeds a CycloneDX software bill of materials at <code>_internal/build-provenance/sbom.cdx.json</code>; that SBOM should carry the same licence identifiers as this file.</p>
 <p>See <code>docs/reference/licensing.md</code> for the maintainer checklist and the outstanding items that must be closed before CartoVox is sold.</p>
+<h3 id="contextual-lettering-libraries-and-fonts">Contextual lettering libraries and fonts</h3>
+<p>Offline map captions use the unmodified uharfbuzz and python-bidi libraries. Their distribution metadata and full licence texts ship with the application; HarfBuzz's complete copyright notice and exact version/source references are retained in <code>third-party-licenses/contextual/</code>. The python-bidi source is at &lt;https://github.com/MeirKriheli/python-bidi/tree/v0.6.11&gt;. Its LGPL terms allow use, modification and replacement of that library; they do not replace the CartoVox licence for other code. The LGPL text and incorporated GPL text are both retained in the library's <code>dist-info/licenses</code> directory.</p>
+<p>Noto Sans Arabic, Devanagari, Hebrew, Thai and Khmer caption fallbacks are unmodified SIL OFL fonts. <code>web/vendor/fonts/contextual-sources.json</code> records the exact upstream files and hashes; family-specific full OFL texts are kept beside the fonts. These fonts do not replace the interface's existing faces.</p>
   </article>
   <p class="doc-note">This copy is published for reference. The authoritative text is the one shown inside the application, which you accept on first launch.</p>
 </main>

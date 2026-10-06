@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox Delta V6 — full release notes</title>
+  <meta name="description" content="The full CartoVox Delta V6 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.9.7/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox Delta V6 — full release notes">
+  <meta property="og:description" content="The full CartoVox Delta V6 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.9.7/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="stylesheet" href="/css/site.css?v=026d808a6f">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.6/">Delta V5</a>
+      <a href="/releases/v0.9.5/">Delta V4</a>
+      <a href="/releases/v0.9.4/">Delta V3</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-10-06</p>
+      <h1>CartoVox Delta V6</h1>
+      <p class="lede">Open offline starter worlds, choose your interface language, build on less memory, take a world to Foundry or your VTT, and bring in lore from World Anvil, Kanka, LegendKeeper or Campfire.</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.9.7"><div class="doc-body">
+<p>Delta V6 is the sixth Delta release, shared with invited testers on 6 October 2026. Your Delta access code carries over. The licence is now version 2.3: its one addition (section 7.6) lets you share the new free offline reader with anyone. Everything below is new or fixed since Delta V5. This release ships for Apple Silicon Macs and Linux x64 only; Windows sits this one out until it has been checked natively. Worlds made with Delta V5 open as they are, and Library's Update to this version rebuilds one with this build when you choose to, keeping the old copy beside it.</p>
+<h3 id="highlights">Highlights</h3>
+<ul>
+<li><strong>Choose while candidates arrive.</strong> Passing worlds appear during seed search. Choose, compare or annotate an early match; it remains available when final ranking finishes. Reload keeps the partial shortlist and its status.</li>
+<li><strong>Choose your interface language.</strong> Common navigation, settings and authoring actions offer German, French, Spanish, Portuguese and Polish; authored text stays unchanged and specialist prose can remain English.</li>
+<li><strong>Explore offline starters.</strong> Library offers seven saved genre worlds with editable copies and no build. Each uses Sketch detail (360 × 180); reopening keeps your edits; independent copy sizes are shown.</li>
+<li><strong>Try GPU acceleration on Mac.</strong> Optional experimental Metal kernels speed selected large smoothing/shading work after local precision and speed checks. CPU remains the default; Low memory generation uses CPU.</li>
+<li><strong>Build with less memory.</strong> Create offers a fixed 720 × 360 profile with four seasons, standard map detail and illustrated plates deferred. Preflight recommends it on 8 GB machines; other output choices return to Standard.</li>
+<li>Create's pending actions leave keyboard focus while you choose a route; route descriptions stay readable in dark mode.</li>
+<li>Disclosure help uses its heading's hover/focus tip; help, toolbar movement and travel targets are easier to activate.</li>
+<li>Compact Settings keeps its screen-reader name. Missing Compendium values have no unnamed links; status messages have a named region.</li>
+<li>Text stays fully readable while Library and other regions load, including when reduced motion is enabled.</li>
+<li><strong>Capture phone notes.</strong> Watch a synced Markdown/text inbox, review captures through vault sync and undo imports without changing source notes.</li>
+<li><strong>Share an offline reader.</strong> Packets/backups include a free read-only HTML reader for saved PNG maps and text, with no account or connection.</li>
+<li><strong>Review sync copies.</strong> Compendium retains cloud conflict editions and blocks contested world writes; finish syncing before switching devices.</li>
+<li>Reloading during a build reattaches its progress without reporting the cancelled page read as lost contact.</li>
+</ul>
+<h3 id="maps">Maps</h3>
+<ul>
+<li>Changing projection, map style or shallows pauses sharpening until the updated map opens.</li>
+<li>Rebuilding realms, roads or Sculptor edits keeps map detail paused until the updated world finishes opening. Atlas and artwork exports keep the map usable.</li>
+<li>Changing realms, roads or sea lanes keeps the rebuild cost and terrain consequence visible with folded explanations.</li>
+<li>The artwork header keeps its complete saving label while edits are pending.</li>
+<li><strong>Import a Merak terrain map.</strong> Open supported <code>.warmap</code>/<code>.warmap.json</code> documents, review their coastlines and keep supplied heights. Named cities, labels, territories, rivers and roads follow the import; unsupported content is listed. Regional/HD/city-board documents require a heightmap instead.</li>
+<li><strong>Draw adobe terraces and pavilion roofs.</strong> Settlement artwork adds two styles; individual building choices follow their planned footprints and survive saved scenes and recipes.</li>
+<li><strong>Letter supported scripts in context.</strong> Arabic, Hebrew, Devanagari, Thai and Khmer captions use contextual shaping and reading order, including curved captions and editable SVG text. Unsupported glyphs explain the limit.</li>
+<li><strong>Open illustrated looks when needed.</strong> New worlds defer eight additional looks until their first request. Saved numerical fields stay the same; later requests reuse the completed drawing and canon edits refresh it.</li>
+<li>Compact geology and tectonics sheets keep their controls inside the map; sharper drawings wait for the base map to finish loading before replacing it.</li>
+<li>Enlarged Weather stays centered in compact windows. Clearing kept undo history also clears the open blank-canvas history and its HD parent steps.</li>
+<li>Isometric scenes keep Save and other actions reachable in wider windows.</li>
+<li>Scene tree export and import wait for scene navigation and parent changes to finish.</li>
+<li>Using a previous version pauses map sharpening until the restored world opens.</li>
+<li>Replacing a world with its rebuilt draft pauses sharpening through the handover; background replacements refresh the open map even after you close the review.</li>
+<li>Canon edits refresh sharpening choices before redrawing; atlas bookkeeping keeps unchanged terrain tiles ready to reuse.</li>
+<li><strong>Build beneath the rock.</strong> Preview seeded karst or lava-tube plans from a saved rock cell, then edit floors, walls and ruined chambers in Scene Studio. Layouts are fictional.</li>
+<li>Atlas collections and search previews use fewer columns in narrow windows; category counts highlight missing maps and announce completeness.</li>
+<li><strong>Bring a world to Foundry.</strong> Export saved maps, gazetteer journals and pins as an offline module. GM import preserves existing edits; native Foundry checks remain pending.</li>
+<li><strong>Take a regional map to the table.</strong> Hexcrawl setup exports native Foundry hex-map modules or Universal VTT bundles with calibration metadata; child-map references stay gridless.</li>
+<li><strong>Roll from the saved terrain.</strong> Campaign offers editable biome/region encounter, foraging and hazard tables, with weighted rolls and Foundry JSON/module export.</li>
+<li><strong>Read named rocks.</strong> Rock types and rock families sit alongside separate surface deposits and present ice. Inspect a cell, author rock regions, or carry the geological readings into geological, GeoJSON and SVG exports. Older worlds explain when a rock reading must be rebuilt.</li>
+<li><strong>Plan migration and settlement.</strong> Choose an origin for Human migration or the Stone, Bronze and Iron Age scenarios. Bronze opportunity needs both copper and tin; iron opportunity needs iron prospects. These are planning scenarios, with their assumptions shown beside the map.</li>
+<li><strong>Explore a realm's reach.</strong> Spheres of influence starts from the selected realm's saved territory without changing its ownership.</li>
+<li><strong>Explore living habitats.</strong> Candidate bird and whale flyways, connected biogeographic regions, bioluminescence and ocean biodiversity show suitable environments and their limits. Species &amp; varieties adds marine animals, berries, poppies, pests, culinary plants and poisonous plants.</li>
+<li><strong>Read the physical world.</strong> Bathymetry, ocean crust ages, roughness, seafloor classes, dryland candidates, endorheic catchments, annual sunlight, isotherms, doldrums and mantle indicators join the Map library. Crust ages require a deep-time world; each reading explains its saved inputs.</li>
+<li><strong>Follow weather through the year.</strong> Annual evaporation distinguishes ocean moisture uptake from land recycling. Weather year's convergence belt follows the model's seasonal solar shift and land influence.</li>
+<li><strong>Find new landmarks.</strong> Peaks use local relief within two grid cells. Waterfall candidates require a routed gradient over 1%; individual falls remain unresolved. Oasis candidates use shallow groundwater in desert ground and do not establish drinking-water quality.</li>
+<li><strong>Find springs and sea-floor sites.</strong> Volcanoes &amp; hot springs groups the volcanic, spring and coastal marks. Hydrothermal vents and cold seeps also appear as marine habitats. Existing older site families keep their locations and names when these families are added.</li>
+<li><strong>Sculpt dry terrain.</strong> Cut canyons, raise mesas and describe dune deserts. The rest of the world rebuilds around the terrain you choose.</li>
+<li><strong>Draw roads and railways.</strong> Main, branch and tram lines retain their kind at world, county and town scales. Royal, cart, pass and causeway roads have their own route effects. Travel offers By rail when a railway exists and accounts for walking between the traveller and the line.</li>
+<li><strong>Open a county lens.</strong> Full worlds offer a 100 km lens; coarser worlds offer sizes their cells can support. Small child maps refine automatically. Larger maps offer a County lens tool and refinements with their cell sizes.</li>
+<li><strong>Inherit edited ground.</strong> Nested maps use their parent's refined terrain, including sculpting strokes. Towns planned from a county use its finer elevation, climate, slope and river. Larger bounds offer fewer refinement choices so their extra detail remains supported by the saved world.</li>
+<li><strong>Keep the world's surroundings.</strong> Settlement Studio follows the actual river, coast and roads. Features outside its sheet show their distance and direction instead of being moved through the town centre.</li>
+<li><strong>Use more materials.</strong> Phosphate, potash, limestone and mica prospects feed craft opportunities such as steel, lime, dressed marble, abrasives and paper. Prospects require saved host evidence; they are not measured reserves.</li>
+<li><strong>Fixed:</strong> coastal origins and tiny realms produce reachable scenario maps. An origin without nearby passable land explains why it cannot be used.</li>
+<li><strong>Fixed:</strong> wide dated ownership bands, either pole and date-line crossings cover their intended cells.</li>
+<li><strong>Fixed:</strong> small worlds keep a hot spring in every eligible setting.</li>
+<li><strong>Fixed:</strong> shallow seafloor is classified by depth on either crust type; dune and oasis candidates exclude steppe.</li>
+<li><strong>Fixed:</strong> annual sunlight, climate and the convergence belt share exact axial-tilt geometry, including high-tilt planets. New builds may change climate and downstream glacial terrain, water, ecology and settlements. Opening an existing world preserves its saved numerical fields.</li>
+<li><strong>Fixed:</strong> rail mode recognises lowercase railway records, walking legs carry enough water, and town payloads contain only local railway segments.</li>
+<li><strong>Fixed:</strong> failed child-map refinement keeps the previous cells and sheets. Redrawing atlas sheets does not make unrelated refined maps stale.</li>
+</ul>
+<h3 id="atlas">Atlas</h3>
+<ul>
+<li><strong>Export moving worlds.</strong> Deep Time, Chronicle’s realm-growth guide and Weather Year offer GIF loops and MP4 videos from saved frames, with size, frame-count and speed controls. Stop keeps previous exports; returning to the source recovers its download. Changed source data stops publication.</li>
+<li><strong>Review an edition before binding.</strong> The PDF review distinguishes current, older and unverified saved sheets. Choose current labelled sheets, an unlettered edition, or deliberately bind older sheets with their warnings.</li>
+<li><strong>Bind one coherent state.</strong> Changing a saved source during export stops publication and asks for a new review. Older-sheet editions do not quietly add current gazetteer or reference facts.</li>
+<li><strong>Keep atlas names current.</strong> Saved world and place-name changes refresh atlas labels while the atlas remains available through deferred rendering.</li>
+<li><strong>Fixed:</strong> incomplete or skipped PDF refreshes retain the maps-out-of-date warning. Progress moves forward across both drawing passes.</li>
+<li><strong>Fixed:</strong> a realm near the date line gets a plate framed on its own coast.</li>
+<li><strong>Fixed:</strong> concurrent atlas renders keep every successfully stamped sheet.</li>
+</ul>
+<h3 id="write">Write</h3>
+<ul>
+<li><strong>Fixed:</strong> canon trees follow the selected theme; tree, flag and dated-event controls keep shared spacing in compact windows.</li>
+<li><strong>Fixed:</strong> lore name fields keep their own row beside Suggest and Save actions in laptop windows.</li>
+<li><strong>Fixed:</strong> Escape from a dated-event editor returns focus to the event you opened.</li>
+</ul>
+<ul>
+<li><strong>Bring your lore with you.</strong> Import portable World Anvil, Kanka, LegendKeeper or Campfire exports through the existing review and reversible merge; original files stay downloadable.</li>
+<li><strong>Plan plotlines across chapters.</strong> Outline offers a Plotlines grid with point-of-view cards and character, place and date filters. Assign plotlines and participating characters in the scene panel; transfers keep those tags. Open a card to write, its place to inspect it, or its year in Chronicle. Large grids page by chapters and plotlines; compact windows keep cards usable.</li>
+<li>Scene destinations label new book and chapter titles separately; journey mode names match the scene panel.</li>
+<li>The panel button keeps a visible label in narrow windows and follows your Comfortable or Compact control sizing.</li>
+<li><strong>Write a scene here.</strong> Start from a durable world place, choose an existing book and chapter or create them, and review its date, viewpoint and journey.</li>
+<li><strong>Keep the whole journey.</strong> Scene cards retain Travel's mode, preference, party size and season. Show the route and Add travel days use that route; changes to travel days remain undoable.</li>
+<li><strong>Read a scene's own year.</strong> Choose Canon, alternate history or the labelled generated preview. Travel, scene context and Checks use established dated owners, settlement identities and transport. Unknown past facts ask for review; weather still describes the saved physical world.</li>
+<li><strong>Check character continuity.</strong> Journeys follow the same viewpoint across chapters. Parallel scenes, flashbacks and unknown dates are distinguished rather than treated as impossible travel.</li>
+<li><strong>See what Checks covered.</strong> Reports separate checks that ran, checks with nothing to examine and unavailable inputs. Retry can recover missing inputs; changing the book or relevant world data marks the report out of date.</li>
+<li><strong>Recover scene details from transfers.</strong> CartoVox Scrivener transfer ZIPs retain scene markers, viewpoints, dates and journey choices. Different-world place links remain unresolved until you choose their intended destinations. Private notes stay outside reader and writing-transfer exports.</li>
+<li><strong>Keep cut prose.</strong> Draft's Saved passages stores selected formatted passages before removal. Restore original returns them where their position is clear; Insert at cursor moves them into the current chapter or split pane. Private notes and scene cards follow the passage, and recovery copies stay on disk.</li>
+<li><strong>Track unfinished details.</strong> Placeholder adds a portable [TODO: detail] marker. Draft's Unresolved details list locates those details across the book; replacing a marker resolves it. Read and exports keep unresolved markers visible.</li>
+<li><strong>Find writing tools.</strong> Lenses opens beside Focus. Chapter tools shows keyboard commands; press ? outside prose and fields for the complete shortcuts sheet.</li>
+<li><strong>Keep history readable.</strong> Late reads from another world cannot replace the current Chronicle. It retains saved eras and events even when a place, route or lore catalog needs repair. Its editor explains which evidence is unavailable.</li>
+<li><strong>Fixed:</strong> dated continuity checks do not add historical-only towns to present-day place search.</li>
+<li><strong>Fixed:</strong> restoring beside another private note preserves both note bodies. Reimported books keep unresolved history IDs readable.</li>
+<li><strong>Fixed:</strong> coverage works through symlinked folders; another book's edits do not stale the selected book's report. Atlas bookkeeping also preserves it.</li>
+<li><strong>Fixed:</strong> unfinished-detail navigation selects the requested marker even when an empty marker comes earlier. Escape closes open writing menus and lenses.</li>
+<li><strong>Fixed:</strong> simultaneous scene creation and chapter saving preserve writing and return a conflict to the stale draft.</li>
+</ul>
+<h3 id="library">Library</h3>
+<ul>
+<li>Reloading during a version update restores progress and Stop; queued updates already on the server can also be stopped.</li>
+<li>Update progress announces phase changes and completion to screen readers, keeping repeated percentage changes quiet.</li>
+<li><strong>Update a world deliberately.</strong> Update to this version rebuilds with the same seed, settings, brief, imported or drawn terrain and saved edits. Names, canon, notes and pins follow their places; missing places wait for review. Books, scenes and links retain the world's Library identity.</li>
+<li><strong>Keep the previous ground.</strong> Before updating, the old world becomes a separate Library copy. Compare it or use that version again; delete the copy when you are satisfied. Update all runs older worlds one at a time.</li>
+<li><strong>Stop safely.</strong> Cancelling an update leaves the world and its resumable simulation checkpoint intact. Kept copies and free-space estimates exclude rebuildable caches, and failed updates leave no temporary Library entry.</li>
+<li><strong>Open your saved shelf cleanly.</strong> Library waits for your own worlds before showing the shelf. Search and Continue stay in place while the window and typeface finish loading; compact seed search fits narrower screens.</li>
+<li><strong>Keep your chosen workspace.</strong> Selecting Write while a large world opens no longer lets its late World panel take over your destination.</li>
+<li><strong>Review storage.</strong> Settings counts and clears kept map pictures as display cache. Backups leave those rebuildable pictures out.</li>
+<li><strong>Fixed:</strong> imported worlds keep their recorded water line when rebuilt, including flat-black seas and terrain placed inside a larger world.</li>
+<li><strong>Fixed:</strong> Compendium and vault-review tools remain open through their edits. Panel reads finish without leaving a loaded panel looking busy.</li>
+</ul>
+<h3 id="performance">Performance</h3>
+<ul>
+<li>Basin maps avoid repeated scans of the whole grid. Scene checks, dated journeys and PDF binding reuse unchanged inputs while detecting later edits.</li>
+<li>Map picture retention uses less memory on smaller machines; oversized sheets remain viewable without crowding every smaller cached view out.</li>
+<li><strong>Return to maps you have seen.</strong> Drawings are kept per look and projection in memory and on disk. A first view still draws from the saved world; returning to a previous view or look can reuse its kept picture.</li>
+<li><strong>Redraw what an edit changes.</strong> Small road and realm edits reuse saved ground and unaffected sheets. The first road apply draws ridge artwork with fewer allocations; opening the map list does not measure sea-floor sites.</li>
+<li><strong>Fixed:</strong> app updates and source-renderer changes invalidate old pictures. Site, language and maritime views follow edits to every input they use.</li>
+<li><strong>Fixed:</strong> opening worlds and saving names preserve complete heraldry drawings. Packaged startup keeps installed application contents intact.</li>
+<li><strong>Fixed:</strong> a restored two-chapter writing view keeps its second chapter when Write is opened again during loading.</li>
+<li><strong>Fixed:</strong> the Deep Time starting-crust button shows its full loading label.</li>
+<li><strong>Fixed:</strong> a map image finishing before its catalogue loads no longer interrupts the workspace with a resolution-badge error.</li>
+<li><strong>Fixed:</strong> opening a world or redrawing its map keeps an unchanged comparison draft's identity and reference review editable. Authored changes still require a fresh comparison.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=8bd18c805b" defer></script>
+</body>
+</html>

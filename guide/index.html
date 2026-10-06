@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The CartoVox guide — how to use it, and everything it does</title>
-  <meta name="description" content="The CartoVox Delta V5 guide: follow your first hour, find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
+  <meta name="description" content="The CartoVox Delta V6 guide: follow your first hour, find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
   <link rel="canonical" href="https://cartovox.org/guide/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The CartoVox guide — how to use it, and everything it does">
-  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V5; screenshots captured from released builds.">
+  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V6; screenshots captured from released builds.">
   <meta property="og:url" content="https://cartovox.org/guide/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -44,6 +44,7 @@
     <nav class="toc-list" id="toc">
       <a href="#first-hour"><b>Your first hour</b><small>start here</small></a>
       <a href="#where"><b>Where is it?</b><small>search</small></a>
+      <a href="#new-v6">New in Delta V6</a>
       <a href="#new-v5">New in Delta V5</a>
       <a href="#new-v4">New in Delta V4</a>
       <a href="#new-v3">New in Delta V3</a>
@@ -108,7 +109,7 @@
         the searchable control index or the workspace reference whenever you need a particular tool.
       </p>
       <p class="muted small">
-        Current as of <b>Delta V5 (0.9.6)</b>, the latest distributed release. The words describe Delta V5; the key workspace screenshots are from Delta V3 and some deeper reference images from 0.9.1, so where Delta V5 moved a control the caption says so. Version-by-version changes are on the
+        Current as of <b>Delta V6 (0.9.7)</b>, the latest distributed release. <a href="#new-v6">New in Delta V6</a> summarises what it adds; the rest of the words describe Delta V5; the key workspace screenshots are from Delta V3 and some deeper reference images from 0.9.1, so where Delta V5 moved a control the caption says so. Version-by-version changes are on the
         <a href="/releases/">release notes</a> page. The app also includes an offline manual under <b>Help</b>.
       </p>
       <details class="mobile-contents">
@@ -325,6 +326,38 @@
       </table>
       <p class="muted small">Nothing matched? The sections below cover surfaces this index does not name, and the
       <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord</a> is the place to ask.</p>
+    </section>
+    <section id="new-v6">
+      <p class="eyebrow">New in Delta V6</p>
+      <h2>Starter worlds, your own language, and the world at the table.</h2>
+      <p class="section-lede">
+        Delta V6 was shared with invited testers on 6 October 2026. It ships for Apple Silicon Macs and Linux x64
+        only: Windows sits this one out until it has been checked natively, and returns in a later Delta. Your access
+        code carries over. The licence is now version 2.3, and its one addition (section 7.6) lets you share the new
+        free offline reader with anyone. Worlds made with Delta V5 open as they are, and the Library's <b>Update to
+        this version</b> rebuilds one with this build when you choose to, keeping the old copy beside it. The full
+        account is in the <a href="/releases/#v0.9.7">release notes</a>.
+      </p>
+      <ul class="feat">
+        <li><b>Starter worlds, offline</b>: the Library offers seven saved genre worlds with editable copies and no build. Each uses Sketch detail (360 × 180), reopening one keeps your edits, and the size of each independent copy is shown. <a href="#library">Library</a>.</li>
+        <li><b>Choose while candidates arrive</b>: passing worlds appear during the seed search, so you can choose, compare or annotate an early match, and it stays available when the final ranking finishes. A reload keeps the partial shortlist and its status. <a href="#create">Create</a>.</li>
+        <li><b>The interface in your language</b>: common navigation, settings and authoring actions offer German, French, Spanish, Portuguese and Polish. What you have written stays exactly as it is, and specialist prose can remain in English.</li>
+        <li><b>Build with less memory</b>: Create offers a fixed 720 × 360 profile with four seasons, standard map detail and the illustrated plates deferred. The preflight recommends it on 8 GB machines. <a href="#preflight">Preflight</a>.</li>
+        <li><b>Optional GPU acceleration on Mac</b>: experimental Metal kernels speed up selected large smoothing and shading work after local precision and speed checks. The CPU remains the default, and Low memory generation always uses it.</li>
+        <li><b>Named rocks</b>: rock types and rock families sit alongside the separate surface deposits and present ice. Inspect a cell, author rock regions, or carry the geological readings into geological, GeoJSON and SVG exports. An older world explains when a rock reading must be rebuilt. <a href="#inspector">The cell inspector</a>.</li>
+        <li><b>Railways and kinds of road</b>: main, branch and tram lines keep their kind at world, county and town scales, and royal, cart, pass and causeway roads each have their own route effects. Travel offers <b>By rail</b> when a railway exists, and counts the walk between the traveller and the line. <a href="#travel">Travel</a>.</li>
+        <li><b>A county lens</b>: full worlds offer a 100 km lens, and coarser worlds the sizes their cells can support; small child maps refine automatically. Nested maps inherit their parent's refined terrain, sculpting strokes included, and towns planned from a county use its finer elevation, climate, slope and river. Settlement Studio follows the actual river, coast and roads.</li>
+        <li><b>Hot springs, vents and new environment maps</b>: <b>Volcanoes &amp; hot springs</b> groups the volcanic, spring and coastal marks, and hydrothermal vents and cold seeps also appear as marine habitats. Bathymetry, ocean crust ages (on a deep-time world), roughness, seafloor classes, dryland candidates, endorheic catchments, annual sunlight, isotherms, doldrums and mantle indicators join the Map library, with candidate bird and whale flyways, biogeographic regions, bioluminescence and ocean biodiversity. Peaks, waterfall candidates and oasis candidates are new landmarks, and each reading explains its saved inputs. <a href="#views">Map views</a>.</li>
+        <li><b>Sculpt dry terrain</b>: cut canyons, raise mesas and describe dune deserts, and the rest of the world rebuilds around the terrain you chose. <a href="#sculpt">Sculpt</a>.</li>
+        <li><b>Migration and the metal ages</b>: choose an origin for <b>Human migration</b> or the <b>Stone</b>, <b>Bronze</b> and <b>Iron Age</b> scenarios. Bronze opportunity needs both copper and tin, and iron opportunity needs iron prospects. These are planning scenarios, with their assumptions shown beside the map. Phosphate, potash, limestone and mica prospects now feed crafts such as steel, lime, dressed marble, abrasives and paper, and <b>Spheres of influence</b> starts from a selected realm's saved territory without changing who owns it.</li>
+        <li><b>Moving worlds</b>: Deep Time, Chronicle's realm-growth guide and Weather Year export GIF loops and MP4 videos from saved frames, with size, frame-count and speed controls. The PDF atlas review also tells current, older and unverified sheets apart before you bind. <a href="#export">Everything that exports</a>.</li>
+        <li><b>For the game master</b>: export saved maps, gazetteer journals and pins as an offline <b>Foundry module</b> (a GM import keeps existing edits; native Foundry checks are still pending). Hexcrawl setup exports native Foundry hex-map modules or <b>Universal VTT</b> bundles with calibration metadata. Campaign offers editable encounter, foraging and hazard <b>roll tables</b> by biome or region, with weighted rolls and Foundry JSON or module export. <a href="#campaign">Campaigns</a>.</li>
+        <li><b>Writing</b>: Outline offers a <b>Plotlines</b> grid of point-of-view cards with character, place and date filters. <b>Write a scene here</b> starts a scene from a world place, in an existing book and chapter or new ones, and scene cards keep Travel's whole journey. Draft's <b>Saved passages</b> keeps cut prose to restore or insert, and <b>Placeholder</b> adds a portable <code>[TODO: detail]</code> marker that Draft's <b>Unresolved details</b> list finds across the book. Journeys follow one viewpoint across chapters, and Checks report what ran, what had nothing to examine and what was unavailable. <a href="#manuscript">Manuscript</a>.</li>
+        <li><b>Bring your lore with you</b>: portable <b>World Anvil</b>, <b>Kanka</b>, <b>LegendKeeper</b> and <b>Campfire</b> exports import through the existing review and reversible merge, and the original files stay downloadable. A synced Markdown or text inbox can catch notes from your phone, reviewed through vault sync and undoable without changing the source notes. <a href="#codex">The Compendium</a>.</li>
+        <li><b>A free offline reader</b>: packets and backups include <code>CartoVox-Reader.html</code>, a read-only page for saved PNG maps and text that needs no account or connection. Licence section 7.6 lets you share it, unmodified, with anyone. <a href="/eula/">Licence</a>.</li>
+        <li><b>Update to this version</b>: in the Library, an older world rebuilds with the same seed, settings, brief, imported or drawn terrain and saved edits. Names, canon, notes and pins follow their places, and missing places wait for review. Before updating, the old world becomes a separate Library copy you can compare or use again; <b>Update all</b> runs older worlds one at a time, and cancelling leaves the world and its resumable checkpoint intact. <a href="#library">Library</a>.</li>
+        <li><b>Also new</b>: Merak terrain maps (<code>.warmap</code> / <code>.warmap.json</code>) import with their coastlines for review and their heights kept; Arabic, Hebrew, Devanagari, Thai and Khmer captions are lettered with contextual shaping and reading order; settlement artwork adds adobe terraces and pavilion roofs; and seeded karst or lava-tube plans open in Scene Studio from a saved rock cell. <a href="#import">Import</a> · <a href="#scenes">Scenes</a>.</li>
+      </ul>
     </section>
     <section id="new-v5">
       <p class="eyebrow">New in Delta V5</p>
