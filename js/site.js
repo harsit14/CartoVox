@@ -235,6 +235,37 @@
     filter();
   }
 
+  /* Load guides on demand; native controls and transcripts also work without JS. */
+  const guideVideos = [...document.querySelectorAll("video[data-guide-video]")];
+  guideVideos.forEach((video) => {
+    const card = video.closest(".video-guide");
+    const start = card.querySelector(".video-guide-start");
+    const error = card.querySelector(".video-guide-error");
+    const showError = () => { if (error) error.hidden = false; };
+    // Source failures do not always reject the play promise; catch them directly.
+    video.addEventListener("error", showError, true);
+    video.addEventListener("playing", () => { if (error) error.hidden = true; });
+    if (start) {
+      video.controls = false;
+      start.hidden = false;
+      start.addEventListener("click", async () => {
+        video.controls = true;
+        start.hidden = true;
+        video.focus();
+        try {
+          await video.play();
+        } catch {
+          showError();
+        }
+      });
+    }
+    video.addEventListener("play", () => {
+      video.controls = true;
+      if (start) start.hidden = true;
+      guideVideos.forEach((other) => { if (other !== video) other.pause(); });
+    });
+  });
+
   /* ── compare slider ─────────────────────────────── */
   const compare = document.getElementById("compare");
   if (compare) {

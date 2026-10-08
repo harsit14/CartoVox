@@ -2,10 +2,10 @@
    Gold on midnight, parchment for the atlas. Three faces: Cinzel for the
    small capitals, Newsreader for headlines and prose, Inter for the UI. */
 
-@font-face { font-family: "Cinzel"; src: url("/fonts/Cinzel-Variable.woff2?v=b145df6528") format("woff2"); font-weight: 400 900; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Variable.woff2?v=dfd1720a83") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Italic-Variable.woff2?v=646c984982") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
-@font-face { font-family: "Inter"; src: url("/fonts/Inter-Variable.woff2?v=f217192833") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Cinzel"; src: url("/fonts/Cinzel-Variable.woff2?v=58a8103612") format("woff2"); font-weight: 400 900; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Variable.woff2?v=584ad27261") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Italic-Variable.woff2?v=4aa73e6d83") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("/fonts/Inter-Variable.woff2?v=137dede399") format("woff2"); font-weight: 100 900; font-display: swap; }
 
 :root {
   --ink-0: #0b0c10;
@@ -571,6 +571,65 @@ kbd { font-family: var(--font-ui); font-size: 0.78em; padding: 1px 6px; border: 
 .hidden-card .hc-what { font-size: 0.95rem; line-height: 1.5; }
 .hidden-card .hc-go { margin-top: auto; padding-top: 8px; font-family: var(--font-ui); font-size: 0.8rem; color: var(--gold-2); }
 .hidden-guide-link { margin-top: 28px; }
+
+/* ── captioned video guides ───────────────────────── */
+.guide-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.first-hour-invite .guide-actions { flex: 0 1 480px; justify-content: flex-end; }
+.guide-video-link { font: 500 0.86rem/1.65 var(--font-ui); }
+.guide-video-link span { color: var(--text-2); display: block; margin-top: 4px; font-weight: 400; }
+.video-guides { padding-block: clamp(48px, 7vw, 88px) 56px; }
+.video-guides-intro { max-width: 820px; margin-bottom: 40px; }
+.video-guides-intro h1 { font-size: clamp(2.8rem, 6vw, 4.7rem); }
+.video-guides-intro .lede { max-width: 680px; }
+.video-guides-note, .video-guides-release { color: var(--text-2); font: 400 0.86rem/1.7 var(--font-ui); }
+.video-guide-jumps { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; font: 500 0.82rem/1.5 var(--font-ui); }
+.video-guide-jumps a { display: inline-flex; gap: 10px; padding: 10px 14px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--text); text-decoration: none; }
+.video-guide-jumps a span { color: var(--gold); font-variant-numeric: tabular-nums; }
+.video-guide-jumps a:hover { background: var(--ink-2); border-color: var(--gold); }
+.video-guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: start; }
+.video-guide { min-width: 0; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--ink-1); scroll-margin-top: 96px; }
+.video-guide:target { border-color: var(--gold); }
+.video-guide-heading { padding: 24px 24px 20px; }
+.video-guide-meta { display: flex; justify-content: space-between; gap: 16px; font: 500 0.7rem/1.6 var(--font-ui); color: var(--gold); margin-bottom: 14px; }
+.video-guide-meta span:last-child { white-space: nowrap; color: var(--text-2); }
+.video-guide h2 { font-size: clamp(1.65rem, 2.5vw, 2rem); margin-bottom: 12px; }
+.video-guide-heading > p:last-child { color: var(--text-2); margin: 0; font-size: 1.05rem; line-height: 1.5; }
+.video-guide video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #070809; }
+.video-guide video::cue { font-family: var(--font-ui); }
+.video-guide-player { position: relative; }
+.video-guide-start { position: absolute; right: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 10px 15px; border: 1px solid var(--gold); border-radius: 999px; background: var(--ink-0); color: var(--gold-2); font: 600 0.8rem/1.5 var(--font-ui); cursor: pointer; }
+.video-guide-start[hidden] { display: none; }
+.video-guide-start:hover { background: var(--gold); color: var(--gold-ink); }
+.video-guide-start:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.video-guide-error { color: var(--text); font: 400 0.85rem/1.6 var(--font-ui); }
+.video-guide-body { padding: 20px 24px 24px; }
+.video-guide-reference { font: 400 0.8rem/1.75 var(--font-ui); color: var(--text-2); margin-bottom: 16px; }
+.video-transcript { border-block: 1px solid var(--line); }
+.video-transcript summary { padding: 14px 28px 14px 0; font: 500 0.85rem/1.6 var(--font-ui); }
+.video-transcript ol { padding-left: 22px; margin: 2px 0 20px; font-size: 1rem; color: var(--text-2); }
+.video-transcript li { padding-left: 4px; margin-top: 10px; }
+.video-guide-downloads { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; font: 400 0.72rem/1.7 var(--font-ui); }
+.video-guide-downloads span:not(.sr-only) { color: var(--text-2); }
+.video-guides-next { margin-top: 48px; padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 32px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--ink-2); }
+.video-guides-next .eyebrow { margin-bottom: 10px; }
+.video-guides-next h2 { font-size: 2rem; margin-bottom: 12px; }
+.video-guides-next p:last-child { color: var(--text-2); margin-bottom: 0; }
+.video-guides-next .guide-actions { flex-shrink: 0; flex-direction: column; }
+.video-guides-release { margin: 22px 0 0; }
+.video-guides a:focus-visible, .video-guides summary:focus-visible, .video-guides video:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+@media (max-width: 860px) {
+  .first-hour-invite .guide-actions { flex-basis: auto; justify-content: flex-start; }
+  .video-guide-grid { grid-template-columns: 1fr; }
+  .video-guides-next { flex-direction: column; align-items: flex-start; padding: 24px; }
+  .video-guides-next .guide-actions { flex-direction: row; flex-wrap: wrap; }
+}
+@media (max-width: 520px) {
+  .video-guide-heading { padding: 20px 18px 18px; }
+  .video-guide-body { padding: 18px; }
+  .video-guide-meta { font-size: 0.65rem; gap: 10px; }
+  .video-guide-jumps { gap: 8px; }
+  .video-guide-jumps a { padding: 9px 12px; font-size: 0.76rem; }
+}
 
 /* ── responsive ───────────────────────────────────── */
 /* The header collapses well before phone width: five links, a gold button and

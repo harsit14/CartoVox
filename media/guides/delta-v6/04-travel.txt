@@ -1,0 +1,19 @@
+Plan a believable journey
+World · Travel · Delta V6 / 0.9.7
+No audio. Captions are also included in the video.
+
+00:00:00.000  Plan a believable journey. Choose two places, calculate a route, and read what it demands.
+
+00:00:03.202  Open World → Travel to plan a route through the saved terrain.
+
+00:00:07.944  Choose a starting place and a destination on the same landmass.
+
+00:00:13.385  Keep On foot, then check the season and party size.
+
+00:00:17.598  Calculate journey to find the route and its costs.
+
+00:00:19.820  The route follows the world’s terrain, roads and crossings.
+
+00:00:23.823  Scroll down for distance, travel time and the elevation profile.
+
+00:00:28.842  Read the daily travel journal before you leave.

@@ -174,10 +174,34 @@ the eight style sheets in the atlas section; and the build times under
 *Time, storage and access*. Everything else on that page is either generated from the
 app's own files or describes behaviour documented in the manual.
 
+## Quick video guides
+
+`/guide/videos/` contains six captioned walkthroughs recorded in released Delta V6
+(0.9.7), linked from the homepage and the matching written guide sections. Each
+player uses native browser controls, loads the MP4 only when requested, and has
+an English VTT track, a poster, an expandable transcript and download links.
+The videos are silent and already include visible captions; the optional VTT
+track is available through the player's caption control.
+
+Media lives in `media/guides/delta-v6/` (24 files, about 38 MB total). The source
+bundle is `FantasyMap/outputs/website-guides/`; its manifest and validation report
+record the durations and source revision (`v0.9.7`,
+`53bfac611ad31ec1f9cd83ff324b17b4be9fefe3`). The app repo's
+`tools/guide-videos/` contains the recording and rendering tools. Copy the MP4,
+JPG, VTT and TXT together when replacing a guide, and update its duration,
+download size and HTML transcript. Use a new version directory for a new
+release; do not silently replace the recorded version. Media is served from the site’s own origin,
+with a 30-day cache. The six MP4 files are each below 9 MB.
+
+The new page is included in the generated sitemap. Run font subsetting and
+asset stamping after editing its copy, as for the rest of the site.
+
 ## Local preview
 
 ```bash
-python3 -m http.server 8097 --bind 127.0.0.1
+python3 tools/preview.py --port 8097
 ```
 
-Then open <http://127.0.0.1:8097/>.
+Then open <http://127.0.0.1:8097/> or <http://127.0.0.1:8097/guide/videos/>.
+The preview server supports HTTP byte ranges so native video seeking works;
+Python’s basic `http.server` does not support this playback requirement.

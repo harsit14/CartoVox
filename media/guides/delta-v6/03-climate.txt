@@ -1,0 +1,17 @@
+Understand a place’s climate
+World · Map cell inspector · Delta V6 / 0.9.7
+No audio. Captions are also included in the video.
+
+00:00:00.000  Understand a place’s climate. Inspect a cell and trace the climate behind its landscape.
+
+00:00:03.202  Click a place on the map to open its cell inspector.
+
+00:00:06.483  Read the elevation, temperature and annual rainfall for this cell.
+
+00:00:11.488  Find “Why is the climate here?” in the inspector.
+
+00:00:14.531  Choose Explain this cell to inspect the climate model.
+
+00:00:18.249  Compare local rainfall with the latitude’s baseline and contributing factors.
+
+00:00:24.319  Read where the air came from and what it crossed on the way.

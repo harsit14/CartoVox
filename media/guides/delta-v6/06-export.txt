@@ -1,0 +1,17 @@
+Take your maps with you
+World · Atlas and export · Delta V6 / 0.9.7
+No audio. Captions are also included in the video.
+
+00:00:00.000  Take your maps with you. Save an atlas plate and export editable vector artwork.
+
+00:00:03.202  Open Map layers → Atlas plates to browse your finished sheets.
+
+00:00:09.775  Choose Illustrated world to view the complete atlas plate.
+
+00:00:14.456  Open Download, then save the Original PNG.
+
+00:00:20.361  Open Export on the bottom dock for other file formats.
+
+00:00:26.406  Choose Vector map, quick to download editable SVG artwork.
+
+00:00:32.431  Keep the PNG as a finished image; edit the SVG in a vector editor.

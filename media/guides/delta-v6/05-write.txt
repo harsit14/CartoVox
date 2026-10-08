@@ -1,0 +1,19 @@
+Write beside your world
+Write · Manuscript · Delta V6 / 0.9.7
+No audio. Captions are also included in the video.
+
+00:00:00.000  Write beside your world. Start a book and link a place directly inside your chapter.
+
+00:00:03.201  Open Write → Manuscript to start a book in this world.
+
+00:00:09.909  Choose New book and give it a title.
+
+00:00:17.751  Add a chapter to begin drafting.
+
+00:00:25.610  Write your opening. The chapter saves as you work.
+
+00:00:30.980  Type [[ and the start of a place name to search your world.
+
+00:00:34.964  Select the place to add a link inside your prose.
+
+00:00:41.107  Wait for Saved. Your chapter and its place link are kept together.

@@ -1,0 +1,25 @@
+Create your first world
+Create · Brief · Delta V6 / 0.9.7
+No audio. Captions are also included in the video.
+
+00:00:00.000  Create your first world. Describe the world, compare candidates, and build a Sketch.
+
+00:00:03.206  Choose Generate a new world, then Writing and world building.
+
+00:00:08.763  Describe the world in a few sentences.
+
+00:00:15.936  Review the recognised ideas. Apply all to use them in the brief.
+
+00:00:20.184  Find strong matches to compare possible starting worlds.
+
+00:00:23.395  Search time omitted. Compare the candidates and choose a favourite.
+
+00:00:28.600  Continue to review your chosen seed.
+
+00:00:33.086  Continue to Build when the seed suits your world.
+
+00:00:37.511  Choose Sketch world for a quick first pass.
+
+00:00:41.783  Start the build. The app simulates the world in the background.
+
+00:00:46.006  Build time omitted. Choose Open in studio to explore your world.
