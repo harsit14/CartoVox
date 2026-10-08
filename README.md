@@ -196,7 +196,9 @@ with a 30-day cache. The six MP4 files are each below 9 MB.
 Guide media routes through `worker/media.js`: the deployed static-assets response
 returned HTTP 200 for Range requests, which prevented browser seeking. The
 handler streams single byte ranges with HTTP 206, a fixed content length and
-the asset's original cache/security headers. It supports suffix/open ranges,
+the asset's original cache/security headers. Release file sizes in
+`GUIDE_VIDEO_BYTES` supply lengths when the assets binding omits that header;
+the runtime checks verify these sizes against every MP4. It supports suffix/open ranges,
 rejects unsatisfiable ranges with 416, and sends the full file for unsupported
 multipart ranges or stale If-Range validators. These media requests invoke the
 existing Worker; other site pages remain static. No extra storage service is used.

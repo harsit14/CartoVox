@@ -2,6 +2,8 @@
 // Exercises the deployed Worker entrypoint and FixedLengthStream in workerd.
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
+import { stat } from 'node:fs/promises';
+import { GUIDE_VIDEO_BYTES } from '../worker/media.js';
 const { Miniflare } = await import(process.argv[2] || 'miniflare');
 const data = Uint8Array.from({ length: 1000 }, (_, i) => i % 251);
 const headers = {
@@ -18,6 +20,19 @@ const mf = new Miniflare({
     ASSETS(request) {
       const path = new URL(request.url).pathname;
       if (path.endsWith('/missing.mp4')) return new Response('Missing', { status: 404 });
+      if (GUIDE_VIDEO_BYTES[path]) {
+        let offset = 0;
+        const size = GUIDE_VIDEO_BYTES[path];
+        const stream = new ReadableStream({
+          pull(controller) {
+            if (offset >= size) { controller.close(); return; }
+            const chunk = new Uint8Array(Math.min(65536, size - offset)).fill(91);
+            offset += chunk.length;controller.enqueue(chunk);
+          },
+        });
+        const withoutLength = { ...headers };delete withoutLength['Content-Length'];
+        return new Response(stream, { headers: withoutLength });
+      }
       if (!path.endsWith('.mp4')) return new Response('Static asset');
       assert.equal(request.headers.get('Range'), null);
       assert.equal(request.headers.get('If-Range'), null);
@@ -57,6 +72,15 @@ async function check(name, requestHeaders, status, start = 0, end = data.length 
 }
 
 try {
+  for (const [path, size] of Object.entries(GUIDE_VIDEO_BYTES)) {
+    assert.equal((await stat(new URL('..' + path, import.meta.url))).size, size, path);
+    const response = await mf.dispatchFetch('https://cartovox.org' + path, { headers: { Range: 'bytes=1000-1999' } });
+    assert.equal(response.status, 206, 'asset binding without Content-Length');
+    assert.equal(response.headers.get('Content-Range'), `bytes 1000-1999/${size}`);
+    assert.equal(response.headers.get('Content-Length'), '1000');
+    assert.deepEqual(new Uint8Array(await response.arrayBuffer()), new Uint8Array(1000).fill(91));
+    passed++;
+  }
   await check('whole download', {}, 200);
   await check('bounded seek spanning chunks', { Range: 'bytes=100-199' }, 206, 100, 199);
   await check('open range', { Range: 'bytes=990-' }, 206, 990, 999);
