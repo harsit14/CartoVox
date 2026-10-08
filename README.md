@@ -193,6 +193,20 @@ download size and HTML transcript. Use a new version directory for a new
 release; do not silently replace the recorded version. Media is served from the site’s own origin,
 with a 30-day cache. The six MP4 files are each below 9 MB.
 
+Guide media routes through `worker/media.js`: the deployed static-assets response
+returned HTTP 200 for Range requests, which prevented browser seeking. The
+handler streams single byte ranges with HTTP 206, a fixed content length and
+the asset's original cache/security headers. It supports suffix/open ranges,
+rejects unsatisfiable ranges with 416, and sends the full file for unsupported
+multipart ranges or stale If-Range validators. These media requests invoke the
+existing Worker; other site pages remain static. No extra storage service is used.
+The players use a version query to refresh media cached before range support.
+
+With Miniflare available, run `node tools/test-media-ranges.mjs` for the focused
+Worker checks. The first argument can point to an existing Miniflare module;
+`WORKER_TEST_DATE` can select a compatibility date supported by an older local
+runtime. Always check real seeking again after deployment.
+
 The new page is included in the generated sitemap. Run font subsetting and
 asset stamping after editing its copy, as for the rest of the site.
 
