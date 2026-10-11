@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Stamp stylesheet, script and font references with content hashes.
+"""Stamp stylesheet, script, font and branding references with content hashes.
 
     python3 tools/stamp-assets.py
 
-Browsers and the edge keep css/, js/ and fonts/ for a year. Content hashes on
-their URLs make a changed asset fetch under a new URL. Run this last, after
-any generator or font subsetting has written its files.
+Content hashes make changed assets fetch under new URLs, including branding
+images cached for a month. Run this last, after any generator has written its
+files. Manifest icon URLs are stamped before hashing the manifest itself.
 """
 from __future__ import annotations
 
@@ -17,6 +17,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ("css/site.css", "js/site.js", "js/candidates.js")
+BRANDING = ("img/nav-mark-v3.svg", "img/wordmark-v3.svg", "img/lockup-v3.svg",
+            "favicon.ico", "img/icon-32.png", "img/icon-64.png", "img/icon-180.png",
+            "img/icon-192.png", "img/icon-512.png", "img/social-card.jpg")
 FONTS = tuple(path.relative_to(ROOT).as_posix() for path in sorted((ROOT / "fonts").glob("*.woff2")))
 
 
@@ -38,9 +41,16 @@ def main() -> None:
         css_path.write_text(css, encoding="utf-8")
 
     stamps = {}
-    for rel in ASSETS:
+    for rel in (*ASSETS, *BRANDING):
         digest = hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()[:10]
         stamps[rel] = digest
+    manifest_path = ROOT / "site.webmanifest"
+    manifest = original_manifest = manifest_path.read_text(encoding="utf-8")
+    for rel, digest in stamps.items():
+        manifest = stamp(manifest, rel, digest)
+    if manifest != original_manifest:
+        manifest_path.write_text(manifest, encoding="utf-8")
+    stamps["site.webmanifest"] = hashlib.sha256(manifest_path.read_bytes()).hexdigest()[:10]
     changed = 0
     for page in ROOT.rglob("*.html"):
         if ".git" in page.parts:

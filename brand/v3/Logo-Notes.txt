@@ -1,0 +1,44 @@
+CartoVox — Atlas Compass / Refined version 03
+
+EDITABLE MASTERS
+CartoVox-Atlas-Compass-v3.vectorcraft — full logo, saved in VectorCraft.
+CartoVox-App-Icon-v3.vectorcraft — compact app icon, saved in VectorCraft.
+Both contain editable vector artwork with no embedded bitmap images. Lettering is outlined.
+CartoVox-Atlas-Compass-VectorCraft.svg and .png are exports from the native logo master.
+
+REFINEMENTS
+The display atlas is 10% larger and shifted left for balance. Its supporting map lines are simpler.
+The compass's longest ray is shortened from 58 to 42 design units, and its arms are sturdier.
+Survey ticks are reduced from nine to five; terrain contour paths from four to two. The route is quieter.
+The wordmark uses a bespoke pointed V with a directional upper serif; r–t, o–V, and V–o spacing was refined.
+The compact atlas is 20% larger. Its C band is thicker and the compass loses the dark facet that disappears at small sizes.
+The standard app icon now uses the compact mark. The detailed display icon is retained separately.
+
+VARIANTS AND USE
+Primary — detailed logo for light backgrounds.
+Reverse — detailed logo for dark backgrounds.
+Signature — full logo with the optional “Worlds into words” tagline.
+Emblem — detailed symbol without the name; use where fine map details remain legible, preferably 160 pixels or larger.
+Compact Symbol — stronger symbol for small interface placements, supplied in teal and light versions.
+App Icon — compact mark on a deep teal rounded plate, with PNGs at 16, 24, 30, 32, 38, 40, 48, 64, 128, 192, and 1024 pixels.
+App Icon Display — the detailed emblem on a deep teal plate for large display applications.
+Ink / White — single-color variants with transparent knockouts. These SVG variants use a luminance mask; matching PNGs are included.
+Favicon — ICO containing 16, 32, 48, 64, 128, and 256 pixel sizes.
+Preserve proportions and leave clear space around the artwork.
+
+REVIEW EVIDENCE
+CartoVox-Before-After.png — visual comparison of versions 02 and 03.
+CartoVox-Atlas-Compass-Presentation.png — overview of version 03 and its variants.
+CartoVox-UI-Placement-Checks.png — browser-rendered local placement study using the current CartoVox rail markup and relevant CSS. It includes the 38-pixel desktop mark, dark and parchment themes, a 300-pixel horizontal logo, and actual-size icon rows from 16 to 128 pixels. This is an isolated placement study, not a running CartoVox session.
+CartoVox-VectorCraft-Canvas.png — the saved version 03 logo visible in VectorCraft.
+
+COLORS
+Deep teal #123F43
+Terrain teal #28676A
+Contour sage #7FA8A0 (display contour strokes refined to #729B93)
+Atlas gold #C79237
+Sunlit paper #E7BE6D
+Warm paper #F6F2E9
+
+The lettering is based on Newsreader with a custom V; presentation labels use Archivo. All text is outlined, so no font installation is needed.
+Previous logo versions remain separate. The app and website branding files have not been replaced.

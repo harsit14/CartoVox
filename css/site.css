@@ -111,9 +111,9 @@ p:last-child { margin-bottom: 0; }
 .nav { position: sticky; top: 0; z-index: 50; background: linear-gradient(180deg, rgba(11,12,16,0.96), rgba(11,12,16,0.80)); transition: background .35s, border-color .35s, backdrop-filter .35s; border-bottom: 1px solid transparent; }
 .nav.is-scrolled { background: rgba(11, 12, 16, 0.78); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border-color: var(--line); }
 .nav-inner { width: min(var(--wrap), calc(100% - 40px)); margin-inline: auto; display: flex; align-items: center; gap: 24px; height: 72px; }
-.nav-brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-brand { display: inline-flex; align-items: center; flex-shrink: 0; gap: 12px; text-decoration: none; }
 .nav-mark { width: auto; height: 40px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.55)); }
-.nav-wordmark { height: 40px; width: auto; }
+.nav-wordmark { width: 142px; height: auto; }
 .nav-links { display: flex; gap: 26px; margin-left: auto; font-family: var(--font-ui); font-size: 0.9rem; }
 .nav-links a { color: var(--text-2); text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
 .nav-links a:hover { color: var(--text); border-color: var(--gold); }
@@ -419,7 +419,7 @@ details p { color: var(--text-2); padding: 0 0 22px; max-width: 70ch; }
 /* ── footer ───────────────────────────────────────── */
 .footer { border-top: 1px solid var(--line); padding: 64px 0 40px; background: var(--ink-0); }
 .footer-inner { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; }
-.footer-brand img { width: 150px; }
+.footer-brand img { width: 200px; }
 .footer-tag { font-style: italic; color: var(--text-3); margin-top: 12px; }
 .footer-links { display: grid; grid-template-columns: repeat(3, auto); gap: 40px; justify-content: start; font-family: var(--font-ui); font-size: 0.9rem; }
 .footer-links a { display: block; color: var(--text-2); text-decoration: none; padding: 4px 0; }

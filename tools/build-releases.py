@@ -174,8 +174,8 @@ PAGE = """<!doctype html>
 <header class="nav is-scrolled">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
-      <img class="nav-mark" src="/img/nav-mark.png" width="33" height="40" alt="">
-      <img class="nav-wordmark" src="/img/wordmark.webp" width="142" height="40" alt="CartoVox">
+      <img class="nav-mark" src="/img/nav-mark-v3.svg" width="40" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark-v3.svg" width="652" height="126" alt="CartoVox">
     </a>
     <nav class="nav-links" id="nav-links" aria-label="Sections">
       <a href="/">Home</a>

@@ -115,14 +115,13 @@ visitors' browsers for its max age.
 
 ## Regenerating images
 
-Most sources are not in this repository: the gold lockups live in the app
-repository, the world plates in a local CartoVox library, and the studio
-screenshots come from a sandboxed run of the app. The v2 icon masters are in
-`brand/` here — the illustrated and flat icons on dark and light plates, and
-the transparent header mark.
+The current logo sources are the supplied VectorCraft **Atlas Compass v3**
+exports in `brand/v3/`, with their original usage notes. The older v2 masters
+remain in `brand/` for reference. World plates live in a local CartoVox library,
+and studio screenshots come from a sandboxed run of the app.
 
 ```bash
-python3 tools/build-images.py --brand <app>/assets/app-icon --icons brand --worlds <library>/worlds --shots <shots-dir>
+python3 tools/build-images.py --brand brand/v3 --worlds <library>/worlds --shots <shots-dir>
 python3 tools/build-legal.py <app>/EULA.md <app>/THIRD-PARTY-NOTICES.md
 python3 tools/build-releases.py <app>/.github/release-notes --through 0.9.7
 python3 tools/build-faq-schema.py          # FAQPage JSON-LD, derived from the FAQ markup
@@ -146,24 +145,31 @@ date. Regenerate it after editing site copy so release details and legal pages
 stay in sync with their indexability.
 
 Each flag is optional; a pass with only `--shots` refreshes the app screenshots,
-and `--icons brand` alone re-derives every favicon, touch icon, the header mark,
-the 404 mark and the social card. Which icon goes where: the illustrated dark
-icon at 180 px and up, the flat dark icon at 64 px and below (it keeps its
-shape in a browser tab), the transparent mark in the header beside the gold
-wordmark, and the gold lockup in the footer.
+and `--brand brand/v3` alone rebuilds the header, footer, browser and touch
+icons, the 404 mark and the social card. `--icons brand` remains an alias.
+The header pairs the light compact SVG symbol with the original outlined
+lettering, including its custom V. The footer stacks the detailed reverse
+emblem at 160 CSS pixels with that lettering; the social card uses the same
+detailed artwork over the existing world plate. Browser, touch and manifest
+icons use the compact mark on its supplied deep teal plate. The ICO is copied
+from the pack without changing its six embedded sizes. Transparent artwork
+and proportions are preserved. `tools/brand_assets.py` builds these derivatives.
+Run `python3 tools/stamp-assets.py` after regenerating branding.
 
-## After changing CSS or JS
+## After changing CSS, JS or branding
 
 ```bash
 python3 tools/stamp-assets.py
 ```
 
 Every page references `/css/site.css?v=<hash>` and the scripts likewise;
-self-hosted font URLs carry hashes too. Changed files therefore get new URLs
+self-hosted fonts, branding, social previews and the web manifest carry hashes
+too. Changed files therefore get new URLs
 instead of being served from a browser's one-year cache. Run this last — after
 `build-legal.py`, `build-releases.py`, `build-faq-schema.py`, or font subsetting
-have written their outputs. It refreshes the sitemap after restamping, so
-commit the restamped HTML and sitemap together.
+have written their outputs. It stamps manifest icon URLs before hashing the
+manifest itself, then refreshes the sitemap. Commit the restamped HTML and
+sitemap together.
 
 ## Claims the site makes that can drift
 
