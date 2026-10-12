@@ -597,7 +597,7 @@ export async function handle(request, env) {
       }
       return json({ error: 'Not found.' }, 404);
     } catch (error) {
-      console.error(error);
+      console.error('Delta request failed:', error?.message || String(error), error?.cause?.message || '');
       return json({ error: 'The Delta service could not complete that request.' }, 500);
     }
 }
