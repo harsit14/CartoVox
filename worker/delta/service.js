@@ -597,7 +597,13 @@ export async function handle(request, env) {
       }
       return json({ error: 'Not found.' }, 404);
     } catch (error) {
-      console.error('Delta request failed:', error?.message || String(error), error?.cause?.message || '');
+      const reason = error?.message || String(error);
+      console.error('Delta request failed:', reason, error?.cause?.message || '');
+      if (reason.includes('free tier daily row read limit')) {
+        const retryAt = new Date((Math.floor(Date.now() / DAY_MS) + 1) * DAY_MS).toISOString();
+        return json({ error: 'Cloudflare’s daily database reading limit has been reached. '
+          + 'Reporting resumes after the daily reset.', code: 'daily_read_limit', retry_at: retryAt }, 503);
+      }
       return json({ error: 'The Delta service could not complete that request.' }, 500);
     }
 }

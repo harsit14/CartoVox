@@ -186,7 +186,7 @@ function adminApp() {
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } },
     drop: k => { try { localStorage.removeItem(k); } catch (e) { /* private mode */ } },
   };
-  const state = { token: '', data: null, timer: 0, request: null, days: 30, today: '', slot: '',
+  const state = { token: '', data: null, timer: 0, request: null, days: 7, today: '', slot: '',
     testers: { sort: 'slot', dir: 1, filter: 'all', q: '', page: 0 },
     features: { area: 'all', q: '', all: false } };
 
@@ -795,9 +795,11 @@ function adminApp() {
       if (state.request !== controller) return;
       if (r.status === 401) { forget(d.error || 'The admin token was refused. Use the current admin token for cartovox.org.'); return; }
       if (!r.ok) {
-        const message = d.error || ('Failed: ' + r.status);
+        const message = d.code === 'daily_read_limit' && d.retry_at
+          ? 'Daily reporting limit reached. Try again after ' + when(d.retry_at) + '.'
+          : (d.error || ('Failed: ' + r.status));
         if (!state.data) $('dash').innerHTML = '<p class="empty">' + esc(message) + ' Press Refresh to retry.</p>';
-        $('status').textContent = message; return;
+        $('status').textContent = message + (state.data ? ' Showing the last successful report.' : ''); return;
       }
       state.data = d; state.today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
       fillPicker(); render();
@@ -974,7 +976,7 @@ function adminApp() {
   document.addEventListener('visibilitychange', () => { if (!document.hidden && state.timer) load(); });
 
   const savedDays = Number(store.get(RANGE));
-  state.days = [0, 7, 30, 90].includes(savedDays) && store.get(RANGE) !== null ? savedDays : 30;
+  state.days = [0, 7, 30, 90].includes(savedDays) && store.get(RANGE) !== null ? savedDays : 7;
   syncRange();
   $('auto').checked = store.get(AUTO) === '1';
   $('hide-test').checked = store.get(HIDE) !== '0';
