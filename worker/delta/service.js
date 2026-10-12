@@ -17,7 +17,7 @@ const KINDS = new Set(['session', 'feature', 'error', 'perf']);
 
 // The tables, one statement each (D1 runs a batch of prepared statements).
 // Applied on the first request an isolate serves; every statement is
-// idempotent, so it costs nothing once the database exists.
+// idempotent; login assets and authentication do not need these writes.
 export const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS codes (
     digest TEXT PRIMARY KEY, slot TEXT NOT NULL UNIQUE,
@@ -38,6 +38,7 @@ export const SCHEMA = [
   'CREATE INDEX IF NOT EXISTS events_kind_name ON events(kind, name)',
   'CREATE INDEX IF NOT EXISTS events_install_received ON events(install_id, received_at)',
   'CREATE INDEX IF NOT EXISTS events_at ON events(at)',
+  'CREATE INDEX IF NOT EXISTS events_kind_at ON events(kind, at)',
 ];
 
 const readiness = new WeakMap();
@@ -48,13 +49,18 @@ export async function ensureReady(env) {
   let ready = readiness.get(env.DB);
   if (!ready) {
     ready = (async () => {
-      await env.DB.batch(SCHEMA.map(sql => env.DB.prepare(sql)));
+      const statements = SCHEMA.map(sql => env.DB.prepare(sql));
       const rows = Object.entries(CODES.codes || {});
-      for (let i = 0; i < rows.length; i += 50) {
-        await env.DB.batch(rows.slice(i, i + 50).map(([digest, slot]) => env.DB.prepare(
-          'INSERT OR IGNORE INTO codes (digest, slot, max_installs) VALUES (?, ?, ?)')
-          .bind(digest, slot, Number(CODES.max_installs || 3))));
+      // D1 allows 100 bound values per statement: 33 codes use 99.
+      // One batch also keeps cold-start setup plus a report under the free
+      // plan's 50-query limit for the current issued-code list.
+      for (let i = 0; i < rows.length; i += 33) {
+        const group = rows.slice(i, i + 33);
+        statements.push(env.DB.prepare('INSERT OR IGNORE INTO codes (digest, slot, max_installs) VALUES '
+          + group.map(() => '(?, ?, ?)').join(', '))
+          .bind(...group.flatMap(([digest, slot]) => [digest, slot, Number(CODES.max_installs || 3)])));
       }
+      await env.DB.batch(statements);
     })().catch(error => { readiness.delete(env.DB); throw error; });
     readiness.set(env.DB, ready);
   }
@@ -243,7 +249,6 @@ function round(value, places = 1) {
 }
 
 async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {}) {
-  const rows = async (sql, ...binds) => (await env.DB.prepare(sql).bind(...binds).all()).results || [];
   const nowMs = Date.now();
   const todayStart = Date.parse(`${localDay(nowMs, tz)}T00:00:00Z`) - tz * 60000;
   const sinceMs = days ? todayStart - (days - 1) * DAY_MS : null;
@@ -258,12 +263,10 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
     : exclude.length ? `slot NOT IN (${exclude.map(() => '?').join(', ')})` : '1 = 1';
   const binds = slot ? [slot] : exclude;
 
-  // One pass over the range does the totals, the days, each tester's
-  // activity, the performance table and the hour-of-week grid. Feature rows
-  // ("counts", flushed once a minute while someone clicks) are the bulk of
-  // the table. Active minutes: Delta V2 pages count each minute with input
-  // as ui:time:<workspace>; a Delta V1 row, which has none, counts as one.
-  const rollup = await rows(`SELECT slot, date(at, ?) AS day,
+  // One D1 round trip for the report, with every SELECT in the same snapshot.
+  const query = (sql, ...values) => env.DB.prepare(sql).bind(...values);
+  const queries = {
+    rollup: query(`SELECT slot, date(at, ?) AS day,
       CASE WHEN kind = 'feature' THEN CAST(strftime('%H', at, ?) AS INTEGER) END AS hour,
       kind, CASE WHEN kind IN ('session', 'perf') THEN name ELSE '' END AS name,
       COUNT(*) AS n, COUNT(DISTINCT install_id) AS computers,
@@ -275,7 +278,115 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
       SUM(kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed') AS failed,
       MAX(at) AS last_at
     FROM events WHERE at >= ? AND at < ? AND ${scope}
-    GROUP BY slot, day, hour, kind, 5`, shift, shift, since, until, ...binds);
+    GROUP BY slot, day, hour, kind, 5`, shift, shift, since, until, ...binds),
+    runs: query(`SELECT slot, date(MAX(at), ?) AS day,
+      MAX(json_extract(props, '$.seconds')) AS seconds
+    FROM events WHERE kind = 'session' AND name IN ('end', 'alive') AND at >= ? AND at < ? AND ${scope}
+    GROUP BY slot, session`, shift, since, until, ...binds),
+    codes: query(`SELECT codes.slot, codes.status, codes.note, codes.max_installs,
+      COUNT(installs.id) AS computers, MAX(installs.last_seen) AS last_seen,
+      MIN(installs.first_seen) AS first_seen, MAX(installs.app_version) AS app_version,
+      GROUP_CONCAT(DISTINCT installs.os) AS os
+    FROM codes LEFT JOIN installs ON installs.slot = codes.slot
+    GROUP BY codes.slot ORDER BY codes.slot`),
+    machines: query(`SELECT slot, os, os_version, arch, cpu_count, memory_gb, app_version,
+      release, first_seen, last_seen FROM installs ORDER BY last_seen DESC`),
+    counted: query(`SELECT feature.key AS name, SUM(feature.value) AS uses,
+      COUNT(DISTINCT events.slot) AS testers
+    FROM events, json_each(events.props, '$.counts') AS feature
+    WHERE events.kind = 'feature' AND events.name = 'counts' AND events.at >= ? AND events.at < ?
+      AND ${scope.replace('slot', 'events.slot')}
+    GROUP BY feature.key ORDER BY uses DESC LIMIT 200`, since, until, ...binds),
+    failures: query(`SELECT name, COALESCE(json_extract(props, '$.failure'), '') AS failure,
+      COALESCE(json_extract(props, '$.status'), '') AS status, COUNT(*) AS runs,
+      ROUND(AVG(json_extract(props, '$.progress')), 0) AS mean_progress,
+      ROUND(AVG(json_extract(props, '$.seconds')), 0) AS mean_seconds,
+      MAX(json_extract(props, '$.message')) AS message
+    FROM events WHERE kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed'
+      AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1, 2, 3 ORDER BY runs DESC LIMIT 30`, since, until, ...binds),
+    errors: query(`SELECT slot, at, name, json_extract(props, '$.where') AS place,
+      json_extract(props, '$.type') AS type,
+      json_extract(props, '$.message') AS message, json_extract(props, '$.stack') AS stack
+    FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${scope}
+    ORDER BY id DESC LIMIT 60`, since, until, ...binds),
+    errorGroups: query(`SELECT name, json_extract(props, '$.type') AS type,
+      json_extract(props, '$.message') AS message, MAX(json_extract(props, '$.where')) AS place,
+      COUNT(*) AS count, COUNT(DISTINCT slot) AS testers,
+      GROUP_CONCAT(DISTINCT slot) AS slots, MIN(at) AS first_at, MAX(at) AS last_at,
+      MAX(json_extract(props, '$.stack')) AS stack
+    FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1, 2, 3 ORDER BY count DESC, last_at DESC LIMIT 40`, since, until, ...binds),
+    gates: query(`SELECT COALESCE(json_extract(props, '$.state'), '') AS state,
+      COUNT(*) AS shown, COUNT(DISTINCT slot) AS testers
+    FROM events WHERE kind = 'session' AND name = 'gate' AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1 ORDER BY shown DESC`, since, until, ...binds),
+    unlocks: query(`SELECT COALESCE(json_extract(props, '$.ok'), 0) AS ok,
+      COALESCE(json_extract(props, '$.reason'), '') AS reason, COUNT(*) AS attempts,
+      COUNT(DISTINCT slot) AS testers,
+      ROUND(AVG(json_extract(props, '$.seconds_on_gate')), 0) AS mean_seconds_on_gate,
+      ROUND(MAX(json_extract(props, '$.seconds_on_gate')), 0) AS longest_seconds_on_gate,
+      SUM(COALESCE(json_extract(props, '$.had_install'), 0)) AS had_install
+    FROM events WHERE kind = 'session' AND name = 'unlock' AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1, 2 ORDER BY ok DESC, attempts DESC`, since, until, ...binds),
+    displays: query(`SELECT json_extract(props, '$.screen_width') AS width,
+      json_extract(props, '$.screen_height') AS height,
+      ROUND(json_extract(props, '$.pixel_ratio'), 2) AS scale, COUNT(DISTINCT install_id) AS computers
+    FROM events WHERE kind = 'session' AND name = 'ui:window' AND json_extract(props, '$.screen_width') > 0
+      AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1, 2, 3 ORDER BY computers DESC LIMIT 12`, since, until, ...binds),
+    gpus: query(`SELECT json_extract(props, '$.gpu') AS gpu, COUNT(DISTINCT install_id) AS computers,
+      COUNT(DISTINCT slot) AS testers
+    FROM events WHERE kind = 'session' AND name = 'ui:window' AND COALESCE(json_extract(props, '$.gpu'), '') != ''
+      AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1 ORDER BY computers DESC LIMIT 20`, since, until, ...binds),
+    screens: query(`SELECT json_extract(props, '$.width') AS width,
+      json_extract(props, '$.height') AS height, COUNT(DISTINCT install_id) AS computers
+    FROM events WHERE kind = 'session' AND name = 'ui:window' AND at >= ? AND at < ? AND ${scope}
+    GROUP BY 1, 2 ORDER BY computers DESC LIMIT 12`, since, until, ...binds),
+    feed: query(`SELECT slot, at, kind, name, json_extract(props, '$.seconds') AS seconds,
+      json_extract(props, '$.message') AS message, json_extract(props, '$.status') AS status,
+      json_extract(props, '$.ok') AS ok, json_extract(props, '$.reason') AS reason,
+      json_extract(props, '$.seconds_on_gate') AS seconds_on_gate,
+      json_extract(props, '$.progress') AS progress
+    FROM events WHERE at >= ? AND at < ? AND ${scope}
+      AND ((kind = 'session' AND name IN ('start', 'end', 'unclean', 'unlock')) OR kind = 'error'
+        OR (kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed'))
+    ORDER BY at DESC LIMIT 30`, since, until, ...binds)
+  };
+  if (days) {
+    const from = stamp(sinceMs - days * DAY_MS);
+    queries.before = query(`SELECT COUNT(DISTINCT slot) AS testers,
+        COALESCE(SUM(kind = 'session' AND name = 'start'), 0) AS sessions,
+        COALESCE(SUM(kind = 'error'), 0) AS errors, COALESCE(SUM(kind = 'perf'), 0) AS runs,
+        COALESCE(SUM(CASE WHEN kind = 'feature' THEN COALESCE((SELECT SUM(value)
+          FROM json_each(events.props, '$.counts') WHERE key LIKE ${ACTIVE_KEY}), 1) END), 0) AS active_minutes
+      FROM events WHERE at >= ? AND at < ? AND ${scope}`, from, since, ...binds);
+    queries.open = query(`SELECT ROUND(COALESCE(SUM(seconds), 0) / 3600.0, 1) AS hours
+      FROM (SELECT MAX(json_extract(props, '$.seconds')) AS seconds FROM events
+        WHERE kind = 'session' AND name IN ('end', 'alive') AND at >= ? AND at < ? AND ${scope}
+        GROUP BY session)`, from, since, ...binds);
+  }
+  if (slot) queries.sessions = query(`SELECT session, MIN(at) AS started, MAX(at) AS last_at,
+      MAX(CASE WHEN kind = 'session' AND name IN ('end', 'alive') THEN json_extract(props, '$.seconds') END) AS seconds,
+      MAX(kind = 'session' AND name = 'end') AS closed,
+      SUM(CASE WHEN kind = 'feature' THEN COALESCE((SELECT SUM(value)
+        FROM json_each(events.props, '$.counts') WHERE key LIKE ${ACTIVE_KEY}), 1) END) AS active_minutes,
+      SUM(kind = 'perf') AS jobs,
+      SUM(kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed') AS unfinished,
+      SUM(kind = 'error') AS errors, MAX(json_extract(props, '$.app_version')) AS app_version
+    FROM events WHERE slot = ? AND at >= ? AND at < ? AND session IS NOT NULL AND session != ''
+    GROUP BY session ORDER BY started DESC LIMIT 60`, slot, since, until);
+  const names = Object.keys(queries);
+  const results = await env.DB.batch(Object.values(queries));
+  const data = Object.fromEntries(names.map((name, i) => [name, results[i].results || []]));
+
+  // One pass over the range does the totals, the days, each tester's
+  // activity, the performance table and the hour-of-week grid. Feature rows
+  // ("counts", flushed once a minute while someone clicks) are the bulk of
+  // the table. Active minutes: Delta V2 pages count each minute with input
+  // as ui:time:<workspace>; a Delta V1 row, which has none, counts as one.
+  const rollup = data.rollup;
 
   const totals = { testers: 0, computers: 0, sessions: 0, hours: 0, errors: 0, runs: 0,
     failed_runs: 0, active_minutes: 0, unclean: 0 };
@@ -322,10 +433,7 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
   // How long each run was open: its clean end, or else the last heartbeat a
   // Delta V2 app sent before it crashed or was forced to quit. Counted on
   // the day the run was last heard from.
-  const runs = await rows(`SELECT slot, date(MAX(at), ?) AS day,
-      MAX(json_extract(props, '$.seconds')) AS seconds
-    FROM events WHERE kind = 'session' AND name IN ('end', 'alive') AND at >= ? AND at < ? AND ${scope}
-    GROUP BY slot, session`, shift, since, until, ...binds);
+  const runs = data.runs;
   for (const run of runs) {
     const day = byDay.get(run.day);
     const tester = bySlot.get(run.slot);
@@ -356,28 +464,13 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
 
   let previous = null;
   if (days) {
-    const from = stamp(sinceMs - days * DAY_MS);
-    const [before] = await rows(`SELECT COUNT(DISTINCT slot) AS testers,
-        COALESCE(SUM(kind = 'session' AND name = 'start'), 0) AS sessions,
-        COALESCE(SUM(kind = 'error'), 0) AS errors, COALESCE(SUM(kind = 'perf'), 0) AS runs,
-        COALESCE(SUM(CASE WHEN kind = 'feature' THEN COALESCE((SELECT SUM(value)
-          FROM json_each(events.props, '$.counts') WHERE key LIKE ${ACTIVE_KEY}), 1) END), 0) AS active_minutes
-      FROM events WHERE at >= ? AND at < ? AND ${scope}`, from, since, ...binds);
-    const [open] = await rows(`SELECT ROUND(COALESCE(SUM(seconds), 0) / 3600.0, 1) AS hours
-      FROM (SELECT MAX(json_extract(props, '$.seconds')) AS seconds FROM events
-        WHERE kind = 'session' AND name IN ('end', 'alive') AND at >= ? AND at < ? AND ${scope}
-        GROUP BY session)`, from, since, ...binds);
+    const [before] = data.before;
+    const [open] = data.open;
     previous = before ? { ...before, hours: open?.hours || 0 } : null;
   }
 
-  const directory = await rows(`SELECT codes.slot, codes.status, codes.note, COUNT(installs.id) AS computers
-    FROM codes LEFT JOIN installs ON installs.slot = codes.slot GROUP BY codes.slot ORDER BY codes.slot`);
-  const codes = (await rows(`SELECT codes.slot, codes.status, codes.note, codes.max_installs,
-      COUNT(installs.id) AS computers, MAX(installs.last_seen) AS last_seen,
-      MIN(installs.first_seen) AS first_seen, MAX(installs.app_version) AS app_version,
-      GROUP_CONCAT(DISTINCT installs.os) AS os
-    FROM codes LEFT JOIN installs ON installs.slot = codes.slot
-    GROUP BY codes.slot ORDER BY codes.slot`)).filter(code => inScope(code.slot));
+  const directory = data.codes.map(({ slot, status, note, computers }) => ({ slot, status, note, computers }));
+  const codes = (data.codes).filter(code => inScope(code.slot));
   const testers = codes.map(code => {
     const seen = bySlot.get(code.slot);
     return { ...code, sessions: seen?.sessions || 0, hours: round((seen?.seconds || 0) / 3600),
@@ -389,8 +482,7 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
   totals.codes_activated = codes.filter(code => code.computers > 0).length;
   totals.codes_revoked = codes.filter(code => code.status === 'revoked').length;
 
-  const machines = (await rows(`SELECT slot, os, os_version, arch, cpu_count, memory_gb, app_version,
-      release, first_seen, last_seen FROM installs ORDER BY last_seen DESC`))
+  const machines = (data.machines)
     .filter(machine => inScope(machine.slot));
   totals.computers = machines.filter(machine => machine.last_seen >= since).length;
   const systems = [];
@@ -402,87 +494,26 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
   }
   systems.sort((a, b) => b.computers - a.computers);
 
-  const counted = await rows(`SELECT feature.key AS name, SUM(feature.value) AS uses,
-      COUNT(DISTINCT events.slot) AS testers
-    FROM events, json_each(events.props, '$.counts') AS feature
-    WHERE events.kind = 'feature' AND events.name = 'counts' AND events.at >= ? AND events.at < ?
-      AND ${scope.replace('slot', 'events.slot')}
-    GROUP BY feature.key ORDER BY uses DESC LIMIT 200`, since, until, ...binds);
+  const counted = data.counted;
   // Active minutes by workspace and by tab (Delta V2), apart from the clicks.
   const features = counted.filter(row => !row.name.startsWith('ui:time:')).slice(0, 150);
   const time = counted.filter(row => row.name.startsWith('ui:time:')).map(row => ({
     kind: row.name.startsWith('ui:time:tab:') ? 'tab' : 'workspace',
     name: row.name.replace(/^ui:time:(tab:)?/, ''), minutes: row.uses, testers: row.testers }));
-  const failures = await rows(`SELECT name, COALESCE(json_extract(props, '$.failure'), '') AS failure,
-      COALESCE(json_extract(props, '$.status'), '') AS status, COUNT(*) AS runs,
-      ROUND(AVG(json_extract(props, '$.progress')), 0) AS mean_progress,
-      ROUND(AVG(json_extract(props, '$.seconds')), 0) AS mean_seconds,
-      MAX(json_extract(props, '$.message')) AS message
-    FROM events WHERE kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed'
-      AND at >= ? AND at < ? AND ${scope}
-    GROUP BY 1, 2, 3 ORDER BY runs DESC LIMIT 30`, since, until, ...binds);
-  const errors = await rows(`SELECT slot, at, name, json_extract(props, '$.where') AS place,
-      json_extract(props, '$.type') AS type,
-      json_extract(props, '$.message') AS message, json_extract(props, '$.stack') AS stack
-    FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${scope}
-    ORDER BY id DESC LIMIT 60`, since, until, ...binds);
-  const errorGroups = await rows(`SELECT name, json_extract(props, '$.type') AS type,
-      json_extract(props, '$.message') AS message, MAX(json_extract(props, '$.where')) AS place,
-      COUNT(*) AS count, COUNT(DISTINCT slot) AS testers,
-      GROUP_CONCAT(DISTINCT slot) AS slots, MIN(at) AS first_at, MAX(at) AS last_at,
-      MAX(json_extract(props, '$.stack')) AS stack
-    FROM events WHERE kind = 'error' AND at >= ? AND at < ? AND ${scope}
-    GROUP BY 1, 2, 3 ORDER BY count DESC, last_at DESC LIMIT 40`, since, until, ...binds);
+  const failures = data.failures;
+  const errors = data.errors;
+  const errorGroups = data.errorGroups;
   // The unlock screen (Delta V2): why it came up, and how each Unlock went.
-  const gates = await rows(`SELECT COALESCE(json_extract(props, '$.state'), '') AS state,
-      COUNT(*) AS shown, COUNT(DISTINCT slot) AS testers
-    FROM events WHERE kind = 'session' AND name = 'gate' AND at >= ? AND at < ? AND ${scope}
-    GROUP BY 1 ORDER BY shown DESC`, since, until, ...binds);
-  const unlocks = await rows(`SELECT COALESCE(json_extract(props, '$.ok'), 0) AS ok,
-      COALESCE(json_extract(props, '$.reason'), '') AS reason, COUNT(*) AS attempts,
-      COUNT(DISTINCT slot) AS testers,
-      ROUND(AVG(json_extract(props, '$.seconds_on_gate')), 0) AS mean_seconds_on_gate,
-      ROUND(MAX(json_extract(props, '$.seconds_on_gate')), 0) AS longest_seconds_on_gate,
-      SUM(COALESCE(json_extract(props, '$.had_install'), 0)) AS had_install
-    FROM events WHERE kind = 'session' AND name = 'unlock' AND at >= ? AND at < ? AND ${scope}
-    GROUP BY 1, 2 ORDER BY ok DESC, attempts DESC`, since, until, ...binds);
+  const gates = data.gates;
+  const unlocks = data.unlocks;
   // Screens and graphics processors (EULA 2.1, 6.3(a)): the window event a
   // Delta V2 page sends once per load.
-  const displays = await rows(`SELECT json_extract(props, '$.screen_width') AS width,
-      json_extract(props, '$.screen_height') AS height,
-      ROUND(json_extract(props, '$.pixel_ratio'), 2) AS scale, COUNT(DISTINCT install_id) AS computers
-    FROM events WHERE kind = 'session' AND name = 'ui:window' AND json_extract(props, '$.screen_width') > 0
-      AND at >= ? AND at < ? AND ${scope}
-    GROUP BY 1, 2, 3 ORDER BY computers DESC LIMIT 12`, since, until, ...binds);
-  const gpus = await rows(`SELECT json_extract(props, '$.gpu') AS gpu, COUNT(DISTINCT install_id) AS computers,
-      COUNT(DISTINCT slot) AS testers
-    FROM events WHERE kind = 'session' AND name = 'ui:window' AND COALESCE(json_extract(props, '$.gpu'), '') != ''
-      AND at >= ? AND at < ? AND ${scope}
-    GROUP BY 1 ORDER BY computers DESC LIMIT 20`, since, until, ...binds);
-  const screens = await rows(`SELECT json_extract(props, '$.width') AS width,
-      json_extract(props, '$.height') AS height, COUNT(DISTINCT install_id) AS computers
-    FROM events WHERE kind = 'session' AND name = 'ui:window' AND at >= ? AND at < ? AND ${scope}
-    GROUP BY 1, 2 ORDER BY computers DESC LIMIT 12`, since, until, ...binds);
-  const feed = await rows(`SELECT slot, at, kind, name, json_extract(props, '$.seconds') AS seconds,
-      json_extract(props, '$.message') AS message, json_extract(props, '$.status') AS status,
-      json_extract(props, '$.ok') AS ok, json_extract(props, '$.reason') AS reason,
-      json_extract(props, '$.seconds_on_gate') AS seconds_on_gate,
-      json_extract(props, '$.progress') AS progress
-    FROM events WHERE at >= ? AND at < ? AND ${scope}
-      AND ((kind = 'session' AND name IN ('start', 'end', 'unclean', 'unlock')) OR kind = 'error'
-        OR (kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed'))
-    ORDER BY at DESC LIMIT 30`, since, until, ...binds);
+  const displays = data.displays;
+  const gpus = data.gpus;
+  const screens = data.screens;
+  const feed = data.feed;
   // One tester's sessions, newest first: when, how long, what happened.
-  const sessions = slot ? await rows(`SELECT session, MIN(at) AS started, MAX(at) AS last_at,
-      MAX(CASE WHEN kind = 'session' AND name IN ('end', 'alive') THEN json_extract(props, '$.seconds') END) AS seconds,
-      MAX(kind = 'session' AND name = 'end') AS closed,
-      SUM(CASE WHEN kind = 'feature' THEN COALESCE((SELECT SUM(value)
-        FROM json_each(events.props, '$.counts') WHERE key LIKE ${ACTIVE_KEY}), 1) END) AS active_minutes,
-      SUM(kind = 'perf') AS jobs,
-      SUM(kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed') AS unfinished,
-      SUM(kind = 'error') AS errors, MAX(json_extract(props, '$.app_version')) AS app_version
-    FROM events WHERE slot = ? AND at >= ? AND at < ? AND session IS NOT NULL AND session != ''
-    GROUP BY session ORDER BY started DESC LIMIT 60`, slot, since, until) : [];
+  const sessions = slot ? data.sessions : [];
   for (const machine of machines) {
     if (machine.first_seen >= since) {
       feed.push({ slot: machine.slot, at: machine.first_seen, kind: 'activation', name: machine.os });
@@ -509,7 +540,10 @@ async function admin(request, env, path) {
   if (!String(env.ADMIN_TOKEN || '').trim()) {
     return json({ error: 'The admin password (ADMIN_TOKEN) is not set on this service.' }, 503);
   }
-  if (!authorised(request, env)) return json({ error: 'Not authorised.' }, 401);
+  if (!authorised(request, env)) return json({ error: 'The admin token does not match this service. '
+    + 'Use the cartovox Worker’s ADMIN_TOKEN; tester access codes cannot open this report.' }, 401);
+  if (request.method === 'GET' && path === '/v1/admin/auth') return json({ ok: true });
+  await ensureReady(env);
   if (request.method === 'GET' && path === '/v1/admin/report') {
     return json(await report(env, reportOptions(new URL(request.url))));
   }
@@ -546,10 +580,6 @@ export async function handle(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, '') || '/';
     try {
-      await ensureReady(env);
-      if (request.method === 'GET' && path === '/v1/health') return json({ ok: true });
-      if (request.method === 'POST' && path === '/v1/activate') return await activate(request, env);
-      if (request.method === 'POST' && path === '/v1/events') return await events(request, env);
       if (path.startsWith('/v1/admin/')) return await admin(request, env, path);
       if (request.method === 'GET' && path === '/admin') {
         return new Response(ADMIN_PAGE, { headers: { 'content-type': 'text/html; charset=utf-8',
@@ -558,6 +588,12 @@ export async function handle(request, env) {
       if (request.method === 'GET' && path === '/admin/script') {
         return new Response(ADMIN_SCRIPT, { headers: {
           'content-type': 'application/javascript; charset=utf-8', ...ADMIN_HEADERS } });
+      }
+      if (path === '/v1/health' || path === '/v1/activate' || path === '/v1/events') {
+        await ensureReady(env);
+        if (request.method === 'GET' && path === '/v1/health') return json({ ok: true });
+        if (request.method === 'POST' && path === '/v1/activate') return await activate(request, env);
+        if (request.method === 'POST' && path === '/v1/events') return await events(request, env);
       }
       return json({ error: 'Not found.' }, 404);
     } catch (error) {

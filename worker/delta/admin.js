@@ -55,7 +55,7 @@ main.loading{opacity:.6}
 border-radius:14px}
 .login h2{margin:0 0 6px;font:600 22px Georgia,serif;color:var(--gold)}
 .login p{color:var(--ink2);margin:0 0 18px}.login .row{display:flex;gap:8px;margin-bottom:12px}
-.login input[type=password]{flex:1}#login-msg{color:var(--serious);min-height:20px;margin-top:10px}
+.login input[type=password]{flex:1;min-width:0}.login details{color:var(--ink2);font-size:12.5px;margin-top:12px}.login summary{cursor:pointer}.login details p{margin:8px 0 0}#login-msg{color:var(--serious);min-height:20px;margin-top:10px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .card h2{margin:0;font-size:15px;font-weight:600;color:var(--ink)}
 .card .sub{color:var(--muted);font-size:12.5px;margin:2px 0 10px}
@@ -159,10 +159,13 @@ export const ADMIN_PAGE = `<!doctype html><html lang="en"><head><meta charset="u
 <form id="f" class="login">
   <h2>CartoVox Delta report</h2>
   <p>Enter the admin token once; this browser can remember it.</p>
-  <div class="row"><input id="t" type="password" placeholder="Admin token" autocomplete="current-password">
+  <div class="row"><input id="t" type="password" placeholder="Admin token" aria-label="Admin token" autocomplete="current-password" required>
   <button class="primary">Open</button></div>
   <label><input id="remember" type="checkbox" checked> Remember on this browser</label>
   <div id="login-msg" role="alert"></div>
+  <details><summary>Which token do I use?</summary><p>Use the admin token set for cartovox.org.
+  A tester’s D-code unlocks the desktop app only. If the admin token was changed, use the new value.
+  The owner can set it in Cloudflare → Workers &amp; Pages → cartovox → Settings → Variables and Secrets → ADMIN_TOKEN.</p></details>
 </form>
 <main id="dash" hidden></main>
 <div id="tip" role="tooltip" hidden></div>
@@ -183,8 +186,8 @@ function adminApp() {
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } },
     drop: k => { try { localStorage.removeItem(k); } catch (e) { /* private mode */ } },
   };
-  const state = { token: '', data: null, timer: 0, busy: false, days: 30, today: '', slot: '',
-    testers: { sort: 'slot', dir: 1, filter: 'all', q: '' },
+  const state = { token: '', data: null, timer: 0, request: null, days: 30, today: '', slot: '',
+    testers: { sort: 'slot', dir: 1, filter: 'all', q: '', page: 0 },
     features: { area: 'all', q: '', all: false } };
 
   // ---------- formatting ----------
@@ -197,10 +200,10 @@ function adminApp() {
     if (Math.abs(n) >= 1e4) return (n / 1e3).toFixed(1).replace(/\.0$/, '') + 'K';
     return Number.isInteger(n) ? n.toLocaleString() : n.toLocaleString(undefined, { maximumFractionDigits: 1 });
   };
-  const dayLabel = key => new Date(key + 'T00:00:00Z').toLocaleDateString(undefined,
-    { month: 'short', day: 'numeric', timeZone: 'UTC' });
-  const dayLong = key => new Date(key + 'T00:00:00Z').toLocaleDateString(undefined,
-    { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const shortDay = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const longDay = new Intl.DateTimeFormat(undefined, { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const dayLabel = key => shortDay.format(new Date(key + 'T00:00:00Z'));
+  const dayLong = key => longDay.format(new Date(key + 'T00:00:00Z'));
   const when = iso => { const t = Date.parse(iso); return Number.isNaN(t) ? '' : new Date(t).toLocaleString(); };
   function ago(iso) {
     const t = Date.parse(iso);
@@ -512,7 +515,7 @@ function adminApp() {
       <div class="head"><div class="chips">${chips}</div><input id="tq" type="search" placeholder="Find a code, nickname, system" value="${esc(s.q)}"></div></div>
       <div class="scroll"><table id="tt"><thead><tr>${TESTER_COLS.map(([k, l, sortable = true, cls = '']) =>
         `<th class="${cls}${sortable ? ' sort' : ''}" ${sortable ? `data-sort="${k}"` : ''} ${s.sort === k ? `aria-sort="${s.dir > 0 ? 'ascending' : 'descending'}"` : ''}>${l}</th>`).join('')}</tr></thead>
-      <tbody id="tbody"></tbody></table></div></section>`;
+      <tbody id="tbody"></tbody></table></div><div class="head" id="tester-pages" style="margin-top:12px"></div></section>`;
   }
 
   function renderTesterRows() {
@@ -527,6 +530,13 @@ function adminApp() {
       const x = val(a, s.sort); const y = val(b, s.sort);
       return (typeof x === 'number' && typeof y === 'number' ? x - y : String(x).localeCompare(String(y))) * s.dir;
     });
+    const count = rows.length; const pageSize = 50;
+    s.page = Math.max(0, Math.min(s.page, Math.ceil(count / pageSize) - 1));
+    const start = s.page * pageSize;
+    rows = rows.slice(start, start + pageSize);
+    $('tester-pages').innerHTML = `<span style="color:var(--muted)" role="status">${count ? `${start + 1}–${start + rows.length}` : '0'} of ${num(count)} testers</span>`
+      + `<div class="acts"><button type="button" data-tpage="-1" ${s.page === 0 ? 'disabled' : ''}>Previous</button>`
+      + `<button type="button" data-tpage="1" ${start + pageSize >= count ? 'disabled' : ''}>Next</button></div>`;
     $('tbody').innerHTML = rows.length ? rows.map(r => {
       const st = testerStatus(r);
       return `<tr><td style="white-space:nowrap"><button type="button" class="link" data-open="${esc(r.slot)}" title="Show ${esc(plainName(r.slot))} alone">${nameHtml(r.slot)}</button>
@@ -730,7 +740,9 @@ function adminApp() {
     if (!on) { $('t').value = ''; $('t').focus(); }
   }
   function forget(message) {
+    if (state.request) state.request.abort(); state.request = null;
     state.token = ''; state.data = null; store.drop(KEY);
+    $('refresh').disabled = false; $('dash').classList.remove('loading');
     clearInterval(state.timer); state.timer = 0; $('auto').checked = false;
     signedIn(false); $('dash').innerHTML = ''; $('login-msg').textContent = message || '';
   }
@@ -741,31 +753,66 @@ function adminApp() {
   function syncRange() {
     document.querySelectorAll('#range button').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.days) === state.days)));
   }
+  async function authenticate(token, remember) {
+    if (state.request) state.request.abort();
+    const controller = new AbortController(); state.request = controller;
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    const button = $('f').querySelector('button'); button.disabled = true;
+    $('login-msg').textContent = 'Checking token…';
+    try {
+      const r = await fetch('/v1/admin/auth', { headers: { authorization: 'Bearer ' + token },
+        cache: 'no-store', signal: controller.signal });
+      const d = await r.json().catch(() => ({}));
+      if (state.request !== controller) return;
+      if (r.status === 401) { forget(d.error || 'The admin token was refused. Use the current admin token for cartovox.org.'); return; }
+      if (!r.ok) { signedIn(false); $('login-msg').textContent = d.error || ('Failed: ' + r.status); return; }
+      state.token = token;
+      if (remember) store.set(KEY, token); else store.drop(KEY);
+      $('t').value = ''; $('login-msg').textContent = '';
+      state.request = null; signedIn(true); schedule(); load();
+    } catch (e) {
+      if (state.request !== controller) return;
+      signedIn(false); $('login-msg').textContent = 'Could not check the token. Check your connection and try again.';
+    } finally {
+      clearTimeout(timeout); button.disabled = false;
+      if (state.request === controller) state.request = null;
+    }
+  }
   async function load() {
     if (!state.token) return;
-    if (state.busy) { state.again = true; return; }
-    state.busy = true; $('refresh').disabled = true; $('status').textContent = 'Loading…'; $('dash').classList.add('loading');
+    if (state.request) state.request.abort();
+    const controller = new AbortController(); state.request = controller;
+    const timeout = setTimeout(() => controller.abort(), 30000);
+    $('refresh').disabled = true; $('status').textContent = 'Loading…'; $('dash').classList.add('loading');
+    if (!state.data) $('dash').innerHTML = '<p class="empty">Loading report…</p>';
     const params = new URLSearchParams({ days: String(state.days), tz: String(-new Date().getTimezoneOffset()) });
     if (state.slot) params.set('slot', state.slot);
     else if ($('hide-test').checked) params.set('exclude', TEST_SLOT);
     try {
-      const r = await fetch('/v1/admin/report?' + params, { headers: { authorization: 'Bearer ' + state.token }, cache: 'no-store' });
+      const r = await fetch('/v1/admin/report?' + params, { headers: { authorization: 'Bearer ' + state.token },
+        cache: 'no-store', signal: controller.signal });
       const d = await r.json().catch(() => ({ error: 'The service answered ' + r.status + '.' }));
-      if (r.status === 401) { forget('That token was refused, so this browser has forgotten it. Enter it again.'); return; }
+      if (state.request !== controller) return;
+      if (r.status === 401) { forget(d.error || 'The admin token was refused. Use the current admin token for cartovox.org.'); return; }
       if (!r.ok) {
-        if (!state.data) { signedIn(false); $('login-msg').textContent = d.error || ('Failed: ' + r.status); }
-        $('status').textContent = d.error || ('Failed: ' + r.status); return;
+        const message = d.error || ('Failed: ' + r.status);
+        if (!state.data) $('dash').innerHTML = '<p class="empty">' + esc(message) + ' Press Refresh to retry.</p>';
+        $('status').textContent = message; return;
       }
       state.data = d; state.today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-      signedIn(true); fillPicker(); render();
+      fillPicker(); render();
       $('status').textContent = 'Updated ' + new Date().toLocaleTimeString();
     } catch (e) {
-      $('status').textContent = 'Could not reach the service; the numbers below may be stale.';
-      if (!state.data) { signedIn(false); $('login-msg').textContent = 'Could not reach the service.'; }
+      if (state.request !== controller) return;
+      const message = controller.signal.aborted ? 'Report timed out. Try 7 days or press Refresh.'
+        : 'Could not reach the service. Press Refresh to retry.';
+      $('status').textContent = message + (state.data ? ' The numbers below may be stale.' : '');
+      if (!state.data) $('dash').innerHTML = '<p class="empty">' + esc(message) + '</p>';
     } finally {
-      state.busy = false; $('refresh').disabled = false; $('dash').classList.remove('loading');
-      // The range or the tester changed while this report was loading.
-      if (state.again) { state.again = false; load(); }
+      clearTimeout(timeout);
+      if (state.request === controller) {
+        state.request = null; $('refresh').disabled = false; $('dash').classList.remove('loading');
+      }
     }
   }
   // The tester picker: activated codes first, each with its nickname.
@@ -837,24 +884,28 @@ function adminApp() {
 
   // ---------- events ----------
   const tip = $('tip');
+  let tipTarget = null; let tipWidth = 0; let tipHeight = 0;
   function showTip(target, x, y) {
-    const lines = target.getAttribute('data-tip').split('\n');
-    tip.textContent = '';
-    const strong = document.createElement('strong'); strong.textContent = lines[0]; tip.appendChild(strong);
-    lines.slice(1).forEach(l => { const div = document.createElement('div'); div.textContent = l; tip.appendChild(div); });
-    tip.hidden = false;
-    const w = tip.offsetWidth; const h = tip.offsetHeight;
-    tip.style.left = Math.min(window.innerWidth - w - 8, x + 14) + 'px';
-    tip.style.top = (y - h - 12 < 60 ? y + 16 : y - h - 12) + 'px';
-    const svg = target.ownerSVGElement;
-    if (svg && target.hasAttribute('data-cx')) {
-      const xh = svg.querySelector('.xh'); const xd = svg.querySelector('.xd');
-      xh.setAttribute('x1', target.dataset.cx); xh.setAttribute('x2', target.dataset.cx); xh.setAttribute('visibility', 'visible');
-      xd.setAttribute('cx', target.dataset.cx); xd.setAttribute('cy', target.dataset.cy); xd.setAttribute('visibility', 'visible');
+    if (target !== tipTarget) {
+      hideTip(); tipTarget = target;
+      const lines = target.getAttribute('data-tip').split('\n');
+      tip.textContent = '';
+      const strong = document.createElement('strong'); strong.textContent = lines[0]; tip.appendChild(strong);
+      lines.slice(1).forEach(l => { const div = document.createElement('div'); div.textContent = l; tip.appendChild(div); });
+      tip.hidden = false;
+      tipWidth = tip.offsetWidth; tipHeight = tip.offsetHeight;
+      const svg = target.ownerSVGElement;
+      if (svg && target.hasAttribute('data-cx')) {
+        const xh = svg.querySelector('.xh'); const xd = svg.querySelector('.xd');
+        xh.setAttribute('x1', target.dataset.cx); xh.setAttribute('x2', target.dataset.cx); xh.setAttribute('visibility', 'visible');
+        xd.setAttribute('cx', target.dataset.cx); xd.setAttribute('cy', target.dataset.cy); xd.setAttribute('visibility', 'visible');
+      }
     }
+    tip.style.left = Math.min(window.innerWidth - tipWidth - 8, x + 14) + 'px';
+    tip.style.top = (y - tipHeight - 12 < 60 ? y + 16 : y - tipHeight - 12) + 'px';
   }
   function hideTip() {
-    tip.hidden = true;
+    tipTarget = null; tip.hidden = true;
     document.querySelectorAll('.xh,.xd').forEach(n => n.setAttribute('visibility', 'hidden'));
   }
   document.addEventListener('pointermove', e => {
@@ -865,10 +916,9 @@ function adminApp() {
 
   $('f').addEventListener('submit', e => {
     e.preventDefault();
-    state.token = $('t').value.trim();
-    if (!state.token) return;
-    if ($('remember').checked) store.set(KEY, state.token); else store.drop(KEY);
-    $('t').value = ''; $('login-msg').textContent = 'Opening…'; schedule(); load();
+    const token = $('t').value.trim().replace(/^Bearer\s+/i, '');
+    if (!token) return;
+    authenticate(token, $('remember').checked);
   });
   $('refresh').addEventListener('click', load);
   $('forget').addEventListener('click', () => forget('Token forgotten on this browser.'));
@@ -895,14 +945,16 @@ function adminApp() {
     const sort = t.closest('th[data-sort]');
     if (sort) {
       const k = sort.dataset.sort; const s = state.testers;
-      s.dir = s.sort === k ? -s.dir : (['slot', 'os', 'app_version', 'status'].includes(k) ? 1 : -1); s.sort = k;
+      s.dir = s.sort === k ? -s.dir : (['slot', 'os', 'app_version', 'status'].includes(k) ? 1 : -1); s.sort = k; s.page = 0;
       document.querySelectorAll('#tt th[data-sort]').forEach(th => {
         if (th.dataset.sort === k) th.setAttribute('aria-sort', s.dir > 0 ? 'ascending' : 'descending'); else th.removeAttribute('aria-sort');
       });
       renderTesterRows(); return;
     }
+    const page = t.closest('[data-tpage]');
+    if (page && !page.disabled) { state.testers.page += Number(page.dataset.tpage); renderTesterRows(); return; }
     const tf = t.closest('[data-tfilter]');
-    if (tf) { state.testers.filter = tf.dataset.tfilter; document.querySelectorAll('[data-tfilter]').forEach(b => b.setAttribute('aria-pressed', String(b === tf))); renderTesterRows(); return; }
+    if (tf) { state.testers.filter = tf.dataset.tfilter; state.testers.page = 0; document.querySelectorAll('[data-tfilter]').forEach(b => b.setAttribute('aria-pressed', String(b === tf))); renderTesterRows(); return; }
     const fa = t.closest('[data-farea]');
     if (fa) { state.features.area = fa.dataset.farea; state.features.all = false; document.querySelectorAll('[data-farea]').forEach(b => b.setAttribute('aria-pressed', String(b === fa))); renderFeatureList(); return; }
     if (t.id === 'fall') { state.features.all = !state.features.all; renderFeatureList(); return; }
@@ -914,7 +966,7 @@ function adminApp() {
     if (open) openTester(open.dataset.open);
   });
   $('dash').addEventListener('input', e => {
-    if (e.target.id === 'tq') { state.testers.q = e.target.value; renderTesterRows(); }
+    if (e.target.id === 'tq') { state.testers.q = e.target.value; state.testers.page = 0; renderTesterRows(); }
     if (e.target.id === 'fq') { state.features.q = e.target.value; state.features.all = false; renderFeatureList(); }
   });
   let resize = 0;
@@ -926,9 +978,9 @@ function adminApp() {
   syncRange();
   $('auto').checked = store.get(AUTO) === '1';
   $('hide-test').checked = store.get(HIDE) !== '0';
-  state.token = store.get(KEY) || '';
+  const savedToken = store.get(KEY) || '';
   state.slot = (/^#(D-\d{3,5})$/.exec(location.hash || '') || [])[1] || '';
-  if (state.token) { signedIn(true); schedule(); load(); } else $('t').focus();
+  if (savedToken) authenticate(savedToken, true); else $('t').focus();
 }
 
 // Wrangler bundles with esbuild's keepNames, which rewrites every inner
