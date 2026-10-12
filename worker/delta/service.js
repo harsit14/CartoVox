@@ -276,6 +276,9 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
       MAX(json_extract(props, '$.seconds')) AS longest,
       MAX(json_extract(props, '$.peak_rss_mb')) AS peak,
       SUM(kind = 'perf' AND COALESCE(json_extract(props, '$.status'), '') != 'completed') AS failed,
+      SUM(kind = 'perf' AND json_extract(props, '$.status') = 'completed') AS completed,
+      SUM(kind = 'perf' AND json_extract(props, '$.status') = 'cancelled') AS cancelled,
+      SUM(kind = 'perf' AND json_extract(props, '$.status') = 'failed') AS failed_jobs,
       MAX(at) AS last_at
     FROM events WHERE at >= ? AND at < ? AND ${scope}
     GROUP BY slot, day, hour, kind, 5`, shift, shift, since, until, ...binds),
@@ -296,7 +299,17 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
     FROM events, json_each(events.props, '$.counts') AS feature
     WHERE events.kind = 'feature' AND events.name = 'counts' AND events.at >= ? AND events.at < ?
       AND ${scope.replace('slot', 'events.slot')}
-    GROUP BY feature.key ORDER BY uses DESC LIMIT 200`, since, until, ...binds),
+    GROUP BY feature.key ORDER BY uses DESC LIMIT 600`, since, until, ...binds),
+    jobTimings: query(`WITH ranked AS (
+      SELECT name, CAST(json_extract(props, '$.seconds') AS REAL) AS seconds,
+        ROW_NUMBER() OVER (PARTITION BY name ORDER BY CAST(json_extract(props, '$.seconds') AS REAL)) AS position,
+        COUNT(*) OVER (PARTITION BY name) AS samples
+      FROM events WHERE kind = 'perf' AND at >= ? AND at < ? AND ${scope}
+        AND json_type(props, '$.seconds') IN ('integer', 'real') AND json_extract(props, '$.seconds') >= 0)
+      SELECT name, COUNT(*) AS timed_runs, AVG(seconds) AS mean_seconds, MAX(seconds) AS longest_seconds,
+        AVG(CASE WHEN position IN ((samples + 1) / 2, (samples + 2) / 2) THEN seconds END) AS median_seconds,
+        MAX(CASE WHEN position = (samples * 95 + 99) / 100 THEN seconds END) AS p95_seconds
+      FROM ranked GROUP BY name`, since, until, ...binds),
     failures: query(`SELECT name, COALESCE(json_extract(props, '$.failure'), '') AS failure,
       COALESCE(json_extract(props, '$.status'), '') AS status, COUNT(*) AS runs,
       ROUND(AVG(json_extract(props, '$.progress')), 0) AS mean_progress,
@@ -389,7 +402,7 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
   const rollup = data.rollup;
 
   const totals = { testers: 0, computers: 0, sessions: 0, hours: 0, errors: 0, runs: 0,
-    failed_runs: 0, active_minutes: 0, unclean: 0 };
+    failed_runs: 0, completed_jobs: 0, cancelled_jobs: 0, failed_jobs: 0, other_jobs: 0, active_minutes: 0, unclean: 0 };
   const byDay = new Map();
   const bySlot = new Map();
   const byJob = new Map();
@@ -415,10 +428,14 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
     } else if (row.kind === 'perf') {
       day.runs += row.n; day.failed += row.failed || 0; tester.runs += row.n;
       totals.failed_runs += row.failed || 0;
+      totals.completed_jobs += row.completed || 0;
+      totals.cancelled_jobs += row.cancelled || 0;
+      totals.failed_jobs += row.failed_jobs || 0;
       const job = byJob.get(row.name) || { name: row.name, runs: 0, seconds: 0, longest: 0, peak: null,
-        unfinished: 0, slots: new Set() };
+        unfinished: 0, completed: 0, cancelled: 0, failed: 0, slots: new Set() };
       byJob.set(row.name, job);
       job.runs += row.n; job.seconds += row.seconds || 0; job.unfinished += row.failed || 0;
+      job.completed += row.completed || 0; job.cancelled += row.cancelled || 0; job.failed += row.failed_jobs || 0;
       job.longest = Math.max(job.longest, row.longest || 0);
       if (row.peak != null) job.peak = Math.max(job.peak || 0, row.peak);
       job.slots.add(row.slot);
@@ -446,6 +463,7 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
   }
   totals.testers = activeSlots.size;
   totals.hours = round(totals.hours);
+  totals.other_jobs = Math.max(0, totals.runs - totals.completed_jobs - totals.cancelled_jobs - totals.failed_jobs);
 
   // Every calendar day in the range, empty ones included, so a quiet day
   // reads as zero instead of vanishing from the chart.
@@ -496,7 +514,7 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
 
   const counted = data.counted;
   // Active minutes by workspace and by tab (Delta V2), apart from the clicks.
-  const features = counted.filter(row => !row.name.startsWith('ui:time:')).slice(0, 150);
+  const features = counted.filter(row => !row.name.startsWith('ui:time:')).slice(0, 500);
   const time = counted.filter(row => row.name.startsWith('ui:time:')).map(row => ({
     kind: row.name.startsWith('ui:time:tab:') ? 'tab' : 'workspace',
     name: row.name.replace(/^ui:time:(tab:)?/, ''), minutes: row.uses, testers: row.testers }));
@@ -521,17 +539,28 @@ async function report(env, { days = 0, tz = 0, exclude = [], slot = null } = {})
   }
   feed.sort((a, b) => (Date.parse(b.at) || 0) - (Date.parse(a.at) || 0));
 
-  const performance = [...byJob.values()].map(job => ({ name: job.name, runs: job.runs,
-    mean_seconds: round(job.seconds / job.runs), longest_seconds: round(job.longest),
-    peak_mb: job.peak == null ? null : Math.round(job.peak), unfinished: job.unfinished,
-    testers: job.slots.size })).sort((a, b) => b.runs - a.runs);
+  const timings = new Map(data.jobTimings.map(row => [row.name, row]));
+  const performance = [...byJob.values()].map(job => {
+    const timing = timings.get(job.name);
+    return { name: job.name, runs: job.runs, timed_runs: timing?.timed_runs || 0,
+      mean_seconds: timing ? round(timing.mean_seconds) : null,
+      median_seconds: timing ? round(timing.median_seconds) : null,
+      p95_seconds: timing ? round(timing.p95_seconds) : null,
+      longest_seconds: timing ? round(timing.longest_seconds) : null,
+      peak_mb: job.peak == null ? null : Math.round(job.peak), unfinished: job.unfinished,
+      completed: job.completed, cancelled: job.cancelled, failed: job.failed,
+      other: Math.max(0, job.runs - job.completed - job.cancelled - job.failed), testers: job.slots.size };
+  }).sort((a, b) => b.runs - a.runs);
 
   return { generated_at: now(),
     range: { days, tz, exclude, slot, since: days ? stamp(sinceMs) : null,
       previous_since: days ? stamp(sinceMs - days * DAY_MS) : null },
     totals, previous, daily, heatmap, testers, features, performance, failures, errors,
     error_groups: errorGroups, systems, machines, screens, feed: feed.slice(0, 30), sessions, directory,
-    time, gates, unlocks, displays, gpus };
+    time, gates, unlocks, displays, gpus,
+    coverage: { first_day: [...byDay.keys()].sort()[0] || null,
+      daily_truncated: Date.parse(first + 'T00:00:00Z') < firstMs,
+      feature_limit: 500, features_truncated: counted.filter(row => !row.name.startsWith('ui:time:')).length > 500 || counted.length === 600, error_group_limit: 40, latest_error_limit: 60, session_limit: 60 } };
 }
 
 async function admin(request, env, path) {

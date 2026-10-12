@@ -24,152 +24,84 @@ export const ADMIN_HEADERS = {
 // kept for meaning (good, quiet, bad). The gold is the site's own accent and
 // is never used for data.
 const STYLE = `
-:root{color-scheme:dark;--page:#0f1115;--card:#181a1f;--card2:#1e2127;--line:#2a2d34;--grid:#262930;
---axis:#3a3e47;--ink:#ece7dc;--ink2:#b9b4a8;--muted:#8b877f;--gold:#e9c46a;--s1:#3987e5;--s2:#d95926;
---s3:#199e70;--good:#0ca30c;--warn:#fab219;--serious:#ec835a;--bad:#d03b3b;
-font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
-*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink)}
-[hidden]{display:none!important}
-a{color:var(--gold)}
-button,input,select{font:inherit;color:var(--ink)}
-button{padding:6px 12px;border-radius:7px;border:1px solid var(--line);background:var(--card2);cursor:pointer}
-button:hover{border-color:#4a4f5a}button:disabled{opacity:.5;cursor:default}
-button.primary{background:var(--gold);color:#17140d;border-color:var(--gold);font-weight:600}
-input[type=password],input[type=search]{padding:6px 10px;border-radius:7px;border:1px solid var(--line);
-background:#0c0e12}
-input[type=checkbox]{accent-color:var(--gold);vertical-align:-2px}
-label{color:var(--ink2);white-space:nowrap;cursor:pointer}
-.top{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;
-padding:12px 24px;background:rgba(15,17,21,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-.top h1{margin:0 8px 0 0;font:600 20px Georgia,serif;color:var(--gold)}
-.top h1 small{font:12px system-ui,sans-serif;color:var(--muted);margin-left:6px}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.seg button{border:0;border-radius:0;background:transparent;color:var(--ink2);padding:6px 11px}
-.seg button+button{border-left:1px solid var(--line)}
-.seg button[aria-pressed=true]{background:var(--card2);color:var(--ink);font-weight:600;
-box-shadow:inset 0 -2px 0 var(--gold)}
-.spacer{flex:1}#status{color:var(--muted);font-size:13px}
-main{padding:20px 24px 60px;max-width:1500px;margin:0 auto;transition:opacity .2s}
-main.loading{opacity:.6}
-.login{max-width:440px;margin:12vh auto;padding:28px;background:var(--card);border:1px solid var(--line);
-border-radius:14px}
-.login h2{margin:0 0 6px;font:600 22px Georgia,serif;color:var(--gold)}
-.login p{color:var(--ink2);margin:0 0 18px}.login .row{display:flex;gap:8px;margin-bottom:12px}
-.login input[type=password]{flex:1;min-width:0}.login details{color:var(--ink2);font-size:12.5px;margin-top:12px}.login summary{cursor:pointer}.login details p{margin:8px 0 0}#login-msg{color:var(--serious);min-height:20px;margin-top:10px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
-.card h2{margin:0;font-size:15px;font-weight:600;color:var(--ink)}
-.card .sub{color:var(--muted);font-size:12.5px;margin:2px 0 10px}
-.head{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;justify-content:space-between}
-.grid{display:grid;gap:16px;margin-top:16px}
-.g2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
-.g4{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.g3{grid-template-columns:repeat(auto-fit,minmax(360px,1fr))}
-.kpis{display:grid;gap:16px;grid-template-columns:minmax(260px,1.4fr) repeat(auto-fit,minmax(170px,1fr))}
-.tile .label{color:var(--ink2);font-size:13px}
-.tile .value{font-size:30px;font-weight:600;margin:4px 0 2px;letter-spacing:-.01em}
-.tile.hero .value{font-size:54px;line-height:1.05}
-.tile .note{color:var(--muted);font-size:12.5px}
-.delta{font-size:12.5px;font-weight:600}.delta.up-good,.delta.down-good{color:var(--good)}
-.delta.up-bad,.delta.down-bad{color:#ef6b6b}.delta.flat{color:var(--muted)}
-.meter{height:8px;border-radius:4px;background:#1c2f4a;overflow:hidden;display:flex;gap:2px;margin:10px 0 6px}
-.meter i{display:block;height:100%}
-.chart{position:relative;width:100%}
-.chart svg{display:block;overflow:visible}
-.chart text{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
-.chart .val{fill:var(--ink);font-size:12px;font-weight:600}
-.legend{display:flex;gap:14px;color:var(--ink2);font-size:12.5px;margin:0 0 6px}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
-details.tbl{margin-top:10px}details.tbl summary,details.more summary{color:var(--muted);cursor:pointer;font-size:12.5px}
-table{border-collapse:collapse;width:100%}
-th,td{padding:7px 8px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
-th{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap;position:sticky;top:0;background:var(--card)}
-th.sort{cursor:pointer;user-select:none}th.sort:hover{color:var(--ink)}
-th[aria-sort=ascending]::after{content:" ▲";font-size:9px}th[aria-sort=descending]::after{content:" ▼";font-size:9px}
-td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-tr:hover td{background:rgba(255,255,255,.02)}
-.scroll{overflow:auto;max-height:640px}
-.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink2);white-space:nowrap}
-.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,#666)}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chips button{padding:3px 10px;border-radius:999px;font-size:12.5px;color:var(--ink2)}
-.chips button[aria-pressed=true]{background:#26303f;border-color:var(--s1);color:var(--ink)}
-.chips b{font-weight:600;color:var(--muted);margin-left:4px}
-.hb{display:grid;grid-template-columns:minmax(90px,38%) 1fr auto;gap:4px 10px;align-items:center;font-size:13px}
-.hb.wide{grid-template-columns:minmax(120px,60%) 1fr auto}
-.hb .l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2)}
-.hb .l small{color:var(--muted)}
-.hb .t{height:14px;position:relative}
-.hb .b{position:absolute;left:0;top:0;height:14px;border-radius:0 4px 4px 0;background:var(--s1);min-width:2px}
-.hb .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
-.hb .v small{color:var(--muted);margin-left:6px}
-.inbar{display:flex;align-items:center;gap:8px;justify-content:flex-end}
-.inbar i{display:block;height:8px;border-radius:0 3px 3px 0;background:var(--s1);opacity:.85}
-.range{position:relative;height:10px;min-width:120px}
-.range i{position:absolute;top:1px;height:8px;border-radius:0 3px 3px 0;background:var(--s1)}
-.range b{position:absolute;top:-2px;width:2px;height:14px;background:var(--ink2)}
-.acts{display:flex;gap:6px;justify-content:flex-end}.acts button{padding:3px 8px;font-size:12px}
-.feed{list-style:none;margin:0;padding:0;max-height:420px;overflow:auto}
-.feed li{display:grid;grid-template-columns:18px 1fr auto;gap:10px;padding:7px 0;border-bottom:1px solid var(--line)}
-.feed .ic{color:var(--muted);text-align:center}.feed .ic.bad{color:#ef6b6b}.feed .ic.good{color:var(--good)}
-.feed time{color:var(--muted);font-size:12.5px;white-space:nowrap}
-code,pre{font:12px ui-monospace,Menlo,monospace;color:var(--ink2);white-space:pre-wrap;word-break:break-word}
-pre{margin:8px 0 0;padding:10px;background:#0c0e12;border-radius:8px;max-height:260px;overflow:auto}
-.empty{color:var(--muted);padding:18px 0;text-align:center}
-.scale{display:flex;align-items:center;gap:3px;color:var(--muted);font-size:11.5px;margin-top:8px}
-.scale i{width:12px;height:12px;border-radius:2px}
-#tip{position:fixed;z-index:20;pointer-events:none;background:#23262d;border:1px solid #3a3e47;
-border-radius:8px;padding:7px 10px;font-size:12.5px;color:var(--ink2);box-shadow:0 6px 20px rgba(0,0,0,.4);
-max-width:320px}
-#tip strong{display:block;color:var(--ink);font-size:14px}
-select{padding:6px 10px;border-radius:7px;border:1px solid var(--line);background:#0c0e12;max-width:210px}
-.link{background:none;border:0;padding:0;color:var(--ink);cursor:pointer;font:inherit;text-align:left}
-.link:hover{color:var(--gold);text-decoration:underline}
-.nick{color:var(--ink2);margin-left:8px}.nick:empty{display:none}
-.pen{background:none;border:0;padding:0 4px;color:var(--muted);font:12px system-ui,-apple-system,sans-serif;cursor:pointer;opacity:.7}
-.pen:hover{color:var(--gold);opacity:1}tr:hover .pen{opacity:1}
-input.nickedit{padding:3px 8px;border-radius:6px;border:1px solid var(--gold);background:#0c0e12;width:170px}
-.profile .pname{font:600 26px Georgia,serif;color:var(--ink);margin:6px 0 4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.profile .pname .code{font:500 14px ui-monospace,Menlo,monospace;color:var(--muted);border:1px solid var(--line);
-border-radius:6px;padding:2px 7px}
-.profile .facts{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--ink2);font-size:13px;margin:6px 0 12px}
-.profile .facts b{color:var(--ink);font-weight:600}
-.back{color:var(--muted);font-size:13px}
-@media (max-width:700px){.top{padding:10px 14px}main{padding:14px}.g2{grid-template-columns:1fr}}
+:root{color-scheme:dark;--page:#101217;--card:#191c22;--card2:#21252d;--line:#30343e;--grid:#2a2e38;
+--axis:#424957;--ink:#eeeae2;--ink2:#bfc3cd;--muted:#9198a6;--gold:#e9c46a;--s1:#5598e7;--s2:#e77d49;
+--s3:#53bba1;--good:#6ccc9b;--warn:#e9c46a;--serious:#ee9d73;--bad:#ef7478;
+font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink)}[hidden]{display:none!important}
+a{color:var(--gold)}button,input,select{font:inherit;color:var(--ink)}button{padding:7px 11px;border-radius:8px;
+border:1px solid var(--line);background:var(--card2);cursor:pointer}button:hover{background:#2a303b;border-color:#59616e}
+button:disabled{opacity:.45;cursor:default}button.primary{background:var(--gold);color:#211a0d;border-color:var(--gold);font-weight:650}
+button.primary:hover{background:#f0d083}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+input[type=password],input[type=search]{min-width:0;padding:8px 11px;border-radius:8px;border:1px solid var(--line);background:#11141a}
+input[type=checkbox]{accent-color:var(--gold);vertical-align:-2px}label{color:var(--ink2);cursor:pointer}
+select{padding:7px 10px;border-radius:8px;border:1px solid var(--line);background:#11141a;max-width:270px;min-width:0}
+.icon{width:18px;height:18px;flex:none;vertical-align:-4px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.top{position:sticky;top:0;z-index:10;background:#14171d;border-bottom:1px solid var(--line)}
+.top-inner{max-width:1800px;margin:auto;padding:14px 26px 12px}.brand-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:11px}.brand-mark{width:34px;height:34px;display:grid;place-items:center;color:var(--gold);border:1px solid #655634;border-radius:9px;background:#26231c}
+.brand h1{margin:0;font:600 23px Georgia,serif;color:var(--gold);line-height:1.1}.brand small{display:block;margin-top:3px;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.utility{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}#status{font-size:12px;color:var(--muted);max-width:420px;text-align:right}
+.utility details{position:relative}.utility summary{list-style:none;cursor:pointer;border:1px solid var(--line);background:var(--card2);border-radius:8px;padding:7px 11px}
+.utility summary::-webkit-details-marker{display:none}.menu{position:absolute;right:0;top:42px;min-width:210px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;box-shadow:0 10px 32px #0007}
+.menu button{width:100%;text-align:left;margin:3px 0}.menu label{display:block;padding:7px 5px;font-size:12.5px}.filters{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:14px}.filters label{font-size:12.5px;white-space:nowrap}.scope-label{color:var(--muted);margin-right:6px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}.seg button{border:0;border-radius:0;background:transparent;color:var(--ink2);padding:6px 11px}
+.seg button+button{border-left:1px solid var(--line)}.seg button[aria-pressed=true]{background:#33322b;color:var(--gold);box-shadow:inset 0 -2px var(--gold)}
+.shell{max-width:1800px;margin:auto;display:grid;grid-template-columns:196px minmax(0,1fr);align-items:start}.rail{min-width:0;position:sticky;top:var(--bar-height,125px);padding:24px 16px 24px 22px}
+.rail-label{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);padding:0 10px 10px}.nav{display:grid;gap:5px}
+.nav button{display:flex;gap:10px;align-items:center;padding:10px;border:1px solid transparent;background:transparent;color:var(--ink2);text-align:left}
+.nav button:hover{background:var(--card)}.nav button[aria-current=page]{color:var(--gold);background:#2b271e;border-color:#514630}.nav .count{margin-left:auto;font-size:11px;background:#ffffff09;padding:1px 6px;border-radius:5px;color:var(--muted)}
+.rail-note{color:var(--muted);font-size:11.5px;padding:20px 10px;border-top:1px solid var(--line);margin-top:18px}.rail-note strong{display:block;color:var(--ink2);font-weight:500;margin-bottom:4px}
+main{min-width:0;padding:24px 26px 56px 8px;transition:opacity .15s}main.loading{opacity:.55}.page-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:20px}.page-heading h2{font-size:27px;letter-spacing:-.035em;line-height:1.2;margin:3px 0 6px}.eyebrow{font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em}.page-heading p{margin:0;color:var(--muted);font-size:12.5px}.scope-badge{padding:5px 9px;border:1px solid var(--line);border-radius:6px;font-size:12px;color:var(--ink2);white-space:nowrap}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;min-width:0}.card h2,.card h3{margin:0;font-size:15px;font-weight:650;color:var(--ink)}.card .sub{color:var(--muted);font-size:12px;margin:4px 0 16px;line-height:1.5}.head>input[type=search]{width:300px;max-width:100%}.head{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;justify-content:space-between}.section-head{margin-bottom:15px}.section-head .sub{margin-bottom:0}.grid{display:grid;gap:16px;margin-top:16px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.wide-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+.kpis{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 18px}.tile{padding:15px 16px;position:relative;overflow:hidden}.tile .label{color:var(--ink2);font-size:12px;display:flex;justify-content:space-between;gap:8px}.tile .label .icon{width:15px;height:15px;color:var(--muted)}.tile .value{font-size:30px;font-weight:650;margin:7px 0 5px;letter-spacing:-.035em;line-height:1.1}.tile.hero{border-color:#4d4635}.tile.hero .value{color:var(--gold)}.tile .note{color:var(--muted);font-size:11.5px}.tile .spark{position:absolute;bottom:10px;right:13px;opacity:.65}.tile .tile-action{border:0;padding:0;background:none;color:var(--ink2);font-size:12px;text-align:left}.tile-action:hover{color:var(--gold)}
+.delta{font-size:11.5px;font-weight:600}.delta.up-good,.delta.down-good{color:var(--good)}.delta.up-bad,.delta.down-bad{color:var(--bad)}.delta.flat{color:var(--muted)}
+.meter{height:7px;border-radius:4px;background:#2b3545;overflow:hidden;display:flex;gap:2px;margin:10px 0 6px}.meter i{display:block;height:100%}
+.chart{position:relative;width:100%;min-width:0}.chart svg{display:block;width:100%;max-width:100%;overflow:visible}.chart text{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}.chart .val{fill:var(--ink);font-size:12px;font-weight:600}
+.legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--ink2);font-size:12px;margin:0 0 8px}.legend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+details.tbl,details.more{margin-top:12px}details.tbl summary,details.more summary{color:var(--muted);cursor:pointer;font-size:12px}table{border-collapse:collapse;width:100%;font-size:12.5px}th,td{padding:10px 9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}th{color:var(--muted);font-weight:500;font-size:11.5px;white-space:nowrap;position:sticky;top:0;background:var(--card)}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}tr:hover td{background:#ffffff03}.sort-label{border:0;background:none;padding:0;color:inherit;text-align:inherit;font:inherit}.sort-label:hover{background:none;color:var(--gold)}th[aria-sort=ascending]::after{content:" ↑"}th[aria-sort=descending]::after{content:" ↓"}.scroll{overflow:auto;max-height:620px;overscroll-behavior:contain}.tester-table{min-width:850px}.tester-table td:first-child{min-width:180px}.identity strong{display:block;font-size:13px;color:var(--ink)}.identity small{display:block;font:11px ui-monospace,monospace;color:var(--muted);margin-top:2px}.table-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.table-tools input{width:250px;max-width:100%}.detail-cols[hidden]{display:none}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink2);white-space:nowrap}.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c,#666)}.chips{display:flex;flex-wrap:wrap;gap:6px}.chips button{padding:5px 9px;border-radius:6px;font-size:11.5px;color:var(--ink2);background:transparent}.chips button[aria-pressed=true]{background:#273951;border-color:#486383;color:#d8e8ff}.chips b{font-weight:500;color:var(--muted);margin-left:5px}.pagination{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;font-size:12px;color:var(--muted)}
+.hb{display:grid;grid-template-columns:minmax(90px,38%) minmax(0,1fr) auto;gap:9px 10px;align-items:center;font-size:12.5px}.hb.wide{grid-template-columns:minmax(90px,55%) minmax(0,1fr) auto}.hb .l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2)}.hb .l small{color:var(--muted)}.hb .t{height:9px;position:relative;background:#242a34;border-radius:3px}.hb .b{position:absolute;left:0;top:0;height:9px;border-radius:3px;background:var(--s1);min-width:2px}.hb .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}.hb .v small{color:var(--muted);margin-left:6px}.inbar{display:flex;align-items:center;gap:8px;justify-content:flex-end}.inbar i{display:block;height:6px;border-radius:3px;background:var(--s1);opacity:.8}.range{position:relative;height:10px;min-width:100px}.range i{position:absolute;top:1px;height:8px;border-radius:3px;background:var(--s1)}.range b{position:absolute;top:-2px;width:2px;height:14px;background:var(--ink2)}.acts{display:flex;gap:6px;justify-content:flex-end}.acts button{padding:5px 8px;font-size:11.5px}.link{background:none;border:0;padding:0;color:var(--ink);cursor:pointer;font:inherit;text-align:left}.link:hover{color:var(--gold);background:none;text-decoration:underline}.pen{background:none;border:0;padding:0 4px;color:var(--muted);font-size:11px;cursor:pointer}.pen:hover{color:var(--gold)}input.nickedit{padding:5px 8px;border-radius:6px;border:1px solid var(--gold);background:#11141a;width:170px}
+.feed{list-style:none;margin:0;padding:0;max-height:420px;overflow:auto}.feed li{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12px;overflow-wrap:anywhere}.feed .ic{color:var(--muted);text-align:center}.feed .ic.bad{color:var(--bad)}.feed .ic.good{color:var(--good)}.feed time{color:var(--muted);font-size:11px;white-space:nowrap}code,pre{font:11.5px ui-monospace,Menlo,monospace;color:var(--ink2);white-space:pre-wrap;word-break:break-word}pre{margin:8px 0 0;padding:12px;background:#11141a;border-radius:8px;max-height:260px;overflow:auto}.empty{color:var(--muted);padding:24px 0;text-align:center;font-size:13px}.scale{display:flex;flex-wrap:wrap;align-items:center;gap:3px;color:var(--muted);font-size:11px;margin-top:8px}.scale i{width:10px;height:10px;border-radius:2px}
+#tip{position:fixed;z-index:30;pointer-events:none;background:#252c37;border:1px solid #4b5565;border-radius:8px;padding:8px 11px;font-size:12px;color:var(--ink2);box-shadow:0 6px 20px #0006;max-width:300px}#tip strong{display:block;color:var(--ink);font-size:13px}
+.profile{margin-bottom:18px}.profile .pname{font-size:22px;margin:6px 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.profile .pname .code{font:12px ui-monospace,monospace;color:var(--muted)}.profile .facts{display:flex;flex-wrap:wrap;gap:7px 18px;color:var(--muted);font-size:12px;margin:5px 0}.profile .facts b{color:var(--ink2);font-weight:500}.back{color:var(--muted);font-size:12px}
+.insight-list{display:grid;gap:0}.insight{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start;padding:14px 0;border-bottom:1px solid var(--line)}.insight:last-child{border-bottom:0;padding-bottom:0}.insight:first-child{padding-top:0}.insight-icon{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:#293242;color:var(--s1)}.insight-icon.warn{background:#382c25;color:var(--serious)}.insight strong{font-size:13px;font-weight:600}.insight p{margin:4px 0 0;color:var(--muted);font-size:12px}.insight button{padding:5px 8px;font-size:11.5px}
+.stat-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--ink2)}.stat-row:last-child{border-bottom:0}.stat-row b{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:550}.stat-row small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.adoption{display:flex;gap:14px;align-items:baseline;margin-bottom:16px}.adoption strong{font-size:32px;line-height:1;font-weight:650;letter-spacing:-.03em}.adoption span{color:var(--muted);font-size:12px}.footnote{font-size:11.5px;color:var(--muted);margin:16px 0 0;line-height:1.6}.callout{border:1px solid #584633;background:#29241d;border-radius:8px;padding:10px 12px;font-size:12px;color:#dbb78d;margin-bottom:14px}.error-list{display:grid;gap:10px}.error-item{border:1px solid var(--line);border-radius:9px;padding:14px;background:#151820}.error-item summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:start}.error-count{font-size:22px;font-weight:650;color:var(--bad);line-height:1.15}.error-count small{display:block;color:var(--muted);font-size:10px;font-weight:400}.error-title{font-size:12.5px;color:var(--ink2);overflow-wrap:anywhere}.error-title strong{color:var(--ink);display:block;margin-bottom:4px}.error-meta{font-size:11px;color:var(--muted);margin-top:7px}.error-body{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}.affected{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.affected button{font-size:11px;padding:4px 7px}.row-note{font-size:11px;color:var(--muted);margin-top:3px}.status-text{font-size:12px;font-weight:550}.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--serious)}.definition-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.definition-grid dt{font-size:12px;color:var(--ink2);font-weight:600}.definition-grid dd{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+.login{max-width:470px;margin:12vh auto;padding:30px;background:var(--card);border:1px solid var(--line);border-radius:14px}.login h2{margin:0 0 8px;font:600 26px Georgia,serif;color:var(--gold)}.login p{color:var(--ink2);margin:0 0 20px;font-size:13px}.login .row{display:flex;gap:8px;margin-bottom:14px}.login input[type=password]{flex:1;min-width:0}.login label{font-size:12.5px}.login details{color:var(--muted);font-size:12px;margin-top:16px}.login summary{cursor:pointer}.login details p{margin:8px 0 0;color:var(--muted);font-size:12px}#login-msg{color:var(--serious);margin-top:12px;min-height:18px;font-size:13px}
+@media(min-width:1550px){.kpis{grid-template-columns:repeat(6,minmax(0,1fr))}.tile .value{font-size:32px}}
+@media(max-width:1150px){.shell{grid-template-columns:170px minmax(0,1fr)}.rail{padding-left:12px}.top-inner{padding:12px 18px}.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.wide-grid{grid-template-columns:1fr}.brand h1{font-size:21px}main{padding-right:18px}}
+@media(max-width:820px){.shell{grid-template-columns:minmax(0,1fr)}.rail{min-width:0;position:sticky;top:0;z-index:6;padding:9px 14px;background:var(--page);border-bottom:1px solid var(--line)}.rail-label,.rail-note{display:none}.nav{display:flex;overflow:auto;gap:5px}.nav button{flex:none;padding:7px 10px;font-size:12px}.nav .count{display:none}.top{position:relative}.top-inner{padding:14px}.brand-row{align-items:flex-start}.brand small{font-size:10px}.brand h1{font-size:20px}.brand-mark{width:30px;height:30px}.utility{gap:5px}#status{width:100%;order:3;text-align:left;max-width:none;font-size:11px}.utility details{order:2}.filters{gap:9px;margin-top:12px}.filters label{font-size:11px}main{padding:20px 14px 40px}.page-heading h2{font-size:24px}.g2{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.tile .value{font-size:29px}.tile .note{font-size:11px}.page-heading{align-items:start}.scope-badge{white-space:normal}.card{padding:16px}.insight{grid-template-columns:28px minmax(0,1fr)}.insight>button{grid-column:2;justify-self:start}.definition-grid{grid-template-columns:1fr}.profile .acts{flex-wrap:wrap}}
+@media(max-width:480px){.scale span{flex-basis:100%;margin-left:0!important}.g3,.g4{grid-template-columns:1fr}.brand-row{flex-wrap:wrap}.utility{width:100%;justify-content:flex-start}.utility #status{order:0;width:auto;flex:1}.top-inner{padding:12px}.filters>label:has(#who){width:100%;display:flex;align-items:center}.filters #who{flex:1;max-width:none}.seg{width:100%;display:flex}.seg button{flex:1;padding:7px 8px;font-size:12px}.page-heading{display:block}.scope-badge{display:inline-block;margin-top:8px}.tile{padding:12px}.tile .value{font-size:26px}.tile .label{font-size:11px}.tile .label .icon{display:none}.head{align-items:start}.table-tools{width:100%}.table-tools input{width:100%;flex:1}.feed li{grid-template-columns:16px minmax(0,1fr)}.feed time{grid-column:2}.error-item summary{grid-template-columns:42px minmax(0,1fr)}.error-item summary>time{grid-column:2;font-size:11px}.login{margin:8vh 14px;padding:24px}.hb,.hb.wide{grid-template-columns:minmax(70px,42%) minmax(0,1fr) auto}.hb .v small{display:block;margin:2px 0 0}.pagination{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 `;
 
 export const ADMIN_PAGE = `<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>CartoVox Delta report</title><style>${STYLE}</style></head><body>
-<header class="top" id="bar" hidden>
-  <h1>CartoVox Delta</h1>
-  <div class="seg" id="range" role="group" aria-label="Date range">
-    <button type="button" data-days="7">7 days</button><button type="button" data-days="30">30 days</button>
-    <button type="button" data-days="90">90 days</button><button type="button" data-days="0">All time</button>
+<header class="top" id="bar" hidden><div class="top-inner">
+  <div class="brand-row"><div class="brand"><span class="brand-mark" aria-hidden="true">◈</span><div><h1>CartoVox Delta</h1><small>Programme analytics</small></div></div>
+    <div class="utility"><span id="status" aria-live="polite"></span><button id="refresh" type="button" class="primary">Refresh</button>
+      <details><summary>Report options</summary><div class="menu">
+        <label title="Pauses while this tab is in the background"><input id="auto" type="checkbox"> Refresh every 5 min</label>
+        <button id="download" type="button">Download report JSON</button>
+        <button id="forget" type="button">Forget token</button>
+      </div></details></div>
   </div>
-  <select id="who" aria-label="Show one tester"><option value="">Everyone</option></select>
-  <label title="The owner's own test code; its rows are production checks">
-    <input id="hide-test" type="checkbox" checked> Hide D-051</label>
-  <span class="spacer"></span>
-  <span id="status" aria-live="polite"></span>
-  <button id="refresh" type="button" class="primary">Refresh</button>
-  <label title="Pauses while this tab is in the background"><input id="auto" type="checkbox"> Every 5 min</label>
-  <button id="download" type="button" title="Download this report as JSON">JSON</button>
-  <button id="forget" type="button" title="Remove the saved admin token from this browser">Forget token</button>
-</header>
-<form id="f" class="login">
-  <h2>CartoVox Delta report</h2>
-  <p>Enter the admin token once; this browser can remember it.</p>
-  <div class="row"><input id="t" type="password" placeholder="Admin token" aria-label="Admin token" autocomplete="current-password" required>
-  <button class="primary">Open</button></div>
-  <label><input id="remember" type="checkbox" checked> Remember on this browser</label>
-  <div id="login-msg" role="alert"></div>
-  <details><summary>Which token do I use?</summary><p>Use the admin token set for cartovox.org.
-  A tester’s D-code unlocks the desktop app only. If the admin token was changed, use the new value.
+  <div class="filters"><span class="seg" id="range" role="group" aria-label="Date range">
+    <button type="button" data-days="7">7 days</button><button type="button" data-days="30">30 days</button>
+    <button type="button" data-days="90">90 days</button><button type="button" data-days="0">All time</button></span>
+    <label><span class="scope-label">Tester</span><select id="who" aria-label="Show one tester"><option value="">Everyone</option></select></label>
+    <label title="Leave the owner's production checks out of the report"><input id="hide-test" type="checkbox" checked> Exclude owner’s test code</label>
+  </div>
+</div></header>
+<form id="f" class="login"><h2>CartoVox Delta report</h2><p>Engagement, reliability, and the people testing CartoVox.</p>
+  <div class="row"><input id="t" type="password" placeholder="Admin token" aria-label="Admin token" autocomplete="current-password" required><button class="primary">Open</button></div>
+  <label><input id="remember" type="checkbox" checked> Remember on this browser</label><div id="login-msg" role="alert"></div>
+  <details><summary>Which token do I use?</summary><p>Use the admin token set for cartovox.org. A tester’s D-code unlocks the desktop app only. If the admin token was changed, use the new value.
   The owner can set it in Cloudflare → Workers &amp; Pages → cartovox → Settings → Variables and Secrets → ADMIN_TOKEN.</p></details>
 </form>
-<main id="dash" hidden></main>
-<div id="tip" role="tooltip" hidden></div>
-<script src="/admin/script"></script></body></html>`;
+<div class="shell" id="app" hidden><aside class="rail"><div class="rail-label">Your programme</div><nav class="nav" id="sections" aria-label="Report sections"></nav><div class="rail-note"><strong>One report, five views</strong>Filters apply across every section. Changing sections uses the loaded report.</div></aside><main id="dash" hidden></main></div>
+<div id="tip" role="tooltip" hidden></div><script src="/admin/script"></script></body></html>`;
 
 /* global document, window, localStorage, fetch, Blob, URL */
 function adminApp() {
@@ -186,9 +118,9 @@ function adminApp() {
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } },
     drop: k => { try { localStorage.removeItem(k); } catch (e) { /* private mode */ } },
   };
-  const state = { token: '', data: null, timer: 0, request: null, days: 7, today: '', slot: '',
-    testers: { sort: 'slot', dir: 1, filter: 'all', q: '', page: 0 },
-    features: { area: 'all', q: '', all: false } };
+  const state = { token: '', data: null, timer: 0, request: null, days: 7, today: '', slot: '', view: 'overview', stale: false,
+    testers: { sort: 'last_seen', dir: -1, filter: 'activated', q: '', page: 0, detailed: false },
+    features: { area: 'all', q: '', all: false, sort: 'uses' }, errors: { q: '', sort: 'testers' }, jobs: { q: '', sort: 'runs' } };
 
   // ---------- formatting ----------
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;',
@@ -217,6 +149,7 @@ function adminApp() {
   }
   const duration = seconds => {
     const s = Number(seconds) || 0;
+    if (s < 10) return s.toLocaleString(undefined, { maximumFractionDigits: 1 }) + ' s';
     if (s < 90) return Math.round(s) + ' s';
     if (s < 5400) return Math.round(s / 60) + ' min';
     return (s / 3600).toFixed(1) + ' h';
@@ -256,7 +189,7 @@ function adminApp() {
     let out = '';
     keys.forEach((k, i) => {
       const last = i === keys.length - 1;
-      if ((i % every === 0 && keys.length - 1 - i >= every / 2) || last) {
+      if ((i % every === 0 && keys.length - 1 - i >= every) || last) {
         out += `<text x="${xAt(i)}" y="${PAD.t + f.h + 18}" text-anchor="${last && keys.length > 1 ? 'end' : 'middle'}">${esc(dayLabel(k))}</text>`;
       }
     });
@@ -329,23 +262,13 @@ function adminApp() {
       + yAxis(f, top, step, opts.axisFmt) + xLabels(f, daily.map(d => d.day), xAt) + bars + '</svg>';
   }
 
-  function sparkline(values, color = 'var(--s1)') {
-    const w = 120; const h = 30;
-    if (values.length < 2) return '';
-    const max = Math.max(...values, 1);
-    const pts = values.map((v, i) => `${(i / (values.length - 1)) * w},${h - 2 - (v / max) * (h - 4)}`);
-    const [lx, ly] = pts[pts.length - 1].split(',');
-    return `<svg width="${w}" height="${h}" aria-hidden="true"><polyline points="${pts.join(' ')}" fill="none" stroke="#5c6270" stroke-width="1.5" stroke-linejoin="round"/>`
-      + `<circle cx="${lx}" cy="${ly}" r="3" fill="${color}"/></svg>`;
-  }
-
   const rampStep = (v, max) => (v <= 0 || max <= 0 ? RAMP[0] : RAMP[Math.min(RAMP.length - 1, 1 + Math.floor((v / max) * (RAMP.length - 1.001)))]);
 
   // Seven rows (Monday first) by 24 hours in the owner's local time.
   function heatmap(el, grid) {
     const rows = [1, 2, 3, 4, 5, 6, 0];
     const names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const width = Math.max(300, el.clientWidth || 600);
+    const width = Math.max(240, el.clientWidth || 600);
     const left = 36; const cell = Math.min(26, (width - left) / 24); const gap = 2;
     const height = rows.length * cell + 22;
     const max = Math.max(...grid.flat(), 0);
@@ -369,8 +292,136 @@ function adminApp() {
     if (!rows.length) return '<p class="empty">Nothing yet.</p>';
     const max = Math.max(...rows.map(r => r.value), 1);
     return `<div class="hb${opts.wide ? ' wide' : ''}">` + rows.map(r => `<div class="l" title="${esc(r.title || r.label)}">${esc(r.label)}${r.small ? ` <small>${esc(r.small)}</small>` : ''}</div>`
-      + `<div class="t"><div class="b" style="width:${(r.value / max) * 100}%;background:${r.color || opts.color || 'var(--s1)'}" data-tip="${esc(`${num(r.value)} ${opts.unit || ''}\n${r.title || r.label}`)}"></div></div>`
+      + `<div class="t"><div class="b" style="width:${(r.value / max) * 100}%;min-width:${r.value ? 2 : 0}px;background:${r.color || opts.color || 'var(--s1)'}" data-tip="${esc(`${num(r.value)} ${opts.unit || ''}\n${r.title || r.label}`)}"></div></div>`
       + `<div class="v">${esc(opts.fmt ? opts.fmt(r.value) : compact(r.value))}${r.after ? `<small>${esc(r.after)}</small>` : ''}</div>`).join('') + '</div>';
+  }
+
+  const VIEWS = {
+    overview: ['Overview', 'Programme overview', 'Engagement and reliability at a glance.'],
+    testers: ['Testers', 'People behind the numbers', 'Find active testers, follow up on issues, and manage access.'],
+    usage: ['Usage', 'How CartoVox is being used', 'Input time, feature reach, and daily activity.'],
+    reliability: ['Reliability', 'Issues and job performance', 'Find widespread errors and separate failures from cancellations.'],
+    systems: ['Systems', 'Computers and versions', 'The latest reported configuration of registered computers.'],
+  };
+  const ICONS = {
+    overview: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+    testers: '<circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 5v2"/>',
+    usage: '<path d="M3 3v18h18M7 15l4-5 4 3 5-8"/>',
+    reliability: '<path d="m12 3 10 18H2L12 3Z M12 9v5M12 17v.1"/>',
+    systems: '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    check: '<circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/>',
+  };
+  const icon = name => `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name] || ICONS.overview}</svg>`;
+  const percent = (n, total) => total ? Math.round(n / total * 100) + '%' : '—';
+  const jobName = name => String(name).replace(/^job:/, '').replace(/[_:]/g, ' ');
+  const testerLink = (slot, label) => `<button type="button" class="link" data-open="${esc(slot)}">${esc(label || plainName(slot))}</button>`;
+  const jobOutcomes = d => ({ completed: d.totals.completed_jobs ?? Math.max(0, d.totals.runs - d.totals.failed_runs),
+    failed: d.totals.failed_jobs, cancelled: d.totals.cancelled_jobs, other: d.totals.other_jobs });
+
+  function navHtml(d) {
+    return Object.entries(VIEWS).map(([key, [label]]) => {
+      const count = key === 'testers' ? d.totals.testers : key === 'reliability' ? d.totals.errors : '';
+      return `<button type="button" data-view="${key}" aria-label="${label}" ${state.view === key ? 'aria-current="page"' : ''}>${icon(key)}<span>${label}</span>${count !== '' ? `<span class="count">${num(count)}</span>` : ''}</button>`;
+    }).join('');
+  }
+  function pageHeading(d) {
+    const view = VIEWS[state.view];
+    const range = d.range.days ? `${dayLabel(d.daily[0]?.day || state.today)} – ${dayLabel(d.daily.at(-1)?.day || state.today)}` : 'All recorded activity';
+    const offset = d.range.tz || 0;
+    const zone = 'UTC' + (offset >= 0 ? '+' : '−') + String(Math.floor(Math.abs(offset) / 60)).padStart(2, '0') + ':' + String(Math.abs(offset) % 60).padStart(2, '0');
+    const scope = d.range.slot ? plainName(d.range.slot) : 'Everyone' + (d.range.exclude?.length ? ' · owner checks excluded' : '');
+    return `<div class="page-heading"><div><span class="eyebrow">Delta programme · ${esc(range)}</span><h2>${esc(view[1])}</h2><p>${esc(view[2])}</p></div><span class="scope-badge">${esc(scope)}</span></div>`
+      + (state.stale ? '<div class="callout" role="status">Showing the last successful report. Refresh to get the latest numbers.</div>' : '')
+      + `<p class="footnote" style="margin:-10px 0 18px">Report generated ${esc(when(d.generated_at))} · calendar days at ${esc(zone)}, your current offset${d.coverage?.daily_truncated ? ' · charts show the most recent 400 days; totals cover all time' : ''}</p>`;
+  }
+  function summaryTiles(d) {
+    const t = d.totals; const p = d.previous || {}; const one = Boolean(d.range.slot);
+    const affected = d.testers.filter(row => row.errors > 0).length;
+    const complete = jobOutcomes(d).completed;
+    const activeDays = d.daily.filter(row => row.testers > 0).length;
+    const tile = (label, value, note, symbol, view, change = '') => `<div class="card tile${symbol === 'testers' ? ' hero' : ''}"><div class="label"><button type="button" class="tile-action" data-view="${view}">${label} ↗</button>${icon(symbol)}</div><div class="value">${value}</div><div class="note">${note}</div>${change ? `<div style="margin-top:7px">${change}</div>` : ''}</div>`;
+    return `<section class="kpis" aria-label="Report summary">`
+      + tile(one ? 'Days with reports' : 'Active testers', num(one ? activeDays : t.testers), one ? `of ${num(d.daily.length)} chart days` : `${num(t.codes_activated)} activated codes in the pool`, 'testers', 'testers', one ? '' : deltaHtml(t.testers, p.testers))
+      + tile('Input time', duration(t.active_minutes * 60), `${num(t.active_minutes)} active minutes`, 'clock', 'usage', deltaHtml(t.active_minutes, p.active_minutes))
+      + tile('Sessions started', num(t.sessions), `${compact(t.hours)} app-open hours, including idle time`, 'usage', 'usage', deltaHtml(t.sessions, p.sessions))
+      + tile('Jobs completed', percent(complete, t.runs), `${num(complete)} of ${num(t.runs)} reported jobs`, 'check', 'reliability')
+      + tile('Error reports', num(t.errors), `${num(affected)} ${affected === 1 ? 'tester' : 'testers'} affected`, 'reliability', 'reliability', deltaHtml(t.errors, p.errors, false))
+      + tile('Unclean closes', num(t.unclean), 'Crash, forced quit, or interrupted shutdown', 'systems', 'reliability')
+      + '</section>';
+  }
+  function adoptionSection(d) {
+    if (d.range.slot) {
+      const row = d.testers[0];
+      return `<div class="card"><h2>Tester activity</h2><div class="sub">What this tester reported in the selected period.</div>`
+        + `<div class="stat-row"><span>Days with input<small>Based on reported workspace input minutes</small></span><b>${num(Object.keys(row?.days || {}).length)}</b></div>`
+        + `<div class="stat-row"><span>Input time per session start<small>Input time divided by session starts; not session duration</small></span><b>${d.totals.sessions ? duration(d.totals.active_minutes * 60 / d.totals.sessions) : '—'}</b></div>`
+        + `<div class="stat-row"><span>Last event<small>Latest activity event, rather than a background check-in</small></span><b>${row?.last_event ? esc(ago(row.last_event)) : 'None in this period'}</b></div></div>`;
+    }
+    const t = d.totals;
+    const activated = d.testers.filter(row => row.computers > 0);
+    const newCodes = activated.filter(row => row.first_seen && (!d.range.since || row.first_seen >= d.range.since));
+    const quiet = activated.filter(row => !row.last_event && row.status !== 'revoked');
+    const rows = [
+      { label: 'Active, available codes', value: d.testers.filter(row => row.status !== 'revoked' && row.last_event).length, color: 'var(--s1)' },
+      { label: 'Activated, no events', value: quiet.length, color: 'var(--s2)' },
+      { label: 'Never activated', value: d.testers.filter(row => !row.computers && row.status !== 'revoked').length, color: '#545d6d' },
+      { label: 'Revoked codes', value: t.codes_revoked, color: 'var(--bad)' },
+    ];
+    return `<div class="card"><div class="head section-head"><div><h2>Adoption & activity</h2><div class="sub">Activation is lifetime history; activity follows the selected dates.</div></div><button type="button" data-view="testers">View testers</button></div>`
+      + `<div class="adoption"><strong>${num(t.codes_activated)}<span> / ${num(t.codes_issued)}</span></strong><span>issued codes have unlocked a computer</span></div>`
+      + hbars(rows, { unit: 'codes' })
+      + `<div class="stat-row"><span>First activated in this period</span><b>${num(newCodes.length)}</b></div>`
+      + `<div class="stat-row"><span>Computers seen in this period</span><b>${num(t.computers)}</b></div>`
+      + `<p class="footnote">The code pool can include codes that have not been shared. No events does not prove the app was unused.</p></div>`;
+  }
+  function attentionSection(d) {
+    const groups = d.error_groups.slice().sort((a, b) => b.testers - a.testers || b.count - a.count);
+    const issue = groups[0]; const outcomes = jobOutcomes(d);
+    const risky = d.performance.filter(job => job.failed > 0).sort((a, b) => b.failed - a.failed)[0];
+    const rows = [];
+    if (issue) rows.push(`<div class="insight"><span class="insight-icon warn">${icon('reliability')}</span><div><strong>Most widespread error · ${num(issue.testers)} testers</strong><p title="${esc(issue.message || issue.type)}">${esc(String(issue.message || issue.type || issue.name).slice(0, 160))}</p><p>${num(issue.count)} reports · last seen ${esc(ago(issue.last_at))}</p></div><button type="button" data-investigate="${esc(issue.message || issue.type || issue.name)}">Investigate</button></div>`);
+    if (outcomes.failed != null && outcomes.failed > 0) rows.push(`<div class="insight"><span class="insight-icon warn">${icon('usage')}</span><div><strong>${num(outcomes.failed)} jobs reported failure</strong><p>${risky ? `${esc(jobName(risky.name))} accounts for ${num(risky.failed)} failed runs.` : 'Open reliability to inspect failure messages and progress.'} Cancelled jobs are counted separately.</p></div><button type="button" data-view="reliability">View jobs</button></div>`);
+    if (d.totals.unclean) rows.push(`<div class="insight"><span class="insight-icon warn">${icon('systems')}</span><div><strong>${num(d.totals.unclean)} unclean session closes</strong><p>Follow up with the testers reporting interrupted shutdowns.</p></div><button type="button" data-tattention="unclean">Find testers</button></div>`);
+    const affected = d.testers.filter(row => row.errors > 0).sort((a, b) => b.errors - a.errors)[0];
+    if (affected && rows.length < 3) rows.push(`<div class="insight"><span class="insight-icon">${icon('testers')}</span><div><strong>${esc(plainName(affected.slot))}</strong><p>${num(affected.errors)} error reports in this period.</p></div><button type="button" data-open="${esc(affected.slot)}">Open tester</button></div>`);
+    return `<div class="card"><h2>Worth a closer look</h2><div class="sub">Based on reports received in the selected period.</div><div class="insight-list">${rows.length ? rows.slice(0, 3).join('') : '<div class="empty">No errors, failed jobs, or unclean closes reported in this period.</div>'}</div></div>`;
+  }
+  function activityCharts(d, detailed = false) {
+    return `<section class="grid g2"><div class="card"><h2>${d.range.slot ? 'Input minutes per day' : 'Active testers per day'}</h2><div class="sub">${d.range.slot ? 'Minutes with input while the app was in front.' : 'Codes reporting any activity event that day.'}</div><div class="chart" id="c-testers"></div></div>`
+      + `<div class="card"><h2>${detailed ? 'App-open hours per day' : 'Input time per day'}</h2><div class="sub">${detailed ? 'Includes idle time; runs count on their final reported day.' : 'Minutes with clicks, keys, or scrolling in the foreground.'}</div><div class="chart" id="c-hours"></div></div></section>`;
+  }
+  function reliabilitySummary(d) {
+    const o = jobOutcomes(d); const t = d.totals;
+    const value = n => n == null ? '—' : num(n);
+    return `<section class="grid g4" style="margin:0 0 18px">`
+      + `<div class="card tile"><div class="label">Completed jobs</div><div class="value good">${value(o.completed)}</div><div class="note">${percent(o.completed, t.runs)} of ${num(t.runs)} reported runs</div></div>`
+      + `<div class="card tile"><div class="label">Failed jobs</div><div class="value bad">${value(o.failed)}</div><div class="note">Explicitly reported as failed</div></div>`
+      + `<div class="card tile"><div class="label">Cancelled jobs</div><div class="value warn">${value(o.cancelled)}</div><div class="note">Not classified as failures</div></div>`
+      + `<div class="card tile"><div class="label">Other / unknown outcome</div><div class="value">${value(o.other)}</div><div class="note">Missing or another recorded status</div></div></section>`;
+  }
+  function definitionsSection(d) {
+    return `<details class="card more"><summary>How to read these numbers & data coverage</summary><dl class="definition-grid">`
+      + `<div><dt>Active testers</dt><dd>Distinct access codes reporting an activity event in the selected period. An activation or background check-in alone does not count.</dd></div>`
+      + `<div><dt>Input time</dt><dd>Workspace minutes with input while the window was in front. Overlapping tab counters are not added again. Older Delta V1 rows use one minute per feature event.</dd></div>`
+      + `<div><dt>App-open hours</dt><dd>Run lengths at a clean close or last heartbeat. Includes idle and background time. A long-running session contributes its reported duration on its final reported day.</dd></div>`
+      + `<div><dt>Job timings</dt><dd>Median is the middle of timed runs; P95 is the nearest-rank 95th percentile. Runs without a numeric duration are excluded. Failed and cancelled runs with timings are included.</dd></div>`
+      + `<div><dt>Unclean closes</dt><dd>An app-reported interrupted shutdown, which can be a crash, forced quit, or another interruption. It is not a confirmed crash count.</dd></div>`
+      + `<div><dt>Coverage & limits</dt><dd>${d.coverage?.first_day ? `First activity in this report: ${esc(dayLong(d.coverage.first_day))}. ` : ''}Charts show up to 400 days; all-time totals cover the full history. Up to ${num(d.coverage?.feature_limit || 500)} feature counters, 40 error groups, 60 recent errors, and 60 tester sessions are included. Events can be missing during offline periods or service outages.</dd></div></dl></details>`;
+  }
+  function usageSummary(d) {
+    const days = d.daily.filter(row => row.testers > 0).length;
+    const t = d.totals; const top = (d.time || []).filter(row => row.kind === 'workspace').sort((a, b) => b.minutes - a.minutes)[0];
+    return `<section class="grid g3" style="margin:0 0 18px"><div class="card tile"><div class="label">Input time</div><div class="value">${duration(t.active_minutes * 60)}</div><div class="note">${t.testers ? duration(t.active_minutes * 60 / t.testers) : '—'} per active tester</div></div>`
+      + `<div class="card tile"><div class="label">Days with activity</div><div class="value">${num(days)}<span class="note"> / ${num(d.daily.length)}</span></div><div class="note">Calendar days shown in the chart</div></div>`
+      + `<div class="card tile"><div class="label">Most-used workspace</div><div class="value" style="font-size:25px">${esc(top?.name || '—')}</div><div class="note">${top ? duration(top.minutes * 60) + ' of reported input time' : 'No workspace input counters reported'}</div></div></section>`;
+  }
+  function systemsInventory(d) {
+    const list = d.machines.slice(0, 100);
+    return `<section class="card" style="margin-top:16px"><h2>Registered computers</h2><div class="sub">Latest reported facts; this inventory includes computers outside the selected activity dates.</div><div class="scroll"><table style="min-width:720px"><thead><tr><th>Tester</th><th>System</th><th>App / release</th><th class="num">CPU cores</th><th class="num">RAM</th><th>Last contact</th></tr></thead><tbody>`
+      + list.map(row => `<tr><td>${testerLink(row.slot)}</td><td>${esc([row.os, row.arch].filter(Boolean).join(' · ') || 'Unknown')}<div class="row-note">${esc(row.os_version || '')}</div></td><td>${esc(row.app_version || 'Unknown')}<div class="row-note">${esc(row.release || '')}</div></td><td class="num">${row.cpu_count == null ? '—' : num(row.cpu_count)}</td><td class="num">${row.memory_gb == null ? '—' : num(row.memory_gb) + ' GB'}${row.release === 'Delta V1' ? '<div class="row-note">free memory, legacy build</div>' : ''}</td><td title="${esc(when(row.last_seen))}">${esc(ago(row.last_seen))}</td></tr>`).join('')
+      + (list.length ? '' : '<tr><td colspan="6" class="empty">No registered computers for this scope.</td></tr>') + '</tbody></table></div>'
+      + (d.machines.length > 100 ? '<p class="footnote">Showing the 100 most recently seen computers. The JSON export includes the full inventory.</p>' : '') + '</section>';
   }
 
   // ---------- sections ----------
@@ -384,62 +435,6 @@ function adminApp() {
     const cls = up ? (upIsGood ? 'up-good' : 'up-bad') : (upIsGood ? 'down-bad' : 'down-good');
     const pct = before ? ` (${up ? '+' : ''}${Math.round((diff / before) * 100)}%)` : '';
     return `<span class="delta ${cls}">${up ? '▲ +' : '▼ −'}${compact(Math.abs(diff))}${pct}</span> <span class="note">${label}</span>`;
-  }
-
-  function kpis(d) {
-    if (d.range.slot) return testerKpis(d);
-    const t = d.totals; const p = d.previous || {};
-    const avg = t.sessions ? (t.hours * 3600) / t.sessions : 0;
-    const failRate = t.runs ? Math.round((t.failed_runs / t.runs) * 100) : 0;
-    const spark = f => sparkline(d.daily.slice(-30).map(x => Number(x[f]) || 0));
-    const quiet = Math.max(0, t.codes_activated - t.testers);
-    return `<section class="kpis">
-      <div class="card tile hero"><div class="label">Active testers</div>
-        <div class="value">${num(t.testers)}</div>
-        <div>${deltaHtml(t.testers, p.testers)}</div>
-        <div class="note">${num(t.codes_activated)} of ${num(t.codes_issued)} codes activated · ${num(quiet)} quiet in this range</div>
-        <div style="margin-top:8px">${spark('testers')}</div></div>
-      <div class="card tile"><div class="label">Hours used</div><div class="value">${compact(t.hours)}</div>
-        <div>${deltaHtml(t.hours, p.hours)}</div>${spark('hours')}</div>
-      <div class="card tile"><div class="label">Sessions</div><div class="value">${compact(t.sessions)}</div>
-        <div>${deltaHtml(t.sessions, p.sessions)}</div><div class="note">average ${avg ? duration(avg) : '—'} each${t.unclean ? ` · <span style="color:var(--serious)">${num(t.unclean)} ended without closing</span>` : ''}</div></div>
-      <div class="card tile"><div class="label">Active minutes</div><div class="value">${compact(t.active_minutes)}</div>
-        <div>${deltaHtml(t.active_minutes, p.active_minutes)}</div>${spark('active_minutes')}</div>
-      <div class="card tile"><div class="label">Errors</div><div class="value">${compact(t.errors)}</div>
-        <div>${deltaHtml(t.errors, p.errors, false)}</div><div class="note">${num(d.error_groups.length)} distinct</div></div>
-      <div class="card tile"><div class="label">Jobs run</div><div class="value">${compact(t.runs)}</div>
-        <div class="note">${num(t.failed_runs)} unfinished (${failRate}%)</div>
-        <div class="meter" title="${num(t.runs - t.failed_runs)} completed, ${num(t.failed_runs)} unfinished">
-          <i style="width:${t.runs ? 100 - failRate : 0}%;background:var(--s1)"></i><i style="width:${failRate}%;background:var(--serious)"></i></div></div>
-      <div class="card tile"><div class="label">Codes</div><div class="value">${num(t.codes_activated)}<span class="note"> / ${num(t.codes_issued)}</span></div>
-        <div class="meter" title="activated / unused / revoked">
-          <i style="width:${(t.codes_activated / Math.max(1, t.codes_issued)) * 100}%;background:var(--s1)"></i></div>
-        <div class="note">${num(t.computers)} computers seen · ${num(t.codes_revoked)} revoked</div></div>
-    </section>`;
-  }
-
-  function testerKpis(d) {
-    const t = d.totals; const p = d.previous || {};
-    const avg = t.sessions ? (t.hours * 3600) / t.sessions : 0;
-    const failRate = t.runs ? Math.round((t.failed_runs / t.runs) * 100) : 0;
-    const spark = f => sparkline(d.daily.slice(-30).map(x => Number(x[f]) || 0));
-    const activeDays = d.daily.filter(x => x.testers > 0).length;
-    return `<section class="kpis">
-      <div class="card tile hero"><div class="label">Hours used</div><div class="value">${compact(t.hours)}</div>
-        <div>${deltaHtml(t.hours, p.hours)}</div><div style="margin-top:8px">${spark('hours')}</div></div>
-      <div class="card tile"><div class="label">Active days</div><div class="value">${num(activeDays)}<span class="note"> / ${num(d.daily.length)}</span></div>
-        <div class="meter"><i style="width:${(activeDays / Math.max(1, d.daily.length)) * 100}%;background:var(--s1)"></i></div>
-        <div class="note">days the app reported anything</div></div>
-      <div class="card tile"><div class="label">Sessions</div><div class="value">${compact(t.sessions)}</div>
-        <div>${deltaHtml(t.sessions, p.sessions)}</div><div class="note">average ${avg ? duration(avg) : '—'} each${t.unclean ? ` · <span style="color:var(--serious)">${num(t.unclean)} ended without closing</span>` : ''}</div></div>
-      <div class="card tile"><div class="label">Active minutes</div><div class="value">${compact(t.active_minutes)}</div>
-        <div>${deltaHtml(t.active_minutes, p.active_minutes)}</div>${spark('active_minutes')}</div>
-      <div class="card tile"><div class="label">Errors</div><div class="value">${compact(t.errors)}</div>
-        <div>${deltaHtml(t.errors, p.errors, false)}</div><div class="note">${num(d.error_groups.length)} distinct</div></div>
-      <div class="card tile"><div class="label">Jobs run</div><div class="value">${compact(t.runs)}</div>
-        <div class="note">${num(t.failed_runs)} unfinished (${failRate}%)</div>
-        <div class="meter"><i style="width:${t.runs ? 100 - failRate : 0}%;background:var(--s1)"></i><i style="width:${failRate}%;background:var(--serious)"></i></div></div>
-    </section>`;
   }
 
   function codeActions(r) {
@@ -463,12 +458,12 @@ function adminApp() {
     return `<section class="card profile" style="margin-bottom:16px"><div class="head"><div>
         <button type="button" class="link back" data-open="">← Everyone</button>
         <h2 class="pname">${esc(r.note || r.slot)}${r.note ? `<span class="code">${esc(r.slot)}</span>` : ''}
-          <button type="button" class="pen" data-nick="${esc(r.slot)}" title="Give this code a nickname">✎ ${r.note ? 'Rename' : 'Add a nickname'}</button></h2>
+          <button type="button" class="pen" data-nick="${esc(r.slot)}" aria-label="Set Discord label for ${esc(r.slot)}" title="Set Discord ID or name">✎ ${r.note ? 'Rename' : 'Add Discord label'}</button></h2>
         <div class="facts"><span class="pill" style="--c:${st.c}">${st.label}</span>
           <span>first unlocked <b>${first ? esc(ago(first)) : '—'}</b></span>
           <span>last contact <b>${r.last_seen ? esc(ago(r.last_seen)) : '—'}</b></span>
           <span>computers <b>${num(r.computers)} / ${num(r.max_installs)}</b></span></div></div>
-        <div class="acts">${codeActions(r)}</div></div>${machines}</section>`;
+        <div class="acts">${codeActions(r)}</div></div><details class="more"><summary>Registered computers (${d.machines.length})</summary><div class="scroll">${machines}</div></details></section>`;
   }
 
   function sessionsSection(d) {
@@ -499,59 +494,87 @@ function adminApp() {
   }
 
   const TESTER_COLS = [
-    ['slot', 'Code · nickname'], ['status', 'Status'], ['activity', 'Activity', false], ['last_seen', 'Last seen'],
-    ['hours', 'Hours', true, 'num'], ['sessions', 'Sessions', true, 'num'], ['active_minutes', 'Active min', true, 'num'],
-    ['errors', 'Errors', true, 'num'], ['unclean', 'Not closed', true, 'num'], ['computers', 'Computers', true, 'num'], ['os', 'System'],
-    ['app_version', 'Version'], ['actions', '', false]];
-
+    ['slot', 'Tester'], ['status', 'Status'], ['active_minutes', 'Input time', true, 'num'],
+    ['sessions', 'Sessions', true, 'num'], ['errors', 'Errors', true, 'num'], ['last_seen', 'Last contact'],
+    ['activity', 'Input days', false, '', true], ['hours', 'App-open h', true, 'num', true],
+    ['unclean', 'Unclean', true, 'num', true], ['computers', 'Computers', true, 'num', true],
+    ['os', 'System', true, '', true], ['app_version', 'App version', true, '', true], ['actions', '', false],
+  ];
+  const TESTER_SORTS = [
+    ['slot:1', 'Code: low to high'], ['slot:-1', 'Code: high to low'],
+    ['note:1', 'Discord label: A to Z'], ['note:-1', 'Discord label: Z to A'],
+    ['last_seen:-1', 'Most recent contact'], ['last_seen:1', 'Oldest contact'],
+    ['active_minutes:-1', 'Most input time'], ['sessions:-1', 'Most sessions'], ['errors:-1', 'Most errors'],
+  ];
+  function testerSortOptions() {
+    const key = state.testers.sort + ':' + state.testers.dir;
+    const rows = TESTER_SORTS.slice();
+    if (!rows.some(row => row[0] === key)) rows.push([key, (TESTER_COLS.find(col => col[0] === state.testers.sort)?.[1] || state.testers.sort) + (state.testers.dir > 0 ? ': ascending' : ': descending')]);
+    return rows.map(([value, label]) => `<option value="${esc(value)}" ${value === key ? 'selected' : ''}>${esc(label)}</option>`).join('');
+  }
+  const testerColumns = () => TESTER_COLS.filter(col => !col[4] || state.testers.detailed);
+  function testerRows() {
+    const d = state.data; const s = state.testers; const q = s.q.trim().toLowerCase();
+    const matches = row => s.filter === 'all' || (s.filter === 'activated' ? row.computers > 0
+      : s.filter === 'attention' ? row.errors > 0 || row.unclean > 0
+      : s.filter === 'unclean' ? row.unclean > 0 : testerStatus(row).key === s.filter);
+    const val = (row, key) => key === 'status' ? testerStatus(row).label : row[key] ?? '';
+    return d.testers.filter(row => matches(row) && (!q || [row.slot, row.note, row.os, row.app_version, testerStatus(row).label].join(' ').toLowerCase().includes(q)))
+      .sort((a, b) => { const x = val(a, s.sort); const y = val(b, s.sort);
+        return (typeof x === 'number' && typeof y === 'number' ? x - y : String(x).localeCompare(String(y))) * s.dir || a.slot.localeCompare(b.slot); });
+  }
   function testersSection(d) {
     const s = state.testers;
-    const counts = { all: d.testers.length, active: 0, quiet: 0, unused: 0, revoked: 0 };
-    d.testers.forEach(r => { counts[testerStatus(r).key] += 1; });
-    const chips = [['all', 'All'], ['active', 'Active'], ['quiet', 'Quiet'], ['unused', 'Never activated'], ['revoked', 'Revoked']]
-      .map(([k, l]) => `<button type="button" data-tfilter="${k}" aria-pressed="${s.filter === k}">${l}<b>${counts[k]}</b></button>`).join('');
-    return `<section class="card" style="margin-top:16px"><div class="head"><div><h2>Testers</h2>
-      <div class="sub">Status is for the chosen range: active means the app reported something in it. Click a code to see that tester alone, ✎ to nickname it, a column to sort.</div></div>
-      <div class="head"><div class="chips">${chips}</div><input id="tq" type="search" placeholder="Find a code, nickname, system" value="${esc(s.q)}"></div></div>
-      <div class="scroll"><table id="tt"><thead><tr>${TESTER_COLS.map(([k, l, sortable = true, cls = '']) =>
-        `<th class="${cls}${sortable ? ' sort' : ''}" ${sortable ? `data-sort="${k}"` : ''} ${s.sort === k ? `aria-sort="${s.dir > 0 ? 'ascending' : 'descending'}"` : ''}>${l}</th>`).join('')}</tr></thead>
-      <tbody id="tbody"></tbody></table></div><div class="head" id="tester-pages" style="margin-top:12px"></div></section>`;
+    const counts = { all: d.testers.length, activated: d.testers.filter(r => r.computers > 0).length,
+      attention: d.testers.filter(r => r.errors > 0 || r.unclean > 0).length,
+      unclean: d.testers.filter(r => r.unclean > 0).length, active: 0, quiet: 0, unused: 0, revoked: 0 };
+    d.testers.forEach(row => counts[testerStatus(row).key] += 1);
+    const chips = [['activated', 'Activated'], ['active', 'Active in period'], ['attention', 'With issues'], ['quiet', 'No events'], ['unused', 'Never activated'], ['all', 'All codes'], ['revoked', 'Revoked']];
+    if (s.filter === 'unclean') chips.splice(3, 0, ['unclean', 'Unclean closes']);
+    return `<section class="card"><div class="head section-head"><div><h2>Tester directory</h2><div class="sub" id="tester-sort-note">Sorted by ${esc(TESTER_COLS.find(col => col[0] === s.sort)?.[1] || s.sort)}. Open a tester for their report; use ✎ to save a Discord ID or name.</div></div><div class="table-tools"><select id="tsort" aria-label="Sort testers">${testerSortOptions()}</select><button type="button" id="name-codes">Name codes</button><button type="button" id="tester-csv">Export filtered CSV</button></div></div>`
+      + `<div class="head section-head"><div class="chips">${chips.map(([key, label]) => `<button type="button" data-tfilter="${key}" aria-pressed="${s.filter === key}">${label}<b>${num(counts[key])}</b></button>`).join('')}</div></div>`
+      + `<div class="head section-head"><input id="tq" type="search" aria-label="Search testers" placeholder="Find a code, nickname, system" value="${esc(s.q)}"><label style="font-size:12px"><input id="tester-details" type="checkbox" ${s.detailed ? 'checked' : ''}> Show activity, devices & versions</label></div>`
+      + `<div class="scroll"><table class="tester-table" id="tt"><thead><tr>${testerColumns().map(([key, label, sortable = true, cls = '']) => `<th class="${cls}" ${sortable ? `data-sort="${key}"` : ''} ${s.sort === key ? `aria-sort="${s.dir > 0 ? 'ascending' : 'descending'}"` : ''}>${sortable ? `<button type="button" class="sort-label" aria-label="Sort by ${esc(label)}">${esc(label)}</button>` : esc(label)}</th>`).join('')}</tr></thead><tbody id="tbody"></tbody></table></div>`
+      + '<div class="pagination" id="tester-pages"></div><p class="footnote">Active means an event was received in the selected period. Last contact includes background check-ins and can be newer than the last activity event.</p></section>';
   }
-
   function renderTesterRows() {
     const d = state.data; const s = state.testers;
-    const keys = d.daily.map(x => x.day);
-    const q = s.q.trim().toLowerCase();
-    const maxHours = Math.max(...d.testers.map(r => r.hours), 0.1);
-    let rows = d.testers.filter(r => (s.filter === 'all' || testerStatus(r).key === s.filter)
-      && (!q || [r.slot, r.note, r.os, r.app_version, testerStatus(r).label].join(' ').toLowerCase().includes(q)));
-    const val = (r, k) => (k === 'status' ? testerStatus(r).label : k === 'last_seen' ? (r.last_seen || '') : r[k] ?? '');
-    rows = rows.slice().sort((a, b) => {
-      const x = val(a, s.sort); const y = val(b, s.sort);
-      return (typeof x === 'number' && typeof y === 'number' ? x - y : String(x).localeCompare(String(y))) * s.dir;
-    });
-    const count = rows.length; const pageSize = 50;
-    s.page = Math.max(0, Math.min(s.page, Math.ceil(count / pageSize) - 1));
-    const start = s.page * pageSize;
-    rows = rows.slice(start, start + pageSize);
-    $('tester-pages').innerHTML = `<span style="color:var(--muted)" role="status">${count ? `${start + 1}–${start + rows.length}` : '0'} of ${num(count)} testers</span>`
-      + `<div class="acts"><button type="button" data-tpage="-1" ${s.page === 0 ? 'disabled' : ''}>Previous</button>`
-      + `<button type="button" data-tpage="1" ${start + pageSize >= count ? 'disabled' : ''}>Next</button></div>`;
-    $('tbody').innerHTML = rows.length ? rows.map(r => {
-      const st = testerStatus(r);
-      return `<tr><td style="white-space:nowrap"><button type="button" class="link" data-open="${esc(r.slot)}" title="Show ${esc(plainName(r.slot))} alone">${nameHtml(r.slot)}</button>
-          <button type="button" class="pen" data-nick="${esc(r.slot)}" title="${r.note ? 'Rename' : 'Give this code a nickname'}">✎</button></td>
-        <td><span class="pill" style="--c:${st.c}">${st.label}</span></td>
-        <td>${r.computers ? strip(r.days || {}, keys) : ''}</td>
-        <td title="${esc(when(r.last_seen))}">${r.last_seen ? esc(ago(r.last_seen)) : '—'}</td>
-        <td class="num"><div class="inbar">${r.hours ? `<i style="width:${Math.max(2, (r.hours / maxHours) * 60)}px"></i>` : ''}${esc(r.hours)}</div></td>
-        <td class="num">${num(r.sessions)}</td><td class="num">${num(r.active_minutes)}</td>
-        <td class="num">${r.errors ? `<span style="color:#ef6b6b">${num(r.errors)}</span>` : '0'}</td>
-        <td class="num" title="Runs that crashed or were forced to quit (Delta V2 builds report these)">${r.unclean ? `<span style="color:var(--serious)">${num(r.unclean)}</span>` : '0'}</td>
-        <td class="num">${num(r.computers)} / ${num(r.max_installs)}</td>
-        <td>${esc(r.os || '')}</td><td>${esc(r.app_version || '')}</td>
-        <td><div class="acts">${codeActions(r)}</div></td></tr>`;
-    }).join('') : `<tr><td colspan="${TESTER_COLS.length}" class="empty">No testers match.</td></tr>`;
+    const rows = testerRows(); const count = rows.length; const pageSize = 50;
+    s.page = Math.max(0, Math.min(s.page, Math.ceil(count / pageSize) - 1)); const start = s.page * pageSize;
+    $('tester-pages').innerHTML = `<span role="status">${count ? `${start + 1}–${Math.min(start + pageSize, count)}` : '0'} of ${num(count)} matching testers</span><div class="acts"><button type="button" data-tpage="-1" ${s.page === 0 ? 'disabled' : ''}>Previous</button><button type="button" data-tpage="1" ${start + pageSize >= count ? 'disabled' : ''}>Next</button></div>`;
+    const cell = (row, key) => {
+      if (key === 'slot') return `<button type="button" class="link identity" data-open="${esc(row.slot)}"><strong>${esc(row.note || row.slot)}</strong>${row.note ? `<small>${esc(row.slot)}</small>` : ''}</button> <button type="button" class="pen" data-nick="${esc(row.slot)}" aria-label="Set Discord label for ${esc(row.slot)}" title="Set Discord ID or name for ${esc(row.slot)}">✎</button>`;
+      if (key === 'status') { const st = testerStatus(row); return `<span class="pill" style="--c:${st.c}">${st.label}</span>`; }
+      if (key === 'active_minutes') return row.active_minutes ? esc(duration(row.active_minutes * 60)) : '—';
+      if (key === 'last_seen') return `<span title="${esc(when(row.last_seen))}">${row.last_seen ? esc(ago(row.last_seen)) : '—'}</span>`;
+      if (key === 'activity') return row.computers ? strip(row.days || {}, d.daily.map(day => day.day)) : '—';
+      if (key === 'computers') return `${num(row.computers)} / ${num(row.max_installs)}`;
+      if (key === 'actions') return `<details class="more" style="margin:0"><summary aria-label="Manage ${esc(plainName(row.slot))}">Manage</summary><div class="acts" style="margin-top:7px">${codeActions(row)}</div></details>`;
+      if (['errors', 'unclean'].includes(key)) return `<span class="${row[key] ? 'warn' : ''}">${num(row[key])}</span>`;
+      return ['sessions', 'hours'].includes(key) ? num(row[key]) : esc(row[key] || '—');
+    };
+    $('tbody').innerHTML = count ? rows.slice(start, start + pageSize).map(row => `<tr>${testerColumns().map(([key, label, sortable, cls = '']) => `<td class="${cls}">${cell(row, key)}</td>`).join('')}</tr>`).join('')
+      : `<tr><td colspan="${testerColumns().length}" class="empty">No testers match these filters. Search all codes or choose a different group.</td></tr>`;
+  }
+  function csvCell(value) {
+    const text = String(value ?? '');
+    const safe = /^[\t\r\n]|^\s*[=+\-@]/.test(text) ? "'" + text : text;
+    return '"' + safe.replace(/"/g, '""') + '"';
+  }
+  function downloadFile(text, type, filename) {
+    const a = document.createElement('a');
+    const url = URL.createObjectURL(new Blob([text], { type })); a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+  function exportTesters() {
+    const headers = ['Tester', 'Code', 'Status', 'Input minutes', 'Sessions', 'App-open hours', 'Errors', 'Unclean closes', 'Computers', 'System', 'App version', 'Last contact'];
+    const rows = testerRows().map(row => [row.note || '', row.slot, testerStatus(row).label, row.active_minutes, row.sessions, row.hours, row.errors, row.unclean, row.computers, row.os, row.app_version, row.last_seen]);
+    downloadFile('\ufeff' + [headers, ...rows].map(row => row.map(csvCell).join(',')).join('\r\n'), 'text/csv;charset=utf-8', 'cartovox-testers-' + (state.data.range.days ? state.data.range.days + 'days-' : 'all-time-') + state.data.generated_at.slice(0, 10) + '.csv');
+  }
+  function engagedSection(d) {
+    const rows = d.testers.filter(row => row.active_minutes > 0).sort((a, b) => b.active_minutes - a.active_minutes).slice(0, 5);
+    return `<div class="card"><div class="head section-head"><div><h2>${d.range.slot ? 'Sessions & engagement' : 'Most engaged testers'}</h2><div class="sub">${d.range.slot ? 'Open the tester section for individual sessions.' : 'Ranked by reported input time, excluding idle hours.'}</div></div><button type="button" data-view="testers">View ${d.range.slot ? 'sessions' : 'all'}</button></div>`
+      + (rows.length ? rows.map(row => `<div class="stat-row"><span>${testerLink(row.slot)}<small>${num(row.sessions)} sessions · ${num(Object.keys(row.days || {}).length)} days with input</small></span><b>${duration(row.active_minutes * 60)}</b></div>`).join('') : '<p class="empty">No input time reported in this period.</p>') + '</div>';
   }
 
   function featuresSection(d) {
@@ -563,7 +586,7 @@ function adminApp() {
       .map(([k, l]) => `<button type="button" data-farea="${esc(k)}" aria-pressed="${s.area === k}">${esc(l)}</button>`).join('');
     return `<section class="grid g2">
       <div class="card"><div class="head"><div><h2>Most used features</h2><div class="sub">Clicks and exports in the range${d.range.slot ? '' : '; the grey figure is how many testers used it'}.</div></div>
-        <input id="fq" type="search" placeholder="Filter features" value="${esc(s.q)}"></div>
+        <div class="table-tools"><input id="fq" type="search" aria-label="Search features" placeholder="Filter features" value="${esc(s.q)}"><select id="fsort" aria-label="Sort features"><option value="uses" ${s.sort === 'uses' ? 'selected' : ''}>Most uses</option><option value="testers" ${s.sort === 'testers' ? 'selected' : ''}>Most testers</option><option value="name" ${s.sort === 'name' ? 'selected' : ''}>Name</option></select></div></div>
         <div class="chips" style="margin-bottom:12px">${chips}</div><div id="flist"></div></div>
       <div class="card"><h2>Feature areas</h2><div class="sub">Uses summed by the part of the app they belong to.</div>
         ${hbars(areaRows.slice(0, 16).map(([a, v]) => ({ label: a, value: v })), { unit: 'uses' })}</div>
@@ -573,11 +596,12 @@ function adminApp() {
   function renderFeatureList() {
     const s = state.features; const q = s.q.trim().toLowerCase();
     const rows = state.data.features.filter(f => (s.area === 'all' || areaOf(f.name) === s.area)
-      && (!q || f.name.toLowerCase().includes(q)));
+      && (!q || f.name.toLowerCase().includes(q))).sort((a, b) => s.sort === 'name' ? a.name.localeCompare(b.name) : b[s.sort] - a[s.sort] || a.name.localeCompare(b.name));
     const shown = s.all ? rows : rows.slice(0, 20);
     $('flist').innerHTML = hbars(shown.map(f => ({ label: restOf(f.name), small: s.area === 'all' ? areaOf(f.name) : '',
-      title: f.name, value: f.uses, after: state.data.range.slot ? '' : `${f.testers} ${f.testers === 1 ? 'tester' : 'testers'}` })), { unit: 'uses' })
-      + (rows.length > 20 ? `<p><button type="button" id="fall">${s.all ? 'Show top 20' : `Show all ${rows.length}`}</button></p>` : '');
+      title: f.name, value: f.uses, after: state.data.range.slot ? '' : `${f.testers} ${f.testers === 1 ? 'tester' : 'testers'} · ${percent(f.testers, state.data.totals.testers)} reach` })), { unit: 'uses' })
+      + (rows.length > 20 ? `<p><button type="button" id="fall">${s.all ? 'Show top 20' : `Show all ${rows.length}`}</button></p>` : '')
+      + `<p class="footnote">${num(shown.length)} of ${num(rows.length)} matching feature counters. Reach is the share of active testers who used a feature.${state.data.coverage?.features_truncated ? ' The report includes the top 500 counters.' : ''}</p>`;
   }
 
   const UNLOCK_REASONS = { typo: 'a typing mistake in the code', format: 'not an access code', old_beta: 'an old beta key',
@@ -600,12 +624,12 @@ function adminApp() {
       : '<p class="empty">No workspace time yet: Delta V2 builds report it.</p>';
     const unlocks = d.unlocks || [];
     const gates = (d.gates || []).map(g => `${esc(GATE_STATES[g.state] || g.state)} <b>${num(g.shown)}</b>×`).join(' · ');
-    const unlockTable = unlocks.length ? `<table><thead><tr><th>Result</th><th class="num">Attempts</th><th class="num">Testers</th><th class="num">Time on screen</th><th class="num">Longest</th></tr></thead><tbody>`
+    const unlockTable = unlocks.length ? `<div class="scroll"><table><thead><tr><th>Result</th><th class="num">Attempts</th><th class="num">Testers</th><th class="num">Mean time on screen</th><th class="num">Longest</th></tr></thead><tbody>`
       + unlocks.map(u => `<tr><td>${u.ok ? '<span class="pill" style="--c:var(--good)">Unlocked</span>' : `<span class="pill" style="--c:var(--bad)">Refused</span> ${esc(UNLOCK_REASONS[u.reason] || u.reason)}`}</td>
         <td class="num">${num(u.attempts)}</td><td class="num">${num(u.testers)}</td>
         <td class="num">${u.mean_seconds_on_gate == null ? '—' : esc(duration(u.mean_seconds_on_gate))}</td>
         <td class="num">${u.longest_seconds_on_gate == null ? '—' : esc(duration(u.longest_seconds_on_gate))}</td></tr>`).join('')
-      + '</tbody></table>' + (unlocks.some(u => u.ok && u.had_install) ? `<p class="note">${num(unlocks.filter(u => u.ok).reduce((s2, u) => s2 + (u.had_install || 0), 0))} unlocks came from a computer that was already registered.</p>` : '')
+      + '</tbody></table></div>' + (unlocks.some(u => u.ok && u.had_install) ? `<p class="note">${num(unlocks.filter(u => u.ok).reduce((s2, u) => s2 + (u.had_install || 0), 0))} unlocks came from a computer that was already registered.</p>` : '')
       : '<p class="empty">No unlocks yet: Delta V2 builds report them.</p>';
     return `<section class="grid g2">
       <div class="card"><h2>Where time goes</h2><div class="sub">Active minutes by workspace: minutes with a click, key or scroll while the window was in front.</div>${time}</div>
@@ -614,33 +638,33 @@ function adminApp() {
   }
 
   function performanceSection(d) {
-    const max = Math.max(...d.performance.map(p => p.longest_seconds), 1);
-    const body = d.performance.length ? `<div class="scroll"><table><thead><tr><th>Job</th><th class="num">Runs</th>
-      <th>Mean → longest</th><th class="num">Mean</th><th class="num">Longest</th><th class="num">Peak memory</th>
-      <th class="num">Unfinished</th><th class="num">Testers</th></tr></thead><tbody>${d.performance.map(p => {
-        const rate = p.runs ? Math.round((p.unfinished / p.runs) * 100) : 0;
-        return `<tr><td><strong>${esc(p.name.replace(/^job:/, ''))}</strong></td><td class="num">${num(p.runs)}</td>
-        <td><div class="range" data-tip="${esc(`mean ${duration(p.mean_seconds)}, longest ${duration(p.longest_seconds)}\n${p.name}`)}"><i style="width:${(p.mean_seconds / max) * 100}%"></i><b style="left:${(p.longest_seconds / max) * 100}%"></b></div></td>
-        <td class="num">${duration(p.mean_seconds)}</td><td class="num">${duration(p.longest_seconds)}</td>
-        <td class="num">${p.peak_mb == null ? '—' : num(p.peak_mb) + ' MB'}</td>
-        <td class="num">${p.unfinished ? `<span style="color:var(--serious)">${num(p.unfinished)} (${rate}%)</span>` : '0'}</td>
-        <td class="num">${num(p.testers)}</td></tr>`; }).join('')}</tbody></table></div>` : '<p class="empty">No jobs in this range.</p>';
-    const failures = d.failures.length ? `<details class="more"><summary>Why jobs did not finish (${d.failures.length})</summary><table><thead><tr><th>Job</th><th>Status</th><th>Failure</th><th class="num">Runs</th><th class="num">Got to</th><th class="num">After</th><th>Message</th></tr></thead><tbody>`
-      + d.failures.map(f => `<tr><td>${esc(f.name)}</td><td>${esc(f.status)}</td><td>${esc(f.failure || '—')}</td><td class="num">${num(f.runs)}</td>
-        <td class="num" title="Mean progress when it stopped (Delta V2 builds report this)">${f.mean_progress == null ? '—' : esc(f.mean_progress) + '%'}</td>
-        <td class="num">${f.mean_seconds == null ? '—' : esc(duration(f.mean_seconds))}</td><td>${f.message ? `<code>${esc(f.message)}</code>` : '—'}</td></tr>`).join('') + '</tbody></table></details>' : '';
-    return `<section class="card" style="margin-top:16px"><h2>Performance</h2><div class="sub">Generations, rebuilds, renders and app startup: the bar is the mean, the tick the longest run.</div>${body}${failures}</section>`;
+    const s = state.jobs;
+    return `<section class="card" style="margin-top:16px"><div class="head section-head"><div><h2>Job timings & outcomes</h2><div class="sub">Median describes the middle run; P95 highlights slow runs. Timed failed and cancelled runs are included.</div></div><div class="table-tools"><input id="pq" type="search" aria-label="Search jobs" placeholder="Find a job" value="${esc(s.q)}"><select id="psort" aria-label="Sort jobs"><option value="runs" ${s.sort === 'runs' ? 'selected' : ''}>Most runs</option><option value="p95_seconds" ${s.sort === 'p95_seconds' ? 'selected' : ''}>Slowest P95</option><option value="failed" ${s.sort === 'failed' ? 'selected' : ''}>Most failures</option></select></div></div><div id="job-list"></div>`
+      + (d.failures.length ? `<details class="more"><summary>Failure and cancellation details (${d.failures.length} groups)</summary><div class="scroll"><table style="min-width:660px"><thead><tr><th>Job</th><th>Outcome</th><th>Reason</th><th class="num">Runs</th><th class="num">Mean progress</th><th class="num">Mean time</th><th>Message sample</th></tr></thead><tbody>`
+        + d.failures.map(row => `<tr><td>${esc(jobName(row.name))}</td><td>${esc(row.status || 'Unknown')}</td><td>${esc(row.failure || '—')}</td><td class="num">${num(row.runs)}</td><td class="num">${row.mean_progress == null ? '—' : num(row.mean_progress) + '%'}</td><td class="num">${row.mean_seconds == null ? '—' : duration(row.mean_seconds)}</td><td><code>${esc(row.message || '—')}</code></td></tr>`).join('') + '</tbody></table></div></details>' : '') + '</section>';
   }
-
+  function renderJobList() {
+    const d = state.data; const s = state.jobs; const q = s.q.trim().toLowerCase();
+    const rows = d.performance.filter(row => !q || row.name.toLowerCase().includes(q)).sort((a, b) => (b[s.sort] ?? -1) - (a[s.sort] ?? -1) || a.name.localeCompare(b.name));
+    const time = value => value == null ? '—' : duration(value);
+    $('job-list').innerHTML = rows.length ? `<div class="scroll"><table style="min-width:740px"><thead><tr><th>Job</th><th class="num">Runs</th><th class="num">Median</th><th class="num"><abbr title="Nearest-rank 95th percentile of timed runs">P95</abbr></th><th class="num">Longest</th><th class="num">Failed</th><th class="num">Cancelled</th><th class="num">Peak RAM</th><th class="num">Testers</th></tr></thead><tbody>`
+      + rows.map(row => `<tr><td><strong title="${esc(row.name)}">${esc(jobName(row.name))}</strong><div class="row-note">${row.timed_runs == null ? 'Timing samples unavailable' : `${num(row.timed_runs)} of ${num(row.runs)} runs timed`} · mean ${time(row.mean_seconds)}</div></td><td class="num">${num(row.runs)}</td><td class="num">${time(row.median_seconds)}</td><td class="num">${time(row.p95_seconds)}</td><td class="num">${time(row.longest_seconds)}</td><td class="num"><span class="${row.failed ? 'bad' : ''}">${row.failed == null ? '—' : num(row.failed)}</span></td><td class="num">${row.cancelled == null ? '—' : num(row.cancelled)}</td><td class="num">${row.peak_mb == null ? '—' : num(row.peak_mb) + ' MB'}</td><td class="num">${num(row.testers)}</td></tr>`).join('') + '</tbody></table></div><p class="footnote">Timings exclude missing or nonnumeric durations. RAM is the largest reported process peak, not installed memory.</p>'
+      : '<p class="empty">No jobs match this search.</p>';
+  }
   function errorsSection(d) {
-    const groups = d.error_groups.length ? `<div class="scroll"><table><thead><tr><th class="num">Count</th><th class="num">Testers</th><th>Error</th><th>Where</th><th>Last seen</th></tr></thead><tbody>`
-      + d.error_groups.map(g => `<tr><td class="num"><strong>${num(g.count)}</strong></td><td class="num" title="${esc(String(g.slots || '').split(',').map(plainName).join(', '))}">${num(g.testers)}</td>
-        <td><strong>${esc(g.type || 'Error')}</strong>${g.message ? ': ' + esc(g.message) : ''}${g.stack ? `<details class="more"><summary>Stack</summary><pre>${esc(g.stack)}</pre></details>` : ''}</td>
-        <td><code>${esc(g.name)}</code>${g.place ? `<br><code>${esc(g.place)}</code>` : ''}</td><td title="first ${esc(when(g.first_at))}">${esc(ago(g.last_at))}</td></tr>`).join('') + '</tbody></table></div>'
-      : '<p class="empty">No errors in this range.</p>';
-    const latest = d.errors.length ? `<details class="more"><summary>Latest ${d.errors.length} errors, one by one</summary><table><thead><tr><th>When</th><th>Code</th><th>Where</th><th>Error</th></tr></thead><tbody>`
-      + d.errors.map(e => `<tr><td title="${esc(when(e.at))}">${esc(ago(e.at))}</td><td>${esc(plainName(e.slot))}</td><td><code>${esc(e.name)}</code>${e.place ? ` <code>${esc(e.place)}</code>` : ''}</td><td><strong>${esc(e.type || '')}</strong> ${esc(e.message || '')}${e.stack ? `<pre>${esc(e.stack)}</pre>` : ''}</td></tr>`).join('') + '</tbody></table></details>' : '';
-    return `<section class="card" style="margin-top:16px"><h2>Errors</h2><div class="sub">The same type and message from the same place counts as one error.</div>${groups}${latest}</section>`;
+    const s = state.errors;
+    return `<section class="card" style="margin-top:16px"><div class="head section-head"><div><h2>Error explorer</h2><div class="sub">Grouped by source, type, and message. Open a group for affected testers and a stack sample.</div></div><div class="table-tools"><input id="eq" type="search" aria-label="Search errors" placeholder="Search type, message, tester" value="${esc(s.q)}"><select id="esort" aria-label="Sort errors"><option value="testers" ${s.sort === 'testers' ? 'selected' : ''}>Most testers affected</option><option value="count" ${s.sort === 'count' ? 'selected' : ''}>Most reports</option><option value="recent" ${s.sort === 'recent' ? 'selected' : ''}>Most recent</option></select></div></div><div id="error-list" class="error-list"></div>`
+      + (d.errors.length ? `<details class="more"><summary>Latest ${num(d.errors.length)} individual error reports</summary><div class="scroll"><table style="min-width:600px"><thead><tr><th>Event time</th><th>Tester</th><th>Source</th><th>Error</th></tr></thead><tbody>`
+        + d.errors.map(row => `<tr><td title="${esc(when(row.at))}">${esc(ago(row.at))}</td><td>${testerLink(row.slot)}</td><td><code>${esc(row.name)}</code></td><td><strong>${esc(row.type || 'Error')}</strong> ${esc(row.message || '')}${row.stack ? `<details class="more"><summary>Stack sample</summary><pre>${esc(row.stack)}</pre></details>` : ''}</td></tr>`).join('') + '</tbody></table></div></details>' : '') + '</section>';
+  }
+  function renderErrorList() {
+    const d = state.data; const s = state.errors; const q = s.q.trim().toLowerCase();
+    const rows = d.error_groups.filter(row => !q || [row.type, row.message, row.name, row.place, String(row.slots || '').split(',').map(plainName).join(' ')].join(' ').toLowerCase().includes(q))
+      .sort((a, b) => s.sort === 'recent' ? (Date.parse(b.last_at) || 0) - (Date.parse(a.last_at) || 0)
+        : b[s.sort] - a[s.sort] || b.count - a.count || (Date.parse(b.last_at) || 0) - (Date.parse(a.last_at) || 0));
+    const group = row => `<details class="error-item"><summary><span class="error-count">${num(row.count)}<small>reports</small></span><div class="error-title"><strong>${esc(row.type || 'Error')}</strong>${esc(row.message || row.name)}<div class="error-meta">${num(row.testers)} testers · ${esc(row.name)}${row.place ? ' · location sample: ' + esc(row.place) : ''}</div></div><time class="error-meta" title="${esc(when(row.last_at))}">${esc(ago(row.last_at))}</time></summary><div class="error-body"><div class="row-note">First seen ${esc(when(row.first_at))} · last seen ${esc(when(row.last_at))}. A group may include multiple recorded locations.</div><div class="affected">${String(row.slots || '').split(',').filter(Boolean).map(slot => `<button type="button" data-open="${esc(slot)}">${esc(plainName(slot))} ↗</button>`).join('')}</div>${row.stack ? `<div class="row-note">Stack sample</div><pre>${esc(row.stack)}</pre>` : '<div class="row-note">No stack was reported for this group.</div>'}</div></details>`;
+    $('error-list').innerHTML = (rows.length ? rows.map(group).join('') : '<p class="empty">No error groups match this search.</p>')
+      + `<p class="footnote">${num(rows.length)} matching groups from the ${num(d.error_groups.length)} groups included in this report. ${num(d.totals.errors)} error events in the selected period; at most 40 groups and 60 individual errors are shown.</p>`;
   }
 
   function computersSection(d) {
@@ -696,52 +720,54 @@ function adminApp() {
       + '</tbody></table></div></details>';
   }
 
+  function syncRailOffset() {
+    document.documentElement?.style?.setProperty('--bar-height', ($('bar').offsetHeight || 125) + 'px');
+  }
   function render() {
     const d = state.data;
     if (!d) return;
-    const rangeName = d.range.days ? `the last ${d.range.days} days` : 'all time';
+    if (!VIEWS[state.view]) state.view = 'overview';
+    $('sections').innerHTML = navHtml(d); syncRailOffset();
     const one = Boolean(d.range.slot);
-    $('dash').innerHTML = (one ? profileSection(d) : '') + kpis(d)
-      + `<section class="grid g2">
-          ${one ? `<div class="card"><h2>Active minutes per day</h2><div class="sub">Minutes with at least one click, ${esc(rangeName)}.</div><div class="chart" id="c-testers"></div></div>`
-          : `<div class="card"><h2>Active testers per day</h2><div class="sub">Codes that reported anything that day, ${esc(rangeName)}.</div><div class="chart" id="c-testers"></div></div>`}
-          <div class="card"><h2>Hours used per day</h2><div class="sub">Time the app was open, counted on the day it was closed.</div><div class="chart" id="c-hours"></div></div>
-        </section>
-        <section class="grid g2">
-          <div class="card"><h2>When ${one ? 'this tester works' : 'testers work'}</h2><div class="sub">Active minutes by weekday and hour, in your time zone.</div><div class="chart" id="c-heat"></div></div>
-          <div class="card"><h2>Problems per day</h2><div class="legend"><span><i style="background:var(--bad)"></i>Errors</span><span><i style="background:var(--serious)"></i>Unfinished jobs</span></div><div class="chart" id="c-problems"></div></div>
-        </section>`
-      + `<div class="card" style="margin-top:16px">${dailyTable(d)}</div>`
-      + (one ? sessionsSection(d) : testersSection(d)) + featuresSection(d) + timeAndUnlockSection(d) + performanceSection(d) + errorsSection(d)
-      + computersSection(d) + `<section class="grid g2">${feedSection(d)}<div class="card"><h2>About these numbers</h2><div class="sub">How to read the dashboard.</div>
-        <p class="note" style="color:var(--ink2)">An <strong>active minute</strong> is a clock minute in which a tester clicked, typed or scrolled while CartoVox was in front (Delta V1 builds could only report minutes with clicks, so their figures run low). <strong>Hours</strong> are how long each run was open: to its clean close, or, for a Delta V2 run that crashed or was forced to quit, to its last five-minute heartbeat (Delta V1 runs that did not close add none). Days and hours are in your time zone (UTC${d.range.tz >= 0 ? '+' : '−'}${Math.floor(Math.abs(d.range.tz) / 60)}${Math.abs(d.range.tz) % 60 ? ':' + String(Math.abs(d.range.tz) % 60).padStart(2, '0') : ''}). Generated ${esc(when(d.generated_at))}.</p></div></section>`;
+    let body = '';
+    if (state.view === 'overview') body = summaryTiles(d)
+      + `<section class="grid wide-grid">${attentionSection(d)}${adoptionSection(d)}</section>`
+      + activityCharts(d) + `<section class="grid g2">${feedSection(d)}${engagedSection(d)}</section>` + definitionsSection(d);
+    if (state.view === 'testers') body = one ? sessionsSection(d) : testersSection(d);
+    if (state.view === 'usage') body = usageSummary(d) + activityCharts(d, true)
+      + `<section class="grid g2"><div class="card"><h2>When testers work</h2><div class="sub">Input minutes by weekday and hour, in the report’s time zone.</div><div class="chart" id="c-heat"></div></div><div class="card"><h2>Daily activity</h2><div class="sub">The same daily numbers behind the charts.</div>${dailyTable(d)}</div></section>`
+      + featuresSection(d) + timeAndUnlockSection(d) + definitionsSection(d);
+    if (state.view === 'reliability') body = reliabilitySummary(d)
+      + `<div class="card"><h2>Errors & unfinished jobs per day</h2><div class="sub">Unfinished includes cancelled and unknown outcomes as well as failures.</div><div class="legend"><span><i style="background:var(--bad)"></i>Errors</span><span><i style="background:var(--serious)"></i>Unfinished jobs</span></div><div class="chart" id="c-problems"></div></div>`
+      + errorsSection(d) + performanceSection(d) + definitionsSection(d);
+    if (state.view === 'systems') body = computersSection(d) + systemsInventory(d) + definitionsSection(d);
+    hideTip();
+    $('dash').innerHTML = pageHeading(d) + (one ? profileSection(d) : '') + body;
     drawCharts();
-    if (!one) renderTesterRows();
-    renderFeatureList();
+    if (state.view === 'testers' && !one) renderTesterRows();
+    if (state.view === 'usage') renderFeatureList();
+    if (state.view === 'reliability') { renderErrorList(); renderJobList(); }
   }
-
   function drawCharts() {
     const d = state.data;
-    if (!d || !$('c-testers')) return;
-    if (d.range.slot) {
-      columnChart($('c-testers'), d.daily, [{ field: 'active_minutes', label: 'active minutes', color: 'var(--s1)' }],
-        { label: 'Active minutes per day' });
-    } else lineChart($('c-testers'), d.daily, 'testers', { unit: 'active testers', label: 'Active testers per day' });
-    columnChart($('c-hours'), d.daily, [{ field: 'hours', label: 'hours', color: 'var(--s1)' }],
-      { label: 'Hours used per day', fmt: v => (Math.round(v * 10) / 10).toLocaleString() });
-    heatmap($('c-heat'), d.heatmap);
-    columnChart($('c-problems'), d.daily, [{ field: 'errors', label: 'errors', color: 'var(--bad)' },
-      { field: 'failed', label: 'unfinished jobs', color: 'var(--serious)' }], { label: 'Problems per day' });
+    if (!d) return;
+    if ($('c-testers')) {
+      if (d.range.slot) columnChart($('c-testers'), d.daily, [{ field: 'active_minutes', label: 'active minutes', color: 'var(--s1)' }], { label: 'Input minutes per day' });
+      else lineChart($('c-testers'), d.daily, 'testers', { unit: 'active testers', label: 'Active testers per day' });
+    }
+    if ($('c-hours')) columnChart($('c-hours'), d.daily, [{ field: state.view === 'overview' ? 'active_minutes' : 'hours', label: state.view === 'overview' ? 'active minutes' : 'app-open hours', color: 'var(--s1)' }], { label: state.view === 'overview' ? 'Input minutes per day' : 'App-open hours per day' });
+    if ($('c-heat')) heatmap($('c-heat'), d.heatmap);
+    if ($('c-problems')) columnChart($('c-problems'), d.daily, [{ field: 'errors', label: 'errors', color: 'var(--bad)' }, { field: 'failed', label: 'unfinished jobs', color: 'var(--serious)' }], { label: 'Errors and unfinished jobs per day' });
   }
 
   // ---------- data ----------
   function signedIn(on) {
-    $('f').hidden = on; $('bar').hidden = !on; $('dash').hidden = !on;
+    $('f').hidden = on; $('bar').hidden = !on; $('app').hidden = !on; $('dash').hidden = !on;
     if (!on) { $('t').value = ''; $('t').focus(); }
   }
   function forget(message) {
     if (state.request) state.request.abort(); state.request = null;
-    state.token = ''; state.data = null; store.drop(KEY);
+    state.token = ''; state.data = null; state.stale = false; store.drop(KEY);
     $('refresh').disabled = false; $('dash').classList.remove('loading');
     clearInterval(state.timer); state.timer = 0; $('auto').checked = false;
     signedIn(false); $('dash').innerHTML = ''; $('login-msg').textContent = message || '';
@@ -798,10 +824,11 @@ function adminApp() {
         const message = d.code === 'daily_read_limit' && d.retry_at
           ? 'Daily reporting limit reached. Try again after ' + when(d.retry_at) + '.'
           : (d.error || ('Failed: ' + r.status));
-        if (!state.data) $('dash').innerHTML = '<p class="empty">' + esc(message) + ' Press Refresh to retry.</p>';
+        state.stale = Boolean(state.data);
+        if (state.data) render(); else $('dash').innerHTML = '<p class="empty">' + esc(message) + ' Press Refresh to retry.</p>';
         $('status').textContent = message + (state.data ? ' Showing the last successful report.' : ''); return;
       }
-      state.data = d; state.today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+      state.stale = false; state.data = d; state.today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
       fillPicker(); render();
       $('status').textContent = 'Updated ' + new Date().toLocaleTimeString();
     } catch (e) {
@@ -809,11 +836,12 @@ function adminApp() {
       const message = controller.signal.aborted ? 'Report timed out. Try 7 days or press Refresh.'
         : 'Could not reach the service. Press Refresh to retry.';
       $('status').textContent = message + (state.data ? ' The numbers below may be stale.' : '');
-      if (!state.data) $('dash').innerHTML = '<p class="empty">' + esc(message) + '</p>';
+      state.stale = Boolean(state.data);
+      if (state.data) render(); else $('dash').innerHTML = '<p class="empty">' + esc(message) + '</p>';
     } finally {
       clearTimeout(timeout);
       if (state.request === controller) {
-        state.request = null; $('refresh').disabled = false; $('dash').classList.remove('loading');
+        state.request = null; $('refresh').disabled = false; $('dash').classList.remove('loading'); syncRailOffset();
       }
     }
   }
@@ -830,40 +858,55 @@ function adminApp() {
     $('hide-test').disabled = Boolean(state.slot);
     document.title = state.slot ? `${plainName(state.slot)} · CartoVox Delta` : 'CartoVox Delta report';
   }
+  function writeAddress(view, slot, push = true) {
+    const params = new URLSearchParams(location.search || ''); params.set('view', view);
+    const url = location.pathname + '?' + params + (slot ? '#' + slot : '');
+    history[push ? 'pushState' : 'replaceState'](null, '', url);
+  }
+  function openView(view) {
+    if (!VIEWS[view]) return;
+    state.view = view; writeAddress(view, state.slot); render(); window.scrollTo(0, 0);
+  }
   function openTester(slot) {
-    const next = slot ? '#' + slot : '';
-    if ((location.hash || '') === next) return;
-    if (next) location.hash = next;
-    else history.pushState(null, '', location.pathname);
-    fromAddress();
+    if (slot === state.slot && state.data) return;
+    writeAddress(state.view, slot); fromAddress();
   }
   function fromAddress() {
-    const slot = /^#(D-\d{3,5})$/.exec(location.hash || '');
-    const next = slot ? slot[1] : '';
-    if (next === state.slot && state.data) return;
-    state.slot = next; window.scrollTo(0, 0); load();
+    const nextSlot = (/^#(D-\d{3,5})$/.exec(location.hash || '') || [])[1] || '';
+    const requested = new URLSearchParams(location.search || '').get('view');
+    const nextView = VIEWS[requested] ? requested : 'overview';
+    if (nextSlot === state.slot && state.data) {
+      if (nextView !== state.view) { state.view = nextView; render(); window.scrollTo(0, 0); }
+      return;
+    }
+    state.view = nextView; state.slot = nextSlot; window.scrollTo(0, 0); load();
   }
   // Nickname a code in place: Enter or leaving the field saves, Escape keeps the old one.
   function editNickname(button) {
     const slot = button.dataset.nick;
+    const token = state.token;
     const input = document.createElement('input');
     input.className = 'nickedit'; input.maxLength = 40; input.value = nickOf(slot);
-    input.placeholder = 'Nickname for ' + slot; input.setAttribute('aria-label', 'Nickname for ' + slot);
+    input.placeholder = 'Discord ID or name'; input.setAttribute('aria-label', 'Discord ID or name for ' + slot);
     button.replaceWith(input); input.focus(); input.select();
     let done = false;
     const finish = async save => {
       if (done) return; done = true;
       const note = input.value.trim();
       if (!save || note === nickOf(slot)) { render(); return; }
+      input.disabled = true;
+      try {
       const r = await fetch('/v1/admin/codes/' + encodeURIComponent(slot), { method: 'POST',
-        headers: { authorization: 'Bearer ' + state.token, 'content-type': 'application/json' }, body: JSON.stringify({ note }) });
+        headers: { authorization: 'Bearer ' + token, 'content-type': 'application/json' }, body: JSON.stringify({ note }) });
       const d = await r.json().catch(() => ({}));
+      if (state.token !== token || !state.data) return;
       if (r.status === 401) { forget('That token was refused, so this browser has forgotten it. Enter it again.'); return; }
       if (!r.ok) { $('status').textContent = d.error || `Failed: ${r.status}`; render(); return; }
       const entry = (state.data.directory || []).find(x => x.slot === slot); if (entry) entry.note = d.code?.note ?? null;
       state.data.testers.forEach(t => { if (t.slot === slot) t.note = d.code?.note ?? null; });
       $('status').textContent = note ? `${slot} is now “${note}”.` : `${slot} has no nickname.`;
       fillPicker(); render();
+      } catch (e) { if (state.token === token) { $('status').textContent = 'Discord label was not saved. Check the connection and try again.'; render(); } }
     };
     input.addEventListener('keydown', e => {
       if (e.key === 'Enter') { e.preventDefault(); finish(true); }
@@ -871,17 +914,23 @@ function adminApp() {
     });
     input.addEventListener('blur', () => finish(true));
   }
-  async function act(action, slot) {
+  async function act(action, slot, button) {
     const body = action === 'free' ? { free_computers: true } : { status: action === 'revoke' ? 'revoked' : 'active' };
-    const name = plainName(slot);
+    const name = plainName(slot); const token = state.token;
     const question = action === 'revoke' ? `Revoke ${name}? Every computer using it locks at its next check-in.`
       : action === 'restore' ? `Restore ${name}?` : `Free every computer registered to ${name}? The tester can then unlock again on new ones.`;
-    if (!window.confirm(question)) return;
-    const r = await fetch('/v1/admin/codes/' + encodeURIComponent(slot), { method: 'POST',
-      headers: { authorization: 'Bearer ' + state.token, 'content-type': 'application/json' }, body: JSON.stringify(body) });
-    const d = await r.json().catch(() => ({}));
-    $('status').textContent = r.ok ? `${slot}: done.` : (d.error || `Failed: ${r.status}`);
-    if (r.ok) load();
+    if (!token || !window.confirm(question)) return;
+    if (button) button.disabled = true;
+    try {
+      const r = await fetch('/v1/admin/codes/' + encodeURIComponent(slot), { method: 'POST',
+        headers: { authorization: 'Bearer ' + token, 'content-type': 'application/json' }, body: JSON.stringify(body) });
+      const d = await r.json().catch(() => ({}));
+      if (state.token !== token) return;
+      if (r.status === 401) { forget(d.error || 'The admin token was refused.'); return; }
+      $('status').textContent = r.ok ? `${slot}: done.` : (d.error || `Failed: ${r.status}`);
+      if (r.ok) load();
+    } catch (e) { if (state.token === token) $('status').textContent = 'Could not change ' + slot + '. Check the connection and try again.'; }
+    finally { if (button) button.disabled = false; }
   }
 
   // ---------- events ----------
@@ -934,16 +983,21 @@ function adminApp() {
     if (!b) return;
     state.days = Number(b.dataset.days); store.set(RANGE, String(state.days)); syncRange(); load();
   });
+  $('sections').addEventListener('click', e => { const button = e.target.closest('[data-view]'); if (button && state.data) openView(button.dataset.view); });
   $('download').addEventListener('click', () => {
     if (!state.data) return;
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([JSON.stringify(state.data, null, 2)], { type: 'application/json' }));
-    a.download = `cartovox-delta-report-${state.data.generated_at.slice(0, 10)}.json`;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    downloadFile(JSON.stringify(state.data, null, 2), 'application/json', `cartovox-delta-report-${state.data.generated_at.slice(0, 10)}.json`);
   });
   $('dash').addEventListener('click', e => {
     const t = e.target;
+    const view = t.closest('[data-view]');
+    if (view) { openView(view.dataset.view); return; }
+    const investigate = t.closest('[data-investigate]');
+    if (investigate) { state.errors.q = investigate.dataset.investigate; openView('reliability'); return; }
+    const attention = t.closest('[data-tattention]');
+    if (attention) { state.testers.filter = attention.dataset.tattention; state.testers.page = 0; openView('testers'); return; }
+    if (t.id === 'name-codes') { state.testers.sort = 'slot'; state.testers.dir = 1; state.testers.filter = 'all'; state.testers.q = ''; state.testers.page = 0; render(); $('tq').focus(); return; }
+    if (t.id === 'tester-csv') { exportTesters(); return; }
     const sort = t.closest('th[data-sort]');
     if (sort) {
       const k = sort.dataset.sort; const s = state.testers;
@@ -951,17 +1005,19 @@ function adminApp() {
       document.querySelectorAll('#tt th[data-sort]').forEach(th => {
         if (th.dataset.sort === k) th.setAttribute('aria-sort', s.dir > 0 ? 'ascending' : 'descending'); else th.removeAttribute('aria-sort');
       });
+      $('tester-sort-note').textContent = 'Sorted by ' + (TESTER_COLS.find(col => col[0] === k)?.[1] || k) + '. Open a tester for their report; use ✎ to save a Discord ID or name.';
+      $('tsort').innerHTML = testerSortOptions();
       renderTesterRows(); return;
     }
     const page = t.closest('[data-tpage]');
     if (page && !page.disabled) { state.testers.page += Number(page.dataset.tpage); renderTesterRows(); return; }
     const tf = t.closest('[data-tfilter]');
-    if (tf) { state.testers.filter = tf.dataset.tfilter; state.testers.page = 0; document.querySelectorAll('[data-tfilter]').forEach(b => b.setAttribute('aria-pressed', String(b === tf))); renderTesterRows(); return; }
+    if (tf) { state.testers.filter = tf.dataset.tfilter; state.testers.page = 0; render(); return; }
     const fa = t.closest('[data-farea]');
     if (fa) { state.features.area = fa.dataset.farea; state.features.all = false; document.querySelectorAll('[data-farea]').forEach(b => b.setAttribute('aria-pressed', String(b === fa))); renderFeatureList(); return; }
     if (t.id === 'fall') { state.features.all = !state.features.all; renderFeatureList(); return; }
     const a = t.closest('button[data-act]');
-    if (a) { act(a.dataset.act, a.dataset.slot); return; }
+    if (a) { act(a.dataset.act, a.dataset.slot, a); return; }
     const pen = t.closest('button[data-nick]');
     if (pen) { editNickname(pen); return; }
     const open = t.closest('[data-open]');
@@ -969,10 +1025,19 @@ function adminApp() {
   });
   $('dash').addEventListener('input', e => {
     if (e.target.id === 'tq') { state.testers.q = e.target.value; state.testers.page = 0; renderTesterRows(); }
+    if (e.target.id === 'eq') { state.errors.q = e.target.value; renderErrorList(); }
+    if (e.target.id === 'pq') { state.jobs.q = e.target.value; renderJobList(); }
     if (e.target.id === 'fq') { state.features.q = e.target.value; state.features.all = false; renderFeatureList(); }
   });
+  $('dash').addEventListener('change', e => {
+    if (e.target.id === 'tsort') { const [key, dir] = e.target.value.split(':'); state.testers.sort = key; state.testers.dir = Number(dir); state.testers.page = 0; render(); $('tsort').focus(); }
+    if (e.target.id === 'tester-details') { state.testers.detailed = e.target.checked; render(); $('tester-details').focus(); }
+    if (e.target.id === 'fsort') { state.features.sort = e.target.value; renderFeatureList(); }
+    if (e.target.id === 'esort') { state.errors.sort = e.target.value; renderErrorList(); }
+    if (e.target.id === 'psort') { state.jobs.sort = e.target.value; renderJobList(); }
+  });
   let resize = 0;
-  window.addEventListener('resize', () => { clearTimeout(resize); resize = setTimeout(drawCharts, 150); });
+  window.addEventListener('resize', () => { clearTimeout(resize); resize = setTimeout(() => { syncRailOffset(); drawCharts(); }, 150); });
   document.addEventListener('visibilitychange', () => { if (!document.hidden && state.timer) load(); });
 
   const savedDays = Number(store.get(RANGE));
@@ -982,6 +1047,8 @@ function adminApp() {
   $('hide-test').checked = store.get(HIDE) !== '0';
   const savedToken = store.get(KEY) || '';
   state.slot = (/^#(D-\d{3,5})$/.exec(location.hash || '') || [])[1] || '';
+  const initialView = new URLSearchParams(location.search || '').get('view');
+  state.view = VIEWS[initialView] ? initialView : 'overview';
   if (savedToken) authenticate(savedToken, true); else $('t').focus();
 }
 
