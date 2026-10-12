@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The CartoVox guide — how to use it, and everything it does</title>
-  <meta name="description" content="The CartoVox Delta V7 guide: follow your first hour, find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
+  <meta name="description" content="The CartoVox Delta V8 guide: follow your first hour, find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
   <link rel="canonical" href="https://cartovox.org/guide/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The CartoVox guide — how to use it, and everything it does">
-  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V7; screenshots captured from released builds.">
+  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V8; screenshots captured from released builds.">
   <meta property="og:url" content="https://cartovox.org/guide/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <meta name="twitter:card" content="summary_large_image">
@@ -46,6 +46,7 @@
       <a href="#first-hour"><b>Your first hour</b><small>start here</small></a>
       <a href="/guide/videos/"><b>Quick video guides</b><small>6 videos</small></a>
       <a href="#where"><b>Where is it?</b><small>search</small></a>
+      <a href="#new-v8">New in Delta V8</a>
       <a href="#new-v7">New in Delta V7</a>
       <a href="#new-v6">New in Delta V6</a>
       <a href="#new-v5">New in Delta V5</a>
@@ -112,7 +113,7 @@
         the searchable control index or the workspace reference whenever you need a particular tool.
       </p>
       <p class="muted small">
-        Current as of <b>Delta V7 (0.9.8)</b>, the latest distributed release. <a href="#new-v7">New in Delta V7</a> and <a href="#new-v6">New in Delta V6</a> summarise what those releases add; the rest of the words still describe Delta V5, so where Delta V6 or V7 changed something they describe the earlier build; the key workspace screenshots are from Delta V3 and some deeper reference images from 0.9.1, so where Delta V5 moved a control the caption says so. Version-by-version changes are on the
+        Current as of <b>Delta V8 (0.9.9)</b>, the latest distributed release. <a href="#new-v8">New in Delta V8</a>, <a href="#new-v7">New in Delta V7</a> and <a href="#new-v6">New in Delta V6</a> summarise what those releases add; the rest of the words still describe Delta V5, so where Delta V6, V7 or V8 changed something they describe the earlier build; the key workspace screenshots are from Delta V3 and some deeper reference images from 0.9.1, so where Delta V5 moved a control the caption says so. Version-by-version changes are on the
         <a href="/releases/">release notes</a> page. The app also includes an offline manual under <b>Help</b>.
       </p>
       <p class="guide-video-link"><a href="/guide/videos/">Watch six quick video guides →</a> <span>Captioned walkthroughs from Delta V6, each under a minute.</span></p>
@@ -330,6 +331,32 @@
       </table>
       <p class="muted small">Nothing matched? The sections below cover surfaces this index does not name, and the
       <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord</a> is the place to ask.</p>
+    </section>
+    <section id="new-v8">
+      <p class="eyebrow">New in Delta V8</p>
+      <h2>Climates where you place them, and builds that finish.</h2>
+      <p class="section-lede">
+        Delta V8 was shared with invited testers on 12 October 2026, the same day as Delta V7, with installers for
+        Apple Silicon Macs, Windows x64 and Linux x64. It fixes builds, updates and installs that Delta V7 could not
+        finish, and adds what testers asked for next. Your access code carries over and the licence is unchanged
+        (still version 2.3). Worlds made with Delta V7 or Delta V6 open as they are. This build makes placed deserts
+        and dry country drier, so the Library's <b>Update to this version</b> is offered for Delta V7 worlds too; a
+        world without a placed desert or dry zone rebuilds exactly as it was. The full account is in the
+        <a href="/releases/#v0.9.9">release notes</a>.
+      </p>
+      <ul class="feat">
+        <li><b>Place a climate in plain words and see it on the cards</b>: Must have and Prefer understand a climate in a place ("a large desert in the centre", "jungle in the south", "tundra across the north") and offer to place it, as your description does, and Avoid is checked on each world. Candidate cards draw the climates you placed (a placed desert is stippled sand), a placed climate lands in the same place on the card and in the built world, and both check how much of the zone really became that climate. If you search before applying what CartoVox read in your description, it asks whether to apply those suggestions first. <a href="#search">Candidates</a>.</li>
+        <li><b>A desert you place is a desert, even on a cool continent</b>: a placed desert now aims well under the dryness line the biome map draws deserts by, wherever it lies, so it holds on a cool or wet continent too, and dry country aims at the middle of the steppe band. On the test cards every placed desert covers 82–98% of its zone, and a card's check asks for at least 60%. A region you describe as desert or dry follows the same rule. <a href="#brief">The World Brief</a>.</li>
+        <li><b>Imported and drawn worlds with rivers build again</b>: in Delta V7 a world made from your own map or drawing failed near the end of the build whenever one of your rivers reached the sea, on a first build and on Update to this version from Delta V6. A river that reaches the sea now meets it at sea level, including one drawn off the top or bottom of a whole-world map. Worlds that built in Delta V7 are unchanged. <a href="#import">Import a map</a> · <a href="#draw">Draw your world</a>.</li>
+        <li><b>Web Mercator and UTM maps land where they belong</b>: shapefiles and GeoJSON in Web Mercator or a UTM zone are turned back into longitude and latitude from their <code>.prj</code> or <code>crs</code>, and elevation GeoTIFFs in either are resampled onto longitude and latitude. The import report says when a file was reprojected and from what, and a coordinate system CartoVox cannot convert yet is named, with what to export instead. <a href="#import">Import a map</a>.</li>
+        <li><b>A GeoJSON or shapefile keeps every landmass, however thin</b>: a vector file's outlines are kept exactly as drawn rather than cleaned away as stray pen lines, its narrow water is never read as rivers and filled in, and its longitude and latitude place its land on the whole planet by default instead of shrinking it into a region. <a href="#import">Import a map</a>.</li>
+        <li><b>Photos of paper maps combined from several files</b> read as drawn maps, not as solid rectangles of land: each sheet is read the way a single photo is, with the table left out, the paper as paper and your drawn lines as the coast. The trace window reads only the sheets, so <b>Auto trace</b> and <b>Use detected coastline</b> start from your coasts, and the combine window's option now says what it does: <b>Ignore margins and the table around paper</b>. <a href="#import">Import a map</a>.</li>
+        <li><b>Tracing a coastline keeps your corrections</b>: <b>Paint land</b>, <b>Paint water</b> and <b>Protect region</b> are saved with the tracing draft, so <b>Save now</b>, reopening, a reload and <b>Load draft</b> bring them back, and the finish button offers <b>Use corrected coastline</b> when nothing is traced yet. Closing without using a trace now says so on the import review.</li>
+        <li><b>Deep Time and dry worlds finish</b>: every Deep Time start, and about half of the "No oceans" worlds, failed at the very end in Delta V7; both now finish, and a Deep Time world's climate maps match its era. "No oceans" and "Inland seas only" worlds no longer fail land-shape checks they never could meet, such as continent and island counts; <b>What the search checks</b> and Choose say which were left out and why. <a href="#deeptime">Deep Time</a> · <a href="#search">Candidates</a>.</li>
+        <li><b>Faster builds where memory is spare</b>: the climate seasons are worked out side by side, as many at once as free memory and cores allow (up to four), for new worlds, rebuilds, drafts, resolution upgrades and Update to this version, and the world comes out exactly the same. The <b>Fast</b> build option is gone because every build now does what it did: Create's Build performance offers <b>Standard</b> and <b>Low memory</b>. Every build, rebuild and update now says in its log how much memory it needs. <a href="#preflight">Build</a>.</li>
+        <li><b>CartoVox starts on current Linux desktops</b>: the Linux installers now use your system's own graphics, font and C++ libraries and draw with its OpenGL, so distributions such as Arch and Ubuntu 24.04 no longer stop at start with "EGL not available" or a blank window, and desktops that prefer Vulkan no longer open a black one. <code>check-runtime.sh</code> names any missing system library and what to install.</li>
+        <li><b>Also fixed</b>: removing a river with the Select tool no longer stops later rebuilds; opening a Delta V6 world for the first time no longer fails, and a rename made while it opens is kept; a world's lore is never read half-written; failed or cancelled rebuild drafts no longer use up a world's three; and <b>Find 24 more worlds</b> no longer repeats a name the first twelve used.</li>
+      </ul>
     </section>
     <section id="new-v7">
       <p class="eyebrow">New in Delta V7</p>

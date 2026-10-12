@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox Delta V8 — full release notes</title>
+  <meta name="description" content="The full CartoVox Delta V8 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.9.9/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox Delta V8 — full release notes">
+  <meta property="og:description" content="The full CartoVox Delta V8 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.9.9/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
+  <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
+  <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
+  <link rel="stylesheet" href="/css/site.css?v=194d9d8758">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.8/">Delta V7</a>
+      <a href="/releases/v0.9.7/">Delta V6</a>
+      <a href="/releases/v0.9.6/">Delta V5</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-10-12</p>
+      <h1>CartoVox Delta V8</h1>
+      <p class="lede">Place a climate in plain words and see it on the cards, build imported and drawn worlds with rivers again, bring in Web Mercator and UTM maps, start on current Linux desktops, and build faster with spare memory.</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.9.9"><div class="doc-body">
+<p>Delta V8 is the eighth Delta release, shared with invited testers on 12 October 2026, the same day as Delta V7. It fixes builds, updates and installs that Delta V7 could not finish, found by testers and by a sweep of the paths testers use most, and adds what testers asked for next. Your Delta access code carries over and the licence is unchanged (version 2.3). Installers are available for Apple Silicon Macs, Windows x64 and Linux x64. Worlds made with Delta V7 or Delta V6 open as they are. This build makes placed deserts and dry country drier, so Library offers Update to this version for Delta V7 worlds too; a world without a placed desert or dry zone rebuilds exactly as it was.</p>
+<h3 id="highlights">Highlights</h3>
+<ul>
+<li><strong>Place a climate in plain words and see it on the cards.</strong> "A large desert in the center of the continent" now places one from Must have, Prefer or your description, every candidate card draws it, and it is a desert even on a cool continent.</li>
+<li><strong>Imported and drawn worlds with rivers build and update again</strong>, on a first build and on Update to this version from Delta V6.</li>
+<li><strong>Maps in Web Mercator or UTM import where they belong:</strong> shapefiles, GeoJSON and elevation GeoTIFFs are reprojected to longitude and latitude, and a GeoJSON or shapefile keeps every landmass, however thin.</li>
+<li><strong>Photos of paper maps combined from several files read as drawn maps,</strong> not as solid rectangles of land, and can be traced.</li>
+<li><strong>Linux installers start on current distributions</strong> such as Arch and Ubuntu 24.04, using your system's own graphics and font libraries.</li>
+<li><strong>Deep Time starts and dry ("No oceans") worlds finish</strong> instead of failing at the very end of the build, and "No oceans" worlds no longer fail checks they never could.</li>
+<li><strong>Worlds build faster wherever your computer has memory to spare.</strong></li>
+<li><strong>Tracing a coastline keeps your painted corrections</strong>, and the finish button can use them.</li>
+<li><strong>Removing a river no longer stops later rebuilds</strong>, and a world's lore is never lost or half-written while it first opens.</li>
+</ul>
+<h3 id="imported-and-drawn-worlds">Imported and drawn worlds</h3>
+<ul>
+<li><strong>Fixed: imported and drawn worlds with rivers build and update again.</strong> In Delta V7, a world made from your own map or drawing failed near the end of hydrology with "Below-sea coastal land requires inundation or an explicit barrier" whenever one of your rivers reached the sea. That happened on a new build and on Update to this version from Delta V6. Your rivers were cut down to 8 m below sea level at their mouths, and Delta V7's water routing rightly refuses land below the sea beside the ocean. A river that reaches the sea now meets it at sea level. A river drawn into an inland basin still ends there as before. Worlds that built in Delta V7 are unchanged, because their river mouths never went below sea level.</li>
+<li><strong>Fixed: a river drawn off the top or bottom of a whole-world map.</strong> With sea on the far side of the pole, the same error stopped the build: the river was cut below the sea it ran into across the pole. It now meets that sea at sea level.</li>
+</ul>
+<ul>
+<li><strong>Shapefiles and GeoJSON in Web Mercator or a UTM zone now import.</strong> CartoVox reads the coordinate system from the <code>.prj</code> or the GeoJSON <code>crs</code> and turns the coordinates back into longitude and latitude, so your coastline lands where it belongs. Before, a projected shapefile was refused with a request to reproject it yourself.</li>
+<li><strong>Elevation GeoTIFFs in Web Mercator or UTM are resampled onto longitude and latitude,</strong> so the import reports their true span in degrees. No-data areas, and the corners outside a rotated tile, are read as sea.</li>
+<li><strong>The import report says when a file was reprojected and from what,</strong> and notes when its datum is not WGS 84 (a shift of a few metres, far below one world cell).</li>
+<li><strong>A coordinate system CartoVox cannot convert yet is named,</strong> with what to export instead (for example Lambert-93). A shapefile or GeoJSON in one is refused; a GeoTIFF in one still imports as a plain heightmap, as before, and the report explains why. Files already in longitude and latitude import exactly as before.</li>
+</ul>
+<ul>
+<li><strong>Fixed: tracing a coastline keeps your painted corrections.</strong> Paint land, Paint water and Protect region only corrected the detection preview: Save now did not keep them, closing the window wiped them, and the finish button stayed greyed out ("Draw at least one land outline") because nothing had been traced. Corrections, detection marks and reading settings are now saved with the tracing draft, so Save now, reopening, a reload and Load draft bring them back. "Use detection for tracing" stays in reach while you paint, and the finish button offers "Use corrected coastline" when nothing is traced yet. Closing without using a trace now says so on the import review, and Load draft shows what each draft holds.</li>
+</ul>
+<ul>
+<li><strong>Fixed: a GeoJSON or shapefile keeps every landmass, however thin.</strong> A narrow continent drawn in QGIS was being cleaned away as a stray pen line by "Remove small artifacts", which suits a scanned picture, not polygons. A vector file's outlines are now kept exactly as drawn, its narrow water is never read as rivers and filled in, and its longitude and latitude place its land on the whole planet by default instead of shrinking it into a region.</li>
+</ul>
+<ul>
+<li><strong>Fixed: photos of paper maps combined from several files.</strong> Every sheet came back as a solid rectangle of land: the table around each photo was kept, and the paper itself was read as land. Each sheet is now read the way a single photo is, with the table left out, the paper as paper and your drawn lines as the coast. Tracing a combined map works too: the trace window reads only the sheets in every Map reading, so Auto trace and Use detected coastline start from your coasts. The combine window's option now says what it does: "Ignore margins and the table around paper".</li>
+</ul>
+<h3 id="create">Create</h3>
+<ul>
+<li><strong>Fixed: Deep Time starts finish again.</strong> In Delta V7 every world started from Deep Time failed at the very end with "World publication validation failed: lore.military_evidence". The seasons are now read with the chosen era's own orbit, as the build used them, so these worlds finish and their climate maps match the era.</li>
+<li><strong>Fixed: dry worlds ("No oceans") finish again.</strong> About half of them failed at the very end with "World publication validation failed: hydrology.remaining_basins". The lake that gathers at the planet's lowest point is now accepted as the world's final water body.</li>
+</ul>
+<ul>
+<li><strong>"No oceans" and "Inland seas only" no longer fail checks they never could.</strong> With no world ocean the land is one mass, so the land shape's checks that need one (continent and island counts, landmass shares, coasts and shelf seas) are left out instead of failing on every card. What the search checks and Choose say which ones and why. A Must have, Prefer or Avoid you typed that asks for continents or islands is still measured, and the brief says it contradicts your Land choice; a Must have that cannot be met stops the build, as a contradiction always has.</li>
+<li><strong>What the search checks lists your planet's own checks too,</strong> such as the Ice age planet's land at high latitudes, which every card was already checked against.</li>
+<li><strong>Fixed: Find 24 more worlds could repeat a name</strong> the first twelve already used, such as a second World P.</li>
+</ul>
+<ul>
+<li><strong>Place a climate in plain words and see it on the cards.</strong> "A large desert in the center of the continent" was understood, but stayed a suggestion until you pressed Apply, and the candidate cards never drew a placed climate, so a desert you asked for only appeared, if at all, after building. Now: <ul><li>Must have and Prefer understand a climate in a place ("a large desert in the centre", "jungle in the south", "tundra across the north") and offer to place it, just as your description does. Avoid ("Avoid: a desert in the centre") is checked on each world.</li><li>Candidate cards show the climates you placed (a placed desert is drawn as stippled sand), and each card, and the world you build from it, checks how much of the zone really became that climate.</li><li>A placed climate lands in the same place on the card and in the built world.</li><li>If you press Search candidates before applying what CartoVox read in your description, it asks whether to apply those suggestions first or search without them, and lists each one.</li></ul></li>
+<li><strong>A desert you place is a desert on a cool or wet continent too.</strong> A placed desert was steered toward 150 mm of rain a year wherever it lay. That is desert in warm country, but below about 8 °C it is steppe or even green, and a tenth of the original rain always stayed, so a desert placed on a continent near a pole hardly showed: on 32 test cards of "a large desert in the center of the continent", 7 had less than 15% of the zone as desert, and two of the worlds built from them held 9% and 6%. A placed desert now aims well under the dryness line the biome map draws deserts by, where it lies, is drawn toward it in proportion so wet ground dries as surely as dry ground, and never adds rain to ground that is already drier. Dry country aims at the middle of the steppe band the same way. On the same cards every desert covers 82–98% of its zone, and those two worlds now hold 94% and 89%; a card's check asks for at least 60%. A region you describe as desert or dry follows the same rule. Worlds without a placed desert or dry country build exactly as before; a world with one comes out drier there when you rebuild it or take Update to this version.</li>
+</ul>
+<h3 id="opening-delta-v6-worlds">Opening Delta V6 worlds</h3>
+<ul>
+<li><strong>Fixed: opening a Delta V6 world for the first time could fail.</strong> A world from Delta V6 gains its states and counties when it first opens, and the map panel and a rename can ask for them at the same moment. Two of those writes collided, the world answered with a server error, and a rename made just then could be lost. Each write now finishes safely.</li>
+<li><strong>Fixed: a world's lore is never read half-written, and an edit saved while it opens is kept.</strong> Rebuilding the Compendium rewrote the lore file in place, so a panel reading it at that moment could find it empty or cut short, and opening a world without saved counties could write back a copy read before a rename you made meanwhile. The file is now replaced in one step and re-read before it is extended. City plans still being drawn no longer appear in the Atlas, and opening the same thumbnail twice at once no longer fails.</li>
+</ul>
+<h3 id="editing-a-built-world">Editing a built world</h3>
+<ul>
+<li><strong>Fixed: removing a river no longer stops the world rebuilding.</strong> After a river was removed with the Select tool, every rebuild ran to the end and then failed with "World publication validation failed: hydrology.terrain_repair". The river heights are now measured on the channels the world keeps.</li>
+<li><strong>Fixed: failed or cancelled rebuild drafts no longer use up the limit.</strong> A draft refused because another job was running counted as one of the three a world may hold, so three refused clicks blocked new drafts until each was discarded.</li>
+</ul>
+<h3 id="builds-and-updates">Builds and updates</h3>
+<ul>
+<li><strong>Worlds build faster wherever your computer has memory to spare.</strong> The climate seasons are now worked out side by side instead of one after another, for new worlds, rebuilds, drafts, resolution upgrades and Update to this version, as many at once as free memory and cores allow (up to four). The world comes out exactly the same: on a test world every saved number was identical, and the climate step took 17 s instead of 31 s.</li>
+<li><strong>The Fast build option is gone,</strong> because every build now does what it did. Create's Build performance offers Standard and Low memory, and Low memory still works through one season at a time to keep its memory use down.</li>
+<li><strong>Every build, rebuild and update says how much memory it needs.</strong> Unless you chose Low memory, the build log opened with "peak memory could not be estimated" on every computer: only Low memory builds declared their peak. New worlds, rebuilds, Update to this version, rebuilt drafts and resolution upgrades now state it, for example "needs about 4.4 GB; 9.1 GB free of 16.0 GB", measured for the world's own grid (or the finer grid of an upgrade). How the world is built does not change.</li>
+</ul>
+<h3 id="linux">Linux</h3>
+<ul>
+<li><strong>Fixed: CartoVox starts on current Linux desktops again.</strong> The Linux installers carried old copies of the C++ runtime, graphics and font libraries from the system they were built on. On current distributions such as Arch and Ubuntu 24.04, your system's own graphics driver could not load beside them, so Delta V7 could stop at start with "EGL not available", "Could not initialize GLX" or a blank window, and filled the log with fontconfig errors. CartoVox now uses your system's own graphics, font and C++ libraries, and draws with your system's OpenGL. <code>check-runtime.sh</code> names any system library that is missing and what to install, and both Linux downloads are a little smaller.</li>
+<li><strong>Fixed: a black window on Linux desktops that prefer Vulkan.</strong> Some desktops ask every Qt app to draw with Vulkan, and CartoVox's map and panels come from a web view that draws with OpenGL, so the window opened black ("Backend texture is not a Vulkan texture"). CartoVox now always draws its window with OpenGL, and uses your system's own X11 library, which removes the "Xlib is not thread-safe" warning.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=b6530a3583" defer></script>
+</body>
+</html>
