@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The CartoVox guide — how to use it, and everything it does</title>
-  <meta name="description" content="The CartoVox Delta V6 guide: follow your first hour, find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
+  <meta name="description" content="The CartoVox Delta V7 guide: follow your first hour, find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
   <link rel="canonical" href="https://cartovox.org/guide/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The CartoVox guide — how to use it, and everything it does">
-  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V6; screenshots captured from released builds.">
+  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V7; screenshots captured from released builds.">
   <meta property="og:url" content="https://cartovox.org/guide/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <meta name="twitter:card" content="summary_large_image">
@@ -46,6 +46,7 @@
       <a href="#first-hour"><b>Your first hour</b><small>start here</small></a>
       <a href="/guide/videos/"><b>Quick video guides</b><small>6 videos</small></a>
       <a href="#where"><b>Where is it?</b><small>search</small></a>
+      <a href="#new-v7">New in Delta V7</a>
       <a href="#new-v6">New in Delta V6</a>
       <a href="#new-v5">New in Delta V5</a>
       <a href="#new-v4">New in Delta V4</a>
@@ -111,7 +112,7 @@
         the searchable control index or the workspace reference whenever you need a particular tool.
       </p>
       <p class="muted small">
-        Current as of <b>Delta V6 (0.9.7)</b>, the latest distributed release. <a href="#new-v6">New in Delta V6</a> summarises what it adds; the rest of the words describe Delta V5; the key workspace screenshots are from Delta V3 and some deeper reference images from 0.9.1, so where Delta V5 moved a control the caption says so. Version-by-version changes are on the
+        Current as of <b>Delta V7 (0.9.8)</b>, the latest distributed release. <a href="#new-v7">New in Delta V7</a> and <a href="#new-v6">New in Delta V6</a> summarise what those releases add; the rest of the words still describe Delta V5, so where Delta V6 or V7 changed something they describe the earlier build; the key workspace screenshots are from Delta V3 and some deeper reference images from 0.9.1, so where Delta V5 moved a control the caption says so. Version-by-version changes are on the
         <a href="/releases/">release notes</a> page. The app also includes an offline manual under <b>Help</b>.
       </p>
       <p class="guide-video-link"><a href="/guide/videos/">Watch six quick video guides →</a> <span>Captioned walkthroughs from Delta V6, each under a minute.</span></p>
@@ -330,6 +331,34 @@
       <p class="muted small">Nothing matched? The sections below cover surfaces this index does not name, and the
       <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord</a> is the place to ask.</p>
     </section>
+    <section id="new-v7">
+      <p class="eyebrow">New in Delta V7</p>
+      <h2>A brief that wins, water that settles, and a table to play at.</h2>
+      <p class="section-lede">
+        Delta V7 was shared with invited testers on 12 October 2026, with installers for Apple Silicon Macs,
+        Windows x64 and Linux x64. Your access code carries over, and 500 new codes join it. The licence is unchanged
+        (still version 2.3). Worlds made with Delta V6 open as they are, but this build lays out water, lakes and
+        climate differently, so the same seed rebuilt here gets different ground: the Library's <b>Update to this
+        version</b> rebuilds a world when you choose to, keeping the old copy beside it. The full account is in the
+        <a href="/releases/#v0.9.8">release notes</a>.
+      </p>
+      <ul class="feat">
+        <li><b>Your brief wins over the planet type</b>: Create composes every world as land shape, then planet type, then your brief, then Advanced. Warm, Cold, Lush, Arid and the other graded choices move the world from where the shape and planet put it, and each control's middle (<b>From the planet</b> or <b>From the world</b>) keeps the world's own value. Describe says where every value came from, and Advanced opens on the combined values, with your own edits still winning. <a href="#create">Create</a>.</li>
+        <li><b>A chosen card keeps its promise</b>: candidates are drawn from the same settings their world is built from, and the built world is checked against the card you chose. Every land shape checks for what makes it that shape, <b>Best brief match</b> puts the safest matches first, and a <b>Prefer</b> box beside Must have and Avoid raises a world's match without ruling any world out. <a href="#search">Candidates</a>.</li>
+        <li><b>Lakes settle and rivers run downhill</b>: lakes fill, spill and merge hollow by hollow, rivers follow the actual ground, erosion follows real catchments, and moisture is carried round the globe without losing water. Inspecting a lake shows its water budget, and each lake is named Freshwater or Salt from its own regime. <a href="#inspector">The cell inspector</a>.</li>
+        <li><b>Seasons belong to the place</b>: climate follows the finished terrain and is read at each place's own height. Southern places have southern seasons, Mediterranean means a dry summer, and monsoon winds turn with the seasons.</li>
+        <li><b>A river through a lake is one river</b>, named above and below the lake and ranked by its whole basin. Held passes are real cols on every road over them.</li>
+        <li><b>History and trade follow the ground</b>: Chronicle's Living History conserves food; famine, migration and expansion follow places people can reach; goods cost what their journey costs; and every port has a sea lane. <a href="#chronicle">Chronicle</a>.</li>
+        <li><b>Countries, states and counties</b>: political divisions are ready by default, and an older world fills in missing ones from its saved realm territories. <b>States</b> and <b>Counties</b> are map layers under Life &amp; settlement, and <b>Political hierarchy</b> chooses country → state → county, kingdom → duchy → county or your own titles. <a href="#views">Map views</a>.</li>
+        <li><b>Play inside CartoVox</b>: a native tabletop with a GM desk, tokens, grid snapping, measurement, HP and conditions, turn order, dice, fog, live token sight and doors, and <b>Open player window</b> for a second display at the table. Open it from a scene's <b>Open tabletop</b>, <b>Play</b> in the scene library, or <b>Tabletop</b> in the Library or Campaign. The player view leaves out GM notes, private rolls and unrevealed tokens. <a href="#scenes">Scenes</a>.</li>
+        <li><b>Make, a fifth workspace</b>: beside Create, World, Write and Library, Make offers three illustrated paths to a finished piece (a playable region, maps in a chapter, or finished map artwork). Each path is three steps that open the editor you need; opening a step never creates content or exports a file by itself.</li>
+        <li><b>Find a layer, keep a view, shortlist places</b>: <b>Map layers</b> searches every layer by name, description and category, with All, Favourites and Recent; star a layer to keep it. <b>Saved views</b> keeps named views of the World map (layer, pan and zoom, projection, appearance, filters, borders and places) that travel in project backups, and <b>Find places</b> filters the world's places by kind, realm, biome, elevation, climate, population and more, with up to 30 saved shortlists. <a href="#views">Map views</a>.</li>
+        <li><b>Closing during a build asks first</b>: if a world is being built, rebuilt or drawn when you close the window or quit, CartoVox says how far along it is and asks; <b>Cancel</b> keeps it open so the build can finish. The question no longer freezes the app.</li>
+        <li><b>Smaller installers</b>: the offline starter worlds are gone. A starter world you already saved stays an ordinary editable project in your Library, with its notes and backups. <a href="#library">Library</a>.</li>
+        <li><b>500 more access codes</b>: Delta V7 accepts 551 codes, up from 51. D-052 to D-551 are new, so Delta can open to the whole Discord server, and every earlier code still works.</li>
+        <li><b>Also new</b>: three one-click themes in App settings (Abyssal Cartographer, Ember Forge and Sage Observatory); a new Atlas Compass logo; and Atlas VTT collections that Scene Studio and Settlement Studio export and Scene Studio imports back. <a href="#settings">App settings</a> · <a href="#scenes">Scenes</a>.</li>
+      </ul>
+    </section>
     <section id="new-v6">
       <p class="eyebrow">New in Delta V6</p>
       <h2>Starter worlds, your own language, and the world at the table.</h2>
@@ -342,7 +371,7 @@
         account is in the <a href="/releases/#v0.9.7">release notes</a>.
       </p>
       <ul class="feat">
-        <li><b>Starter worlds, offline</b>: the Library offers seven saved genre worlds with editable copies and no build. Each uses Sketch detail (360 × 180), reopening one keeps your edits, and the size of each independent copy is shown. <a href="#library">Library</a>.</li>
+        <li><b>Starter worlds, offline</b>: the Library offers seven saved genre worlds with editable copies and no build. Each uses Sketch detail (360 × 180), reopening one keeps your edits, and the size of each independent copy is shown. Delta V7 removed the gallery; a starter world you saved stays in your Library. <a href="#library">Library</a>.</li>
         <li><b>Choose while candidates arrive</b>: passing worlds appear during the seed search, so you can choose, compare or annotate an early match, and it stays available when the final ranking finishes. A reload keeps the partial shortlist and its status. <a href="#create">Create</a>.</li>
         <li><b>The interface in your language</b>: common navigation, settings and authoring actions offer German, French, Spanish, Portuguese and Polish. What you have written stays exactly as it is, and specialist prose can remain in English.</li>
         <li><b>Build with less memory</b>: Create offers a fixed 720 × 360 profile with four seasons, standard map detail and the illustrated plates deferred. The preflight recommends it on 8 GB machines. <a href="#preflight">Preflight</a>.</li>
