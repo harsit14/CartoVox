@@ -73,6 +73,48 @@ details.tbl,details.more{margin-top:12px}details.tbl summary,details.more summar
 @media(max-width:820px){.shell{grid-template-columns:minmax(0,1fr)}.rail{min-width:0;position:sticky;top:0;z-index:6;padding:9px 14px;background:var(--page);border-bottom:1px solid var(--line)}.rail-label,.rail-note{display:none}.nav{display:flex;overflow:auto;gap:5px}.nav button{flex:none;padding:7px 10px;font-size:12px}.nav .count{display:none}.top{position:relative}.top-inner{padding:14px}.brand-row{align-items:flex-start}.brand small{font-size:10px}.brand h1{font-size:20px}.brand-mark{width:30px;height:30px}.utility{gap:5px}#status{width:100%;order:3;text-align:left;max-width:none;font-size:11px}.utility details{order:2}.filters{gap:9px;margin-top:12px}.filters label{font-size:11px}main{padding:20px 14px 40px}.page-heading h2{font-size:24px}.g2{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.tile .value{font-size:29px}.tile .note{font-size:11px}.page-heading{align-items:start}.scope-badge{white-space:normal}.card{padding:16px}.insight{grid-template-columns:28px minmax(0,1fr)}.insight>button{grid-column:2;justify-self:start}.definition-grid{grid-template-columns:1fr}.profile .acts{flex-wrap:wrap}}
 @media(max-width:480px){.scale span{flex-basis:100%;margin-left:0!important}.g3,.g4{grid-template-columns:1fr}.brand-row{flex-wrap:wrap}.utility{width:100%;justify-content:flex-start}.utility #status{order:0;width:auto;flex:1}.top-inner{padding:12px}.filters>label:has(#who){width:100%;display:flex;align-items:center}.filters #who{flex:1;max-width:none}.seg{width:100%;display:flex}.seg button{flex:1;padding:7px 8px;font-size:12px}.page-heading{display:block}.scope-badge{display:inline-block;margin-top:8px}.tile{padding:12px}.tile .value{font-size:26px}.tile .label{font-size:11px}.tile .label .icon{display:none}.head{align-items:start}.table-tools{width:100%}.table-tools input{width:100%;flex:1}.feed li{grid-template-columns:16px minmax(0,1fr)}.feed time{grid-column:2}.error-item summary{grid-template-columns:42px minmax(0,1fr)}.error-item summary>time{grid-column:2;font-size:11px}.login{margin:8vh 14px;padding:24px}.hb,.hb.wide{grid-template-columns:minmax(70px,42%) minmax(0,1fr) auto}.hb .v small{display:block;margin:2px 0 0}.pagination{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.naming-mode #bar .filters{display:none}
+/* A single content viewport: lists no longer fight a second page scrollbar. */
+html,body{height:100%;overflow:hidden}body{height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+.top{position:relative;flex:none}.shell{width:100%;flex:1;min-height:0;overflow:hidden;align-items:stretch}
+.rail{position:static;overflow:auto}.rail-note{font-size:13px}.nav button{font-size:15px;padding:11px}
+main{height:100%;min-height:0;overflow:auto;scrollbar-gutter:stable;transition:none}main.loading{opacity:1}
+.scroll{max-height:none;overscroll-behavior:auto;scrollbar-gutter:stable}.feed{max-height:none;overflow:visible}
+#status{width:280px;max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}
+.card h2,.card h3{font-size:17px}.card .sub,.footnote,.row-note,.error-meta{font-size:13px}
+table{font-size:14px}th{font-size:13px;font-weight:600;color:var(--ink2)}.pill{font-size:13px}
+.profile [data-label-slot]{display:inline-flex;align-items:center;gap:10px}.profile [data-label-slot] strong{font-size:22px}.profile [data-label-slot] small{font-size:13px;color:var(--muted)}
+.identity strong{font-size:15px}.identity small{font-size:13px}.pen{font-size:16px;padding:4px 7px}
+.filters label{font-size:14px}.filters select,.seg button{font-size:14px}.tile .label,.tile .tile-action{font-size:14px}.tile .note{font-size:13px}
+.page-heading p,.scope-badge{font-size:14px}.page-heading h2{font-size:28px}.hb,.stat-row,.error-title,.feed li{font-size:14px}
+.tester-view{display:flex;flex-direction:column;padding-top:16px;padding-bottom:16px;overflow:hidden}
+.tester-view>.page-heading{flex:none;margin-bottom:12px;align-items:center}.tester-view>.page-heading h2{font-size:24px;margin:0}
+.tester-view>.page-heading .eyebrow,.tester-view>.page-heading p,.tester-view>.footnote{display:none}
+.tester-card{display:flex;flex-direction:column;flex:1;min-height:0;padding:0;overflow:hidden;border-radius:10px}
+.tester-toolbar{padding:14px 16px;flex:none;border-bottom:1px solid var(--line)}.tester-toolbar .section-head{margin-bottom:12px}
+.tester-modes{display:flex;border:1px solid #555c68;border-radius:8px;overflow:hidden;flex:none}
+.tester-modes button{border:0;border-radius:0;padding:8px 14px;font-size:14px}.tester-modes button[aria-pressed=true]{background:var(--gold);color:#211a0d;font-weight:650}
+.tester-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px}.tester-controls input[type=search]{width:250px;max-width:100%}
+.tester-controls select{max-width:220px}.filter-toggle{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--ink);font-weight:550;white-space:nowrap}
+.filter-toggle b{color:var(--gold);font-size:13px}.filter-toggle input{width:16px;height:16px}.detail-toggle{font-size:13px}
+.tester-scroll{flex:1;min-height:0;max-height:none;overflow:auto;scroll-padding-top:44px;overflow-anchor:none}
+.tester-table{min-width:820px}.tester-table th{z-index:2}.tester-table td{padding:10px 12px}.tester-table .identity{display:inline-block;vertical-align:middle}
+.tester-footer{flex:none;padding:10px 16px;border-top:1px solid var(--line);background:#171a20;font-size:13px;color:var(--ink2);min-width:0}
+.tester-footer .pagination{margin:0 0 5px;font-size:14px}.tester-footer #tester-sort-note{font-size:12px;color:var(--muted)}
+.tester-footer #name-status{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:21px}
+#names-help{display:block;font-size:12px;color:var(--muted)}
+.names-table{table-layout:fixed;width:100%;font-size:14px}.names-table .code-col{width:84px}.names-table th{z-index:2;padding:10px 9px;background:#252a33}
+.names-table td{height:38px;padding:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.names-table .code-key{font:13px ui-monospace,monospace;padding:0 9px;color:#d3d7e0;background:#20242c;white-space:nowrap;user-select:all}
+.name-cell{position:relative;height:37px}.name-cell input{width:100%;height:100%;min-width:0;border:0;border-radius:0;padding:6px 28px 6px 10px;background:#181c23;color:var(--ink);font-size:14px;outline-offset:-2px}
+.name-cell input::placeholder{color:#8d95a4}.name-cell input:hover{background:#242a34}.name-cell input:focus{outline:2px solid var(--gold);background:#262a31;z-index:1;position:relative}
+.cell-status{position:absolute;right:9px;top:7px;pointer-events:none;z-index:2;font-size:14px;color:var(--muted)}
+.name-cell[data-state=saved] .cell-status{color:var(--good)}.name-cell[data-state=dirty] .cell-status{color:var(--gold)}
+.name-cell[data-state=error] input{box-shadow:inset 0 0 0 2px var(--bad)}.name-cell[data-state=error] .cell-status{color:var(--bad);font-weight:700}
+@media(max-width:1150px){.tester-controls{gap:8px}.tester-controls input[type=search]{width:210px}}
+@media(max-width:820px){.shell{grid-template-rows:auto minmax(0,1fr)}.rail{padding:7px 12px;overflow:hidden}.nav button{font-size:14px;padding:8px 10px}.top-inner{padding:10px 12px}.filters{margin-top:10px;gap:8px}.filters label{font-size:13px}.utility #status{width:170px;max-width:170px;font-size:12px}.tester-view{padding:12px}.tester-toolbar{padding:12px}.tester-controls{gap:8px 10px}.tester-footer{padding:8px 12px}.tester-view>.page-heading h2{font-size:21px}.tester-view>.page-heading .scope-badge{font-size:12px}.tester-modes button{padding:7px 10px}.tester-controls .filter-toggle{font-size:13px}.tester-controls select{max-width:210px}}
+@media(max-width:480px){.tester-view>.page-heading{display:flex;margin-bottom:8px}.tester-view>.page-heading .scope-badge{display:none}.tester-toolbar .section-head{gap:8px}.tester-toolbar h2{font-size:15px}.tester-controls input[type=search]{width:100%}.tester-controls select{max-width:100%;flex:1}.tester-modes button{font-size:13px;padding:6px 9px}.tester-controls .filter-toggle{font-size:12px}#names-help{font-size:11px}.tester-footer{font-size:12px}.names-table .code-col{width:78px}.tester-view>.page-heading h2{font-size:20px}.filters label{font-size:12px}}
+
 `;
 
 export const ADMIN_PAGE = `<!doctype html><html lang="en"><head><meta charset="utf-8">
@@ -119,8 +161,11 @@ function adminApp() {
     drop: k => { try { localStorage.removeItem(k); } catch (e) { /* private mode */ } },
   };
   const state = { token: '', data: null, timer: 0, request: null, days: 7, today: '', slot: '', view: 'overview', stale: false,
-    testers: { sort: 'last_seen', dir: -1, filter: 'activated', q: '', page: 0, detailed: false },
+    testers: { sort: 'last_seen', dir: -1, filter: 'activated', q: '', page: 0, detailed: false, mode: 'directory', activeOnly: false, unnamedOnly: false },
     features: { area: 'all', q: '', all: false, sort: 'uses' }, errors: { q: '', sort: 'testers' }, jobs: { q: '', sort: 'runs' } };
+
+  const labelDrafts = new Map();
+  let labelRevision = 0;
 
   // ---------- formatting ----------
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;',
@@ -298,7 +343,7 @@ function adminApp() {
 
   const VIEWS = {
     overview: ['Overview', 'Programme overview', 'Engagement and reliability at a glance.'],
-    testers: ['Testers', 'People behind the numbers', 'Find active testers, follow up on issues, and manage access.'],
+    testers: ['Testers', 'Testers', 'Find active testers, follow up on issues, and manage access.'],
     usage: ['Usage', 'How CartoVox is being used', 'Input time, feature reach, and daily activity.'],
     reliability: ['Reliability', 'Issues and job performance', 'Find widespread errors and separate failures from cancellations.'],
     systems: ['Systems', 'Computers and versions', 'The latest reported configuration of registered computers.'],
@@ -330,7 +375,7 @@ function adminApp() {
     const range = d.range.days ? `${dayLabel(d.daily[0]?.day || state.today)} – ${dayLabel(d.daily.at(-1)?.day || state.today)}` : 'All recorded activity';
     const offset = d.range.tz || 0;
     const zone = 'UTC' + (offset >= 0 ? '+' : '−') + String(Math.floor(Math.abs(offset) / 60)).padStart(2, '0') + ':' + String(Math.abs(offset) % 60).padStart(2, '0');
-    const scope = d.range.slot ? plainName(d.range.slot) : 'Everyone' + (d.range.exclude?.length ? ' · owner checks excluded' : '');
+    const scope = state.view === 'testers' && state.testers.mode === 'names' && !d.range.slot ? 'All issued codes' : d.range.slot ? plainName(d.range.slot) : 'Everyone' + (d.range.exclude?.length ? ' · owner checks excluded' : '');
     return `<div class="page-heading"><div><span class="eyebrow">Delta programme · ${esc(range)}</span><h2>${esc(view[1])}</h2><p>${esc(view[2])}</p></div><span class="scope-badge">${esc(scope)}</span></div>`
       + (state.stale ? '<div class="callout" role="status">Showing the last successful report. Refresh to get the latest numbers.</div>' : '')
       + `<p class="footnote" style="margin:-10px 0 18px">Report generated ${esc(when(d.generated_at))} · calendar days at ${esc(zone)}, your current offset${d.coverage?.daily_truncated ? ' · charts show the most recent 400 days; totals cover all time' : ''}</p>`;
@@ -457,7 +502,7 @@ function adminApp() {
       : '<p class="empty">This code has not unlocked a computer yet.</p>';
     return `<section class="card profile" style="margin-bottom:16px"><div class="head"><div>
         <button type="button" class="link back" data-open="">← Everyone</button>
-        <h2 class="pname">${esc(r.note || r.slot)}${r.note ? `<span class="code">${esc(r.slot)}</span>` : ''}
+        <h2 class="pname"><span data-label-slot="${esc(r.slot)}">${esc(r.note || r.slot)}${r.note ? `<span class="code">${esc(r.slot)}</span>` : ''}</span>
           <button type="button" class="pen" data-nick="${esc(r.slot)}" aria-label="Set Discord label for ${esc(r.slot)}" title="Set Discord ID or name">✎ ${r.note ? 'Rename' : 'Add Discord label'}</button></h2>
         <div class="facts"><span class="pill" style="--c:${st.c}">${st.label}</span>
           <span>first unlocked <b>${first ? esc(ago(first)) : '—'}</b></span>
@@ -519,31 +564,43 @@ function adminApp() {
       : s.filter === 'attention' ? row.errors > 0 || row.unclean > 0
       : s.filter === 'unclean' ? row.unclean > 0 : testerStatus(row).key === s.filter);
     const val = (row, key) => key === 'status' ? testerStatus(row).label : row[key] ?? '';
-    return d.testers.filter(row => matches(row) && (!q || [row.slot, row.note, row.os, row.app_version, testerStatus(row).label].join(' ').toLowerCase().includes(q)))
+    return (s.mode === 'names' ? d.directory || d.testers : d.testers).filter(row => matches(row) && (!s.activeOnly || Boolean(row.last_event)) && (!s.unnamedOnly || s.mode !== 'names' || !row.note) && (!q || [row.slot, row.note, row.os, row.app_version, testerStatus(row).label].join(' ').toLowerCase().includes(q)))
       .sort((a, b) => { const x = val(a, s.sort); const y = val(b, s.sort);
-        return (typeof x === 'number' && typeof y === 'number' ? x - y : String(x).localeCompare(String(y))) * s.dir || a.slot.localeCompare(b.slot); });
+        return (typeof x === 'number' && typeof y === 'number' ? x - y : String(x).localeCompare(String(y), undefined, { numeric: s.sort === 'slot' })) * s.dir || a.slot.localeCompare(b.slot, undefined, { numeric: true }); });
+  }
+  function testerModes() {
+    return `<div class="tester-modes" role="group" aria-label="Tester view"><button type="button" id="tester-activity" aria-pressed="${state.testers.mode === 'directory'}">Tester activity</button><button type="button" id="name-codes" aria-pressed="${state.testers.mode === 'names'}">Name codes</button></div>`;
   }
   function testersSection(d) {
     const s = state.testers;
-    const counts = { all: d.testers.length, activated: d.testers.filter(r => r.computers > 0).length,
-      attention: d.testers.filter(r => r.errors > 0 || r.unclean > 0).length,
-      unclean: d.testers.filter(r => r.unclean > 0).length, active: 0, quiet: 0, unused: 0, revoked: 0 };
-    d.testers.forEach(row => counts[testerStatus(row).key] += 1);
-    const chips = [['activated', 'Activated'], ['active', 'Active in period'], ['attention', 'With issues'], ['quiet', 'No events'], ['unused', 'Never activated'], ['all', 'All codes'], ['revoked', 'Revoked']];
-    if (s.filter === 'unclean') chips.splice(3, 0, ['unclean', 'Unclean closes']);
-    return `<section class="card"><div class="head section-head"><div><h2>Tester directory</h2><div class="sub" id="tester-sort-note">Sorted by ${esc(TESTER_COLS.find(col => col[0] === s.sort)?.[1] || s.sort)}. Open a tester for their report; use ✎ to save a Discord ID or name.</div></div><div class="table-tools"><select id="tsort" aria-label="Sort testers">${testerSortOptions()}</select><button type="button" id="name-codes">Name codes</button><button type="button" id="tester-csv">Export filtered CSV</button></div></div>`
-      + `<div class="head section-head"><div class="chips">${chips.map(([key, label]) => `<button type="button" data-tfilter="${key}" aria-pressed="${s.filter === key}">${label}<b>${num(counts[key])}</b></button>`).join('')}</div></div>`
-      + `<div class="head section-head"><input id="tq" type="search" aria-label="Search testers" placeholder="Find a code, nickname, system" value="${esc(s.q)}"><label style="font-size:12px"><input id="tester-details" type="checkbox" ${s.detailed ? 'checked' : ''}> Show activity, devices & versions</label></div>`
-      + `<div class="scroll"><table class="tester-table" id="tt"><thead><tr>${testerColumns().map(([key, label, sortable = true, cls = '']) => `<th class="${cls}" ${sortable ? `data-sort="${key}"` : ''} ${s.sort === key ? `aria-sort="${s.dir > 0 ? 'ascending' : 'descending'}"` : ''}>${sortable ? `<button type="button" class="sort-label" aria-label="Sort by ${esc(label)}">${esc(label)}</button>` : esc(label)}</th>`).join('')}</tr></thead><tbody id="tbody"></tbody></table></div>`
-      + '<div class="pagination" id="tester-pages"></div><p class="footnote">Active means an event was received in the selected period. Last contact includes background check-ins and can be newer than the last activity event.</p></section>';
+    const names = s.mode === 'names';
+    const groups = [['all', 'All codes'], ['activated', 'Activated codes'], ['attention', 'With issues'], ['quiet', 'No events'], ['unused', 'Never activated'], ['revoked', 'Revoked'], ['unclean', 'Unclean closes']];
+    return `<section class="card tester-card"><div class="tester-toolbar"><div class="head section-head"><h2>${names ? 'Code names' : 'Tester directory'}</h2>${testerModes()}</div>`
+      + `<div class="tester-controls"><input id="tq" type="search" aria-label="Search testers" placeholder="Find a code or Discord name" value="${esc(s.q)}"><select id="tsort" aria-label="Sort testers">${names ? TESTER_SORTS.filter(([key]) => /^(slot|note):/.test(key)).map(([value,label]) => `<option value="${value}" ${value === s.sort + ':' + s.dir ? 'selected' : ''}>${label}</option>`).join('') : testerSortOptions()}</select>`
+      + (names ? `<label class="filter-toggle" title="Saved rows stay in place until you change filters"><input id="names-unnamed" type="checkbox" ${s.unnamedOnly ? 'checked' : ''}> Unnamed codes only</label>`
+        : `<label class="filter-toggle" title="Codes with activity events during the selected dates"><input id="tester-active" type="checkbox" ${s.activeOnly ? 'checked' : ''}> Active in period only <b>${num(d.testers.filter(row => row.last_event).length)}</b></label><select id="tester-group" aria-label="Tester group">${groups.map(([key,label]) => `<option value="${key}" ${s.filter === key ? 'selected' : ''}>${label}</option>`).join('')}</select><label class="detail-toggle"><input id="tester-details" type="checkbox" ${s.detailed ? 'checked' : ''}> More columns</label><button type="button" id="tester-csv">Export CSV</button>`)
+      + '</div></div>'
+      + (names ? `<div class="scroll tester-scroll" id="tester-scroll" role="region" aria-label="Code naming sheet" tabindex="0"><table class="names-table" aria-label="Code names"><colgroup id="names-cols"></colgroup><thead id="names-head"></thead><tbody id="names-body"></tbody></table></div><div class="tester-footer"><span id="name-status" role="status" aria-live="polite"></span><span id="names-help">Enter / Tab: save & next code · Shift+Enter: previous · Esc: undo edit</span></div>`
+        : `<div class="scroll tester-scroll" id="tester-scroll" role="region" aria-label="Tester activity table" tabindex="0"><table class="tester-table" id="tt"><thead><tr>${testerColumns().map(([key,label,sortable=true,cls='']) => `<th class="${cls}" ${sortable ? `data-sort="${key}"` : ''} ${s.sort === key ? `aria-sort="${s.dir > 0 ? 'ascending' : 'descending'}"` : ''}>${sortable ? `<button type="button" class="sort-label" aria-label="Sort by ${esc(label)}">${esc(label)}</button>` : esc(label)}</th>`).join('')}</tr></thead><tbody id="tbody"></tbody></table></div><div class="tester-footer"><div class="pagination" id="tester-pages"></div><span id="tester-sort-note">Active means an activity event in the selected dates; last contact also includes background check-ins.</span></div>`)
+      + '</section>';
+  }
+  function setTesterMode(mode) {
+    if (state.testers.mode === mode) return;
+    Object.assign(state.testers, { mode, filter: mode === 'names' ? 'all' : 'activated', activeOnly: false, unnamedOnly: false, q: '', page: 0 });
+    if (mode === 'names') Object.assign(state.testers, { sort: 'slot', dir: 1 });
+    render(); resetTesterScroll();
+  }
+  function resetTesterScroll() {
+    const pane = $('tester-scroll'); if (pane) pane.scrollTop = 0;
   }
   function renderTesterRows() {
     const d = state.data; const s = state.testers;
-    const rows = testerRows(); const count = rows.length; const pageSize = 50;
+    if (s.mode === 'names') { renderNameRows(); return; }
+    const rows = testerRows(); const count = rows.length; const pageSize = 100;
     s.page = Math.max(0, Math.min(s.page, Math.ceil(count / pageSize) - 1)); const start = s.page * pageSize;
     $('tester-pages').innerHTML = `<span role="status">${count ? `${start + 1}–${Math.min(start + pageSize, count)}` : '0'} of ${num(count)} matching testers</span><div class="acts"><button type="button" data-tpage="-1" ${s.page === 0 ? 'disabled' : ''}>Previous</button><button type="button" data-tpage="1" ${start + pageSize >= count ? 'disabled' : ''}>Next</button></div>`;
     const cell = (row, key) => {
-      if (key === 'slot') return `<button type="button" class="link identity" data-open="${esc(row.slot)}"><strong>${esc(row.note || row.slot)}</strong>${row.note ? `<small>${esc(row.slot)}</small>` : ''}</button> <button type="button" class="pen" data-nick="${esc(row.slot)}" aria-label="Set Discord label for ${esc(row.slot)}" title="Set Discord ID or name for ${esc(row.slot)}">✎</button>`;
+      if (key === 'slot') return `<button type="button" class="link identity" data-label-slot="${esc(row.slot)}" data-open="${esc(row.slot)}"><strong>${esc(row.note || row.slot)}</strong>${row.note ? `<small>${esc(row.slot)}</small>` : ''}</button> <button type="button" class="pen" data-nick="${esc(row.slot)}" aria-label="Set Discord label for ${esc(row.slot)}" title="Set Discord ID or name for ${esc(row.slot)}">✎</button>`;
       if (key === 'status') { const st = testerStatus(row); return `<span class="pill" style="--c:${st.c}">${st.label}</span>`; }
       if (key === 'active_minutes') return row.active_minutes ? esc(duration(row.active_minutes * 60)) : '—';
       if (key === 'last_seen') return `<span title="${esc(when(row.last_seen))}">${row.last_seen ? esc(ago(row.last_seen)) : '—'}</span>`;
@@ -555,6 +612,109 @@ function adminApp() {
     };
     $('tbody').innerHTML = count ? rows.slice(start, start + pageSize).map(row => `<tr>${testerColumns().map(([key, label, sortable, cls = '']) => `<td class="${cls}">${cell(row, key)}</td>`).join('')}</tr>`).join('')
       : `<tr><td colspan="${testerColumns().length}" class="empty">No testers match these filters. Search all codes or choose a different group.</td></tr>`;
+  }
+  let namingColumns = 1;
+  const nameColumns = () => { const width = $('dash').clientWidth || 1200; return width >= 1200 ? 3 : width >= 760 ? 2 : 1; };
+  function renderNameRows() {
+    const rows = testerRows(); namingColumns = nameColumns();
+    $('names-cols').innerHTML = Array.from({ length: namingColumns }, () => '<col class="code-col"><col>').join('');
+    $('names-head').innerHTML = '<tr>' + Array.from({ length: namingColumns }, () => '<th scope="col">Code</th><th scope="col">Discord ID or name</th>').join('') + '</tr>';
+    const pairs = rows.map(row => {
+      const draft = labelDrafts.get(row.slot);
+      const value = draft ? draft.value : row.note || '';
+      return `<td class="code-key">${esc(row.slot)}</td><td class="name-value"><div class="name-cell" id="cell-${row.slot}"><input id="code-name-${row.slot}" data-code-name="${row.slot}" aria-label="Discord ID or name for ${row.slot}" type="text" maxlength="40" autocomplete="off" spellcheck="false" placeholder="Add a name" value="${esc(value)}"><span class="cell-status" id="save-${row.slot}" aria-hidden="true"></span></div></td>`;
+    });
+    let html = '';
+    for (let i = 0; i < pairs.length; i += namingColumns) html += '<tr>' + Array.from({ length: namingColumns }, (_, n) => pairs[i+n] || '<td></td><td></td>').join('') + '</tr>';
+    $('names-body').innerHTML = html || `<tr><td colspan="${namingColumns*2}" class="empty">No codes match these filters.</td></tr>`;
+    for (const row of rows) updateNameCell(row.slot);
+    updateNameStatus();
+  }
+  function nameDraft(input) {
+    const slot = input.dataset.codeName;
+    if (!labelDrafts.has(slot)) labelDrafts.set(slot, { value: input.value, saved: nickOf(slot), saving: false, error: '', revision: 0 });
+    return labelDrafts.get(slot);
+  }
+  function updateNameCell(slot) {
+    const draft = labelDrafts.get(slot); const cell = $('cell-' + slot); const mark = $('save-' + slot); const input = $('code-name-' + slot);
+    if (!cell || !mark || !input) return;
+    const kind = !draft ? '' : draft.saving ? 'saving' : draft.error ? 'error' : draft.value.trim() !== draft.saved ? 'dirty' : 'saved';
+    cell.dataset.state = kind; mark.textContent = ({ saving: '…', error: '!', dirty: '•', saved: '✓' })[kind] || '';
+    const message = draft?.error || ({ saving: 'Saving', dirty: 'Not saved yet', saved: 'Saved' })[kind] || '';
+    mark.title = message; input.title = draft?.error ? message + ' — Enter to retry; your text is kept.' : '';
+    if (draft?.error) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+  }
+  function updateNameStatus() {
+    const el = $('name-status'); if (!el) return;
+    const drafts = [...labelDrafts.values()];
+    const failed = drafts.filter(d => d.error).length; const saving = drafts.filter(d => d.saving).length;
+    const dirty = drafts.filter(d => d.value.trim() !== d.saved && !d.saving).length;
+    el.textContent = failed ? `${failed} label${failed === 1 ? '' : 's'} could not be saved. Text is kept in highlighted cells; Enter retries.`
+      : saving ? `Saving ${saving} label${saving === 1 ? '' : 's'}…` : dirty ? `${dirty} unsaved label${dirty === 1 ? '' : 's'} — Enter or Tab to save.`
+      : `${num(document.querySelectorAll('[data-code-name]').length)} codes · changes saved automatically`;
+    el.title = el.textContent;
+  }
+  function editNameCell(input) {
+    const draft = nameDraft(input); draft.value = input.value; draft.error = '';
+    updateNameCell(input.dataset.codeName); updateNameStatus();
+  }
+  function applyLabel(data, slot, note) {
+    for (const list of [data.directory || [], data.testers || []]) {
+      const row = list.find(item => item.slot === slot); if (row) row.note = note || null;
+    }
+  }
+  function updateVisibleLabel(slot, note) {
+    document.querySelectorAll('[data-label-slot]').forEach(el => {
+      if (el.dataset.labelSlot === slot) el.innerHTML = `<strong>${esc(note || slot)}</strong>${note ? `<small>${esc(slot)}</small>` : ''}`;
+    });
+  }
+  async function saveNameCell(input) {
+    const slot = input.dataset.codeName; const token = state.token;
+    if (!token || !state.data) return;
+    const draft = nameDraft(input); draft.value = input.value;
+    if (draft.saving) { draft.queued = true; return draft.promise; }
+    if (draft.value.trim() === draft.saved) { draft.error = ''; updateNameCell(slot); updateNameStatus(); return; }
+    draft.saving = true;
+    draft.promise = (async () => {
+      do {
+        draft.queued = false; draft.error = ''; draft.sent = draft.value.trim();
+        updateNameCell(slot); updateNameStatus();
+        try {
+          const r = await fetch('/v1/admin/codes/' + encodeURIComponent(slot), { method: 'POST',
+            headers: { authorization: 'Bearer ' + token, 'content-type': 'application/json' }, body: JSON.stringify({ note: draft.sent }) });
+          const data = await r.json().catch(() => ({}));
+          if (state.token !== token || !state.data) return;
+          if (r.status === 401) { forget('The admin token was refused. Sign in again.'); return; }
+          if (!r.ok) throw new Error(data.error || `Could not save (${r.status})`);
+          draft.saved = data.code?.note || ''; draft.revision = ++labelRevision;
+          applyLabel(state.data, slot, draft.saved); updateVisibleLabel(slot, draft.saved);
+          if (draft.value.trim() === draft.sent) {
+            draft.value = draft.saved;
+            const current = $('code-name-' + slot); if (current) current.value = draft.saved;
+          }
+          // Only the picker changes: keep the sheet's DOM, focus and scroll intact.
+          fillPicker();
+        } catch (error) {
+          if (state.token === token) { draft.error = error.message || 'Connection failed'; if (state.testers.mode !== 'names') $('status').textContent = slot + ' was not saved. Return to Name codes to retry.'; }
+          break;
+        }
+      } while (draft.queued && draft.value.trim() !== draft.saved);
+    })();
+    try { await draft.promise; } finally { draft.saving = false; if (state.token === token) { updateNameCell(slot); updateNameStatus(); } }
+  }
+  function nameKeydown(event) {
+    const input = event.target; if (!input.dataset?.codeName || event.isComposing) return;
+    if (event.key === 'Escape') {
+      event.preventDefault(); const draft = nameDraft(input);
+      draft.value = draft.saving ? draft.sent : draft.saved; draft.error = ''; input.value = draft.value;
+      updateNameCell(input.dataset.codeName); updateNameStatus(); return;
+    }
+    if (!['Enter', 'Tab'].includes(event.key)) return;
+    saveNameCell(input);
+    const inputs = [...document.querySelectorAll('[data-code-name]')];
+    const next = inputs[inputs.indexOf(input) + (event.shiftKey ? -1 : 1)];
+    if (event.key === 'Enter' || next) event.preventDefault();
+    if (next) { next.focus({ preventScroll: true }); next.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
   }
   function csvCell(value) {
     const text = String(value ?? '');
@@ -720,6 +880,21 @@ function adminApp() {
       + '</tbody></table></div></details>';
   }
 
+  function rememberPosition() {
+    const active = document.activeElement;
+    return { scrolls: [...document.querySelectorAll('#dash,#dash .scroll,#dash .feed')].map(el => [el.scrollTop, el.scrollLeft]),
+      focus: active && $('dash').contains?.(active) ? { id: active.id, start: active.selectionStart, end: active.selectionEnd } : null };
+  }
+  function restorePosition(position) {
+    const target = position.focus?.id && $(position.focus.id);
+    if (target) {
+      target.focus({ preventScroll: true });
+      if (position.focus.start != null && target.setSelectionRange) target.setSelectionRange(position.focus.start, position.focus.end);
+    }
+    document.querySelectorAll('#dash,#dash .scroll,#dash .feed').forEach((el,i) => {
+      if (position.scrolls[i]) { el.scrollTop = position.scrolls[i][0]; el.scrollLeft = position.scrolls[i][1]; }
+    });
+  }
   function syncRailOffset() {
     document.documentElement?.style?.setProperty('--bar-height', ($('bar').offsetHeight || 125) + 'px');
   }
@@ -727,6 +902,8 @@ function adminApp() {
     const d = state.data;
     if (!d) return;
     if (!VIEWS[state.view]) state.view = 'overview';
+    const position = rememberPosition();
+    document.body.classList?.toggle('naming-mode', state.view === 'testers' && state.testers.mode === 'names' && !d.range.slot);
     $('sections').innerHTML = navHtml(d); syncRailOffset();
     const one = Boolean(d.range.slot);
     let body = '';
@@ -742,11 +919,13 @@ function adminApp() {
       + errorsSection(d) + performanceSection(d) + definitionsSection(d);
     if (state.view === 'systems') body = computersSection(d) + systemsInventory(d) + definitionsSection(d);
     hideTip();
+    $('dash').classList[state.view === 'testers' && !one ? 'add' : 'remove']('tester-view');
     $('dash').innerHTML = pageHeading(d) + (one ? profileSection(d) : '') + body;
     drawCharts();
     if (state.view === 'testers' && !one) renderTesterRows();
     if (state.view === 'usage') renderFeatureList();
     if (state.view === 'reliability') { renderErrorList(); renderJobList(); }
+    restorePosition(position);
   }
   function drawCharts() {
     const d = state.data;
@@ -767,14 +946,15 @@ function adminApp() {
   }
   function forget(message) {
     if (state.request) state.request.abort(); state.request = null;
-    state.token = ''; state.data = null; state.stale = false; store.drop(KEY);
+    state.token = ''; state.data = null; state.stale = false; labelDrafts.clear(); store.drop(KEY);
     $('refresh').disabled = false; $('dash').classList.remove('loading');
     clearInterval(state.timer); state.timer = 0; $('auto').checked = false;
+    document.body.classList?.remove('naming-mode');
     signedIn(false); $('dash').innerHTML = ''; $('login-msg').textContent = message || '';
   }
   function schedule() {
     clearInterval(state.timer); state.timer = 0;
-    if ($('auto').checked && state.token) state.timer = setInterval(() => { if (!document.hidden) load(); }, AUTO_MS);
+    if ($('auto').checked && state.token) state.timer = setInterval(() => { if (!document.hidden) load({ background: true }); }, AUTO_MS);
   }
   function syncRange() {
     document.querySelectorAll('#range button').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.days) === state.days)));
@@ -804,8 +984,10 @@ function adminApp() {
       if (state.request === controller) state.request = null;
     }
   }
-  async function load() {
+  async function load(options = {}) {
     if (!state.token) return;
+    if (options.background && ((state.view === 'testers' && state.testers.mode === 'names') || document.activeElement?.className === 'nickedit')) return;
+    const reportRevision = labelRevision;
     if (state.request) state.request.abort();
     const controller = new AbortController(); state.request = controller;
     const timeout = setTimeout(() => controller.abort(), 30000);
@@ -827,6 +1009,9 @@ function adminApp() {
         state.stale = Boolean(state.data);
         if (state.data) render(); else $('dash').innerHTML = '<p class="empty">' + esc(message) + ' Press Refresh to retry.</p>';
         $('status').textContent = message + (state.data ? ' Showing the last successful report.' : ''); return;
+      }
+      for (const [slot, draft] of labelDrafts) {
+        if (draft.revision > reportRevision) applyLabel(d, slot, draft.saved);
       }
       state.stale = false; state.data = d; state.today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
       fillPicker(); render();
@@ -865,7 +1050,7 @@ function adminApp() {
   }
   function openView(view) {
     if (!VIEWS[view]) return;
-    state.view = view; writeAddress(view, state.slot); render(); window.scrollTo(0, 0);
+    state.view = view; writeAddress(view, state.slot); render(); $('dash').scrollTop = 0;
   }
   function openTester(slot) {
     if (slot === state.slot && state.data) return;
@@ -876,41 +1061,49 @@ function adminApp() {
     const requested = new URLSearchParams(location.search || '').get('view');
     const nextView = VIEWS[requested] ? requested : 'overview';
     if (nextSlot === state.slot && state.data) {
-      if (nextView !== state.view) { state.view = nextView; render(); window.scrollTo(0, 0); }
+      if (nextView !== state.view) { state.view = nextView; render(); $('dash').scrollTop = 0; }
       return;
     }
-    state.view = nextView; state.slot = nextSlot; window.scrollTo(0, 0); load();
+    state.view = nextView; state.slot = nextSlot; $('dash').scrollTop = 0; load();
   }
-  // Nickname a code in place: Enter or leaving the field saves, Escape keeps the old one.
+  // Inline labels update only their identity cell, never the surrounding table.
   function editNickname(button) {
-    const slot = button.dataset.nick;
-    const token = state.token;
+    const slot = button.dataset.nick; const token = state.token;
     const input = document.createElement('input');
     input.className = 'nickedit'; input.maxLength = 40; input.value = nickOf(slot);
     input.placeholder = 'Discord ID or name'; input.setAttribute('aria-label', 'Discord ID or name for ' + slot);
-    button.replaceWith(input); input.focus(); input.select();
-    let done = false;
-    const finish = async save => {
-      if (done) return; done = true;
+    button.replaceWith(input); input.focus({ preventScroll: true }); input.select();
+    let busy = false; let closed = false;
+    const close = focus => {
+      if (closed) return; closed = true;
+      input.replaceWith(button); if (focus) button.focus({ preventScroll: true });
+    };
+    const finish = async (save, focus = false) => {
+      if (busy || closed) return;
       const note = input.value.trim();
-      if (!save || note === nickOf(slot)) { render(); return; }
-      input.disabled = true;
+      if (!save || note === nickOf(slot)) { close(focus); return; }
+      busy = true; input.readOnly = true;
       try {
-      const r = await fetch('/v1/admin/codes/' + encodeURIComponent(slot), { method: 'POST',
-        headers: { authorization: 'Bearer ' + token, 'content-type': 'application/json' }, body: JSON.stringify({ note }) });
-      const d = await r.json().catch(() => ({}));
-      if (state.token !== token || !state.data) return;
-      if (r.status === 401) { forget('That token was refused, so this browser has forgotten it. Enter it again.'); return; }
-      if (!r.ok) { $('status').textContent = d.error || `Failed: ${r.status}`; render(); return; }
-      const entry = (state.data.directory || []).find(x => x.slot === slot); if (entry) entry.note = d.code?.note ?? null;
-      state.data.testers.forEach(t => { if (t.slot === slot) t.note = d.code?.note ?? null; });
-      $('status').textContent = note ? `${slot} is now “${note}”.` : `${slot} has no nickname.`;
-      fillPicker(); render();
-      } catch (e) { if (state.token === token) { $('status').textContent = 'Discord label was not saved. Check the connection and try again.'; render(); } }
+        const r = await fetch('/v1/admin/codes/' + encodeURIComponent(slot), { method: 'POST',
+          headers: { authorization: 'Bearer ' + token, 'content-type': 'application/json' }, body: JSON.stringify({ note }) });
+        const d = await r.json().catch(() => ({}));
+        if (state.token !== token || !state.data) return;
+        if (r.status === 401) { forget('The admin token was refused. Sign in again.'); return; }
+        if (!r.ok) throw new Error(d.error || `Could not save (${r.status})`);
+        const saved = d.code?.note || '';
+        labelDrafts.set(slot, { value: saved, saved, saving: false, error: '', revision: ++labelRevision });
+        applyLabel(state.data, slot, saved);
+        updateVisibleLabel(slot, saved);
+        $('status').textContent = `${slot}: label saved.`; fillPicker();
+        close(focus && document.activeElement === input);
+      } catch (e) {
+        if (state.token === token) { input.setAttribute('aria-invalid', 'true'); input.title = e.message; $('status').textContent = `${slot} was not saved. Your text is kept; Enter retries.`; }
+      } finally { busy = false; input.readOnly = false; }
     };
     input.addEventListener('keydown', e => {
-      if (e.key === 'Enter') { e.preventDefault(); finish(true); }
-      if (e.key === 'Escape') { e.preventDefault(); finish(false); }
+      if (e.isComposing) return;
+      if (e.key === 'Enter') { e.preventDefault(); finish(true, true); }
+      if (e.key === 'Escape') { e.preventDefault(); finish(false, true); }
     });
     input.addEventListener('blur', () => finish(true));
   }
@@ -971,7 +1164,7 @@ function adminApp() {
     if (!token) return;
     authenticate(token, $('remember').checked);
   });
-  $('refresh').addEventListener('click', load);
+  $('refresh').addEventListener('click', () => load());
   $('forget').addEventListener('click', () => forget('Token forgotten on this browser.'));
   $('auto').addEventListener('change', () => { store.set(AUTO, $('auto').checked ? '1' : '0'); schedule(); });
   $('hide-test').addEventListener('change', () => { store.set(HIDE, $('hide-test').checked ? '1' : '0'); load(); });
@@ -995,8 +1188,9 @@ function adminApp() {
     const investigate = t.closest('[data-investigate]');
     if (investigate) { state.errors.q = investigate.dataset.investigate; openView('reliability'); return; }
     const attention = t.closest('[data-tattention]');
-    if (attention) { state.testers.filter = attention.dataset.tattention; state.testers.page = 0; openView('testers'); return; }
-    if (t.id === 'name-codes') { state.testers.sort = 'slot'; state.testers.dir = 1; state.testers.filter = 'all'; state.testers.q = ''; state.testers.page = 0; render(); $('tq').focus(); return; }
+    if (attention) { state.testers.mode = 'directory'; state.testers.activeOnly = false; state.testers.filter = attention.dataset.tattention; state.testers.page = 0; openView('testers'); return; }
+    if (t.id === 'name-codes') { setTesterMode('names'); return; }
+    if (t.id === 'tester-activity') { setTesterMode('directory'); return; }
     if (t.id === 'tester-csv') { exportTesters(); return; }
     const sort = t.closest('th[data-sort]');
     if (sort) {
@@ -1007,7 +1201,7 @@ function adminApp() {
       });
       $('tester-sort-note').textContent = 'Sorted by ' + (TESTER_COLS.find(col => col[0] === k)?.[1] || k) + '. Open a tester for their report; use ✎ to save a Discord ID or name.';
       $('tsort').innerHTML = testerSortOptions();
-      renderTesterRows(); return;
+      renderTesterRows(); resetTesterScroll(); return;
     }
     const page = t.closest('[data-tpage]');
     if (page && !page.disabled) { state.testers.page += Number(page.dataset.tpage); renderTesterRows(); return; }
@@ -1024,21 +1218,27 @@ function adminApp() {
     if (open) openTester(open.dataset.open);
   });
   $('dash').addEventListener('input', e => {
-    if (e.target.id === 'tq') { state.testers.q = e.target.value; state.testers.page = 0; renderTesterRows(); }
+    if (e.target.dataset?.codeName) { editNameCell(e.target); return; }
+    if (e.target.id === 'tq') { state.testers.q = e.target.value; state.testers.page = 0; renderTesterRows(); resetTesterScroll(); }
     if (e.target.id === 'eq') { state.errors.q = e.target.value; renderErrorList(); }
     if (e.target.id === 'pq') { state.jobs.q = e.target.value; renderJobList(); }
     if (e.target.id === 'fq') { state.features.q = e.target.value; state.features.all = false; renderFeatureList(); }
   });
   $('dash').addEventListener('change', e => {
-    if (e.target.id === 'tsort') { const [key, dir] = e.target.value.split(':'); state.testers.sort = key; state.testers.dir = Number(dir); state.testers.page = 0; render(); $('tsort').focus(); }
+    if (e.target.id === 'tester-active') { state.testers.activeOnly = e.target.checked; state.testers.filter = 'all'; state.testers.page = 0; render(); resetTesterScroll(); return; }
+    if (e.target.id === 'tester-group') { state.testers.filter = e.target.value; state.testers.page = 0; renderTesterRows(); resetTesterScroll(); return; }
+    if (e.target.id === 'names-unnamed') { state.testers.unnamedOnly = e.target.checked; renderNameRows(); resetTesterScroll(); return; }
+    if (e.target.id === 'tsort') { const [key, dir] = e.target.value.split(':'); state.testers.sort = key; state.testers.dir = Number(dir); state.testers.page = 0; render(); resetTesterScroll(); $('tsort').focus({ preventScroll: true }); }
     if (e.target.id === 'tester-details') { state.testers.detailed = e.target.checked; render(); $('tester-details').focus(); }
     if (e.target.id === 'fsort') { state.features.sort = e.target.value; renderFeatureList(); }
     if (e.target.id === 'esort') { state.errors.sort = e.target.value; renderErrorList(); }
     if (e.target.id === 'psort') { state.jobs.sort = e.target.value; renderJobList(); }
   });
+  $('dash').addEventListener('focusout', e => { if (e.target.dataset?.codeName) saveNameCell(e.target); });
+  $('dash').addEventListener('keydown', nameKeydown);
   let resize = 0;
-  window.addEventListener('resize', () => { clearTimeout(resize); resize = setTimeout(() => { syncRailOffset(); drawCharts(); }, 150); });
-  document.addEventListener('visibilitychange', () => { if (!document.hidden && state.timer) load(); });
+  window.addEventListener('resize', () => { clearTimeout(resize); resize = setTimeout(() => { syncRailOffset(); drawCharts(); if (state.view === 'testers' && state.testers.mode === 'names' && !state.slot && nameColumns() !== namingColumns) { const position = rememberPosition(); renderNameRows(); restorePosition(position); } }, 150); });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && state.timer) load({ background: true }); });
 
   const savedDays = Number(store.get(RANGE));
   state.days = [0, 7, 30, 90].includes(savedDays) && store.get(RANGE) !== null ? savedDays : 7;
