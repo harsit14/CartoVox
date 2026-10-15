@@ -3,7 +3,7 @@
 The public site for [CartoVox](https://cartovox.org): simulate a planet, draw its
 illustrated atlas, and write beside the same world in a desktop studio.
 A static site: a landing page, guide, release archive and legal pages, no build step, no framework,
-no third-party requests. A Cloudflare Worker with static assets serves it straight from this repository,
+with self-hosted assets and a live Discord widget. A Cloudflare Worker with static assets serves it straight from this repository,
 together with the Delta service CartoVox's Delta builds talk to (`worker/`).
 
 ## Layout
@@ -52,6 +52,12 @@ creator comments use native “Read feedback” disclosures; preserve the full
 quotes, credits, source links and artwork when editing the surrounding copy.
 
 ## Community voices
+
+The Community section includes Discord's dark server widget for server
+`1541886105606029484`. It loads lazily, keeps the supplied sandbox permissions,
+and fits narrow screens. The direct invite link remains available if the embed
+is blocked. `_headers` permits frames only from `https://discord.com/widget`;
+keep the widget disclosure in `privacy/` aligned with this third-party request.
 
 The landing page quotes Discord members only after permission for public attribution is confirmed. Keep their wording intact, name the author as shown in the server, and link each excerpt to its original message so visitors can read the context. The owner confirmed permission for the four members quoted in the September 2026 community section. A Discord message link from a private Delta channel is readable only by invited testers; note that on the page. Do not use a member's map, avatar, or other artwork without separate permission.
 

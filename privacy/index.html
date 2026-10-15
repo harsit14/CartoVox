@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy — CartoVox</title>
-  <meta name="description" content="What this website and the CartoVox application do with your data: no cookies, no analytics, no account; the Delta usage report and exactly what it sends; and Discord as the one link that leaves this site.">
+  <meta name="description" content="What this website and the CartoVox application do with your data: no CartoVox analytics or account; the embedded Discord widget; and the Delta usage report and exactly what it sends.">
   <link rel="canonical" href="https://cartovox.org/privacy/">
   <meta name="theme-color" content="#0b0c10">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=194d9d8758">
+  <link rel="stylesheet" href="/css/site.css?v=1d94683dca">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -40,19 +40,30 @@
 
     <h2 id="this-website">This website</h2>
     <ul>
-      <li><b>No cookies.</b> This site sets none, of any kind, including for preferences. There is nothing to consent to, which is why you were not asked.</li>
+      <li><b>No CartoVox cookies.</b> CartoVox's own pages and scripts set no cookies. The homepage includes a third-party Discord widget, described below.</li>
       <li><b>No analytics.</b> No page-view counter, no tag manager, no pixel, no session recorder, no A/B testing.</li>
-      <li><b>No third-party requests.</b> Every font, script, stylesheet and image is served from this domain. Nothing on a page you load reaches another company. You can confirm it: open your browser's network panel and read the list.</li>
+      <li><b>Self-hosted site assets.</b> Our fonts, scripts, stylesheets and images are served from this domain. The homepage's live Discord widget connects to Discord when it loads.</li>
       <li><b>The Delta service shares this domain.</b> The addresses under <code>/v1/</code> answer the CartoVox application, not your browser: no page on this site calls them, so reading the site sends nothing to them.</li>
       <li><b>No account, no form.</b> There is nothing here to sign up for and nowhere to type your email address, so none is collected.</li>
-      <li><b>Server logs.</b> The site is static and served by Cloudflare Pages, which sees the ordinary request information any web server sees — your IP address, the page requested, your browser's user-agent string — and uses it to serve and protect the site. That is Cloudflare's processing, not ours, and no one here builds a profile from it or joins it to anything else.</li>
+      <li><b>Server logs.</b> The site is static and served by Cloudflare, which sees the ordinary request information any web server sees — your IP address, the page requested, your browser's user-agent string — and uses it to serve and protect the site. That is Cloudflare's processing, not ours, and no one here builds a profile from it or joins it to anything else.</li>
     </ul>
 
-    <h2 id="leaving">The one link that leaves</h2>
+    <h2 id="discord-widget">The Discord widget</h2>
+    <p>
+      The homepage's Community section embeds a live server widget hosted by Discord. When it loads,
+      your browser connects directly to Discord, which receives your IP address and browser request
+      information. The widget loads lazily as you approach that section. Its content, cookies and
+      storage are controlled by Discord and your browser's settings; see
+      <a href="https://discord.com/privacy" target="_blank" rel="noopener">Discord's privacy policy</a>.
+      The embed sends no page referrer. A separate <b>Join Discord</b> link is available if the widget
+      cannot load.
+    </p>
+
+    <h2 id="leaving">Discord links</h2>
     <p>
       <b>Request an invite</b> opens Discord, which is a different company with its own terms and its own
-      data practices. We open it in a new tab so it is obvious you have left. Nothing about you is
-      passed along with that click — the link carries an invite code and nothing else. What happens
+      data practices. We open it in a new tab so it is obvious you have left. The invite link carries
+      an invite code, and your browser may send this site's origin as a referrer. What happens
       once you are on the server is between you and Discord.
     </p>
 
@@ -76,16 +87,16 @@
 
     <h2 id="changes">If this changes</h2>
     <p>
-      If this site ever gains analytics, a form or a third-party embed, this page will say so before
-      it ships, and the claim on the front page will change with it. Questions go to the
+      If this site gains analytics, a form or another third-party embed, this page will say so before
+      it ships, and any affected claims on the site will change with it. Questions go to the
       <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>.
     </p>
   </article>
-  <p class="doc-note">Last reviewed 24 September 2026. This page describes what the site and the application do; the <a href="/eula/">End User License Agreement</a> is the binding document.</p>
+  <p class="doc-note">Last reviewed 15 October 2026. This page describes what the site and the application do; the <a href="/eula/">End User License Agreement</a> is the binding document.</p>
 </main>
 <footer class="footer">
   <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox runs no analytics. <a href="#discord-widget">Discord widget privacy</a>.</p>
   </div>
 </footer>
 <script src="/js/site.js?v=b6530a3583" defer></script>

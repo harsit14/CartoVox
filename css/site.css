@@ -250,6 +250,12 @@ p:last-child { margin-bottom: 0; }
 .voice-card figcaption a { margin-left: auto; white-space: nowrap; text-decoration: none; }
 .voice-card figcaption a:hover { text-decoration: underline; }
 .voices-note { margin-top: 24px; }
+.community-discord { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 350px); gap: 36px; align-items: center; margin-top: 32px; padding: 28px; background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); }
+.community-discord-copy { min-width: 0; }
+.community-discord-copy h3 { font-size: 1.8rem; margin-bottom: 14px; }
+.community-discord-copy > p:not(.eyebrow) { max-width: 48ch; color: var(--text-2); }
+.community-discord-copy .small { margin: 16px 0 0; }
+.discord-widget { display: block; width: 100%; max-width: 350px; height: 500px; justify-self: center; border: 0; border-radius: 10px; background: #202225; }
 
 /* ── brief ────────────────────────────────────────── */
 .brief-card { margin: 32px 0 18px; padding: 24px 26px; background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
@@ -700,6 +706,7 @@ kbd { font-family: var(--font-ui); font-size: 0.78em; padding: 1px 6px; border: 
   .experience-card-wide { display: flex; }
   .experience-card-wide .experience-media { border-right: 0; border-bottom: 1px solid var(--line); }
   .community-world { grid-template-columns: 1fr; gap: 20px; }
+  .community-discord { grid-template-columns: 1fr; gap: 24px; }
   .community-world-gallery-single { max-width: none; }
   .voices-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .release-card { align-items: flex-start; flex-direction: column; }
@@ -712,6 +719,8 @@ kbd { font-family: var(--font-ui); font-size: 0.78em; padding: 1px 6px; border: 
   .audience-grid { grid-template-columns: 1fr; }
   .first-hour-invite .btn { white-space: normal; }
   .community-world { padding: 18px; }
+  .community-discord { padding: 18px; }
+  .community-discord .btn { max-width: 100%; white-space: normal; }
   .voices-grid { grid-template-columns: 1fr; }
   .voice-card { padding: 20px; }
   .demo-grid { grid-template-columns: 1fr 1fr; }
