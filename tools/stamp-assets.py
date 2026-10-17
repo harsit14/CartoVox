@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stamp stylesheet, script, font and branding references with content hashes.
+"""Stamp styles, scripts, fonts, branding and product screenshots with hashes.
 
     python3 tools/stamp-assets.py
 
@@ -21,6 +21,8 @@ BRANDING = ("img/nav-mark-v3.svg", "img/wordmark-v3.svg", "img/lockup-v3.svg",
             "favicon.ico", "img/icon-32.png", "img/icon-64.png", "img/icon-180.png",
             "img/icon-192.png", "img/icon-512.png", "img/social-card.jpg")
 FONTS = tuple(path.relative_to(ROOT).as_posix() for path in sorted((ROOT / "fonts").glob("*.woff2")))
+SCREENSHOTS = tuple(path.relative_to(ROOT).as_posix()
+                    for path in sorted((ROOT / "img").glob("app-*.webp")))
 
 
 def stamp(text: str, rel: str, digest: str) -> str:
@@ -41,7 +43,7 @@ def main() -> None:
         css_path.write_text(css, encoding="utf-8")
 
     stamps = {}
-    for rel in (*ASSETS, *BRANDING):
+    for rel in (*ASSETS, *BRANDING, *SCREENSHOTS):
         digest = hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()[:10]
         stamps[rel] = digest
     manifest_path = ROOT / "site.webmanifest"

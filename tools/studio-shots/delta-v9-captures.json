@@ -1,0 +1,300 @@
+{
+  "release": "v0.9.10",
+  "source_commit": "02fd96f70794de2a264c5bdb8ed488dcb83d746b",
+  "captured_on": "2026-10-17",
+  "interface": "Released Delta V9 source in Chromium",
+  "world": "world_90ae45f361f3",
+  "world_note": "Existing Ixrixenrond project opened without a generator update; screenshots show the V9 interface, not newly generated V9 geography.",
+  "original_world_config_sha256": "1f73dd125efa6b783811e19f50493a571a888b463cad45c140a33955c5ad9ce8",
+  "manuscript_note": "Private manuscripts excluded; capture helpers write original demonstration prose only in a disposable library.",
+  "viewport": {
+    "width": 1440,
+    "height": 900,
+    "device_scale_factor": 2
+  },
+  "count": 38,
+  "captures": [
+    {
+      "asset": "img/app-climate-lab.webp",
+      "capture_png_sha256": "bd3dbfdbe44578eb9d282c0aef2fd3dc7b8764f8e5f3d565eb1c322c70cda14d",
+      "webp_sha256": "b2f8e20337a1c11b365c133edd8b3f6e2c57d13ee30d64444c3b4930b17115e5",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-codex-describe.webp",
+      "capture_png_sha256": "81646de7798d982f0f5d85d28b036ff49100406721e01653997905510b67014d",
+      "webp_sha256": "6d61bc5ee8d4f4b6d49375582bb2f3288fd1874b8a9c530011a71329069be4fb",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-codex-gazetteer.webp",
+      "capture_png_sha256": "2be4cdf2eb03652300c490be095ecfb2b2288e501e418786fd993e35e1908604",
+      "webp_sha256": "6625f72526cccbc952496b0cc2d69784c90a921d417d18615268b20c731042c1",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-codex-lands.webp",
+      "capture_png_sha256": "4b2a4b9359649e602437af59211e9f7a26c1eaa805173c454bab681f789d6bae",
+      "webp_sha256": "ae84c43c1c594988c2d03c6e3ccb01e7f6502e7bd1c20f75be006bb804fda654",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-codex-naming.webp",
+      "capture_png_sha256": "17256c63c57c861b705b12ddd7f78260e0e5dcf9c77a2ebdbc194248d012d8c0",
+      "webp_sha256": "2b4bd6c2cb737dcff84bbe4a7c274abb8d09a1cd9607bf0a5e1aa9516cf9cbfa",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-create-advanced.webp",
+      "capture_png_sha256": "fcfac1233046351c4f51203681444fda782f373d03b25cc7d55cd287cb7b4b1a",
+      "webp_sha256": "ce0aa490b263ea24dd61bc681bd9e0f65b7f3f585139699f9de834070d89f643",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-create-brief.webp",
+      "capture_png_sha256": "21db15c10f488b85d4ff69a0b545e71a10218978d69f977fb13010d8fbeeee3d",
+      "webp_sha256": "e3749f71f42ecd268793557657fe8f1260cbe2a122763ffe6a70804a58a94e84",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-create-deep-time.webp",
+      "capture_png_sha256": "ebccd979686220bc7cb13bbd4050f41a1675476c0dcd52d0177d7d75922aa473",
+      "webp_sha256": "feae8632bed5a81c335ac2b767a43f5472097deec179feb945982ebfa8da184f",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-create-languages.webp",
+      "capture_png_sha256": "7c5ac40751b635e0f270d9ef64f49b4b0313b7cef4d7c2477735d36597545641",
+      "webp_sha256": "f67f2949aefc9c3687330467b2984a760736d5f15a822b274720fad77149edb1",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-draw-canvas.webp",
+      "capture_png_sha256": "7f7b0a3da98a8a43ea54373307c02b06c6c1113348ddbfa2aabe85e7f7284d60",
+      "webp_sha256": "7fee63d8cb2fd565951cdc0b36a707e7b596190da85175dce8d199263a021345",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-home-library.webp",
+      "capture_png_sha256": "2a6b075e18c57b2f6e0effe1cbef0e5c8fe9922fc449d2938cfe67ad271ba0e9",
+      "webp_sha256": "41b1ee35e36ca580013a194d42c27ff22868666b08d743d8a14e75be2e89d2ee",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-library-gallery.webp",
+      "capture_png_sha256": "7aae0345bc297c749481051d4a8621ae6a07211c8da6112ec0586c97b4fdf569",
+      "webp_sha256": "ca6f537bada07931e6daf2a8b583f5660856893fc32714806ad8c5280885afc1",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-manuscript-scene-world.webp",
+      "capture_png_sha256": "b39fd23c60baabc10e127a3d4df5539899b25efc284a45acb3dad9c8b4c651f2",
+      "webp_sha256": "6751cc5d612a0d56a443ece240f134857e0a59d66a86e124b03e512f824f16af",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-map-agricultural-calendar.webp",
+      "capture_png_sha256": "cd17f507f7ba2cebf35ef715e104e1db86b69e4279265ed86d9c147a22bb6baa",
+      "webp_sha256": "5963a0b4b421a542fa0369b67f389107d8eb40863ce3c34e791fe5fa50f2bf3c",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-map-cell-inspector.webp",
+      "capture_png_sha256": "d291f145481b93890d2afa25d57675c794ca49e738eeec2f575ab491296f4125",
+      "webp_sha256": "fbfd03a59eb564508c2682c7f59119b7b8fc348eeaad8b702e8cb0d922e747ae",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-map-export-menu.webp",
+      "capture_png_sha256": "62e5a59ce3d5ce6ab360d61dee69f92ac8346cf12d7a9bee5a869f92a0ffa17c",
+      "webp_sha256": "4dd19ad7c7760f2282457c6ef644a4316b826390e8208acfa4fec608a5e88040",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-map-floodplain-exposure.webp",
+      "capture_png_sha256": "73469efce5abb4454ecddc1f5c40fc638cc9d2cbcd3795b17fdc634af6bfe569",
+      "webp_sha256": "771504cb94c0153d46e20868fc1665f8f817bcea0eca6693d44df0140561e201",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-map-library.webp",
+      "capture_png_sha256": "71aa3f4325d7cfb742132b6745b695fd229d3faf8eb3bbb26b2e939cde0ec259",
+      "webp_sha256": "f95416115c8fd5b4b5c59681d031619c468ab9f6b5ff722650a226e0ad755df4",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-map-pdf-setup.webp",
+      "capture_png_sha256": "15051b93725e7bf22da32f67a0e45c54ee9e5ee39f49ba386d51115a2f22a3ad",
+      "webp_sha256": "43f921bfee4885e020f52495816a3bf87dd5cbb01432c71adbbe17511ddc919d",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-map-sculpt.webp",
+      "capture_png_sha256": "b7f0a5aa8b009fdc1be4689a26ecdca8a7ad78b62e59e2e8855d356400c1abc6",
+      "webp_sha256": "a757910c332a724a5d6f38055a9a17b0af73fbfbb5a790a4a210d53db09cd46a",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-map-tools-menu.webp",
+      "capture_png_sha256": "fe5cf2256e6cad72f99964ea4a4d3ec53ec289fe09a368efe4330ba956a3d3fa",
+      "webp_sha256": "561c3eb66de105395dcb967909be6c77c65dcdc379708358870ce9afd65b72cd",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-map-view-menu.webp",
+      "capture_png_sha256": "ed17a21345f0f544ee763803950899a79e25bb9b47a4d1a2921aa25f80156afb",
+      "webp_sha256": "e5db89f3061e9cef5058110f5192dbe0929ed31adf02a5bd818112945f21a6b9",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-map-water-security.webp",
+      "capture_png_sha256": "24228afd38047ec9e3f29d055526f9836e54e6726f6ad31e85d5cad3d92002e2",
+      "webp_sha256": "6ec39840bd1c2a4a9480788ee43998631e57c7b8e6a6bc2f0d6816906fef5fdb",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-render-studio.webp",
+      "capture_png_sha256": "5fd30f23e7a138f9da0abd46e6c475c7532f6b56d639365c3d4f8d0ec6602eb3",
+      "webp_sha256": "caa753fd6ac54bf7a004eb3aa692798a2bd81aee78892f8049ee66aa097ea9ef",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-settings.webp",
+      "capture_png_sha256": "8ae040ea264fc3401e9389efa85cd71290cfc1e17ce6018010ab9faaa2c4af38",
+      "webp_sha256": "aa027ecbdc7c1edfa75f5ec8c8236e1783d6b78144c67df6a51f686e758f695b",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-terrain-3d.webp",
+      "capture_png_sha256": "b2bace0b41817ef0630170446884a10bccc9542bdad0996c80a1820aeab21e6c",
+      "webp_sha256": "da187f87bcb1572c81f1d1909a49b2ed86d11756f972e557ddf7a4f7504b350c",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-world-atlas.webp",
+      "capture_png_sha256": "c93b6f978124bcfd1f7065808c5ccf53635281ddeaa0100058661991a68f36d9",
+      "webp_sha256": "e244175d276cd0e5dabe2958707bcdbf3d0f10ae47dbd0e33f32631905ecf239",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-world-campaign.webp",
+      "capture_png_sha256": "ba8735dd8877a17015a2b855034d32294285a43a1118fdb6f0729d44325f144d",
+      "webp_sha256": "168ea966de4b9ef7a9e2e45a44a235608359a3962c612d3e0a9a6f1123bee756",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-world-map.webp",
+      "capture_png_sha256": "38d0c8303d6f6ce1787d570247ac7dde5ff13e56d90cdc87ac88bf997b6487f9",
+      "webp_sha256": "f3e77d67f2b8ef1db9e026519b43c8801e111db7f95d310d2671918522c4e218",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-world-map-graphical.webp",
+      "capture_png_sha256": "f7a3d0c2ad74980d475fc930b0f2e3992fac27624eb203df73e946b820e8ed31",
+      "webp_sha256": "9bd10a2a4ba1db1b2172832bc189caa676c6b749e15c75e3967871b677c68ce2",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-world-reseed.webp",
+      "capture_png_sha256": "0fbbded60387f764ae836dc0f50570e371d6c63e53d2b55eaf848e8ac1cecec4",
+      "webp_sha256": "b7ea631d0d6de23af50650923cbea2e394a453b97d81a9096a3893b6283fc8d5",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-world-travel.webp",
+      "capture_png_sha256": "7d011d3648c8a2d2f7152ed3cd28f8182f1aa06d038e45692bf84839fb6c383f",
+      "webp_sha256": "d8aad86ae4bd5eba882b42f491ef1879577cfb57221b7a89cf7ca4093dee5804",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-write-chronicle.webp",
+      "capture_png_sha256": "1788631a863f85ee4d86a3600515851df09bcc69d31e396a67d53bc01cfe0bb4",
+      "webp_sha256": "edca020701e96c987c196e27188eac6e0aadea0cd4673751df3c21a2730c820a",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-write-dossier.webp",
+      "capture_png_sha256": "0c97af7a16ee1fdb9642baa4192527a15f2da0829870a4205735e48d5056d5bf",
+      "webp_sha256": "b4f9c785f607fd6d2bbeeafbd747daf7e260104f2c82d231df50a741d69fa7b1",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-write-insights.webp",
+      "capture_png_sha256": "8ee51fb879e112043663e2f893f142d794324e7edc26b2140c0fa518292e9d86",
+      "webp_sha256": "2fd416d1aa3f8371ecbb8cb2d5c7063fe887631fdfa1c4a0c97a544532b0732e",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-write-manuscript.webp",
+      "capture_png_sha256": "a2a05c0d6c21462e0d35a6c8969023e76947e61e96b1811302ed382b84c6dca5",
+      "webp_sha256": "641726d13523588fad5e8136c57a2c09adde381691fedc27f7e321ca7d8d1329",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-write-outline.webp",
+      "capture_png_sha256": "a24fd788a444679d0541df5f428e7eb9e361ad31a6a9fe495f13bbadcfea9209",
+      "webp_sha256": "4c27b618797efdeb8aa71f138318065dfb7533f05b1c9ac27503e7986d74a498",
+      "width": 1800,
+      "height": 1125
+    },
+    {
+      "asset": "img/app-write-style.webp",
+      "capture_png_sha256": "e8d9ba6a40afa63ffb1e77c56701e4f3f3a2e0e2b50d3da4b46cbad31b62a14f",
+      "webp_sha256": "3aa3e89b89437bcd4db5865f83957eab174cdcd8cfad37fc9fbacda1e3f774dc",
+      "width": 1800,
+      "height": 1125
+    }
+  ],
+  "validation": {
+    "html_pages": 44,
+    "local_links_and_assets": 1374,
+    "asset_hashes": 377,
+    "screenshots": 38,
+    "viewport_route_checks": 12,
+    "widths": [
+      1440,
+      1024,
+      390,
+      320
+    ],
+    "page_errors": [],
+    "local_http_errors": [],
+    "carousels_search_and_mobile_navigation": "passed"
+  }
+}

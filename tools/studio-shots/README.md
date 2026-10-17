@@ -1,5 +1,42 @@
 # Studio screenshots
 
+## Released Delta V9 captures
+
+All 38 product screenshots currently referenced by the homepage and guide were
+captured from `v0.9.10` (`02fd96f70794de2a264c5bdb8ed488dcb83d746b`).
+`delta-v9-captures.json` binds the PNG capture hashes and shipped WebP hashes.
+The interface is V9; the Ixrixenrond world is the existing earlier project,
+opened without updating its generator. Community artwork and the posters for
+the explicitly versioned V6 video recordings are separate assets.
+
+Use a temporary source export of the tag or a detached checkout. Prepare a
+temporary `data/worlds/world_90ae45f361f3` copy with `codex/novels/` and
+`codex/manuscript*` excluded. Rewrite its `world_config.json` `out_dir` to that
+copy, and do not copy the library's `index.json`. The directory above `data/`
+needs `setup.json` with `release`, `commit`, `world`,
+`source_world_config_sha256` and `private_manuscripts_removed: true`; set that
+last flag only after excluding the private manuscript files. Never use the
+live library. Start that tag's server with `CARTOVOX_DATA_DIR` set to the copy:
+
+```bash
+python3 tools/studio-shots/07-release-screenshots.py --sandbox /tmp/.../data --output /tmp/.../shots
+python3 tools/build-images.py --shots /tmp/.../shots
+python3 tools/subset-fonts.py
+python3 tools/stamp-assets.py
+```
+
+The V9 pass checks the server's app version, refuses a library outside `/tmp`,
+uses original demonstration prose, waits for the gallery and previews, and
+fails on incomplete capture steps. Inspect every capture before replacing
+assets. The output frame is 1440 × 900 at 2× density, encoded for the site at
+1800 × 1125. Screenshot URLs receive content hashes, including thumbnail
+`data-src` references, so the month-long image cache cannot keep old UI.
+Retain the compact capture manifest and delete the temporary library, source
+export and PNGs after validation. Earlier passes below remain the underlying
+helpers; `07-release-screenshots.py` is the current release entry point.
+
+## Earlier passes
+
 The `app-*.webp` images come from a sandboxed CartoVox studio, never from a
 live library. Copy a few saved worlds into a throwaway data directory, start
 the app on a spare port, and run the passes in order:

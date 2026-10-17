@@ -16,7 +16,7 @@
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=d1e6bd00d2">
+  <link rel="stylesheet" href="/css/site.css?v=d5ac48bf9b">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -65,7 +65,7 @@
       <a href="#create">Four ways in</a>
       <a href="#brief" class="toc-sub">The World Brief</a>
       <a href="#nations" class="toc-sub">Nations, tongues, tectonics</a>
-      <a href="#search" class="toc-sub">Candidates &amp; Choose</a>
+      <a href="#search" class="toc-sub">Candidates &amp; review</a>
       <a href="#advanced" class="toc-sub">Advanced settings &amp; recipes</a>
       <a href="#preflight" class="toc-sub">Build: Sketch, Quick, Full</a>
       <a href="#import" class="toc-sub">Import a map</a>
@@ -119,7 +119,7 @@
         the searchable control index or the workspace reference whenever you need a particular tool.
       </p>
       <p class="muted small">
-        Current as of <b>Delta V9 (0.9.10)</b>, the latest distributed release. <a href="#new-v9">New in Delta V9</a>, <a href="#new-v8">New in Delta V8</a>, <a href="#new-v7">New in Delta V7</a> and <a href="#new-v6">New in Delta V6</a> summarise what those releases add; the walkthroughs and reference below describe V9. The key workspace screenshots are from Delta V3, deeper examples from 0.9.1 and the videos from Delta V6; use the written paths for current controls. Earlier-release sections record what changed at the time. Version-by-version changes are on the
+        Current as of <b>Delta V9 (0.9.10)</b>, the latest distributed release. <a href="#new-v9">New in Delta V9</a>, <a href="#new-v8">New in Delta V8</a>, <a href="#new-v7">New in Delta V7</a> and <a href="#new-v6">New in Delta V6</a> summarise what those releases add; the walkthroughs and reference below describe V9. Product screenshots were captured from the released Delta V9 interface using a temporary copy of the example library and original sample writing. The Ixrixenrond geography was saved in an earlier build; opening it for these captures did not rebuild it. The videos remain recordings of Delta V6. Earlier-release sections record what changed at the time. Version-by-version changes are on the
         <a href="/releases/">release notes</a> page. The app also includes an offline manual under <b>Help</b>.
       </p>
       <p class="guide-video-link"><a href="/guide/videos/">Watch six quick video guides →</a> <span>Captioned walkthroughs from Delta V6, each under a minute.</span></p>
@@ -165,7 +165,7 @@
           <a href="#decision-maps">Three decision maps to try →</a></li>
         <li><b>Build a small world of your own.</b> Open <b>Create</b>, choose <b>Generate a new world</b>
           and a purpose, then write a sentence in <b>Your world in a few sentences</b>. Choose
-          <b>Find 12 strong matches</b>, click the candidate you like and <b>Continue</b> through <b>Choose</b> to
+          <b>Search candidates</b>, then <b>Find 12 strong matches</b>. Select a candidate, review it and continue to
           <b>Build</b>. Pick <b>Sketch world</b>, read <b>Takes</b> and <b>Disk</b>, and choose <b>Create Sketch world</b>.
           <span class="step-result">Look for: a saved world in your Library, ready to edit.</span>
           <a href="#first">The full first-world walkthrough →</a></li>
@@ -210,7 +210,7 @@
       <h2>Where is it?</h2>
       <p class="section-lede">
         Type a word — <i>rivers</i>, <i>print</i>, <i>Foundry</i>, <i>rename</i>, <i>backup</i> — and this table
-        narrows to the rows that mention it. Every path was checked against Delta V5.
+        narrows to the rows that mention it. The paths below describe Delta V9.
       </p>
       <div class="guide-search">
         <label class="sr-only" for="lookup-q">Search the index</label>
@@ -222,10 +222,10 @@
         <tbody>
           <tr><td>Start a world from a written description</td><td><code>Create › Describe › Story</code> — the <b>Your world in a few sentences</b> box (it was called World thesis)</td></tr>
           <tr><td>See what CartoVox produces before committing</td><td><b>Build the example world</b> on the welcome's last page, Create's <b>First world?</b> card or an empty <code>Library</code> (Beinnorn, a real project in your library)</td></tr>
-          <tr><td>Go back to an earlier step of Create</td><td>The step bar at the top of Create: <b>1 Describe</b>, <b>2 Candidates</b>, <b>3 Choose</b>, <b>4 Build</b>; your brief, shortlist and seed are all still there</td></tr>
+          <tr><td>Go back to an earlier step of Create</td><td>The step bar at the top of Create: <b>1 Describe</b>, <b>2 Candidates</b>, <b>3 Build</b>; your brief, shortlist and seed are all still there</td></tr>
           <tr><td>Choose Sketch, Quick or Full</td><td><code>Create › Build</code> — <b>Sketch world</b>, <b>Quick world</b>, <b>Full world</b> or <b>Publication atlas</b>; as a default in <code>Settings › Creation defaults › First build</code></td></tr>
-          <tr><td>Try a seed without building anything</td><td><code>Create › Describe › I have a seed</code>, then <b>Preview this seed</b>; or <b>Preview on the map</b> on Choose (approximate, nothing saved)</td></tr>
-          <tr><td>Search many seeds against the brief</td><td><b>Find 12 strong matches</b> at the foot of <code>Create › Describe</code>, at <b>Quick</b>, <b>Thorough</b> or <b>Deep</b> search depth</td></tr>
+          <tr><td>Try a seed without building anything</td><td><code>Create › Describe › I have a seed</code>, then <b>Preview this seed</b>; or <b>Preview on the map</b> in the chosen candidate’s preview (approximate, nothing saved)</td></tr>
+          <tr><td>Search many seeds against the brief</td><td><code>Create › Describe › Search candidates</code>, then <b>Find 12 strong matches</b> in Candidates, at <b>Quick</b>, <b>Thorough</b> or <b>Deep</b> search depth</td></tr>
           <tr><td>Compare shortlisted worlds side by side</td><td><code>Create › Candidates › Compare</code> — two to six, opening over the candidates</td></tr>
           <tr><td>Twenty-four variations of the world you picked</td><td><code>Create › Candidates › Find 24 variations</code> — nearby coast and relief changes around the chosen seed and plate layout; <a href="#search">how variations work</a></td></tr>
           <tr><td>All simulation settings</td><td><code>Create › Describe › Advanced</code>, the brief's last section</td></tr>
@@ -277,8 +277,8 @@
           <tr><td>Plates, boundaries and what the Tectonic Director got</td><td><code>World › Tools › Tectonics</code> (key <kbd>T</kbd>)</td></tr>
           <tr><td>Could this world exist?</td><td><code>World › Tools › Advisor</code> (key <kbd>A</kbd>)</td></tr>
           <tr><td>The world as a landscape, a voxel model or a globe</td><td><code>World › Tools › 3D terrain</code></td></tr>
-          <tr><td>Compose a large layered drawing</td><td><code>World › Tools › Edit artwork</code> (Render Studio, key <kbd>N</kbd>)</td></tr>
-          <tr><td>Tilt a finished sheet so ridges stand up</td><td><code>World › Tools › Edit artwork › Saved renders</code> › <b>Oblique view</b> on a finished render</td></tr>
+          <tr><td>Compose a large layered drawing</td><td><code>World › Tools › Render Studio</code> (Render Studio, key <kbd>N</kbd>)</td></tr>
+          <tr><td>Tilt a finished sheet so ridges stand up</td><td><code>World › Tools › Render Studio › Saved renders</code> › <b>Oblique view</b> on a finished render</td></tr>
           <tr><td>Put labels on a render</td><td>Render Studio › the lettering chooser, under the layer list</td></tr>
           <tr><td>The illustrated plates</td><td><code>World › Atlas</code> tab</td></tr>
           <tr><td>Draw plates you deferred during the build</td><td><code>World › Atlas › Render remaining plates</code></td></tr>
@@ -348,7 +348,7 @@
           <tr><td>Every world record and table, with CSV and JSON downloads</td><td><code>World › Tools › World facts</code>; <a href="#world-facts">records and statistics</a></td></tr>
           <tr><td>Hide rivers, or export a turned map exactly as shown</td><td><code>World › Map appearance › Map aids › Rivers</code> (<kbd>U</kbd>); choose <b>on screen</b> in the picture export’s projection choices</td></tr>
           <tr><td>A child map’s own hexes, pins and players’ copy</td><td>Open the child map, then <code>Export › Hexcrawl or hex map</code>; tick <b>Players’ copy</b>; <a href="#export">export scope</a></td></tr>
-          <tr><td>Combine polygons or edit holes and curve handles</td><td><code>World › Tools › Edit artwork</code> — select shapes for <b>Union</b>, <b>Intersection</b> or <b>Subtract</b>; <a href="#render">Render Studio</a></td></tr>
+          <tr><td>Combine polygons or edit holes and curve handles</td><td><code>World › Tools › Render Studio</code> — select shapes for <b>Union</b>, <b>Intersection</b> or <b>Subtract</b>; <a href="#render">Render Studio</a></td></tr>
           <tr><td>Plan sessions and story arcs on cards</td><td><code>World › Campaign › Campaign board</code>; cards are private until <b>Players see this card</b> is ticked</td></tr>
           <tr><td>Invite players on phones or other computers</td><td>At the campaign’s GM tabletop desk, <b>Invite players › Start inviting</b>; <a href="#tabletop">local-network sharing</a></td></tr>
           <tr><td>Resolve a battle with saved regiments or fleets</td><td><code>World › Campaign</code> › battle simulator; <a href="#battles">ground, weather and force quality</a></td></tr>
@@ -613,8 +613,8 @@
         <a href="/releases/#v0.9.1">release notes</a>.
       </p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-map-pdf-setup.webp" width="1800" height="1125" alt="The Bind the illustrated atlas dialog over the map: paper, map lettering, and the plan it read — pages, included sheets, expected file size and print density" loading="lazy" decoding="async"></div>
-        <figcaption><code>World › Export › Set up bound atlas (PDF)…</code> reads the real plan first. On this world: fifteen A4 pages, twelve plates, about 138 MB, and every plate between 337 and 447 dots per inch.</figcaption>
+        <div class="window"><img src="/img/app-map-pdf-setup.webp?v=43f921bfee" width="1800" height="1125" alt="The Bind the illustrated atlas dialog over the map: paper, map lettering, and the plan it read — pages, included sheets, expected file size and print density" loading="lazy" decoding="async"></div>
+        <figcaption><code>World › Export › Bound atlas</code> in Delta V9. Read the included plates, paper size, estimated file size and print density before exporting.</figcaption>
       </figure>
       <ul class="feat">
         <li><b>The bound atlas has a setup</b> — <b>Bound atlas — quick A4 with labels</b> is still one click. <b>Set up bound atlas…</b> chooses the paper (A5, A4, A3, US Letter or US Tabloid) and whether the plates carry their names, then shows the page count, the sheets included, the expected file size, the lowest and highest print density and what the file will not be (sRGB, no CMYK, no bleed, no crop marks) before anything is rendered. It finishes on the named file rather than leaving you to guess whether anything happened. <a href="#export">Exports</a>.</li>
@@ -697,15 +697,15 @@
         One window for Create, World, Write, Make and Library, with shared search, settings and Help.
       </p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-home-library.webp" width="1800" height="1125" alt="The Library desk: the CartoVox lockup, the four ways to begin numbered down the right, and the World Library cards below" loading="lazy" decoding="async"></div>
-        <figcaption>The Library desk in Delta V3, with the four ways in numbered down the right. Since Delta V5 a library with worlds opens on <b>Continue</b> — the world you were last in, its thesis, its figures and one <b>Resume</b>, with Scenes, the Map gallery and project import beside it — and the four ways in are a compact <b>Start something new</b> row below your worlds. The left rail is the same in every destination.</figcaption>
+        <div class="window"><img src="/img/app-home-library.webp?v=41b1ee35e3" width="1800" height="1125" alt="The Delta V9 Library with Continue, Resume, saved-world details and shortcuts above the world cards" loading="lazy" decoding="async"></div>
+        <figcaption>The Delta V9 Library opens on <b>Continue</b>, with <b>Resume</b>, world details and shortcuts to scene maps, the tabletop, Map gallery, Drawings &amp; drafts and project imports. The saved-world cards follow below.</figcaption>
       </figure>
       <h3>The left rail</h3>
       <table>
         <thead><tr><th class="w22">Rail button</th><th>What lives there</th></tr></thead>
         <tbody>
           <tr><td><b>Search</b></td><td>A command palette and a library-wide index in one (<kbd>⌘K</kbd> / <kbd>Ctrl K</kbd>). Type a world, realm, settlement, natural region, lore entry, Chronicle era or campaign and jump to it — or type an action, such as “Define a tongue” or “Open Advanced world settings”, and it opens the panel.</td></tr>
-          <tr><td><b>Create</b></td><td>Everything before a world exists: the brief, seed search, Advanced settings, import, drawing, Deep Time. Tabs: <b>Brief</b> (four steps: Describe, Candidates, Choose, Build) and <b>Deep Time</b>.</td></tr>
+          <tr><td><b>Create</b></td><td>Everything before a world exists: the brief, seed search, Advanced settings, import, drawing, Deep Time. Tabs: <b>Brief</b> (Describe, Candidates and Build) and <b>Deep Time</b>.</td></tr>
           <tr><td><b>World</b></td><td>The finished world. Tabs: <b>Map</b>, <b>Atlas</b>, <b>Travel</b>, <b>Campaign</b>, <b>Scenes</b>.</td></tr>
           <tr><td><b>Write</b></td><td>Names, lore and the book. Tabs: <b>Chronicle</b>, <b>Compendium</b> (called the Codex before Delta V4), <b>Manuscript</b>.</td></tr>
           <tr><td><b>Make</b></td><td>Three guided paths to a playable region, maps in a chapter or finished map artwork. Each step opens the relevant editor; you choose when to create or export.</td></tr>
@@ -718,8 +718,8 @@
       <h3>Each workspace is a sheet on a desk</h3>
       <ul class="feat">
         <li><b>Create</b> is the way you are starting (<b>Generate</b> or <b>Import/Draw</b>) and a step bar —
-          <b>1 Describe</b>, <b>2 Candidates</b>, <b>3 Choose</b>, <b>4 Build</b> — with each step given the whole sheet
-          and one gold button in the bar at its foot.</li>
+          <b>1 Describe</b>, <b>2 Candidates</b>, <b>3 Build</b> — with each step given the whole sheet
+          with candidate review alongside the shortlist.</li>
         <li><b>World</b> is map-first: the rendered map <i>is</i> the page. Two buttons at the top left —
           <b>World overview</b> and <b>Map layers</b> — open the drawer beneath them. <b>Map appearance</b>,
           <b>Sculpt terrain</b>, <b>Export</b> and <b>Tools</b> are one toolbar floating at the bottom of the map, which
@@ -735,8 +735,8 @@
           exactly its height free so the map's key and toolbar are never cut off under it.</li>
       </ul>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-world-map.webp" width="1800" height="1125" alt="The World workspace: the map full width, the World/Maps pill at the top left, the Planet card at the top right, and the command dock along the bottom" loading="lazy" decoding="async"></div>
-        <figcaption>The World workspace in Delta V3, physical relief in the Natural look and the Equal Earth projection this world was saved with. The resolution line reads <code>1440 × 701 drawing · 1440 × 720 simulation · ~26.6 km/cell</code> — drawing density and simulated detail are never confused with each other. Since Delta V5 that line sits at the top right, the pill reads World overview and Map layers, and the dock is a toolbar floating over the map.</figcaption>
+        <div class="window"><img src="/img/app-world-map.webp?v=f3e77d67f2" width="1800" height="1125" alt="The World workspace: the map full width, the World/Maps pill at the top left, the Planet card at the top right, and the command dock along the bottom" loading="lazy" decoding="async"></div>
+        <figcaption>The Delta V9 World workspace, showing Ixrixenrond’s saved relief. <b>World overview</b>, <b>Map layers</b>, <b>Saved views</b> and <b>Find places</b> sit above the map; Map appearance, Sculpt terrain, Export and Tools share its toolbar. Drawing density and simulation detail are reported separately.</figcaption>
       </figure>
       <div class="callout">
         <span class="callout-t">Easy to miss</span>
@@ -769,17 +769,16 @@
           of the land</b>, nine pictures (Balanced Earth-like, Pangaea, Shattered Archipelago, Inland Sea, Twin
           Hemispheres, Rifted Continent, Drowned Interior, Fjordland, Equatorial Belt). They are separate choices, so
           changing the kind of planet does not have to masquerade as changing its landmasses.</li>
-        <li><b>Press <span class="nowrap">Find 12 strong matches</span></b> at the foot of the brief. A Thorough search
+        <li><b>Open Search candidates</b>, then press <b>Find 12 strong matches</b>. A Thorough search
           tries 36 seeds in about 25 seconds and saves nothing. On <b>Candidates</b>, click the world you like, then
           <b>Continue with World C</b> (or whichever you picked). If you already know a seed, <b>I have a seed</b>
           skips the search.</li>
-        <li><b>Look at it on Choose.</b> The world large, a globe, its seed with <b>Copy</b>, its figures and every
+        <li><b>Review the chosen candidate.</b> The world large, a globe, its seed with <b>Copy</b>, its figures and every
           check of your brief. <b>Preview on the map</b> draws a quick rough map and saves nothing. Then
-          <b>Continue to Build</b>.</li>
+          continue to <b>Build</b>.</li>
         <li><b>Pick Sketch world on Build</b>, and read the side panel before you commit: <b>Takes</b>, <b>Memory</b>,
           <b>Makes</b>, <b>Disk</b> and <b>Saved to</b>. The estimate learns from completed builds of the same shape on
-          your own machine. A measured reference Sketch finished in <b>30.5 seconds with an illustrated atlas</b> on a
-          fast Apple Silicon Mac. A Sketch is a real world, not a preview — every stage runs and the saved archive holds
+          your own machine. The V9 source reference measured a Sketch without plates at about <b>35 seconds</b> on an M5 Pro Mac; your chosen outputs add their own cost. A Sketch is a real world, not a preview — every stage runs and the saved archive holds
           the same members.</li>
         <li><b>Press the gold button.</b> It names what you are committing to — <b>Create Sketch world</b>,
           <b>Create Quick world</b>, <b>Create full-resolution world</b>, or <b>Generate publication atlas</b>.
@@ -799,7 +798,7 @@
     </section>
     <section id="create">
       <p class="eyebrow">Create</p>
-      <h2>Four ways in, then four steps.</h2>
+      <h2>Describe, compare and build.</h2>
       <p class="guide-video-link"><a href="/guide/videos/#create">Watch: Create your first world →</a> <span>54 sec · captioned</span></p>
       <p class="section-lede">
         Create opens with a choice, not a form: <b>Generate a new world</b>, <b>Import my existing map</b>,
@@ -809,7 +808,7 @@
         straight to the brief.
       </p>
       <ul class="feat">
-        <li><b>A route and a step bar</b> — Generate follows <b>Describe › Candidates › Choose › Build</b>. Import/Draw follows <b>Import or draw › Coastline › On the planet › Guide layers › Details › Build</b>. The step bar returns to completed decisions and keeps your inputs. Nothing is simulated before Build.</li>
+        <li><b>A route and a step bar</b> — Generate follows <b>Describe › Candidates › Build</b>. Import/Draw follows <b>Import or draw › Coastline › On the planet › Guide layers › Details › Build</b>. The step bar returns to completed decisions and keeps your inputs. Nothing is simulated before Build.</li>
         <li><b>Nothing was removed, only moved.</b> The world shape is part of the brief, the seed first appears on Choose, and the generation options, what a build makes, how long it takes and where it is saved are all on Build, above the one button that builds.</li>
         <li><b>The map a world is built on</b> — an imported or drawn map is named on Build where the seed would be, with <b>Remove map</b> in the same row. It replaces the geography of everything generated from that sheet until you take it off.</li>
         <li><b>Setup guide</b> — an optional six-step guide (choose how to begin, write the brief, name the peoples and their tongues, preview a seed, find strong matches, review the cost) that shows which simulation systems each setting affects. The head of the brief counts it as <b>Setup · n/6</b>; <b>Expert view</b> puts it away.</li>
@@ -819,14 +818,13 @@
 
       <h3 id="brief">The World Brief</h3>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-create-brief.webp" width="1800" height="1125" alt="The Create sheet: the action strip, the folding brief with a thesis and its reading, and the candidate search beside it" loading="lazy" decoding="async"></div>
-        <figcaption>The brief as it was in Delta V3, a column of folds; since Delta V5 its sections run down the left and the one you pick fills the middle. The reading is unchanged: each cue offers an explicit Apply, the reading never edits the brief itself, and it reports the words it understood but did not act on.</figcaption>
+        <div class="window"><img src="/img/app-create-brief.webp?v=e3749f71f4" width="1800" height="1125" alt="Delta V9 Describe with Story selected, a world description and its reading beside the brief sections" loading="lazy" decoding="async"></div>
+        <figcaption>The Delta V9 brief: select Story, Planet, Land, Peoples, Tongues, Tectonics, Limits or Advanced on the left. The description’s reading and explicit Apply choices appear beside it; unapplied suggestions leave the brief unchanged.</figcaption>
       </figure>
       <p><span class="badge badge-soft">Delta V5</span> Step 1, <b>Describe</b>, fits on one screen: eight sections down the
       left, each with a word saying what it holds (<i>17 words</i>, <i>2 limits</i>, <i>default</i>), and the one you
       pick filling the middle. Beside it, <b>Your world so far</b> shows the land shape and the planet as pictures, what
-      CartoVox read in your description and how many limits, realms and tongues you have set; <b>Find 12 strong
-      matches</b> waits at the foot, with <b>I have a seed</b> and <b>Start from Deep Time</b> as the two other ways in.</p>
+      CartoVox read in your description and how many limits, realms and tongues you have set; <b>Search candidates</b> opens the shortlist and its <b>Find 12 strong matches</b> action. You can also supply a seed or start from Deep Time.</p>
       <table>
         <thead><tr><th class="w26">Section</th><th>What it holds</th></tr></thead>
         <tbody>
@@ -866,25 +864,25 @@
         <li><b>Government</b> — expand it on a realm in <b>Describe › Peoples</b> to choose origins, values, pillars and authority, plus an optional founding story. A live preview shows the government and ruler’s title; dossiers, handbooks and rebuilds keep your choice even with generated lore off.</li>
       </ul>
 
-      <h3 id="search">Seed search: Candidates and Choose</h3>
+      <h3 id="search">Seed search: Candidates and the chosen world</h3>
       <ul class="feat">
         <li><b>Find 12 strong matches</b> scores reproducible seeds against every measurable requirement and fills step 2, <b>Candidates</b>, with twelve worlds, World A to World L, each with its map, three numbers and how well it fits your brief. <b>Depth</b> sets how many it tries — <b>Quick</b> 24 seeds (about 20 s), <b>Thorough</b> 36 (about 25 s), <b>Deep</b> 72 (about 50 s) — and nothing is saved by a search. Every seed tried is drawn as it is scored, so twelve results cost no more than six once did.</li>
-        <li><b>Choosing is a click.</b> Click a card (arrow keys and Enter work too) and the side panel shows that world in full: a bigger map, its six figures, which checks it passed and its story hooks. Before you pick, it shows the range of each figure across the twelve, with a small chart placing them by the two figures that differ most. Rest the pointer on a card for a larger map. <b>Continue with World C →</b> takes your choice to Choose; the cards carry no build buttons.</li>
+        <li><b>Choosing is a click.</b> Click a card (arrow keys and Enter work too) and the side panel shows that world in full: a bigger map, its six figures, which checks it passed and its story hooks. Before you pick, it shows the range of each figure across the twelve, with a small chart placing them by the two figures that differ most. Rest the pointer on a card for a larger map. <b>Continue with World C →</b> takes your choice toward Build; the cards carry no build buttons.</li>
         <li><b>Show</b>, <b>Sort</b>, <b>Taste</b> and <b>Depth</b> sit in the step's header, with <b>Search again</b>. Cards distinguish measured checks from constraints that still need author review, and on a tall screen each adds the one story hook the fewest of the others share.</li>
         <li><b>Find 24 variations</b> keeps the chosen seed and plate layout, varies coasts and relief slightly, and ranks the closest matches first. Every variation keeps its own settings through selection, favourites, reload and Build; the shortlist also reports the search seed. Return to the twelve original candidates from the same grid.</li>
         <li><b>Favourite, reject, annotate</b> — favourites and rejections become an adjustable <b>taste signal</b> (Off, Gentle, Balanced, Strong) for later searches; notes and rejection reasons never leave the browser. Hard constraints stay authoritative.</li>
         <li><b>Compare</b> opens over the candidates: two to six side by side, the same facts in rows, with the rows where they differ standing out. The separate Compare tab is gone.</li>
-        <li><b>Choose</b>, step 3, shows the world you picked, large, with a small turning globe, its seed for the first time (with <b>Copy</b>), its figures, every check of your brief, and a row of the other matches to switch to. <b>Preview on the map</b> draws a quick rough map and saves nothing; previews are labelled approximate because the production grid can change small islands.</li>
+        <li><b>Review your choice</b> beside the shortlist: the world you picked, large, with a small turning globe, its seed for the first time (with <b>Copy</b>), its figures, every check of your brief, and a row of the other matches to switch to. <b>Preview on the map</b> draws a quick rough map and saves nothing; previews are labelled approximate because the production grid can change small islands.</li>
         <li><b>I have a seed</b>, under the search, is for when you already know the seed you want: the step line becomes <b>Enter your seed › Preview it › Build</b>, and <b>Search for candidates instead</b> takes you back.</li>
         <li>Results <b>stay between visits</b>; a run's settings are preserved even when it fails or is cancelled, and the completion panel offers <b>Adjust these settings</b>.</li>
-        <li><b>Measured changes stay visible</b> — Choose compares the card, sharper preview and built-world values. An arrow can mean a number moved while still meeting the check; only a check that fails is marked as changed. Rift valleys still need your visual review even when measured checks pass.</li>
+        <li><b>Measured changes stay visible</b> — The candidate review compares the card, sharper preview and built-world values. An arrow can mean a number moved while still meeting the check; only a check that fails is marked as changed. Rift valleys still need your visual review even when measured checks pass.</li>
       </ul>
 
       <h3 id="advanced">Advanced settings, presets and recipes</h3>
       <p><span class="badge badge-soft">Delta V5</span> Advanced settings are the brief's last section, <code>Create › Describe › Advanced</code>, rather than a screen of their own: <b>Settings grouped in simulation order</b>, in the order the simulation uses them, each with its allowed range. A setting whose name already says what it does carries no explanation; the rest have one short line on hover, and the full definition, what a change reaches and the setting's ID are one click away under its cost badge. Nothing is hidden in a module, and every way in — the command palette, the setup guide's Expert view, a health check's repair, a recipe's Adjust — lands here, at the setting it was about.</p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-create-advanced.webp" width="1800" height="1125" alt="The Advanced world settings sheet open in Create, its twenty groups listed with the number of options in each" loading="lazy" decoding="async"></div>
-        <figcaption>Advanced world settings as their own sheet, before Delta V5 moved them into Describe. The groups and their order are the same; in Delta V5 they count Identity and grid (1), The planet (24), Terrain import (12), Tectonics — plates (9), continents (20) and relief (67), Presentation of the sphere (2), Climate — temperature (11), circulation (8), rainfall (12) and ocean (2), Hydrology (38), Surface geology and soils (1), Glacial history (7), Geological resources (5), Biomes (15), the impossible layer (13), Civilisation (34), Naming (7) and Output (31). Undo, Redo and Clear overrides sit at the section's head, and Recipes is the first entry in the group list.</figcaption>
+        <div class="window"><img src="/img/app-create-advanced.webp?v=ce0aa490b2" width="1800" height="1125" alt="The Advanced world settings sheet open in Create, its twenty groups listed with the number of options in each" loading="lazy" decoding="async"></div>
+        <figcaption>Advanced settings inside Delta V9’s Describe step. Select a group, search settings and compare the live preview with the starting values. Undo, Redo and Clear overrides sit above the settings.</figcaption>
       </figure>
       <ul class="feat">
         <li><b>Planet</b> — radius, gravity, rotation and day length, orbital year, axial tilt, eccentricity and periapsis phase, star luminosity and distance, land share, tides, atmospheric pressure, an explicit greenhouse forcing, ocean salinity, and one dominant moon's mass, distance, period and inclination. Authored year lengths are allowed; a Kepler mismatch is shown, not corrected.</li>
@@ -898,7 +896,7 @@
       </ul>
 
       <h3 id="preflight">Build: simulation detail, preflight, finish, plates and lettering</h3>
-      <p><span class="badge badge-soft">Delta V5</span> Step 4, <b>Build</b>, is one screen. What you can make is four
+      <p><span class="badge badge-soft">Delta V5</span> The final step, <b>Build</b>, is one screen. What you can make is four
       pictures of your own kind of world — <b>Sketch world</b>, <b>Quick world</b>, <b>Full world</b> and
       <b>Publication atlas</b> — each with its real time and memory, measured the way the run itself is. Pick the atlas
       and its plates appear as thumbnails to tick (<b>World plate</b>, <b>Continent plates</b>, <b>Regional plates</b>,
@@ -953,8 +951,8 @@
 
       <h3 id="draw">Draw your world</h3>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-draw-canvas.webp" width="1800" height="1125" alt="The Draw desk: a continent painted on a wrapping ocean with the icon rail and tool strip" loading="lazy" decoding="async"></div>
-        <figcaption>A full-screen desk with an icon rail, one button per group: Navigate, Land, Relief, Cover, Water, Realms, Annotate, World and Reference.</figcaption>
+        <div class="window"><img src="/img/app-draw-canvas.webp?v=7fee63d8cb" width="1800" height="1125" alt="The Draw desk: a continent painted on a wrapping ocean with the icon rail and tool strip" loading="lazy" decoding="async"></div>
+        <figcaption>The Delta V9 drawing desk, with grouped tools, brush settings, references, saved drafts and <b>Use this drawing</b>. This is an original sample drawing made in the temporary screenshot library.</figcaption>
       </figure>
       <ul class="feat">
         <li><b>Brushes</b> — Land, Water, Islands, Outline, Raise, Lower, Smooth, Flatten, Mountains, Roughen, with size, strength and hard-edge controls, undo and redo, and a seeded starting shape to sculpt. The ocean wraps east–west, because it is a planet.</li>
@@ -971,8 +969,8 @@
 
       <h3 id="deeptime">Deep Time</h3>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-create-deep-time.webp" width="1800" height="1125" alt="The Deep Time tab: geological foundry controls for seed, duration, timeline detail, plates, crust target, tempo, star and orbit, feedback model and Milankovitch cycles" loading="lazy" decoding="async"></div>
-        <figcaption>The geological foundry: a duration of 300, 420 or 600 million years, 5 to 24 major plates, a tempo from gentle to restless, a feedback model and Milankovitch cycles — then draw your own starting crust or use the generated outline.</figcaption>
+        <div class="window"><img src="/img/app-create-deep-time.webp?v=feae8632be" width="1800" height="1125" alt="The Deep Time tab: geological foundry controls for seed, duration, timeline detail, plates, crust target, tempo, star and orbit, feedback model and Milankovitch cycles" loading="lazy" decoding="async"></div>
+        <figcaption>Deep Time in Delta V9: choose the duration, plates, tempo, climate feedback and orbital cycles, then paint starting crust or use a generated outline. A run can continue in the background.</figcaption>
       </figure>
       <ul class="feat">
         <li>Paint an initial supercontinent (or let one be built), run hundreds of millions of years of breakup, spreading, subduction, collision, suturing and erosion, then <b>scrub every saved era</b> with play, pause, four speeds, looping and a narration of each era's dominant events.</li>
@@ -1005,8 +1003,8 @@
       <h3 id="views">Map layers, one geography</h3>
       <p class="guide-video-link"><a href="/guide/videos/#maps">Watch: One world, many maps →</a> <span>36 sec · captioned</span></p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-map-library.webp" width="1800" height="1125" alt="The Maps drawer open beside the map, listing the generated views by group with a count for each" loading="lazy" decoding="async"></div>
-        <figcaption>The catalogue as it was in 0.9.1, when the button was called Maps, each group counted. In Delta V5 <b>Map layers</b> opens it with the view's name at its head and one row for the count, <b>Original</b> and a <b>Download</b> menu, then the groups in an even two-column grid: Terrain &amp; geology, Climate &amp; seasons, Water &amp; atmosphere, Life &amp; settlement, Cartography, Atlas plates. Projections are chosen in Map appearance.</figcaption>
+        <div class="window"><img src="/img/app-map-library.webp?v=f95416115c" width="1800" height="1125" alt="The Maps drawer open beside the map, listing the generated views by group with a count for each" loading="lazy" decoding="async"></div>
+        <figcaption>Delta V9’s <b>Map layers</b> drawer. Search layers, switch between All, Favourites and Recent, and open a group. The selected layer has its own key, source reading, Original image and Download menu; projections live in Map appearance.</figcaption>
       </figure>
       <p>The <b>Map layers</b> drawer groups every generated view — the layers available for this world, plus one atlas plate per world, continent and region, labelled and unlabelled. Each has a reading key, a plain-language source method — <i>Simulation output</i>, <i>Calculated from simulation</i>, <i>Planning estimate</i>, <i>Rule-based interpretation</i>, <i>Visual presentation</i>, <i>Author-edited layer</i> or <i>What-if preview</i> — its projection, working scale, limitations and a downloadable Provenance JSON; how the map was made is one quiet line that opens. The views new in Delta V5 read what every saved world already holds, with no rebuild; views whose saved fields an older world lacks are marked unavailable rather than invented.</p>
       <table>
@@ -1053,7 +1051,7 @@
       <h3 id="inspector">The cell inspector</h3>
       <p class="guide-video-link"><a href="/guide/videos/#climate">Watch: Understand a place’s climate →</a> <span>30 sec · captioned</span></p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-map-cell-inspector.webp" width="1800" height="1125" alt="The cell inspector open on a clicked cell, with Why here? evidence for its biome" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-map-cell-inspector.webp?v=fbfd03a59e" width="1800" height="1125" alt="The cell inspector open on a clicked cell, with Why here? evidence for its biome" loading="lazy" decoding="async"></div>
         <figcaption>One click on the map. <b>Why here?</b> lists the deciding, supporting and uncertain evidence for the biome at that cell, each with a link to the map that shows it.</figcaption>
       </figure>
       <ul class="feat">
@@ -1085,16 +1083,16 @@
       own Fullscreen button.</p>
       <div class="guide-grid-2">
         <figure class="guide-fig">
-          <div class="window"><img src="/img/app-map-view-menu.webp" width="1800" height="1125" alt="The View menu open above the map dock, titled Map appearance, with the map aids row at its foot" loading="lazy" decoding="async"></div>
-          <figcaption>Map appearance in 0.9.1, when it opened from the dock's View button. In Delta V5 it is one tidy column: Map look, Shallows, Projection and Detail as selects of one width, then <b>Map aids</b> as a two-column grid, and <b>Borders and places</b> folded at the foot. In V9 Map aids is a grid of icons, including <b>Rivers</b> (<kbd>U</kbd>); <b>Nations</b> and <b>Political hierarchy</b> open from Tools.</figcaption>
+          <div class="window"><img src="/img/app-map-view-menu.webp?v=e5db89f306" width="1800" height="1125" alt="The View menu open above the map dock, titled Map appearance, with the map aids row at its foot" loading="lazy" decoding="async"></div>
+          <figcaption><b>Map appearance</b> in Delta V9: map look, shallows, projection, detail and a grid of Map aids, including <b>Rivers</b> (<kbd>U</kbd>). Borders and places remain available below.</figcaption>
         </figure>
         <figure class="guide-fig">
-          <div class="window"><img src="/img/app-map-tools-menu.webp" width="1800" height="1125" alt="The Tools menu open above the map dock as a grid of fourteen instruments" loading="lazy" decoding="async"></div>
-          <figcaption>The Tools menu in 0.9.1, one grid of fourteen. In Delta V5 it reads in four groups in two columns — Inspect, then Geography, Simulation and Artwork — with shorter tiles and no frames, and Sculpt terrain has left it for the toolbar.</figcaption>
+          <div class="window"><img src="/img/app-map-tools-menu.webp?v=561c3eb66d" width="1800" height="1125" alt="The Delta V9 Tools menu with grouped instruments, World facts, Nations and Political hierarchy" loading="lazy" decoding="async"></div>
+          <figcaption>The Delta V9 <b>Tools</b> menu groups instruments by task, including <b>World facts</b>, <b>Nations</b> and <b>Political hierarchy</b>. Sculpt terrain has its own toolbar button.</figcaption>
         </figure>
       </div>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-world-map-graphical.webp" width="1800" height="1125" alt="The same world drawn in the Graphical relief map look: green and gold land cover, white ranges, a dark ocean with bright coastal shallows" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-world-map-graphical.webp?v=9bd10a2a4b" width="1800" height="1125" alt="The same world drawn in the Graphical relief map look: green and gold land cover, white ranges, a dark ocean with bright coastal shallows" loading="lazy" decoding="async"></div>
         <figcaption><code>World › Map appearance › Map look › Graphical relief</code>, new in 0.9.1. The look is saved with the world; nothing is re-simulated.</figcaption>
       </figure>
       <h4>Map appearance</h4>
@@ -1103,7 +1101,7 @@
         <li><b>Shallows</b> — Shelf glow, Soft shallows or Flat sea: how the sea beside a coast is coloured.</li>
         <li><b>Projection</b> — <b>Stretched</b> (the simulation's own equirectangular sheet) to begin with, then Equal Earth, Robinson, Mollweide, Mercator, <b>Two hemispheres</b> — the Gott double disk sharing the equator as its rim, mirrored so coastlines meet when printed back to back — and the Cahill and Waterman butterflies. Overlays, hover readings and measurements land on the same spot in every projection, and since 0.9 choosing a projection no longer turns the world: the meridian a sheet opens at resets with the zoom and the pan each time a sheet is shown.</li>
         <li><b>Detail</b> — Auto, Original, 2×, 3×, 4×. Continuous fields interpolate bicubically, categorical ones stay nearest-neighbour, river reaches redraw as vector lines weighted by discharge. The persistent badge states the simulated cell size, always.</li>
-        <li><b>Map aids</b> — a two-column grid: <b>Planet</b> (show or hide the globe card), <b>Deposits</b>, <b>Minimap</b>, <b>Edit artwork</b>, <b>Split view</b>, <b>Time strip</b>, <b>HD region</b> and <b>Grid</b>, which are presentation rather than instruments and so live here. <b>Borders and places</b> folds away at the foot and says how many are shown.</li>
+        <li><b>Map aids</b> — a two-column grid: <b>Planet</b> (show or hide the globe card), <b>Deposits</b>, <b>Minimap</b>, <b>Render Studio</b>, <b>Split view</b>, <b>Time strip</b>, <b>HD region</b> and <b>Grid</b>, which are presentation rather than instruments and so live here. <b>Borders and places</b> folds away at the foot and says how many are shown.</li>
         <li><b>Rivers</b> — toggle them under <b>Map appearance › Map aids</b>, or press <kbd>U</kbd>. Picture exports follow that choice and the Grid switch; choose the projection marked <b>on screen</b> to preserve the displayed turn and projection. Political editing opens from <b>Tools › Nations</b> or <b>Tools › Political hierarchy</b>.</li>
       </ul>
       <h4>Tools</h4>
@@ -1131,7 +1129,7 @@
           <tr><td><b>Climate Lab</b></td><td><kbd>K</kbd></td><td>Test how this world's climate answers a changed season, tilt or ocean — bounded, and without changing canon.</td></tr>
           <tr><td><b>Weather</b></td><td><kbd>Y</kbd></td><td>Play a year of weather as a world-wide radar loop: rain, wind, pressure, storms, ice and tides.</td></tr>
           <tr><td><b>Advisor</b></td><td><kbd>A</kbd></td><td>Planet Advisor: could this world exist? Plates, rivers, climate and biomes checked against each other, where people would thrive, and the chain from soil to polity as maps.</td></tr>
-          <tr><td><b>Edit artwork</b></td><td><kbd>N</kbd></td><td>Render Studio: a large layered drawing of this world. <a href="#render">Below</a>.</td></tr>
+          <tr><td><b>Render Studio</b></td><td><kbd>N</kbd></td><td>Render Studio: a large layered drawing of this world. <a href="#render">Below</a>.</td></tr>
           <tr><td><b>Hotspot</b></td><td>—</td><td>A clickable place on the map that opens a scene, a Compendium page or a chapter.</td></tr>
         </tbody>
       </table>
@@ -1153,7 +1151,7 @@
 
       <h3 id="planet">The Planet card and the 3D terrain explorer</h3>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-terrain-3d.webp" width="1800" height="1125" alt="The 3D terrain explorer showing the world as a smooth relief landscape with its controls" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-terrain-3d.webp?v=da187f87bc" width="1800" height="1125" alt="The 3D terrain explorer showing the world as a smooth relief landscape with its controls" loading="lazy" decoding="async"></div>
         <figcaption>The 3D terrain explorer in Landscape view. Detail, relief, smoothing, surface finish and water opacity on the right; the inspector reports saved cell values whatever the display does.</figcaption>
       </figure>
       <ul class="feat">
@@ -1163,7 +1161,7 @@
 
       <h3 id="sculpt">Sculpt, Select, revisions</h3>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-map-sculpt.webp" width="1800" height="1125" alt="The Sculpt terrain panel with its navigate, build, carve, refine and story tools, and Hide controls in its title bar" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-map-sculpt.webp?v=a757910c33" width="1800" height="1125" alt="The Sculpt terrain panel with its navigate, build, carve, refine and story tools, and Hide controls in its title bar" loading="lazy" decoding="async"></div>
         <figcaption>Sculpt terrain in four steps: choose a change, place it on the map, inspect the terrain result, then apply and re-simulate. Nothing changes until you do.</figcaption>
       </figure>
       <ul class="feat">
@@ -1202,9 +1200,9 @@
       </ul>
 
       <h3 id="render">Render Studio</h3>
-      <p>Open it from <code>Tools › Edit artwork</code> (key <kbd>N</kbd>). One custom whole-world composition at 1K, 2K, 4K, 8K or tiled 16K, delivered as documented transparent PNG layers with world files, a compositing manifest and a flattened preview. It says what it creates before it renders, and it never claims a bigger drawing is a finer simulation.</p>
+      <p>Open it from <code>Tools › Render Studio</code> (key <kbd>N</kbd>). One custom whole-world composition at 1K, 2K, 4K, 8K or tiled 16K, delivered as documented transparent PNG layers with world files, a compositing manifest and a flattened preview. It says what it creates before it renders, and it never claims a bigger drawing is a finer simulation.</p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-render-studio.webp" width="1800" height="1125" alt="The Render Studio panel with recipe, output size, starting style and decorative detail controls" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-render-studio.webp?v=caa753fd6a" width="1800" height="1125" alt="The Render Studio panel with recipe, output size, starting style and decorative detail controls" loading="lazy" decoding="async"></div>
         <figcaption>Render Studio states its scope before it renders: a 4096 × 2048 render from a 1440 × 720 simulation is 9.4 km per pixel over 26.6 km cells, and nothing below one cell was simulated.</figcaption>
       </figure>
       <ul class="feat">
@@ -1224,8 +1222,8 @@
       <p><b>Picture exports</b> — Grid and Rivers follow their current switches; no grid is added silently. The <b>on screen</b> projection choice preserves the displayed centre and turn. Keys take less space; legends still describe the selected map. Heightmaps, vectors, meshes and scientific exports preserve the same saved ice surface and ground conventions; choose <b>Under the ice</b> for bed heights.</p>
       <p class="guide-video-link"><a href="/guide/videos/#export">Watch: Take your maps with you →</a> <span>36 sec · captioned</span></p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-map-export-menu.webp" width="1800" height="1125" alt="The Export menu open above the dock, scrolled to its two bound-atlas entries" loading="lazy" decoding="async"></div>
-        <figcaption><code>World › Export</code> as it was in 0.9.1. Since Delta V4 the menu is sorted into six labelled sections — Pictures, Vector and print, Games and tabletop, 3D and printing, GIS and data, Provenance and backup — with a format badge on every row and choices such as the projections on one row. Since Delta V5 every row is a short name beside its badge (<i>Vector map</i>, <i>Hexcrawl or hex map</i>, <i>Map tiles</i>), with no subtitle and no “…”, so the menu fits on a 1280 × 720 screen. Everything else leaves from the panel that owns it.</figcaption>
+        <div class="window"><img src="/img/app-map-export-menu.webp?v=4dd19ad7c7" width="1800" height="1125" alt="The Export menu open above the dock, scrolled to its two bound-atlas entries" loading="lazy" decoding="async"></div>
+        <figcaption>Delta V9’s Export menu groups pictures, vectors and print, games and tabletop, 3D and printing, GIS and data, and provenance and backups. Format badges sit beside each choice; longer groups scroll inside the menu.</figcaption>
       </figure>
       <p>The map toolbar's <b>Export</b> menu, plus the downloads scattered through the Compendium, Atlas and manuscript. Nothing here needs a re-simulation.</p>
       <p><b>A vector map to finish in a drawing program</b> <span class="badge badge-soft">Delta V4</span>. <b>Vector map</b> (SVG · PDF), first under <b>Vector and print</b>, writes one SVG with named layers, or a PDF on one vector page, drawn in the projection and turn you are looking at. Choose the land as elevation bands in the map's own colours, as biomes, or as one flat colour; paper from A4 to A0; and which layers to include: sea depths, land, lakes and salt pans, realm fills and borders, elevation contours every 1,000 m, coastline, rivers, roads and sea lanes, the graticule, settlements, places of power, names, and the frame and title. Every line is a path you can restyle and every name is text you can edit; the layers show up by name in Inkscape, Illustrator and Affinity. <span class="badge badge-soft">Delta V5</span> It can also carry themes, each its own layer with its key under the map and all off until you tick them: bedrock geology, soils, Köppen climate, resource provinces, floodplains, deltas with their names and channels, ocean currents, prevailing winds (for the year or one season) and deposits with their minerals named. A view that has a vector layer offers <b>SVG</b> beside its picture export, which opens the setup with that layer ticked. <b>Vector map, quick</b> saves the SVG with its usual layers straight away.</p>
@@ -1285,8 +1283,8 @@
         terrain, climate, rivers, settlements, names and lore are never re-run for a sheet.
       </p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-world-atlas.webp" width="1800" height="1125" alt="The Atlas tab: the illustrated world plate beside six cartographer reading desks" loading="lazy" decoding="async"></div>
-        <figcaption>The plate browser in Delta V3, with the six reading desks on the left. Since Delta V5 the column leads with the plates and the desks come last.</figcaption>
+        <div class="window"><img src="/img/app-world-atlas.webp?v=e244175d27" width="1800" height="1125" alt="The Atlas tab: the illustrated world plate beside six cartographer reading desks" loading="lazy" decoding="async"></div>
+        <figcaption>The Delta V9 Atlas browser leads with the plates, with filters by scale and name, a Labeled / No labels switch, map styles and cartographer reading desks. These sheets come from the saved Ixrixenrond project.</figcaption>
       </figure>
       <ul class="feat">
         <li><b>The sheets come first</b> <span class="badge badge-soft">Delta V5</span> — the column opens on the plates, with a selector by scale (All, World, Continents, Regions, Cities, each counted) and a name search once a world has more than a dozen. One <b>Labeled</b> / <b>No labels</b> switch beside a plate's title changes its lettering, carries from sheet to sheet, and is greyed on a sheet drawn in one lettering only. <b>Map styles</b> follow, named as the map viewer names them and shown as previews of your world; the reading desks come last. <b>Fit</b> fills the stage, enlarging a small plate up to 3×.</li>
@@ -1311,8 +1309,8 @@
       <h2>The Journey Laboratory</h2>
       <p class="guide-video-link"><a href="/guide/videos/#travel">Watch: Plan a believable journey →</a> <span>34 sec · captioned</span></p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-world-travel.webp" width="1800" height="1125" alt="A solved journey between two settlements with distance, days, ascent and road share" loading="lazy" decoding="async"></div>
-        <figcaption>Zhargundbar to Ulnazothrond on foot in a typical year: 190 km, 7.1 days, 1,441 m of total ascent over a 1,732 m high point, no border and no river crossed, 67% of it on established road.</figcaption>
+        <div class="window"><img src="/img/app-world-travel.webp?v=d8aad86ae4" width="1800" height="1125" alt="A solved journey between two settlements with distance, days, ascent and road share" loading="lazy" decoding="async"></div>
+        <figcaption>A calculated journey in Delta V9. Read the solved route, distance, travel time and elevation profile, then review its road, crossing and supply assumptions.</figcaption>
       </figure>
       <ul class="feat">
         <li><b>From / To</b> any named settlement, with suggestions, the full name of each end written under its list, and a type-to-filter search once a list holds more than a dozen places; <span class="badge badge-soft">Delta V5</span> <b>Pick on map</b> draws every settlement on the journey map so you can click one (<kbd>Esc</kbd> cancels); <b>Swap endpoints</b>. <b>Mode</b> — on foot, horseback, caravan, sailing ship and the rest. <b>Route assumptions</b> folds <b>Season</b> (typical year or a specific one from a saved weather sheet), <b>Objective</b> (Balanced, Fastest, Safer or Trade-minded) and <b>Party size</b>, with their values in its summary. Then <b>Calculate journey</b>. <b>Map beneath the route</b> — any physical view. A town's <b>Journey from here</b> and <b>Journey to here</b> open Travel with that end filled in.</li>
@@ -1327,7 +1325,7 @@
       <p class="eyebrow">World → Campaign</p>
       <h2>The Campaign desk</h2>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-world-campaign.webp" width="1800" height="1125" alt="The Campaign desk with a campaign profile, visible map layers and the player atlas" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-world-campaign.webp?v=168ea966de" width="1800" height="1125" alt="The Campaign desk with a campaign profile, visible map layers and the player atlas" loading="lazy" decoding="async"></div>
         <figcaption>Control what the table knows: a profile, a player title and introduction, a base map and the layers players may see.</figcaption>
       </figure>
       <ul class="feat">
@@ -1456,8 +1454,8 @@
         proposal until you accept or rewrite it; everything you write survives re-simulation.
       </p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-write-dossier.webp" width="1800" height="1125" alt="The Compendium, under its earlier name, the Codex, with its section list and the measured questions the world raises" loading="lazy" decoding="async"></div>
-        <figcaption>The Compendium in an earlier build, when it was still called the Codex and had seventeen sections. The downloads — vault, transfers, handbooks, worldbook — sit at the bottom of the section list, and it opens on the questions the world raises, each measured, each with Show on map and Write answer.</figcaption>
+        <div class="window"><img src="/img/app-write-dossier.webp?v=b4f9c785f6" width="1800" height="1125" alt="The Compendium, under its earlier name, the Codex, with its section list and the measured questions the world raises" loading="lazy" decoding="async"></div>
+        <figcaption>The Delta V9 Compendium. Its grouped navigation leads to questions, places, lore and authoring tools, with import and export choices kept together. These readings come from the saved sample world.</figcaption>
       </figure>
       <ul class="feat">
         <li><b>Twenty-two sections under five headings</b> <span class="badge badge-soft">Delta V5</span> — <b>Overview &amp; questions</b> (Overview, Questions this world raises, Story hooks); <b>World reference</b> (Lands, Gazetteer, Realms &amp; geopolitics, Cultures, History, Faith questions, Trade &amp; economy, Places of power, Web of relations, Physical dossier); <b>Your writing</b> (Your lore, Reader’s companion, Old names in your books); <b>Names &amp; canon</b> (Your canon, Naming studio, <b>Lexicon</b>, <b>Rename everything</b>, <b>Describe everything</b>); and, last, <b>Import &amp; export</b> (Import lore and every transfer in and out). Every section keeps its address, and one search reads across all of them.</li>
@@ -1474,21 +1472,21 @@
         <li><b>Concurrent lore edits</b> — another window’s change to a different entry is kept alongside yours. If both change the same entry, saving stops and offers the latest lore while retaining your typed text. Review the conflict before replacing anything.</li>
       </ul>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-codex-describe.webp" width="1800" height="1125" alt="The Describe everything sheet: one realm's fields for government, motto, strength, weakness and its ruler" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-codex-describe.webp?v=6d61bc5ee8" width="1800" height="1125" alt="The Describe everything sheet: one realm's fields for government, motto, strength, weakness and its ruler" loading="lazy" decoding="async"></div>
         <figcaption><b>Describe everything</b>: one realm at the top of a sheet that holds every realm, culture, faith, place of power and settlement in the world, with the count of fields still open above it.</figcaption>
       </figure>
       <div class="guide-grid-2">
         <figure class="guide-fig">
-          <div class="window"><img src="/img/app-codex-naming.webp" width="1800" height="1125" alt="The Naming studio: tracked names, locked names, and the reader-confusion review with alternatives" loading="lazy" decoding="async"></div>
-          <figcaption>Naming studio — 635 tracked names, a reader-confusion review, and 335 high-priority alternatives offered in one batch.</figcaption>
+          <div class="window"><img src="/img/app-codex-naming.webp?v=2b4bd6c2cb" width="1800" height="1125" alt="The Naming studio: tracked names, locked names, and the reader-confusion review with alternatives" loading="lazy" decoding="async"></div>
+          <figcaption>Naming studio in Delta V9: review tracked names, locked choices, possible reader confusion and proposed alternatives before changing a name.</figcaption>
         </figure>
         <figure class="guide-fig">
-          <div class="window"><img src="/img/app-codex-lands.webp" width="1800" height="1125" alt="Lands: the gazetteer of contiguous natural regions grouped by landform" loading="lazy" decoding="async"></div>
-          <figcaption>Lands — 925 named natural regions on this world, grouped by landform and ordered by area, each renameable.</figcaption>
+          <div class="window"><img src="/img/app-codex-lands.webp?v=ae84c43c1c" width="1800" height="1125" alt="Lands: the gazetteer of contiguous natural regions grouped by landform" loading="lazy" decoding="async"></div>
+          <figcaption>Lands in Delta V9: the sample world’s natural regions, grouped by landform, with their measured areas and rename controls.</figcaption>
         </figure>
       </div>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-codex-gazetteer.webp" width="1800" height="1125" alt="The Gazetteer: a searchable index of every settlement, realm, people, land, water and place of power" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-codex-gazetteer.webp?v=6625f72526" width="1800" height="1125" alt="The Gazetteer: a searchable index of every settlement, realm, people, land, water and place of power" loading="lazy" decoding="async"></div>
         <figcaption>The Gazetteer index. Every chip opens a dossier assembled from the saved simulation.</figcaption>
       </figure>
       <h3 id="lexicon">The Lexicon <span class="badge badge-soft">Delta V4</span></h3>
@@ -1519,7 +1517,7 @@
       <p class="eyebrow">Write → Chronicle</p>
       <h2>Chronicle</h2>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-write-chronicle.webp" width="1800" height="1125" alt="The Chronicle: an era with its events, the historical map and the playback legend" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-write-chronicle.webp?v=edca020701" width="1800" height="1125" alt="The Chronicle: an era with its events, the historical map and the playback legend" loading="lazy" decoding="async"></div>
         <figcaption>Eras become visible change: the timeline plays on the map with persistent consequences.</figcaption>
       </figure>
       <ul class="feat">
@@ -1543,7 +1541,7 @@
         field.
       </p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-write-manuscript.webp" width="1800" height="1125" alt="The manuscript editor with a chapter, the formatting bar and the chapter binder" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-write-manuscript.webp?v=641726d135" width="1800" height="1125" alt="The manuscript editor with a chapter, the formatting bar and the chapter binder" loading="lazy" decoding="async"></div>
         <figcaption>World names are underlined as you write; <kbd>⌘</kbd>-click opens the dossier beside the chapter.</figcaption>
       </figure>
 
@@ -1596,7 +1594,7 @@
 
       <h4>Insights and Checks</h4>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-write-insights.webp" width="1800" height="1125" alt="The Insights view: overview statistics and the sentence-length distribution for a chapter" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-write-insights.webp?v=2fd416d1aa" width="1800" height="1125" alt="The Insights view: overview statistics and the sentence-length distribution for a chapter" loading="lazy" decoding="async"></div>
         <figcaption>Insights at chapter scope: words, sentences, paragraphs, words per sentence, letters per word, dialogue share, reading ease, passive voice, characters, sentences per paragraph, pages, the longest sentence quoted in full — then the readability and voice table, and the sentence-length distribution below it.</figcaption>
       </figure>
       <ul class="feat">
@@ -1616,11 +1614,11 @@
       <h4>Style, Read, Print, Export</h4>
       <div class="guide-grid-2">
         <figure class="guide-fig">
-          <div class="window"><img src="/img/app-write-outline.webp" width="1800" height="1125" alt="The Outline view: one card per chapter and scene" loading="lazy" decoding="async"></div>
+          <div class="window"><img src="/img/app-write-outline.webp?v=4c27b61879" width="1800" height="1125" alt="The Outline view: one card per chapter and scene" loading="lazy" decoding="async"></div>
           <figcaption><b>Outline</b> — the book as cards: chapters with status and words, scenes with their label, viewpoint, place, time and summary.</figcaption>
         </figure>
         <figure class="guide-fig">
-          <div class="window"><img src="/img/app-write-style.webp" width="1800" height="1125" alt="The Style panel open beside the chapter" loading="lazy" decoding="async"></div>
+          <div class="window"><img src="/img/app-write-style.webp?v=3aa3e89b89" width="1800" height="1125" alt="The Style panel open beside the chapter" loading="lazy" decoding="async"></div>
           <figcaption><b>Style</b> — editor zoom, then the book's typography, page setup, running furniture and cover.</figcaption>
         </figure>
       </div>
@@ -1636,8 +1634,8 @@
       <p class="eyebrow">Library</p>
       <h2>The Library</h2>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-library-gallery.webp" width="1800" height="1125" alt="The Map gallery: plates, style renders and city plans from every saved world on one wall" loading="lazy" decoding="async"></div>
-        <figcaption>The Map gallery — 237 sheets across five worlds, newest first, filterable by world, kind and lettering.</figcaption>
+        <div class="window"><img src="/img/app-library-gallery.webp?v=ca6f537bad" width="1800" height="1125" alt="The Map gallery: plates, style renders and city plans from every saved world on one wall" loading="lazy" decoding="async"></div>
+        <figcaption>The Delta V9 Map gallery, showing the copied sample project’s plates, styles and city plans. Filter by world, kind or lettering, and change the sort order.</figcaption>
       </figure>
       <ul class="feat">
         <li><b>Continue</b> <span class="badge badge-soft">Delta V5</span> — with saved worlds, the Library opens on the world you last had open, or else the one most recently saved: its map, large, its name, its thesis and figures (seed, land, continents and islands, highest peak, revisions, when it was made), and one <b>Resume</b>, with <b>Scenes and encounter maps</b>, <b>Map gallery</b> and <b>Import project backup</b> beside them. An empty Library keeps the full welcome, with the large mark and the four ways in.</li>
@@ -1661,7 +1659,7 @@
       <h2>Settings — <kbd>⌘</kbd><kbd>,</kbd></h2>
       <p class="section-lede">Seven sections that change how CartoVox looks and behaves on this computer, and nothing else. Changes apply immediately; there is no Save button that could disagree with the screen.</p>
       <figure class="guide-fig">
-        <div class="window"><img src="/img/app-settings.webp" width="1800" height="1125" alt="The App settings dialog open on Appearance: theme, interface density, display units and custom themes" loading="lazy" decoding="async"></div>
+        <div class="window"><img src="/img/app-settings.webp?v=aa027ecbdc" width="1800" height="1125" alt="The App settings dialog open on Appearance: theme, interface density, display units and custom themes" loading="lazy" decoding="async"></div>
         <figcaption>App settings floats over the desk and hands it back untouched on close.</figcaption>
       </figure>
       <ul class="feat">
@@ -1696,7 +1694,7 @@
       <table>
         <tbody>
           <tr><td class="w24"><kbd>M</kbd> <kbd>L</kbd> <kbd>C</kbd> <kbd>R</kbd> <kbd>O</kbd></td><td>Measure · Landmarks and routes · Explain climate here · Regional lens · Deposits</td></tr>
-          <tr><td><kbd>S</kbd> <kbd>N</kbd> <kbd>A</kbd></td><td>Sculpt terrain · Render Studio (Edit artwork) · Planet Advisor</td></tr>
+          <tr><td><kbd>S</kbd> <kbd>N</kbd> <kbd>A</kbd></td><td>Sculpt terrain · Render Studio · Planet Advisor</td></tr>
           <tr><td><kbd>K</kbd> <kbd>Y</kbd> <kbd>T</kbd> <kbd>E</kbd></td><td>Climate Lab · Weather year · Tectonics audit · Erosion Lab</td></tr>
           <tr><td><kbd>B</kbd> <kbd>W</kbd> <kbd>X</kbd> <kbd>P</kbd> <kbd>F</kbd></td><td>Map layers · World overview · Export menu · Planet globe · Focus</td></tr>
           <tr><td><kbd>I</kbd> <kbd>V</kbd> <kbd>H</kbd> <kbd>D</kbd> <kbd>G</kbd> <kbd>U</kbd></td><td>Minimap · Split view · Time strip · HD region · Map grid · Rivers</td></tr>
@@ -1852,7 +1850,7 @@
       &amp; layout</code>) may be <b>Essentials</b>, which tucks the specialist tools behind <b>More tools</b>, <b>More
       view controls</b>, <b>More sections</b> and <b>More maps</b>. A region may be hidden in <b>Layout</b> —
       <b>Show all panels</b> restores it. Or Delta V5 moved it: Advanced settings is a section of Create's Describe,
-      Sculpt terrain is on the map's toolbar and no longer in Tools, Render is <b>Edit artwork</b>, and Focus and
+      Sculpt terrain is on the map's toolbar and no longer in Tools, Render is <b>Render Studio</b>, and Focus and
       Fullscreen are one button.</p>
 
       <h4>The little explanations under the controls disappeared.</h4>

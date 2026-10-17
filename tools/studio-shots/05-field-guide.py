@@ -203,14 +203,21 @@ def main():
 
         def create_advanced():
             open_workspace(page, "create", "explorer")
-            click_text(page, "Advanced settings")
+            page.locator("#brief-tab-advanced").click()
             page.wait_for_timeout(2000)
             shot(page, "create-advanced")
         step("create-advanced", create_advanced)
 
         def deep_time():
             open_workspace(page, "create", "history")
-            page.wait_for_timeout(2500)
+            page.locator("#btn-open-history-editor-stage").click()
+            page.locator("#history-generated").click()
+            page.locator("#history-mask-canvas").wait_for(state="visible")
+            page.wait_for_function("""() => {
+              const text = document.getElementById('history-mask-state').textContent;
+              return text === 'Generated outline' &&
+                parseFloat(document.getElementById('history-land-share').textContent) > 0;
+            }""", timeout=60000)
             shot(page, "create-deep-time")
         step("deep-time", deep_time)
 
@@ -431,12 +438,18 @@ def main():
 
         def chronicle():
             open_workspace(page, "write", "chronicle")
-            page.wait_for_timeout(1500)
-            try:
-                click_text(page, "Initialize from Lore timeline", timeout=3000)
-                page.wait_for_timeout(5000)
-            except Exception as error:
-                log(f"  chronicle already initialised: {error}")
+            start = page.locator("#chronicle-empty-initialize")
+            if start.is_visible():
+                start.click()
+            page.wait_for_function("""() => {
+                const image = document.getElementById('chronicle-map-image');
+                return image?.complete && image.naturalWidth > 0 &&
+                    document.getElementById('chronicle-map-empty').classList.contains('hidden');
+            }""", timeout=60000)
+            page.evaluate("""() => {
+              let node = document.getElementById('chronicle-map-image');
+              while (node) { node.scrollTop = 0; node = node.parentElement; }
+            }""")
             shot(page, "write-chronicle")
         step("chronicle", chronicle)
 
@@ -489,17 +502,15 @@ def main():
         def book_views():
             for label, name in (("Outline", "write-outline"),
                                 ("Insights", "write-insights")):
-                try:
-                    page.evaluate(f"""() => {{
-                      const control = [...document.querySelectorAll(
-                        '#tab-manuscript button, #tab-manuscript a')]
-                        .find(node => node.textContent.trim() === {label!r});
-                      control && control.click();
-                    }}""")
-                    page.wait_for_timeout(3000)
-                    shot(page, name)
-                except Exception as error:
-                    log(f"  {label} failed: {error}")
+                for close in ['#manuscript-outline-close', '#manuscript-insights-close']:
+                    if page.locator(close).is_visible():
+                        page.locator(close).click()
+                kind = label.lower()
+                page.locator(f'#manuscript-{kind}-toggle').evaluate('(node) => node.click()')
+                page.locator(f'#manuscript-{kind}').wait_for(state='visible')
+                if kind == 'insights':
+                    page.locator('#manuscript-insights-view table').first.wait_for(state='visible')
+                shot(page, name)
         step("book-views", book_views)
 
         def style_panel():

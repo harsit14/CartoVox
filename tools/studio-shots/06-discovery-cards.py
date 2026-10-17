@@ -111,9 +111,8 @@ def main():
             skip = page.get_by_role('button', name='Skip — I know what I want', exact=True)
             if skip.count() and skip.first.is_visible():
                 skip.first.click()
-            group = page.locator('#brief-group-languages')
-            group.evaluate('(node) => { for(let p=node;p;p=p.parentElement) if(p.tagName==="DETAILS") p.open=true; }')
-            group.locator('summary').first.scroll_into_view_if_needed()
+            page.locator('#brief-tab-tongues').click()
+            page.locator('#brief-section-tongues').wait_for(state='visible')
             shot('create-languages')
         run('languages', languages)
 
@@ -125,6 +124,8 @@ def main():
             if sample_title in books.locator('option').all_text_contents():
                 books.select_option(label=sample_title)
             else:
+                if not page.locator('#manuscript-new-book').is_visible():
+                    page.locator('#write-rail-book-menu > summary').click()
                 page.locator('#manuscript-new-book').click()
                 field.answer_text_modal(page, sample_title)
             page.wait_for_timeout(1200)
