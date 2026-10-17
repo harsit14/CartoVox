@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The CartoVox guide — how to use it, and everything it does</title>
-  <meta name="description" content="The CartoVox Delta V8 guide: follow your first hour, find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
+  <meta name="description" content="The CartoVox Delta V9 guide: follow your first hour, find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
   <link rel="canonical" href="https://cartovox.org/guide/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The CartoVox guide — how to use it, and everything it does">
-  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V8; screenshots captured from released builds.">
+  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V9; screenshots captured from released builds.">
   <meta property="og:url" content="https://cartovox.org/guide/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=1d94683dca">
+  <link rel="stylesheet" href="/css/site.css?v=2897c85bd9">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -46,6 +46,7 @@
       <a href="#first-hour"><b>Your first hour</b><small>start here</small></a>
       <a href="/guide/videos/"><b>Quick video guides</b><small>6 videos</small></a>
       <a href="#where"><b>Where is it?</b><small>search</small></a>
+      <a href="#new-v9">New in Delta V9</a>
       <a href="#new-v8">New in Delta V8</a>
       <a href="#new-v7">New in Delta V7</a>
       <a href="#new-v6">New in Delta V6</a>
@@ -113,7 +114,7 @@
         the searchable control index or the workspace reference whenever you need a particular tool.
       </p>
       <p class="muted small">
-        Current as of <b>Delta V8 (0.9.9)</b>, the latest distributed release. <a href="#new-v8">New in Delta V8</a>, <a href="#new-v7">New in Delta V7</a> and <a href="#new-v6">New in Delta V6</a> summarise what those releases add; the rest of the words still describe Delta V5, so where Delta V6, V7 or V8 changed something they describe the earlier build; the key workspace screenshots are from Delta V3 and some deeper reference images from 0.9.1, so where Delta V5 moved a control the caption says so. Version-by-version changes are on the
+        Current as of <b>Delta V9 (0.9.10)</b>, the latest distributed release. <a href="#new-v9">New in Delta V9</a>, <a href="#new-v8">New in Delta V8</a>, <a href="#new-v7">New in Delta V7</a> and <a href="#new-v6">New in Delta V6</a> summarise what those releases add; the rest of the words still describe Delta V5, so where Delta V6, V7, V8 or V9 changed something they describe the earlier build; the key workspace screenshots are from Delta V3 and some deeper reference images from 0.9.1, so where Delta V5 moved a control the caption says so. Version-by-version changes are on the
         <a href="/releases/">release notes</a> page. The app also includes an offline manual under <b>Help</b>.
       </p>
       <p class="guide-video-link"><a href="/guide/videos/">Watch six quick video guides →</a> <span>Captioned walkthroughs from Delta V6, each under a minute.</span></p>
@@ -331,6 +332,34 @@
       </table>
       <p class="muted small">Nothing matched? The sections below cover surfaces this index does not name, and the
       <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord</a> is the place to ask.</p>
+    </section>
+    <section id="new-v9">
+      <p class="eyebrow">New in Delta V9</p>
+      <h2>Earth-like rain, rebuilds that stay local, and builds about four times faster.</h2>
+      <p class="section-lede">
+        Delta V9, dated 16 October 2026, comes with installers for Apple Silicon Macs, Windows x64 and Linux x64.
+        Your access code carries over and the licence is unchanged (still version 2.3). Linux now needs glibc 2.34 or
+        newer: Ubuntu 22.04, Debian 12, Fedora 35, RHEL 9 or newer, or a current Arch. Ubuntu 20.04, Debian 11 and the
+        RHEL 8 family are no longer supported, and the portable archive's name now ends in <code>glibc2.34</code>.
+        Worlds made with Delta V8 open as they are, but the generator changed a great deal, so the Library offers
+        <b>Update to this version</b> for every Delta V8 world. Updating or rebuilding can move biomes, rivers, lakes,
+        towns, realm borders, names and lore; a world you edited by hand keeps your edits, and the rebuild reports what
+        moved. The full account is in the <a href="/releases/#v0.9.10">release notes</a>.
+      </p>
+      <ul class="feat">
+        <li><b>Rain falls where it does on Earth</b>: the driest belt sits at 20–30° where Earth's great deserts are, the tropics and the storm tracks get Earth's rain, frozen seas no longer drizzle, and winds blow at Earth's speeds. Rivers carry about the share of the rain Earth's do (about a third of the land's rain reaches the sea), and in cold country they flood in spring, when snow melts on ground that is still frozen. Expect many more hot deserts and dry steppes in the subtropics, Mediterranean climates on west coasts and more boreal forest.</li>
+        <li><b>The soil carries rain from season to season</b>, and the biomes read that water rather than the year's rain alone: a dry-summer Mediterranean coast grows open woodland, and a monsoon coast with the same rain grows closed forest. The <a href="#inspector">cell inspector</a>'s Runoff &amp; storage section shows the soil water each season.</li>
+        <li><b>Sculpting rebuilds only the part of the world your edit reaches</b>: after a hill, a valley, a lake hollow or a built-over city, the rain, rivers, towns, roads, realms, names and lore away from the edit stay exactly as they were. The review says how much is rebuilt ("Rebuilds the area around your edit: about 3% of the world"), with <b>Rebuild the whole world instead</b> beside Apply. Edits that move a coast, change ice or a placed climate, or reach more than 15% of the land still rebuild everything. On a Quick world a small edit's Apply took 25 seconds instead of 93. <a href="#sculpt">Sculpt</a>.</li>
+        <li><b>Ice domes, deltas, dunes and braided rivers</b>: ice sheets rise as domes up to four kilometres thick, with the tallest mountains standing through them, and heightmaps and terrain exports show the top of the ice (a new <b>Under the ice</b> heightmap gives the ground beneath). Big rivers build deltas shaped by the river, the waves or the tides; deserts grow sand seas of crescent, linear and star dunes, shown on a new <b>Sand seas &amp; dunes</b> map; and rivers with a strong flood season braid between gravel bars. All of it shows on every map and export.</li>
+        <li><b>Add or remove a river's branch</b> with the River line tool: draw a new branch down to the river it joins, or click a tributary to take it away. Rivers you draw on the blank canvas or bring in from a map file are now river lines too, so they cut their own valleys and can be edited, renamed or deleted in the Sculptor afterwards. <a href="#sculpt">Sculpt</a> · <a href="#draw">Draw your world</a>.</li>
+        <li><b>German, French, Spanish, Portuguese and Polish almost everywhere</b>: the welcome tour, the Library, Create, the map's dock and tools, the Terrain Sculptor, Render Studio, Write, the campaign table, tooltips and the error messages the app's server sends now follow the interface language you chose. Exports and saved files stay in English. <a href="#settings">Settings</a>.</li>
+        <li><b>Builds about four times faster</b>: on the reference Mac (an Apple M5 Pro) a Full world took about 3 minutes instead of about 12, and a Quick world 56 seconds instead of 98. The progress bar no longer sits at 17%, and Cancel works inside every season. A copy without the faster climate step, such as a Windows build made without a C compiler, builds at Delta V8's speed, and its build log says so. <a href="#preflight">Build</a>.</li>
+        <li><b>Bring in your own map one decision at a time</b>: Coastline, On the planet, Guide layers and Details are pages of their own, each guide layer says it arrived and how it was read, a Köppen climate map is read by the standard palette, and a tectonic plate map can guide an imported world's mountains. Polar, Albers, Lambert-93, World Mercator, Dutch RD New, British National Grid, Swiss and other national grids now import, and maps on older survey datums are shifted onto WGS 84. After drawing a map, <b>Use my drawing as a guide</b> keeps your coastline and ranges and builds natural ridges and valleys along them. <a href="#import">Import a map</a> · <a href="#draw">Draw your world</a>.</li>
+        <li><b>A Nations panel</b> lists every nation, generated or your own, to rename, recolour, describe, add by clicking where its capital stands, paint ground to, remove or merge; open it from Tools. A nation is the same colour on every map, and these changes rebuild only the peoples, so terrain, climate and rivers stay exactly as they are.</li>
+        <li><b>Create understands more</b>: "mountains in the northwest, a desert to the east" becomes areas you can adjust on a small map, and every candidate card draws them; Limits set measured ranges, from continent counts to the highest peak, before you search; <b>Find 24 variations</b> tries small changes to the world you chose. Each continent now speaks its own languages, an Ocean divide can keep an old world and a new world out of contact, a planet can tilt past 90° as Uranus does, and a world can have permanent day and night. <a href="#brief">The World Brief</a> · <a href="#search">Candidates</a>.</li>
+        <li><b>Cleaner maps and exports</b>: picture exports no longer carry a grid you did not turn on, a <b>Rivers</b> button (key <kbd>U</kbd>) hides the rivers, and a downloaded map's key takes about an eighth of the sheet instead of over a quarter. A child map's hex map shows that map's own rivers, ground and towns with your pins, and a players' copy leaves out what players should not see. <b>World facts</b> lists every record and statistic of a world in one panel. <a href="#export">Exports</a>.</li>
+        <li><b>Also new</b>: drawings and drafts are kept on disk, and CartoVox saves your work before it closes; new worlds are saved in folders named after them; saved versions take far less room; collect books into one omnibus and download Insights as a spreadsheet; plan sessions on a Campaign board, settle a clash with the battle simulator, and let players join a table from their own devices on your local network.</li>
+      </ul>
     </section>
     <section id="new-v8">
       <p class="eyebrow">New in Delta V8</p>
@@ -1790,7 +1819,7 @@
         <li><b>Atlas labels are placed, not typeset</b>: a name that will not fit at any rung of its shrink ladder is dropped and reported rather than broken over two lines. Stamps are procedural; mountains read as massifs rather than chains; sub-cell coastline crinkle is a deliberate, switchable invention.</li>
         <li><b>A long thin landmass near the pole is usually the projection</b>, not the terrain — measure it on the sphere.</li>
         <li><b>Reproducibility applies to the physical world</b>: keep the seed, saved configuration and simulation version. Rendering checks compare separate processes within the same software environment; changes in fonts or rendering libraries can shift lettering or other pixels across environments.</li>
-        <li><b>Publication cost depends on the selected outputs.</b> A Full build with every plate currently takes about 8 minutes on a high-end Apple Silicon Mac and about 13 minutes on a high-end Windows machine; the preflight measures your own machine as it goes.</li>
+        <li><b>Publication cost depends on the selected outputs.</b> A Full build with every plate currently takes about 15 minutes on a high-end Apple Silicon Mac, of which the world itself is about 3; the preflight measures your own machine as it goes.</li>
       </ul>
       <p class="muted small">Version-by-version model changes are recorded in the <a href="/releases/">release notes</a>, each versioned in the world's configuration so a saved world always states which model produced it.</p>
     </section>
