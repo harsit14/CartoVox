@@ -143,7 +143,7 @@ def load(notes_dir: Path, through: str | None = None) -> list[dict]:
 
 
 HIGHLIGHTS = {
-    "0.9.10": "Rain and rivers that behave like Earth's, sculpting that rebuilds only the ground it reaches, ice domes, deltas, dunes and braided rivers, German, French, Spanish, Portuguese and Polish almost everywhere, and Full builds about four times faster.",
+    "0.9.10": "Place key features and measured limits, import maps one decision at a time, edit rivers and nations, rebuild locally, plan campaigns and invite players on your local network. Seasonal soil water, ice domes, deltas and dunes shape the world; drafts and books have new ways to save and export.",
     "0.9.9": "Place a climate in plain words and see it on the cards, build imported and drawn worlds with rivers again, bring in Web Mercator and UTM maps, start on current Linux desktops, and build faster with spare memory.",
     "0.9.8": "Let your brief win over the planet type, watch lakes settle and rivers run downhill, map states and counties, play at a native tabletop, and finish a piece in Make.",
     "0.9.7": "Open offline starter worlds, choose your interface language, build on less memory, take a world to Foundry or your VTT, and bring in lore from World Anvil, Kanka, LegendKeeper or Campfire.",

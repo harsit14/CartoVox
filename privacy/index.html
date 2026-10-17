@@ -10,7 +10,7 @@
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=2897c85bd9">
+  <link rel="stylesheet" href="/css/site.css?v=d1e6bd00d2">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -69,7 +69,8 @@
 
     <h2 id="the-app">The application (Delta builds)</h2>
     <ul>
-      <li><b>Your work stays on your computer.</b> Worlds, maps, lore, names, campaigns and manuscripts are files on your own disk, and CartoVox never sends them anywhere. There is no account.</li>
+      <li><b>Your work is stored on your computer.</b> Worlds, maps, lore, names, campaigns and manuscripts are files on your own disk. CartoVox does not upload them to the project owner or a cloud account. There is no account.</li>
+      <li><b>Optional tabletop sharing.</b> In Delta V9, choosing <b>Invite players</b> and then <b>Start inviting</b> at the GM desk shares that table's player view with joined browsers on your local network. It includes the player map with fog applied and the permitted player interactions, such as dice, pings and assigned-token moves. GM notes, private rolls and unrevealed tokens stay out of that view. Nothing is shared until you start the invitation; <b>Revoke</b> or leaving the GM desk ends it. This is local-network sharing, not internet hosting. <a href="/guide/#tabletop">How invitations work</a>.</li>
       <li><b>Unlocking registers your computer once.</b> Delta is invite-only. The first time you unlock a Delta build, it sends the Delta service a one-way digest of your access code (never the code itself), a random identifier made for that installation, and the facts listed under <i>sessions</i> below. The service answers whether the code is valid and whether it has been withdrawn. A code can unlock up to three computers.</li>
       <li><b>The usage report.</b> Taking part in Delta includes a usage report, tied to your access code and installation identifier, sent in the background:
         <ul>
@@ -80,7 +81,7 @@
         </ul>
         It never contains your worlds, maps, lore, manuscripts, file names or anything you type. While you are offline it waits on your computer; a Delta build that has not reached the service for 21 days asks you to connect before it opens.</li>
       <li><b>Why, where and how long.</b> The report is used only to find defects, see which parts of CartoVox are used, and improve it before release. It is stored in a Cloudflare D1 database run by the project owner, kept until 90 days after the Delta programme ends, and not sold or shared. You can ask on the Discord server to see or delete the report linked to your code.</li>
-      <li><b>Nothing else leaves.</b> There is no update check: CartoVox never asks whether a newer version exists. Apart from the usage report, the only address it opens is the local dashboard it starts itself. New builds are announced on the Discord server, and installing one is your decision.</li>
+      <li><b>No update check.</b> CartoVox never asks whether a newer version exists. The dashboard runs locally; the Delta usage report and any tabletop invitation you explicitly start are described above. New builds are announced on the Discord server, and installing one is your decision.</li>
       <li><b>Diagnostics are yours to send.</b> A diagnostics bundle is assembled locally from build and system information plus redacted logs, and is never uploaded on its own. Read it before you share it.</li>
       <li><b>What you make is yours.</b> The licence claims no ownership of your worlds or your writing, and you may publish and sell them. See the <a href="/eula/">licence</a>, sections 6 and 7.</li>
     </ul>
