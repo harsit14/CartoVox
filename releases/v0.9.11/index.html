@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox Delta V10 — full release notes</title>
+  <meta name="description" content="The full CartoVox Delta V10 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.9.11/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox Delta V10 — full release notes">
+  <meta property="og:description" content="The full CartoVox Delta V10 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.9.11/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
+  <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
+  <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
+  <link rel="stylesheet" href="/css/site.css?v=9c5102b282">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.10/">Delta V9</a>
+      <a href="/releases/v0.9.9/">Delta V8</a>
+      <a href="/releases/v0.9.8/">Delta V7</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-10-18</p>
+      <h1>CartoVox Delta V10</h1>
+      <p class="lede">Windows worlds that had stopped accepting changes restore, re-simulate and render again. Several GeoJSON files make one world, and plate lines painted over a picture of your map raise mountains where the plates collide. Rivers cut their valleys and local rebuilds wear your edit, ocean gyres bring warm currents, and the interface follows five languages almost everywhere.</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.9.11"><div class="doc-body">
+<p>Your Delta access code carries over and the licence is unchanged.</p>
+<p>Delta V10 is the tenth Delta release. Everything below is new or fixed since Delta V9, which was shared with invited testers on 17 October 2026. Worlds made with Delta V9 open as they are, and Library offers Update to this version for them: rivers now cut their valleys, ocean currents run as gyres, and worlds built with a plate map raise mountains along it, so terrain, rain, rivers, towns and names can move.</p>
+<h3 id="highlights">Highlights</h3>
+<ul>
+<li><strong>Windows: worlds that stopped accepting changes work again.</strong> Restoring a saved version, Apply &amp; re-simulate and Render Studio no longer fail at once on a world an earlier session had open, and saving no longer fails while a virus scanner or sync tool has a file open.</li>
+<li><strong>Build a world from several GeoJSON files, and paint your plates.</strong> Choose all your GeoJSON files at once, then paint rough plate lines over any picture of your map; mountains rise where the plates collide on your land.</li>
+<li><strong>Rivers cut their valleys</strong>, and a quick rebuild after sculpting wears your edit the way a full one does.</li>
+<li><strong>Ocean currents run as real gyres</strong>, with warm currents like the Gulf Stream along the eastern coasts and wetter subtropical summers.</li>
+<li><strong>CartoVox follows your language almost everywhere</strong>, Settlement Studio and the welcome tour included.</li>
+</ul>
+<h3 id="create">Create</h3>
+<ul>
+<li>The "Sharpening…" line in the corner of the Create map preview is readable in the light theme. It had been pale grey on a light background while the map sharpened.</li>
+</ul>
+<h3 id="imported-and-drawn-worlds">Imported and drawn worlds</h3>
+<ul>
+<li>Choose or drop several GeoJSON files or shapefiles at once and they become one world: each file's own coordinate system is read, their land is joined into one coastline, and their rivers, roads, towns and borders are kept as a single file's would be. The import report lists every file and what was read from it, and a file that cannot be placed with the others is named and refused rather than dropped. Map pictures chosen together still go to Combine several files.</li>
+<li>The tectonic plate map has a third format, Painted lines: paint rough lines in one bright colour over any picture of your map, such as a render of your own GeoJSON files, and CartoVox finds the colour (or you pick it), reads thick strokes down their middles, bridges small gaps and ignores loose ends. JPEGs up to 32,768 pixels wide are read quickly. Over a GeoJSON or shapefile import the picture is fitted to your land by itself; a picture of your lines and a picture of it laid over your coastline let you adjust the colour, the tolerance, the gap bridging and where it sits on the map. Outside the picture, plates are simulated as before.</li>
+<li>With a plate map over your own coastline, mountains now rise where your painted or drawn plates collide across your land: your continents are the continental crust the relief is built from, where before the simulation's own continents were, elsewhere, and a collision through your continent could leave it low.</li>
+<li>Plate edges you draw across a continent now come out as collisions about half the time, as on Earth today, instead of mostly as rifts; the rest are still rifts or sliding faults, because plate motion stays simulated.</li>
+</ul>
+<h3 id="editing-a-built-world">Editing a built world</h3>
+<ul>
+<li><strong>A quick rebuild wears your edit.</strong> When Apply &amp; re-simulate rebuilds only the area around a sculpted change, that ground is now worn by the world's erosion as a full rebuild would wear it, so a raised ridge comes back with its rivers cut into it instead of exactly as sculpted. The rest of the world stays as it was.</li>
+<li><strong>A new river line rebuilds just its area.</strong> Drawing a river line on a world with erosion no longer re-simulates the whole planet: the area around it is rebuilt and the line's valley is cut there. Moving, switching off or removing a line still rebuilds the whole world.</li>
+<li>When a local rebuild finishes, its message now says how much of the world was rebuilt. If a river your edit turned into another valley made that area larger than the review before Apply estimated, the message says so and gives both figures.</li>
+<li>A sculpt that reaches out under the sea, such as a ridge along the coast, rebuilds only the area it touches again, as its review promises. It had been rebuilding the whole world (about 45 s instead of 24 s on a Quick world).</li>
+</ul>
+<h3 id="maps-and-exports">Maps and exports</h3>
+<ul>
+<li>The heightmap's "Under the ice" choice now appears only on a world that has ice sheets; on any other world it would have saved the same picture as the ordinary heightmap.</li>
+<li>On the hex map, a braided tributary no longer draws gravel bars on the larger single-channel river where it joins; each hex shows the braids of the river that owns it.</li>
+</ul>
+<h3 id="the-living-world">The living world</h3>
+<ul>
+<li>A river leaving a dry hollow that only fills to its brim now carries on in each season exactly what reached it; before, such a hollow held some wet- season water back like a lake, and a rare world was refused by the water checks.</li>
+<li><strong>Rivers cut their valleys.</strong> River erosion was so weak it shaped almost nothing: one round cut a fifth of a metre at most, so worlds were worn by slope smoothing alone. Rivers now cut about 12 m a round in the uplands and up to a couple of hundred metres on steep large rivers, the same at every map size, and a cut never leaves a hollow behind it. Rebuilt worlds have slightly lower ground along their rivers and a few fewer small lakes, and Rounds of erosion and River incision in the Erosion Lab now do what they say.</li>
+<li><strong>Deep Time's volcanoes no longer swamp its carbon.</strong> The volcanic degassing in a Deep Time history swung far more than Earth's, so carbon dioxide often sat at its limit and the weathering of mountains and warm, wet land made no difference. Degassing now varies about as much as Earth's, and the weathering of the land steers carbon dioxide in every history. A new history may place its icehouses and greenhouses differently; saved histories and the worlds built from them are unchanged until the history is run again.</li>
+<li>Where two rivers meet just above a town, the town's records now show one culvert carrying both rivers (both named) instead of one copy per river.</li>
+<li>Ocean currents now run as real gyres: warm currents stream poleward along the eastern coasts of the continents, as the Gulf Stream and the Kuroshio do, and cold water drifts back slowly across the open ocean and down the far shores. Summers in the subtropics are no longer held as dry as winters, so subtropical east coasts get humid, rainy summers, and the tropical rain belt and the equatorial forests get back some of the rain they had lost. Mediterranean woodland is a little rarer on the wetter coasts.</li>
+</ul>
+<h3 id="speed-and-memory">Speed and memory</h3>
+<ul>
+<li>Build times are measured again for this release and still match what Create quotes: about 35 seconds for Sketch, 55 seconds for Quick and 3 minutes for Full on the reference Mac.</li>
+<li>Low memory is measured again for this release: building a Low memory world and opening its map takes about 3.2 GB on the reference Mac, inside its 4 GB promise.</li>
+</ul>
+<h3 id="saving-updating-and-the-library">Saving, updating and the Library</h3>
+<ul>
+<li>On Windows, a world that an earlier CartoVox session had open could stop accepting changes: restoring a saved version, Apply &amp; re-simulate, Render Studio renders and other edits all failed at once with "could not complete that request". Every previous version kept by Update to this version was affected from the next launch. These worlds can be edited again.</li>
+<li>Saved versions recorded before a world was copied by Update to this version restore again. They had been refused as "changed" because the copy rewrote their folder path.</li>
+<li>A saved version that cannot be restored is now refused straight away with the reason. Before, the world was left marked incomplete and gained an extra "Before restoring" version on every try.</li>
+<li>On Windows, saving no longer fails when a virus scanner, a sync tool or another reader has the file open for a moment.</li>
+<li>On Windows, every change CartoVox makes to a world's files (saves, exports, restores, renames, moving to the Trash, rebuilds) now waits a moment when a virus scanner, a sync client or CartoVox itself still has the file open, instead of failing with "Access is denied". Before, only the world's record, the Library list and the lore map did.</li>
+<li>Two saves of the same file at once no longer share one temporary file, and a save that fails no longer leaves a ".tmp" file behind in the world's folder.</li>
+<li>On Windows, CartoVox no longer keeps a map, picture or saved file open while it sends it to the window, so a save made at the same moment is not refused.</li>
+<li>On Windows, a geological history whose run was cut short by closing the app is noticed as stopped straight away, instead of only once its heartbeat goes quiet.</li>
+</ul>
+<h3 id="writing-lore-and-history">Writing, lore and history</h3>
+<ul>
+<li>A book or chapter can no longer be given a name Windows keeps for devices (CON, NUL, AUX, PRN, COM1 and the like). Windows could not open such a book, even one written on a Mac and copied across.</li>
+<li>On Windows, a chapter title too long for the world's folder is refused with a message saying so, instead of the save failing.</li>
+<li>Changing only the capitals in a book's title (Dawn to DAWN) now works on Windows and macOS; it said a book with that name already existed.</li>
+<li>On Windows, notes brought in from a notes inbox folder keep their line endings exactly and are no longer cut short at a stray Ctrl+Z character.</li>
+<li>A realm, town, culture or place of power called Aux, Con, Nul, Prn, Com1 or Lpt1 now gets a vault page Windows can open, such as "Aux (realm)", in the Compendium vault, the realm handbooks and player vaults. Links still show the plain name, and edits made to the page in Obsidian still come back to the right place. Two towns or realms whose names differ only in capitals now each get their own page instead of one overwriting the other. A page of yours with such a name is kept as "Aux_" when it comes back from your vault, and an attachment with such a name is refused with a note asking you to rename it.</li>
+</ul>
+<h3 id="settings-and-the-app">Settings and the app</h3>
+<ul>
+<li>When the app hits an unexpected problem, the message now says what went wrong instead of only "could not complete that request", and no longer ends with two full stops.</li>
+<li>The last parts of CartoVox that stayed in English now follow your interface language in German, French, Spanish, Portuguese and Polish: the welcome tour's "why is it wet or dry here" readings, Settlement Studio (its page, status lines, water, food and terrace reports and its map editor), the Library's notes when a world is updated to this version, the sentences the region, story-pin and realm prompts and the cell inspector build, the map import workshop's reach, river and guide-layer text, Render Studio's save line, and the dialogs and status messages throughout the app. Default names the campaign table gives ("The party", "Token 2", "Held by Varn") are shown in your language; what is saved stays as it was, and English text is unchanged.</li>
+</ul>
+<h3 id="known-limits">Known limits</h3>
+<ul>
+<li>A painted plate picture must be in longitude and latitude to line up with GeoJSON land; a Web Mercator render cannot be aligned by moving and stretching. Plate motion is still simulated, so some painted lines still become rifts or sliding faults rather than mountains.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=b6530a3583" defer></script>
+</body>
+</html>

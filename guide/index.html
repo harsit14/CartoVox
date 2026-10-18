@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The CartoVox guide — how to use it, and everything it does</title>
-  <meta name="description" content="The CartoVox Delta V9 guide: follow your first hour, find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
+  <meta name="description" content="The CartoVox Delta V10 guide: follow your first hour, find a control, build your first world, then explore maps, imports, Sculpt, Render Studio, the illustrated atlas, campaigns, settlements, the Compendium and manuscript editor. Includes exports, shortcuts and known limits.">
   <link rel="canonical" href="https://cartovox.org/guide/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The CartoVox guide — how to use it, and everything it does">
-  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V9; screenshots captured from released builds.">
+  <meta property="og:description" content="Build a first world, find every control and explore every workspace. Current to Delta V10; screenshots captured from released builds.">
   <meta property="og:url" content="https://cartovox.org/guide/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=d5ac48bf9b">
+  <link rel="stylesheet" href="/css/site.css?v=9c5102b282">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -46,6 +46,7 @@
       <a href="#first-hour"><b>Your first hour</b><small>start here</small></a>
       <a href="/guide/videos/"><b>Quick video guides</b><small>6 videos</small></a>
       <a href="#where"><b>Where is it?</b><small>search</small></a>
+      <a href="#new-v10">New in Delta V10</a>
       <a href="#new-v9">New in Delta V9</a>
       <a href="#new-v8">New in Delta V8</a>
       <a href="#new-v7">New in Delta V7</a>
@@ -119,7 +120,7 @@
         the searchable control index or the workspace reference whenever you need a particular tool.
       </p>
       <p class="muted small">
-        Current as of <b>Delta V9 (0.9.10)</b>, the latest distributed release. <a href="#new-v9">New in Delta V9</a>, <a href="#new-v8">New in Delta V8</a>, <a href="#new-v7">New in Delta V7</a> and <a href="#new-v6">New in Delta V6</a> summarise what those releases add; the walkthroughs and reference below describe V9. Product screenshots were captured from the released Delta V9 interface using a temporary copy of the example library and original sample writing. The Ixrixenrond geography was saved in an earlier build; opening it for these captures did not rebuild it. The videos remain recordings of Delta V6. Earlier-release sections record what changed at the time. Version-by-version changes are on the
+        Current as of <b>Delta V10 (0.9.11)</b>, the latest distributed release. <a href="#new-v10">New in Delta V10</a>, <a href="#new-v9">New in Delta V9</a>, <a href="#new-v8">New in Delta V8</a>, <a href="#new-v7">New in Delta V7</a> and <a href="#new-v6">New in Delta V6</a> summarise what those releases add; the walkthroughs and reference below describe V9, and New in Delta V10 says where V10 differs. Product screenshots were captured from the released Delta V9 interface using a temporary copy of the example library and original sample writing. The Ixrixenrond geography was saved in an earlier build; opening it for these captures did not rebuild it. The videos remain recordings of Delta V6. Earlier-release sections record what changed at the time. Version-by-version changes are on the
         <a href="/releases/">release notes</a> page. The app also includes an offline manual under <b>Help</b>.
       </p>
       <p class="guide-video-link"><a href="/guide/videos/">Watch six quick video guides →</a> <span>Captioned walkthroughs from Delta V6, each under a minute.</span></p>
@@ -360,6 +361,30 @@
       </table>
       <p class="muted small">Nothing matched? The sections below cover surfaces this index does not name, and the
       <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord</a> is the place to ask.</p>
+    </section>
+    <section id="new-v10">
+      <p class="eyebrow">New in Delta V10</p>
+      <h2>Windows fixes, your own plates, and rivers that cut their valleys.</h2>
+      <p class="section-lede">
+        Delta V10, dated 18 October 2026, comes with installers for Apple Silicon Macs, Windows x64 and Linux x64
+        (still glibc 2.34 or newer). Your access code carries over and the licence is unchanged (still version 2.3).
+        Worlds made with Delta V9 open as they are, and the Library offers <b>Update to this version</b> for them:
+        rivers now cut their valleys, ocean currents run as gyres, and worlds built with a plate map raise mountains
+        along it, so updating can move terrain, rain, rivers, towns and names. The full account is in the
+        <a href="/releases/#v0.9.11">release notes</a>.
+      </p>
+      <ul class="feat">
+        <li><b>Windows: worlds that stopped accepting changes work again</b>. On a world an earlier session had open, restoring a saved version, <b>Apply &amp; re-simulate</b> and Render Studio no longer fail at once with "could not complete that request"; every previous version kept by Update to this version was affected. Saves, exports, restores, renames and rebuilds now wait a moment when a virus scanner or sync tool has a file open instead of failing with "Access is denied". Saved versions recorded before an update restore again, and a version that cannot be restored is refused straight away with the reason. <a href="#library">Library</a>.</li>
+        <li><b>Several GeoJSON files make one world</b>: choose or drop several GeoJSON files or shapefiles at once. Each file's own coordinate system is read, their land is joined into one coastline, and their rivers, roads, towns and borders are kept. The import report lists every file and what was read from it; a file that cannot be placed with the others is named and refused rather than dropped. <a href="#import">Import a map</a>.</li>
+        <li><b>Paint your plates</b>: the tectonic plate map gains a <b>Painted lines</b> format. Paint rough lines in one bright colour over any picture of your map; CartoVox finds the colour, reads thick strokes down their middles, bridges small gaps and ignores loose ends. Over a GeoJSON or shapefile import the picture fits your land by itself. Mountains now rise where your plates collide across your own continents, and plate edges drawn across a continent come out as collisions about half the time, as on Earth. The picture must be in longitude and latitude, and plate motion is still simulated, so some lines still become rifts or sliding faults. <a href="#import">Import a map</a>.</li>
+        <li><b>Rivers cut their valleys</b>: river erosion now cuts about 12 m a round in the uplands and up to a couple of hundred metres on steep large rivers, the same at every map size, without leaving hollows behind. Rebuilt worlds have slightly lower ground along their rivers and a few fewer small lakes, and <b>Rounds of erosion</b> and <b>River incision</b> in the <a href="#labs">Erosion Lab</a> now do what they say.</li>
+        <li><b>Local rebuilds wear your edit</b>: when <b>Apply &amp; re-simulate</b> rebuilds only the area around a sculpted change, that ground is worn by the world's erosion as a full rebuild would wear it, so a raised ridge comes back with rivers cut into it. A new river line rebuilds just its area, a sculpt that reaches under the sea along a coast stays local as its review promises, and the finished message says how much of the world was rebuilt. <a href="#sculpt">Sculpt</a> · <a href="#river-lines">River lines</a>.</li>
+        <li><b>Ocean gyres with warm currents</b>: warm water streams poleward along the eastern coasts of the continents, as the Gulf Stream and the Kuroshio do, and cold water drifts back across the open ocean. Subtropical east coasts get humid, rainy summers, and the tropical rain belt and equatorial forests regain some of the rain they had lost.</li>
+        <li><b>Five languages almost everywhere</b>: German, French, Spanish, Portuguese and Polish now reach the welcome tour's wet-or-dry readings, Settlement Studio, the Library's update notes, the region, story-pin and realm prompts, the cell inspector, the map import workshop, Render Studio's save line and dialogs throughout the app. The campaign table's default names show in your language; what is saved stays as it was. <a href="#settings">Settings</a>.</li>
+        <li><b>Deep Time's volcanoes no longer swamp its carbon</b>: degassing varies about as much as Earth's, so the weathering of mountains and warm, wet land steers carbon dioxide in every history. Saved histories are unchanged until run again. <a href="#deeptime">Deep Time</a>.</li>
+        <li><b>Measured again</b>: on the reference M5 Pro Mac a Sketch world took 33 seconds, Quick 54 seconds and Full 170 seconds, inside the about 35 seconds, 55 seconds and 3 minutes Create quotes. A Low memory build with its map open took 3.24 GB, inside its 4 GB promise. These are source runs from 17 October 2026, not timings of the packaged installers. <a href="#preflight">Build</a>.</li>
+        <li><b>Also fixed</b>: book and chapter names Windows reserves for devices (CON, NUL, AUX and the like) are refused, and places with such names get vault pages Windows can open, such as "Aux (realm)"; changing only a title's capitals works; the heightmap's <b>Under the ice</b> choice appears only on worlds with ice sheets; braided tributaries no longer draw gravel bars on the river they join; and an unexpected problem's message now says what went wrong.</li>
+      </ul>
     </section>
     <section id="new-v9">
       <p class="eyebrow">New in Delta V9</p>
@@ -778,7 +803,7 @@
           continue to <b>Build</b>.</li>
         <li><b>Pick Sketch world on Build</b>, and read the side panel before you commit: <b>Takes</b>, <b>Memory</b>,
           <b>Makes</b>, <b>Disk</b> and <b>Saved to</b>. The estimate learns from completed builds of the same shape on
-          your own machine. The V9 source reference measured a Sketch without plates at about <b>35 seconds</b> on an M5 Pro Mac; your chosen outputs add their own cost. A Sketch is a real world, not a preview — every stage runs and the saved archive holds
+          your own machine. The V10 source reference measured a Sketch without plates at about <b>35 seconds</b> on an M5 Pro Mac; your chosen outputs add their own cost. A Sketch is a real world, not a preview — every stage runs and the saved archive holds
           the same members.</li>
         <li><b>Press the gold button.</b> It names what you are committing to — <b>Create Sketch world</b>,
           <b>Create Quick world</b>, <b>Create full-resolution world</b>, or <b>Generate publication atlas</b>.
@@ -924,7 +949,7 @@
         <li><b>Stop after this plate</b> finishes the active image cleanly and stores the rest; <b>Render remaining plates</b> in World → Atlas draws them later from saved data.</li>
         <li><b>Best-quality drawings</b> rebuilds a Quick world's eligible maps at 4× drawing density from the exact saved simulation; <b>Rebuild at full simulation resolution</b> makes a separate project from the same seed and recipe.</li>
         <li>Progress weights phases by measured wall time — naming gets its real share — and recalibrates the ETA from completed plate timings. Interrupted runs are detected and can be resumed from their stage checkpoint or removed.</li>
-        <li><b>V9 reference times</b> — about 35 seconds Sketch, 55 seconds Quick and 3 minutes Full without plates; about 15 minutes Full with every publication plate and both letterings. Measured from the starter brief on 16 October 2026 on an Apple M5 Pro MacBook Pro (18-core CPU, 48 GB RAM), running from source with Python 3.14. The packaged installers were not timed. Without the compiled climate step, the same reference took about 70 seconds Quick and 5½ minutes Full; other settings and machines differ.</li>
+        <li><b>V10 reference times</b> — about 35 seconds Sketch, 55 seconds Quick and 3 minutes Full without plates (33, 54 and 170 seconds, measured from the starter brief on 17 October 2026); about 15 minutes Full with every publication plate and both letterings, measured for V9 on 16 October 2026. Both ran on an Apple M5 Pro MacBook Pro (18-core CPU, 48 GB RAM), from source with Python 3.14. The packaged installers were not timed. Without the compiled climate step, the same reference took about 70 seconds Quick and 5½ minutes Full; other settings and machines differ.</li>
         <li><b>Progress and memory</b> — the bar moves within climate seasons and Cancel reaches them too. Seasons share spare cores and memory when available; Low memory keeps them serial through rebuilds, updates and drafts. Atlas detail is budgeted from memory free for each plate, and smaller simulation tiers draw smaller plates.</li>
         <li><b>View generation</b> on Build returns to the existing progress window after <b>Work elsewhere</b>, including imported and drawn builds. It does not start another run. A blocked finer-grid rebuild names preserved edits to switch off before it can begin.</li>
       </ul>
@@ -1650,7 +1675,7 @@
         <li><b>Search</b> spans every saved world: names, realms, settlements, natural regions, lore, eras, campaigns, aquifers.</li>
         <li><b>Drawings &amp; drafts</b> opens drawings saved on disk with reference images and undo; name, copy, recover or back them up independently of a finished world. <a href="#drawing-drafts">Drawing recovery</a>.</li>
         <li><b>Show folder</b> on a world card opens its directory. New world folders use their names; renaming a world updates its folder and links when it can. Older folders keep their old names until renamed; a folder in use may stay put with a reason.</li>
-        <li><b>Update to this version</b> is offered for V8 worlds because V9’s generator changed. Opening alone preserves the saved world. Updating or rebuilding can change rain, biomes, rivers, lakes, towns, borders, names and lore, while keeping authored edits and reporting moved or released records. Keep a complete project backup before updating a world you want to preserve; a failed update keeps the previous world.</li>
+        <li><b>Update to this version</b> is offered for V9 worlds because V10’s generator changed: rivers cut their valleys, ocean currents run as gyres and plate maps raise mountains. Opening alone preserves the saved world. Updating or rebuilding can change terrain, rain, biomes, rivers, lakes, towns, borders, names and lore, while keeping authored edits and reporting moved or released records. Keep a complete project backup before updating a world you want to preserve; a failed update keeps the previous world.</li>
         <li><b>Smaller saved worlds and revisions</b> — atlas plates and city plans use lossless WebP internally; downloads still supply PNG where expected. Revisions share unchanged file content, so a lore edit adds far less disk use. Restore using the app’s Revision history rather than moving revision files by hand.</li>
       </ul>
     </section>
@@ -1672,7 +1697,7 @@
         <li><b>Updates &amp; support</b> <span class="badge badge-soft">0.9</span> — <b>CartoVox no longer checks for updates.</b> The daily poll, the installer download it fed and the notification banner are gone, and so is the certificate bundle the poll needed; new builds are announced on the Discord server, which is also where the installer is shared, and this section carries one button that opens it. There is no preference to turn off, because there is no request to stop. <b>About</b>, the folder shortcuts, diagnostics, and the <b>Licence</b> and third-party notices, offline.</li>
         <li><b>Release notes</b> — the full history inside the app, starting at the running version, with Older / Newer navigation, offline.</li>
         <li><b>Reset all app settings</b> clears preferences and layout — never worlds, lore, revisions, drafts, backups, recipes or an unsaved sculpt.</li>
-        <li><b>Interface language</b> in Appearance chooses English, German, French, Spanish, Portuguese or Polish. V9 extends translations across the welcome, Library, Create, map tools, Sculpt, Render Studio, Write, campaign, tooltips and server errors. Export labels and saved files remain English; text you author keeps your words. The tabletop translations have not yet had native-speaker review.</li>
+        <li><b>Interface language</b> in Appearance chooses English, German, French, Spanish, Portuguese or Polish. V9 extends translations across the welcome, Library, Create, map tools, Sculpt, Render Studio, Write, campaign, tooltips and server errors; V10 adds Settlement Studio, the welcome tour’s readings, the import workshop, prompts and dialogs. Export labels and saved files remain English; text you author keeps your words. The tabletop translations have not yet had native-speaker review.</li>
         <li><b>Theme previews</b> show a miniature interface with the same map for built-in, system and custom themes; custom previews update as you edit.</li>
         <li><b>Saving on close</b> waits for pending drawing, tracing, writing, map and tabletop saves, and for a drawing export. If saving fails or cannot be confirmed, choose Cancel to keep the app open and recover your work; OK closes without those edits. A running build has its own close confirmation.</li>
       </ul>
@@ -1811,7 +1836,7 @@
       <b>Measure</b>, or look at it on the globe.</p>
 
       <h4>How long will a build take, and how much disk?</h4>
-      <p>Read <b>Takes</b>, <b>Memory</b> and <b>Disk</b> on Create’s Build step. V9’s starter-brief reference measured about 35 seconds Sketch, 55 seconds Quick, 3 minutes Full without plates and 15 minutes with every publication plate, running from source on an M5 Pro Mac. These are not packaged-app or Windows timings. Disk bands without plates are 70–140 MiB Sketch, 120–240 MiB Quick and 310–590 MiB Full; plates add more. <a href="#preflight">Hardware, runtime and estimate details</a>.</p>
+      <p>Read <b>Takes</b>, <b>Memory</b> and <b>Disk</b> on Create’s Build step. The starter-brief reference measured about 35 seconds Sketch, 55 seconds Quick and 3 minutes Full without plates for V10, and 15 minutes with every publication plate for V9, running from source on an M5 Pro Mac. These are not packaged-app or Windows timings. Disk bands without plates are 70–140 MiB Sketch, 120–240 MiB Quick and 310–590 MiB Full; plates add more. <a href="#preflight">Hardware, runtime and estimate details</a>.</p>
 
       <h4>Can I stop a build, or use the app while one runs?</h4>
       <p>Yes to both. The generation dock keeps a long build running while you work elsewhere and survives a reload;

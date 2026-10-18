@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render a compact release index and one page per release.
 
-    python3 tools/build-releases.py <app-repo>/.github/release-notes --through 0.9.10
+    python3 tools/build-releases.py <app-repo>/.github/release-notes --through 0.9.11
 
 Each note is a text file: a title line, then Markdown. The rendering keeps the
 notes whole except for two things. The application was called Atlas Studio
@@ -33,7 +33,7 @@ DATES = {
     "0.7.6": "2026-08-30", "0.8.0": "2026-09-04", "0.8.1": "2026-09-08", "0.8.2": "2026-09-11", "0.8.3": "2026-09-14",
     "0.9.0": "2026-09-20", "0.9.1": "2026-09-21", "0.9.2": "2026-09-24", "0.9.3": "2026-09-27", "0.9.4": "2026-09-29",
     "0.9.5": "2026-09-30", "0.9.6": "2026-10-02", "0.9.7": "2026-10-06", "0.9.8": "2026-10-12",
-    "0.9.9": "2026-10-12", "0.9.10": "2026-10-17",
+    "0.9.9": "2026-10-12", "0.9.10": "2026-10-17", "0.9.11": "2026-10-18",
 }
 
 RENAMES = [
@@ -143,6 +143,7 @@ def load(notes_dir: Path, through: str | None = None) -> list[dict]:
 
 
 HIGHLIGHTS = {
+    "0.9.11": "Windows worlds that had stopped accepting changes restore, re-simulate and render again. Several GeoJSON files make one world, and plate lines painted over a picture of your map raise mountains where the plates collide. Rivers cut their valleys and local rebuilds wear your edit, ocean gyres bring warm currents, and the interface follows five languages almost everywhere.",
     "0.9.10": "Place key features and measured limits, import maps one decision at a time, edit rivers and nations, rebuild locally, plan campaigns and invite players on your local network. Seasonal soil water, ice domes, deltas and dunes shape the world; drafts and books have new ways to save and export.",
     "0.9.9": "Place a climate in plain words and see it on the cards, build imported and drawn worlds with rivers again, bring in Web Mercator and UTM maps, start on current Linux desktops, and build faster with spare memory.",
     "0.9.8": "Let your brief win over the planet type, watch lakes settle and rivers run downhill, map states and counties, play at a native tabletop, and finish a piece in Make.",
@@ -273,12 +274,12 @@ def main() -> None:
     target.parent.mkdir(exist_ok=True)
     target.write_text(PAGE.format(
         page_title="Release notes — CartoVox",
-        page_description="The CartoVox release archive. See what changed in Delta V9 and browse complete notes for every release.",
+        page_description="The CartoVox release archive. See what changed in Delta V10 and browse complete notes for every release.",
         canonical="https://cartovox.org/releases/", nav_label="Versions", toc="\n".join(toc),
         eyebrow="Release notes", heading="What changed, version by version.",
         intro="Start with the latest Delta release, or open any version for its complete changes and compatibility notes.",
         mobile_nav_label="Browse all versions",
-        mobile_fallback='<a href="#v0.9.10">Latest release</a>', articles="\n".join(cards),
+        mobile_fallback='<a href="#v0.9.11">Latest release</a>', articles="\n".join(cards),
     ), encoding="utf-8")
     print(f"  releases/index.html + {len(releases)} full notes")
     subprocess.run([sys.executable, str(ROOT / "tools" / "build-sitemap.py")], check=True)
