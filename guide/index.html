@@ -699,6 +699,12 @@
           place</i> and <i>a wet place</i> pick an example for you). Its last page offers <b>Build the example
           world</b>, <b>Start my own world</b> and, once, <b>Tools shown</b>: Essentials or Everything. It can be
           closed at any panel. The manual did not go anywhere: it is under <b>Help</b> at the foot of the left rail.</li>
+        <li><b>Linux.</b> CartoVox needs x86-64 and glibc 2.34 or newer: Ubuntu 22.04, Debian 12, Fedora 35, RHEL, Rocky Linux or
+          AlmaLinux 9 or newer, or a current Arch. Since Delta V9, RHEL 8 and its relatives, Debian 11, Ubuntu 20.04 and
+          Slackware 15.0 are no longer supported. The <code>.deb</code> is for Debian 12+ and Ubuntu 22.04+; other
+          distributions use the portable archive, whose name ends in <code>glibc2.34-portable.tar.gz</code>. It is
+          extracted and run in place, leaves the system glibc alone and installs nothing under <code>/usr</code>; run its
+          <code>check-runtime.sh</code> first to name any missing graphics library.</li>
         <li><b>Unsigned installers.</b> macOS Gatekeeper and Windows SmartScreen will warn you, because the builds are
           not code-signed yet. Each release publishes checksums; install only the file shared on the Discord server.</li>
         <li><b>The Delta usage report.</b> Taking part in Delta includes a report tied to your access code: sessions,
