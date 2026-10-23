@@ -2,10 +2,10 @@
    Gold on midnight, parchment for the atlas. Three faces: Cinzel for the
    small capitals, Newsreader for headlines and prose, Inter for the UI. */
 
-@font-face { font-family: "Cinzel"; src: url("/fonts/Cinzel-Variable.woff2?v=f82f1d2462") format("woff2"); font-weight: 400 900; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Variable.woff2?v=135040b8f2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Italic-Variable.woff2?v=c476e8f83d") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
-@font-face { font-family: "Inter"; src: url("/fonts/Inter-Variable.woff2?v=01d4501381") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Cinzel"; src: url("/fonts/Cinzel-Variable.woff2?v=f803ee95b2") format("woff2"); font-weight: 400 900; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Variable.woff2?v=976f0d5dd6") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Italic-Variable.woff2?v=bb4c0704dd") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("/fonts/Inter-Variable.woff2?v=3b01365305") format("woff2"); font-weight: 100 900; font-display: swap; }
 
 :root {
   --ink-0: #0b0c10;
