@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox Delta V12 — full release notes</title>
+  <meta name="description" content="The full CartoVox Delta V12 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.9.13/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox Delta V12 — full release notes">
+  <meta property="og:description" content="The full CartoVox Delta V12 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.9.13/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
+  <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
+  <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
+  <link rel="stylesheet" href="/css/site.css?v=ecdbd8bac3">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.12/">Delta V11</a>
+      <a href="/releases/v0.9.11/">Delta V10</a>
+      <a href="/releases/v0.9.10/">Delta V9</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-10-24</p>
+      <h1>CartoVox Delta V12</h1>
+      <p class="lede">The climate behaves more like Earth&#x27;s: rainforests are back in the equatorial lowlands, summer monsoons reach the edges of the subtropics, and tropical highlands are no longer deserts. Lakes are the right size: they evaporate, wet basins drain their giant lakes, and rift valleys hold chains of long, narrow lakes. Ocean trenches are narrow troughs, and a Trench depth of 0 gives none. Sculpt gains Built island and Wall tools, imported and drawn maps get their own Candidates, and zooming in shows real detail, down to each town&#x27;s plan at its true size. Settlement Studio, Scene Studio and Travel put their map first, and an edit in one corner no longer renames towns on the far side.</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.9.13"><div class="doc-body">
+<p>Delta V12 is the twelfth Delta release. Everything below is new or fixed since Delta V11, which was shared with invited testers on 23 October 2026. The climate behaves more like Earth's: rainforests fill the equatorial lowlands again, summer monsoons reach the edges of the subtropics, and lakes lose water as real lakes do, so wet basins drain their giant lakes and rift valleys hold strings of long, narrow ones. Ocean trenches are narrow troughs. Sculpt gains a Built island tool and a Wall tool, imported and drawn maps get their own Candidates step, and zooming in on the World map shows real detail, down to each town's plan at its true size. Settlement Studio, Scene Studio and Travel put their map first, and an edit in one corner of the world no longer renames towns on the far side of it.</p>
+<h3 id="create">Create</h3>
+<ul>
+<li>Create no longer carries nations, tongues, placed areas or a tectonic plan from an earlier session into a new world without showing you: Describe lists them, each with Remove, and Build asks once before including them.</li>
+<li>Reset all is now New brief: it also clears everything Create remembers between sessions, can be undone while the page is open, and resetting app settings clears it too.</li>
+<li>The reading takes "ancient observatories" and other old buildings as history, not old land, and a reported clash can be settled with Not what I meant.</li>
+<li>Loading a recipe that has no World Brief leaves an empty brief on the Create sheet, as its confirmation says, instead of keeping the previous one.</li>
+<li>A world can be the moon of a giant planet: turn on This world orbits a giant planet under Star, orbit &amp; moon and set the giant and the orbit. The giant then sets the day, year and tilt and takes the place of the world's own moon, and Create warns when such an orbit could not exist.</li>
+<li>Before you build, the Build step shows how your brief resolves: what will be used, which earlier choices beat your description or the land shape, and what will not be applied and why, each with its fix such as Apply or Drop the override.</li>
+<li>A finished world's design brief reports a planet type you chose from your description as built, rather than Not built.</li>
+<li>Deep Time labels the run you are setting up, the history you are viewing and the world you are about to make; when Simulate the cycle cannot start it says why beside the button and offers a one-click fix, and a world made from an era is named and reviewed before it builds.</li>
+</ul>
+<h3 id="imported-and-drawn-worlds">Imported and drawn worlds</h3>
+<ul>
+<li>Imported and drawn maps have a Candidates step before Build. Choose from 6, 9 or 12 versions of your world: each keeps your coastline, guide layers, drawn places and answers, and raises its mountains and rivers differently. Compare them side by side and build the one you pick.</li>
+<li>The world built from a chosen card keeps its seed, and the World panel says whether its ranges stand where the card showed them. If your map already fixes its own heights, the step says so and goes straight to Build.</li>
+</ul>
+<h3 id="editing-a-built-world">Editing a built world</h3>
+<ul>
+<li>Sculpt has a new Built island tool. Draw a shape in the sea or against a coast and it becomes a paved stone platform behind a sheer sea wall, at the height you choose (4 m by default). No river rises on it, nothing grows on it, and the waves never wear it away.</li>
+<li>A built island has its own stone colour on every map and its own key entry, is named and listed in the Compendium, search and map labels, can hold a settlement, and can be moved, resized or removed from the Edits list.</li>
+<li>Sculpt has a new Wall tool: draw a great wall, sea wall or earthwork across land, out over the sea, or both. Name it or let the world name it; it has its own symbol and name on every map, atlas plate and export, and in the Compendium and the cell inspector. Walls don't change travel yet: ships and travellers pass them.</li>
+<li>Applying an edit refreshes the map's Landmarks overlay straight away, so a road, railway or wall you just added shows without reopening the world.</li>
+<li>The live Sculpt preview sharpens as you zoom in, matching the base map instead of turning into blurry squares.</li>
+<li>When a shape or brush is finer than your world's cells can hold, Sculpt says so in plain words and offers to refine a child map of that spot to sculpt on. On polygons, the Size control is labelled as the edge fade it is.</li>
+<li>Adding an island or other land in the open sea no longer renames towns, realms, rivers and regions on the far side of the world, and a built island no longer becomes the birthplace of a nation.</li>
+<li>In Settlement Studio the plan you are reviewing fills the window, with its settings and tools in columns beside it, Save and the selected building's details at hand, a Fullscreen button (F, and Esc to leave), and wheel and trackpad zoom about the pointer instead of scrolling the page.</li>
+<li>When you add a story pin you choose a landmark or a place of magic. A landmark's dossier shows your words once, as yours, with no invented magic or size, and a rebuild keeps its name.</li>
+<li>An edit in one corner of the world no longer renames towns and capitals on the far side of it: on a whole rebuild, settlements stay where they were unless the ground under or around them really changed.</li>
+<li>Every simulation-health warning has Show on map, which frames the basin, boundary, river or cells it is about; a warning in relief you imported, drew or preserved says so and is listed after warnings about generated ground.</li>
+<li>Where a warning has a known fix, Preview repair shows it before anything changes: a prepared Sculpt stroke you can look at, discard or apply, or a setting whose reach is outlined on the map. After the rebuild the panel says whether the repair cleared or reduced the warning.</li>
+<li>A story pin you have already placed can be switched between a landmark and a place of magic from its panel in Sculpt; the change waits with your other edits, can be undone, and applying it rebuilds only the names, lore and maps.</li>
+<li>A built island stays flat paved stone behind its sea wall in the HD region, Show real detail and refined child maps, with no hills or rivers on it, and the cell inspector names it as Built ground with Why here? explaining that you built it.</li>
+<li>A story pin is added in one short form (its name, what it is, landmark or place of magic, and your lore) and saved at once with your words; it joins the names, lore, dossiers and maps at the next story rebuild, which you start when you are ready.</li>
+<li>Sculpt tools that only need a click on the map, such as Story pin, Explore and Select, use a narrow column, so the map stays large; tools with settings keep the full column.</li>
+<li>A small sculpt near a lake outlet the world cut no longer fails with "Re- simulation failed": the area rebuild keeps the outlet exactly as saved, and when the edit would sink an outlet below the sea, or the rebuilt area does not verify, the whole world is rebuilt instead so the edit always lands.</li>
+</ul>
+<h3 id="render-studio">Render Studio</h3>
+<ul>
+<li>Scene objects accept heights such as 0.2, and a value Apply refuses is named beside the button with its range.</li>
+<li>In the scene editor, Undo and Redo keep one short label; the step they take back is in their tooltip.</li>
+</ul>
+<h3 id="maps-and-exports">Maps and exports</h3>
+<ul>
+<li>Zooming into the relief or biome map says how far the saved cells are magnified, and once you're close it offers Show real detail: the whole view, land and sea, is re-simulated in place at finer detail, with room to pan. Tick Automatically to have it happen whenever the map comes to rest.</li>
+<li>The relief and biome maps zoom to 16× and draw faster when you jump in deep. Biome edges follow natural, irregular lines between cells instead of squares, and every cell keeps its saved class.</li>
+<li>HD region pictures are kept in the map's rebuildable cache instead of the world folder, and a window you've seen before reopens instantly.</li>
+<li>Zoomed-in real detail draws coasts cleanly: the shallows shade smoothly out from the shore instead of a speckled pale ring, stray one-pixel islets are gone, and reefs show as whole rims and patches.</li>
+<li>Day &amp; night has its own button in World › Tools: it opens Sky &amp; planet straight on day and night, twilight and polar day, without going through the Weather drawer.</li>
+<li>The map layer browser opens with Maps by question: pick Climate &amp; seasons, Hazards, Travel &amp; trade or another question to see the handful of maps that answer it, each with a line on what it shows.</li>
+<li>Zoom in on the relief or biome map and each town's generated plan appears at its true size and place, with its name; zoom out and the markers return. The map zooms down to street scale, and its note says the plans are generated, not simulated. A town without a plan offers Draw this town's plan, which opens Settlement Studio for it.</li>
+<li>A town's distance to the sea, and whether it is a port, read the same in Find places, its dossier, Travel and Settlement Studio, with a note on what the map can measure.</li>
+<li>Zoomed in on the World map, capital and seat plans are drawn at their true size: a capital is about a kilometre across, with houses of 5-20 m like Settlement Studio towns, and city sheets carry a 250 m scale bar. A town plan's river is the World map's own river, meeting its line at the town's edge; towns the map shows no river through have none.</li>
+<li>A built island's edge is one clean wall line on the World map, the denser saved maps and Render Studio, with no stray coastline loops, pale blobs or reefs along it.</li>
+<li>Coast and river lines stay exactly on the land at every zoom on the World map, from the whole world down to street scale.</li>
+</ul>
+<h3 id="writing-lore-and-history">Writing, lore and history</h3>
+<ul>
+<li>The Compendium's place list finds places a rebuild has just added, without reopening the app.</li>
+<li>The Manuscript's World panel finds places a rebuild has just added, and Find and Replace confirms each replacement and says separately when no matches are left.</li>
+<li>A scene's Day and Hour follow your world's own calendar, for example 1–402 and 0–25 on a 402-day world with 26-hour days.</li>
+<li>Focus only hides the panels; dimming other paragraphs is its own Off, Soft or Strong choice in Lenses, and Continuity opens with what needs attention and what to do about it.</li>
+</ul>
+<h3 id="campaigns-and-the-tabletop">Campaigns and the tabletop</h3>
+<ul>
+<li>A settlement saved as a scene from Settlement Studio measures its real size: on the tabletop, Measure and Area radius read a town's true width in feet instead of about 200 ft, and its scale shows as whole feet per grid cell. Scenes saved before this keep their old scale until you save the town again from Settlement Studio.</li>
+<li>Travel's From and To lists offer every settlement in the world, not only the larger ones.</li>
+<li>Make › For the table also starts a town, a furnished room or encounter, or tonight's session, each in numbered steps.</li>
+<li>The scene library opens on your saved scenes, newest first, each with a picture of its map, its world and when it was last edited.</li>
+<li>A new scene is sized in feet or metres and says when it is ready to edit; shapes show their width, depth and height in the scene's units, the whole sheet and anything just added stay in view, and the scene's own search gives distinct results that land on the whole field.</li>
+<li>Show and hide GM controls stays where you clicked it, and the Campaign overview no longer draws place names on top of each other: the journey, party and quest places come first, and +N opens the rest.</li>
+<li>A sea journey in Travel also gives a door-to-door figure: the walk to and from the harbours and the voyage, added up as separate legs.</li>
+<li>In Scene Studio the wheel or a pinch zooms the canvas around the pointer without scrolling the page, and Fullscreen (F, Esc to leave) keeps the tools beside the canvas.</li>
+<li>Travel puts the route map first, with its zoom, Fit and Fullscreen on the map's own bar, and the journey's result in a column beside it.</li>
+</ul>
+<h3 id="the-living-world">The living world</h3>
+<ul>
+<li>Ocean trenches are narrow troughs along the plate edge, with their volcanic islands on one side, instead of now and then opening into broad, deep basins in the open sea. The deepest still sound to about 11 km, as Earth's do.</li>
+<li>Trench depth in Advanced sets how deep the deepest trenches go and nothing else; 0 gives an ocean with no trenches, the rest of the sea floor unchanged.</li>
+<li>Deserts and dry interiors stay dry: rain falling on parched ground partly evaporates before it lands.</li>
+<li>Land gives back to the air the water its soil and plants really hold, so forests and wet lowlands feed their own rain and far-northern lands keep theirs, while rivers carry what the soil cannot keep.</li>
+<li>Tropical highlands are no longer deserts: equatorial mountains and plateaus get a believably wet climate.</li>
+<li>Equatorial lowland interiors are rainforest again: over continents the tropical rain belt is broader than over the sea, so basins far from the coast stay wet instead of drying into savanna.</li>
+<li>Summer monsoons reach the edges of the subtropics and the seas beside them, while the deserts' dry cores stay dry.</li>
+<li>Lakes lose water as real lakes do, more in hot, dry, windy places, so desert lakes are smaller and some basins that used to overflow stay closed.</li>
+<li>Wet basins no longer fill to the brim: overflowing lakes wear down their outlets and shrink or drain, so worlds have far fewer giant lakes. Dry basins keep their salt lakes and salt pans, and rift valleys and ice- scoured hollows keep big lakes.</li>
+<li>Ocean winds keep more of their strength in summer: only the continents lose their summer high pressure, so the trade winds and summer westerlies over the seas blow closer to Earth's.</li>
+<li>Rift valleys are chains of narrow basins divided by high ground, so a rift holds a string of long, narrow lakes the size of Tanganyika or Malawi rather than one lake as big as a small sea. Rift seas that reach the ocean are unchanged.</li>
+<li>Explain this cell says when a place's unexplained rain comes from moisture recycled over land, or not traced at all, and opens the moisture map on that share.</li>
+<li>On a moon of a giant planet the giant eclipses the near side at noon, so that side runs a little cooler, and raises tides only when the orbit is not quite circular. Sky &amp; planet shows it fixed overhead on the near side with its phases and eclipse seasons, and the world's reports say which parts are still approximations.</li>
+</ul>
+<h3 id="speed-and-memory">Speed and memory</h3>
+<ul>
+<li>The new climate, lakes and rifts add to a Full build: on the reference Mac a new world takes Sketch 30 s, Quick 57 s and Full about 3 minutes 15 seconds, against 30 s, 53 s and 2 minutes 54 seconds in Delta V11.</li>
+</ul>
+<h3 id="saving-updating-and-the-library">Saving, updating and the Library</h3>
+<ul>
+<li>On a laptop, the world to continue is a shorter band beside its map, so your other worlds show without scrolling.</li>
+<li>Every workspace's save line says the same things: what is saved and where, what is not saved yet, and whether a save makes a copy; Save now is off while everything is saved.</li>
+<li>A long world name fits on one line in the Library at laptop width.</li>
+<li>A Sketch world's overview calls its coarse grid what it is, the draft you chose, and no longer takes points off the check score for it.</li>
+</ul>
+<h3 id="settings-and-the-app">Settings and the app</h3>
+<ul>
+<li>A button no longer leaves an empty tooltip box behind when its text clears while the pointer is over it.</li>
+<li>Search finds tools by the names people use for them (Tabletop or VTT, Settlement Studio or town generator, Scene Studio or battle map, every Sculpt tool) first, and says where each opens and what it is for.</li>
+<li>Find places, Write a scene here, the story pin's questions, the rebuild review and Search are complete dialogs for screen readers: every field named, focus inside, and the rest of the app out of reach.</li>
+<li>Selected tabs, modes and cards look the same in every workspace, buttons you can use no longer look greyed out, and removal actions such as Move to trash and Delete share one quieter red style set apart from Open and Play.</li>
+<li>Closing the rebuild review or a story pin's questions with Escape puts the keyboard back on the button that opened it, instead of on nothing.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=b6530a3583" defer></script>
+</body>
+</html>
