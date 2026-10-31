@@ -16,7 +16,7 @@
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=7a18c0b0ff">
+  <link rel="stylesheet" href="/css/site.css?v=d9d653acb2">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -387,7 +387,7 @@
         <li><b>A title screen</b>: CartoVox opens on your last world turning as a planet beside the CartoVox name, with a short menu: Continue, New world, Library, Write, Make, Settings, Help &amp; guides and Discord to report a bug. Use the mouse, the arrow keys and Enter, or a game controller; any key skips the opening and Esc goes straight to the Library. Turn off <b>Start with the title screen</b> in Workspace &amp; layout to open on your startup destination instead. <a href="#settings">Settings</a>.</li>
         <li><b>Five languages, further</b>: the region and continent screens read fully in German, French, Spanish, Portuguese and Polish, and so do place dossiers, the cell inspector and its climate explanation, World facts, Travel’s result and journal, the rebuild review’s details, the Map gallery, Create’s brief notes and build checklist, and a region’s atlas plates. Library dates are written the way your language writes them. A few specialist sentences are still in English, and exported journeys stay in English. <a href="#settings">Settings</a>.</li>
         <li><b>Also</b>: Settlement Studio has a <b>Castle planner</b>, and any village, town or city can have a Lord’s castle. Every download is saved with its file extension, Replace in a Mac save dialog now replaces the file, and Linux downloads save again. Quick and Full worlds build about an eighth faster with the same world to the last byte, and relief maps draw in much less memory. <a href="#settlements">Settlement Studio</a>.</li>
-        <!-- TODO(release): build times are still V12's measured figures (quoted as about 35 s / 55 s / 3 min). Re-measure Sketch, Quick and Full on the Delta V13 release code and update every spot marked TODO(release) here, on the homepage and in the README. -->
+        <li><b>Measured again</b>: on the reference M5 Pro Mac a Sketch world took 19.0 seconds, Quick 47.7 seconds and Full 166.8 seconds, against 30, 57 and 193 seconds in Delta V12, so Create now quotes about 20 seconds, 50 seconds and 3 minutes. Part of the gain is the faster build and part is that the measurement now keeps the font cache warm, as the app does. These are source runs on the release code from 30 October 2026, not timings of the packaged installers. <a href="#preflight">Build</a>.</li>
         <li><b>Known limits</b>: a landmass that reaches all the way round the world cannot be moved as one piece, and an edit made on the world map within about 100 km of a small region still builds the whole region again. <a href="#limits">Known limits</a>.</li>
       </ul>
     </section>
@@ -884,10 +884,9 @@
         <li><b>Review the chosen candidate.</b> The world large, a globe, its seed with <b>Copy</b>, its figures and every
           check of your brief. <b>Preview on the map</b> draws a quick rough map and saves nothing. Then
           continue to <b>Build</b>.</li>
-        <!-- TODO(release): build times are still V12's measured figures (quoted as about 35 s / 55 s / 3 min). Re-measure Sketch, Quick and Full on the Delta V13 release code and update every spot marked TODO(release) here, on the homepage and in the README. -->
         <li><b>Pick Sketch world on Build</b>, and read the side panel before you commit: <b>Takes</b>, <b>Memory</b>,
           <b>Makes</b>, <b>Disk</b> and <b>Saved to</b>. The estimate learns from completed builds of the same shape on
-          your own machine. The V12 source reference measured a Sketch without plates at <b>30 seconds</b> on an M5 Pro Mac, inside the about 35 seconds Create quotes; your chosen outputs add their own cost. A Sketch is a real world, not a preview — every stage runs and the saved archive holds
+          your own machine. The V13 source reference measured a Sketch without plates at <b>19 seconds</b> on an M5 Pro Mac, inside the about 20 seconds Create quotes; your chosen outputs add their own cost. A Sketch is a real world, not a preview — every stage runs and the saved archive holds
           the same members.</li>
         <li><b>Press the gold button.</b> It names what you are committing to — <b>Create Sketch world</b>,
           <b>Create Quick world</b>, <b>Create full-resolution world</b>, or <b>Generate publication atlas</b>.
@@ -1033,8 +1032,7 @@
         <li><b>Stop after this plate</b> finishes the active image cleanly and stores the rest; <b>Render remaining plates</b> in World → Atlas draws them later from saved data.</li>
         <li><b>Best-quality drawings</b> rebuilds a Quick world's eligible maps at 4× drawing density from the exact saved simulation; <b>Rebuild at full simulation resolution</b> makes a separate project from the same seed and recipe.</li>
         <li>Progress weights phases by measured wall time — naming gets its real share — and recalibrates the ETA from completed plate timings. Interrupted runs are detected and can be resumed from their stage checkpoint or removed.</li>
-        <!-- TODO(release): build times are still V12's measured figures (quoted as about 35 s / 55 s / 3 min). Re-measure Sketch, Quick and Full on the Delta V13 release code and update every spot marked TODO(release) here, on the homepage and in the README. -->
-        <li><b>V12 reference times</b> — about 35 seconds Sketch, 55 seconds Quick and 3 minutes Full without plates (30, 57 and 193 seconds, measured from the starter brief on the release code on 24 October 2026); about 15 minutes Full with every publication plate and both letterings, measured for V9 on 16 October 2026. Both ran on an Apple M5 Pro MacBook Pro (18-core CPU, 48 GB RAM), from source with Python 3.14. The packaged installers were not timed. Without the compiled climate step, the same reference took about 70 seconds Quick and 5½ minutes Full; other settings and machines differ.</li>
+        <li><b>V13 reference times</b> — about 20 seconds Sketch, 50 seconds Quick and 3 minutes Full without plates (19.0, 47.7 and 166.8 seconds, measured from the starter brief on the release code on 30 October 2026, font cache warm); about 15 minutes Full with every publication plate and both letterings, measured for V9 on 16 October 2026. Both ran on an Apple M5 Pro MacBook Pro (18-core CPU, 48 GB RAM), from source with Python 3.14. The packaged installers were not timed. Without the compiled climate step, the same reference took about 21 seconds Sketch, 65 seconds Quick and 5¾ minutes Full (21.1, 65.7 and 344.1 seconds); other settings and machines differ.</li>
         <li><b>Progress and memory</b> — the bar moves within climate seasons and Cancel reaches them too. Seasons share spare cores and memory when available; Low memory keeps them serial through rebuilds, updates and drafts. Atlas detail is budgeted from memory free for each plate, and smaller simulation tiers draw smaller plates.</li>
         <li><b>View generation</b> on Build returns to the existing progress window after <b>Work elsewhere</b>, including imported and drawn builds. It does not start another run. A blocked finer-grid rebuild names preserved edits to switch off before it can begin.</li>
       </ul>
@@ -1922,8 +1920,7 @@
       <b>Measure</b>, or look at it on the globe.</p>
 
       <h4>How long will a build take, and how much disk?</h4>
-      <!-- TODO(release): build times are still V12's measured figures (quoted as about 35 s / 55 s / 3 min). Re-measure Sketch, Quick and Full on the Delta V13 release code and update every spot marked TODO(release) here, on the homepage and in the README. -->
-      <p>Read <b>Takes</b>, <b>Memory</b> and <b>Disk</b> on Create’s Build step. The starter-brief reference measured about 35 seconds Sketch, 55 seconds Quick and 3 minutes Full without plates for V12, and 15 minutes with every publication plate for V9, running from source on an M5 Pro Mac. These are not packaged-app or Windows timings. Disk bands without plates are 70–140 MiB Sketch, 120–240 MiB Quick and 310–590 MiB Full; plates add more. <a href="#preflight">Hardware, runtime and estimate details</a>.</p>
+      <p>Read <b>Takes</b>, <b>Memory</b> and <b>Disk</b> on Create’s Build step. The starter-brief reference measured about 20 seconds Sketch, 50 seconds Quick and 3 minutes Full without plates for V13, and 15 minutes with every publication plate for V9, running from source on an M5 Pro Mac. These are not packaged-app or Windows timings. Disk bands without plates are 70–140 MiB Sketch, 120–240 MiB Quick and 310–590 MiB Full; plates add more. <a href="#preflight">Hardware, runtime and estimate details</a>.</p>
 
       <h4>Can I stop a build, or use the app while one runs?</h4>
       <p>Yes to both. The generation dock keeps a long build running while you work elsewhere and survives a reload;

@@ -15,7 +15,7 @@
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=7a18c0b0ff">
+  <link rel="stylesheet" href="/css/site.css?v=d9d653acb2">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -55,7 +55,7 @@
       <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
     </header>
     <article class="release release-detail" id="v0.9.14"><div class="doc-body">
-<p>Delta V13 is the thirteenth Delta release. Everything below is new or fixed since Delta V12, which was shared with invited testers on 24 October 2026.</p>
+<p>Delta V13 is the thirteenth Delta release. Everything below is new or fixed since Delta V12, which was shared with invited testers on 24 October 2026. A world can now be one piece of land rather than a whole planet: a county, a kingdom or a continent, simulated and drawn at the detail you choose, up to a 16,384-pixel map. Every continent of a world can be generated in finer detail with all of the World map's map types, and sculpted both ways. The Satellite look shows the land as from orbit, with clouds, weather and a night side. Sculpt can move whole islands and cut craters and calderas whose lakes fill with rain. Rivers meander as their slope and size set, worlds build faster, and a title screen greets you. Everything is in five languages besides English.</p>
 <h3 id="create">Create</h3>
 <ul>
 <li>A new way to begin, "A region of my own": a world that is one piece of land rather than a whole planet. Choose its size (50 × 50, 100 × 100, 300 × 300 or 1,000 × 1,000 miles, a continent about 3,000 km across, or your own width and height in miles or km), its detail (Standard, High, or Ultra for a 16,384-pixel map), and a latitude band or let the description decide. Each detail level shows its cell size and how long it will take, how much disk and how much memory it needs on this computer, and a level the computer cannot hold is refused before anything starts.</li>
@@ -223,6 +223,7 @@
 <li>The Watersheds view on a continent or region map now colours the map's own drainage basins, each in its own colour with the divides between them, where it often drew plain relief before. The key names each basin after its largest river, or by its size when the river has no name. Basins the World map also lists keep their colour there, and the classes you turn off on the World map stay off.</li>
 <li>On continent and region maps, Endorheic drainage basins now shows a closed hollow the finer ground fills as draining inland, where it was marked unclassified.</li>
 <li>The deep sea floor on continent and region maps shows far less of the world map's square cells in Physical relief: out in the open ocean, away from coasts and shelves, the bright blocks and stepped edges soften into the floor around them, which moves no more than 150 m from the world map's own depths. Coasts, shelves, islands and land are exactly as before, and the world map itself is unchanged.</li>
+<li>On a phone, the continent and region map bar fades out at its bottom edge while more of it is below, so its overlays and Export no longer look missing.</li>
 </ul>
 <h3 id="writing-lore-and-history">Writing, lore and history</h3>
 <ul>
@@ -286,6 +287,7 @@
 <li>Create's memory figure for a region is now what the build really uses at its busiest moment, measured on real builds: an 80 km region on a 12-core Mac with plenty of memory reads about 5.3 GB at Standard, 5.9 GB at High and 6.2 GB at Ultra, down from 7.8, 7.9 and 8.6 GB.</li>
 <li>Region and continent builds now fit themselves to the machine's memory as well as its cores: an 8 GB laptop builds a few pieces at a time instead of swapping, and Create shows the memory and time for that machine, saying when memory makes the build slower and by how much.</li>
 <li>Relief maps in every look (Natural, Illustrated, Satellite and the rest) are drawn in much less memory, and look exactly as they did in Delta V12: on a Standard world the map at its own size peaks at about 450 MB instead of 740 MB, and the map at twice the detail at about 1.2 GB instead of 2.3 GB, which matters most on a machine with 8 GB of memory.</li>
+<li>Create quotes build times measured on Delta V13: on an M5 Pro Mac a Sketch world takes about 20 seconds, Quick about 50 seconds and Full about 3 minutes (Delta V12 still quoted 35 seconds, 55 seconds and 3 minutes). Without the compiled climate kernel, Quick is quoted at about 65 seconds.</li>
 </ul>
 <h3 id="saving-updating-and-the-library">Saving, updating and the Library</h3>
 <ul>

@@ -148,13 +148,15 @@ after release.
 Supply a copy of `.github/release-notes/` from the released tag, rather than
 the current development checkout (for example
 `git archive v0.9.14 .github/release-notes | tar -x -C <dir>`). For V13 that is
-the **v0.9.14 tag** (commit TODO(release): tag commit); for V12 it was the v0.9.13 tag (`7d5b82c3`); for V9 it was the v0.9.10 tag (`02fd96f7`),
+the **v0.9.14 tag** (`eb466f9e9`); for V12 it was the v0.9.13 tag (`7d5b82c3`); for V9 it was the v0.9.10 tag (`02fd96f7`),
 because main later recorded unreleased Rust pilot work inside the V9 note itself.
 `--through` limits file versions, not sections within a file, so a public page
 must describe its shipped tag only. The written guide and homepage quote the
-V12 world build times measured on the release code on 24 October 2026
-(TODO(release): re-measure on the Delta V13 release code) (source
-runs on an M5 Pro, not packaged-installer timings); the every-plate figure is
+V13 world build times measured on the release code on 30 October 2026
+(seed 20260914, font cache warm: Sketch 19.0 s, Quick 47.7 s, Full 166.8 s,
+quoted as about 20 s / 50 s / 3 min; 21.1 / 65.7 / 344.1 s without the
+compiled climate kernel) (source runs on an M5 Pro, not packaged-installer
+timings); the every-plate figure is
 still V9's from 16 October. Build estimates and disk bands in the reference take
 precedence over earlier benchmark entries in the notes.
 
