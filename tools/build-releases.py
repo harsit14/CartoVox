@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render a compact release index and one page per release.
 
-    python3 tools/build-releases.py <app-repo>/.github/release-notes --through 0.9.13
+    python3 tools/build-releases.py <app-repo>/.github/release-notes --through 0.9.14
 
 Each note is a text file: a title line, then Markdown. The rendering keeps the
 notes whole except for two things. The application was called Atlas Studio
@@ -35,6 +35,8 @@ DATES = {
     "0.9.5": "2026-09-30", "0.9.6": "2026-10-02", "0.9.7": "2026-10-06", "0.9.8": "2026-10-12",
     "0.9.9": "2026-10-12", "0.9.10": "2026-10-17", "0.9.11": "2026-10-18",
     "0.9.12": "2026-10-23", "0.9.13": "2026-10-24",
+    # TODO(release): confirm the Delta V13 release date before regenerating.
+    "0.9.14": "2026-10-30",
 }
 
 RENAMES = [
@@ -144,6 +146,7 @@ def load(notes_dir: Path, through: str | None = None) -> list[dict]:
 
 
 HIGHLIGHTS = {
+    "0.9.14": "Region worlds: a county, a kingdom or a continent of your own, described in your own words, drawn or imported, then simulated and drawn at Standard, High or Ultra detail, up to a 16,384-pixel map, with its own towns, roads, baronies or shires, gazetteer, Travel and campaign table. Continent and region maps show all 94 World map views and export whole as large maps up to 16K. A new Satellite look shows the world from orbit, with clouds from the season's weather and a night side lit by its towns. Sculpt works on world, continent and region maps alike, Move island carries an island or a whole continent across the globe, and a Crater tool places calderas, impact craters and maars whose lakes come from the weather. Rivers meander as their slope and size allow, CartoVox opens on a title screen, and the new screens read in German, French, Spanish, Portuguese and Polish.",
     "0.9.13": "The climate behaves more like Earth's: rainforests are back in the equatorial lowlands, summer monsoons reach the edges of the subtropics, and tropical highlands are no longer deserts. Lakes are the right size: they evaporate, wet basins drain their giant lakes, and rift valleys hold chains of long, narrow lakes. Ocean trenches are narrow troughs, and a Trench depth of 0 gives none. Sculpt gains Built island and Wall tools, imported and drawn maps get their own Candidates, and zooming in shows real detail, down to each town's plan at its true size. Settlement Studio, Scene Studio and Travel put their map first, and an edit in one corner no longer renames towns on the far side.",
     "0.9.12": "The sea shapes every new world's coasts: glaciers carve fjords, drowned river valleys become long inlets and estuaries, waves cut bays between headlands, and barrier islands, lagoons and reefs rise offshore, all shown in a new Coast Lab. Land can sink below sea level, deserts have oases, and any nation can be given a strength, a naval reach and natural borders. Bring your own rivers and lakes into an imported map, see what Create made of every sentence of your description, and work in a calmer workspace with Sculpt docked beside the map.",
     "0.9.11": "Windows worlds that had stopped accepting changes restore, re-simulate and render again. Several GeoJSON files make one world, and plate lines painted over a picture of your map raise mountains where the plates collide. Rivers cut their valleys and local rebuilds wear your edit, ocean gyres bring warm currents, and the interface follows five languages almost everywhere.",
@@ -277,12 +280,12 @@ def main() -> None:
     target.parent.mkdir(exist_ok=True)
     target.write_text(PAGE.format(
         page_title="Release notes — CartoVox",
-        page_description="The CartoVox release archive. See what changed in Delta V12 and browse complete notes for every release.",
+        page_description="The CartoVox release archive. See what changed in Delta V13 and browse complete notes for every release.",
         canonical="https://cartovox.org/releases/", nav_label="Versions", toc="\n".join(toc),
         eyebrow="Release notes", heading="What changed, version by version.",
         intro="Start with the latest Delta release, or open any version for its complete changes and compatibility notes.",
         mobile_nav_label="Browse all versions",
-        mobile_fallback='<a href="#v0.9.13">Latest release</a>', articles="\n".join(cards),
+        mobile_fallback='<a href="#v0.9.14">Latest release</a>', articles="\n".join(cards),
     ), encoding="utf-8")
     print(f"  releases/index.html + {len(releases)} full notes")
     subprocess.run([sys.executable, str(ROOT / "tools" / "build-sitemap.py")], check=True)
