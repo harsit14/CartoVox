@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render a compact release index and one page per release.
 
-    python3 tools/build-releases.py <app-repo>/.github/release-notes --through 0.9.15
+    python3 tools/build-releases.py <app-repo>/.github/release-notes --through 0.9.16
 
 Each note is a text file: a title line, then Markdown. The rendering keeps the
 notes whole except for two things. The application was called Atlas Studio
@@ -35,7 +35,7 @@ DATES = {
     "0.9.5": "2026-09-30", "0.9.6": "2026-10-02", "0.9.7": "2026-10-06", "0.9.8": "2026-10-12",
     "0.9.9": "2026-10-12", "0.9.10": "2026-10-17", "0.9.11": "2026-10-18",
     "0.9.12": "2026-10-23", "0.9.13": "2026-10-24",
-    "0.9.14": "2026-10-30", "0.9.15": "2026-11-05",
+    "0.9.14": "2026-10-30", "0.9.15": "2026-11-05", "0.9.16": "2026-11-07",
 }
 
 RENAMES = [
@@ -145,6 +145,7 @@ def load(notes_dir: Path, through: str | None = None) -> list[dict]:
 
 
 HIGHLIGHTS = {
+    "0.9.16": "A city builder: any town opens as a city on its real coast, rivers and hills, and grows from a village to a metropolis of two million, with walls, gates, docks, slums, suburbs and districts named in the world's own tongue. Paint districts, lock roads, add landmarks, tilt the city into 3D and export it in seventeen styles, including VTT battle maps; the World, continent and region maps show it as you left it. A world can be a flat disc with an Edge. The World map sharpens as you zoom, up to eight times finer, and straits and land bridges hold on every finer map. Nations can be given the languages they speak, islands can come from an SVG drawing, and Create gains Rules of the world. Rain reaches deep into continents and piles up against mountains, with sharper rain shadows; the Weather year adds heatwaves, gusts, the polar vortex, moving sea ice, icebergs and plankton blooms; every world has an impact history, and moons of gas giants get eclipses and tidal volcanoes.",
     "0.9.15": "Mark where your mountains go, in Create before the world exists, on an import's guide page or with the Sculptor's Mountain guide, and the plates build real ranges there, with ridges, foothills and valleys. Imported plates can say which way they move, and the Sculptor's Plate motion tool turns a built world's plates. A region can be made from menus alone, with no description, and a wild region has no realm, no shires and no towns. A Polyhedral world map lays the world on an icosahedron, and Export makes it a printable hex sheet with glue tabs; Large map now exports the whole world too. Modern-day deposits such as lithium, rare earths and uranium join the resource maps. CartoVox gives memory back after each build, and Full worlds build about a fifth faster.",
     "0.9.14": "Region worlds: a county, a kingdom or a continent of your own, described in your own words, drawn or imported, then simulated and drawn at Standard, High or Ultra detail, up to a 16,384-pixel map, with its own towns, roads, baronies or shires, gazetteer, Travel and campaign table. Continent and region maps show all 94 World map views and export whole as large maps up to 16K. A new Satellite look shows the world from orbit, with clouds from the season's weather and a night side lit by its towns. Sculpt works on world, continent and region maps alike, Move island carries an island or a whole continent across the globe, and a Crater tool places calderas, impact craters and maars whose lakes come from the weather. Rivers meander as their slope and size allow, CartoVox opens on a title screen, and the new screens read in German, French, Spanish, Portuguese and Polish.",
     "0.9.13": "The climate behaves more like Earth's: rainforests are back in the equatorial lowlands, summer monsoons reach the edges of the subtropics, and tropical highlands are no longer deserts. Lakes are the right size: they evaporate, wet basins drain their giant lakes, and rift valleys hold chains of long, narrow lakes. Ocean trenches are narrow troughs, and a Trench depth of 0 gives none. Sculpt gains Built island and Wall tools, imported and drawn maps get their own Candidates, and zooming in shows real detail, down to each town's plan at its true size. Settlement Studio, Scene Studio and Travel put their map first, and an edit in one corner no longer renames towns on the far side.",
@@ -280,12 +281,12 @@ def main() -> None:
     target.parent.mkdir(exist_ok=True)
     target.write_text(PAGE.format(
         page_title="Release notes — CartoVox",
-        page_description="The CartoVox release archive. See what changed in Delta V14 and browse complete notes for every release.",
+        page_description="The CartoVox release archive. See what changed in Delta V15 and browse complete notes for every release.",
         canonical="https://cartovox.org/releases/", nav_label="Versions", toc="\n".join(toc),
         eyebrow="Release notes", heading="What changed, version by version.",
         intro="Start with the latest Delta release, or open any version for its complete changes and compatibility notes.",
         mobile_nav_label="Browse all versions",
-        mobile_fallback='<a href="#v0.9.15">Latest release</a>', articles="\n".join(cards),
+        mobile_fallback='<a href="#v0.9.16">Latest release</a>', articles="\n".join(cards),
     ), encoding="utf-8")
     print(f"  releases/index.html + {len(releases)} full notes")
     subprocess.run([sys.executable, str(ROOT / "tools" / "build-sitemap.py")], check=True)
