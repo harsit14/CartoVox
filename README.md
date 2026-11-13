@@ -35,7 +35,7 @@ and do not substitute unrelated coastlines or invented product screenshots.
 
 `/guide/#first-hour` is the newcomer route: nine tasks with app paths, visible
 results and links to the reference. Keep it aligned with the latest distributed
-build (currently Delta V16, 0.9.17), rather than unreleased development work.
+build (currently Delta V16.1, 0.9.18), rather than unreleased development work.
 The audience cards and decision-map links offer other entrances to that guide.
 
 Bound the promises: continuity checks flag supported scene and link issues;
@@ -129,7 +129,7 @@ and studio screenshots come from a sandboxed run of the app.
 ```bash
 python3 tools/build-images.py --brand brand/v3 --worlds <library>/worlds --shots <shots-dir>
 python3 tools/build-legal.py <app>/EULA.md <app>/THIRD-PARTY-NOTICES.md
-python3 tools/build-releases.py <released-notes-dir> --through 0.9.17
+python3 tools/build-releases.py <released-notes-dir> --through 0.9.18
 python3 tools/build-faq-schema.py          # FAQPage JSON-LD, derived from the FAQ markup
 python3 tools/subset-fonts.py              # Rebuild self-hosted fonts after copy changes
 python3 tools/build-sitemap.py             # Also runs after build-releases.py and stamp-assets.py
@@ -147,8 +147,8 @@ after release.
 
 Supply a copy of `.github/release-notes/` from the released tag, rather than
 the current development checkout (for example
-`git archive v0.9.17 .github/release-notes | tar -x -C <dir>`). For V16 that is
-the **v0.9.17 tag** (`1b2078b10`); for V15 it was the v0.9.16 tag (`d1e767515`); for V14 it was the v0.9.15 tag (`59992dd2c`); for V13 it was the v0.9.14 tag (`eb466f9e9`); for V12 it was the v0.9.13 tag (`7d5b82c3`); for V9 it was the v0.9.10 tag (`02fd96f7`),
+`git archive v0.9.18 .github/release-notes | tar -x -C <dir>`). For V16.1 that is
+the **v0.9.18 tag** (`23c56768a`); for V16 it was the v0.9.17 tag (`1b2078b10`); for V15 it was the v0.9.16 tag (`d1e767515`); for V14 it was the v0.9.15 tag (`59992dd2c`); for V13 it was the v0.9.14 tag (`eb466f9e9`); for V12 it was the v0.9.13 tag (`7d5b82c3`); for V9 it was the v0.9.10 tag (`02fd96f7`),
 because main later recorded unreleased Rust pilot work inside the V9 note itself.
 `--through` limits file versions, not sections within a file, so a public page
 must describe its shipped tag only. The written guide and homepage quote the

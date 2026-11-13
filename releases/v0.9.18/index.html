@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox Delta V16.1 — full release notes</title>
+  <meta name="description" content="The full CartoVox Delta V16.1 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v0.9.18/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox Delta V16.1 — full release notes">
+  <meta property="og:description" content="The full CartoVox Delta V16.1 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v0.9.18/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
+  <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
+  <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
+  <link rel="stylesheet" href="/css/site.css?v=1f2e51de9a">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.17/">Delta V16</a>
+      <a href="/releases/v0.9.16/">Delta V15</a>
+      <a href="/releases/v0.9.15/">Delta V14</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-11-13</p>
+      <h1>CartoVox Delta V16.1</h1>
+      <p class="lede">Delta V16 for Windows with one fix: on some computers every launch stopped responding and had to be closed. A launch that freezes or closes now leaves a record in the logs folder, and CartoVox can open without the graphics processor. Worlds are unchanged, so nothing needs rebuilding.</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v0.9.18"><div class="doc-body">
+<p>Delta V16.1 is Delta V16 for Windows with one fix: on some computers every launch stopped responding and had to be closed. Worlds are unchanged, so a world built or rebuilt in Delta V16 needs no rebuild.</p>
+<h3 id="settings-and-the-app">Settings and the app</h3>
+<ul>
+<li>On Windows, CartoVox no longer stops responding as it opens. Delta V16 could freeze while the Library or the last world loaded, on some computers at every launch, and had to be closed from the Task Manager. Opening CartoVox a second time while it is open no longer risks the same freeze.</li>
+<li>On Windows, a CartoVox that freezes or closes while it opens now leaves a record of how far it got, and of any crash, in its logs folder, ready to send on Discord.</li>
+<li>If the window did not finish opening last time, CartoVox asks whether to open without the graphics processor; the turning globe is not drawn then. Start CartoVox with --safe-graphics to choose it yourself, and with --normal-graphics to go back.</li>
+<li>Create diagnostics, in Settings, now includes the local service's log and any crash record, not just the window's log.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=b6530a3583" defer></script>
+</body>
+</html>
