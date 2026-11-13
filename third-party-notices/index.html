@@ -11,7 +11,7 @@
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=8ea4d4ffc2">
+  <link rel="stylesheet" href="/css/site.css?v=b779f3b6e8">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -40,9 +40,11 @@
 <h2 id="earth-elevation-example">Earth elevation example</h2>
 <p>The optional offline import example in <code>web/assets/reference/</code> contains a one-degree sample of NOAA ETOPO 2022 v1 ice-surface elevations, taken from the 60 arc-second global grid. Rows are north to south and elevations are metres above the EGM2008 geoid. It is an educational terrain input, not an observed climate product. Sampling misses small islands and local peaks.</p>
 <p>NOAA National Centers for Environmental Information. 2022: ETOPO 2022 15 Arc-Second Global Relief Model. DOI: https://doi.org/10.25921/fd45-gt74. Accessed 19 October 2026. NOAA dedicates these data under CC0-1.0; see https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ngdc.mgg.dem%3Aetopo_2022. The adjacent JSON records the exact sampling request, orientation, checksum and limitations. <code>tools/build_earth_example.py</code> reproduces the packaged sample.</p>
+<h2 id="print-colour-profile">Print colour profile</h2>
+<p><code>assets/icc/FOGRA39L_coated.icc</code> (<code>_internal/assets/icc/</code> in an installed copy) is the ISO Coated v2 (FOGRA39L) CMYK output profile from the OpenICC profile set, as packaged in CTAN's <code>colorprofiles</code> bundle (version 20181105), copyright Kai-Uwe Behrmann, Marti Maria, Photogamut, Graeme Gill and ColorSolutions (basICColor). It is redistributed unmodified under the zlib/libpng licence, whose full text ships beside it as <code>LICENSE-FOGRA39L.txt</code>, and the profile itself states that it "is free of known copyright restrictions". A "Print (CMYK)" atlas PDF is separated through it and embeds it as the file's output intent; the licence covers the profile, not the PDFs you make with it.</p>
 <p>CartoVox includes the third-party components listed below. Each is licensed to you under its own terms, which apply to that component. Where a component's terms conflict with the CartoVox End User License Agreement (<code>EULA.md</code>), that component's terms govern that component.</p>
 <p>This file is incorporated into the End User License Agreement by reference.</p>
-<p><strong>CartoVox version:</strong> Delta V15 <strong>Inventory generated:</strong> 29 September 2026</p>
+<p><strong>CartoVox version:</strong> Delta V16 <strong>Inventory generated:</strong> 29 September 2026</p>
 <hr>
 <h2 id="1-how-to-read-this-file">1. How to read this file</h2>
 <ul>
@@ -234,6 +236,7 @@ SUCH DAMAGE.</pre>
 <tr><td>Apache-2.0</td><td>OpenCV, ColorBrewer schemes</td><td><code>_internal/cv2/LICENSE.txt</code></td></tr>
 <tr><td>PSF-2.0</td><td>CPython</td><td><code>_internal/</code> Python licence</td></tr>
 <tr><td>SIL OFL 1.1</td><td>Archivo, DM Mono, Newsreader, Cinzel, STIX, Computer Modern</td><td><code>web/vendor/fonts/OFL-*.txt</code></td></tr>
+<tr><td>zlib/libpng</td><td>FOGRA39L coated CMYK profile (OpenICC)</td><td><code>_internal/assets/icc/LICENSE-FOGRA39L.txt</code></td></tr>
 <tr><td>Qhull</td><td>Matplotlib</td><td><code>_internal/matplotlib/LICENSE/LICENSE_QHULL</code></td></tr>
 <tr><td>CC0-1.0</td><td>ResizeObserver polyfill</td><td><code>_internal/matplotlib/LICENSE/</code></td></tr>
 <tr><td>Bitstream Vera and Arev font licences</td><td>DejaVu fonts</td><td><code>_internal/matplotlib/mpl-data/fonts/ttf/LICENSE_DEJAVU</code></td></tr>
