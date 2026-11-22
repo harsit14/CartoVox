@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Render a compact release index and one page per release.
 
-    python3 tools/build-releases.py <app-repo>/.github/release-notes --through 0.9.18
+    python3 tools/build-releases.py <app-repo>/.github/release-notes --through 1.0.0
 
 Each note is a text file: a title line, then Markdown. The rendering keeps the
 notes whole except for two things. The application was called Atlas Studio
 until 0.8.2, so the old name is written as the current one (feature names such
 as Atlas plates keep theirs). And the paragraphs that told testers where to
 download installers from are dropped, because that route is no longer where
-builds are published; the site's beta page is.
+builds are published; the site's download section is.
 """
 from __future__ import annotations
 
@@ -37,6 +37,7 @@ DATES = {
     "0.9.12": "2026-10-23", "0.9.13": "2026-10-24",
     "0.9.14": "2026-10-30", "0.9.15": "2026-11-05", "0.9.16": "2026-11-07",
     "0.9.17": "2026-11-13", "0.9.18": "2026-11-13",
+    "1.0.0": "2026-11-22",
 }
 
 RENAMES = [
@@ -125,6 +126,11 @@ def load(notes_dir: Path, through: str | None = None) -> list[dict]:
         # Delta V1 and Delta V2, as they do in the app.
         delta = re.search(r"Delta V\d+(?:\.\d+)?", title)
         name = delta.group(0) if delta else ""
+        # From 1.0 a release is shown by the name the app gives it: "CartoVox
+        # 1.0 — 22 November 2026" reads as CartoVox 1.0, not 1.0.0.
+        if not name and version_key(version) >= (1, 0, 0):
+            named = re.match(r"CartoVox (\d+(?:\.\d+)*)\b", title)
+            name = named.group(1) if named else ""
         if name and tagline == name:
             tagline = ""
         # Notes from before 0.8.3 were written under the old name; 0.8.3 itself
@@ -146,6 +152,7 @@ def load(notes_dir: Path, through: str | None = None) -> list[dict]:
 
 
 HIGHLIGHTS = {
+    "1.0.0": "CartoVox 1.0, free for everyone: no invites, no access codes and no check-ins, and it works offline. Make your own species and the ecosystems that shape their ranges, and biomes drawn by climate or by their signature species. Build flat worlds beside disc worlds, draw regions of your own across any border, and shape the night sky's constellations with their lore. Edit an atlas plate after it is drawn, in five new looks from woodcut to Admiralty chart; Render Studio gains five art directions and terrain flyovers. Players join the tabletop from their own phone, tablet or computer, a World Bible downloads as PDF or EPUB, and a world can be shared as an offline web map. The World map can be explored by keyboard and screen reader, and CartoVox updates itself, checking only for new versions.",
     "0.9.18": "Delta V16 for Windows with one fix: on some computers every launch stopped responding and had to be closed. A launch that freezes or closes now leaves a record in the logs folder, and CartoVox can open without the graphics processor. Worlds are unchanged, so nothing needs rebuilding.",
     "0.9.17": "The last Delta. The whole app reads in German, French, Spanish, Portuguese and Polish, with numbers written each language's way. Villages, market towns and hill towns grow as they should, with greens, crofts, burgage plots, abbeys, landings and walls where history calls for them. Maps stay sharp however far you zoom, rivers run on across every join, and continent, region and disc maps open in the World map's own controls, with finer continent detail where you look. Orbits can wobble, swing their tilt and lock their spin, and a planet's real numbers build its real weather. Sculpt gains Overwrite, exact island shapes, Erode, River carve and Stamp, and deposits and goods can be edited by hand. Render Studio adds compass roses, scale bars, a cartouche, a legend, a neatline and your own symbol packs; Write adds Suggest mode, comments and an Outline with a Corkboard; campaigns gain templates, a combat tracker, dungeons from a sentence and Roll the road. Downloads go where you choose, and builds are faster: Quick about 30 seconds and Full about a minute and a half.",
     "0.9.16": "A city builder: any town opens as a city on its real coast, rivers and hills, and grows from a village to a metropolis of two million, with walls, gates, docks, slums, suburbs and districts named in the world's own tongue. Paint districts, lock roads, add landmarks, tilt the city into 3D and export it in seventeen styles, including VTT battle maps; the World, continent and region maps show it as you left it. A world can be a flat disc with an Edge. The World map sharpens as you zoom, up to eight times finer, and straits and land bridges hold on every finer map. Nations can be given the languages they speak, islands can come from an SVG drawing, and Create gains Rules of the world. Rain reaches deep into continents and piles up against mountains, with sharper rain shadows; the Weather year adds heatwaves, gusts, the polar vortex, moving sea ice, icebergs and plankton blooms; every world has an impact history, and moons of gas giants get eclipses and tidal volcanoes.",
@@ -197,9 +204,9 @@ PAGE = """<!doctype html>
       <a href="/guide/">Guide</a>
       <a href="/releases/" aria-current="page">Release notes</a>
       <a href="/#faq">FAQ</a>
-      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
-    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -215,7 +222,7 @@ PAGE = """<!doctype html>
       <p class="eyebrow">{eyebrow}</p>
       <h1>{heading}</h1>
       <p class="lede">{intro}</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. Builds are shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>; these notes are also readable offline inside the app.</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
       <details class="mobile-contents"><summary>{mobile_nav_label}</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">{mobile_fallback}</nav></details>
     </header>
 {articles}
@@ -284,12 +291,12 @@ def main() -> None:
     target.parent.mkdir(exist_ok=True)
     target.write_text(PAGE.format(
         page_title="Release notes — CartoVox",
-        page_description="The CartoVox release archive. See what changed in Delta V16.1 and browse complete notes for every release.",
+        page_description="The CartoVox release archive. See what changed in CartoVox 1.0 and browse complete notes for every release.",
         canonical="https://cartovox.org/releases/", nav_label="Versions", toc="\n".join(toc),
         eyebrow="Release notes", heading="What changed, version by version.",
-        intro="Start with the latest Delta release, or open any version for its complete changes and compatibility notes.",
+        intro="Start with CartoVox 1.0, the latest release, or open any version for its complete changes and compatibility notes.",
         mobile_nav_label="Browse all versions",
-        mobile_fallback='<a href="#v0.9.18">Latest release</a>', articles="\n".join(cards),
+        mobile_fallback='<a href="#v1.0.0">Latest release</a>', articles="\n".join(cards),
     ), encoding="utf-8")
     print(f"  releases/index.html + {len(releases)} full notes")
     subprocess.run([sys.executable, str(ROOT / "tools" / "build-sitemap.py")], check=True)

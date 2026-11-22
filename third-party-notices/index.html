@@ -11,7 +11,7 @@
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=1f2e51de9a">
+  <link rel="stylesheet" href="/css/site.css?v=6d8be3f5a2">
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -28,9 +28,9 @@
       <a href="/eula/">Licence</a>
       <a href="/third-party-notices/">Third-party notices</a>
       <a href="/privacy/">Privacy</a>
-      <a class="btn btn-gold btn-sm nav-cta-mobile" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
-    <a class="btn btn-gold btn-sm nav-cta" href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Request an invite</a>
+    <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -44,7 +44,7 @@
 <p><code>assets/icc/FOGRA39L_coated.icc</code> (<code>_internal/assets/icc/</code> in an installed copy) is the ISO Coated v2 (FOGRA39L) CMYK output profile from the OpenICC profile set, as packaged in CTAN's <code>colorprofiles</code> bundle (version 20181105), copyright Kai-Uwe Behrmann, Marti Maria, Photogamut, Graeme Gill and ColorSolutions (basICColor). It is redistributed unmodified under the zlib/libpng licence, whose full text ships beside it as <code>LICENSE-FOGRA39L.txt</code>, and the profile itself states that it "is free of known copyright restrictions". A "Print (CMYK)" atlas PDF is separated through it and embeds it as the file's output intent; the licence covers the profile, not the PDFs you make with it.</p>
 <p>CartoVox includes the third-party components listed below. Each is licensed to you under its own terms, which apply to that component. Where a component's terms conflict with the CartoVox End User License Agreement (<code>EULA.md</code>), that component's terms govern that component.</p>
 <p>This file is incorporated into the End User License Agreement by reference.</p>
-<p><strong>CartoVox version:</strong> Delta V16.1 <strong>Inventory generated:</strong> 29 September 2026</p>
+<p><strong>CartoVox version:</strong> CartoVox 1.0 <strong>Inventory generated:</strong> 29 September 2026</p>
 <hr>
 <h2 id="1-how-to-read-this-file">1. How to read this file</h2>
 <ul>
@@ -65,6 +65,7 @@
 <tr><td>python-bidi (unmodified library)</td><td>0.6.11 (pinned)</td><td>LGPL-3.0-or-later; embedded Rust components retain their own notices</td><td><code>_internal/python_bidi*dist-info/licenses/</code></td></tr>
 <tr><td>pypdf</td><td>6.20 or later within 6.x (6.20.1 in the build inputs)</td><td>BSD-3-Clause</td><td><code>_internal/pypdf/</code></td></tr>
 <tr><td>pywebview</td><td>5.4–6.x (6.2.1 in the build inputs)</td><td>BSD-3-Clause</td><td><code>_internal/webview/</code></td></tr>
+<tr><td>cryptography</td><td>50.0.2 (pinned)</td><td>Apache-2.0 or BSD-3-Clause</td><td><code>_internal/cryptography*dist-info/licenses/</code></td></tr>
 <tr><td>pywinrt: winrt-runtime, winrt-Windows.Media.Ocr, winrt-Windows.Graphics.Imaging, winrt-Windows.Storage.Streams, winrt-Windows.Globalization, winrt-Windows.Foundation, winrt-Windows.Foundation.Collections</td><td>3.2.1 (pinned), Windows builds only</td><td>MIT (Copyright (c) Microsoft Corporation; Copyright (c) 2021-2025 David Lechner)</td><td><code>_internal/winrt/</code></td></tr>
 <tr><td>typing_extensions (required by winrt-runtime)</td><td>4.12 or later, Windows builds only</td><td>PSF-2.0</td><td><code>_internal/</code></td></tr>
 <tr><td>CPython standard library</td><td>3.14 (3.14.8 in the build inputs)</td><td>PSF-2.0</td><td><code>_internal/</code></td></tr>
@@ -94,7 +95,7 @@
 <tr><td>proxy_tools</td><td>0.1.0</td><td>MIT</td><td>pywebview</td></tr>
 <tr><td>PyObjC (core, Cocoa, Quartz, Security, UniformTypeIdentifiers, WebKit)</td><td>12.2.2, macOS builds only</td><td>MIT</td><td>pywebview</td></tr>
 <tr><td>pythonnet and clr-loader</td><td>3.2.1 and 0.3.1, Windows builds only</td><td>MIT</td><td>pywebview</td></tr>
-<tr><td>cffi and pycparser</td><td>2.1.1 and 3.11, Windows builds only</td><td>MIT and BSD-3-Clause</td><td>clr-loader</td></tr>
+<tr><td>cffi and pycparser</td><td>2.1.1 and 3.11</td><td>MIT and BSD-3-Clause</td><td>cryptography and clr-loader</td></tr>
 <tr><td>QtPy</td><td>2.4.3, Linux builds only</td><td>MIT</td><td>pywebview</td></tr>
 </tbody></table>
 <h3 id="2-4-the-application-launcher">2.4 The application launcher</h3>

@@ -1,9 +1,11 @@
-# Short doors. Delta, like the beta before it, lives on Discord.
+# Short doors. From 1.0 CartoVox is a free download from its release page;
+# the community and support stay on Discord. The old Delta and invite doors
+# lead to the homepage's download section.
 /discord   https://discord.gg/Y5aRPkk8g2  302
-/delta     https://discord.gg/Y5aRPkk8g2  302
-/invite    https://discord.gg/Y5aRPkk8g2  302
-/beta      https://discord.gg/Y5aRPkk8g2  302
-/download  https://discord.gg/Y5aRPkk8g2  302
+/download  https://github.com/harsit14/cartovox-releases/releases/latest  302
+/beta      https://github.com/harsit14/cartovox-releases/releases/latest  302
+/delta     /#download                    302
+/invite    /#download                    302
 /licence   /eula/                        301
 /license   /eula/                        301
 

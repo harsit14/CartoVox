@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartoVox 1.0 — full release notes</title>
+  <meta name="description" content="The full CartoVox 1.0 release notes: changes, compatibility and known limits.">
+  <link rel="canonical" href="https://cartovox.org/releases/v1.0.0/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CartoVox 1.0 — full release notes">
+  <meta property="og:description" content="The full CartoVox 1.0 release notes: changes, compatibility and known limits.">
+  <meta property="og:url" content="https://cartovox.org/releases/v1.0.0/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
+  <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
+  <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
+  <link rel="stylesheet" href="/css/site.css?v=6d8be3f5a2">
+</head>
+<body class="doc-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="/">Home</a>
+      <a href="/guide/">Guide</a>
+      <a href="/releases/" aria-current="page">Release notes</a>
+      <a href="/#faq">FAQ</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Release navigation">
+    <p class="eyebrow">Releases</p>
+    <nav class="toc-list">
+      <a href="/releases/">All release notes</a>
+      <a href="/releases/v0.9.18/">Delta V16.1</a>
+      <a href="/releases/v0.9.17/">Delta V16</a>
+      <a href="/releases/v0.9.16/">Delta V15</a>
+    </nav>
+  </aside>
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">Full release notes · 2026-11-22</p>
+      <h1>CartoVox 1.0</h1>
+      <p class="lede">CartoVox 1.0, free for everyone: no invites, no access codes and no check-ins, and it works offline. Make your own species and the ecosystems that shape their ranges, and biomes drawn by climate or by their signature species. Build flat worlds beside disc worlds, draw regions of your own across any border, and shape the night sky&#x27;s constellations with their lore. Edit an atlas plate after it is drawn, in five new looks from woodcut to Admiralty chart; Render Studio gains five art directions and terrain flyovers. Players join the tabletop from their own phone, tablet or computer, a World Bible downloads as PDF or EPUB, and a world can be shared as an offline web map. The World map can be explored by keyboard and screen reader, and CartoVox updates itself, checking only for new versions.</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
+      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+    </header>
+    <article class="release release-detail" id="v1.0.0"><div class="doc-body">
+<p>CartoVox 1.0 follows Delta V16.1, the Windows update to Delta V16. Invited testers received Delta V16 on 13 November 2026.</p>
+<h3 id="night-sky-and-impacts">Night sky and impacts</h3>
+<ul>
+<li>Sky &amp; planet follows moon orbits for a reported interval and compares the estimated tides and reflected light of moons around a giant host.</li>
+</ul>
+<ul>
+<li>The star chart shows three annual meteor-stream encounters on worlds with an atmosphere. The crater atlas estimates surviving relief and highlights exposed ejecta where the map can resolve it.</li>
+</ul>
+<h3 id="settings-and-the-app">Settings and the app</h3>
+<ul>
+<li>Dialog close buttons fit at the largest interface text size.</li>
+</ul>
+<ul>
+<li>Campaign dates, City Builder controls, and title-based assistive labels update when you change the interface language.</li>
+</ul>
+<ul>
+<li>CartoVox has a new look, Atlas. Atlas Dark is the Delta dark look made deeper and blacker, with the same gold. Atlas Day is parchment with ink-blue buttons, and the map sits on paper. Titles are set in engraved capitals. CartoVox follows your computer's light or dark setting between the two. The Delta look is still in Settings as Delta Dark and Delta Light. <strong>Settings › Appearance</strong> lets you keep a chosen theme, including a Delta theme you already use.</li>
+<li>The welcome map explains how to try a climate reading in all five interface languages. Create and Help use plainer wording for choosing a world. The example world’s estimate and the captions and stage descriptions on a running build follow the selected language.</li>
+</ul>
+<ul>
+<li>Use <strong>Ask or do anything</strong> at the top of any workspace to find maps, places, tools and exports. Search for a thing such as “rain” to see maps and places first, with previews from your world. Search for an action such as “export pdf” to see commands first. Narrow windows keep a Search button on the rail.</li>
+<li>Escape closes one layer at a time when you open the command palette over keyboard shortcuts and a map menu. Focus returns to the control below.</li>
+</ul>
+<ul>
+<li>Workspace &amp; layout keeps its panel search in reach while scrolling, and its controls fit narrow windows.</li>
+<li>The title planet has a thin rim of blue air, with a faint trace of warm colour in the sky. Closing the welcome leaves the edge clean, and ocean highlights stay within the lighting of the globe.</li>
+<li>Help opens on illustrated cards for the World map, atlas and table, followed by smaller cards for other chapters. Chapters use pictures from Eofordal and a readable single-column layout. The list of tools you have yet to try folds away.</li>
+<li>A tooltip no longer pops up over the controls when a click changes the page under a resting pointer, such as after Search candidates. Tips appear again as soon as the pointer moves.</li>
+<li>When a world opens and its atlas plates draw in the background, progress is one quiet line at the foot of the window, such as "Drawing the atlas plates · 7 of 24", with the time left. The plate's name and what is being drawn show when you point at the line, and Details opens the full log. It stays off Create, so the "First world?" buttons are no longer hidden, and it gives the other workspaces back most of the space the two-line notice took. Plates are named as you know them ("Aopara"), not by file name with "(named + no labels)".</li>
+<li>When the background plates are finished, the line says "Atlas plates ready" for a few seconds and then fades away by itself; it no longer waits at the foot of every workspace until you close it. A failed atlas still stays until you have read it.</li>
+<li>Opening the example world shows one "Still opening" message, not two stacked on top of each other.</li>
+<li>The welcome card and desert tour show Eofordal's current coastline and relief. The first-hour guide follows the shipped example through a climate reading, a Sketch build, a settlement rename and a terrain edit, with the places and measurements you can check along the way.</li>
+<li>Every icon in the app is now drawn as one family: the side rail, the section tabs, the map's tools, panels and story pins share one line weight, one grid and one corner style, so a small tab icon and a large rail icon look like they belong together. Places that used to share a picture now each have their own: Review, Saved views, Render Studio, the Map gallery, Scene maps, the Compendium, Manuscript, Report, Weather, Tectonics and Working maps no longer borrow another tool's icon.</li>
+<li>Layout is now part of Settings, under Workspace &amp; layout, beneath Tools shown: panel arrangements, Show all panels and the list of panels to hide are in one place, and ⌘⇧L (Ctrl+Shift+L) opens it there. The separate Layout button on the side rail is gone.</li>
+</ul>
+<ul>
+<li>The "Discover tools" line floats over the map for your first session only. After that the tools you have not tried are listed in Help and at the top of the empty Ask bar, never over the map on every open.</li>
+<li>The keyboard shortcut sheet opens on the ten keys most worth knowing; the rest are folded by where they work, each fold saying how many keys it holds. A map key is still changed by clicking it.</li>
+<li>Data &amp; privacy keeps the confirmation after you export or delete diagnostics, alongside the current number of recorded events.</li>
+<li>Messages no longer cover the title screen's keys, Planet picture and Start with the title screen; a world still opening behind the title waits to say so until its map is up.</li>
+<li>The Library and the map gallery use the whole of a large screen. On a 2560 or 4K display they sat in a narrow column with half the screen empty; now the page spans the window, Library cards grow larger instead of shrinking into more columns, the Continue band's picture grows with the screen, and sentences still stop at a comfortable reading length. Text also grows a little on very large screens (about 8% at 2560 pixels across, about 23% at 4K); laptop screens are unchanged.</li>
+<li>One look across the whole app: every button is one of three kinds (a filled main action, a quiet tone for everything else, and plain words), buttons no longer mix outlines and fills side by side, page titles share one size, and the instruments over the map cast one shadow.</li>
+<li>The World map stays calm: the Planet card starts folded to its header, it and a tool panel share the right edge one at a time, and Escape puts away the front panel, then the World overview, then the Planet card.</li>
+<li>Panels arrive from their own edge and a new map layer settles in rather than snapping. With reduced motion on (in Settings or on your computer), nothing moves.</li>
+</ul>
+<ul>
+<li>CartoVox opens offline without Delta access codes or a 21-day check-in. At first launch, read and accept licence 3.1, sign with your full name beside the date, and tick the agreement. Declining closes the app. Your signature stays on your computer. <strong>Settings › Licence</strong> shows who signed and when, and opens the licence. A new licence version asks you to sign again.</li>
+<li>CartoVox is free to use, and the licence now says so. You still owe nothing for selling or publishing what you make with it.</li>
+<li>CartoVox never sends anything about you. It only checks for new versions, and you can turn that off. Your worlds stay on this computer. Read the update notes in Help › Check for updates, or go to Settings › Updates &amp; support to change when it checks. Mac and Windows can update and restart after your work is saved. Linux downloads an installer you can run yourself. You can save local diagnostics and choose what to share with support.</li>
+<li>The start screen is one click away from anywhere: click the CartoVox logo at the top of the rail, press Cmd/Ctrl+Shift+H, choose View › Start Screen on a Mac or Go to the start screen in the command palette. Nothing you have open is closed and a build keeps running; Continue takes you back to the world and the workspace you left. The logo stands alone there now: Search heads the group at the foot of the rail, above Layout, and still opens with Cmd/Ctrl+K.</li>
+<li>The installers are named for the release, such as CartoVox-1.0-macOS-arm64.dmg and CartoVox-1.0-Windows-Setup.exe, and the window title, About and the Windows list of installed apps say CartoVox 1.0.</li>
+<li>On Windows, a CartoVox that freezes or closes while it opens now leaves a record of how far it got, and of any crash, in its logs folder, ready to send on Discord. If the window did not finish opening last time, CartoVox asks whether to open without the graphics processor, which gets the app going on computers whose graphics driver takes the window down; the turning globe is not drawn then. Start CartoVox with --safe-graphics to choose it yourself, and with --normal-graphics to go back.</li>
+<li>On Windows, CartoVox no longer freezes as it opens. Delta V16 could stop responding while the Library or the last world loaded, most often on a computer with saved worlds, and had to be closed from the Task Manager. Opening CartoVox a second time while it is open no longer risks the same freeze either.</li>
+<li>Create diagnostics, in Settings, now includes the local service's log and any crash record, not just the window's log.</li>
+<li>Choosing another language in Settings now changes the names screen readers hear and the tooltips on panels that are already open, such as the minimap, split view, time strip, lore import and the command palette. Before, they kept the old language until the panel was opened again.</li>
+<li>On a region world, the campaign's region table and the region's Travel now explain in your language why they cannot do something, such as a grid too fine for the region or two places no sea lane joins. Three tooltips that stayed in English are translated too: a campaign pin's Visible to players box and the polyhedral map and terrain kit exports.</li>
+<li>The command palette's longer lists load the first time you open it, so CartoVox has a little less to load when it starts.</li>
+<li>What's new in CartoVox 1.0. If you used a Delta build, the first time 1.0 opens it shows a card for each of 1.0's headline features instead of the welcome: shaping the night sky, editing and zooming into atlas plates, regions of your own, your own biomes and rules, the city builder's skies and heights, disc and flat worlds, and every town's streets. Each card has Show me, which opens that feature on the world you have open, or says it needs one and takes you to the Library. It shows once; Help, the command palette, the title screen and the desktop Help menu open it again.</li>
+<li>The new panels say what to do when they are empty: Regions before you draw a region, Your biomes before you add one, Edit constellations before you change a star, and Edit labels and Edit plate before a plate has an edit. The report you write from the map is now called a problem report, and a world made by an older build says it was made with an earlier CartoVox build.</li>
+<li>The title screen's tips are a small Tips chip beside What's new, closed until you open it. Open, it shows one tip at a time beside the menu, and it remembers whether you left it open; the tips used to run along the bottom of the screen under the planet. What's new now waits until you leave the title screen instead of covering it.</li>
+<li>The title screen's planet is lit by a sun: a soft line between day and night, sun glint on the sea, a glowing rim of air and the lights of towns on the night side. It gathers its turn slowly, leans a little toward the pointer and stands in front of a faint starfield on the dark themes, and the wordmark, menu and planet arrive one after another. It is drawn as smoothly as the computer can keep up with and not at all while the window is hidden. Reduced motion keeps the whole screen still, and a computer that cannot draw the planet, or one started with --safe-graphics, shows a still planet with the same rim and night side.</li>
+<li>Behind the title screen is now always the same night sky, a band of stars and coloured nebula (an engraved star chart on the light themes), instead of the last world's map. Only the planet changes with the world you opened last: a globe world wears its own map at full detail, a disc world shows as a tilted disc turning slowly, and a region or flat world shows its own map on a tilted plate, where they used to be stretched round a ball or replaced by the example world. On a large or high-resolution screen the disc or plate is drawn sharp, from the world's own map at up to 2560 pixels, and from the moment CartoVox opens it shows the shape of the world you opened last, without the planet beneath it flashing up first. With no world yet, the example world turns there.</li>
+<li>In German, French, Spanish, Portuguese and Polish, a town and a city are no longer the same word: the city builder's sizes and the settlement ranks on maps and keys read Kleinstadt and Stadt, petite ville and ville, and so on. A long setting name in Advanced wraps with its unit and range whole instead of spilling out of its row.</li>
+<li>An Atlas sheet's status line ("Current. Matches the saved drawing inputs") reads in the app's language.</li>
+<li>The title screen's footer says the version once ("CartoVox 1.0", not "CartoVox 1.0 · 1.0.0"). A globe world turns on the title planet in a sharp map with its rivers and coasts, drawn for your screen, instead of the blurred simulation-sized picture it wore before; it arrives a moment after the title screen opens, so opening is no slower.</li>
+<li>A first launch is one screen. The welcome is a card on the title screen instead of a six-page window that opened over the Library afterwards: the example world's map (click a place and it tells you why it is wet or dry), three short sentences, and Open the example world, Start my own world and the guided first world always in view beside its close. Esc closes the card first; leaving the title screen any way counts as having seen it.</li>
+<li>Example world is the title screen's first choice for someone new, and for anyone with no world to continue. It opens straight from the title screen: the menu says it is opening and goes when the map is up, with no other window on the way.</li>
+<li>With no world yet, the title planet is the example world drawn four times finer, with smooth coasts and fine rivers instead of a staircase of cells, and a globe world's planet is drawn up to 4,096 pixels round on Retina and 4K screens. The planet's halo is a thin rim of blue air instead of an orange glow, and on large screens the menu and wordmark grow with the window.</li>
+<li>The welcome shows Eofordal with lit relief, the sea floor, smooth coastline and biome boundaries, and fine rivers. On wide screens its illustrated plate sits alongside it with a caption above the artwork.</li>
+<li>The welcome's dry and wet readings name a climate in plain words ("Hot desert"), without the Köppen code in front of it.</li>
+</ul>
+<h3 id="create">Create</h3>
+<ul>
+<li>Close the build log with its own button or Escape and keep the world preview open.</li>
+<li>Flat maps in the build preview sit on a plain backdrop once the first map appears.</li>
+<li>Region briefs fill matching choices and show which words the search could not use. Region sizes and place descriptions follow your display units.</li>
+<li>Create keeps local climate and island requests in the brief when it has no suitable local setting. A rainforest described in the northwest keeps that direction when CartoVox offers a place for it.</li>
+<li>Create lists a coastline or volcanic island chain requested for a specific place as a local detail when it cannot build it there. Broader world settings are offered separately for you to choose.</li>
+</ul>
+<ul>
+<li>A newly built world opens fitted to the map. During a new build, the browser tab shows the world being built.</li>
+</ul>
+<ul>
+<li>The brief reader offers placed climate areas for a hot desert in the south or cold forest in the north. It flags requested straits and continent positions that the candidate search cannot guarantee.</li>
+</ul>
+<ul>
+<li>Candidate cards identify the near misses counted in the search summary.</li>
+<li>The last generated recipe takes the completed world's name. Before it is named, the recipe says which world shape it started from.</li>
+<li>Search candidates opens the purpose chooser if you have not answered it yet.</li>
+</ul>
+<ul>
+<li>Box a candidate strait to compare the shortlist and selected build sizes. Trace the coast between cells and see whether water or land still crosses the selected box.</li>
+</ul>
+<ul>
+<li>Pick on map keeps the preview and keyboard focus in place while you choose where to put a feature.</li>
+</ul>
+<ul>
+<li>The match summary uses the same type as the search controls and wraps on narrow screens, so you can read how many worlds met the brief.</li>
+</ul>
+<ul>
+<li>On a laptop the Build map fills its column, with a compact row of other matches in view. A build from a candidate opens on that world's projected map, then shows the new terrain as it takes shape.</li>
+<li>On wide screens, the live Brief map shows the whole world, and the candidate comparison plot has more room before you choose.</li>
+<li>Your own search or build always comes first. Pressing Search candidates while a world's atlas plates are still drawing in the background (for about a minute and a half after the example world opens) starts the search at once and it runs at full speed: on the example it finished in 1.6 seconds, where before it waited 75 seconds behind the plates. The plates pause while you search or build and carry on afterwards; their line says so. Build is no longer greyed out while plates draw.</li>
+<li>A search you ask for while the search button is busy is never dropped: it starts by itself as soon as it can, and a message tells you so.</li>
+<li>Create speaks plainly. Choosing a land shape says "Choosing Shattered Archipelago also changed Climate (now From the planet)…", the checks read "What the search checks · it measures 3 things", and the reading's footer says "1 search rule you set" in place of "1 limit". A saved world's brief reads "1 came out as asked · 4 set from your words".</li>
+<li>Recent searches name each search in a few words, and the chosen search's description wraps in full under the menu, instead of being cut off with "…".</li>
+<li>Asking a place why it is wet or dry reads in sentences: "The wind crosses 85% less sea on its way here than is usual at this latitude. That makes it 709 mm drier.", on the welcome's map too.</li>
+<li>A continent count in your description stays applied when you change the seed or preview the world.</li>
+</ul>
+<ul>
+<li>On large screens the twelve candidates take more of the page and their cards are bigger: at 1920 × 1080 all twelve fit without scrolling, and at 2560 × 1440 the rows reach down the page instead of leaving its lower third empty.</li>
+<li>Build lists settings applied by your description once, under the words that set them. Its override list shows the choices you made by hand.</li>
+<li>Each nearby variation keeps its parent world’s name and a distinct number on its card, in comparisons and on the Build sheet.</li>
+<li>Previewing a seed carries the same geography rules you see on its Create sheet through to the full-size preview map.</li>
+</ul>
+<ul>
+<li>Building a world is a show, not a log window. The whole screen becomes the world taking shape: its pictures fade one into the next as the plates settle, the climate arrives, rivers find the sea, forests and deserts take root and peoples settle. One plain line says what is happening, a row of six stages says how far it has come, and the time left is said honestly (a first guess until your computer's pace is known, and "taking a little longer than expected" rather than a clock stuck at zero). It ends on the world's own map with its name, and three first things to do: ask why a place is the way it is, make an atlas plate, or start a campaign. Cancel is always in view while it runs, the log is one click away under Details, and with reduced motion the pictures simply change. Rebuilds, updates and disc, region and flat worlds build the same way.</li>
+<li>The build speaks plainly: "Building your world" and "Your world is ready" instead of "Simulating the world", finish lines that say what was saved and where the atlas is drawn later, and estimates described as a rough guess, a fair guess or a close estimate rather than "medium-confidence estimate".</li>
+<li>Biomes of your own. Create › Advanced › Rules of the world has a Your biomes list where you can add up to twelve: a name, a colour, a map symbol, what grows there, a priority, which generated biomes it may replace, and the climate it grows in (warmth, rain, how seasonal the rain is, height and how wet the soil stays). The world draws each one wherever its climate holds, and it appears on every biome map and key, in the cell inspector, its dossier and Compendium entry, atlas plates, exports and Render Studio. Travel, towns and city plans treat it as the ground it is like. Each world keeps its own: two worlds open at once, the Library's previews, or a world you browse while another builds never show each other's biomes.</li>
+<li>Eight more Rules of the world say where the biomes draw their lines: the tundra, ice, boreal forest and tropical lines, the desert line and the line between forest and grassland, the hot desert line and how warm a dry summer must be for Mediterranean woodland. Each starts at Earth's value and has plain help and search words in Advanced; at those values every world draws the biomes it always did.</li>
+<li>Saved, exported and imported rules now carry your own biomes, and a set of rules can be shared as a short code: Make a code copies it, Use this code reads one pasted from someone else.</li>
+<li>Flat world (experimental), a first look at worlds that are a flat map with no planet behind them. Its door is in Create beside the blank canvas (shown when Essentials is off). Choose a rectangle or an ellipse and its size, what lies past the edge (open sea, a wall at the world's end, or a world that wraps round east to west and north to south), and its sun: one that circles above with seasons, day and night, one that stands still with endless day beneath it and night past its reach, or two suns. The world gets its own plates and mountains, sea, sunlight, temperature, winds blowing from cold to warm (turned as far as you ask), rain carried in from the sea, rivers, lakes and biomes. A flat world is saved in your Library like any world and opens on the World map as a flat sheet with a scale in km: its card stands where the Planet card does, the pointer reads km east and north of the middle, Measure draws straight lines in km, clicking the map reads the ground, climate and water there, and the map on screen, its heightmap and its features as GeoJSON in km can be downloaded. Sculpt on its card raises or lowers the ground or paints land or sea, then rebuilds the whole world with your marks. A flat world's climate runs month by month from its own sun: the sea warms and cools more slowly than the land and lags behind it, snow and sea ice brighten the cold, winds blow from cold highs to warm lows and swing round them as far as the world spins, ranges turn the wind and cast rain shadows, coasts draw sea breezes, and each sea turns in its own current, crowding against its western shore when the world spins and carrying warmth with it and passing round its islands. How much the spin strengthens toward the top of the sheet is yours to set in the sheet (Spin gradient). Lakes now stand only in hollows deep and wide enough to outlast the mud their rivers bring, filling as far as their water allows, so a dry basin holds a shrunken salt lake; the rest are plains the rivers cross. Rivers keep a year of their own from the months' rain and snowmelt: perennial, seasonal or dry outside the wet months, shown on a new River regimes map and read when you click a river. Its new Ocean currents and Köppen climates maps sit beside the others; the climate chart, the almanac (sunrise and sunset as the flat sun comes within reach, and the second sun under twin suns), the Climate Lab's seasons, checks, comparisons and Apply (a few seconds' rebuild), the Climate panel's rainfall and temperature, and the Weather year open on a flat world, and Day &amp; night on its card shows where it is night at any month and hour. A flat world now also gets its soils, rock, mineral resources, forest cover, wild crops and groundwater, worked out the way a planet's are and measured straight across the sheet. And it now has its peoples: capitals, regional centres and towns, realms with borders, roads and sea lanes, all named in the world's tongues (your own included), with histories, faiths, provinces, arms and a Compendium. Town and realm names stand on the World map, a new Realms and roads map shows them, clicking the map names the realm and the nearest town, Find places lists every named place, the gazetteer's pages say where a place lies in km from the middle of the sheet, the Naming studio renames anything, and the GeoJSON download carries the realms, roads and towns in km. A Sculpt rebuild keeps every town, realm and name its edit did not reach, and the names you chose. A flat world now has natural regions too, named like a planet's and shown in the Regions panel, the gazetteer's lands and on the map, and you can draw your own regions over them; its wild life is parted into realms by sea, mountain and desert, and its crops spread within them. The realm roster, the Nations panel, roads and walls you draw, towns you move, add or remove, and the Realms &amp; settlements choices all work on a flat world and rebuild it in a few seconds. The Journey Lab plans routes, itineraries, reach maps, news and pointcrawls across a flat world in straight km, provinces, markets, trade flows and price lists are measured across the sheet, and a town opens in Settlement Studio and the city builder as a planet's does. A people is called cool-country by how cold its homeland is, not by how far up the sheet it lies. Living History runs on a flat world, its wars and trade measured across the sheet, and Render Studio draws a flat world in its own shape with a km grid and a scale bar that holds everywhere. A flat world has an atlas too: its plates (the whole sheet, its continents, a plate for each realm and for your own regions marked for the atlas) are framed on the sheet in km and drawn flat, with relief, forests, rivers, coasts, realms, roads, towns, names and the key, a grid of round km instead of latitude and longitude, a km scale bar and north at the sheet's top. The label and plate editors work on them (the plate editor frames a plate in km), closer looks zoom into the world's own ground, the plates bind into the atlas PDF, and a rebuild marks the plates it changed for redrawing. A flat world now has continent and region maps too: open a continent from Continents &amp; regions or draw a rectangle on the sheet, and it is simulated again two, four or eight times finer, nested in the world as on a planet, with no projection (the map is a window of the sheet, in km), the edge you chose respected and the seams of a world that wraps joined. They carry the world's rivers down, offer the same map types, read their places and Find places, take your own regions, export their heightmaps and engine packs, sharpen as you zoom, and zooming far into the World map carries on into a built continent's map. A region world can start on a flat world too: choose "Lies on: A flat world" in Create's region path, and the places that fit are found on the sheet. Campaigns now run on a flat world: the table, its clock and weather, news and markets, battles, fog of war (a token's reach is a true circle in km on the sheet), the players' handout and vault, the session sheet and the players' atlas, its plates drawn again with only what the party knows. The interactive page and the Large map are offered for a flat world, the Large map drawing the whole sheet as it lies (no projection to choose) with a km grid and a scale bar. A continent or region map of a flat world has its Large map, its Render Studio sheet and tilted view, and its atlas plates too, each saying where on the sheet it lies. Render Studio's tilted view, sea decorations and editable terrain work on a flat world. Sharpen as you zoom now sharpens a flat world's relief, biomes, temperature and rain anywhere you zoom, not only over a built continent or region. A language you choose for a nation in the Nations panel or the realm roster now names it and its places on a flat world, realm names read off an imported map name their realms, and Living History's fishing grounds, herds and harvests no longer reach round a flat sheet's edges unless the world wraps.</li>
+<li>On a flat world that wraps, roads and sea lanes can cross all four map edges. Realms can grow across them, and land that joins there keeps one identity.</li>
+<li>On flat worlds, cultures can name their months, keep festivals and print a calendar that follows their sun. A circling sun with a changing path marks the widest and nearest turns of its year.</li>
+<li>Sky &amp; planet on flat worlds shows daylight from the saved suns, the observer's sky, editable constellations and printable star charts.</li>
+<li>Hexcrawls and virtual tabletop exports use the flat world's distances and outline. Foundry world modules include its saved map and notes.</li>
+<li>Flat-world terrain exports at true scale in OBJ, STL and textured glTF. Gaps in the world's outline stay open in the mesh.</li>
+<li>Flat worlds export as MBTiles or XYZ tiles. The whole map keeps its proportions and the download gives its size in kilometres.</li>
+<li>Close-up reads distances on a flat sheet and follows its edges. A campaign can open a flat region as its table with its roads, places and party tokens.</li>
+<li>Mountains, forests, reefs and other map symbols follow the ground of a flat world and stop at its outline.</li>
+<li>On flat worlds, the Bestiary shows where your creatures live on the sheet, how far they roam from the sea and which named lairs they reach. Ranges cross the map edges on worlds that wrap.</li>
+<li>Opening a flat world no longer fills the app's log with refused requests. Panels whose tools are not on flat worlds yet (rebuilt-world comparisons and the like) now say quietly "Not on flat worlds yet" instead of showing an error.</li>
+<li>Create › Advanced on a laptop-sized window (1180 × 720) gives most of its height to the settings: the search sits at the top, the question chips fold behind a Questions button that opens them over the list, and the settings list shows more than twice as many rows as before.</li>
+<li>Eofordal opens with its smooth coastlines and branching rivers already drawn. You can read the land while place labels and zoomable map tiles load.</li>
+<li>The example world comes with CartoVox. Open the example world puts it in your Library in a few seconds. Its illustrated atlas plates draw in the background while you look around, and each finished plate is marked current. The bundled archive measured about 67 MB in November. A source checkout builds the example on request, which took about 80 seconds on the reference Mac.</li>
+<li>The note about collectible card editions (how rare each edition is) moved from the Build step to the World collection in the Library, beside the cards it describes. Discover a world stays on the Build step.</li>
+<li>The words of your description now apply as you type. Each word CartoVox understands shows as a small chip under it ("archipelago → a shattered archipelago"); the × on a chip takes it back, and deleting the words does too. There is no Apply per word and no "Apply these suggestions first?" question before a search. A word that would replace something you set by hand waits for you with Use this.</li>
+<li>Your world so far is a real map now: a moment after you stop typing, it redraws a quick map of your seed with everything your brief says. Starting a new brief keeps the saved draft clear while the new map draws.</li>
+<li>A candidate that drops out of the shortlist and later returns now appears with its picture, even if the search updated between two screen refreshes.</li>
+<li>Search candidates on Describe always starts the search. It no longer stops on an empty "Ready to search" page that needed a second press.</li>
+<li>Candidate pictures are lit relief maps with smooth coasts, in the atlas's colours, instead of a heat-map ramp.</li>
+<li>Candidates have names in your world's naming style instead of "World A" to "World L", and the name you choose is offered as the world's name on the Build step.</li>
+<li>A short match bar says how well each candidate fits your brief ("Matches your brief", "Close match", "Partial match") in place of red "1 check missed" stamps; the checks themselves are a hover away.</li>
+<li>The search depth menu gives times worked out on your computer, now that candidates are drawn side by side (a Thorough search takes a second or two on a recent Mac), and corrects itself after your first search.</li>
+<li>The Build step gives an estimated time for every size before you have built one, instead of "Not measured".</li>
+<li>The scatter of candidates says what it shows: each dot is a candidate, placed by the two figures that set them apart most.</li>
+<li>Create uses the whole of a large screen: the steps stretch to 2560 pixels, the candidates grow to four across, and the side column gets more room.</li>
+</ul>
+<ul>
+<li>A disc world gives you more say over where its warm and cold rings fall. The warmest ring can sit at any distance from the hub you type, the warm band can be given a width in kilometres, and a cold ring can be placed anywhere between the hub and the rim, so the hub and the rim are both warm with a cold band between them. The disc sheet says what the climate will be, and the Climate panel moves them on a built disc. A disc left at its usual settings is built exactly as before.</li>
+</ul>
+<ul>
+<li>Each check in Create's Build step states the measured and requested values. Preferences say "If possible", and a note explains that CartoVox measures the finished world again. The "collectible edition draw" box is now "Surprise me", which says in plain words that it builds from a new random seed instead. Each size under "What to make" shows a close-up of the world you chose at that size, so Sketch is visibly coarser than Full. The large preview is drawn for your screen's own pixels, and drawn again when you make the window larger, with a smooth coastline and without the honeycomb shading that covered its mountains. The globe beside the checks is no longer cut off at the foot of the panel.</li>
+<li>Build pictures share the World map's projection, colours, light, coastline and shallow seas. They show the bare land first, then rain, warmth and snow, followed by vegetation and rivers. They are captioned "Still taking shape" instead of "Provisional picture 2 of 4", and replace the bright green-and-white and blue chart pictures. The last picture is the World map itself, in the view, projection and style it opens with, instead of a pale atlas sheet of another shape whose names were too small to read. The pictures are drawn alongside the build, so watching them never makes the world take longer.</li>
+</ul>
+<h3 id="maps-and-exports">Maps and exports</h3>
+<ul>
+<li>In the Mac app, pinch the map to zoom. Close-up maps keep their shoreline detail when dragged.</li>
+<li>The region overview now shows a clear terrain thumbnail around the region.</li>
+<li>Region maps show their main rivers in blue and reveal smaller streams and short roads as you zoom in.</li>
+<li>At Fit, names can follow narrow continents and use tighter lettering over water to stay clear of islands.</li>
+<li>Fit keeps place labels visible while it fetches the new set.</li>
+<li>Terrain and place names stay sharp when you zoom into the World map in the Mac app.</li>
+<li>Render Studio gives settings more room on short screens while keeping Preview composition and Create render bundle in reach.</li>
+<li>The completed region map notice clears after a short time or when you leave the map, freeing the workspace for the next task.</li>
+</ul>
+<ul>
+<li>Keep World map labels readable at street zoom, and keep terrain visible while sharp tiles load. Refined relief follows the selected look, and automatic town sketches retain the terrain beneath their streets and buildings.</li>
+</ul>
+<ul>
+<li>At Fit, a continent name can shift inland to where its full lettering fits.</li>
+</ul>
+<ul>
+<li>Explore the World map by keyboard. The map cursor reads the terrain, biome, climate and elevation. Jump between named places, realms or rivers.</li>
+<li>Tab into the map to show Keyboard map just below the toolbar. Clicking elsewhere hides it. You can also open it from Keyboard shortcuts.</li>
+<li>Keep the Grid and Lines controls clear of the map navigation on continent and region maps.</li>
+<li>Large map export waits for the selected size to be checked before you can start.</li>
+<li>Travel opens close enough to see short routes, and Fit always frames the current journey.</li>
+<li>Place Finder keeps your shortlist open when you go there after a search.</li>
+</ul>
+<ul>
+<li>Tributaries can turn into the main river within their existing junction when a wider curve would climb nearby ground.</li>
+</ul>
+<ul>
+<li><strong>Sketches</strong> gives each World map and Atlas plate an editable personal layer for freehand marks, arrows, routes, notes and shapes. Include the layer in picture downloads when you want to share it.</li>
+</ul>
+<ul>
+<li>Share a world as a web map with zoomable layers, a searchable Compendium and a timeline. Unzip it and open <code>index.html</code> offline. It follows the browser's colour preference. Choose <strong>Atlas Day</strong> or <strong>Atlas Dark</strong> under <strong>Appearance</strong>. On narrow screens the legend starts folded, and <strong>Show on map</strong> brings the selected place into view. The player copy follows the campaign's reveals and fog.</li>
+<li>Inspect a cell’s rain to see how much came from sea, recycled land water or an unresolved source, and where evaporation was strongest along the upwind path.</li>
+<li>At close zoom, Biomes draws fewer straight steps along reef and shelf boundaries, including when you use Sharpen.</li>
+</ul>
+<ul>
+<li>At close zoom, map names are easier to read and give way where the window edge would cut them off. Biomes draws rounder reef and shelf edges, and Natural colour gives its shores a clearer outline. Languages stays on its saved family regions as you zoom.</li>
+<li>The place card leaves more of the map visible on short screens. Its readings scroll under the actions.</li>
+<li>The Köppen map and its key separate several similar savanna, highland, Mediterranean and cold-climate colours more clearly.</li>
+<li>Wind and ocean current lines cross the joins in projected world maps smoothly.</li>
+<li>On curved world maps, ocean current and wind lines reach the edge of the world without being cut short along straight tile boundaries.</li>
+</ul>
+<ul>
+<li>The projection selector on compact region maps has room for the full projection name.</li>
+</ul>
+<ul>
+<li>The map retries a relief tile interrupted by a concurrent save once the requested version is ready again. Tiles also follow a world when it is renamed, including during undo and redo.</li>
+</ul>
+<ul>
+<li>Tributaries that nearly followed the main river now meet it at a clearer angle where the ground allows.</li>
+</ul>
+<ul>
+<li>Continent relief maps draw smoother shores as you zoom in. The coastline follows the edge between the painted land and sea even on finer maps.</li>
+</ul>
+<ul>
+<li>A paper margin above and below the Equal Earth atlas map keeps both poles in view on the printed plate and its Library card.</li>
+<li>The Settlement map shows named towns and routes on sharp terrain from the first world view. Its sea keeps its depth colours when you zoom in, and the least suitable ground is a warm paper colour.</li>
+</ul>
+<ul>
+<li>The Atlas opens on its most important sheet: the whole world, then a continent, a region, and a town's plan only when there is nothing else. While a new world's plates are still being drawn it shows the whole world rather than a town, and a sheet you open yourself stays on screen when the plates finish. The zoom bar sits in its own strip under the plate instead of over its corner, where it hid the locator map, and it takes the light theme's colours. The key beside a plate is headed "Places of power", says what kind of ground each one is, and no longer names a place whose ground is only a hairline at the edge of the world plate; the plate's own printed key follows the same rule. The bound PDF atlas also leaves out patches too thin to find on its printed pages.</li>
+<li>Landmark names keep clear of continent and sea names already printed on a cartographer's style sheet, including turned and denser drawings. The freshly drawn names take over when a closer view sharpens.</li>
+<li>A built region opens its own plate in the Atlas without first flashing the map of the planet.</li>
+<li>The Export menu opens on five tiles, each with its own picture and one line on what it makes: Print a poster, Play at the table, Game engines and GIS, Back up this world, and All formats.</li>
+<li>Typing "export" in Ask or do anything lists one "Current map in another projection…" entry, which opens the menu at the projections, in place of nine near-identical rows. A projection's own name, such as "Robinson", still finds it directly.</li>
+<li>Find places is a calm finder beside the map: type a name or a landscape, or pick one of the commonest kinds, and each result shows a small map with the place marked. Its readings fold under each result, and the number ranges, realm, biome and port wait under More filters.</li>
+<li>On narrow screens, the map descriptions in Map layers wrap beside their pictures so you can read the whole line.</li>
+<li>If a sharper map fails to load, the last complete drawing stays visible. The map tells you when it is showing the saved image.</li>
+<li>The World map's data maps are drawn as finely as its relief. Biomes, Köppen climates, languages and the other class maps have smooth class edges and coasts from the first whole-world view, not cell steps. Annual rainfall, natural colour, temperature, aridity and the other measures are redrawn for your screen at every zoom instead of an enlarged picture, read smoothly between the simulation's cells. Natural colour is lit by the map's sun, with its own rivers and lakes. The sea under a data map is quiet, with the shelf as one calm tone, and rainfall keeps the map's own sea. On every map the shelf has a crisp edge instead of a pale haze round the coasts. Modern at 4x has no pale streak across the sea, its lines of latitude and longitude are evenly spaced every 30°, and parts of the map with none of the world's main rivers no longer show thick blue worms.</li>
+<li>Köppen climate maps group related climates in forest greens, ochres and cool slates, with stronger contrast where different climates meet. Settlement maps use the relief map's ocean depths and colours. The Compendium opens on a projected relief map with clickable realms and pins. When you raise or lower ground in Sculpt, the lit map stays visible around the brush. Forest and clearing strokes stop at the shoreline, including when you zoom in.</li>
+<li>The Biomes map draws reef and shelf edges as curves, with the water colours meeting the shore. Biomes, Natural colour and Languages follow the same inked coastline. On large screens the curved edge stays smooth when the sharp fit map takes over from its preview.</li>
+<li>The World map's names are easier to read. Summits are set from 13 px down to 11 px by height, and no name on the World map is smaller than 11 px. Town names are 12 px and capitals 13 px. Each name sits on a thin halo of the map's paper, without the shadow that used to blur it. On Modern, sea and ocean names are solid pale italic over the dark sea, not hollow outlines.</li>
+<li>The World map reveals its names as you zoom in. The whole world shows its continents, oceans and great ranges. Capitals appear from about 2x, then the larger towns, then the rest, with more rivers, lakes and regions named at each step. Big exports of the whole world name the same settlements. On the Realms map the whole world shows only realm names and capitals. Provinces join at 2x, and counties and baronies at 4x, at most a few names to any part of the screen. In crowded parts of the whole-world Realms map, larger territories keep their names and neighbouring capitals leave room to see the land between them. Closer views reveal the others. No two names overlap, whichever layers are on. A name never runs off the map's edge or hides under the map's panels. Summit names are dark sepia on a clean paper halo. When you zoom into Tolkien, Nautical and the other drawn styles, the names take the sheet's own ink and paper and stay readable over its hatching. The class key for Biomes, Köppen and the other data maps stays in the map's corner. On screens under 1800 px wide it starts folded to a single strip of colours.</li>
+<li>The mono resolution line ("Redrawn for your screen · 720 × 360 simulation") no longer sits over the corner of every map. To see what it said, point at the scale and coordinates readout at the bottom left.</li>
+<li>After you look at the Winds maps, Tolkien, Modern and other maps without seasons no longer say "Midsummer retained for compatible maps…" in their key. The season you chose still applies the next time you open a seasonal map.</li>
+<li>The city builder's empty map is the theme's own ground until a city is drawn, instead of a cream sheet under dark panels at night, and its map tools keep their place in the toolbar, so the map no longer jumps down when the first city appears.</li>
+<li>Market towns keep room for their market hall and long high-street plots. Walls around two riverbank quarters follow the houses more closely.</li>
+</ul>
+<ul>
+<li>Choose a poster, a tabletop map, game or GIS files, or a backup from Export. Each choice previews your world and offers two formats. All formats opens the complete list. Sculpt keeps the lit terrain at full size under its tools. Turn on settlements, landmarks and borders when you want to edit them.</li>
+<li>Inspecting a biome tells you its local temperature and annual precipitation where both readings are available.</li>
+</ul>
+<ul>
+<li>When you zoom in on the Settlement map, capitals and towns stay on their mapped sites as the land and routes sharpen around them.</li>
+<li>The Map layers drawer shows every map as a small picture of your own world, with a plain line under its name saying what it shows. The pictures are drawn once and kept, so the drawer stays quick.</li>
+<li>Opening the Atlas on a world with no plates drawn yet (a Quick world, say) starts drawing its draft plates straight away, and they appear as they are finished; the list of sheets still to draw is a single line you can open. The plate's key and label panel stand beside the plate instead of over its corner.</li>
+<li>The SVG coastline in a Render Studio bundle is the line the sheet's pixels show, traced at the sheet's own detail.</li>
+<li>On a phone, the Appearance and export menus open below the map’s task buttons and stay within the screen as the toolbar changes height.</li>
+<li>The whole-world atlas plate shows the entire globe, pole to pole, so its oval is never sliced off at the top and bottom.</li>
+<li>Zoomed in, the World map's terrain is no longer a soft blur: ridges, spurs and gullies finer than the simulation's cells are drawn and lit, so a range looks like a range at 4x and beyond. The detail is held within the simulated heights around each point: plains stay plains and no peak is raised higher than the world made it. The map styles gain the same texture when you zoom into them.</li>
+<li>Zoomed in, the sea floor is no longer soft blobs either: continental shelves end in a crisp break, canyons cut down the slope off the mouths of large rivers, the deep floor carries long low hills that run along the spreading ridges, and seamounts rise from it, all lit like the land. It is drawn on the World map and in Sharpen as I zoom, and never goes shallower or deeper than the simulated sea floor around each point, so no new land appears.</li>
+<li>Illustrated continent sheets leave room for light and shadow in high snow, so ridges still read in the Gallery preview and on the full sheet.</li>
+</ul>
+<ul>
+<li>The map is drawn at your screen's real pixels. A map style zoomed in on a Retina laptop or a 2560-pixel screen is no longer drawn smaller and stretched to fit, and the line under the map no longer counts pixels.</li>
+</ul>
+<ul>
+<li>Realm, province and town names on the political maps are set as one atlas: realms in spaced capitals sized by their area, provinces and peoples in small capitals, towns in a book serif, water in italic, all in ink on the map's own paper. Names give way by importance, so none prints over another or over a town's symbol, and a town's name moves to whichever side of its symbol is free.</li>
+</ul>
+<ul>
+<li>Towns and landmarks are engraved symbols in the map's ink, a star for a capital and a dot for a town, instead of coloured stickers. Pins you coloured yourself keep their colour.</li>
+</ul>
+<ul>
+<li>A map style's whole sheet is drawn for your screen when the screen is wider than the sheet, so the Tolkien or Modern map is crisp at fit on a Retina laptop or a 2560-pixel screen.</li>
+</ul>
+<ul>
+<li>The Graphical relief's land cover has smooth edges up close, like the biome map's, instead of blocky squares at 4x.</li>
+</ul>
+<ul>
+<li>Every class map shares one palette per look: climates, biomes, realms, tongues, faiths and the ground's class maps keep their familiar hues but in balanced, atlas-like tones, on the same sea and paper, so switching layers feels like turning the pages of one atlas. Colours you chose for a realm are kept.</li>
+</ul>
+<ul>
+<li>Coastlines on the World map and in every map style are drawn as a pen draws them: a smooth line with a natural, slightly ragged edge that gains detail as you zoom in, instead of a staircase of squares. The line never crosses the simulated ground, so every place stays on its own side of the coast. Lakes are drawn the same way.</li>
+</ul>
+<ul>
+<li>The relief is lit by one light everywhere: several suns from the north-west, darker valley floors and basins, brighter ridges. The World map, Natural colour, every map style and the continent, region and disc maps share it, so mountains read from the whole world down to a valley, and continents are no longer lit from the south-west. The biome and painted layers get the same valleys and basins.</li>
+</ul>
+<ul>
+<li>The map styles draw one soft band along each coast in place of the rings of lines round every island: a sepia wash in Tolkien sepia, engraved hatching in the Antique chart and Black &amp; white styles, a pale coastal tint in Modern atlas and Swiss relief, an ink wash in Grimdark.</li>
+</ul>
+<ul>
+<li>Snow on peaks and ice sheets picks up the light and shade of the ground, from the candidate cards to the illustrated plates. Shelf glow follows the shoreline and fades out to sea. Dry basins below sea level have their own ochre tint on the natural relief map.</li>
+</ul>
+<ul>
+<li>Sea ice in Natural colour has an edge: solid pack ice with ragged bays and tongues, and only a faint tint where it thins, instead of a white haze across the poles.</li>
+</ul>
+<ul>
+<li>Map styles are redrawn at your screen's own pixels as soon as a sheet would be stretched, so on a large or Retina screen they stay sharp at every zoom.</li>
+</ul>
+<ul>
+<li>In the Atlas plate editor, open Frame to add a compass and scale bar to a continent or region. Both lettering variants show the scale at the map centre. Turning the plate also turns its north marker.</li>
+</ul>
+<ul>
+<li>Atlas plates have five new looks beside CartoVox and Parchment, each drawn in its own tradition rather than recoloured. Woodcut print: bare paper land with engraved relief, a sea cut in level lines, mountains and trees cut in black and white, fine black rivers, towns and frontiers in red and fewer, bolder woodtype names. Watercolour wash: transparent washes that overlap and darken where they meet, pool at their edges, granulate and bloom, bare paper left on sunlit slopes and along the coast, a sea laid in soft glazes that darken offshore with no inked coastline, pale tinted mountains and trees, fine rivers and roads, frontiers as bands of colour and a light italic hand. Medieval portolan: vellum land left nearly blank, coasts edged in red, a web of rhumb lines from nine wind roses (lighter on small plates), and coastal towns written at right angles to the shore in red and black. Admiralty chart: plain buff land with hills hachured by their true steepness, so gentle country stays plain, soundings in fathoms and depth contours over the sea, and chart lettering; or the same chart in cyan on navy. Night atlas: slate land on dark water, moonlit stamps, gold towns and pale names. Choose one for the whole atlas, or give a single plate its own look in the plate editor's Layers panel. The first four, with the woodcut's and portolan's line-art symbols, are also World map looks.</li>
+</ul>
+<ul>
+<li>Lakes and watersheds keep their identity when another appears elsewhere. Unchanged continent and region tiles keep their water, and lake names follow the same lake even when their size ranking changes. Changing Keep terrain runs a whole rebuild so saved lake-basin heights stay protected.</li>
+</ul>
+<ul>
+<li>Measure on a disc map now has Profile and Viewshed: the ground under the line and what a tower sees are read on the disc's own map, flat, with no globe's curve hiding the far ground. A disc place's climate chart and almanac, Why is the climate here?, the Climate Lab's checks and seasons and the Coast Lab's view of the coast as built now read the disc's own, finer map, and say where a place is from the hub.</li>
+</ul>
+<ul>
+<li>Region coasts use a bounded, smoothed shore field instead of tracing raw bank heights beside deep sea. Relief keeps its original heights for shading, while the map colours and coastline vectors follow the same shore through finer detail and neighboring tiles.</li>
+</ul>
+<ul>
+<li>Where High or Ultra detail meets coarser ground on a region map, relief and coastlines blend smoothly between cells instead of changing in steps along the edge of the finer detail.</li>
+</ul>
+<ul>
+<li>Every town and village now has streets when you zoom in on the World map, not only the capitals and seats: zoomed in until a place is about eighty pixels across, its plan fades in over its marker at its true size, with its blocks, houses, square, temple and, for a town that has them, walls and gates, on its own coast and river. Its size follows its people, so a village of two hundred is a few blocks round its green and a market town of a few thousand fills a walled circuit, with houses the size of houses in both. These towns are sketched from their place in the world each time you zoom in and nothing is saved; the same world always sketches the same town. The card beside it still opens the town in the city builder, and a city you build there, or a plan saved in Settlement Studio, is drawn instead. In Delta V16 a town without a plan stayed a marker however far you zoomed.</li>
+<li>Zoomed into the World map with Sharpen as I zoom on, a view that has come into focus stays in focus: zooming a little back out no longer swaps the finer ground on screen for coarser the moment the coarser arrives, and the World map's own sharpened pieces stay on screen when a newer set fails to arrive instead of falling back to the blurry saved map.</li>
+<li>A piece of the map the computer fails to sharpen, on the World map or on a continent, region or disc map, is now tried again a few seconds later rather than left blurry. If it still cannot be drawn, the World map's resolution line, or the closer map's status line, says that part of the view could not be sharpened, instead of the busy bar stopping with nothing said.</li>
+<li>An Atlas plate's key now lists only the places of power you can actually see on that plate, not a speck at the edge or a place whose ground lies outside the frame. Beside the plate, the key says how many areas of each are shown, and pointing at an entry outlines them on the plate.</li>
+<li>Capitals' names always appear on an Atlas plate; when a sheet is crowded, lesser names give way first, in the order capitals, realm names, regional names, seas, continents, cities, towns, then rivers, lakes and sea lanes.</li>
+<li>Edit labels on an Atlas plate: click a name to drag it, turn it, resize it, hide it or mark it to always show, or bring back a name that had no room. For the whole atlas you can make continent names smaller, regional names more prominent, and resize, hide or reorder realms, seas, cities and towns. Edits are saved with the world, follow their places through a rebuild, can be reset for one name, one plate or every category, and appear on the plate, its exports and the bound atlas once you redraw the labels. Regional names now cover every named region a plate can show: natural regions, your own regions, mountain ranges, forests, deserts and sand seas, marshes, places of power, walls and built islands, the largest first, with ranges along their crests and forests and marshes in italic over their ground. Raising that one category's size and priority makes them all more prominent, and gives them more room on a crowded sheet.</li>
+<li>Edit plate on an Atlas plate lets you change the rest of a plate after it is drawn. Select any mountain, forest, settlement or landmark stamp to drag it, resize it, hide it or swap it for another stamp, and add stamps anywhere from the stamp catalogue, optionally tied to a town or realm so they move with it. Drag or type a plate's frame (its centre, size and, on continent and regional plates, a turn), give it your own title and subtitle, and choose which layers it shows: realm colours, borders, roads, rivers, the grid, magic areas and your own regions. The plates list can be reordered, and plates copied, deleted or brought back; add a new plate from a rectangle drawn on the World map or framed on a continent, realm, region of your own, natural region or city. Every edit is saved with the world, follows its place through a rebuild, can be reset one at a time or for the whole plate, and appears on the plate, its exports and the bound atlas once you redraw the plate. A turned plate has no closer looks yet.</li>
+<li>On a phone the Atlas plate fills the screen. Its key, label editor and plate editor share one sheet along the bottom with Key, Labels and Plate tabs: folded to a slim handle until you need it, half the screen when opened, and dragged up for the whole of it. The plate stays free to move and zoom above it, and a name or stamp you select is moved clear of the sheet.</li>
+<li>Atlas plates can be zoomed into properly: the wheel or a trackpad pinch zooms about the pointer, dragging moves the plate, and the keyboard works too (arrows move, + and − zoom, 0 fits, 1 shows actual pixels), with a new 1:1 button beside Fit. Zoomed in past the plate's own pixels, the part on screen is drawn again in finer detail from the world itself, up to sixteen times closer: forests, foothills and towns are stamped afresh at their size on screen, and names that had no room on the whole plate appear. Where the world knows its ground better than its saved map does (a continent or region map you have built, at its finest detail, and anywhere else the sharpened ground the World map shows as you zoom in), a World atlas plate's closer look is drawn from that finer ground in the atlas's own inks and stamps, so coasts, rivers, hills, forests and lakes gain real detail instead of growing blocky, and towns stand on the finer coast, river names run along the finer rivers, lakes too small to read at that zoom are left out, and rivers on the sharpened ground are as wide as the world's own rivers they follow. World sheets in a curved projection such as Equal Earth get the same finer closer looks, drawn onto their curve. Names you moved, turned, resized or hid on a plate stay that way in its closer looks, and Edit labels works while zoomed in, on the names you see there. A region world's plates zoom the same way, with the region's own finer ground, symbols and names. At Fit a plate shows exactly as it was drawn.</li>
+<li>Large mountains, volcanoes, cities, ports and forts on atlas plates are now sharp. They were scaled up from small drawings and looked soft beside the coasts and rivers; they are now drawn from finer artwork, on the plates, on exported plates and in the bound atlas PDF alike.</li>
+<li>A city you build in the city builder is drawn on the continent and region maps as you left it once you zoom in: its built-up area, its quarters tinted by what they are (docks, old town, castle, market), its main streets, walls, harbour moles, quays and piers, and its bridges, with the quarters' names closer in. It is drawn in the map's look: sepia ink on the paper looks, light lines on the dark ones. On the World map, zoomed in, the city is drawn in the city builder's style that suits the look (engraved on Parchment, lamplit on Night, flat colours on Tints). In Delta V16 the continent and region maps drew only the city's outline and walls, and the World map always drew it in the Plan style.</li>
+<li>Saving a city in the city builder updates the World, continent and region maps at once, with no rebuild: the town's name, its size on the map and its drawing follow every save.</li>
+<li>A built town gives one figure everywhere: its page, its card on the map and the map itself give the people its city holds, and its page says what the world had reckoned beside it. The town's page no longer also shows the world's own sketch of its plan, and its count of quarters now matches the city builder's (it used to count the main roads as a quarter of their own). A city with a harbour lists its harbours too.</li>
+<li>The city builder's tilted view has a Sky and light choice: no sky (as before), a clear day, morning, evening, overcast or a moonlit night, each with its sky behind the city and its light over it. The fronts of houses, walls and hillsides turned to the sun (the city's Sun setting) are lit and those turned away are shaded, most of all under a low sun. It has its own Season choice too, so a winter or autumn picture can be made without changing the map. Saved pictures keep the sky and season.</li>
+<li>In the tilted view and the 3D model, buildings stand at heights that suit what they are: keeps and castle towers rise to their battlements above the town, halls, market halls and barracks have lofty floors, barns, granaries and warehouses one tall floor under a big roof, and chapels stand lower than churches. In Delta V16 every building but a church or a stall stood at its storeys alone.</li>
+<li>The constellation editor's chart no longer prints names over each other: each name moves to a free side of its figure, with a thin line back to it when it has to move further, and when the sky is crowded the faintest figures' names give way. On the star-chart handout the degrees now stand inside the rim and the month numbers outside it, so "8" no longer prints over "180°".</li>
+<li>On a flat world, the Atlas form no longer offers a stretched-rectangle world sheet: the flat world's own sheet is already that map.</li>
+<li>Atlas plates no longer all read Needs refresh the moment a new world (the example world included) finishes building. Naming the world moved its folder, and the plates counted the folder as something they were drawn from; they now stay current until something they show really changes.</li>
+<li>The Settlement and Landmarks &amp; routes maps are drawn as maps now, not as charts: no white page, axes, tick numbers or colour bar. Coasts are smooth rather than stepped, the land is lit, towns and capitals have their own marks and names in the map's lettering, and the World map shows them in your chosen projection with their key in the map's own key panel. The picture a new world finishes building on is this map too.</li>
+<li>Ocean currents and the four seasonal Winds maps are drawn as maps too, not charts with axes, tick numbers and a colour bar. Currents run as flowing lines, red where they carry warm water and blue where cold, wider where they are stronger, over a sea tinted by how much warmer or colder it is than its latitude. Each Winds map shows the season's winds as dark flowing lines over a faint tint of its high and low pressure, with the land's own relief showing through, isobars every 8 hPa (every 4 hPa once you zoom in), the highs and lows lettered H and L, and a stipple where the season's rain is heavy. Both keys sit in the map's key panel in the same colours as the map. On the World map in any projection other than the plain rectangle, currents and winds now show these flowing lines too (before, only their colours).</li>
+</ul>
+<ul>
+<li>The World overview tells you, in plain words, how the world you built compares with the preview you picked ("The finished world kept all 3 of the things its preview showed"), and each of your wishes reads "Kept" or "Missed" with what you asked for, without grid sizes or notes about structural estimates.</li>
+<li>Clicking a place on the map gives plain words: the panel is headed "Place on the map" with the place's own name (no more "Open ocean · ocean"), each reason is marked "Main reason", "Also matters" or "Not worked out", explanations say "This is sea…" or "This is a lake…" instead of "this cell's class follows…", and the evidence and map labels read "Measured in your world", "Worked out from your world", "A rough estimate" and "A reasoned guess".</li>
+</ul>
+<h3 id="editing-a-built-world">Editing a built world</h3>
+<ul>
+<li>Renaming a place redraws the atlas plates where its name appears. The other plates stay ready to use.</li>
+</ul>
+<ul>
+<li>The rebuild preview caption follows the current phase while its next illustration draws. The original creation recipe stays with the build that made it.</li>
+</ul>
+<ul>
+<li>Sculpt can move long landmasses that spiral across the date line. The map preview and rebuilt terrain carry even the far tips.</li>
+<li>The Sculptor keeps the selected impact crater’s age, condition, and underwater status readable beside Stamp it.</li>
+<li>In narrow windows, Sculpt keeps the selected tool fully visible after you pick it from the catalogue and gives Preview more room at larger text sizes.</li>
+<li>After a rebuild, the Climate and Coast labs leave room for their controls in narrow windows with the completed build still visible.</li>
+</ul>
+<ul>
+<li>Build a repair comparison for isolated biome cells or an overly round inland sea. Review the measured changes before applying, with the original available to restore.</li>
+<li>Choose one closed basin in Simulation health, see its proposed outlet and downstream reach, then apply or undo the cut.</li>
+<li>When a rebuild finishes, its progress window shows the saved map without reopening a temporary picture.</li>
+</ul>
+<ul>
+<li>Applying or undoing a home region’s terrain edit shows the rebuilt region and its updated atlas without waiting for the Library to refresh.</li>
+</ul>
+<ul>
+<li>The comparison draft list stays available while project documents are being saved.</li>
+</ul>
+<ul>
+<li>Choosing a whole-world rebuild after a local terrain edit solves the whole planet again, including the ground previously rebuilt locally.</li>
+<li>Small edits near a river delta can stay local when a nearby inland basin lies below sea level.</li>
+<li>A terrain edit rebuilt locally leaves deltas, sandbars, lagoons and reefs more than about 300 km from your edit exactly as they were, and cuts lake outlets near it once. A whole rebuild brings their shape up to date with the rivers' new load.</li>
+<li>Refreshing a rebuild draft keeps its open identity and reference reviews in place and tells you when the saved decisions have finished loading.</li>
+<li>The Settlement tool shows tenths of a percent when explaining a refused site, so a score just below the minimum no longer appears to meet it.</li>
+<li>After replacing a world with its rebuilt draft, you can put the original back after browsing the sky. Edits made to the replacement still protect it.</li>
+<li>An open continent keeps showing its saved terrain while a Sculpt rebuild updates the map. Zooming during the update can still read its relief tiles.</li>
+<li>You can open Sculpt or another map tool as soon as the map appears. It stays open while the rest of the world loads.</li>
+</ul>
+<ul>
+<li>Looking at the map while reviewing a rebuilt copy keeps the draft available for matching places and saving your decisions.</li>
+</ul>
+<ul>
+<li>A founding people keeps its name when its capital becomes the seat of a smaller realm.</li>
+</ul>
+<ul>
+<li>Small regions can keep their saved map tiles after a nearby world elevation edit.</li>
+<li>The Climate Lab shows a built world's Rules of the world and its own biomes, and rebuilds the world under changed ones, with a restore point. When only the biomes' lines or biomes change, the terrain is kept exactly as it was. The same panel makes and reads sharing codes for rules.</li>
+<li>Regions of your own. Tools › Regions draws a region on the World map with a lasso, a polygon or a brush, names it, and says what kind it is (cultural, political, historical, informal or other) and what colour. A West Coast or an old kingdom's bounds need not follow the ground: a region may cross the natural regions, the realms, the coast and your other regions. Paint ground onto it or off it, split it, merge two, write notes and give it an atlas plate. Its name is set along it on the map, sized by its area, and it has its own page in the gazetteer with the realms, towns and rivers inside it, its area and its climate; Find places, [[links]] in Write and the lore, the Obsidian vault and the GeoJSON and GeoPackage exports all carry it. The same panel renames the natural regions, paints ground onto or off one, merges two, splits one or hides one. Everything is saved at once, nothing is simulated, and a rebuild or a finer resolution keeps every region where you drew it. Regions, beside Geographic names under Text and symbols, turns their names on the map on and off. The panel works the same on a continent, region or disc map and on a region world's own map: you draw on that map as you see it (round a disc's hub too), with a brush down to half a kilometre, and the region is the world's, shown on every map. There its name is set along it, Find places finds it, its card lists the places inside it, the disc's GeoJSON carries it and the map's atlas gives it a plate; a natural region you hid, merged or repainted is named as you left it, on region and disc maps as on continent maps, in the map's names, Find places, cards and atlas plates. Ground painted on a finer map keeps its fine edges when you change the region again elsewhere. A region world's World map names, search and cell readings measure your regions on its own map, so one drawn there is named and found even where it fits inside a single cell of the planet. You can draw while a continent or region map is shown as an Albers map or a globe, and without a mouse: with a drawing tool chosen, the arrow keys move a cursor over the map (Shift for longer steps), Space sets a corner or puts the pen or brush down and lifts it, Enter closes the shape and Escape stops, each step read out by screen readers.</li>
+<li>On continent, region and disc maps the Built island tool keeps its own height, starting at 4 m as on the World map, and its box says it runs from 1 to 120 m. It used to show the shared 300 m and quietly build 120 m.</li>
+<li>The Built island tool has a Straight edges box, ticked to begin with, on the World map and on continent, region and disc maps. With it ticked, the sea wall is the line you drew, straight from corner to corner on every closer map and at every zoom, and the paving is flat all the way across, instead of following the steps of the world's cells. On continent, region and disc maps the tool also has a Shape menu: Rectangle (click two opposite corners) or Freeform polygon.</li>
+<li>On a disc, a built island is the shape you draw on the disc: its edges are straight on the disc rather than curving round the hub, and a rectangle dragged there is that rectangle.</li>
+<li>Sculpt on continent, region and disc maps now has a key under its list of pending edits: orange rings ground your edits raise, blue ground they lower, and the dashed line with dots is a shape or line you drew but have not applied yet.</li>
+<li>In the World Sculptor, Paint land, Paint sea and Add island each keep their own Overwrite tick, and Paint land and Paint sea start with it off. Leaving Overwrite on after drawing an island no longer makes every Paint land stroke after it flatten the hills under it and rebuild the whole world. A saved brush still brings back the Overwrite it was saved with.</li>
+<li>When Overwrite is the only reason an edit rebuilds the whole world rather than the area around it, the rebuild review now says so, so you can untick it and rebuild only the area around the edit.</li>
+<li>Move island previews globe-spanning land without a turn handle. Authored river lines and their carved ground follow an island across the date line, and return when the move is removed.</li>
+<li>Move island now picks up a long landmass that stretches across every longitude without closing into a ring round the world, such as a continent whose two ends lie apart across the date line. It moves and turns like any other island; before, it was refused as unable to be moved as one piece.</li>
+<li>When a continent, region or disc map is brought up to date after an edit, it now updates on screen piece by piece as each part is finished, instead of keeping the old picture until the whole update is done and then changing all at once.</li>
+<li>Taking back a town's move in Sculpt now clears the map completely. Before, removing the move from the edits list, undoing it or discarding your edits could leave the town's old and new places painted as coloured squares, with a selection cross on the town, and closing Sculpt left them too. A town you picked up by dragging it is also let go once its move is gone.</li>
+<li>You can now shape the night sky yourself. In Sky &amp; planet, on the Night sky layer, Edit constellations opens a star chart of either half of the sky where you can drag stars to new places, change how bright they are or give them a colour, add stars of your own and delete stars. Draw lines from star to star to make a constellation, click a line to remove it, and name, recolour, delete or create constellations; the generated names stay until you change them. It has Undo and Redo, Reset for one constellation or the whole sky, and keys for everything: [ and ] pick a star, the arrow keys move it, Delete removes it and Enter draws lines. Your sky is saved with the world and goes with it in backups. A rebuild keeps it, turning it with the rest of the sky when the orbit changes; if the generated stars change under it, the stars your constellations used stay where they were as your own. The night sky, Night sky here, the printed star charts and the sky catalogue export all show your edited sky. Each constellation can also carry its lore: its story, the people who tell it, the season it rides highest (worked out from the sky until you choose one) and the faiths and Chronicle events it belongs to. Every people has its own name for the same stars, made in its own tongue, and you can give any of them a name of your own. Write it in the constellation editor or in Describe everything. The Compendium has a Night sky page with the star chart, the brightest stars and the stories, and a page for each constellation showing it on the chart; search finds constellations by any of their names, and [[links]] to them work in Write and in lore. The Obsidian vault gets a page for each constellation and the night sky with its chart. A place's almanac lists the constellations up at midnight in each season, and a festival in a culture's calendar can keep a constellation's rising, which moves it to the first dawn the constellation is seen from that people's homeland. A printable star-chart handout (PDF or PNG) shows your constellations named as one people names them, with their stories on the back if you want them.</li>
+<li>Edits waiting to be applied no longer leave their outlines on the World map once Sculpt is closed; they wait in the pending list and their outlines come back when you open Sculpt again.</li>
+<li>A flat world's card on the World map has a close button, as the Planet card does; the Flat world button in the map's View bar brings it back.</li>
+</ul>
+<h3 id="render-studio">Render Studio</h3>
+<ul>
+<li>Adventure maps keep offshore reefs and shelves in quieter water colours while retaining the coastal glow.</li>
+<li>Place camera stops on a Render Studio map to preview a terrain flyover or export it as animated WebP, PNG frames or MP4.</li>
+</ul>
+<ul>
+<li>Composition previews stay available while project documents are being saved.</li>
+</ul>
+<ul>
+<li>Unavailable Artwork controls explain what to select or change to use them, including drawing points, alignment, groups and clipping masks.</li>
+</ul>
+<ul>
+<li>On narrow screens, the composition preview stays with the controls so you can tap the map to place captions and other elements. Larger preview opens the composition across the map.</li>
+</ul>
+<ul>
+<li>The Preview button becomes available again when overlapping redraws finish. A compass or scale bar keeps its keyboard focus and drag handle when the preview finishes drawing.</li>
+</ul>
+<ul>
+<li>Viewing a finished render returns to the map and puts the drawing tools away.</li>
+</ul>
+<ul>
+<li>The composition preview draws for the width and pixel density of your screen. Coastlines and lettering stay sharp on larger displays, and sheets with many layers use a smaller preview to keep memory use in check.</li>
+</ul>
+<ul>
+<li>Render Studio sheets draw their coasts as the World map does: a crisp, hand-drawn edge that gains detail the larger you render, with the coastline ink lying exactly on the edge of the land instead of a pale rim apart from it. Small bays and one-cell seas that used to be filled in as land are now drawn as water, and a dry hollow below sea level is drawn as land, not as an inked sea. Lakes have the same soft, clean edge.</li>
+<li>Render Studio's relief is lit by the same light as the World map, with ridges and gullies finer than the world's cells on large sheets and close regional views, and coasts are no longer shaded as cliffs into the sea.</li>
+<li>In close previews and large Render Studio sheets, shelf breaks, canyons and seamounts come through in the sea colour and shading, staying within the surrounding depths of the saved sea floor.</li>
+<li>Render Studio opens with the sheet you are composing laid across the map's stage, as large as the window allows, and every change repaints it there. Choosing an art direction card shows it on the canvas at once.</li>
+<li>The art direction cards show your own world drawn in each look, made the first time you open Render Studio on a world and kept with it, so a second look at a direction, or a second preview of the same composition, is instant.</li>
+</ul>
+<ul>
+<li>Render Studio on a continent, region or disc map now has the World map's art directions, painting and tilted camera, on that map's own ground at its own detail. Choose Illustrated adventure atlas, Engraved parchment chronicle or Clear tabletop plan and the sheet takes that look and its inks for the coast, rivers, borders, roads and names. Paint on the preview with the brush, the eraser and the stamps (ranges, forests, towns, sea creatures and ships), or scatter your own artwork; the strokes are kept with that map and drawn sharp at every size you render. They are pinned to the ground they were painted on, so a rebuild that reframes the continent, or a region's other detail level, keeps them over the same hills and coasts. Before, all of these drew the World map only.</li>
+<li>A finished continent, region or disc sheet can be tilted under the same skies as the World map's tilted view, standing on that map's own terrain, and View shows the finished picture whole at its full size, fitted to the window or at actual size to scroll across.</li>
+<li>Five new art directions, each a whole look in one click: Woodcut print (engraved relief, a sea cut in lines thickening towards the shore, fine black rivers, bold woodtype names and red for roads and towns), Watercolour wash (transparent washes that overlap, pool, granulate and bloom, with bare paper left for the light, a sea laid in glazes that darken offshore and no inked coastline, pale tinted mountains and trees and light hand lettering), Medieval portolan (vellum land and sea, coasts edged in red, coastal towns named at right angles to the shore, red and black names and a web of rhumb lines in black, green and red from nine wind roses, finer on small sheets), Admiralty chart (plain buff land with hills hachured by their true steepness, soundings in fathoms and depth contours over white deep water and blue shallows, and a magenta chart rose with its magnetic variation; its Colours choice also prints it in cyan on navy) and Night atlas (glowing coasts and rivers and towns as points of gold light on a dark sheet). Each sets the colours, coast and water, rivers, roads, borders, lettering, symbols, paper and every piece of map furniture, and works on continent, region and disc sheets and their large exports too. The art direction cards now show each look drawn on a real map.</li>
+<li>Any place name on a Render Studio sheet can be turned to an angle in place label editing, and the turned name keeps its angle in the SVG export.</li>
+<li>Two new papers, watercolour paper and woodblock grain, and two new compass roses, a portolan wind rose and a chart rose with magnetic variation, for any sheet.</li>
+<li>The Watercolour look draws its trees and mountains larger on a whole-world sheet, so they read as forests and ranges among the washes instead of specks; regional sheets keep their size.</li>
+</ul>
+<h3 id="speed-and-memory">Speed and memory</h3>
+<ul>
+<li>Build shows fresh timing and memory references for CartoVox 1.0. Low memory shows the measured peak for building a world and opening its map.</li>
+</ul>
+<ul>
+<li>Classifying the surface of a disc or region uses less working memory.</li>
+<li>Saved discs and regions draw their own map before loading the globe's maps and Travel's places.</li>
+</ul>
+<ul>
+<li>Cold map views reuse the saved ground, and City Builder starts the terrain and district reads together when you open a saved city.</li>
+<li>Local terrain edits can reuse unchanged map areas, settlement goods and Compendium pages when their saved inputs still agree.</li>
+</ul>
+<ul>
+<li>A rebuild can begin sooner if the Library is still sharpening that world's picture. The Library can use its saved relief while the rebuild starts.</li>
+</ul>
+<ul>
+<li>On large displays, the wind and current maps bring their sharp coastlines and flow lines into focus sooner.</li>
+</ul>
+<ul>
+<li>The Ocean currents and Winds maps open in under a second the first time you look at them (about 0.8 s on a Quick world, where they took 3 to 4 seconds), and at once after that.</li>
+<li>Opening a world from the Library shows its map in well under a second, even while the app is still reopening your last world or drawing another world's atlas plates, and Resume goes straight to the map instead of waiting on the Library behind a spinner.</li>
+<li>If you choose a different world while CartoVox reopens the last one, it stops loading the previous world's panels so your map can open sooner.</li>
+<li>"Rebuild locally" after a terrain edit finishes several seconds sooner on a Quick world (about 17–18 s instead of 20–22 s on a recent Mac under load, against about 25 s for a whole rebuild; wider edits gain the most): the coast far from your edit is kept rather than rebuilt, lake outlets are cut in one pass and worked out on the edited river basins alone, and the air over your edit is worked out while its lakes settle.</li>
+<li>Rebuilding around a small terrain edit spends less time keeping place names and reading resource potential. The saved names and resource values match the previous calculations.</li>
+<li>Every rebuild draws its relief, biome, settlement, landmark, soil and resource maps alongside the rest of its work, about a second sooner on a Quick world.</li>
+<li>Large worlds lay out their continental crust faster. The same tectonic distance and relief calculations run on each platform.</li>
+</ul>
+<ul>
+<li>On computers with spare memory and cores, city plans and data maps draw at the same time. Low memory draws them one at a time. Settings now has a Performance section for the atlas memory allowance and optional Metal acceleration on supported Macs.</li>
+</ul>
+<ul>
+<li>Eofordal opens with its finished relief map, calendars and lore ready. Missing illustrated plates begin drawing once the map is open.</li>
+<li>CartoVox opens faster. The start screen is up about a third sooner, it names the world to continue sooner, and the world you had open last shows its map more than a second sooner than in Delta V16 (about 1.7 s from launch instead of 2.9 s on a Quick world on a recent Mac). From the second launch on, the app no longer re-checks its own interface files one by one before it starts.</li>
+<li>Create finds your candidate worlds several times faster. On a machine with spare memory and cores, the seeds a search tries are drawn side by side, so "Find 12 strong matches" at Thorough takes about a second instead of about five on a recent Mac, and about three seconds instead of fifteen when the brief places a climate. Nearby variations are faster in the same way. The cards are the same cards in the same order, and they still appear while the search runs. Low memory draws them one at a time.</li>
+<li>New worlds and rebuilds spend less time on the ground: measuring how far every place is from the coast or a mountain belt, carrying desert sand downwind, finding which seas join, layering the rivers, tidying biome edges and sweeping winter storms along warm coasts now run in the app's fast native code. The worlds are exactly the same as before.</li>
+<li>Applying a small terrain edit with "Rebuild locally" is about a second faster on a Quick world: the parts of the rebuild that look at the world as it was now run alongside the parts that look at your edit.</li>
+<li>Every rebuild and new world finishes about two seconds sooner on a Quick world: the temperature, rain, wind, current and other data maps are drawn alongside the names, goods and Compendium instead of before them, and the saved checkpoint for the next rebuild is written faster. The maps are the same as before.</li>
+<li>The build window's progress bar moves more evenly. It now counts each step by what it takes in today's builds rather than in October's, when the climate was half of a Full world: the bar no longer hurries through the climate and then waits on the maps, and its time left is closer from the start, on a machine without the fast climate solver too.</li>
+<li>Biome, soil and resource maps retain unchanged colour blocks during a rebuild, while redrawing current rivers, labels and other overlays.</li>
+<li>Rebuilds reuse unchanged settlements' goods decisions, saved-field Checks and completed name choices after verifying their current inputs. Changed evidence or name collisions are recomputed; damaged caches are rebuilt.</li>
+<li>Rebuilds sample market habitat at the cells each town and port uses, while keeping the world's water, slope and native-range readings intact.</li>
+<li>Saved-world Checks reuse decoded fields within a bounded reading; name collision searches use the same exact comparisons with less work.</li>
+<li>Seasonal maps reuse unchanged layout measurements while drawing their current data, preserving the saved map bytes.</li>
+</ul>
+<ul>
+<li>Repeated lore saves reuse the last content reading of unchanged generated vault pages. A changed or replaced file is read again before it is updated.</li>
+<li>Settlement vault pages share the drawing's authored-settlement, province and sea-catch lookups instead of preparing them again for each page.</li>
+</ul>
+<ul>
+<li>Checks share the place lookup and scene-journey readings between check families, and reuse name-spelling searches within a report.</li>
+<li>Checks read the world's calendar and cultural homelands once for a book's festival checks, instead of again for every different scene date.</li>
+<li>Local ground rebuilds reuse the final settled lakes when the outlet pass leaves the ground unchanged, and reuse saved channel arrays already in memory. Held ground fields are decompressed once instead of twice.</li>
+<li>Local rebuilds prepare drawn river, lake and delta constraints once for their successive water solves. Publication reuses a file's last byte hash while its file identity, size and modification stamps remain unchanged.</li>
+<li>A local climate rebuild prepares soil evaporation inside its moisture window and margin, and derives seasonal statistics only where they changed. Successive lake passes reuse unchanged soil-year blocks and hollow demand readings. Dune wind readings are reused in blocks when their sampled winds, land weights and seasonal temperatures are unchanged.</li>
+<li>Successive local lake solves reuse unchanged river accumulations, following changed inflows and routes downstream and including incoming tributaries. Soil profiles are read on land in small windows; unchanged ground inputs reuse their prior soil readings.</li>
+</ul>
+<ul>
+<li>Create's route chooser loads when Create opens, so the Library has less code to load at startup. Help keeps its task catalogue, and Library start cards carry their choice through while Create opens.</li>
+<li>Checks reuse festival dates for scenes at the same place and day, read each Chronicle branch once for its place changes, and compare similar names only with names that share their opening sound.</li>
+</ul>
+<ul>
+<li>Bringing a disc map up to date after an edit that rebuilds only the area around it now builds its coarsest detail again only in the quarter of the disc the edit reaches, instead of in all four quarters every time. The disc map comes out the same; the update does a quarter of that work, a few seconds sooner on a fast computer and more on one with few cores.</li>
+<li>Editing the World map a few hundred kilometres from a small region map no longer rebuilds the whole region when the region's own ground does not change: its finer detail is kept, so the update takes a moment rather than rebuilding every piece. An edit right beside the region still rebuilds it, because the region's ground really does change.</li>
+<li>Every rebuild, and every edit that rebuilds only the area around it, writes the Compendium and the realm handbooks once instead of twice, and an edit's rebuild settles its lakes one time fewer: about a second sooner at Quick, with the same world.</li>
+<li>Saving a description, a note or another lore edit takes about a third less time on a Quick world: the vault's calendars are drawn again only when something they show changed, and the world's saved fields are read once.</li>
+<li>Lore saves are quicker again: a description or a note on a Quick world now saves in about a quarter of a second, a third less than before. A save no longer reads back the files it has just written, writes the lore once instead of twice, and finds the realms' population without measuring the ground again.</li>
+<li>Running Checks again on a long book that names many places now takes about a fifth of a second instead of half a second: the look-alike place names, the claims about realms and kinds of place, and each year's history are read once and kept.</li>
+<li>A world's deposits are kept beside it when it is built, so the lore map, the cell inspector and the first lore save after opening the world no longer place every deposit again; the map catalogue also opens the world's data once instead of once for each of its hundred maps.</li>
+<li>The volcanoes, caves and coastal landforms are kept beside the world the first time the lore map or the gazetteer reads them, so opening either again in a later session no longer measures them again: most of a second sooner on a large world. Rebuilding the world measures them afresh.</li>
+<li>Opening a world shows its map sooner: the list of the world's maps, the lore on the map, the calendars, the campaign starters, the place names and the gazetteer pages are kept beside the world once read, and the list of maps is made as soon as a build finishes. On a Quick world opened in a new session the map appears in about half a second instead of more than one and a half, and every panel has filled in half the time. The realms map draws its tiles almost twice as fast. Any change to the world makes them again.</li>
+<li>A world's map appears a little sooner still: opening a world now asks first for only what the map needs and fetches the rest of the world once the map is showing, about a seventh of a second sooner on a Quick world. The first tiles of the realms map and the other detailed maps come about a quarter of a second sooner in a new session, and opening a town you have opened before in the city builder no longer waits half a second to read its ground again.</li>
+</ul>
+<h3 id="campaigns-and-the-tabletop">Campaigns and the tabletop</h3>
+<ul>
+<li>Open your own species from the Bestiary to see their habitats and relationships.</li>
+</ul>
+<ul>
+<li>Campaign starters offer different hooks for exploration, intrigue, a quest, a voyage or a one-shot. They draw on the towns, stories and landmarks in the saved world.</li>
+</ul>
+<ul>
+<li>Campaign starters show the party’s starting town to players. A new hexcrawl opens the player map on the terrain revealed around that town.</li>
+</ul>
+<ul>
+<li>The compact Campaign header leaves more room for the map while keeping Board and Battle side by side.</li>
+</ul>
+<ul>
+<li>Generate editable scene maps from Compendium caves, ruins, temples and places of power, with the site link and tabletop grid already in place.</li>
+<li>After closing a session, preview and download a catch-up for one player. It covers their own table activity, shared events and revealed places.</li>
+</ul>
+<ul>
+<li>Travel keeps the wild-land note while showing a first journey between hamlets.</li>
+<li>The campaign template cards each frame their start in their own way: City intrigue close on its capital's streets, One-shot on its place, Sandbox hexcrawl wide over the wilds round its town, so two starts near each other no longer show the same stretch of coast.</li>
+<li>The City builder's toolbar keeps its height from the start: the map's style, key, places and export buttons wait, greyed, in their row before the first city, so the map no longer jumps down when a city is drawn.</li>
+<li>City Builder waits until you open or generate a city before starting its map drawing.</li>
+<li>The City builder gives the map the window, with settings and inspection panels you can fold away. Level towns can grow around surveyed blocks, river crossings can join two neighbourhoods, and hillside quarters lay their streets along the contours.</li>
+</ul>
+<ul>
+<li>A dungeon scene now prints as a scene sheet: Scene sheet (PDF), beside the room key's downloads, puts the battle map with its grid and room numbers on a page of its own, turned to suit the map, then the room key after it. The players' scene sheet leaves out the secret doors and the game master's lines. The room key's own PDF was text only.</li>
+<li>The Foundry module of a scene now follows the two Include table boxes: the table's pen drawings and pinned notes go with it only when their box is ticked, as they already did for Universal VTT and Atlas.</li>
+<li>A token's aura arrives in Foundry as a faint ring of its colour round the token, drawn by the scene's module, rather than as the token's light, which lit the ground round the token in a dark scene.</li>
+<li>Players who join from their own phone, tablet or computer now take part instead of only watching. In Invite players you choose what everyone may do, or one player at a time: move their own token, pin notes on the map, roll dice (for the table, or for your eyes only), propose a journey and see their own sheet. On a shared campaign map a journey you accept opens Travel with its start and end; on the tabletop and the campaign map alike nothing can be moved or pinned under the fog, your own moves at the desk always win, and what players did goes into the session recap. Remove sends one player away for good while everyone else plays on.</li>
+<li>To play over the internet, choose Tailscale or another VPN as the connection (with Tools shown set to Everything): you and your players join one private network and CartoVox shows the link to share, with no relay or web server of your own. The invite panel's How to play over the internet lists the steps.</li>
+<li>The campaign templates a new world offers are now picture cards: each shows your world's own relief map round the town it starts in (and the place it is bound for), its three opening hooks and one Start this campaign button, in place of a block of small print.</li>
+<li>The travel journal explains when you can change the road seed and when its encounter rolls are ready to download.</li>
+<li>Travel now opens on a journey already drawn, from the capital to its nearest port (or its nearest neighbour where there are no ports), rather than an empty planner; choose any two places to plan your own.</li>
+<li>The maps in Travel, the campaign map and its template cards, and the Compendium's home map and place locators are now drawn the way the World map is, sharp at your screen's full resolution with crisp coasts and rivers, instead of a soft enlarged picture. Zooming into a journey keeps the ground sharp, and routes, pins and the locator dot stay on their places.</li>
+<li>The selected route’s journey time is easier to read against its highlighted background.</li>
+<li>A new blank scene starts from its canvas: the five canvases are pictures ruled with the grid your size gives them, beside the scene's name and size, and the separate "Set up a blank scene" card that led to the same form is gone.</li>
+<li>Campaign template cards on a flat world, a region or a disc now show that world's own map round the town each campaign starts in, with its start and destination marked, instead of an empty band; and the Scene maps page's Settlement and Bring your map cards are drawn pictures of a walled river town and of a hand-drawn cave fitted to the scene grid, matching the canvases above them in light and dark themes.</li>
+<li>The tabletop's tools are four groups of icons (move and measure, reveal and cover, mark the table, map view), each naming itself and saying what it does when you point at it, with the chosen tool's settings after them, in place of two rows of text buttons.</li>
+</ul>
+<h3 id="imported-and-drawn-worlds">Imported and drawn worlds</h3>
+<ul>
+<li>The drawing canvas has a regular latitude and longitude grid. Coastline review keeps the drawing’s proportions, placement shows its land shares on the picture and globe, and Build asks for the name once.</li>
+</ul>
+<ul>
+<li>A world built from a drawing or imported picture follows the coastline you confirmed. Shallow water beside bright land stays water, and low islands beside deep water keep their width when the picture changes size.</li>
+<li>On an ink or parchment map, the names lettered beside a forest no longer widen it: letters of a name are no longer read as tree marks. Names whose letters run into each other, or two names written over one another, are no longer read as an inked river.</li>
+<li>The Draw canvas has Overwrite, as Sculpt does. Tick it for Land, Water, Islands or Outline and the new ground replaces what is under it instead of building on it: Land brings mountains down to lowland, Water fills deep sea up to open ocean, and new islands or a filled outline stand alone, the old coast round them going under the sea. Each tool keeps its own answer.</li>
+<li>Outline has Exact shape: the coast is the line you traced, corner to corner, with no soft shore or wobble along it. Both choices are kept with the drawing. Both Fill land and Cut water with Exact shape keep the shore in the world you build from the drawing, too: the world map follows the line to the cell, and the continent, region and disc maps and the finer views draw it exactly, with no generated bays or spits along it. Each one is listed in Sculpt's Edits as an exact coast from your drawing, and removing it there gives that coast back to the simulation on the next rebuild. Reapplying an edited drawing updates its coast records. Undo restores the earlier outline. Repainting through a traced shore releases that outline so the built world follows the new paint.</li>
+</ul>
+<h3 id="the-living-world">The living world</h3>
+<ul>
+<li>Create and duplicate species, describe their habitat and relationships, and use the ecosystem slider to see how food, hosts and other partners shape their ranges. The map also includes more built-in wildlife for mountains, deserts, wetlands and the deep sea.</li>
+<li>Make a biome from the Biomes map or the species editor. Give it a climate, choose signature species that can share the same ground, or use both rules together.</li>
+<li>Find a species in search or the Compendium, follow links to its prey or host, and open its range on the map. Compare your own species on continent and region maps, inspect their suitability at a place, and carry their rules in shared biomes and recipes.</li>
+</ul>
+<ul>
+<li>Weather Year explains how it estimates heatwaves, gusts and the polar vortex from the world's saved seasons.</li>
+</ul>
+<ul>
+<li>The winds that carry moisture turn a little less across pressure lines. This helps rain reach deep tropical lowlands, especially on supercontinents.</li>
+</ul>
+<ul>
+<li>Weather year shows where drifting sea ice may compress and how ocean nutrients rise and fall through the seasons.</li>
+</ul>
+<ul>
+<li>Calendar, Weather Year, and the observatory use the same saved climate orbit for the equinoxes, solstices and closest approach. Builds at a negative precession year now move the orbit in the correct direction.</li>
+</ul>
+<ul>
+<li>Air crossing a mountain range keeps its rain shadow farther into the valleys behind it, including where it rises over a lower ridge.</li>
+</ul>
+<ul>
+<li>Rivers run around the towns and paved ground you describe. Rain on the streets drains at the bank, and a natural lake keeps its shore where it reaches the town. Sharpen and finer maps follow the same footprint.</li>
+</ul>
+<ul>
+<li>On a disc world the sun's year follows the disc's own rings, not the globe it is simulated on: the almanac's sunrise, sunset and daylight, a place's seasons, the Satellite night side and the light under a sun over the hub all use the climate each ring has, and a place without a name is given by its distance from the hub. With Day &amp; night open over a disc's map, the map shows the night side and the town lights at the moment you pick.</li>
+</ul>
+<ul>
+<li>Subtropical return currents begin turning offshore before their simulated poleward transport ends. Climate measurements found a large slowdown and a warm-layer regression in the new heat transport, so heat again follows the established current advection and restoring calculation.</li>
+</ul>
+<ul>
+<li>Ocean gyres close against the shape of the coast, including its connected fringe, and smooth their interior over water before forming the boundary current. This replaces the separate boundary layer on each latitude.</li>
+<li>On finer maps, carried rivers take their valley floors from the parent channel beds. A course that crosses a tile keeps its floor even when its ends are outside it, and larger rivers cut deeper within the available fall. A river that leaves and returns to a detailed area keeps the same valley floor on both sides of its edge. Tributaries aim into the main river at about forty degrees while the main stem keeps its smooth continuation; terrain constraints still take priority over the joining angle.</li>
+</ul>
+<ul>
+<li>The cold fronts trailing behind the winter storms now reach further toward the tropics, so the seas and coasts at 25–35° get a little more rain (about 6% more at 25–30°, close to Earth's), and the wettest belts of the westerlies at 40–50° a little less. The desert interiors stay as dry as before.</li>
+<li>The sea's seasons now follow Earth's: through the year its temperature moves a couple of degrees in the tropics and about six in the storm belts, instead of two to three times that, so winter seas are milder and summer seas cooler (a sea at 45° now runs from about 10 °C to 17 °C, where it ran from 4 °C to 22 °C). The seas and coasts at 10–20° get a little more rain, closer to Earth's, and the westerlies still blow hardest in winter.</li>
+<li>Winter storms now form over the warm currents off the east coasts and run out across the sea, as they do over the Kuroshio and the Gulf Stream: the seas at 25–40° beside a warm current get much more winter rain, the subtropical seas as a whole now get about Earth's rain (some 15% more than before), and the wettest belts of the westerlies a little less. The east coasts themselves stay about as wet as before, and the deserts as dry.</li>
+<li>Every wide ocean now has an overturning current, as the Atlantic does: warm tropical water runs up its western side and colder water comes back down its eastern side. The warm currents off the east coasts are a little warmer and faster, and the seas off the west coasts of the continents in the subtropics are about a degree colder, closer to the cold seas off California, Morocco, Chile and Namibia. Rain changes little; the subtropical lands are slightly drier.</li>
+<li>The storm belt now runs poleward across each ocean as it crosses it, as it does from Japan to Alaska and from Florida to Norway: the subtropical seas off the west coasts of the continents get about half the rain they did, close to the dry seas off California and Morocco, while the seas off the east coasts get more. The west coasts at 30–35° are a little drier and those at 40–45° a little wetter; the deserts stay as they were.</li>
+<li>A town where roads meet, or where a road crosses its river, now grows for it when the world is built, by up to 30%, instead of only in the city builder. The World map, the place's page, the gazetteer, the Compendium, exports and the city builder all give the same figure, and the place's page says how much the roads added. Editing one part of the world leaves the towns elsewhere at the size they were, and a region map's own towns and villages grow by the region's roads the same way.</li>
+</ul>
+<h3 id="writing-lore-and-history">Writing, lore and history</h3>
+<ul>
+<li>Link your own species to goods a settlement can make. Living History shows where the species behind your staple goods could live.</li>
+</ul>
+<ul>
+<li>Manuscript link suggestions put names that start with what you type first and let you link to the world by its name.</li>
+</ul>
+<ul>
+<li>Restoring a world keeps the Chronicle panel folded if you closed it.</li>
+<li>Chronicle map labels make room for nearby events and use leader lines when a title needs to sit farther from its marker.</li>
+</ul>
+<ul>
+<li>Download a World Bible as PDF or EPUB with atlas maps, place pages, history, peoples and tongues. Calendar tables show month names and lengths and list festivals by date. The player edition uses the campaign's public maps, revealed places, published news and calendar. Private festivals stay in the author's copy.</li>
+</ul>
+<ul>
+<li>Step through the Chronicle map one era or year at a time. Export saved history as an animated WebP or GIF with dated borders, towns, routes and events. The map labels inferred borders.</li>
+</ul>
+<ul>
+<li>The Manuscript journey calendar compares scene dates with seasonal travel times, flags the first impossible arrival and lets you mark intentional exceptions.</li>
+</ul>
+<ul>
+<li>The web of relations keeps the name you are typing for a new tie when the Compendium refreshes.</li>
+</ul>
+<ul>
+<li>The Chronicle keeps the relief map in view while a history run prepares its new borders, so the present-day realm map does not flash in between.</li>
+</ul>
+<ul>
+<li>Adding the first dated era or event unlocks the Chronicle’s year selector for keyboard and screen reader users.</li>
+<li>Undo or redo a world rename while its atlas labels refresh. The progress dock follows the redraw, and the open atlas shows the new lettering when it finishes.</li>
+<li>Opening Flags goes straight to the flag editor. The Lore editor loads the Arms preview only when you open Arms.</li>
+</ul>
+<ul>
+<li>The Lore editor confirms saved changes while the map list is still loading.</li>
+</ul>
+<ul>
+<li>Opening a dossier in the Manuscript World panel brings its title into view below the toolbar.</li>
+</ul>
+<ul>
+<li>Compendium dossiers and open atlas plates stay available when you rename a world or undo the rename in the Lore editor.</li>
+<li>Project review opens on changes that need your judgment. Story prompts, similarities between generated names and optional atlas sheets are under Possibilities. Each question still opens where you can answer it.</li>
+<li>Chronicle opens a saved era on its chosen map. A world with an empty Chronicle still shows its own ground behind the first page. Other workspaces can open without waiting for the Chronicle's map to draw.</li>
+<li>Read coats of arms in your interface language in the Arms editor, dossiers and Compendium captions.</li>
+<li>Give a town its own faith in Describe, or leave Faith blank to follow its realm's written faith. The town's dossier, Compendium page and search all use it, and new characters and Quick NPCs take their home's faith unless you give them another. Faith can also be edited in the town's vault page.</li>
+</ul>
+<ul>
+<li>Checks on a long book whose scenes are dated and travel between towns finish many times sooner: a 150-scene book with several hundred journeys took about 25 seconds and now takes about a second. Running Checks again after an edit no longer measures every journey afresh while the world itself has not changed. The findings are exactly the same.</li>
+</ul>
+<ul>
+<li>Books export as store-ready e-books. Export › E-book (.epub) makes an EPUB that every reading app opens, with a cover drawn from your map or plate (or your own uploaded cover art), title and copyright pages, a contents list with Parts holding their chapters, chapter-opening pictures, your book maps with descriptions for readers who cannot see them, and the series, ISBN, description and subjects a store lists the book under. Kindle e-book (.epub) makes one that follows Amazon KDP's rules. Each is checked before it saves, and any problems are listed so you can fix them or download anyway. Both are in Export › Presets as Ebook (EPUB) and Kindle. Comments and unaccepted suggestions are never included; footnotes become pop-up notes unless you choose to leave them out.</li>
+</ul>
+<ul>
+<li>A new world's Chronicle opens on a history drafted from its own lore instead of an empty box: the Compendium's History, plus the founding of each leading realm at its capital, the borders between realms, the faith questions and the places of power, each placed on the map as a proposal you can accept, change or delete. Nothing is saved until you choose Keep this history (editing any entry keeps it too), or Start from a blank page to set it aside. A Chronicle you have already written in is never drafted over, and Undo takes either choice back.</li>
+<li>The Chronicle reads like the Compendium: one flat sheet with the history in the reading face, a first page that shows the world's own map behind three plain ways to begin (from the world's history, writing the first era yourself, or running centuries of history), and on wide screens the year scale and legend beside the map rather than below it. "Initialize from Lore" is now "Begin from the world's history", and "Refresh Lore events" is "Bring in new Compendium events".</li>
+</ul>
+<ul>
+<li>The Chronicle's map places each event's name where it has room: names no longer run into each other or off the edge, long names wrap onto short lines instead of being cut with "…", and a name with no free room is left to its dot's tooltip and the list. The list beside the map wraps long titles in full, and its small print says "not yet accepted", "on the map" and "lasts into later eras" instead of engine words; "Persistent consequences" is now "Show lasting events from earlier eras".</li>
+</ul>
+<h3 id="saving-updating-and-the-library">Saving, updating and the Library</h3>
+<ul>
+<li>A saved world starts with a small map while its full layers load. The opening message sits above the zoom controls.</li>
+</ul>
+<ul>
+<li>Disc and region worlds show their own saved map as they open. Automatic cache cleanup keeps their built terrain and the ground of continent maps.</li>
+</ul>
+<ul>
+<li>Opening a map in another visual style preserves the saved Relief and Biomes sheets and their integrity checks.</li>
+</ul>
+<ul>
+<li>The World overview is ready once its saved details load, even while other workspaces are still opening. Revision history stays open and keeps keyboard focus as the overview refreshes.</li>
+<li>On a wide screen, the empty Library shows a large map of the example world and its Open button beside the ways to start your own.</li>
+<li>Open Details on a Library card for build time and storage. Sorting by size shows the total on each card, and the resume panel keeps earlier builds together under Build history.</li>
+</ul>
+<ul>
+<li>The Library’s Continue panel can show the saved relief map while a world rebuilds, then draw a fresh, sharper map when the rebuild is complete.</li>
+<li>Library cards and the Continue band always show a world's whole illustrated map: one whose shape differs from the card's is set on its own paper, never cut to fit.</li>
+<li>Library cards no longer show region and continent map sizes unless the shelf is sorted by size, and a world's last build reads "Built in 1m 25s · Quick" in the Library and the World overview.</li>
+<li>Library cards grow with large screens, about four across at 2560 pixels instead of six small ones, and the favourite star is a light chip you can see in Parchment Light instead of a solid dark square.</li>
+<li>The Map gallery opens on one shelf per world: its best sheet large, then one card for each kind of sheet (continents, regions, city plans, style renders) saying how many there are, with "See all" to open the rest. Twenty city plans are one card that says twenty, not twenty look-alike tiles, and a sheet and its unlabelled copy count as one drawing.</li>
+</ul>
+<ul>
+<li>Every world's picture fills its Library card the same way. A disc world showed as a small disc in a wide empty frame on the Continue card; it now fills the card edge to edge, centred, on the Continue card, the shelf and the list. A flat world or a region whose map is not twice as wide as it is tall fills the Continue card instead of sitting beside an empty band, and every row of the list view is the same height whatever the world's shape.</li>
+<li>Library search finds every world's constellations by name, including the ones nobody has edited, and by the names each people gives them. A small list of names is kept with each world when it is built or opened, so searching stays quick.</li>
+<li>The Library leads with each world's best art. A world whose atlas has drawn its illustrated world plate shows that plate on its card and in the Continue band; a world without one shows its map in the band drawn sharp rather than as the blocky biome sheet. Disc, region and flat worlds keep their own pictures, filling their frames as before.</li>
+<li>Clicking a world's card opens it straight on its map. It used to keep you on the Library behind a spinner until every panel had loaded; the panels now finish filling behind the map. The Continue band follows the world you opened, and the world switcher at the top names the world while it opens and asks you to choose one when none is open, instead of saying "No world open" beside a Library full of worlds.</li>
+<li>An imported region shows its saved cover while the high-resolution region rebuilds.</li>
+<li>Create is ready after the Library opens. Its 3D renderer loads when a candidate globe is visible, keeping the reduced-motion title screen still and light.</li>
+</ul>
+      </div></article>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner doc-footer">
+    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=b6530a3583" defer></script>
+</body>
+</html>
