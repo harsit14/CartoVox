@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render a compact release index and one page per release.
 
-    python3 tools/build-releases.py <app-repo>/.github/release-notes --through 1.0.0
+    python3 tools/build-releases.py <app-repo>/.github/release-notes --through 1.0.1
 
 Each note is a text file: a title line, then Markdown. The rendering keeps the
 notes whole except for two things. The application was called Atlas Studio
@@ -37,7 +37,7 @@ DATES = {
     "0.9.12": "2026-10-23", "0.9.13": "2026-10-24",
     "0.9.14": "2026-10-30", "0.9.15": "2026-11-05", "0.9.16": "2026-11-07",
     "0.9.17": "2026-11-13", "0.9.18": "2026-11-13",
-    "1.0.0": "2026-11-22",
+    "1.0.0": "2026-11-22", "1.0.1": "{{RELEASE_DATE}}",
 }
 
 RENAMES = [
@@ -152,6 +152,7 @@ def load(notes_dir: Path, through: str | None = None) -> list[dict]:
 
 
 HIGHLIGHTS = {
+    "1.0.1": "The first update to CartoVox 1.0. The Sculptor's Stamp gains seventeen landforms, from cenotes and tepuis to canyons, drumlins and salt flats, and worlds now find and name them where their rock, climate, water and ice put them. The city builder can fill water to a height, so islands no longer need tracing by hand, and the water and land you shape can be chosen again, changed, moved or deleted; towns now fill small islands, and Generate city now plans the ground you draw. On the Polyhedral and butterfly World maps, rivers, roads and borders stop at each triangle's edge instead of crossing the gaps, and names read upright. Disc, region and flat worlds show themselves taking shape while they build, with closer time and memory estimates. CartoVox opens quietly, gains a Safe graphics switch on Windows and Linux, and says on its title screen when a new version is out.",
     "1.0.0": "CartoVox 1.0, free for everyone: no invites, no access codes and no check-ins, and it works offline. Make your own species and the ecosystems that shape their ranges, and biomes drawn by climate or by their signature species. Build flat worlds beside disc worlds, draw regions of your own across any border, and shape the night sky's constellations with their lore. Edit an atlas plate after it is drawn, in five new looks from woodcut to Admiralty chart; Render Studio gains five art directions and terrain flyovers. Players join the tabletop from their own phone, tablet or computer, a World Bible downloads as PDF or EPUB, and a world can be shared as an offline web map. The World map can be explored by keyboard and screen reader, and CartoVox updates itself, checking only for new versions.",
     "0.9.18": "Delta V16 for Windows with one fix: on some computers every launch stopped responding and had to be closed. A launch that freezes or closes now leaves a record in the logs folder, and CartoVox can open without the graphics processor. Worlds are unchanged, so nothing needs rebuilding.",
     "0.9.17": "The last Delta. The whole app reads in German, French, Spanish, Portuguese and Polish, with numbers written each language's way. Villages, market towns and hill towns grow as they should, with greens, crofts, burgage plots, abbeys, landings and walls where history calls for them. Maps stay sharp however far you zoom, rivers run on across every join, and continent, region and disc maps open in the World map's own controls, with finer continent detail where you look. Orbits can wobble, swing their tilt and lock their spin, and a planet's real numbers build its real weather. Sculpt gains Overwrite, exact island shapes, Erode, River carve and Stamp, and deposits and goods can be edited by hand. Render Studio adds compass roses, scale bars, a cartouche, a legend, a neatline and your own symbol packs; Write adds Suggest mode, comments and an Outline with a Corkboard; campaigns gain templates, a combat tracker, dungeons from a sentence and Roll the road. Downloads go where you choose, and builds are faster: Quick about 30 seconds and Full about a minute and a half.",
@@ -291,12 +292,12 @@ def main() -> None:
     target.parent.mkdir(exist_ok=True)
     target.write_text(PAGE.format(
         page_title="Release notes — CartoVox",
-        page_description="The CartoVox release archive. See what changed in CartoVox 1.0 and browse complete notes for every release.",
+        page_description="The CartoVox release archive. See what changed in CartoVox 1.0.1 and browse complete notes for every release.",
         canonical="https://cartovox.org/releases/", nav_label="Versions", toc="\n".join(toc),
         eyebrow="Release notes", heading="What changed, version by version.",
-        intro="Start with CartoVox 1.0, the latest release, or open any version for its complete changes and compatibility notes.",
+        intro="Start with CartoVox 1.0.1, the latest release, or open any version for its complete changes and compatibility notes.",
         mobile_nav_label="Browse all versions",
-        mobile_fallback='<a href="#v1.0.0">Latest release</a>', articles="\n".join(cards),
+        mobile_fallback='<a href="#v1.0.1">Latest release</a>', articles="\n".join(cards),
     ), encoding="utf-8")
     print(f"  releases/index.html + {len(releases)} full notes")
     subprocess.run([sys.executable, str(ROOT / "tools" / "build-sitemap.py")], check=True)
