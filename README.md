@@ -160,7 +160,7 @@ after release.
 Supply a copy of `.github/release-notes/` from the released tag, rather than
 the current development checkout (for example
 `git archive v1.0.1 .github/release-notes | tar -x -C <dir>`). For 1.0.1 that is
-the **v1.0.1 tag** (`{{TAG_SHA}}`); for 1.0 it was the v1.0.0 tag (`ba0b2633b`); for V16.1 it was the v0.9.18 tag (`23c56768a`); for V16 it was the v0.9.17 tag (`1b2078b10`); for V15 it was the v0.9.16 tag (`d1e767515`); for V14 it was the v0.9.15 tag (`59992dd2c`); for V13 it was the v0.9.14 tag (`eb466f9e9`); for V12 it was the v0.9.13 tag (`7d5b82c3`); for V9 it was the v0.9.10 tag (`02fd96f7`),
+the **v1.0.1 tag** (`707a933e2`); for 1.0 it was the v1.0.0 tag (`ba0b2633b`); for V16.1 it was the v0.9.18 tag (`23c56768a`); for V16 it was the v0.9.17 tag (`1b2078b10`); for V15 it was the v0.9.16 tag (`d1e767515`); for V14 it was the v0.9.15 tag (`59992dd2c`); for V13 it was the v0.9.14 tag (`eb466f9e9`); for V12 it was the v0.9.13 tag (`7d5b82c3`); for V9 it was the v0.9.10 tag (`02fd96f7`),
 because main later recorded unreleased Rust pilot work inside the V9 note itself.
 `--through` limits file versions, not sections within a file, so a public page
 must describe its shipped tag only. The written guide and homepage quote the

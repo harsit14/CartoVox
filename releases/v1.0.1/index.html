@@ -48,7 +48,7 @@
   </aside>
   <div class="guide-body">
     <header class="guide-head">
-      <p class="eyebrow">Full release notes · {{RELEASE_DATE}}</p>
+      <p class="eyebrow">Full release notes · 2026-11-25</p>
       <h1>CartoVox 1.0.1</h1>
       <p class="lede">The first update to CartoVox 1.0. The Sculptor&#x27;s Stamp gains seventeen landforms, from cenotes and tepuis to canyons, drumlins and salt flats, and worlds now find and name them where their rock, climate, water and ice put them. The city builder can fill water to a height, so islands no longer need tracing by hand, and the water and land you shape can be chosen again, changed, moved or deleted; towns now fill small islands, and Generate city now plans the ground you draw. On the Polyhedral and butterfly World maps, rivers, roads and borders stop at each triangle&#x27;s edge instead of crossing the gaps, and names read upright. Disc, region and flat worlds show themselves taking shape while they build, with closer time and memory estimates. CartoVox opens quietly, gains a Safe graphics switch on Windows and Linux, and says on its title screen when a new version is out.</p>
       <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
@@ -107,9 +107,6 @@
 <li>The city builder's Terrain tool has Fill water. Choose a sea level and everything at or below it that reaches the edge of the sheet becomes sea, with every island above it left standing; or click a hollow and choose a height to flood that basin as a lake, pond, salt flat or sea, stopping at higher ground. An outline shows what will fill as you move the height slider, and it follows an imported heightmap and any hills you drew first, so islands no longer need tracing by hand. Specks under 1,000 m² are left out, and the Inspector can raise or lower a fill afterwards.</li>
 </ul>
 <ul>
-<li>Water and land you shaped in the city builder, with Cut water, Fill water, a river or canal, or Add land, can now be chosen again and changed. Click one on the map, or pick it from the Inspector's list of ground edits, to change its kind and its height or width, move it, or delete it.</li>
-</ul>
-<ul>
 <li>Islands in drawn or filled water no longer show a pale streak of shore running from the island out to the open water.</li>
 </ul>
 <ul>
@@ -117,6 +114,10 @@
 </ul>
 <ul>
 <li>On a phone, the handle that brings back the city builder's Inspector sits at the middle of the map's edge, and the map key, compass and city name keep clear of it.</li>
+</ul>
+<ul>
+<li>Water and ground you drew in the city builder can be selected again. With the Select tool, click inside a lake, sea, pond, salt flat or filled water, on a river or canal, or on land and hills you added, and the Inspector shows it: make a lake a pond, widen a river, drag it somewhere else, reshape it by its points, or delete it (Delete or Backspace), each change undoable. The Inspector also lists everything you drew under "Ground you drew", so a small pond or land under a district can be picked from there. Works before and after the city is generated.</li>
+<li>Drawing the ground first after planning a very large city no longer turns the window dark. The blank sheet for a metropolis is now farmed in fewer, larger fields, and the city builder lets go of the last plan's memory before drawing, so the page uses about half the memory it did. On a computer with little memory, the city builder asks before planning a city that may be too big for it.</li>
 </ul>
 <h3 id="speed-and-memory">Speed and memory</h3>
 <ul>
@@ -126,6 +127,9 @@
 <li>The memory line in a build's Details, how much is in use, by how many processes, how much is kept for reuse and how much is free, reads in your interface language.</li>
 </ul>
 <h3 id="maps-and-exports">Maps and exports</h3>
+<ul>
+<li>In a region world's Atlas, a division or town plate you pick while the world is still opening stays on screen. It used to jump back to the whole region when the world finished opening, leaving the plate you chose half drawn.</li>
+</ul>
 <ul>
 <li>On the Polyhedral (icosahedron) and the Cahill and Waterman butterfly World maps, rivers, roads, sea lanes, walls, borders, coasts, currents and winds, the map grid, journeys, storm tracks, trade routes, measurements, sketches and your own drawn lines now stop at the edge of each triangle or wing and carry on from the next, instead of running as straight strokes across the empty paper between them. Filled areas (realm tints, faiths and peoples, hotspot areas, Chronicle realms and events, campaign fog, drawn regions) are filled up to each edge and never stretched across a gap. Names that would sit across a gap move onto one triangle or wing nearby, or are left out, and names on a turned wing now read the right way up. Large map exports, vector exports and sharpened views follow the same rules.</li>
 </ul>
@@ -147,6 +151,9 @@
 <ul>
 <li>The View menu's Borders and places list and the Landmarks panel name their layers in your interface language, the levels of a world's divisions included: German reads "Ebene 2: …" rather than "Level 2: … and the like".</li>
 </ul>
+<ul>
+<li>The installed app draws a place's climate chart and saves printed PDF sheets again. CartoVox 1.0 left out two of its chart formats, so on Linux a place almanac could fail to draw.</li>
+</ul>
 <h3 id="saving-updating-and-the-library">Saving, updating and the Library</h3>
 <ul>
 <li>When a new CartoVox is out, the title screen says so beside the version, with a button to update (or to download it, or to restart once it is ready) and a link to what's new. A dot on every Settings button and on Updates &amp; support points to it, Settings opens straight on the update, the command palette offers "Update CartoVox to …", and a notice asks you to restart once the download is ready. Later quiets the notices but keeps the dot.</li>
@@ -154,7 +161,7 @@
 </ul>
 <ul>
 <li>Disc, flat and region worlds now show their whole map, centred and uncropped, in the Library's "Continue your world" panel, on Library cards and in the Map gallery.</li>
-<li>The "Continue your world" panel is recomposed so the world's map fills the full height of the right side with the world's title, figures, actions and details stacked beside it.</li>
+<li>The "Continue your world" panel is recomposed so the world's map fills the full height of the right side with the world's title, figures, actions and details stacked beside it. In a short window, such as a laptop's, the details stand beside the title so your other worlds still begin in the first view.</li>
 </ul>
 <ul>
 <li>CartoVox still gets your last world ready in the background as it starts, but no longer shows its name, "Still opening" or the progress bar while you are in Create, Write, Make, Settings, the title screen or the Library. Choose that world while it is still getting ready and you see its progress there; if it is ready already, it opens at once. If it could not open, you hear about it only when you choose it.</li>
