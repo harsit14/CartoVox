@@ -149,7 +149,7 @@ def load(notes_dir: Path, through: str | None = None) -> list[dict]:
         # Notes from before 0.8.3 were written under the old name; 0.8.3 itself
         # announces the change and must keep the old name where it says so.
         written_under_old_name = version_key(version) < (0, 8, 3)
-        releases.append({"version": version, "name": name, "tagline": tagline, "date": DATES.get(version, ""),
+        releases.append({"version": version, "name": name, "tagline": tagline, "date": DATES.get(version, ""), "title": title,
                          "body": clean(body, rename_app=written_under_old_name), "released": True})
     releases.sort(key=lambda r: version_key(r["version"]), reverse=True)
     upcoming = notes_dir / "unreleased.txt"
@@ -165,6 +165,8 @@ def load(notes_dir: Path, through: str | None = None) -> list[dict]:
 
 
 HIGHLIGHTS = {
+    # Prepared for the 1.1 release; unused until a v1.1 note is built.
+    "1.1": "Discover brings 47 hand-picked worlds, with cities, ships, dungeons and style packs, each built on your computer in one click. Every world gains an Underworld of caverns, tunnels and underground seas, and the Cataclysm Lab plays eruptions, impacts, earthquakes and rising seas over your own ground. Cut canals, dam valleys, move borders by hand, watch a plague or a rumour spread, and fly over a continent or a city in 3D. For the table there are Props Studio handouts, ships and dungeons built deck by deck, tokens, a story canvas and a War animator; for the book, a multi-track Chronicle, dynasties, tongue scripts as fonts, beta-reader DOCX and print covers. Search everything with Cmd/Ctrl+K, and choose a workspace focus that puts your own work first.",
     "1.0.1": "The first update to CartoVox 1.0. The Sculptor's Stamp gains seventeen landforms, from cenotes and tepuis to canyons, drumlins and salt flats, and worlds now find and name them where their rock, climate, water and ice put them. The city builder can fill water to a height, so islands no longer need tracing by hand, and the water and land you shape can be chosen again, changed, moved or deleted; towns now fill small islands, and Generate city now plans the ground you draw. On the Polyhedral and butterfly World maps, rivers, roads and borders stop at each triangle's edge instead of crossing the gaps, and names read upright. Disc, region and flat worlds show themselves taking shape while they build, with closer time and memory estimates. CartoVox opens quietly, gains a Safe graphics switch on Windows and Linux, and says on its title screen when a new version is out.",
     "1.0.0": "CartoVox 1.0, free for everyone: no invites, no access codes and no check-ins, and it works offline. Make your own species and the ecosystems that shape their ranges, and biomes drawn by climate or by their signature species. Build flat worlds beside disc worlds, draw regions of your own across any border, and shape the night sky's constellations with their lore. Edit an atlas plate after it is drawn, in five new looks from woodcut to Admiralty chart; Render Studio gains five art directions and terrain flyovers. Players join the tabletop from their own phone, tablet or computer, a World Bible downloads as PDF or EPUB, and a world can be shared as an offline web map. The World map can be explored by keyboard and screen reader, and CartoVox updates itself, checking only for new versions.",
     "0.9.18": "Delta V16 for Windows with one fix: on some computers every launch stopped responding and had to be closed. A launch that freezes or closes now leaves a record in the logs folder, and CartoVox can open without the graphics processor. Worlds are unchanged, so nothing needs rebuilding.",
@@ -305,7 +307,7 @@ def main() -> None:
     releases = [r for r in load(Path(sys.argv[1]), through) if r["released"]]
     header, footer = site_chrome.header("/releases/"), site_chrome.footer()
     for release in releases:
-        release["date"] = release_date(release)
+        release["date"] = release_date(release, release.get("title", ""))
         release["headline"] = headline(release)
         release["heading"] = f"CartoVox {label_of(release)}"
         release["url"] = f"/releases/v{release['version']}/"
@@ -315,8 +317,12 @@ def main() -> None:
     for position, release in enumerate(releases):
         rid = f"v{release['version']}"
         _, body_html = build_legal.render(demote(release["body"]))
+        # The page's own Highlights section owns #highlights (old guide links land there).
+        body_html = body_html.replace('id="highlights"', 'id="notes-highlights"')
         fragment = HIGHLIGHT_DIR / f"{rid}.html"
         parts = []
+        if not fragment.exists() and release["version"] in HIGHLIGHTS:
+            parts.append(f'    <p class="section-lede">{html.escape(HIGHLIGHTS[release["version"]])}</p>')
         if fragment.exists():
             parts.append('    <section class="release-highlights" id="highlights" aria-labelledby="highlights-title">\n'
                          '      <h2 id="highlights-title">Highlights</h2>\n'
@@ -338,13 +344,12 @@ def main() -> None:
             if other:
                 toc.append(f'      <a href="{other["url"]}"><span>{html.escape(label_of(other))}</span><small>{other["date"]}</small></a>')
         date = nice_date(release["date"])
-        summary = HIGHLIGHTS.get(release["version"], release["headline"])
         detail = PAGE.format(
             page_title=html.escape(f"{release['heading']} — release notes"),
             page_description=html.escape(f"What changed in {release['heading']}: highlights, full changes and compatibility notes."),
             canonical=f"https://cartovox.org{release['url']}", header=header, footer=footer, nav_label="Releases",
             toc="\n".join(toc), eyebrow=html.escape(f"Release notes · {date}" if date else "Release notes"),
-            heading=html.escape(release["heading"]), intro=html.escape(summary), fine=FINE,
+            heading=html.escape(release["heading"]), intro=html.escape(release["headline"]), fine=FINE,
             mobile_nav_label="On this page", articles="\n".join(parts),
         )
         target = ROOT / "releases" / rid / "index.html"
@@ -356,7 +361,7 @@ def main() -> None:
       <p class="eyebrow">Latest release · <time datetime="{latest['date']}">{nice_date(latest['date'])}</time></p>
       <h2 id="latest-title">{html.escape(latest['heading'])}</h2>
       <p class="release-headline">{html.escape(latest['headline'])}</p>
-      <p>{html.escape(HIGHLIGHTS.get(latest['version'], ''))}</p>
+      {f"<p>{html.escape(HIGHLIGHTS[latest['version']])}</p>" if latest['version'] in HIGHLIGHTS else ''}
       <a class="btn btn-gold" href="{latest['url']}">Read the {html.escape(label_of(latest))} notes</a>
     </section>"""]
     toc = []
