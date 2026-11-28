@@ -13,11 +13,11 @@
      DM Mono     figures, folios, plate numbers and field notes
      Cinzel      map lettering only: plate titles and cartouches */
 
-@font-face { font-family: "Cinzel"; src: url("/fonts/Cinzel-Variable.woff2?v=6e0962b03a") format("woff2"); font-weight: 400 900; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Variable.woff2?v=b79b4dc9a1") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Italic-Variable.woff2?v=1fa3f49cc2") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
-@font-face { font-family: "Archivo"; src: url("/fonts/Archivo-Variable.woff2?v=92315055ef") format("woff2"); font-weight: 400 700; font-stretch: 75% 100%; font-display: swap; }
-@font-face { font-family: "DM Mono"; src: url("/fonts/DMMono-Regular.woff2?v=65e437a4f3") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Cinzel"; src: url("/fonts/Cinzel-Variable.woff2?v=c9bf6e05e0") format("woff2"); font-weight: 400 900; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Variable.woff2?v=daad491f09") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Italic-Variable.woff2?v=d22a7c4ac7") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("/fonts/Archivo-Variable.woff2?v=798097478f") format("woff2"); font-weight: 400 700; font-stretch: 75% 100%; font-display: swap; }
+@font-face { font-family: "DM Mono"; src: url("/fonts/DMMono-Regular.woff2?v=0b60b533b7") format("woff2"); font-weight: 400; font-display: swap; }
 
 :root {
   /* the desk and the sheet */
@@ -62,6 +62,8 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+::selection { background: rgba(217, 180, 92, 0.32); color: #fff; }
+html { scrollbar-color: var(--gold-3) var(--ink-0); }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
@@ -316,6 +318,8 @@ details p { color: var(--text-2); padding: 0 0 22px; max-width: 70ch; }
 /* A rule head, as the app's: a brass tick at the left end of the rule. */
 .doc-body h2::before { content: ""; position: absolute; left: 0; top: -2px; width: 18px; height: 3px; background: var(--gold); }
 .doc-body table { display: block; overflow-x: auto; }
+.doc-body h1 + h2 { margin-top: 28px; padding-top: 0; border-top: 0; }
+.doc-body h1 + h2::before { display: none; }
 .doc-body h3 { font-size: 1.15rem; margin: 28px 0 10px; }
 .doc-body p, .doc-body li { color: var(--text-2); font-size: 1.02rem; }
 .doc-body strong { color: var(--text); font-weight: 500; }
@@ -674,6 +678,8 @@ kbd { font-family: var(--font-ui); font-size: 0.78em; padding: 1px 6px; border: 
 .strength-media img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: transform .8s var(--ease); }
 .strength-media::after { content: ""; position: absolute; inset: 7px; border: 1px solid rgba(255, 255, 255, 0.3); mix-blend-mode: screen; pointer-events: none; }
 .strength:hover .strength-media img { transform: scale(1.03); }
+.strength-media { transition: border-color .25s; }
+.strength:hover .strength-media { border-color: rgba(217, 180, 92, 0.6); }
 .strength-body { padding: 16px 2px 0; display: flex; flex-direction: column; flex: 1; }
 .legend-key { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--gold); }
 .legend-key .sym { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
@@ -768,6 +774,9 @@ kbd { font-family: var(--font-ui); font-size: 0.78em; padding: 1px 6px; border: 
 .download-list .platforms li { font: 0.9rem/1.6 var(--font-ui); }
 .download-list .plat { font: 600 0.72rem/1.4 var(--font-ui); font-stretch: 80%; letter-spacing: 0.18em; color: var(--gold); align-self: start; padding-top: 3px; }
 .download-list code { background: none; padding: 0; font-size: 0.8rem; }
+.download-list .sum + br { display: none; }
+.download-list .sum { margin-bottom: 10px; }
+.download-list .platforms li > span > .sum:last-child { margin-bottom: 0; }
 .download-list .sum { display: block; margin-top: 2px; font: 0.74rem/1.6 var(--font-mono); color: var(--text-3); }
 .download-list .sum code { font-size: inherit; color: var(--text-2); word-break: break-all; }
 

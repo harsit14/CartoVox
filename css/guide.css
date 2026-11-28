@@ -104,3 +104,7 @@ h2 .tag-new, h3 .tag-new { font-size: 0.56rem; }
 .ws-grid b .tag-new { display: inline-block; font-family: var(--font-ui); letter-spacing: 0.06em; margin-left: 4px; vertical-align: 0.1em; }
 .guide-body section > ul.release-list { max-width: none; }
 .release-row { align-content: start; }
+
+/* The first section follows the head's own rule; no second gap. */
+.guide-body > section:first-child { padding-top: 8px; }
+.release-highlights > h2:first-child { margin-top: 0; }
