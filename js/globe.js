@@ -113,9 +113,10 @@
     const { idx, row, lon } = map;
     const off = ((offset % 1) + 1) % 1;
     for (let k = 0, n = idx.length; k < n; k++) {
+      // Longitude wraps with a modulo, so the texture's two edges meet.
       let u = lon[k] + off;
-      if (u >= 1) u -= 1;
-      out32[idx[k]] = tex32[row[k] + ((u * tw) | 0)];
+      u -= Math.floor(u);
+      out32[idx[k]] = tex32[row[k] + Math.min(tw - 1, (u * tw) | 0)];
     }
     ctx.putImageData(frame, 0, 0);
     graticule();
