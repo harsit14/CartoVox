@@ -107,6 +107,8 @@ def shots(shots_dir: Path) -> None:
         if path.stem.startswith("chain-"):
             continue
         save(Image.open(path), f"app-{path.stem}.webp", width=1800, quality=80)
+        # A half-width copy for cards and phones (srcset ... 900w, ... 1800w).
+        save(Image.open(path), f"app-{path.stem}-900.webp", width=900, quality=78)
 
 
 def main() -> None:
