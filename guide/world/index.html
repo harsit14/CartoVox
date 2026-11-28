@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The map, atlas and travel — the CartoVox guide</title>
+  <meta name="description" content="Read a world on its map, ask why a place is the way it is, change it with Sculpt, canals and dams, play disasters in the Cataclysm Lab, explore the Underworld and 3D, render artwork, draw atlas plates, export and plan journeys.">
+  <link rel="canonical" href="https://cartovox.org/guide/world/">
+  <meta name="theme-color" content="#0b0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The map, atlas and travel — the CartoVox guide">
+  <meta property="og:description" content="Read a world on its map, ask why a place is the way it is, change it with Sculpt, canals and dams, play disasters in the Cataclysm Lab, explore the Underworld and 3D, render artwork, draw atlas plates, export and plan journeys.">
+  <meta property="og:url" content="https://cartovox.org/guide/world/">
+  <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
+  <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
+  <link rel="stylesheet" href="/css/site.css?v=96afb811cd">
+  <link rel="stylesheet" href="/css/guide.css?v=e0ce133a2a">
+</head>
+<body class="doc-page guide-page">
+<a class="skip" href="#main">Skip to content</a>
+<!-- RELEASE-1.1: remove this note when CartoVox 1.1 is published (one <p> per page; grep RELEASE-1.1). -->
+<p class="soon-banner" role="note"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1, which updates itself when 1.1 is out. <a href="/releases/">Release notes</a></p>
+<header class="nav is-scrolled">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="CartoVox home">
+      <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="/features/">Features</a>
+      <a href="/discover/">Discover</a>
+      <a href="/guide/" aria-current="page">Guide</a>
+      <a href="/releases/">Releases</a>
+      <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
+    </nav>
+    <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="/features/">Features</a><a href="/discover/">Discover</a><a href="/guide/" aria-current="page">Guide</a><a href="/releases/">Releases</a><a href="/#download">Download free</a></nav></noscript>
+
+<main id="main" class="guide">
+  <aside class="guide-toc" aria-label="Guide contents">
+    <div class="guide-find" role="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3a7 7 0 0 1 5.6 11.2l5.1 5.1-1.4 1.4-5.1-5.1A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"/></svg>
+      <input type="search" placeholder="Search the guide  ( / )" aria-label="Search the guide" autocomplete="off" spellcheck="false">
+      <div class="guide-find-results" aria-live="polite" hidden></div>
+    </div>
+    <p class="eyebrow">The guide</p>
+    <nav class="toc-list" aria-label="Guide pages">
+      <a class="toc-page" href="/guide/">Start here</a>
+      <a class="toc-page" href="/guide/library/">Library, Discover &amp; Make</a>
+      <a class="toc-page" href="/guide/create/">Create</a>
+      <a class="toc-page" href="/guide/world/" aria-current="page">World: map &amp; atlas</a>
+      <a class="toc-sub" href="#map-reading">Read the map</a>
+      <a class="toc-sub" href="#planet">Continents, 3D and the sky</a>
+      <a class="toc-sub" href="#underworld">The Underworld</a>
+      <a class="toc-sub" href="#sculpt">Change the world</a>
+      <a class="toc-sub" href="#render">Render Studio</a>
+      <a class="toc-sub" href="#atlas">The illustrated atlas</a>
+      <a class="toc-sub" href="#export">Export</a>
+      <a class="toc-sub" href="#travel">Travel and contagion</a>
+      <a class="toc-page" href="/guide/play/">Campaign &amp; table</a>
+      <a class="toc-page" href="/guide/write/">Write</a>
+      <a class="toc-page" href="/guide/reference/">Reference</a>
+    </nav>
+  </aside>
+
+  <div class="guide-body">
+    <header class="guide-head">
+      <p class="eyebrow">The guide · World</p>
+      <h1>The map, the atlas and the road.</h1>
+      <p class="lede">World is where a finished world lives. Map reads it and changes it, Atlas draws it as illustrated plates, and Travel plans the road. Campaign and Scene Studio, for play, have <a href="/guide/play/">their own page</a>.</p>
+      <p class="guide-note">Written for <b>CartoVox 1.1</b>, coming soon. Today’s download is <b>CartoVox 1.0.1</b>: everything here works in it except what carries the <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span> tag. Screenshots are from 1.1.</p>
+    <div class="guide-find" role="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3a7 7 0 0 1 5.6 11.2l5.1 5.1-1.4 1.4-5.1-5.1A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"/></svg>
+      <input type="search" placeholder="Search the guide  ( / )" aria-label="Search the guide" autocomplete="off" spellcheck="false">
+      <div class="guide-find-results" aria-live="polite" hidden></div>
+    </div>
+      <details class="mobile-contents">
+        <summary>Guide contents</summary>
+        <nav class="toc-list mobile-toc" aria-label="Guide pages">
+      <a class="toc-page" href="/guide/">Start here</a>
+      <a class="toc-page" href="/guide/library/">Library, Discover &amp; Make</a>
+      <a class="toc-page" href="/guide/create/">Create</a>
+      <a class="toc-page" href="/guide/world/" aria-current="page">World: map &amp; atlas</a>
+      <a class="toc-sub" href="#map-reading">Read the map</a>
+      <a class="toc-sub" href="#planet">Continents, 3D and the sky</a>
+      <a class="toc-sub" href="#underworld">The Underworld</a>
+      <a class="toc-sub" href="#sculpt">Change the world</a>
+      <a class="toc-sub" href="#render">Render Studio</a>
+      <a class="toc-sub" href="#atlas">The illustrated atlas</a>
+      <a class="toc-sub" href="#export">Export</a>
+      <a class="toc-sub" href="#travel">Travel and contagion</a>
+      <a class="toc-page" href="/guide/play/">Campaign &amp; table</a>
+      <a class="toc-page" href="/guide/write/">Write</a>
+      <a class="toc-page" href="/guide/reference/">Reference</a>
+        </nav>
+      </details>
+    </header>
+
+    <section id="map-reading" data-find data-toc="Read the map">
+      <p class="eyebrow">World › Map</p>
+      <h2>Read the map</h2>
+      <p>The map is the page. At the top left, <b>World overview</b> summarises the world and <b>Map layers</b> opens every view. <b>Saved views</b> and <b>Find places</b> sit beside them. The toolbar along the bottom holds <b>Map appearance</b>, <b>Sculpt terrain</b>, <b>Export</b> and <b>Tools</b>, and you can drag it anywhere. Zoom, <b>Fit</b> and full screen are at the bottom right, and the key is at the bottom left.</p>
+
+      <div class="task" id="layers" data-find>
+      <h3>Change the view</h3>
+      <p class="where">Where: <span class="path">World › Map › Map layers</span></p>
+      <p>Over ninety views share one geography, grouped as terrain and geology, climate, water and atmosphere, society, cartography, atlas plates and projections. Type in <b>Search all map layers</b> to find one. On rainfall, biome, soil, realm and similar views, the key is a filter: choose classes to show or hide. A few views answer a question for a story, such as <b>Water security &amp; drought resilience</b>, the agricultural calendar and floodplain exposure.</p>
+    </div>
+
+      <div class="task" id="inspector" data-find>
+      <h3>Click a place and ask why</h3>
+      <p class="where">Where: click the map; <span class="path">Tools › Explain climate</span>; <span class="path">Tools › World facts</span></p>
+      <p>Click a land cell for its height, climate, rivers, soil, bedrock, biome, realm and any model warnings. A place's card has its <b>Climate chart</b>, an almanac of daylight, moons and tides, and the night sky. <b>Explain climate</b> shows why a place is wet or dry. <b>World facts</b> lists the world's records and statistics. Select a town, river or realm to rename it everywhere it appears.</p>
+    </div>
+
+      <div class="task" id="look" data-find>
+      <h3>Change how it looks</h3>
+      <p class="where">Where: <span class="path">World › Map › Map appearance</span></p>
+      <p>Choose a map look, from shaded relief and Satellite to Vintage atlas, Ink and wash and Night atlas. Set the shallows, the season's snow, the projection and the detail level. <b>Sharpen as I zoom</b> keeps the map crisp close up. In 1.1, pick a <b>Realm palette</b> for political maps, use <b>Turn view</b> and a central meridian to recentre the world, and compare a familiar landmass at the map's scale with <b>True size</b> <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span>.</p>
+    </div>
+
+      <div class="task" id="style-packs" data-find>
+      <h3>Use or make a style pack <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span></h3>
+      <p class="where">Where: Map appearance's looks; style packs in Discover</p>
+      <p>A <code>.cvxstyle</code> file carries a whole look: colour ramps, map furniture, symbols and fonts (where their licences allow). Preview the listed changes before you apply them, and undo them together. To make your own, choose a look, build colour ramps with stops in real units, sketch symbols on a grid, then export the pack.</p>
+    </div>
+
+      <div class="task" id="toolbar" data-find>
+      <h3>Find a tool</h3>
+      <p class="where">Where: <span class="path">World › Map › Tools</span></p>
+      <p>Tools holds the instruments: <b>Measure</b>, <b>Landmarks</b>, <b>Deposits</b>, <b>Climate Lab</b>, <b>Weather</b>, <b>Sky &amp; planet</b>, <b>Tectonics</b>, <b>Erosion Lab</b>, <b>Coast Lab</b>, <b>Continents &amp; regions</b>, <b>Nations</b>, <b>Name forge</b>, <b>Trade flows</b> and more. Most have a single-key shortcut, listed with <kbd>?</kbd>. Your <a href="/guide/#focus">workspace focus</a> puts your tools first.</p>
+    </div>
+    </section>
+
+    <section id="planet" data-find data-toc="Continents, 3D and the sky">
+      <p class="eyebrow">Closer maps</p>
+      <h2>Continents, regions, 3D and the sky</h2>
+      <div class="task" id="continents" data-find>
+      <h3>Open a continent or region at finer detail</h3>
+      <p class="where">Where: <span class="path">Tools › Continents &amp; regions</span></p>
+      <p>Build any continent, or a region you draw, as its own finer map, with every view, its own borders, roads and names, and large exports up to 16,384 pixels. <kbd>Esc</kbd> goes back to the world.</p>
+    </div>
+      <div class="task" id="explore-3d" data-find>
+      <h3>Fly over it in 3D <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span></h3>
+      <p class="where">Where: on a continent or region map, <span class="path">Tools › Explore in 3D</span>; a built city's <b>More</b> menu</p>
+      <p>Fly with the keys and mouse, and set the time of day and the season. Click a pin for its card. Save viewpoints as waypoints, play the route, and export the flight as MP4 or WebM, up to 4K.</p>
+    </div>
+      <div class="task" id="sky" data-find>
+      <h3>Read the sky and the weather</h3>
+      <p class="where">Where: <span class="path">Tools › Sky &amp; planet</span>; <span class="path">Tools › Weather</span></p>
+      <p>The weather year plays on the map, with storms, isobars and the aurora. Sky &amp; planet lists eclipses, prints star charts and lets you draw your own constellations. In 1.1 it adds an orrery and a spinning-globe export, rings included <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span>.</p>
+    </div>
+    </section>
+
+    <section id="underworld" data-find data-toc="The Underworld">
+      <p class="eyebrow">Below ground <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span></p>
+      <h2>The Underworld</h2>
+      <p>Every world has an Underworld, read from its own rock, water and heat: caverns, tunnels, underground rivers and seas at three depths. Find it under <span class="path">Map layers › Terrain &amp; geology › Underworld</span>. Turn on <b>Underworld portals</b> in landmarks to see the cenotes, caves and shafts that lead down. Underground features can be found in search alongside places on the surface. To see the rock beneath a line, draw it with <b>Measure</b> and choose <b>Cutaway</b>, then save the block as SVG, PNG or PDF.</p>
+      <figure class="guide-fig">
+      <div class="window"><img src="/img/app-11-underworld.webp?v=446e63879d" srcset="/img/app-11-underworld-900.webp?v=8a1b1d1ceb 900w, /img/app-11-underworld.webp?v=446e63879d 1800w" sizes="(min-width: 1280px) 860px, (min-width: 1040px) 66vw, 100vw" width="1800" height="1125" alt="The Underworld map: a dark map of caverns, underground seas and tunnels with their names, and a key" loading="lazy" decoding="async"></div>
+      <figcaption>The Underworld view, drawn in its own dark style with names and a key.</figcaption>
+    </figure>
+    </section>
+
+    <section id="sculpt" data-find data-toc="Change the world">
+      <p class="eyebrow">Sculpt terrain</p>
+      <h2>Change the world</h2>
+      <div class="task" id="sculpt-terrain" data-find>
+      <h3>Sculpt terrain, then review</h3>
+      <p class="where">Where: <span class="path">World › Map › Sculpt terrain</span></p>
+      <p>Raise, lower, paint, stamp landforms, move an island, carve a river or protect an area. Edits stay pending until <b>Review &amp; re-simulate</b>, which shows the affected area and systems before you apply them. Small edits rebuild locally. New islands, opened straits and ice-worn coasts rebuild the whole world. <b>Build comparison draft</b> builds the result beside the original. <b>Quick look</b> previews a draft.</p>
+    </div>
+      <div class="task" id="waterworks" data-find>
+      <h3>Cut a canal or dam a valley <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span></h3>
+      <p class="where">Where: <span class="path">Sculpt terrain › Road</span> › <b>Kind</b> › <b>Waterworks</b> › Canal or Dam</p>
+      <p>Click points across the land and press Enter. A canal between two waters opens a shipping route. A dam floods a reservoir behind it, and the review lists the places and roads that change. After you apply it, select the waterwork on the map to read its route, reservoir and seasonal flow downstream.</p>
+    </div>
+      <figure class="guide-fig">
+      <div class="window"><img src="/img/app-11-sculpt.webp?v=326d736634" srcset="/img/app-11-sculpt-900.webp?v=9371560f88 900w, /img/app-11-sculpt.webp?v=326d736634 1800w" sizes="(min-width: 1280px) 860px, (min-width: 1040px) 66vw, 100vw" width="1800" height="1125" alt="Sculpt terrain open beside the map, with the Road tool's kind set to Canal and a pending canal drawn across a neck of land" loading="lazy" decoding="async"></div>
+      <figcaption>A canal drawn in Sculpt and waiting for review. Nothing changes until it is applied.</figcaption>
+    </figure>
+      <div class="task" id="vector-editor" data-find>
+      <h3>Move a border, coast or road by hand <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span></h3>
+      <p class="where">Where: <span class="path">Tools › Edit vectors</span></p>
+      <p>Drag the points of a realm or province border, a coast, a river, a road or a sea lane. Lines can snap to ridges and rivers, and the area and population update as you go. Roads and borders change at once. River and coast edits tell you when the terrain needs a rebuild. In 1.0.1, nations and rivers are edited from <span class="path">Tools › Nations</span> and Sculpt.</p>
+    </div>
+      <div class="task" id="cataclysm" data-find>
+      <h3>Play a disaster in the Cataclysm Lab <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span></h3>
+      <p class="where">Where: <span class="path">World › Map › Tools › Cataclysm Lab</span></p>
+      <p>Choose a supervolcano, an asteroid, a great earthquake or a rising sea, choose a spot on the world, continent or region map, and play it. Tsunamis cross your own seas, ash drifts on your own winds, and the panel lists the towns struck. Nothing changes until you keep it. A dated event goes to the Chronicle, a crater or caldera goes to Sculpt for review, and the event exports as a GIF, WebP, MP4 or WebM animation.</p>
+    </div>
+      <figure class="guide-fig">
+      <div class="window"><img src="/img/app-11-cataclysm.webp?v=58908dcd46" srcset="/img/app-11-cataclysm-900.webp?v=647d45605c 900w, /img/app-11-cataclysm.webp?v=58908dcd46 1800w" sizes="(min-width: 1280px) 860px, (min-width: 1040px) 66vw, 100vw" width="1800" height="1125" alt="The Cataclysm Lab panel over the map during a supervolcano eruption: an ash plume spreading downwind and a list of the places struck" loading="lazy" decoding="async"></div>
+      <figcaption>A supervolcano on day 8, with the ash on the world's own winds and the towns it reached.</figcaption>
+    </figure>
+      <div class="task" id="labs" data-find>
+      <h3>Test a different climate</h3>
+      <p class="where">Where: <span class="path">Tools › Climate Lab</span></p>
+      <p>Rebuild the world's climate under changed rules, such as a warmer planet or wetter oceans, and compare the result before you keep it.</p>
+    </div>
+    </section>
+
+    <section id="render" data-find data-toc="Render Studio">
+      <p class="eyebrow">Artwork</p>
+      <h2>Render Studio</h2>
+      <p>Render Studio turns the open world into finished map art. An art direction sets the whole look in one click, and you can then change the palette, linework, lettering and atmosphere. Turn the terrain into editable drawing layers, stamp symbols, letter realms and rivers, and add a compass rose, scale bar, cartouche, legend and border. Nothing you draw changes the world's data. In 1.1 <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span>: design your own compass roses, borders and cartouches, import Wonderdraft symbol folders, and download a layered Photoshop file up to 8K.</p>
+    </section>
+
+    <section id="atlas" data-find data-toc="The illustrated atlas">
+      <p class="eyebrow">World › Atlas</p>
+      <h2>The illustrated atlas</h2>
+      <p>Atlas holds the world's illustrated plates (the world, each continent and each region), labelled or blank, in looks from CartoVox and Parchment to Woodcut, Watercolour, Medieval portolan, Admiralty chart and Night atlas. If you skipped plates at build time, <b>Render remaining plates</b> draws them without re-simulating. <b>Edit plate</b> moves, hides or swaps any stamp and sets the frame and title. <b>Edit labels</b> moves the names.</p>
+      <figure class="guide-fig">
+      <div class="window"><img src="/img/app-11-atlas.webp?v=0f57db59ac" srcset="/img/app-11-atlas-900.webp?v=24bfba8f23 900w, /img/app-11-atlas.webp?v=0f57db59ac 1800w" sizes="(min-width: 1280px) 860px, (min-width: 1040px) 66vw, 100vw" width="1800" height="1125" alt="World › Atlas showing an illustrated continent plate with its labels, and the list of plates by world, continents and regions" loading="lazy" decoding="async"></div>
+      <figcaption>An illustrated continent plate in World › Atlas.</figcaption>
+    </figure>
+    </section>
+
+    <section id="export" data-find data-toc="Export">
+      <p class="eyebrow">World › Map › Export</p>
+      <h2>Everything that exports</h2>
+      <p><b>Export</b> on the map's toolbar holds every way out. Your focus decides which come first.</p>
+      <ul class="feat">
+        <li><b>Images and print</b>: the current view as PNG, large maps up to 16K, vector maps as SVG with named layers or vector PDF, and a bound atlas PDF with a cover, contents, legend and gazetteer.</li>
+        <li><b>Books and sites</b>: a World Bible as PDF or EPUB, an offline web map, and in 1.1 a <b>World website</b> with linked dossiers, timeline and relationship diagrams <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span>.</li>
+        <li><b>Data and tools</b>: GeoJSON, GeoPackage, GeoTIFF, STL and OBJ terrain, an Obsidian vault, a game engine pack for Unity, Unreal or Godot, and a <code>.cartovox</code> project backup.</li>
+        <li><b>For paper and hands</b> <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span>: paper globe gores, interlocking square or hex terrain tiles as STL and 3MF with an assembly sheet, and schematic route maps.</li>
+        <li><b>For the table</b>: a treasure map handout, hexcrawl sheets, and in 1.1 <a href="/guide/play/#props">in-world props</a> <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span>.</li>
+      </ul>
+    </section>
+
+    <section id="travel" data-find data-toc="Travel and contagion">
+      <p class="eyebrow">World › Travel</p>
+      <h2>Journeys, and things that spread</h2>
+      <div class="task" id="journey" data-find>
+      <h3>Plan a journey</h3>
+      <p class="where">Where: <span class="path">World › Travel</span></p>
+      <p>Choose <b>From</b> and <b>To</b>, a way of travel and a season, then <b>Calculate journey</b>. Routes weigh terrain, roads, rivers, currents, borders and hazards, and report the distance, days, supplies, dry stretches and tolls. <b>Stops on the way</b> runs one journey through several towns. Save a route to use in a campaign.</p>
+    </div>
+      <div class="task" id="contagion" data-find>
+      <h3>Watch a plague, rumour or idea spread <span class="tag-new" title="Part of CartoVox 1.1, coming soon. Today’s download is 1.0.1.">New in 1.1 · coming soon</span></h3>
+      <p class="where">Where: <span class="path">World › Travel › Journey setup › Contagion map</span>, or <span class="path">Tools › Contagion map</span></p>
+      <p>Choose what is spreading (a plague, a heresy, an invention or a rumour) and the town it starts in, then <b>Let it spread</b>. Follow its arrival along local routes on the world, a continent or a region, and read the dates and the towns reached. Keep the outbreak as an era in the Chronicle, which you can undo.</p>
+    </div>
+      <figure class="guide-fig">
+      <div class="window"><img src="/img/app-11-contagion.webp?v=663fcf15d1" srcset="/img/app-11-contagion-900.webp?v=ef758af473 900w, /img/app-11-contagion.webp?v=663fcf15d1 1800w" sizes="(min-width: 1280px) 860px, (min-width: 1040px) 66vw, 100vw" width="1800" height="1125" alt="The Contagion map: a plague spreading outward from a town along the roads, with a chart of towns reached over time and a list of realms" loading="lazy" decoding="async"></div>
+      <figcaption>A plague after 540 days: the arrivals chart, the realms reached, and the routes it took.</figcaption>
+    </figure>
+    </section>
+
+    <nav class="guide-pager" aria-label="Guide pages">
+      <a class="prev" href="/guide/create/"><small>Previous</small>Create</a>
+      <a class="next" href="/guide/play/"><small>Next</small>Campaign &amp; table</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/img/lockup-v3.svg?v=457fbc1a9d" width="200" height="258" alt="CartoVox" loading="lazy" decoding="async">
+      <p class="footer-tag">Simulate. Map. Write. Play.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <p class="footer-h">CartoVox</p>
+        <a href="/features/">Features</a>
+        <a href="/discover/">Discover</a>
+        <a href="/#download">Download</a>
+        <a href="/releases/">Releases</a>
+      </div>
+      <div>
+        <p class="footer-h">Learn</p>
+        <a href="/guide/">Guide</a>
+        <a href="/guide/videos/">Video guides</a>
+        <a href="/features/#faq">FAQ</a>
+        <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord community</a>
+      </div>
+      <div>
+        <p class="footer-h">Legal</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/eula/">Licence</a>
+        <a href="/third-party-notices/">Third-party notices</a>
+      </div>
+    </nav>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds and screenshots shown here were made with it. This site sets no cookies and runs no analytics.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=b57a5ebe1e" defer></script>
+<script src="/js/guide.js?v=3369a2ca75" defer></script>
+</body>
+</html>

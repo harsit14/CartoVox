@@ -1,0 +1,95 @@
+/* The Start-here guide and the release archive. Loaded after site.css on
+   /guide/ and /releases/ only; uses site.css's tokens and its .guide grid. */
+
+/* ---------- Tags ---------- */
+.tag-new { display: inline-block; vertical-align: 0.15em; margin-left: 6px; padding: 1px 8px; border: 1px solid rgba(217,180,92,0.55); border-radius: 999px; font: 600 0.62rem/1.6 var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold-2); background: rgba(217,180,92,0.1); white-space: nowrap; }
+h2 .tag-new, h3 .tag-new { font-size: 0.56rem; }
+.path { font-family: var(--font-ui); font-size: 0.88em; color: var(--text); background: rgba(255,255,255,0.05); border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
+.guide-body .muted, .guide-head .muted { color: var(--text-3); }
+
+/* ---------- Sidebar: search + pages ---------- */
+.guide-find { position: relative; margin: 0 0 18px; }
+.guide-find input { width: 100%; font: 0.9rem/1.4 var(--font-ui); color: var(--text); background: var(--ink-2); border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 12px 10px 34px; }
+.guide-find input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(217,180,92,0.18); }
+.guide-find input::placeholder { color: var(--text-3); }
+.guide-find svg { position: absolute; left: 11px; top: 12px; width: 15px; height: 15px; fill: var(--text-3); pointer-events: none; }
+.guide-find-results { margin-top: 8px; display: grid; gap: 2px; max-height: min(60vh, 520px); overflow: auto; }
+.guide-find-results[hidden] { display: none; }
+.guide-find-results a { display: block; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: var(--text); font: 0.85rem/1.35 var(--font-ui); }
+.guide-find-results a:hover, .guide-find-results a:focus-visible { background: rgba(217,180,92,0.1); outline: none; }
+.guide-find-results small { display: block; color: var(--text-3); font-size: 0.74rem; margin-top: 2px; }
+.guide-find-results mark { background: none; color: var(--gold-2); font-weight: 600; }
+.guide-find-empty { padding: 8px 10px; font: 0.82rem var(--font-ui); color: var(--text-3); }
+.guide-head .guide-find { display: none; max-width: 520px; margin-top: 20px; }
+.toc-list a.toc-page { font-weight: 500; color: var(--text); }
+.toc-list a.toc-page[aria-current="page"] { color: var(--gold-2); border-left-color: var(--gold); }
+
+/* ---------- Page furniture ---------- */
+.guide-note { margin: 18px 0 0; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,0.02); font: 0.86rem/1.5 var(--font-ui); color: var(--text-2); max-width: 70ch; }
+.guide-note b { color: var(--text); font-weight: 600; }
+.guide-body > section > h2 { scroll-margin-top: 90px; }
+.guide-body section > p, .guide-body section > ul, .guide-body section > ol { max-width: 70ch; }
+.guide-fig img { display: block; width: 100%; height: auto; }
+.guide-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
+.guide-pager a { display: block; padding: 16px 18px; border: 1px solid var(--line-strong); border-radius: 12px; text-decoration: none; color: var(--text); font-family: var(--font-ui); }
+.guide-pager a:hover { border-color: var(--gold); background: rgba(217,180,92,0.06); }
+.guide-pager small { display: block; color: var(--text-3); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+.guide-pager .next { text-align: right; grid-column: 2; }
+
+/* Tasks: a short heading, where it lives, two or three sentences. */
+.task { margin: 22px 0 0; max-width: 72ch; scroll-margin-top: 90px; }
+.guide-body .task h3 { margin: 0 0 6px; font-size: 1.12rem; }
+.task .where { margin: 0 0 6px; font: 0.84rem/1.5 var(--font-ui); color: var(--text-3); }
+.task p { margin: 0 0 8px; }
+
+/* Six workspace cards on the Start page. */
+.ws-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 18px 0 8px; padding: 0; list-style: none; }
+.ws-grid li { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--ink-1); }
+.ws-grid b { display: block; font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-2); margin-bottom: 4px; }
+.ws-grid span { display: block; font: 0.86rem/1.45 var(--font-ui); color: var(--text-2); }
+.ws-grid a { color: inherit; text-decoration: none; }
+.ws-grid li:hover { border-color: var(--line-strong); }
+
+/* Start page: the path through the guide. */
+.guide-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 18px 0; }
+.guide-map a { display: block; padding: 16px 18px; border: 1px solid var(--line-strong); border-radius: 12px; text-decoration: none; color: var(--text-2); font: 0.86rem/1.45 var(--font-ui); }
+.guide-map a b { display: block; color: var(--text); font-size: 0.98rem; margin-bottom: 4px; }
+.guide-map a:hover { border-color: var(--gold); background: rgba(217,180,92,0.06); }
+
+/* ---------- Release archive ---------- */
+.release-latest { margin: 0 0 36px; padding: 26px 28px; border: 1px solid rgba(217,180,92,0.4); border-radius: 16px; background: linear-gradient(160deg, rgba(217,180,92,0.08), rgba(217,180,92,0.01)); }
+.release-latest h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 6px 0 8px; }
+.release-latest .release-headline { font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; color: var(--text); margin: 0 0 12px; }
+.release-latest p { color: var(--text-2); max-width: 70ch; }
+.release-latest .btn { margin-top: 8px; }
+.release-era { margin: 40px 0 0; scroll-margin-top: 90px; }
+.release-era > h2 { font-size: 1.25rem; margin: 0 0 4px; }
+.release-era > p { margin: 0 0 14px; color: var(--text-3); font: 0.86rem/1.5 var(--font-ui); max-width: 70ch; }
+.release-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.release-list li { margin: 0; }
+.release-row { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; height: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; background: var(--ink-1); scroll-margin-top: 90px; }
+.release-row:hover, .release-row:focus-visible { border-color: var(--gold); background: rgba(217,180,92,0.05); }
+.release-row .rv { grid-row: span 2; font: 600 0.95rem/1.3 var(--font-ui); color: var(--gold-2); min-width: 6.2em; }
+.release-row time { font: 0.74rem/1.3 var(--font-ui); color: var(--text-3); letter-spacing: 0.04em; }
+.release-row .rh { font-size: 0.95rem; line-height: 1.4; color: var(--text); }
+.release-highlights { margin: 8px 0 32px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.release-highlights > h2, .release-full > h2 { font-size: 1.4rem; margin: 24px 0 10px; scroll-margin-top: 90px; }
+.release-highlights .section-lede { font-size: 1.04rem; }
+.release-highlights ul.feat { list-style: none; padding: 0; display: grid; gap: 9px; }
+.release-highlights ul.feat li { position: relative; padding-left: 22px; line-height: 1.55; color: var(--text-2); }
+.release-highlights ul.feat li::before { content: ""; position: absolute; left: 3px; top: 0.6em; width: 8px; height: 8px; border: 1px solid var(--gold); transform: rotate(45deg); }
+.release-highlights b { color: var(--text); font-weight: 500; }
+.release-pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 36px; font-family: var(--font-ui); font-size: 0.9rem; }
+
+@media (max-width: 1040px) {
+  .guide-head .guide-find { display: block; }
+  .ws-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .ws-grid, .release-list { grid-template-columns: 1fr; }
+  .guide-pager { grid-template-columns: 1fr; }
+  .guide-pager .next { grid-column: 1; }
+  .path { white-space: normal; }
+  .release-latest { padding: 20px; }
+}
+.ws-grid b .tag-new { display: inline-block; font-family: var(--font-ui); letter-spacing: 0.06em; margin-left: 4px; vertical-align: 0.1em; }

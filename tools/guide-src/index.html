@@ -1,0 +1,106 @@
+<!--
+title: Start here — the CartoVox guide
+description: Start here with CartoVox: install it, learn the six workspaces, the top bar and ⌘K search, then spend a first hour building, exploring, changing and writing in a world.
+eyebrow: The guide · Start here
+heading: Your first hour with CartoVox.
+lede: Install it, learn where things are, then follow one world from a click on the map to a chapter and a game night. Each step takes a few minutes and ends with something you can see.
+-->
+<section id="install" data-toc="Install and first launch">
+  <p class="eyebrow">1 · Install</p>
+  <h2>Install and first launch</h2>
+  <p>CartoVox is free and works offline, with no account and no sign-in. Your worlds stay on your computer.</p>
+  <ol class="steps">
+    <li><b>Download</b> the installer for your computer from the <a href="/#download">download section</a>: an Apple Silicon Mac (macOS 14 or later), Windows 10 or 11 (x64), or Linux x64 (glibc 2.34 or newer, as a <code>.deb</code> or a portable folder). Each release publishes checksums, so you can check a download before you run it.</li>
+    <li><b>Open it past the warning.</b> The installers are not code-signed yet. On a Mac, Control-click CartoVox and choose <b>Open</b>, or use <b>System Settings › Privacy &amp; Security › Open Anyway</b>. On Windows, choose <b>More info › Run anyway</b>.</li>
+    <li><b>Sign the licence.</b> The first window is the licence. Read it, type your name beside the date and tick the box. The signature stays on your computer, and <b>Settings › Licence</b> shows it again.</li>
+    <li><b>Meet the title screen.</b> Its menu leads to <b>Example world</b>, <b>New world</b>, <b>Library</b>, <b>Write</b>, <b>Make</b>, <b>Settings</b> and <b>Help &amp; guides</b>, plus <b>Discover</b> in 1.1 {new}. The first time you open the app, a welcome card sits beside the menu.</li>
+  </ol>
+  <shot name="11-welcome" alt="The CartoVox title screen: the menu on the left, a globe, and the welcome card headed Click a place. Ask it why., with Build the example world and Start my own world">The title screen on first launch. The welcome card's map answers a click, and its buttons build the example world or start your own.</shot>
+  <p>CartoVox checks for a new version when it opens, at most once a day, and sends nothing about you. Turn that off in <b>Settings › Updates &amp; support</b>. On a Mac and Windows it updates itself. On Linux it downloads the new package for you, and 1.1 can also update and restart in place {new}.</p>
+</section>
+
+<section id="layout" data-toc="How the app is laid out">
+  <p class="eyebrow">2 · Orientation</p>
+  <h2>How the app is laid out</h2>
+  <p>One window holds everything. The <b>rail</b> on the left switches between six workspaces. The <b>top bar</b> shows the sections of the workspace you are in, plus search. Whatever you open, it works on the same world.</p>
+  <shot name="11-library" alt="The Library: the rail on the left with Create, World, Write, Library, Discover and Make; the top bar with Ask or do anything; a world card for the example world with Resume">The Library, with the rail on the left and the top bar above. <b>Continue your world</b> reopens the world you were last in.</shot>
+  <ul class="ws-grid">
+    <li><a href="/guide/library/#library"><b>Library</b><span>Your saved worlds, Continue, the trash, and in 1.1 the Series hub.</span></a></li>
+    <li><a href="/guide/library/#discover"><b>Discover {new}</b><span>47 hand-picked worlds, plus cities, ships and styles, each built in one click.</span></a></li>
+    <li><a href="/guide/create/"><b>Create</b><span>Brief and Deep Time: describe a world, pick a candidate, build it. Or bring your own map.</span></a></li>
+    <li><a href="/guide/world/"><b>World</b><span>Map, Atlas, Travel, Campaign and Scene Studio for the open world.</span></a></li>
+    <li><a href="/guide/write/"><b>Write</b><span>Chronicle, Compendium and Manuscript: history, lore and the book.</span></a></li>
+    <li><a href="/guide/library/#make"><b>Make</b><span>Short guides to a finished map, handout, site or book.</span></a></li>
+  </ul>
+  <p>At the bottom of the rail are <b>Review</b> (names, continuity and open questions for this world), <b>Settings</b> and <b>Help</b>, which has the illustrated manual and guided tours. The CartoVox logo at the top goes back to the title screen.</p>
+
+  <div class="task" id="search-anything" data-find>
+    <h3>Search everything with <kbd>⌘K</kbd></h3>
+    <p class="where">Where: the top bar's <b>Ask or do anything</b>, or <kbd>⌘K</kbd> / <kbd>Ctrl K</kbd> anywhere</p>
+    <p>Type a place, a person, a tool or an action, such as “Underworld”, “export SVG” or a town's name, then press Enter to go there. In 1.1 the search also reaches city streets and shops, characters, Chronicle events and every line of your manuscript, and still finds a name you misspell {new}. <kbd>⌘1</kbd>–<kbd>⌘6</kbd> switch workspaces {new} (<kbd>⌘1</kbd>–<kbd>⌘5</kbd> in 1.0.1), and <kbd>⌘,</kbd> opens Settings.</p>
+  </div>
+  <shot name="11-search" alt="The command palette open over the map with a town name typed: places, realms, peoples and a Chronicle proposal listed, with a map preview of the first result">⌘K with a town's name typed. Results are grouped by kind, with a preview of the first one.</shot>
+
+  <div class="task" id="focus" data-find>
+    <h3>Put your kind of work first {new}</h3>
+    <p class="where">Where: the focus switch in the top bar (it reads <b>Everything</b>), or {{Settings › Workspace &amp; layout › Workspace focus}}</p>
+    <p>Choose <b>Novelist</b>, <b>Game master</b>, <b>Cartographer</b> or <b>Worldbuilder</b>, or combine two. That work's tools then lead the map's <b>Tools</b> menu, its exports lead <b>Export</b>, and its sections lead each workspace. Nothing is hidden. <b>Everything</b>, the default, keeps the usual order. To hide specialist tools, set <b>Tools shown</b> to <b>Essentials</b> in the same section, which 1.0.1 has too.</p>
+  </div>
+
+  <div class="callout">
+    <span class="callout-t">How to read a path</span>
+    <p>Bold words are labels exactly as the app writes them. {{World › Map › Tools › Cataclysm Lab}} means the <b>World</b> workspace in the rail, its <b>Map</b> section in the top bar, the <b>Tools</b> menu on the toolbar at the bottom of the map, then <b>Cataclysm Lab</b>. If you get lost, press <kbd>⌘K</kbd> and type what you want.</p>
+  </div>
+</section>
+
+<section id="first-hour" data-toc="Your first hour">
+  <p class="eyebrow">3 · Your first hour</p>
+  <h2>Your first hour, step by step</h2>
+  <p>Seven short tasks on one world. Do them in order or skip around. Build times depend on your computer: a Sketch world takes about 15 seconds on a fast Mac, a Full world about a minute and a half.</p>
+
+  <task id="step-example" title="1. Open a finished world" where="title screen › <b>Example world</b>, or the welcome card's <b>Build the example world</b>">
+  <p>The example is a real world in your own Library, ready to explore, change or delete. In 1.1 it is built from its recipe the first time you ask, which takes a minute or two {new}. Or go to <b>Discover</b> and choose <b>Build this world</b> on any of its 47 worlds {new}.</p>
+  <p class="muted">You should see: the world's map in World › Map, with its name in the top bar.</p>
+  </task>
+  <shot name="11-map" alt="World › Map showing the example world in relief, with World overview and Map layers at the top left and the toolbar along the bottom">World › Map. <b>World overview</b> and <b>Map layers</b> are at the top left. <b>Map appearance</b>, <b>Sculpt terrain</b>, <b>Export</b> and <b>Tools</b> share the toolbar at the bottom.</shot>
+
+  <task id="step-why" title="2. Click a place and ask why" where="{{World › Map}} › click land, or {{Tools › Explain climate}}">
+  <p>Click any land cell. The inspector gives its height, climate, rivers, soil, biome and realm. <b>Explain climate</b> shows how much the height, the land upwind and the moisture supply each count. Every map in CartoVox comes from one simulated planet, so each answer has a cause.</p>
+  <p class="muted">You should see: a dry place explained by mountains upwind or distance from the sea.</p>
+  </task>
+
+  <task id="step-layers" title="3. Look at the same world another way" where="{{World › Map › Map layers}}">
+  <p>Open <b>Map layers</b> and pick another view: biomes, rainfall, realms, trade or one of the illustrated looks. Type in <b>Search all map layers</b> to find one by name. In 1.1, try <b>Underworld</b> under <b>Terrain &amp; geology</b> for the caverns and underground rivers beneath the world {new}.</p>
+  </task>
+
+  <task id="step-own" title="4. Make a world of your own" where="{{Create › Brief}}">
+  <p>Under <b>How do you want to begin?</b>, choose <b>Generate a world</b>. Write a sentence or two under <b>Your world in a few sentences</b>, or start from a genre such as <b>Frozen north</b>. Choose <b>Search candidates</b>, then <b>Find 12 strong matches</b>. Click the candidate you like and continue to <b>Build</b>. Choose <b>Sketch world</b>, check the time and disk estimates, then <b>Create Sketch world</b>.</p>
+  <p class="muted">You should see: a new world in your Library, ready to edit. Rebuild it at Quick or Full detail when you like it.</p>
+  </task>
+
+  <task id="step-change" title="5. Change something and see what follows" where="{{World › Map › Sculpt terrain}}">
+  <p>Raise a range or carve a valley with Sculpt. In 1.1, draw a canal or a dam under <b>Road › Kind › Waterworks</b> {new}. Edits stay pending until <b>Review &amp; re-simulate</b>, which shows what will change before you apply it. Each applied edit leaves a revision you can restore. For something faster, play a disaster in {{Tools › Cataclysm Lab}} {new}: nothing changes until you choose to keep it.</p>
+  </task>
+
+  <task id="step-write" title="6. Write a chapter beside the map" where="{{Write › Manuscript}}">
+  <p>Choose <b>New book</b>, then <b>Add chapter</b>. Type <code>[[</code> and a place's name to link it, then pin a scene to a place and a day. The panel then shows that day's weather, season and travel time. <b>Run checks</b> flags names spelled two ways and travel that couldn't happen.</p>
+  </task>
+  <shot name="11-manuscript" alt="Write › Manuscript with a book called The Ash Winter and a chapter of demonstration prose on the page">A chapter in Write › Manuscript. The world's places, people and calendar stay one click away.</shot>
+
+  <task id="step-table" title="7. Take it to the table" where="{{World › Campaign}}">
+  <p>Choose a starting point, such as a sandbox hexcrawl, and create the campaign. <b>Open tabletop</b> puts a scene on screen with tokens, fog and dice. <b>Invite players</b> lets people on your network join from a phone, tablet or computer. In 1.1, also try the <b>Story canvas</b> and <b>Props Studio</b> {new}.</p>
+  </task>
+
+  <div class="callout">
+    <span class="callout-t">Edits you can review and undo</span>
+    <p>Re-simulating rebuilds what an edit affects. Names and your writing follow the places that survive, and places that disappear are listed for you to review. A rebuild at finer detail, or with a newer version, can move coasts and towns. Keep a comparison draft or a backup when you want the original too.</p>
+  </div>
+</section>
+
+<section id="next" data-toc="Where next">
+  <p class="eyebrow">4 · Keep going</p>
+  <h2>Where next</h2>
+  <p>The rest of the guide covers one workspace per page, with short tasks you can look up. Search with the box at the top of the contents, or press <kbd>/</kbd>. Inside the app, <b>Help</b> has the illustrated manual and guided tours, such as <b>Your first world in ten minutes</b> and tours for game masters, novelists and map-makers.</p>
+  <!-- guide-map -->
+  <p>Older captioned videos (recorded in Delta V6) are on the <a href="/guide/videos/">video guides</a> page. To see what changed in each version, go to <a href="/releases/">Releases</a>. Questions go to the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord</a>.</p>
+</section>

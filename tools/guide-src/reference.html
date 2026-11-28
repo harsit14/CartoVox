@@ -1,0 +1,113 @@
+<!--
+title: Reference — the CartoVox guide
+description: CartoVox keyboard shortcuts, what a world writes to disk, answers to common questions, and the known limits of the simulation.
+eyebrow: The guide · Reference
+heading: Keys, files, questions and limits.
+lede: Things to look up. In the app, <kbd>?</kbd> opens the full key sheet, where you can also change the map tools' keys.
+-->
+<section id="shortcuts" data-toc="Keyboard">
+  <p class="eyebrow">Keyboard</p>
+  <h2>Keyboard shortcuts</h2>
+  <p>On Windows and Linux, read <kbd>Ctrl</kbd> for <kbd>⌘</kbd>.</p>
+  <h3>Anywhere</h3>
+  <table>
+    <tbody>
+      <tr><td class="w26"><kbd>⌘K</kbd></td><td>Search and commands: places, people, tools, settings and actions</td></tr>
+      <tr><td><kbd>⌘1</kbd>–<kbd>⌘6</kbd></td><td>Switch workspaces {new} (<kbd>⌘1</kbd>–<kbd>⌘5</kbd> in 1.0.1)</td></tr>
+      <tr><td><kbd>⌘,</kbd></td><td>Settings</td></tr>
+      <tr><td><kbd>⌘⇧H</kbd></td><td>Back to the title screen</td></tr>
+      <tr><td><kbd>?</kbd></td><td>The key sheet</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Close the panel in front, and return focus to the button that opened it</td></tr>
+    </tbody>
+  </table>
+  <h3>On the map, with nothing being typed</h3>
+  <table>
+    <tbody>
+      <tr><td class="w26"><kbd>M</kbd> <kbd>L</kbd> <kbd>C</kbd> <kbd>O</kbd></td><td>Measure · Landmarks · Explain climate · Deposits</td></tr>
+      <tr><td><kbd>S</kbd> <kbd>N</kbd> <kbd>K</kbd> <kbd>Y</kbd></td><td>Sculpt terrain · Render Studio · Climate Lab · Weather year</td></tr>
+      <tr><td><kbd>B</kbd> <kbd>W</kbd> <kbd>X</kbd> <kbd>F</kbd></td><td>Map layers · World overview · Export · Focus</td></tr>
+      <tr><td><kbd>=</kbd> <kbd>-</kbd> <kbd>0</kbd></td><td>Zoom in · zoom out · actual size</td></tr>
+      <tr><td><kbd>1</kbd>–<kbd>9</kbd></td><td>Switch views on a continent or region map</td></tr>
+      <tr><td><kbd>⌘Z</kbd> / <kbd>⇧⌘Z</kbd></td><td>Undo · redo a pending terrain edit while Sculpt is open</td></tr>
+      <tr><td><kbd>Tab</kbd> into the map</td><td><b>Keyboard map</b>: a cursor that reads the ground and jumps between places, for keyboard and screen-reader users</td></tr>
+    </tbody>
+  </table>
+  <h3>In the manuscript</h3>
+  <table>
+    <tbody>
+      <tr><td class="w26"><kbd>⌘S</kbd></td><td>Save now (it saves as you go anyway)</td></tr>
+      <tr><td><kbd>⌘F</kbd> / <kbd>⌘G</kbd></td><td>Find in the book · find next in this chapter</td></tr>
+      <tr><td><kbd>⌘⇧F</kbd></td><td>Focus mode</td></tr>
+      <tr><td><kbd>⌘/</kbd></td><td>The editor's own key sheet</td></tr>
+      <tr><td><code>[[</code></td><td>Link a place, person or page as you type</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="files" data-toc="What a world writes to disk">
+  <p class="eyebrow">On disk</p>
+  <h2>What a world writes to disk</h2>
+  <p>Each world is a folder in the CartoVox data folder, in an open layout. No account is involved. To move the folder, use {{Settings › Data &amp; privacy › Change save folder}}. The <code>CARTOVOX_DATA_DIR</code> environment variable overrides it.</p>
+  <table>
+    <thead><tr><th>File or folder</th><th>What it holds</th></tr></thead>
+    <tbody>
+      <tr><td><code>world_data.npz</code></td><td>Every simulated field as a NumPy array: elevation, climate, water, soils, biomes and more</td></tr>
+      <tr><td><code>world_summary.json</code> · <code>WORLDBOOK.md</code></td><td>The measurements as data, and the measured dossier</td></tr>
+      <tr><td><code>world_config.json</code></td><td>The full configuration, with the recipe you chose and the simulation version</td></tr>
+      <tr><td><code>name_registry.json</code> · <code>overrides.json</code></td><td>Every name and its identity · your terrain edits</td></tr>
+      <tr><td><code>plates/</code> · <code>city_plans/</code></td><td>Illustrated sheets and city plans</td></tr>
+      <tr><td><code>codex/</code></td><td>The Compendium as an Obsidian vault, with the books in <code>novels/</code>, one Markdown file per chapter</td></tr>
+      <tr><td><code>simulation_health.json</code></td><td>Scored checks of the simulation, with locations</td></tr>
+      <tr><td><code>revisions/</code></td><td>Restore points made by applied edits</td></tr>
+      <tr><td><code>exports/</code></td><td>What you exported</td></tr>
+    </tbody>
+  </table>
+  <p class="muted">Display caches are rebuildable, left out of backups and trimmed to a per-world budget. Deleted worlds wait in <code>worlds/.trash/</code>.</p>
+</section>
+
+<section id="questions" data-toc="Common questions">
+  <p class="eyebrow">Questions</p>
+  <h2>Common questions</h2>
+  <task id="q-greyed" title="A button is greyed out">
+  <p>Hover it, or reach it with the keyboard, and it says why. Usually no brief has been written yet, or an attached map is still waiting for its coastline check.</p>
+  </task>
+  <task id="q-time" title="How long will a build take?">
+  <p>Create's Build step gives the time, memory and disk for your exact choices, and learns from your own builds. On a fast Mac a Sketch world takes about 15 seconds, Quick about 30 and Full about 80, without illustrated plates. You can keep working while a build runs.</p>
+  </task>
+  <task id="q-rect" title="Why is the map a rectangle?">
+  <p>The world is simulated on a sphere and drawn flat: it wraps east to west, and the poles are real poles. A long, thin landmass near a pole is usually the projection. Check it on the globe or with Measure. Try another projection in Map appearance, or use {{Tools › Turn view}} to bring a continent off the edge.</p>
+  </task>
+  <task id="q-edit" title="I changed the terrain and nothing else changed">
+  <p>Edits wait until <b>Review &amp; re-simulate</b> and then <b>Apply and re-simulate</b>. Build a comparison draft to see exactly what will move before you commit.</p>
+  </task>
+  <task id="q-finer" title="I rebuilt at finer detail and the coast changed">
+  <p>That's expected. The broad geography stays, but coasts, rivers, towns and names can move on a finer grid. The rebuild is a separate project, so the world you chose stays as it was.</p>
+  </task>
+  <task id="q-lost" title="Where did my world, or my panel, go?">
+  <p>Deleted worlds stay in Library › <b>Trash</b> for 30 days. A missing tool is often hidden by <b>Tools shown › Essentials</b> in {{Settings › Workspace &amp; layout}}, and Help's tours point to the rest.</p>
+  </task>
+  <task id="q-privacy" title="Does CartoVox send anything?">
+  <p>Nothing about you. It checks for new versions, and you can turn that off. Worlds and writing stay on your computer. A tabletop invitation, when you start one, serves the player view on your local network until you revoke it. See <a href="/privacy/">Privacy</a>.</p>
+  </task>
+  <task id="q-sell" title="Can I sell what I make?">
+  <p>Yes. You may publish and sell the worlds, maps and writing you make. You may not redistribute the app itself. See the <a href="/eula/">licence</a>.</p>
+  </task>
+  <task id="q-bug" title="How do I report a bug?">
+  <p>Use {{Settings › Updates &amp; support › Report a bug on Discord}}. Include the seed, the detail level and any Advanced settings you changed. <b>Copy app info</b> adds the version and platform only.</p>
+  </task>
+</section>
+
+<section id="limits" data-toc="Known limits">
+  <p class="eyebrow">Read before you lean on a number</p>
+  <h2>Known limits</h2>
+  <p>CartoVox is a worldbuilding model, not a forecast. The app documents its approximations in detail. The short version:</p>
+  <ul class="feat">
+    <li><b>Desktop first.</b> Phone layouts are for reviewing a world, not building one.</li>
+    <li><b>Drawing density is not simulation detail.</b> Sharper zoom and Render Studio draw the same saved cells. Only a finer rebuild adds detail, as a separate project.</li>
+    <li><b>Seasons, not days.</b> Climate uses seasonal samples, currents are wind-driven only, and rivers come from a regional model rather than fluid dynamics. Tectonics is a kinematic model. Deep Time moves crust for hundreds of millions of years without solving mantle convection.</li>
+    <li><b>Lore is a proposal.</b> Generated names and lore are starting points, and resources are prospects rather than proven reserves. Continuity checks catch supported problems, not every disagreement between prose and world.</li>
+    <li><b>Rebuilds can move things.</b> Local rebuilds keep the rest of the world, but can't predict every redirected river. A newer version or a finer grid can change coasts and towns. Names and your work follow the places that survive.</li>
+    <li><b>Reproducible physics.</b> The same seed, settings and simulation version give the same world. Pixel-identical rendering across computers is not promised.</li>
+    <li><b>Local play.</b> Tabletop invitations work on your local network, not over the internet unless you add a VPN.</li>
+  </ul>
+</section>
