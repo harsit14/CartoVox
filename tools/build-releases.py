@@ -348,7 +348,7 @@ def main() -> None:
             page_title=html.escape(f"{release['heading']} — release notes"),
             page_description=html.escape(f"What changed in {release['heading']}: highlights, full changes and compatibility notes."),
             canonical=f"https://cartovox.org{release['url']}", header=header, footer=footer, nav_label="Releases",
-            toc="\n".join(toc), eyebrow=html.escape(f"Release notes · {date}" if date else "Release notes"),
+            toc="\n".join(toc), eyebrow='<span class="plate-no">Edition</span>' + html.escape(f"Release notes · {date}" if date else "Release notes"),
             heading=html.escape(release["heading"]), intro=html.escape(release["headline"]), fine=FINE,
             mobile_nav_label="On this page", articles="\n".join(parts),
         )
@@ -386,7 +386,7 @@ def main() -> None:
         page_title="Releases — CartoVox",
         page_description=f"The CartoVox release archive: what changed in {latest['heading']} and every version before it, newest first.",
         canonical="https://cartovox.org/releases/", header=header, footer=footer, nav_label="Releases",
-        toc="\n".join(toc), eyebrow="Releases", heading="What changed, version by version.",
+        toc="\n".join(toc), eyebrow='<span class="plate-no">Register</span>Releases', heading="What changed, version by version.",
         intro=f"{latest['heading']} is the latest release. Every version since the first build is below, newest first; open one for its highlights and complete notes.",
         fine=FINE, mobile_nav_label="Jump to", articles="\n".join(articles),
     )), encoding="utf-8")

@@ -171,6 +171,8 @@ def expand(body: str) -> str:
     body = re.sub(r'<shot((?:\s+\w+="[^"]*")*)\s*>(.*?)</shot>', shot, body, flags=re.S)
     body = re.sub(r"\{\{(.*?)\}\}", r'<span class="path">\1</span>', body)
     body = body.replace("{new}", TAG)
+    # A section's number is a figure in a ruled box, as the site's plates are.
+    body = re.sub(r'<p class="eyebrow">(\d+) · ', r'<p class="eyebrow"><span class="plate-no">\1</span>', body)
     # Every section with a heading is a search entry.
     body = re.sub(r'<section id="([^"]+)"(?![^>]*data-find)', r'<section id="\1" data-find', body)
     return body
@@ -220,7 +222,8 @@ def main() -> None:
         page = PAGE.format(
             title=meta["title"], description=meta["description"], url=url,
             header=site_chrome.header("/guide/"), footer=site_chrome.footer(),
-            find=FIND, toc="\n".join(toc_lines), eyebrow=meta["eyebrow"], heading=meta["heading"],
+            find=FIND, toc="\n".join(toc_lines), eyebrow=f'<span class="plate-no">Sheet {position + 1} of {len(PAGES)}</span>{meta["eyebrow"]}',
+            heading=meta["heading"],
             lede=meta["lede"], note=NOTE, body="\n".join("    " + line if line else "" for line in body.splitlines()),
             pager="\n".join(pager),
         )

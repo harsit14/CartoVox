@@ -70,7 +70,7 @@ def encode(src: Path, dest: Path, width: int = 560) -> tuple[int, int]:
     return im.size
 
 
-def card(row: dict, size: tuple[int, int]) -> str:
+def card(row: dict, size: tuple[int, int], number: int) -> str:
     group, label = KIND[row.get("kind")]
     rarity = row.get("rarity")
     tag = f"{rarity.capitalize()} world" if rarity else label
@@ -83,7 +83,8 @@ def card(row: dict, size: tuple[int, int]) -> str:
         f'        <figure>\n'
         f'          <div class="disc-media{fit}"><img src="/img/discover/{row["id"]}.webp" '
         f'width="{size[0]}" height="{size[1]}" alt="{alt}" loading="lazy" decoding="async"></div>\n'
-        f'          <figcaption><span class="disc-kind">{html.escape(tag)}</span>'
+        f'          <figcaption><span class="disc-label"><span class="disc-kind">{html.escape(tag)}</span>'
+        f'<span class="disc-no">No.&nbsp;{number:02d}</span></span>'
         f'<b>{name}</b><span>{pitch}</span></figcaption>\n'
         f'        </figure>\n'
         f'      </li>'
@@ -97,10 +98,10 @@ def main() -> None:
     catalogue = json.loads((app / "web/assets/discover/catalogue.json").read_text("utf-8"))
     rows = {r["id"]: r for r in [*catalogue["worlds"], *catalogue["entries"]]}
     cards = []
-    for entry_id in CURATED:
+    for number, entry_id in enumerate(CURATED, 1):
         row = rows[entry_id]
         size = encode(picture(app, row), OUT / f"{entry_id}.webp")
-        cards.append(card(row, size))
+        cards.append(card(row, size, number))
     counts = {}
     for row in rows.values():
         counts[KIND[row.get("kind")][0]] = counts.get(KIND[row.get("kind")][0], 0) + 1
