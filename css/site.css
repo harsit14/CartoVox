@@ -597,6 +597,9 @@ kbd { font-family: var(--font-ui); font-size: 0.78em; padding: 1px 6px; border: 
   .strengths { grid-template-columns: 1fr; }
   .promises, .compare-sum, .area-more { grid-template-columns: 1fr; }
   .area-media .pair { grid-template-columns: 1fr; }
+  .disc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .disc-card figcaption { padding: 10px 12px 12px; font-size: 0.8rem; }
+  .disc-card figcaption b { font-size: 1.02rem; }
   .compare-table, .compare-table tbody, .compare-table tr, .compare-table th, .compare-table td { display: block; width: 100%; }
   .compare-table thead { display: none; }
   .compare-table tbody th { width: 100%; padding-bottom: 6px; border-bottom: 0; }
