@@ -3,58 +3,101 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CartoVox Delta V5 — full release notes</title>
-  <meta name="description" content="The full CartoVox Delta V5 release notes: changes, compatibility and known limits.">
+  <title>CartoVox Delta V5 — release notes</title>
+  <meta name="description" content="What changed in CartoVox Delta V5: highlights, full changes and compatibility notes.">
   <link rel="canonical" href="https://cartovox.org/releases/v0.9.6/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CartoVox Delta V5 — full release notes">
-  <meta property="og:description" content="The full CartoVox Delta V5 release notes: changes, compatibility and known limits.">
+  <meta property="og:title" content="CartoVox Delta V5 — release notes">
+  <meta property="og:description" content="What changed in CartoVox Delta V5: highlights, full changes and compatibility notes.">
   <meta property="og:url" content="https://cartovox.org/releases/v0.9.6/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=093d7268f0">
+  <link rel="stylesheet" href="/css/site.css?v=96afb811cd">
+  <link rel="stylesheet" href="/css/guide.css?v=e742012cc9">
 </head>
-<body class="doc-page">
+<body class="doc-page release-page">
 <a class="skip" href="#main">Skip to content</a>
+<!-- RELEASE-1.1: remove this note when CartoVox 1.1 is published (one <p> per page; grep RELEASE-1.1). -->
+<p class="soon-banner" role="note"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1, which updates itself when 1.1 is out. <a href="/releases/" aria-current="page">Release notes</a></p>
 <header class="nav is-scrolled">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
       <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
     </a>
-    <nav class="nav-links" id="nav-links" aria-label="Sections">
-      <a href="/">Home</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="/features/">Features</a>
+      <a href="/discover/">Discover</a>
       <a href="/guide/">Guide</a>
-      <a href="/releases/" aria-current="page">Release notes</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/releases/" aria-current="page">Releases</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
     <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="/features/">Features</a><a href="/discover/">Discover</a><a href="/guide/">Guide</a><a href="/releases/" aria-current="page">Releases</a><a href="/#download">Download free</a></nav></noscript>
 <main id="main" class="guide">
   <aside class="guide-toc" aria-label="Release navigation">
     <p class="eyebrow">Releases</p>
     <nav class="toc-list">
-      <a href="/releases/">All release notes</a>
-      <a href="/releases/v1.0.1/">1.0.1</a>
-      <a href="/releases/v1.0.0/">1.0</a>
-      <a href="/releases/v0.9.18/">Delta V16.1</a>
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.7/"><span>Delta V6</span><small>2026-10-06</small></a>
+      <a href="/releases/v0.9.5/"><span>Delta V4</span><small>2026-09-30</small></a>
     </nav>
   </aside>
   <div class="guide-body">
     <header class="guide-head">
-      <p class="eyebrow">Full release notes · 2026-10-02</p>
+      <p class="eyebrow">Release notes · 2 October 2026</p>
       <h1>CartoVox Delta V5</h1>
       <p class="lede">Run centuries of history over your world, build it in four clear steps, map volcanoes, caves and coasts, and bind an atlas with a cover, legend and gazetteer.</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
-      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 and later are free downloads; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app, under Settings › Release notes. How to use the app is in the <a href="/guide/">guide</a>.</p>
+      <details class="mobile-contents"><summary>On this page</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.7/"><span>Delta V6</span><small>2026-10-06</small></a>
+      <a href="/releases/v0.9.5/"><span>Delta V4</span><small>2026-09-30</small></a>
+      </nav></details>
     </header>
-    <article class="release release-detail" id="v0.9.6"><div class="doc-body">
+    <section class="release-highlights" id="highlights" aria-labelledby="highlights-title">
+      <h2 id="highlights-title">Highlights</h2>
+<p class="section-lede">
+    Delta V5 was shared with invited testers on 2 October 2026. Your access code and the licence (still version
+    2.2) carry over as they are. Three things look different the moment you open it: Create is four steps, the
+    sentence under a control waits on hover, and the World map's toolbar floats. Inland basins near the poles are
+    now laid out in real distances on the ground, so a world made with Delta V4 rebuilds with slightly different
+    ground near the poles, and the app says so before an edit rebuilds it. The full account is in the
+    <a href="/releases/#v0.9.6">release notes</a>.
+  </p>
+  <ul class="feat">
+    <li><b>Create walks four steps</b>: <b>1 Describe</b>, <b>2 Candidates</b>, <b>3 Choose</b>, <b>4 Build</b>, each with the whole sheet to itself and one gold button in the bar at its foot. Describe is your brief in eight sections down the left (Story, Planet, Land, Peoples, Tongues, Tectonics, Limits, Advanced), so it fits on one screen. <b>Find 12 strong matches</b> fills Candidates with World A to World L, and choosing one is a click; Choose shows it large, with its seed for the first time; Build shows Sketch, Quick, Full and a publication atlas as four pictures with their real time and memory. The step bar takes you back to any step you have done. <a href="/guide/create/">Create</a>.</li>
+    <li><b>Advanced settings are part of Describe</b>, its last section, instead of a screen of their own. The twenty groups run down the side with how many settings you changed in each, search still reads all 319, and while it is open <b>Your world so far</b> becomes a live preview of one seed, with a Preset / Yours switch and what a build with these settings would cost. The command palette, the setup guide's Expert view and a health check's repair all land there. <a href="/guide/create/#advanced">Advanced settings</a>.</li>
+    <li><b>Explanations are on hover</b>: the sentence under a control waits behind the small <b>i</b> beside its label from your first visit. What a step costs, what is saved and what cannot be undone still stand. <code>Settings › Appearance › Explanations › Always show</code> brings every sentence back. <a href="/guide/library/#settings">App settings</a>.</li>
+    <li><b>The World map's toolbar floats</b>: <b>Map appearance</b>, <b>Sculpt terrain</b>, <b>Export</b> and <b>Tools</b> are one bar at the bottom of the map. Drag its grip to put it anywhere, double-click the grip to send it home, or hide it with the switch beside <b>Focus</b>. Zoom, <b>1:1</b> and <b>Focus</b> are at the bottom right, the key and coordinates keep the bottom left, and the resolution reads at the top right. The buttons at the top left are <b>World overview</b> and <b>Map layers</b> now. <a href="/guide/world/#toolbar">The toolbar</a>.</li>
+    <li><b>Focus and Fullscreen are one button</b>: <b>Focus</b> puts the panels, map key and planet away and takes the map fullscreen; <b>Exit focus</b> or <kbd>Esc</kbd> brings them back as you left them. <a href="/guide/world/#toolbar">The toolbar</a>.</li>
+    <li><b>Volcanoes, caves and coasts, named</b>: <b>Volcanoes</b>, <b>Karst &amp; caves</b> and <b>Coastal landforms</b> mark stratovolcanoes, calderas, geyser fields, seamounts and atolls; cave systems, sinkhole fields and lava tubes; and fjords, sounds, lagoons, barrier islands and cays. Each is named in the tongue of its land and listed in the gazetteer. A new Advanced setting, <b>Coastal erosion</b>, wears soft capes back to shoals; at 0, the default, coasts are exactly as before. <a href="/guide/world/#layers">Map views</a>.</li>
+    <li><b>Hazards, weather and life</b>: <b>Seismic hazard</b> and <b>Tsunami exposure</b>; <b>Snow depth</b>, <b>Snow season</b>, <b>Monsoons</b>, <b>Tropical cyclones</b> and <b>Storms &amp; fog</b>; <b>UV exposure</b>; <b>Vegetation types</b>, <b>Biodiversity</b>, <b>Languages</b> and <b>Faiths</b>; oil and gas fields in the Deposits layer; and <b>Layer tints</b>, the flat stepped atlas look, under Map look. Every one works on the worlds you already have, with no rebuild. <a href="/guide/world/#layers">Map views</a>.</li>
+    <li><b>Run history</b>: <code>Write › Chronicle › Run history</code> advances the realms over 100 to 600 years, at a Calm, Steady or Turbulent tempo, in a few seconds and without touching terrain, climate or rivers. Wars, famines, plagues, secessions, roads and towns come from the world's own pressures and say so with numbers. Scrub the year scale to watch the borders move, click a border to ask why it is there, and pin the facts every run must keep. <a href="/guide/write/#chronicle">Chronicle</a>.</li>
+    <li><b>What this world means</b>: <b>World overview</b> opens on two to four measured findings about the world in front of you, such as its most drought-exposed region, its longest mountain border or the towns on wide floodplains, each with <b>Show on the map</b> and a question for the cell inspector. <a href="/guide/world/#layers">Decision maps</a>.</li>
+    <li><b>Roads on a world you already have</b>: <code>World overview › Realms &amp; settlements › Change</code> adds <b>Roads</b> and <b>Sea lanes</b>, and the Sculptor has a <b>Road</b> tool (key <kbd>W</kbd>) that asks for a name and a rank. Roads you draw, and the roads in a drawing or an imported map, are real roads: they carry travellers and leave in the GeoJSON, KML and vector map. <a href="/guide/world/#sculpt">Sculpt</a>.</li>
+    <li><b>One row of actions for a place</b>: a town's card, the cell inspector and a settlement's dossier share <b>Inspect</b>, <b>Journey from here</b>, <b>Journey to here</b>, <b>Write lore</b> and <b>Plan this settlement</b>. Travel adds <b>Pick on map</b>, and folds season, objective and party size under <b>Route assumptions</b>. <a href="/guide/world/#travel">Travel</a>.</li>
+    <li><b>A bound atlas that reads like a book</b>: a designed cover, plates numbered I, II, III under running heads, a legend measured from the plates with each plate's scale and projection, and a gazetteer of every place the plates letter. A plate across the date line shows both sides of it. Ask for the book before the build with <b>Bound book</b> on Create's Build step. <a href="/guide/world/#export">Everything that exports</a>.</li>
+    <li><b>More ways out</b>: the vector map can add bedrock, soils, Köppen climate, currents, winds, deltas and deposits as layers of their own; <b>Heightmap</b> saves 16-bit or 8-bit greyscale elevation; <b>Greyscale</b> saves any map in plain grey; and <b>Places and roads</b> (KML) carries the roads and sea lanes. Every Export row is a short name beside its format badge, and no label ends in “…” any more. <a href="/guide/world/#export">Everything that exports</a>.</li>
+    <li><b>The Library opens on Continue</b>: the world you were working in, large, with its thesis, its figures and one <b>Resume</b>. <b>Start something new</b> is a compact row below your worlds, every world card is the same size, and Trash folds away while saying what it holds. <a href="/guide/library/">Library</a>.</li>
+    <li><b>Writing</b>: the Manuscript's toolbar is three labelled groups, <b>Chapter tools</b>, <b>Format</b> and <b>Book tools</b>, and the book selector carries a <b>Manage</b> menu. Continuity now reads your prose: a name one slip off, a stated distance or journey time too short for the map, a wrong realm or kind, a harvest out of season. Each finding has <b>Accept</b>, a line in <code>codex/Continuity_Log.md</code> can settle one in plain words, and the Compendium's 22 sections sit under five headings. <a href="/guide/write/#manuscript">Manuscript</a> · <a href="/guide/write/#compendium">Compendium</a>.</li>
+    <li><b>Tools shown</b>: Essentials or Everything is one setting, first in the Layout drawer and in App settings, and the welcome offers it once. Nothing Essentials holds back is gone: the Tools menu ends in <b>More tools</b>, the Compendium in <b>More sections</b>. <a href="/guide/library/#settings">App settings</a>.</li>
+    <li><b>Safer</b>: another website open in your browser can no longer drive CartoVox, files inside a shared world open sandboxed, and the usage report no longer sends free memory or the Python version, which the licence does not name. It now names the map views, styles and export formats you choose, and still never anything of yours. <a href="/privacy/#the-app">What is sent</a>.</li>
+  </ul>
+    </section>
+    <article class="release release-detail release-full" id="v0.9.6">
+      <h2 id="full-notes">Full notes</h2>
+      <div class="doc-body">
 <p>Delta V5 is the fifth Delta release, shared with invited testers on 2 October 2026. Your Delta access code and the licence carry over as they are. Everything below is new or fixed since Delta V4. Three things look different the moment you open it: Create is four steps now — Describe, Candidates, Choose, Build — with Advanced settings as a section of Describe; the sentence under a control waits behind the small <strong>i</strong> beside its label (Settings › Explanations › Always show brings them all back); and the World map's toolbar floats, with zoom and Focus at the bottom right. A world made with Delta V4 rebuilds with slightly different ground near the poles (see Terrain), and the app says so before an edit rebuilds it.</p>
 <h3 id="living-history-and-what-your-world-means">Living History and what your world means</h3>
 <ul>
@@ -307,14 +350,45 @@
 <li><strong>On a phone-sized window, Use this coastline is in view again.</strong> The confirmation bar of the Import/Draw review holds to the foot of the screen instead of sitting at the bottom of the whole review.</li>
 <li><strong>The layer tree holds still while you drag.</strong> The line under the tree that says where a row will land no longer moves the tree under the pointer, so a row dropped into a group lands in it.</li>
 </ul>
-      </div></article>
+      </div>
+    </article>
+    <nav class="release-pager" aria-label="Neighbouring releases">
+      <a href="/releases/v0.9.5/">← CartoVox Delta V4</a>
+      <a href="/releases/v0.9.7/">CartoVox Delta V6 →</a>
+    </nav>
   </div>
 </main>
 <footer class="footer">
-  <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/img/lockup-v3.svg?v=457fbc1a9d" width="200" height="258" alt="CartoVox" loading="lazy" decoding="async">
+      <p class="footer-tag">Simulate. Map. Write. Play.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <p class="footer-h">CartoVox</p>
+        <a href="/features/">Features</a>
+        <a href="/discover/">Discover</a>
+        <a href="/#download">Download</a>
+        <a href="/releases/">Releases</a>
+      </div>
+      <div>
+        <p class="footer-h">Learn</p>
+        <a href="/guide/">Guide</a>
+        <a href="/guide/videos/">Video guides</a>
+        <a href="/features/#faq">FAQ</a>
+        <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord community</a>
+      </div>
+      <div>
+        <p class="footer-h">Legal</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/eula/">Licence</a>
+        <a href="/third-party-notices/">Third-party notices</a>
+      </div>
+    </nav>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds and screenshots shown here were made with it. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
-<script src="/js/site.js?v=b6530a3583" defer></script>
+<script src="/js/site.js?v=b57a5ebe1e" defer></script>
 </body>
 </html>

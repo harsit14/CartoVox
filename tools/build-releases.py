@@ -3,6 +3,14 @@
 
     python3 tools/build-releases.py <app-repo>/.github/release-notes --through 1.0.1
 
+Pass --through with the newest released version so notes still in
+development (a later vN.txt, or unreleased.txt) stay off the site. At a
+release, add the version's date to DATES (or put the date in the note's
+title line, "CartoVox 1.1 — 2 December 2026") and its one-line headline to
+tools/release-highlights/headlines.json; HIGHLIGHTS holds the longer
+summary shown when it is the latest. The header and footer come from the
+site's own pages (tools/site_chrome.py).
+
 Each note is a text file: a title line, then Markdown. The rendering keeps the
 notes whole except for two things. The application was called Atlas Studio
 until 0.8.2, so the old name is written as the current one (feature names such
@@ -12,14 +20,19 @@ builds are published; the site's download section is.
 """
 from __future__ import annotations
 
+import hashlib
 import html
 import importlib.util
+import json
 import re
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import site_chrome  # noqa: E402
+
 spec = importlib.util.spec_from_file_location("build_legal", ROOT / "tools" / "build-legal.py")
 build_legal = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(build_legal)
@@ -173,6 +186,24 @@ HIGHLIGHTS = {
     "0.9.2": "The first Delta build adds access codes, live sculpting, deeper authoring and clearer world reports.",
 }
 
+# The "What's new" summaries that lived in the guide until 1.1, one HTML
+# fragment per version, and the one-line headline each one opened with. A
+# release without a fragment shows only its full notes; a release without a
+# headline uses its tagline or the first sentence of HIGHLIGHTS. For a new
+# release, add its headline to headlines.json (and, if wanted, a fragment).
+HIGHLIGHT_DIR = ROOT / "tools" / "release-highlights"
+HEADLINES = json.loads((HIGHLIGHT_DIR / "headlines.json").read_text(encoding="utf-8"))
+
+ERAS = [
+    ("cartovox-1", "CartoVox 1", "Free public releases.", lambda v: version_key(v) >= (1, 0, 0)),
+    ("delta", "Delta builds", "Invited testers, from access codes in September to the last Delta in November 2026.",
+     lambda v: (0, 9, 2) <= version_key(v) < (1, 0, 0)),
+    ("early", "Before Delta", "The first builds, called Atlas Studio until 0.8.2.", lambda v: version_key(v) < (0, 9, 2)),
+]
+
+MONTHS = {m: i for i, m in enumerate(("January", "February", "March", "April", "May", "June", "July", "August",
+                                      "September", "October", "November", "December"), 1)}
+
 PAGE = """<!doctype html>
 <html lang="en">
 <head>
@@ -191,26 +222,11 @@ PAGE = """<!doctype html>
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png">
   <link rel="apple-touch-icon" href="/img/icon-180.png">
   <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/guide.css">
 </head>
-<body class="doc-page">
+<body class="doc-page release-page">
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav is-scrolled">
-  <div class="nav-inner">
-    <a class="nav-brand" href="/" aria-label="CartoVox home">
-      <img class="nav-mark" src="/img/nav-mark-v3.svg" width="40" height="40" alt="">
-      <img class="nav-wordmark" src="/img/wordmark-v3.svg" width="652" height="126" alt="CartoVox">
-    </a>
-    <nav class="nav-links" id="nav-links" aria-label="Sections">
-      <a href="/">Home</a>
-      <a href="/guide/">Guide</a>
-      <a href="/releases/" aria-current="page">Release notes</a>
-      <a href="/#faq">FAQ</a>
-      <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
-    </nav>
-    <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
-</header>
+{header}
 <main id="main" class="guide">
   <aside class="guide-toc" aria-label="Release navigation">
     <p class="eyebrow">{nav_label}</p>
@@ -223,83 +239,153 @@ PAGE = """<!doctype html>
       <p class="eyebrow">{eyebrow}</p>
       <h1>{heading}</h1>
       <p class="lede">{intro}</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
-      <details class="mobile-contents"><summary>{mobile_nav_label}</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">{mobile_fallback}</nav></details>
+      <p class="muted small">{fine}</p>
+      <details class="mobile-contents"><summary>{mobile_nav_label}</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">
+{toc}
+      </nav></details>
     </header>
 {articles}
   </div>
 </main>
-<footer class="footer">
-  <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
-  </div>
-</footer>
+{footer}
 <script src="/js/site.js" defer></script>
 </body>
 </html>
 """
+
+FINE = ("The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 and later are free downloads; "
+        "Delta builds before it were shared with invited testers on the "
+        '<a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. '
+        "These notes are also readable offline inside the app, under Settings › Release notes. "
+        'How to use the app is in the <a href="/guide/">guide</a>.')
+
+
+def release_date(release: dict, title_line: str = "") -> str:
+    if release["date"]:
+        return release["date"]
+    found = re.search(r"(\d{1,2}) (" + "|".join(MONTHS) + r") (\d{4})", title_line)
+    return f"{found.group(3)}-{MONTHS[found.group(2)]:02d}-{int(found.group(1)):02d}" if found else ""
+
+
+def nice_date(iso: str) -> str:
+    if not iso:
+        return ""
+    year, month, day = iso.split("-")
+    return f"{int(day)} {list(MONTHS)[int(month) - 1]} {year}"
+
+
+def headline(release: dict) -> str:
+    version = release["version"]
+    if version in HEADLINES:
+        return HEADLINES[version]
+    if release["tagline"] and not re.fullmatch(r"\d{1,2} \w+ \d{4}", release["tagline"]):
+        return release["tagline"][0].upper() + release["tagline"][1:]
+    summary = HIGHLIGHTS.get(version, "")
+    return summary.split(". ")[0].rstrip(".") + "." if summary else ""
+
+
+def stamp(text: str) -> str:
+    """Content hashes on local assets, as tools/stamp-assets.py writes them."""
+    def one(m: re.Match[str]) -> str:
+        path = ROOT / m.group(1).lstrip("/")
+        if not path.is_file():
+            return m.group(0)
+        return f'{m.group(1)}?v={hashlib.sha256(path.read_bytes()).hexdigest()[:10]}'
+    return re.sub(r'(/(?:css|js|img|fonts)/[\w./-]+\.\w+|/favicon\.ico)(?:\?v=[0-9a-f]+)?', one, text)
+
+
+def label_of(release: dict) -> str:
+    return release.get("name") or release["version"]
 
 
 def main() -> None:
     if len(sys.argv) not in (2, 4) or (len(sys.argv) == 4 and sys.argv[2] != "--through"):
         sys.exit(__doc__)
     through = sys.argv[3] if len(sys.argv) == 4 else None
-    releases = load(Path(sys.argv[1]), through)
-    toc, cards = [], []
+    releases = [r for r in load(Path(sys.argv[1]), through) if r["released"]]
+    header, footer = site_chrome.header("/releases/"), site_chrome.footer()
     for release in releases:
-        rid = "upcoming" if not release["released"] else f"v{release['version']}"
-        label = "Upcoming" if not release["released"] else (release.get("name") or release["version"])
-        date = release["date"]
-        toc.append(f'      <a href="#{rid}"><span>{html.escape(label)}</span><small>{html.escape(date or "unreleased")}</small></a>')
+        release["date"] = release_date(release)
+        release["headline"] = headline(release)
+        release["heading"] = f"CartoVox {label_of(release)}"
+        release["url"] = f"/releases/v{release['version']}/"
+    latest = releases[0]
+
+    # One page per release: its highlights (when the guide had them), then the full notes.
+    for position, release in enumerate(releases):
+        rid = f"v{release['version']}"
         _, body_html = build_legal.render(demote(release["body"]))
-        heading = "Upcoming" if not release["released"] else f"CartoVox {release.get('name') or release['version']}"
-        badge = "" if release["released"] else ' <span class="badge badge-soft">not yet released</span>'
-        article = f"""    <article class="release" id="{rid}">
-      <header class="release-head">
-        <h2>{html.escape(heading)}{badge}</h2>
-        {f'<p class="release-tag">{html.escape(release["tagline"])}</p>' if release["tagline"] else ''}
-        {f'<time datetime="{date}">{date}</time>' if date else ''}
-      </header>
-      <div class="doc-body">
-{body_html}
-      </div>
-    </article>"""
-        url = f"/releases/{rid}/"
-        summary = HIGHLIGHTS.get(release["version"], release["tagline"] or "Read the complete changes and compatibility notes.")
-        cards.append(f"""    <article class="release-card" id="{rid}">
-      <div><span class="experience-index">{html.escape(date or 'In development')}</span><h2>{html.escape(heading)}{badge}</h2>
-      <p>{html.escape(summary)}</p></div>
-      <a class="btn btn-ghost" href="{url}">Read full notes <span aria-hidden="true">↗</span></a>
-    </article>""")
-        nearby = [r for r in releases if r is not release and r["released"]][:3]
-        detail_toc = ['      <a href="/releases/">All release notes</a>'] + [
-            f'      <a href="/releases/{"v" + r["version"]}/">{html.escape(r.get("name") or r["version"])}</a>'
-            for r in nearby
-        ]
+        fragment = HIGHLIGHT_DIR / f"{rid}.html"
+        parts = []
+        if fragment.exists():
+            parts.append('    <section class="release-highlights" id="highlights" aria-labelledby="highlights-title">\n'
+                         '      <h2 id="highlights-title">Highlights</h2>\n'
+                         + fragment.read_text(encoding="utf-8") + "    </section>")
+        parts.append(f'    <article class="release release-detail release-full" id="{rid}">\n'
+                     f'      <h2 id="full-notes">Full notes</h2>\n      <div class="doc-body">\n{body_html}\n      </div>\n    </article>')
+        newer = releases[position - 1] if position > 0 else None
+        older = releases[position + 1] if position + 1 < len(releases) else None
+        pager = ['    <nav class="release-pager" aria-label="Neighbouring releases">']
+        pager.append(f'      <a href="{older["url"]}">← {html.escape(older["heading"])}</a>' if older else "      <span></span>")
+        pager.append(f'      <a href="{newer["url"]}">{html.escape(newer["heading"])} →</a>' if newer else "      <span></span>")
+        pager.append("    </nav>")
+        parts.append("\n".join(pager))
+        toc = ['      <a href="/releases/">All releases</a>']
+        if fragment.exists():
+            toc.append('      <a href="#highlights">Highlights</a>')
+        toc.append('      <a href="#full-notes">Full notes</a>')
+        for other in (newer, older):
+            if other:
+                toc.append(f'      <a href="{other["url"]}"><span>{html.escape(label_of(other))}</span><small>{other["date"]}</small></a>')
+        date = nice_date(release["date"])
+        summary = HIGHLIGHTS.get(release["version"], release["headline"])
         detail = PAGE.format(
-            page_title=html.escape(f"{heading} — full release notes"),
-            page_description=html.escape(f"The full CartoVox {label} release notes: changes, compatibility and known limits."),
-            canonical=f"https://cartovox.org{url}", nav_label="Releases", toc="\n".join(detail_toc),
-            eyebrow=html.escape(f"Full release notes · {date}" if date else "Full release notes"), heading=html.escape(heading),
-            intro=html.escape(summary), mobile_nav_label="Browse releases",
-            mobile_fallback='<a href="/releases/">All release notes</a>',
-            articles=f'    <article class="release release-detail" id="{rid}"><div class="doc-body">\n{body_html}\n      </div></article>',
+            page_title=html.escape(f"{release['heading']} — release notes"),
+            page_description=html.escape(f"What changed in {release['heading']}: highlights, full changes and compatibility notes."),
+            canonical=f"https://cartovox.org{release['url']}", header=header, footer=footer, nav_label="Releases",
+            toc="\n".join(toc), eyebrow=html.escape(f"Release notes · {date}" if date else "Release notes"),
+            heading=html.escape(release["heading"]), intro=html.escape(summary), fine=FINE,
+            mobile_nav_label="On this page", articles="\n".join(parts),
         )
-        detail_target = ROOT / "releases" / rid / "index.html"
-        detail_target.parent.mkdir(parents=True, exist_ok=True)
-        detail_target.write_text(detail, encoding="utf-8")
+        target = ROOT / "releases" / rid / "index.html"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(stamp(detail), encoding="utf-8")
+
+    # The archive: the latest release in full, then every release as one row, newest first.
+    articles = [f"""    <section class="release-latest" id="latest" aria-labelledby="latest-title">
+      <p class="eyebrow">Latest release · <time datetime="{latest['date']}">{nice_date(latest['date'])}</time></p>
+      <h2 id="latest-title">{html.escape(latest['heading'])}</h2>
+      <p class="release-headline">{html.escape(latest['headline'])}</p>
+      <p>{html.escape(HIGHLIGHTS.get(latest['version'], ''))}</p>
+      <a class="btn btn-gold" href="{latest['url']}">Read the {html.escape(label_of(latest))} notes</a>
+    </section>"""]
+    toc = []
+    for era_id, era_title, era_note, member in ERAS:
+        rows = [r for r in releases if member(r["version"])]
+        if not rows:
+            continue
+        toc.append(f'      <a href="#{era_id}"><span>{html.escape(era_title)}</span><small>{len(rows)}</small></a>')
+        items = "\n".join(
+            f'        <li><a class="release-row" id="v{r["version"]}" href="{r["url"]}"><span class="rv">{html.escape(label_of(r))}</span>'
+            f'<time datetime="{r["date"]}">{nice_date(r["date"])}</time><span class="rh">{html.escape(r["headline"])}</span></a></li>'
+            for r in rows)
+        articles.append(f"""    <section class="release-era" id="{era_id}" aria-labelledby="{era_id}-title">
+      <h2 id="{era_id}-title">{html.escape(era_title)}</h2>
+      <p>{html.escape(era_note)}</p>
+      <ul class="release-list">
+{items}
+      </ul>
+    </section>""")
     target = ROOT / "releases" / "index.html"
-    target.parent.mkdir(exist_ok=True)
-    target.write_text(PAGE.format(
-        page_title="Release notes — CartoVox",
-        page_description="The CartoVox release archive. See what changed in CartoVox 1.0.1 and browse complete notes for every release.",
-        canonical="https://cartovox.org/releases/", nav_label="Versions", toc="\n".join(toc),
-        eyebrow="Release notes", heading="What changed, version by version.",
-        intro="Start with CartoVox 1.0.1, the latest release, or open any version for its complete changes and compatibility notes.",
-        mobile_nav_label="Browse all versions",
-        mobile_fallback='<a href="#v1.0.1">Latest release</a>', articles="\n".join(cards),
-    ), encoding="utf-8")
-    print(f"  releases/index.html + {len(releases)} full notes")
+    target.write_text(stamp(PAGE.format(
+        page_title="Releases — CartoVox",
+        page_description=f"The CartoVox release archive: what changed in {latest['heading']} and every version before it, newest first.",
+        canonical="https://cartovox.org/releases/", header=header, footer=footer, nav_label="Releases",
+        toc="\n".join(toc), eyebrow="Releases", heading="What changed, version by version.",
+        intro=f"{latest['heading']} is the latest release. Every version since the first build is below, newest first; open one for its highlights and complete notes.",
+        fine=FINE, mobile_nav_label="Jump to", articles="\n".join(articles),
+    )), encoding="utf-8")
+    print(f"  releases/index.html + {len(releases)} release pages (latest {latest['heading']})")
     subprocess.run([sys.executable, str(ROOT / "tools" / "build-sitemap.py")], check=True)
 
 

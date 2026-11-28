@@ -3,58 +3,102 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CartoVox Delta V6 — full release notes</title>
-  <meta name="description" content="The full CartoVox Delta V6 release notes: changes, compatibility and known limits.">
+  <title>CartoVox Delta V6 — release notes</title>
+  <meta name="description" content="What changed in CartoVox Delta V6: highlights, full changes and compatibility notes.">
   <link rel="canonical" href="https://cartovox.org/releases/v0.9.7/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CartoVox Delta V6 — full release notes">
-  <meta property="og:description" content="The full CartoVox Delta V6 release notes: changes, compatibility and known limits.">
+  <meta property="og:title" content="CartoVox Delta V6 — release notes">
+  <meta property="og:description" content="What changed in CartoVox Delta V6: highlights, full changes and compatibility notes.">
   <meta property="og:url" content="https://cartovox.org/releases/v0.9.7/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=093d7268f0">
+  <link rel="stylesheet" href="/css/site.css?v=96afb811cd">
+  <link rel="stylesheet" href="/css/guide.css?v=e742012cc9">
 </head>
-<body class="doc-page">
+<body class="doc-page release-page">
 <a class="skip" href="#main">Skip to content</a>
+<!-- RELEASE-1.1: remove this note when CartoVox 1.1 is published (one <p> per page; grep RELEASE-1.1). -->
+<p class="soon-banner" role="note"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1, which updates itself when 1.1 is out. <a href="/releases/" aria-current="page">Release notes</a></p>
 <header class="nav is-scrolled">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
       <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
     </a>
-    <nav class="nav-links" id="nav-links" aria-label="Sections">
-      <a href="/">Home</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="/features/">Features</a>
+      <a href="/discover/">Discover</a>
       <a href="/guide/">Guide</a>
-      <a href="/releases/" aria-current="page">Release notes</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/releases/" aria-current="page">Releases</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
     <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="/features/">Features</a><a href="/discover/">Discover</a><a href="/guide/">Guide</a><a href="/releases/" aria-current="page">Releases</a><a href="/#download">Download free</a></nav></noscript>
 <main id="main" class="guide">
   <aside class="guide-toc" aria-label="Release navigation">
     <p class="eyebrow">Releases</p>
     <nav class="toc-list">
-      <a href="/releases/">All release notes</a>
-      <a href="/releases/v1.0.1/">1.0.1</a>
-      <a href="/releases/v1.0.0/">1.0</a>
-      <a href="/releases/v0.9.18/">Delta V16.1</a>
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.8/"><span>Delta V7</span><small>2026-10-12</small></a>
+      <a href="/releases/v0.9.6/"><span>Delta V5</span><small>2026-10-02</small></a>
     </nav>
   </aside>
   <div class="guide-body">
     <header class="guide-head">
-      <p class="eyebrow">Full release notes · 2026-10-06</p>
+      <p class="eyebrow">Release notes · 6 October 2026</p>
       <h1>CartoVox Delta V6</h1>
       <p class="lede">Open offline starter worlds, choose your interface language, build on less memory, take a world to Foundry or your VTT, and bring in lore from World Anvil, Kanka, LegendKeeper or Campfire.</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
-      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 and later are free downloads; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app, under Settings › Release notes. How to use the app is in the <a href="/guide/">guide</a>.</p>
+      <details class="mobile-contents"><summary>On this page</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.8/"><span>Delta V7</span><small>2026-10-12</small></a>
+      <a href="/releases/v0.9.6/"><span>Delta V5</span><small>2026-10-02</small></a>
+      </nav></details>
     </header>
-    <article class="release release-detail" id="v0.9.7"><div class="doc-body">
+    <section class="release-highlights" id="highlights" aria-labelledby="highlights-title">
+      <h2 id="highlights-title">Highlights</h2>
+<p class="section-lede">
+    Delta V6 was shared with invited testers on 6 October 2026, with installers for Apple Silicon Macs,
+    Windows x64 and Linux x64. Your access
+    code carries over. The licence is now version 2.3, and its one addition (section 7.6) lets you share the new
+    free offline reader with anyone. Worlds made with Delta V5 open as they are, and the Library's <b>Update to
+    this version</b> rebuilds one with this build when you choose to, keeping the old copy beside it. The full
+    account is in the <a href="/releases/#v0.9.7">release notes</a>.
+  </p>
+  <ul class="feat">
+    <li><b>Starter worlds, offline</b>: the Library offers seven saved genre worlds with editable copies and no build. Each uses Sketch detail (360 × 180), reopening one keeps your edits, and the size of each independent copy is shown. Delta V7 removed the gallery; a starter world you saved stays in your Library. <a href="/guide/library/">Library</a>.</li>
+    <li><b>Choose while candidates arrive</b>: passing worlds appear during the seed search, so you can choose, compare or annotate an early match, and it stays available when the final ranking finishes. A reload keeps the partial shortlist and its status. <a href="/guide/create/">Create</a>.</li>
+    <li><b>The interface in your language</b>: common navigation, settings and authoring actions offer German, French, Spanish, Portuguese and Polish. What you have written stays exactly as it is, and specialist prose can remain in English.</li>
+    <li><b>Build with less memory</b>: Create offers a fixed 720 × 360 profile with four seasons, standard map detail and the illustrated plates deferred. The preflight recommends it on 8 GB machines. <a href="/guide/create/#build">Preflight</a>.</li>
+    <li><b>Optional GPU acceleration on Mac</b>: experimental Metal kernels speed up selected large smoothing and shading work after local precision and speed checks. The CPU remains the default, and Low memory generation always uses it.</li>
+    <li><b>Named rocks</b>: rock types and rock families sit alongside the separate surface deposits and present ice. Inspect a cell, author rock regions, or carry the geological readings into geological, GeoJSON and SVG exports. An older world explains when a rock reading must be rebuilt. <a href="/guide/world/#inspector">The cell inspector</a>.</li>
+    <li><b>Railways and kinds of road</b>: main, branch and tram lines keep their kind at world, county and town scales, and royal, cart, pass and causeway roads each have their own route effects. Travel offers <b>By rail</b> when a railway exists, and counts the walk between the traveller and the line. <a href="/guide/world/#travel">Travel</a>.</li>
+    <li><b>A county lens</b>: full worlds offer a 100 km lens, and coarser worlds the sizes their cells can support; small child maps refine automatically. Nested maps inherit their parent's refined terrain, sculpting strokes included, and towns planned from a county use its finer elevation, climate, slope and river. Settlement Studio follows the actual river, coast and roads.</li>
+    <li><b>Hot springs, vents and new environment maps</b>: <b>Volcanoes &amp; hot springs</b> groups the volcanic, spring and coastal marks, and hydrothermal vents and cold seeps also appear as marine habitats. Bathymetry, ocean crust ages (on a deep-time world), roughness, seafloor classes, dryland candidates, endorheic catchments, annual sunlight, isotherms, doldrums and mantle indicators join the Map library, with candidate bird and whale flyways, biogeographic regions, bioluminescence and ocean biodiversity. Peaks, waterfall candidates and oasis candidates are new landmarks, and each reading explains its saved inputs. <a href="/guide/world/#layers">Map views</a>.</li>
+    <li><b>Sculpt dry terrain</b>: cut canyons, raise mesas and describe dune deserts, and the rest of the world rebuilds around the terrain you chose. <a href="/guide/world/#sculpt">Sculpt</a>.</li>
+    <li><b>Migration and the metal ages</b>: choose an origin for <b>Human migration</b> or the <b>Stone</b>, <b>Bronze</b> and <b>Iron Age</b> scenarios. Bronze opportunity needs both copper and tin, and iron opportunity needs iron prospects. These are planning scenarios, with their assumptions shown beside the map. Phosphate, potash, limestone and mica prospects now feed crafts such as steel, lime, dressed marble, abrasives and paper, and <b>Spheres of influence</b> starts from a selected realm's saved territory without changing who owns it.</li>
+    <li><b>Moving worlds</b>: Deep Time, Chronicle's realm-growth guide and Weather Year export GIF loops and MP4 videos from saved frames, with size, frame-count and speed controls. The PDF atlas review also tells current, older and unverified sheets apart before you bind. <a href="/guide/world/#export">Everything that exports</a>.</li>
+    <li><b>For the game master</b>: export saved maps, gazetteer journals and pins as an offline <b>Foundry module</b> (a GM import keeps existing edits; native Foundry checks are still pending). Hexcrawl setup exports native Foundry hex-map modules or <b>Universal VTT</b> bundles with calibration metadata. Campaign offers editable encounter, foraging and hazard <b>roll tables</b> by biome or region, with weighted rolls and Foundry JSON or module export. <a href="/guide/play/">Campaigns</a>.</li>
+    <li><b>Writing</b>: Outline offers a <b>Plotlines</b> grid of point-of-view cards with character, place and date filters. <b>Write a scene here</b> starts a scene from a world place, in an existing book and chapter or new ones, and scene cards keep Travel's whole journey. Draft's <b>Saved passages</b> keeps cut prose to restore or insert, and <b>Placeholder</b> adds a portable <code>[TODO: detail]</code> marker that Draft's <b>Unresolved details</b> list finds across the book. Journeys follow one viewpoint across chapters, and Checks report what ran, what had nothing to examine and what was unavailable. <a href="/guide/write/#manuscript">Manuscript</a>.</li>
+    <li><b>Bring your lore with you</b>: portable <b>World Anvil</b>, <b>Kanka</b>, <b>LegendKeeper</b> and <b>Campfire</b> exports import through the existing review and reversible merge, and the original files stay downloadable. A synced Markdown or text inbox can catch notes from your phone, reviewed through vault sync and undoable without changing the source notes. <a href="/guide/write/#compendium">The Compendium</a>.</li>
+    <li><b>A free offline reader</b>: packets and backups include <code>CartoVox-Reader.html</code>, a read-only page for saved PNG maps and text that needs no account or connection. Licence section 7.6 lets you share it, unmodified, with anyone. <a href="/eula/">Licence</a>.</li>
+    <li><b>Update to this version</b>: in the Library, an older world rebuilds with the same seed, settings, brief, imported or drawn terrain and saved edits. Names, canon, notes and pins follow their places, and missing places wait for review. Before updating, the old world becomes a separate Library copy you can compare or use again; <b>Update all</b> runs older worlds one at a time, and cancelling leaves the world and its resumable checkpoint intact. <a href="/guide/library/">Library</a>.</li>
+    <li><b>Also new</b>: Merak terrain maps (<code>.warmap</code> / <code>.warmap.json</code>) import with their coastlines for review and their heights kept; Arabic, Hebrew, Devanagari, Thai and Khmer captions are lettered with contextual shaping and reading order; settlement artwork adds adobe terraces and pavilion roofs; and seeded karst or lava-tube plans open in Scene Studio from a saved rock cell. <a href="/guide/create/#import">Import</a> · <a href="/guide/play/#scenes">Scenes</a>.</li>
+  </ul>
+    </section>
+    <article class="release release-detail release-full" id="v0.9.7">
+      <h2 id="full-notes">Full notes</h2>
+      <div class="doc-body">
 <p>Delta V6 is the sixth Delta release, shared with invited testers on 6 October 2026. Your Delta access code carries over. The licence is now version 2.3: its one addition (section 7.6) lets you share the new free offline reader with anyone. Everything below is new or fixed since Delta V5. Installers are available for Apple Silicon Macs, Windows x64 and Linux x64. Worlds made with Delta V5 open as they are, and Library's Update to this version rebuilds one with this build when you choose to, keeping the old copy beside it.</p>
 <h3 id="highlights">Highlights</h3>
 <ul>
@@ -181,14 +225,45 @@
 <li><strong>Fixed:</strong> a map image finishing before its catalogue loads no longer interrupts the workspace with a resolution-badge error.</li>
 <li><strong>Fixed:</strong> opening a world or redrawing its map keeps an unchanged comparison draft's identity and reference review editable. Authored changes still require a fresh comparison.</li>
 </ul>
-      </div></article>
+      </div>
+    </article>
+    <nav class="release-pager" aria-label="Neighbouring releases">
+      <a href="/releases/v0.9.6/">← CartoVox Delta V5</a>
+      <a href="/releases/v0.9.8/">CartoVox Delta V7 →</a>
+    </nav>
   </div>
 </main>
 <footer class="footer">
-  <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/img/lockup-v3.svg?v=457fbc1a9d" width="200" height="258" alt="CartoVox" loading="lazy" decoding="async">
+      <p class="footer-tag">Simulate. Map. Write. Play.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <p class="footer-h">CartoVox</p>
+        <a href="/features/">Features</a>
+        <a href="/discover/">Discover</a>
+        <a href="/#download">Download</a>
+        <a href="/releases/">Releases</a>
+      </div>
+      <div>
+        <p class="footer-h">Learn</p>
+        <a href="/guide/">Guide</a>
+        <a href="/guide/videos/">Video guides</a>
+        <a href="/features/#faq">FAQ</a>
+        <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord community</a>
+      </div>
+      <div>
+        <p class="footer-h">Legal</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/eula/">Licence</a>
+        <a href="/third-party-notices/">Third-party notices</a>
+      </div>
+    </nav>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds and screenshots shown here were made with it. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
-<script src="/js/site.js?v=b6530a3583" defer></script>
+<script src="/js/site.js?v=b57a5ebe1e" defer></script>
 </body>
 </html>

@@ -3,58 +3,94 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CartoVox Delta V10 — full release notes</title>
-  <meta name="description" content="The full CartoVox Delta V10 release notes: changes, compatibility and known limits.">
+  <title>CartoVox Delta V10 — release notes</title>
+  <meta name="description" content="What changed in CartoVox Delta V10: highlights, full changes and compatibility notes.">
   <link rel="canonical" href="https://cartovox.org/releases/v0.9.11/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CartoVox Delta V10 — full release notes">
-  <meta property="og:description" content="The full CartoVox Delta V10 release notes: changes, compatibility and known limits.">
+  <meta property="og:title" content="CartoVox Delta V10 — release notes">
+  <meta property="og:description" content="What changed in CartoVox Delta V10: highlights, full changes and compatibility notes.">
   <meta property="og:url" content="https://cartovox.org/releases/v0.9.11/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=093d7268f0">
+  <link rel="stylesheet" href="/css/site.css?v=96afb811cd">
+  <link rel="stylesheet" href="/css/guide.css?v=e742012cc9">
 </head>
-<body class="doc-page">
+<body class="doc-page release-page">
 <a class="skip" href="#main">Skip to content</a>
+<!-- RELEASE-1.1: remove this note when CartoVox 1.1 is published (one <p> per page; grep RELEASE-1.1). -->
+<p class="soon-banner" role="note"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1, which updates itself when 1.1 is out. <a href="/releases/" aria-current="page">Release notes</a></p>
 <header class="nav is-scrolled">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
       <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
     </a>
-    <nav class="nav-links" id="nav-links" aria-label="Sections">
-      <a href="/">Home</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="/features/">Features</a>
+      <a href="/discover/">Discover</a>
       <a href="/guide/">Guide</a>
-      <a href="/releases/" aria-current="page">Release notes</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/releases/" aria-current="page">Releases</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
     <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="/features/">Features</a><a href="/discover/">Discover</a><a href="/guide/">Guide</a><a href="/releases/" aria-current="page">Releases</a><a href="/#download">Download free</a></nav></noscript>
 <main id="main" class="guide">
   <aside class="guide-toc" aria-label="Release navigation">
     <p class="eyebrow">Releases</p>
     <nav class="toc-list">
-      <a href="/releases/">All release notes</a>
-      <a href="/releases/v1.0.1/">1.0.1</a>
-      <a href="/releases/v1.0.0/">1.0</a>
-      <a href="/releases/v0.9.18/">Delta V16.1</a>
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.12/"><span>Delta V11</span><small>2026-10-23</small></a>
+      <a href="/releases/v0.9.10/"><span>Delta V9</span><small>2026-10-17</small></a>
     </nav>
   </aside>
   <div class="guide-body">
     <header class="guide-head">
-      <p class="eyebrow">Full release notes · 2026-10-18</p>
+      <p class="eyebrow">Release notes · 18 October 2026</p>
       <h1>CartoVox Delta V10</h1>
       <p class="lede">Windows worlds that had stopped accepting changes restore, re-simulate and render again. Several GeoJSON files make one world, and plate lines painted over a picture of your map raise mountains where the plates collide. Rivers cut their valleys and local rebuilds wear your edit, ocean gyres bring warm currents, and the interface follows five languages almost everywhere.</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
-      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 and later are free downloads; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app, under Settings › Release notes. How to use the app is in the <a href="/guide/">guide</a>.</p>
+      <details class="mobile-contents"><summary>On this page</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.12/"><span>Delta V11</span><small>2026-10-23</small></a>
+      <a href="/releases/v0.9.10/"><span>Delta V9</span><small>2026-10-17</small></a>
+      </nav></details>
     </header>
-    <article class="release release-detail" id="v0.9.11"><div class="doc-body">
+    <section class="release-highlights" id="highlights" aria-labelledby="highlights-title">
+      <h2 id="highlights-title">Highlights</h2>
+<p class="section-lede">
+    Delta V10, dated 18 October 2026, comes with installers for Apple Silicon Macs, Windows x64 and Linux x64
+    (still glibc 2.34 or newer). Your access code carries over and the licence is unchanged (still version 2.3).
+    Worlds made with Delta V9 open as they are, and the Library offers <b>Update to this version</b> for them:
+    rivers now cut their valleys, ocean currents run as gyres, and worlds built with a plate map raise mountains
+    along it, so updating can move terrain, rain, rivers, towns and names. The full account is in the
+    <a href="/releases/#v0.9.11">release notes</a>.
+  </p>
+  <ul class="feat">
+    <li><b>Windows: worlds that stopped accepting changes work again</b>. On a world an earlier session had open, restoring a saved version, <b>Apply &amp; re-simulate</b> and Render Studio no longer fail at once with "could not complete that request"; every previous version kept by Update to this version was affected. Saves, exports, restores, renames and rebuilds now wait a moment when a virus scanner or sync tool has a file open instead of failing with "Access is denied". Saved versions recorded before an update restore again, and a version that cannot be restored is refused straight away with the reason. <a href="/guide/library/">Library</a>.</li>
+    <li><b>Several GeoJSON files make one world</b>: choose or drop several GeoJSON files or shapefiles at once. Each file's own coordinate system is read, their land is joined into one coastline, and their rivers, roads, towns and borders are kept. The import report lists every file and what was read from it; a file that cannot be placed with the others is named and refused rather than dropped. <a href="/guide/create/#import">Import a map</a>.</li>
+    <li><b>Paint your plates</b>: the tectonic plate map gains a <b>Painted lines</b> format. Paint rough lines in one bright colour over any picture of your map; CartoVox finds the colour, reads thick strokes down their middles, bridges small gaps and ignores loose ends. Over a GeoJSON or shapefile import the picture fits your land by itself. Mountains now rise where your plates collide across your own continents, and plate edges drawn across a continent come out as collisions about half the time, as on Earth. The picture must be in longitude and latitude, and plate motion is still simulated, so some lines still become rifts or sliding faults. <a href="/guide/create/#import">Import a map</a>.</li>
+    <li><b>Rivers cut their valleys</b>: river erosion now cuts about 12 m a round in the uplands and up to a couple of hundred metres on steep large rivers, the same at every map size, without leaving hollows behind. Rebuilt worlds have slightly lower ground along their rivers and a few fewer small lakes, and <b>Rounds of erosion</b> and <b>River incision</b> in the <a href="/guide/world/#labs">Erosion Lab</a> now do what they say.</li>
+    <li><b>Local rebuilds wear your edit</b>: when <b>Apply &amp; re-simulate</b> rebuilds only the area around a sculpted change, that ground is worn by the world's erosion as a full rebuild would wear it, so a raised ridge comes back with rivers cut into it. A new river line rebuilds just its area, a sculpt that reaches under the sea along a coast stays local as its review promises, and the finished message says how much of the world was rebuilt. <a href="/guide/world/#sculpt">Sculpt</a> · <a href="/guide/world/#sculpt">River lines</a>.</li>
+    <li><b>Ocean gyres with warm currents</b>: warm water streams poleward along the eastern coasts of the continents, as the Gulf Stream and the Kuroshio do, and cold water drifts back across the open ocean. Subtropical east coasts get humid, rainy summers, and the tropical rain belt and equatorial forests regain some of the rain they had lost.</li>
+    <li><b>Five languages almost everywhere</b>: German, French, Spanish, Portuguese and Polish now reach the welcome tour's wet-or-dry readings, Settlement Studio, the Library's update notes, the region, story-pin and realm prompts, the cell inspector, the map import workshop, Render Studio's save line and dialogs throughout the app. The campaign table's default names show in your language; what is saved stays as it was. <a href="/guide/library/#settings">Settings</a>.</li>
+    <li><b>Deep Time's volcanoes no longer swamp its carbon</b>: degassing varies about as much as Earth's, so the weathering of mountains and warm, wet land steers carbon dioxide in every history. Saved histories are unchanged until run again. <a href="/guide/create/#deeptime">Deep Time</a>.</li>
+    <li><b>Measured again</b>: on the reference M5 Pro Mac a Sketch world took 33 seconds, Quick 54 seconds and Full 170 seconds, inside the about 35 seconds, 55 seconds and 3 minutes Create quotes. A Low memory build with its map open took 3.24 GB, inside its 4 GB promise. These are source runs from 17 October 2026, not timings of the packaged installers. <a href="/guide/create/#build">Build</a>.</li>
+    <li><b>Also fixed</b>: book and chapter names Windows reserves for devices (CON, NUL, AUX and the like) are refused, and places with such names get vault pages Windows can open, such as "Aux (realm)"; changing only a title's capitals works; the heightmap's <b>Under the ice</b> choice appears only on worlds with ice sheets; braided tributaries no longer draw gravel bars on the river they join; and an unexpected problem's message now says what went wrong.</li>
+  </ul>
+    </section>
+    <article class="release release-detail release-full" id="v0.9.11">
+      <h2 id="full-notes">Full notes</h2>
+      <div class="doc-body">
 <p>Your Delta access code carries over and the licence is unchanged.</p>
 <p>Delta V10 is the tenth Delta release. Everything below is new or fixed since Delta V9, which was shared with invited testers on 17 October 2026. Worlds made with Delta V9 open as they are, and Library offers Update to this version for them: rivers now cut their valleys, ocean currents run as gyres, and worlds built with a plate map raise mountains along it, so terrain, rain, rivers, towns and names can move.</p>
 <h3 id="highlights">Highlights</h3>
@@ -129,14 +165,45 @@
 <ul>
 <li>A painted plate picture must be in longitude and latitude to line up with GeoJSON land; a Web Mercator render cannot be aligned by moving and stretching. Plate motion is still simulated, so some painted lines still become rifts or sliding faults rather than mountains.</li>
 </ul>
-      </div></article>
+      </div>
+    </article>
+    <nav class="release-pager" aria-label="Neighbouring releases">
+      <a href="/releases/v0.9.10/">← CartoVox Delta V9</a>
+      <a href="/releases/v0.9.12/">CartoVox Delta V11 →</a>
+    </nav>
   </div>
 </main>
 <footer class="footer">
-  <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/img/lockup-v3.svg?v=457fbc1a9d" width="200" height="258" alt="CartoVox" loading="lazy" decoding="async">
+      <p class="footer-tag">Simulate. Map. Write. Play.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <p class="footer-h">CartoVox</p>
+        <a href="/features/">Features</a>
+        <a href="/discover/">Discover</a>
+        <a href="/#download">Download</a>
+        <a href="/releases/">Releases</a>
+      </div>
+      <div>
+        <p class="footer-h">Learn</p>
+        <a href="/guide/">Guide</a>
+        <a href="/guide/videos/">Video guides</a>
+        <a href="/features/#faq">FAQ</a>
+        <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord community</a>
+      </div>
+      <div>
+        <p class="footer-h">Legal</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/eula/">Licence</a>
+        <a href="/third-party-notices/">Third-party notices</a>
+      </div>
+    </nav>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds and screenshots shown here were made with it. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
-<script src="/js/site.js?v=b6530a3583" defer></script>
+<script src="/js/site.js?v=b57a5ebe1e" defer></script>
 </body>
 </html>

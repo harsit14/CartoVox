@@ -3,58 +3,98 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CartoVox 1.0 — full release notes</title>
-  <meta name="description" content="The full CartoVox 1.0 release notes: changes, compatibility and known limits.">
+  <title>CartoVox 1.0 — release notes</title>
+  <meta name="description" content="What changed in CartoVox 1.0: highlights, full changes and compatibility notes.">
   <link rel="canonical" href="https://cartovox.org/releases/v1.0.0/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CartoVox 1.0 — full release notes">
-  <meta property="og:description" content="The full CartoVox 1.0 release notes: changes, compatibility and known limits.">
+  <meta property="og:title" content="CartoVox 1.0 — release notes">
+  <meta property="og:description" content="What changed in CartoVox 1.0: highlights, full changes and compatibility notes.">
   <meta property="og:url" content="https://cartovox.org/releases/v1.0.0/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=093d7268f0">
+  <link rel="stylesheet" href="/css/site.css?v=96afb811cd">
+  <link rel="stylesheet" href="/css/guide.css?v=e742012cc9">
 </head>
-<body class="doc-page">
+<body class="doc-page release-page">
 <a class="skip" href="#main">Skip to content</a>
+<!-- RELEASE-1.1: remove this note when CartoVox 1.1 is published (one <p> per page; grep RELEASE-1.1). -->
+<p class="soon-banner" role="note"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1, which updates itself when 1.1 is out. <a href="/releases/" aria-current="page">Release notes</a></p>
 <header class="nav is-scrolled">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
       <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
     </a>
-    <nav class="nav-links" id="nav-links" aria-label="Sections">
-      <a href="/">Home</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="/features/">Features</a>
+      <a href="/discover/">Discover</a>
       <a href="/guide/">Guide</a>
-      <a href="/releases/" aria-current="page">Release notes</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/releases/" aria-current="page">Releases</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
     <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="/features/">Features</a><a href="/discover/">Discover</a><a href="/guide/">Guide</a><a href="/releases/" aria-current="page">Releases</a><a href="/#download">Download free</a></nav></noscript>
 <main id="main" class="guide">
   <aside class="guide-toc" aria-label="Release navigation">
     <p class="eyebrow">Releases</p>
     <nav class="toc-list">
-      <a href="/releases/">All release notes</a>
-      <a href="/releases/v1.0.1/">1.0.1</a>
-      <a href="/releases/v0.9.18/">Delta V16.1</a>
-      <a href="/releases/v0.9.17/">Delta V16</a>
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v1.0.1/"><span>1.0.1</span><small>2026-11-25</small></a>
+      <a href="/releases/v0.9.18/"><span>Delta V16.1</span><small>2026-11-13</small></a>
     </nav>
   </aside>
   <div class="guide-body">
     <header class="guide-head">
-      <p class="eyebrow">Full release notes · 2026-11-22</p>
+      <p class="eyebrow">Release notes · 22 November 2026</p>
       <h1>CartoVox 1.0</h1>
       <p class="lede">CartoVox 1.0, free for everyone: no invites, no access codes and no check-ins, and it works offline. Make your own species and the ecosystems that shape their ranges, and biomes drawn by climate or by their signature species. Build flat worlds beside disc worlds, draw regions of your own across any border, and shape the night sky&#x27;s constellations with their lore. Edit an atlas plate after it is drawn, in five new looks from woodcut to Admiralty chart; Render Studio gains five art directions and terrain flyovers. Players join the tabletop from their own phone, tablet or computer, a World Bible downloads as PDF or EPUB, and a world can be shared as an offline web map. The World map can be explored by keyboard and screen reader, and CartoVox updates itself, checking only for new versions.</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
-      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 and later are free downloads; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app, under Settings › Release notes. How to use the app is in the <a href="/guide/">guide</a>.</p>
+      <details class="mobile-contents"><summary>On this page</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v1.0.1/"><span>1.0.1</span><small>2026-11-25</small></a>
+      <a href="/releases/v0.9.18/"><span>Delta V16.1</span><small>2026-11-13</small></a>
+      </nav></details>
     </header>
-    <article class="release release-detail" id="v1.0.0"><div class="doc-body">
+    <section class="release-highlights" id="highlights" aria-labelledby="highlights-title">
+      <h2 id="highlights-title">Highlights</h2>
+<p class="section-lede">
+    CartoVox 1.0, dated 22 November 2026, follows Delta V16.1 and is the first public release. It is free, needs no
+    invite, access code, account or check-in, and works offline. Installers are for Apple Silicon Macs (macOS 14 or
+    later), Windows 10/11 x64 and Linux x64 (glibc 2.34 or newer); <a href="/#download">download them here</a>. At
+    first launch you read and accept licence 3.1 and sign it with your name beside the date; the signature stays on
+    your computer, and <b>Settings › Licence</b> shows who signed and when. If you used a Delta build, the first
+    time 1.0 opens it shows a card for each headline feature, each with <b>Show me</b>; Help and the command palette
+    open it again. The full account is in the <a href="/releases/v1.0.0/">release notes</a>.
+  </p>
+  <ul class="feat">
+    <li><b>Nothing about you is sent</b>: CartoVox only checks for new versions, and you can turn that off. The Delta usage report and its access codes are gone, and your worlds stay on your computer. <b>Help › Check for updates</b> reads the update notes; <b>Settings › Updates &amp; support</b> changes when it checks. On Mac and Windows it can update and restart once your work is saved, checking each download against our own signature first; on Linux it downloads an installer for you to run. <a href="/privacy/#the-app">Privacy</a>.</li>
+    <li><b>Your own species and ecosystems</b>: create and duplicate species, describe their habitat and relationships, and set the ecosystem slider (<b>Very realistic</b>, <b>Balanced</b> or <b>Very flexible</b>) to see how food, hosts and other partners shape their ranges. Find a species in search or the Compendium, follow links to its prey or host, and open its range on the map. More built-in wildlife lives in mountains, deserts, wetlands and the deep sea.</li>
+    <li><b>Biomes of your own</b>: add up to twelve in <code>Create › Advanced › Rules of the world › Your biomes</code>, or from the Biomes map or the species editor. A biome can follow a climate, its signature species, or both, and shows on every biome map, key, plate and export. Eight more rules set where the tundra, forest, desert and Mediterranean lines fall, and a set of rules travels as a short code. The Climate Lab rebuilds a world under changed rules. <a href="/guide/create/">Create</a>.</li>
+    <li><b>Flat worlds and disc worlds</b>: a flat world (experimental) is a rectangle or an ellipse with open sea, a wall or a wrap past its edge, and its own sun. It gets climate, soils, natural regions, realms, campaigns, Render Studio and exports like any world. A disc world gives you more say over where its warm and cold rings fall.</li>
+    <li><b>Regions of your own</b>: <code>World › Tools › Regions</code> draws a region with a lasso, a polygon or a brush, names it and says what kind it is. It may cross coasts, realms and natural regions, gets its own gazetteer page and atlas plate, and works with Find places, <code>[[links]]</code> and the GeoJSON and GeoPackage exports.</li>
+    <li><b>Shape the night sky</b>: in Sky &amp; planet, <b>Edit constellations</b> opens a star chart where you move, brighten, add and delete stars and draw your own constellations. Each can carry its story and a name in every people’s tongue; the Compendium gains a Night sky page, and a star-chart handout prints as PDF or PNG. Sky &amp; planet also follows moon orbits and their tides, and the star chart shows the year’s meteor streams.</li>
+    <li><b>Atlas plates you can edit</b>: <b>Edit plate</b> drags, resizes, hides or swaps any stamp, adds new ones, frames the plate and sets its title and layers; <b>Edit labels</b> moves the names. Five new plate looks join CartoVox and Parchment: Woodcut print, Watercolour wash, Medieval portolan, Admiralty chart and Night atlas, each drawn in its own tradition. <a href="/guide/world/#atlas">Atlas</a>.</li>
+    <li><b>Render Studio</b>: the same five looks arrive as art directions, each a whole look in one click. Place camera stops to preview a terrain flyover and export it as animated WebP, PNG frames or MP4, and tilt a finished continent, region or disc sheet under the World map’s skies. <a href="/guide/world/#render">Render Studio</a>.</li>
+    <li><b>Players at the table</b>: players who join from their own phone, tablet or computer now take part: move their own token, pin notes, roll dice and propose a journey, as you allow for everyone or one player at a time. Nothing moves under the fog, your moves at the desk win, and the session recap records what players did. To play over the internet, use Tailscale or another VPN. <a href="/guide/play/#tabletop">Tabletop</a>.</li>
+    <li><b>Books and shared worlds</b>: download a World Bible as PDF or EPUB with atlas maps, place pages, history, peoples and tongues, with a player edition that keeps to what the campaign has revealed. Share a world as a web map with zoomable layers, a searchable Compendium and a timeline that opens offline from <code>index.html</code>. Books export as store-ready EPUB and Kindle e-books. <a href="/guide/world/#export">Export</a>.</li>
+    <li><b>Explore the map by keyboard</b>: Tab into the World map for <b>Keyboard map</b>; its cursor reads the terrain, biome, climate and elevation, and jumps between named places, realms and rivers. Screen readers hear names and tooltips in your interface language as soon as you change it.</li>
+    <li><b>A new look, and a calmer start</b>: the Atlas theme (Atlas Dark and parchment Atlas Day) follows your computer’s light or dark setting, and the Delta themes stay in <b>Settings › Appearance</b>. The welcome is now one card on the title screen, where <b>Example world</b> opens Eofordal. <b>Ask or do anything</b> at the top of each workspace finds maps, places, tools and exports, and every town and village shows its streets when you zoom in.</li>
+    <li><b>Measured again</b>: on the reference M5 Pro Mac, from source, a Sketch world took 14.87 seconds, Quick 27.45 seconds and Full 81.55 seconds (medians of three runs on 22 November 2026), so Create quotes about 15 seconds, 30 seconds and 80 seconds; a Full world with every publication plate took about 14 minutes. These are not timings of the packaged installers. <a href="/guide/create/#build">Build</a>.</li>
+  </ul>
+    </section>
+    <article class="release release-detail release-full" id="v1.0.0">
+      <h2 id="full-notes">Full notes</h2>
+      <div class="doc-body">
 <p>CartoVox 1.0 follows Delta V16.1, the Windows update to Delta V16. Invited testers received Delta V16 on 13 November 2026.</p>
 <h3 id="night-sky-and-impacts">Night sky and impacts</h3>
 <ul>
@@ -729,14 +769,45 @@
 <li>An imported region shows its saved cover while the high-resolution region rebuilds.</li>
 <li>Create is ready after the Library opens. Its 3D renderer loads when a candidate globe is visible, keeping the reduced-motion title screen still and light.</li>
 </ul>
-      </div></article>
+      </div>
+    </article>
+    <nav class="release-pager" aria-label="Neighbouring releases">
+      <a href="/releases/v0.9.18/">← CartoVox Delta V16.1</a>
+      <a href="/releases/v1.0.1/">CartoVox 1.0.1 →</a>
+    </nav>
   </div>
 </main>
 <footer class="footer">
-  <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/img/lockup-v3.svg?v=457fbc1a9d" width="200" height="258" alt="CartoVox" loading="lazy" decoding="async">
+      <p class="footer-tag">Simulate. Map. Write. Play.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <p class="footer-h">CartoVox</p>
+        <a href="/features/">Features</a>
+        <a href="/discover/">Discover</a>
+        <a href="/#download">Download</a>
+        <a href="/releases/">Releases</a>
+      </div>
+      <div>
+        <p class="footer-h">Learn</p>
+        <a href="/guide/">Guide</a>
+        <a href="/guide/videos/">Video guides</a>
+        <a href="/features/#faq">FAQ</a>
+        <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord community</a>
+      </div>
+      <div>
+        <p class="footer-h">Legal</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/eula/">Licence</a>
+        <a href="/third-party-notices/">Third-party notices</a>
+      </div>
+    </nav>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds and screenshots shown here were made with it. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
-<script src="/js/site.js?v=b6530a3583" defer></script>
+<script src="/js/site.js?v=b57a5ebe1e" defer></script>
 </body>
 </html>

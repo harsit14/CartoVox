@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ASSETS = ("css/site.css", "js/site.js", "js/candidates.js")
+ASSETS = ("css/site.css", "css/guide.css", "js/site.js", "js/guide.js", "js/candidates.js")
 BRANDING = ("img/nav-mark-v3.svg", "img/wordmark-v3.svg", "img/lockup-v3.svg",
             "favicon.ico", "img/icon-32.png", "img/icon-64.png", "img/icon-180.png",
             "img/icon-192.png", "img/icon-512.png", "img/social-card.jpg")

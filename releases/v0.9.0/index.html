@@ -3,58 +3,99 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CartoVox 0.9.0 — full release notes</title>
-  <meta name="description" content="The full CartoVox 0.9.0 release notes: changes, compatibility and known limits.">
+  <title>CartoVox 0.9.0 — release notes</title>
+  <meta name="description" content="What changed in CartoVox 0.9.0: highlights, full changes and compatibility notes.">
   <link rel="canonical" href="https://cartovox.org/releases/v0.9.0/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CartoVox 0.9.0 — full release notes">
-  <meta property="og:description" content="The full CartoVox 0.9.0 release notes: changes, compatibility and known limits.">
+  <meta property="og:title" content="CartoVox 0.9.0 — release notes">
+  <meta property="og:description" content="What changed in CartoVox 0.9.0: highlights, full changes and compatibility notes.">
   <meta property="og:url" content="https://cartovox.org/releases/v0.9.0/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=093d7268f0">
+  <link rel="stylesheet" href="/css/site.css?v=96afb811cd">
+  <link rel="stylesheet" href="/css/guide.css?v=e742012cc9">
 </head>
-<body class="doc-page">
+<body class="doc-page release-page">
 <a class="skip" href="#main">Skip to content</a>
+<!-- RELEASE-1.1: remove this note when CartoVox 1.1 is published (one <p> per page; grep RELEASE-1.1). -->
+<p class="soon-banner" role="note"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1, which updates itself when 1.1 is out. <a href="/releases/" aria-current="page">Release notes</a></p>
 <header class="nav is-scrolled">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
       <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
     </a>
-    <nav class="nav-links" id="nav-links" aria-label="Sections">
-      <a href="/">Home</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="/features/">Features</a>
+      <a href="/discover/">Discover</a>
       <a href="/guide/">Guide</a>
-      <a href="/releases/" aria-current="page">Release notes</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/releases/" aria-current="page">Releases</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
     <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="/features/">Features</a><a href="/discover/">Discover</a><a href="/guide/">Guide</a><a href="/releases/" aria-current="page">Releases</a><a href="/#download">Download free</a></nav></noscript>
 <main id="main" class="guide">
   <aside class="guide-toc" aria-label="Release navigation">
     <p class="eyebrow">Releases</p>
     <nav class="toc-list">
-      <a href="/releases/">All release notes</a>
-      <a href="/releases/v1.0.1/">1.0.1</a>
-      <a href="/releases/v1.0.0/">1.0</a>
-      <a href="/releases/v0.9.18/">Delta V16.1</a>
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.1/"><span>0.9.1</span><small>2026-09-21</small></a>
+      <a href="/releases/v0.8.3/"><span>0.8.3</span><small>2026-09-14</small></a>
     </nav>
   </aside>
   <div class="guide-body">
     <header class="guide-head">
-      <p class="eyebrow">Full release notes · 2026-09-20</p>
+      <p class="eyebrow">Release notes · 20 September 2026</p>
       <h1>CartoVox 0.9.0</h1>
-      <p class="lede">The sheet on the desk</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
-      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+      <p class="lede">The sheet on the desk.</p>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 and later are free downloads; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app, under Settings › Release notes. How to use the app is in the <a href="/guide/">guide</a>.</p>
+      <details class="mobile-contents"><summary>On this page</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.1/"><span>0.9.1</span><small>2026-09-21</small></a>
+      <a href="/releases/v0.8.3/"><span>0.8.3</span><small>2026-09-14</small></a>
+      </nav></details>
     </header>
-    <article class="release release-detail" id="v0.9.0"><div class="doc-body">
+    <section class="release-highlights" id="highlights" aria-labelledby="highlights-title">
+      <h2 id="highlights-title">Highlights</h2>
+<p class="section-lede">
+    0.9 is everything implemented after 0.8.3, and it outgrew the number it was planned under. The whole
+    interface has been restated, the map became something you draw on and describe rather than only look at,
+    and every name and every description in a world can now be written on one sheet. The short list, before
+    the workspace-by-workspace walk below; the full account is in the
+    <a href="/releases/#v0.9.0">release notes</a>.
+  </p>
+  <ul class="feat">
+    <li><b>The interface is a survey sheet</b> — a thumb-index rail, a title block, each workspace a sheet on a desk, floating map cards as dark instruments with a brass top edge, chips as stamps, and every measured number set as a tabular figure. Archivo and DM Mono ship under the OFL beside Newsreader; 205 corner radii were flattened to one geometry, and the light theme was rebuilt as a daylight desk rather than an inverted dark one.</li>
+    <li><b>The World workspace is map-first</b> — the rendered map is the page, a <b>World / Maps</b> pill sits at the top left above the drawer it opens, and everything that acts on the map lives in the dock along the bottom. <a href="/guide/world/">The map, below</a>.</li>
+    <li><b>A Sketch tier</b> — a whole world at quarter resolution in about half a minute, promotable to Quick or Full later as its own project. <a href="/guide/create/#build">Preflight and finish</a>.</li>
+    <li><b>Draw a shape, and say what belongs there</b> — <b>Describe a region</b> places what it can (a named region, a codex page, a gazetteer entry, carrying your words as its lore), moves the ground where the words describe ground, and reports the words it could not place. <a href="/guide/world/#sculpt">Sculpt</a>.</li>
+    <li><b>Turn world</b> — a map tool that moves the meridian the sheet is cut at, so a continent split across the edges can be brought to the middle. <a href="/guide/world/#toolbar">The dock</a>.</li>
+    <li><b>Rename everything, and describe everything</b> — every named thing on one editable sheet, and the prose the generator deliberately leaves blank in one place beside it. <a href="/guide/write/#compendium">Codex</a>.</li>
+    <li><b>Your map's own rivers</b> — a river drawn on an imported map is read as a river rather than a sea inlet, and you choose whether the world keeps your lines, solves its own, or treats the blue as water. <a href="/guide/create/#import">Import a map</a>.</li>
+    <li><b>Deciding how much of a planet your map is</b> — say what share of the planet your continent covers and CartoVox sizes the sheet to match, with a control that trims the ocean you painted around your coast.</li>
+    <li><b>The oblique camera</b> — tilt a finished render until the terrain has a far side, with the scale bar and compass left flat on the paper and the picture saying that its vertical scale is invented. <a href="/guide/world/#render">Render Studio</a>.</li>
+    <li><b>The atlas, bound as a book you can print</b> — title page, contents, a page per plate at a real paper size, a colophon carrying the seed, and every plate embedded at its own resolution. <a href="/guide/world/#export">Exports</a>.</li>
+    <li><b>Settlements you can play on</b> — a town leaves as a Universal VTT (<code>.dd2vtt</code>) or a Foundry scene, with walls, doors and line of sight decided rather than guessed. <a href="/guide/play/#cities">Settlement Studio</a>.</li>
+    <li><b>Encounter maps with height</b> — give a wall or a tower a height in your scene's own units and it casts a shadow from one sun, with nothing tilted and every footprint still on its square. <a href="/guide/play/#scenes">Scenes</a>.</li>
+    <li><b>Watch the world being made</b> — a build shows the land and relief about seven seconds in, then the climate and biomes, drawn from fields the simulation had already computed. A watched build and an unwatched one produce identical saved fields.</li>
+    <li><b>An illustrated first-run tour, and an example world</b> — six panels of drawings instead of 1,587 words, and one click builds <i>Eldrebrenn</i>: a complete project in your own library, measured at 83.9 seconds and 179 MB. <a href="/guide/library/">Library</a>.</li>
+    <li><b>Exports that carry what they claimed to</b> — real GeoJSON coastlines with lakes as holes (agreeing with the saved land mask to 99.94% of cells), and OBJ/STL meshes at the whole grid instead of 3.2% of it.</li>
+    <li><b>No network request of its own</b> — the daily update check is gone, along with the installer download it fed and the certificate bundle it needed. New builds are announced on the Discord server, and <b>App settings → Updates &amp; support</b> says so.</li>
+  </ul>
+    </section>
+    <article class="release release-detail release-full" id="v0.9.0">
+      <h2 id="full-notes">Full notes</h2>
+      <div class="doc-body">
 <p>0.9.0 is everything implemented after 0.8.3. It was planned as 0.8.4 and outgrew the number: the whole interface has been restated, the map became something you draw on and describe rather than only look at, and every name and every description in a world can now be written on one sheet.</p>
 <h3 id="the-interface-restated-as-a-survey-sheet">The interface, restated as a survey sheet</h3>
 <ul>
@@ -292,14 +333,45 @@
 <li><strong>The Atlas is called the Atlas again.</strong> The rename to CartoVox reached the tab that holds illustrated plates, which names the publication the app draws rather than the app. Its own name is back, in the tab, the gallery and the messages that point at it.</li>
 <li><strong>Two manuscript saves in the same second keep their order.</strong> A history stamp read the clock twice and built its seconds and its milliseconds from different readings, so a save landing on the boundary was stamped as the start of a second rather than its end, and sorted before its own past.</li>
 </ul>
-      </div></article>
+      </div>
+    </article>
+    <nav class="release-pager" aria-label="Neighbouring releases">
+      <a href="/releases/v0.8.3/">← CartoVox 0.8.3</a>
+      <a href="/releases/v0.9.1/">CartoVox 0.9.1 →</a>
+    </nav>
   </div>
 </main>
 <footer class="footer">
-  <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/img/lockup-v3.svg?v=457fbc1a9d" width="200" height="258" alt="CartoVox" loading="lazy" decoding="async">
+      <p class="footer-tag">Simulate. Map. Write. Play.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <p class="footer-h">CartoVox</p>
+        <a href="/features/">Features</a>
+        <a href="/discover/">Discover</a>
+        <a href="/#download">Download</a>
+        <a href="/releases/">Releases</a>
+      </div>
+      <div>
+        <p class="footer-h">Learn</p>
+        <a href="/guide/">Guide</a>
+        <a href="/guide/videos/">Video guides</a>
+        <a href="/features/#faq">FAQ</a>
+        <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord community</a>
+      </div>
+      <div>
+        <p class="footer-h">Legal</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/eula/">Licence</a>
+        <a href="/third-party-notices/">Third-party notices</a>
+      </div>
+    </nav>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds and screenshots shown here were made with it. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
-<script src="/js/site.js?v=b6530a3583" defer></script>
+<script src="/js/site.js?v=b57a5ebe1e" defer></script>
 </body>
 </html>

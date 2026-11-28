@@ -3,58 +3,92 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CartoVox 1.0.1 — full release notes</title>
-  <meta name="description" content="The full CartoVox 1.0.1 release notes: changes, compatibility and known limits.">
+  <title>CartoVox 1.0.1 — release notes</title>
+  <meta name="description" content="What changed in CartoVox 1.0.1: highlights, full changes and compatibility notes.">
   <link rel="canonical" href="https://cartovox.org/releases/v1.0.1/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CartoVox 1.0.1 — full release notes">
-  <meta property="og:description" content="The full CartoVox 1.0.1 release notes: changes, compatibility and known limits.">
+  <meta property="og:title" content="CartoVox 1.0.1 — release notes">
+  <meta property="og:description" content="What changed in CartoVox 1.0.1: highlights, full changes and compatibility notes.">
   <meta property="og:url" content="https://cartovox.org/releases/v1.0.1/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=093d7268f0">
+  <link rel="stylesheet" href="/css/site.css?v=96afb811cd">
+  <link rel="stylesheet" href="/css/guide.css?v=e742012cc9">
 </head>
-<body class="doc-page">
+<body class="doc-page release-page">
 <a class="skip" href="#main">Skip to content</a>
+<!-- RELEASE-1.1: remove this note when CartoVox 1.1 is published (one <p> per page; grep RELEASE-1.1). -->
+<p class="soon-banner" role="note"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1, which updates itself when 1.1 is out. <a href="/releases/" aria-current="page">Release notes</a></p>
 <header class="nav is-scrolled">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
       <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
     </a>
-    <nav class="nav-links" id="nav-links" aria-label="Sections">
-      <a href="/">Home</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="/features/">Features</a>
+      <a href="/discover/">Discover</a>
       <a href="/guide/">Guide</a>
-      <a href="/releases/" aria-current="page">Release notes</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/releases/" aria-current="page">Releases</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
     <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="/features/">Features</a><a href="/discover/">Discover</a><a href="/guide/">Guide</a><a href="/releases/" aria-current="page">Releases</a><a href="/#download">Download free</a></nav></noscript>
 <main id="main" class="guide">
   <aside class="guide-toc" aria-label="Release navigation">
     <p class="eyebrow">Releases</p>
     <nav class="toc-list">
-      <a href="/releases/">All release notes</a>
-      <a href="/releases/v1.0.0/">1.0</a>
-      <a href="/releases/v0.9.18/">Delta V16.1</a>
-      <a href="/releases/v0.9.17/">Delta V16</a>
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v1.0.0/"><span>1.0</span><small>2026-11-22</small></a>
     </nav>
   </aside>
   <div class="guide-body">
     <header class="guide-head">
-      <p class="eyebrow">Full release notes · 2026-11-25</p>
+      <p class="eyebrow">Release notes · 25 November 2026</p>
       <h1>CartoVox 1.0.1</h1>
       <p class="lede">The first update to CartoVox 1.0. The Sculptor&#x27;s Stamp gains seventeen landforms, from cenotes and tepuis to canyons, drumlins and salt flats, and worlds now find and name them where their rock, climate, water and ice put them. The city builder can fill water to a height, so islands no longer need tracing by hand, and the water and land you shape can be chosen again, changed, moved or deleted; towns now fill small islands, and Generate city now plans the ground you draw. On the Polyhedral and butterfly World maps, rivers, roads and borders stop at each triangle&#x27;s edge instead of crossing the gaps, and names read upright. Disc, region and flat worlds show themselves taking shape while they build, with closer time and memory estimates. CartoVox opens quietly, gains a Safe graphics switch on Windows and Linux, and says on its title screen when a new version is out.</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
-      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 and later are free downloads; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app, under Settings › Release notes. How to use the app is in the <a href="/guide/">guide</a>.</p>
+      <details class="mobile-contents"><summary>On this page</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v1.0.0/"><span>1.0</span><small>2026-11-22</small></a>
+      </nav></details>
     </header>
-    <article class="release release-detail" id="v1.0.1"><div class="doc-body">
+    <section class="release-highlights" id="highlights" aria-labelledby="highlights-title">
+      <h2 id="highlights-title">Highlights</h2>
+<p class="section-lede">
+    CartoVox 1.0.1, dated 25 November 2026, is the first update to CartoVox 1.0. On a Mac or Windows, an
+    installed 1.0 updates itself: choose the update on the notice beside the version on the title screen, or in
+    <b>Settings › Updates &amp; support</b>. On Linux, the notice leads to the new installer, also in the
+    <a href="/#download">download section</a>. Saved worlds show the new landforms when you open them. The full
+    account is in the <a href="/releases/v1.0.1/">release notes</a>.
+  </p>
+  <ul class="feat">
+    <li><b>Seventeen more landforms to stamp</b>: the Sculptor’s <b>Stamp</b> adds a cenote, a sinkhole field, a blue hole, karst towers, a tepui, an inselberg, a canyon, badlands, sea stacks, a tombolo, a maar, a cinder cone, drumlins, an esker, a moraine, a salt flat and a crater lake. The list is grouped by kind, and each landform is described under it with the size it usually has. Choosing one sets the Height to suit it, and on a continent or region map the Size too. A stamped cenote, maar or crater lake keeps its bowl, so the rain can fill it. <a href="/guide/world/#sculpt">Sculpt</a>.</li>
+    <li><b>Worlds find more landforms</b>: cenotes, tower karst, blue holes, tepuis, inselbergs, mesa country, badlands, canyons, salt flats, sea stacks and arches, tombolos, crater lakes, maars and mud volcanoes, and the moraines, drumlins, eskers and cirques the ice age carved, each where its rock, climate, water and ice put it, a handful per world. They show on the Volcanoes, Karst, Coastal landforms and Peaks, waterfalls &amp; oases maps with their own symbols and key entries, in the World panel, Find places and the GeoJSON export, and on continent and region maps. Canyons take their river’s name, and a landform you stamp is listed as yours.</li>
+    <li><b>Fill water in the city builder</b>: the Terrain tool’s <b>Fill water</b> turns everything at or below a sea level you choose into sea, where it reaches the edge of the sheet, and leaves every island above it standing; or click a hollow and choose a height to flood it as a lake, pond, salt flat or sea. An outline shows what will fill as you move the height, following an imported heightmap and any hills you drew, so islands no longer need tracing by hand. <a href="/guide/play/#cities">City builder</a>.</li>
+    <li><b>Water and land you can change</b>: what you made with Cut water, Fill water, a river or canal, or Add land can be chosen again, on the map or from the Inspector’s list of ground edits, to change its kind and its height or width, move it or delete it.</li>
+    <li><b>Towns on small islands</b>: a town on a small island you drew or filled now fills the land it has instead of coming out empty. When an island is too small for the people you asked for, the builder places as many as fit and says how many. Islands in drawn or filled water no longer trail a pale streak of shore.</li>
+    <li><b>Your drawing is what gets planned</b>: ground you draw is what <b>Generate city</b> plans, even when you opened the builder from a world’s settlement. The heightmap import turns away a picture over 10,000 pixels on a side instead of risking the window, and the Inspector has a close button, a handle to bring it back and the <b>I</b> key.</li>
+    <li><b>Polyhedral and butterfly maps</b>: on the Polyhedral (icosahedron) and the Cahill and Waterman butterfly World maps, rivers, roads, borders, coasts, journeys and your own drawn lines stop at the edge of each triangle or wing and carry on from the next, instead of running across the empty paper. Filled areas stop at each edge, names move onto one triangle or wing and read the right way up, and large, vector and sharpened exports follow the same rules.</li>
+    <li><b>Disc, region and flat worlds</b>: they show the world taking shape while it builds, as a globe does. Their time and memory estimates are closer before you build (a 2,000 km disc at Ultra said about 3 minutes on a fast Mac and now says about 17), and finer detail never claims to need less memory. A disc or region you chose in Create is kept when you leave or reload, and the Library shows their whole map, round or uncropped, in the natural colours the build ended on.</li>
+    <li><b>A quieter, steadier app</b>: CartoVox still gets your last world ready as it starts, but no longer shows its progress while you are elsewhere, and the title bar reads just “CartoVox 1.0.1”. On Windows and Linux, <b>Safe graphics</b> is now a switch in <b>Settings › Updates &amp; support</b>, with <b>Restart now</b>, in place of starting with <code>--safe-graphics</code>. On Linux, if the window goes dark, CartoVox reopens the view by itself and, the second time in a few minutes, offers Safe graphics. The close button always closes the window.</li>
+    <li><b>Update notices</b>: when a new version is out, the title screen says so beside the version, with a button to update, download or restart and a link to what is new. A dot on Settings points to it, and the command palette offers the update. Skipping a version is never final: Settings keeps saying which one you skipped, with <b>Install it anyway</b> and <b>Stop skipping</b>.</li>
+    <li><b>And dozens of fixes</b>: Find places and Saved views light up only while their panel is open, Library counts are grouped like the areas beside them, map layers are named in your interface language, and a build’s Details say where its memory is.</li>
+  </ul>
+    </section>
+    <article class="release release-detail release-full" id="v1.0.1">
+      <h2 id="full-notes">Full notes</h2>
+      <div class="doc-body">
 <p>CartoVox 1.0.1 follows CartoVox 1.0, released on 22 November 2026.</p>
 <h3 id="create">Create</h3>
 <ul>
@@ -187,14 +221,45 @@
 <ul>
 <li>The world switcher at the top of the window names the open world as soon as it opens, and says "Choose a world" from the first moment when you have worlds, instead of "No world open" for a second or two.</li>
 </ul>
-      </div></article>
+      </div>
+    </article>
+    <nav class="release-pager" aria-label="Neighbouring releases">
+      <a href="/releases/v1.0.0/">← CartoVox 1.0</a>
+      <span></span>
+    </nav>
   </div>
 </main>
 <footer class="footer">
-  <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/img/lockup-v3.svg?v=457fbc1a9d" width="200" height="258" alt="CartoVox" loading="lazy" decoding="async">
+      <p class="footer-tag">Simulate. Map. Write. Play.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <p class="footer-h">CartoVox</p>
+        <a href="/features/">Features</a>
+        <a href="/discover/">Discover</a>
+        <a href="/#download">Download</a>
+        <a href="/releases/">Releases</a>
+      </div>
+      <div>
+        <p class="footer-h">Learn</p>
+        <a href="/guide/">Guide</a>
+        <a href="/guide/videos/">Video guides</a>
+        <a href="/features/#faq">FAQ</a>
+        <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord community</a>
+      </div>
+      <div>
+        <p class="footer-h">Legal</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/eula/">Licence</a>
+        <a href="/third-party-notices/">Third-party notices</a>
+      </div>
+    </nav>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds and screenshots shown here were made with it. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
-<script src="/js/site.js?v=b6530a3583" defer></script>
+<script src="/js/site.js?v=b57a5ebe1e" defer></script>
 </body>
 </html>

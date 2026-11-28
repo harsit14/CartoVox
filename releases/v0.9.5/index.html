@@ -3,58 +3,96 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CartoVox Delta V4 — full release notes</title>
-  <meta name="description" content="The full CartoVox Delta V4 release notes: changes, compatibility and known limits.">
+  <title>CartoVox Delta V4 — release notes</title>
+  <meta name="description" content="What changed in CartoVox Delta V4: highlights, full changes and compatibility notes.">
   <link rel="canonical" href="https://cartovox.org/releases/v0.9.5/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CartoVox Delta V4 — full release notes">
-  <meta property="og:description" content="The full CartoVox Delta V4 release notes: changes, compatibility and known limits.">
+  <meta property="og:title" content="CartoVox Delta V4 — release notes">
+  <meta property="og:description" content="What changed in CartoVox Delta V4: highlights, full changes and compatibility notes.">
   <meta property="og:url" content="https://cartovox.org/releases/v0.9.5/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=093d7268f0">
+  <link rel="stylesheet" href="/css/site.css?v=96afb811cd">
+  <link rel="stylesheet" href="/css/guide.css?v=e742012cc9">
 </head>
-<body class="doc-page">
+<body class="doc-page release-page">
 <a class="skip" href="#main">Skip to content</a>
+<!-- RELEASE-1.1: remove this note when CartoVox 1.1 is published (one <p> per page; grep RELEASE-1.1). -->
+<p class="soon-banner" role="note"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1, which updates itself when 1.1 is out. <a href="/releases/" aria-current="page">Release notes</a></p>
 <header class="nav is-scrolled">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
       <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
     </a>
-    <nav class="nav-links" id="nav-links" aria-label="Sections">
-      <a href="/">Home</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="/features/">Features</a>
+      <a href="/discover/">Discover</a>
       <a href="/guide/">Guide</a>
-      <a href="/releases/" aria-current="page">Release notes</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/releases/" aria-current="page">Releases</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
     <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="/features/">Features</a><a href="/discover/">Discover</a><a href="/guide/">Guide</a><a href="/releases/" aria-current="page">Releases</a><a href="/#download">Download free</a></nav></noscript>
 <main id="main" class="guide">
   <aside class="guide-toc" aria-label="Release navigation">
     <p class="eyebrow">Releases</p>
     <nav class="toc-list">
-      <a href="/releases/">All release notes</a>
-      <a href="/releases/v1.0.1/">1.0.1</a>
-      <a href="/releases/v1.0.0/">1.0</a>
-      <a href="/releases/v0.9.18/">Delta V16.1</a>
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.6/"><span>Delta V5</span><small>2026-10-02</small></a>
+      <a href="/releases/v0.9.4/"><span>Delta V3</span><small>2026-09-29</small></a>
     </nav>
   </aside>
   <div class="guide-body">
     <header class="guide-head">
-      <p class="eyebrow">Full release notes · 2026-09-30</p>
+      <p class="eyebrow">Release notes · 30 September 2026</p>
       <h1>CartoVox Delta V4</h1>
       <p class="lede">Draw your own realms on a saved world, plan settlements around their water, export layered vector maps, and steer your tongues in the Lexicon.</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
-      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 and later are free downloads; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app, under Settings › Release notes. How to use the app is in the <a href="/guide/">guide</a>.</p>
+      <details class="mobile-contents"><summary>On this page</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.6/"><span>Delta V5</span><small>2026-10-02</small></a>
+      <a href="/releases/v0.9.4/"><span>Delta V3</span><small>2026-09-29</small></a>
+      </nav></details>
     </header>
-    <article class="release release-detail" id="v0.9.5"><div class="doc-body">
+    <section class="release-highlights" id="highlights" aria-labelledby="highlights-title">
+      <h2 id="highlights-title">Highlights</h2>
+<p class="section-lede">
+    Delta V4 was shared with invited testers on 30 September 2026. Your access code keeps working. The licence is
+    now version 2.2, so the first start shows it once more with your code filled in; it adds vector maps,
+    settlement plans, Compendium pages and lexicons to what is yours, and says which fonts a PDF export embeds.
+    Settlements from a saved world are now planned around their water, coast and roads, so generate a saved one
+    again to get the new plan, and a world made by an earlier Delta build says so before an edit rebuilds it. The
+    full account is in the <a href="/releases/#v0.9.5">release notes</a>.
+  </p>
+  <ul class="feat">
+    <li><b>A vector map for your drawing program</b>: <b>Vector map</b> in the Export menu (then called <i>Vector map for Illustrator, Affinity, Inkscape…</i>) writes one SVG with named layers, or a vector PDF, in the projection and turn you are looking at. Sea depths, land, lakes, realm fills and borders, contours, coastline, rivers, roads, the graticule, settlements and places of power are each a layer of paths you can restyle, every name is text you can edit, and the paper runs from A4 to A0. <a href="/guide/world/#export">Everything that exports</a>.</li>
+    <li><b>The Export menu is sorted</b> into Pictures, Vector and print, Games and tabletop, 3D and printing, GIS and data, and Provenance and backup, with a format badge on every row, the seven projections on one row, and a fade that says <i>More formats below</i> when something is out of sight. It works from the keyboard and can be read in Parchment Light. <a href="/guide/world/#export">Everything that exports</a>.</li>
+    <li><b>Take a saved world's realms away and keep its towns</b>: the World drawer (now <b>World overview</b>) has a <b>Realms &amp; settlements</b> row that says whose realms these are. <b>Clear generated realms</b> keeps every town, road and port; <b>Change</b> chooses the realms and the towns separately, down to a physical world with no peoples, and prices the rebuild from the world's own last build. A rebuild that changes only realms, towns, roads or the nation brief now starts at the peoples, so terrain, climate, rivers and biomes stay exactly as they were. <a href="/guide/world/#sculpt">Sculpt</a>.</li>
+    <li><b>Draw your own realms on a world you already have</b>: the Sculptor's <b>Realm</b> tool traces a border and names the realm and its capital, and <b>Found the realms you drew</b> rebuilds the peoples. Select a realm and choose <b>Remove</b> to take one away: its capital stays as an ordinary town, and its neighbours and the wilderness take its ground. <a href="/guide/world/#sculpt">Sculpt</a>.</li>
+    <li><b>Settlements from your worlds, easy to find again</b>: <code>World › Scenes</code> has <b>New settlement from</b> <i>your world</i> beside <b>Create scene</b>, and towns, capitals and ports on the map, and cities in the gazetteer, have <b>Plan this settlement</b>. It opens Settlement Studio on that place, and the scene you save is linked back to the town. <a href="/guide/play/#cities">Settlements</a>.</li>
+    <li><b>Towns built around their water</b>: the river is laid down before the streets, at the width of the reach by the town, and the streets stop at quays. Bridges cross at the narrowest point, from a street to a street. There is one wall, with gates where the roads come in. Towns by the sea or a lake have that shore, and a seaport gets a harbour. Farmland lies in belts along the roads out of town, and rivers, lakes and bays carry the names your world gave them. Saved scenes keep their old plan until you generate them again. <a href="/guide/play/#cities">The plan comes from the world</a>.</li>
+    <li><b>The Codex is now the Compendium</b>: <code>Write › Compendium</code>, with the Obsidian vault, Scrivener and Ellipsus bundles under the new name. Typing <i>codex</i> in the command palette still takes you there, and vaults exported under the old name still sync back. <a href="/guide/write/#compendium">The Compendium</a>.</li>
+    <li><b>The Lexicon</b>: <code>Write › Compendium › Lexicon</code> shows every root in your world's tongues, what it means, whether it begins or ends names, and every name built on it. Change a meaning, respell a root after seeing every rename it causes, add roots of your own or lock the ones you love, and export the lexicon as CSV or Markdown. <a href="/guide/write/#tongues">The Lexicon</a>.</li>
+    <li><b>Allowed and Forbidden language families that work</b>: one row per family, <b>Allowed</b>, <b>Any</b> or <b>Never</b>, with a sentence saying what the world will do. A saved world changes its families at the top of the Lexicon, and only the names are rebuilt: names in a tongue you took away are drawn again, and names you chose stay yours. Storms, manor seats and rulers now keep to the world's own tongues. <a href="/guide/create/#peoples">Nations and tongues</a>.</li>
+    <li><b>Forest painting shows as you paint</b>: a <b>Forest</b> stroke hatches the land it reaches green, and a <b>Clearing</b> stroke brown. The status line counts the land painted, and a stroke that only crosses the sea says it changes nothing. The woodland itself grows when the world is re-simulated; <b>Quick look</b> previews it. <a href="/guide/world/#sculpt">Sculpt</a>.</li>
+    <li><b>The reading under the map is no longer cut off</b>: the distance scale comes first, the height and biome under your pointer get the room they need, and on a small window they take a second row. <a href="/guide/world/#inspector">The cell inspector</a>.</li>
+    <li><b>Worlds say which build made them</b>: before an edit rebuilds a world made by an earlier Delta build, the world page, the Sculptor's edit plan and the rebuild review say so, because the newer generator gives different continents and coasts. Mark ground with <b>Preserve</b>, or build a comparison draft first. Worlds from before Delta V4 read as <i>Made with an earlier Delta build</i>. <a href="/guide/world/#sculpt">Sculpt</a>.</li>
+  </ul>
+    </section>
+    <article class="release release-detail release-full" id="v0.9.5">
+      <h2 id="full-notes">Full notes</h2>
+      <div class="doc-body">
 <p>Delta V4 is the fourth Delta release, shared with invited testers on 30 September 2026. Your Delta access code keeps working; the licence is now version 2.2, so the first start shows it once more with your code filled in. Everything below is new or fixed since Delta V3. Settlements from a saved world come out differently: the town is planned around its water, coast and roads now, so generate a saved settlement again to get the new plan (scenes you already saved keep what they have). A world made by an earlier Delta build now says so before an edit rebuilds it, because the rebuild simulates the planet with the newer generator and its continents come out differently; <em>Rebuilds</em> says how to keep what you have.</p>
 <h3 id="delta">Delta</h3>
 <ul>
@@ -123,14 +161,45 @@
 <li><strong>Walls hug the town and housing matches the population.</strong> Walls no longer take in empty ground, every approach road gets a gate, and a town draws about as many houses as its people need, with the outermost blocks left as gardens and orchards rather than overshooting. Cores are denser, and the principal church stands in its own churchyard, sized to the place.</li>
 <li><strong>Farmland in belts.</strong> Gardens and orchards at the town's edge, then open-field strips, then hedged enclosures and pasture, with water meadows along the river and nothing ploughed on steep ground. The straight blue irrigation lines that crossed the fields are short and stay by the bank.</li>
 </ul>
-      </div></article>
+      </div>
+    </article>
+    <nav class="release-pager" aria-label="Neighbouring releases">
+      <a href="/releases/v0.9.4/">← CartoVox Delta V3</a>
+      <a href="/releases/v0.9.6/">CartoVox Delta V5 →</a>
+    </nav>
   </div>
 </main>
 <footer class="footer">
-  <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/img/lockup-v3.svg?v=457fbc1a9d" width="200" height="258" alt="CartoVox" loading="lazy" decoding="async">
+      <p class="footer-tag">Simulate. Map. Write. Play.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <p class="footer-h">CartoVox</p>
+        <a href="/features/">Features</a>
+        <a href="/discover/">Discover</a>
+        <a href="/#download">Download</a>
+        <a href="/releases/">Releases</a>
+      </div>
+      <div>
+        <p class="footer-h">Learn</p>
+        <a href="/guide/">Guide</a>
+        <a href="/guide/videos/">Video guides</a>
+        <a href="/features/#faq">FAQ</a>
+        <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord community</a>
+      </div>
+      <div>
+        <p class="footer-h">Legal</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/eula/">Licence</a>
+        <a href="/third-party-notices/">Third-party notices</a>
+      </div>
+    </nav>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds and screenshots shown here were made with it. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
-<script src="/js/site.js?v=b6530a3583" defer></script>
+<script src="/js/site.js?v=b57a5ebe1e" defer></script>
 </body>
 </html>

@@ -3,58 +3,101 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CartoVox Delta V3 — full release notes</title>
-  <meta name="description" content="The full CartoVox Delta V3 release notes: changes, compatibility and known limits.">
+  <title>CartoVox Delta V3 — release notes</title>
+  <meta name="description" content="What changed in CartoVox Delta V3: highlights, full changes and compatibility notes.">
   <link rel="canonical" href="https://cartovox.org/releases/v0.9.4/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CartoVox Delta V3 — full release notes">
-  <meta property="og:description" content="The full CartoVox Delta V3 release notes: changes, compatibility and known limits.">
+  <meta property="og:title" content="CartoVox Delta V3 — release notes">
+  <meta property="og:description" content="What changed in CartoVox Delta V3: highlights, full changes and compatibility notes.">
   <meta property="og:url" content="https://cartovox.org/releases/v0.9.4/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=093d7268f0">
+  <link rel="stylesheet" href="/css/site.css?v=96afb811cd">
+  <link rel="stylesheet" href="/css/guide.css?v=e742012cc9">
 </head>
-<body class="doc-page">
+<body class="doc-page release-page">
 <a class="skip" href="#main">Skip to content</a>
+<!-- RELEASE-1.1: remove this note when CartoVox 1.1 is published (one <p> per page; grep RELEASE-1.1). -->
+<p class="soon-banner" role="note"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1, which updates itself when 1.1 is out. <a href="/releases/" aria-current="page">Release notes</a></p>
 <header class="nav is-scrolled">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
       <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
     </a>
-    <nav class="nav-links" id="nav-links" aria-label="Sections">
-      <a href="/">Home</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="/features/">Features</a>
+      <a href="/discover/">Discover</a>
       <a href="/guide/">Guide</a>
-      <a href="/releases/" aria-current="page">Release notes</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/releases/" aria-current="page">Releases</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
     <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="/features/">Features</a><a href="/discover/">Discover</a><a href="/guide/">Guide</a><a href="/releases/" aria-current="page">Releases</a><a href="/#download">Download free</a></nav></noscript>
 <main id="main" class="guide">
   <aside class="guide-toc" aria-label="Release navigation">
     <p class="eyebrow">Releases</p>
     <nav class="toc-list">
-      <a href="/releases/">All release notes</a>
-      <a href="/releases/v1.0.1/">1.0.1</a>
-      <a href="/releases/v1.0.0/">1.0</a>
-      <a href="/releases/v0.9.18/">Delta V16.1</a>
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.5/"><span>Delta V4</span><small>2026-09-30</small></a>
+      <a href="/releases/v0.9.3/"><span>Delta V2</span><small>2026-09-27</small></a>
     </nav>
   </aside>
   <div class="guide-body">
     <header class="guide-head">
-      <p class="eyebrow">Full release notes · 2026-09-29</p>
+      <p class="eyebrow">Release notes · 29 September 2026</p>
       <h1>CartoVox Delta V3</h1>
       <p class="lede">Shape a world while it builds, explore deposits and species, bring in hand-drawn maps, and refine a region with more detail.</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
-      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 and later are free downloads; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app, under Settings › Release notes. How to use the app is in the <a href="/guide/">guide</a>.</p>
+      <details class="mobile-contents"><summary>On this page</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.5/"><span>Delta V4</span><small>2026-09-30</small></a>
+      <a href="/releases/v0.9.3/"><span>Delta V2</span><small>2026-09-27</small></a>
+      </nav></details>
     </header>
-    <article class="release release-detail" id="v0.9.4"><div class="doc-body">
+    <section class="release-highlights" id="highlights" aria-labelledby="highlights-title">
+      <h2 id="highlights-title">Highlights</h2>
+<p class="section-lede">
+    Delta V3 was shared with invited testers on 29 September 2026. Your access code keeps working and the licence
+    is unchanged. It answers the loudest thing testers told us, that the app went quiet while it worked, and it
+    brings new science: four kinds of wetland, warmer high latitudes, soils that are wet where water gathers, and
+    continents that rift apart in Deep Time. Saved worlds change only when you next rebuild them. The full
+    account is in the <a href="/releases/#v0.9.4">release notes</a>.
+  </p>
+  <ul class="feat">
+    <li><b>The app says when it is working</b>: the button that started an export, import, save, journey or render counts its seconds, the part of the screen it will fill dims, and anything slow keeps a notice up. <b>Undo survives a reload</b> in Render Studio, scenes, Draw your world, the Sculptor, the settlement editor, Deep Time's drawing and every chapter, and long dropdowns open a searchable list inside the window.</li>
+    <li><b>Shape while it builds</b>: a Full world's build window opens a workbench over the relief that exists so far. Stage Raise, Lower, Plateau, Ridge and Island edits and story pins, inspect and measure, and hand the edits to the Sculptor when the world is saved. <a href="/guide/create/">Create a world</a>.</li>
+    <li><b>Pinpoint tin, silver and amethyst</b>: the Deposits layer (<code>World › Map appearance › Map aids › Deposits</code>, key <kbd>O</kbd>) pins 25 minerals and gems where the world's own rock puts them, each with its grade, the geology that made it, the nearest town and, for worked sites, a name in the realm's own tongue. Search it, filter by metal, gem or worked site, and read the deposits beside any cell in the inspector. <a href="/guide/world/#layers">Map views</a>.</li>
+    <li><b>Species maps with a key and filters</b>: search species by name or use, filter by group, and read what every colour means beside the map. 69 species now, with saffron, cinnamon, pepper and the other spices, hops and barley, flax and hemp, honeybees and silkworms, and pearl oysters, coral, cod and whales in the sea. <a href="/guide/world/#layers">Map views</a>.</li>
+    <li><b>Wines, ales, meads and 85 goods</b>: what a town makes comes from what grows around it, the deposits beside it and its harbour, and towns are known for named specialties, a wine of the volcanic slopes or a forest mead, shown in the dossier, the Codex and the market editor. <a href="/guide/write/#compendium">Codex</a>.</li>
+    <li><b>Several measurements at once</b>: finish a route or close a shape and it stays on the map in its own colour with its total, listed to hide, rename or delete, and remembered for each world. <a href="/guide/world/">The map</a>.</li>
+    <li><b>Hand-drawn maps and maps in several files</b>: a pencil or ink map photographed on plain or ruled paper is read by its drawn coasts, with <b>Swap regions</b> to fix any region in one click; and <b>Combine several map files…</b> joins scans or sheets of one world, placing overlapping files by themselves. <a href="/guide/create/#import">Import a map</a>.</li>
+    <li><b>Deltas you can see</b>: rivers that build a delta draw their distributaries on every everyday map, and the dossier and cell inspector name the delta. <a href="/guide/world/">The map</a>.</li>
+    <li><b>Imports that ask what they are for</b>: rebuild a world from your map, keep your land and heights exactly, keep your picture as the map, or import the project's own places. Azgaar provinces, religions, markers and cultures come through, and <b>Read the names on this map…</b> finds the lettering on a picture and queues every name for review, on your own computer. <a href="/guide/create/#import">Import a map</a>.</li>
+    <li><b>The brief is taken at its word</b>: drawn realms keep their borders and capitals, "thirty continents" gives close to thirty, zones are set apart, and every geography and planet choice explains itself under the pointer. <a href="/guide/create/#brief">The World Brief</a>.</li>
+    <li><b>Render Studio paints</b>: a <b>Painting</b> layer with pressure, texture, stamp scatter and Range and Forest brushes; a <b>Painted</b> stamp style beside Drawn; shear, a draggable layer tree, reusable clip masks, linked library structures, six reference images each in its own projection, and sheets of 5,000 objects that still answer in under 50 ms. <a href="/guide/world/#render">Render Studio</a>.</li>
+    <li><b>Refine a region</b>: a child map can be re-simulated two, four or eight times finer, with the world's rivers flowing in and realms, roads and city plans redrawn on the finer ground. The View menu's <b>Borders and places</b> lays borders, provinces and towns over any map. <a href="/guide/world/">The map</a>.</li>
+    <li><b>Scenes in isometric</b>: walls, doors, floors and stairs stand up as lit blocks, live beside the plan. <b>Step inside a building</b> furnishes any building floor by floor, and child scenes follow their parent's world, sun and darkness. <a href="/guide/play/#scenes">Scenes</a>.</li>
+    <li><b>Sculpting keeps up</b>: a 110-stroke review that used to time out after 30 seconds now takes about two. Towns, landmarks and borders stay on the map while you sculpt and can be dragged to stage a move, overlays line up in every projection, and what you wrote about lakes, ranges and rivers follows them through a rebuild. <a href="/guide/world/#sculpt">Sculpt</a>.</li>
+    <li><b>The science</b>: <b>Paint plates</b> in Deep Time, and supercontinents now break up. Land ice follows the warmest season, so tundra and boreal forest grow near the poles. Wetlands come as bog and fen, marsh, swamp forest and salt marsh. A region brief can ask for white gypsum, red or black volcanic sand, and stream order carries through lakes. <a href="/guide/create/#deeptime">Deep Time</a> · <a href="/guide/reference/#files">Simulation health</a>.</li>
+    <li><b>Writing and lore</b>: native Scrivener <code>.scriv</code> import, two editable panes side by side, <b>Edit</b> on every generated Codex (now the Compendium) entry with lore scoped to the world, regions or a point, provinces divided up to four levels deep, an edited Obsidian vault brought back, and lore imported from spreadsheets with attachments. <a href="/guide/write/#manuscript">Manuscript</a> · <a href="/guide/write/#compendium">Codex</a>.</li>
+    <li><b>At the table</b>: a player atlas drawn under the campaign's fog, printable token sheets, and characters revealed to players one by one. Towns on hills terrace up the slope, fountains are fed by conduits, and generated streets no longer run through buildings. <a href="/guide/play/">Campaigns</a> · <a href="/guide/play/#cities">Settlements</a>.</li>
+    <li><b>New exports</b>: a printable <b>Globe</b> STL, hollow or solid, whole or in halves; an offline map carrying full dossiers; and an <b>illustrated hex map</b> that paints every hex as a textured tile with its stamps, rivers and towns, sized so a VTT grid can match it. <a href="/guide/world/#export">Everything that exports</a>.</li>
+  </ul>
+    </section>
+    <article class="release release-detail release-full" id="v0.9.4">
+      <h2 id="full-notes">Full notes</h2>
+      <div class="doc-body">
 <p>Delta V3 is the third Delta release, shared with invited testers on 29 September 2026. Your Delta access code keeps working, and the licence is unchanged (version 2.1), so there is nothing to accept again. Everything below is new or fixed since Delta V2. Several changes to the science make worlds come out differently: wetlands, high latitudes (where continents now sit, too), soils, stream order below lakes, and Deep Time's continents, which now rift apart. Desert sand changes only the regions you describe, and the river-health figure changes in the report but not in the rivers. A saved world does not change when you open it. It changes the next time it is rebuilt, and the first rebuild in Delta V3 simulates the whole world again, because the simulation a world keeps between rebuilds belongs to the version that made it. <em>Deep Time and the science</em> says what moves and by how much.</p>
 <h3 id="delta">Delta</h3>
 <ul>
@@ -208,14 +251,45 @@
 <li><code>calibration_world</code> read <code>counts[&quot;error&quot;]</code> and <code>counts[&quot;warning&quot;]</code> while the health file writes <code>errors</code> and <code>warnings</code>, so every recorded calibration held zero errors and warnings. The next calibration run will show warning-count drift that belongs to this fix.</li>
 <li>Worlds that use none of the new features build byte for byte as before on the standard proof world (seed 991 at Sketch), apart from the science changes named above, each of which has an evidence packet under <code>docs/scientific-evidence/</code>.</li>
 </ul>
-      </div></article>
+      </div>
+    </article>
+    <nav class="release-pager" aria-label="Neighbouring releases">
+      <a href="/releases/v0.9.3/">← CartoVox Delta V2</a>
+      <a href="/releases/v0.9.5/">CartoVox Delta V4 →</a>
+    </nav>
   </div>
 </main>
 <footer class="footer">
-  <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/img/lockup-v3.svg?v=457fbc1a9d" width="200" height="258" alt="CartoVox" loading="lazy" decoding="async">
+      <p class="footer-tag">Simulate. Map. Write. Play.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <p class="footer-h">CartoVox</p>
+        <a href="/features/">Features</a>
+        <a href="/discover/">Discover</a>
+        <a href="/#download">Download</a>
+        <a href="/releases/">Releases</a>
+      </div>
+      <div>
+        <p class="footer-h">Learn</p>
+        <a href="/guide/">Guide</a>
+        <a href="/guide/videos/">Video guides</a>
+        <a href="/features/#faq">FAQ</a>
+        <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord community</a>
+      </div>
+      <div>
+        <p class="footer-h">Legal</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/eula/">Licence</a>
+        <a href="/third-party-notices/">Third-party notices</a>
+      </div>
+    </nav>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds and screenshots shown here were made with it. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
-<script src="/js/site.js?v=b6530a3583" defer></script>
+<script src="/js/site.js?v=b57a5ebe1e" defer></script>
 </body>
 </html>

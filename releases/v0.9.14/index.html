@@ -3,58 +3,96 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CartoVox Delta V13 — full release notes</title>
-  <meta name="description" content="The full CartoVox Delta V13 release notes: changes, compatibility and known limits.">
+  <title>CartoVox Delta V13 — release notes</title>
+  <meta name="description" content="What changed in CartoVox Delta V13: highlights, full changes and compatibility notes.">
   <link rel="canonical" href="https://cartovox.org/releases/v0.9.14/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CartoVox Delta V13 — full release notes">
-  <meta property="og:description" content="The full CartoVox Delta V13 release notes: changes, compatibility and known limits.">
+  <meta property="og:title" content="CartoVox Delta V13 — release notes">
+  <meta property="og:description" content="What changed in CartoVox Delta V13: highlights, full changes and compatibility notes.">
   <meta property="og:url" content="https://cartovox.org/releases/v0.9.14/">
   <meta property="og:image" content="https://cartovox.org/img/social-card.jpg?v=bac6faebbe">
   <link rel="icon" href="/favicon.ico?v=fe52cfaba8" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/img/icon-64.png?v=e3cc78e9d5">
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
-  <link rel="stylesheet" href="/css/site.css?v=093d7268f0">
+  <link rel="stylesheet" href="/css/site.css?v=96afb811cd">
+  <link rel="stylesheet" href="/css/guide.css?v=e742012cc9">
 </head>
-<body class="doc-page">
+<body class="doc-page release-page">
 <a class="skip" href="#main">Skip to content</a>
+<!-- RELEASE-1.1: remove this note when CartoVox 1.1 is published (one <p> per page; grep RELEASE-1.1). -->
+<p class="soon-banner" role="note"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1, which updates itself when 1.1 is out. <a href="/releases/" aria-current="page">Release notes</a></p>
 <header class="nav is-scrolled">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
       <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
       <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
     </a>
-    <nav class="nav-links" id="nav-links" aria-label="Sections">
-      <a href="/">Home</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="/features/">Features</a>
+      <a href="/discover/">Discover</a>
       <a href="/guide/">Guide</a>
-      <a href="/releases/" aria-current="page">Release notes</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/releases/" aria-current="page">Releases</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
     <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="/features/">Features</a><a href="/discover/">Discover</a><a href="/guide/">Guide</a><a href="/releases/" aria-current="page">Releases</a><a href="/#download">Download free</a></nav></noscript>
 <main id="main" class="guide">
   <aside class="guide-toc" aria-label="Release navigation">
     <p class="eyebrow">Releases</p>
     <nav class="toc-list">
-      <a href="/releases/">All release notes</a>
-      <a href="/releases/v1.0.1/">1.0.1</a>
-      <a href="/releases/v1.0.0/">1.0</a>
-      <a href="/releases/v0.9.18/">Delta V16.1</a>
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.15/"><span>Delta V14</span><small>2026-11-05</small></a>
+      <a href="/releases/v0.9.13/"><span>Delta V12</span><small>2026-10-24</small></a>
     </nav>
   </aside>
   <div class="guide-body">
     <header class="guide-head">
-      <p class="eyebrow">Full release notes · 2026-10-30</p>
+      <p class="eyebrow">Release notes · 30 October 2026</p>
       <h1>CartoVox Delta V13</h1>
       <p class="lede">Region worlds: a county, a kingdom or a continent of your own, described in your own words, drawn or imported, then simulated and drawn at Standard, High or Ultra detail, up to a 16,384-pixel map, with its own towns, roads, baronies or shires, gazetteer, Travel and campaign table. Continent and region maps show all 94 World map views and export whole as large maps up to 16K. A new Satellite look shows the world from orbit, with clouds from the season&#x27;s weather and a night side lit by its towns. Sculpt works on world, continent and region maps alike, Move island carries an island or a whole continent across the globe, and a Crater tool places calderas, impact craters and maars whose lakes come from the weather. Rivers meander as their slope and size allow, CartoVox opens on a title screen, and the new screens read in German, French, Spanish, Portuguese and Polish.</p>
-      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 is a free download; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app.</p>
-      <details class="mobile-contents"><summary>Browse releases</summary><nav class="toc-list mobile-toc" aria-label="Release navigation"><a href="/releases/">All release notes</a></nav></details>
+      <p class="muted small">The application was called <i>Atlas Studio</i> until version 0.8.2. CartoVox 1.0 and later are free downloads; Delta builds before it were shared with invited testers on the <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord server</a>. These notes are also readable offline inside the app, under Settings › Release notes. How to use the app is in the <a href="/guide/">guide</a>.</p>
+      <details class="mobile-contents"><summary>On this page</summary><nav class="toc-list mobile-toc" aria-label="Release navigation">
+      <a href="/releases/">All releases</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#full-notes">Full notes</a>
+      <a href="/releases/v0.9.15/"><span>Delta V14</span><small>2026-11-05</small></a>
+      <a href="/releases/v0.9.13/"><span>Delta V12</span><small>2026-10-24</small></a>
+      </nav></details>
     </header>
-    <article class="release release-detail" id="v0.9.14"><div class="doc-body">
+    <section class="release-highlights" id="highlights" aria-labelledby="highlights-title">
+      <h2 id="highlights-title">Highlights</h2>
+<p class="section-lede">
+    Delta V13, dated 30 October 2026, comes with installers for Apple Silicon Macs, Windows x64 and Linux x64
+    (still glibc 2.34 or newer). Your access code carries over and the licence is unchanged (still version 2.3).
+    Worlds made with Delta V12 open as they are, and the Library offers <b>Update to this version</b> for them:
+    rivers now meander and broad uplands carry on across shallow inland seas, so some towns and names can move.
+    The world as it was is kept in the Library as a copy of its own. Continent and region maps built with Delta V12
+    read as out of date until you generate them again. The full account is in the
+    <a href="/releases/#v0.9.14">release notes</a>.
+  </p>
+  <ul class="feat">
+    <li><b>A region of your own</b>: Create › <b>A region</b> builds a world that is one piece of land rather than a whole planet: 50, 100, 300 or 1,000 miles across, a continent about 3,000 km across, or your own width and height in miles or km. Choose <b>Standard</b>, <b>High</b> or <b>Ultra</b> detail (Ultra makes a 16,384-pixel map); each level shows its cell size and how long it will take, how much disk and how much memory it needs on this computer, and a level the computer cannot hold is refused before anything starts. <b>Describe it</b> in your own words, such as “a cold coastal kingdom of fjords and pine forest”, and Create says how it read them, builds a planet from the same description in the background and offers up to twelve places on it that fit, each with a sharp picture of the land round it, its latitude, temperature, rain and highest ground, and which of your asks it meets. Or <b>Draw it</b> on the blank canvas at its true size. An imported or drawn map can be a region at its true size too, keeping your coastline, drawn rivers and towns at every level of detail. <a href="/guide/create/">Create</a> · <a href="/guide/create/#import">Import a map</a>.</li>
+    <li><b>A region that is lived in</b>: a region has its own towns, villages, hamlets and castles, placed where water, gentle slopes, good soil, harbours and river crossings favour them, joined by main roads, roads and tracks that bridge, ford or ferry the rivers they cross. It is divided into baronies, shires or provinces whose borders follow ridges and rivers, each with a lord; a region no realm reaches is crowned as a realm of its own, of the kind your description names. Every place is named in its realm’s tongue, with a card, a gazetteer entry in the Compendium, [[links]] in the Manuscript and <b>Plan this settlement</b>. Travel plans journeys on the region’s own roads and reads its own weather, and a campaign can lay the region out as its table with a hex or square grid of 1, 3, 6 or 12 miles. <a href="/guide/world/#travel">Travel</a> · <a href="/guide/play/">Campaigns</a>.</li>
+    <li><b>Continent and region maps</b>: World › Tools › <b>Continents &amp; regions</b> builds any continent at several times the world’s detail, and any world can have region maps of its own: drag a rectangle on the map or press <b>Region map here</b>. Both show all 94 World map views and all eight map styles, each with its key; the few views only the whole planet can answer, such as ocean currents, winds and sea ice, are drawn at world detail and the map bar says so. They grow their own forests, soils and farmland, cut river valleys so every reach runs downhill, fill lakes to their shores, draw their own realm, state and county borders and lay the roads again over the finer ground. Everything is named in the tongue of its realm, with cards, <b>Find</b> and <b>Focus</b>. <b>Export › Large map</b> makes a PNG, PDF or SVG up to 16,384 pixels, lettered for its size, with a title cartouche and scale bars, and <b>Export › Atlas plates</b> frames each realm. <a href="/guide/world/">Maps</a> · <a href="/guide/world/#export">Export</a>.</li>
+    <li><b>The Satellite look</b>: Appearance › Map look › <b>Satellite</b> shows the world as photographed from orbit: dark forests, sand and ochre deserts, white ice and snow, deep blue ocean and turquoise warm shallows, with coasts, lakes and rivers drawn as water with no outlines. Its cloud layer comes from the chosen season’s rain, humidity and pressure, with the weather year’s storms as spiral swirls, and the <b>Night side</b> switch darkens the half of the world turned away from its sun, towns glowing by their size and roads as faint threads. It works on continent and region maps too, and downloads carry the clouds and the night while they show. The World map can also draw its terrain as map symbols, on by default in the Illustrated look. <a href="/guide/world/#layers">Map views</a>.</li>
+    <li><b>Sculpt on every map, Move island and craters</b>: Sculpt works on continent and region maps: Raise, Lower, Smooth, Flatten and Mountains paint on the map’s own finer ground, brushes go down to 100 m on a region, and the world takes each stroke’s average while the finer map keeps its full shape. The world and its maps share one list of edits. <b>Move island</b> picks up any island or a whole continent, drags it across the globe and turns it; applied, it gets the weather, rivers, plants and towns of its new latitude, and its towns keep their names. The <b>Crater</b> tool places a caldera, an impact crater or a maar, and crater lakes come from the weather: a crater in wet country fills on the rebuild and one in dry country stays a dry bowl or a salt pan. Pending edits are outlined and hatched at any zoom, and holding <kbd>B</kbd> shows the map without them. More edits stay local rebuilds, and the rebuild review says why when one does not. <a href="/guide/world/#sculpt">Sculpt</a>.</li>
+    <li><b>Rivers that meander</b>: each river winds as much as its slope and size allow. Big rivers on near-level plains wind most, about one and a half to two times the length of their valley, while mountain streams barely bend. Valleys are cut along the winding courses, rivers meet the coast square on, Quick worlds’ rivers lose their zigzag, and a map draws as many rivers as its scale can hold, the great rivers first and more as you zoom. A town on a river stands on its bank. <a href="/guide/world/">Maps</a>.</li>
+    <li><b>A title screen</b>: CartoVox opens on your last world turning as a planet beside the CartoVox name, with a short menu: Continue, New world, Library, Write, Make, Settings, Help &amp; guides and Discord to report a bug. Use the mouse, the arrow keys and Enter, or a game controller; any key skips the opening and Esc goes straight to the Library. Turn off <b>Start with the title screen</b> in Workspace &amp; layout to open on your startup destination instead. <a href="/guide/library/#settings">Settings</a>.</li>
+    <li><b>Five languages, further</b>: the region and continent screens read fully in German, French, Spanish, Portuguese and Polish, and so do place dossiers, the cell inspector and its climate explanation, World facts, Travel’s result and journal, the rebuild review’s details, the Map gallery, Create’s brief notes and build checklist, and a region’s atlas plates. Library dates are written the way your language writes them. A few specialist sentences are still in English, and exported journeys stay in English. <a href="/guide/library/#settings">Settings</a>.</li>
+    <li><b>Also</b>: Settlement Studio has a <b>Castle planner</b>, and any village, town or city can have a Lord’s castle. Every download is saved with its file extension, Replace in a Mac save dialog now replaces the file, and Linux downloads save again. Quick and Full worlds build about an eighth faster with the same world to the last byte, and relief maps draw in much less memory. <a href="/guide/play/#cities">Settlement Studio</a>.</li>
+    <li><b>Measured again</b>: on the reference M5 Pro Mac a Sketch world took 19.0 seconds, Quick 47.7 seconds and Full 166.8 seconds, against 30, 57 and 193 seconds in Delta V12, so Create now quotes about 20 seconds, 50 seconds and 3 minutes. Part of the gain is the faster build and part is that the measurement now keeps the font cache warm, as the app does. These are source runs on the release code from 30 October 2026, not timings of the packaged installers. <a href="/guide/create/#build">Build</a>.</li>
+    <li><b>Known limits</b>: a landmass that reaches all the way round the world cannot be moved as one piece, and an edit made on the world map within about 100 km of a small region still builds the whole region again. <a href="/guide/reference/#limits">Known limits</a>.</li>
+  </ul>
+    </section>
+    <article class="release release-detail release-full" id="v0.9.14">
+      <h2 id="full-notes">Full notes</h2>
+      <div class="doc-body">
 <p>Delta V13 is the thirteenth Delta release. Everything below is new or fixed since Delta V12, which was shared with invited testers on 24 October 2026. A world can now be one piece of land rather than a whole planet: a county, a kingdom or a continent, simulated and drawn at the detail you choose, up to a 16,384-pixel map. Every continent of a world can be generated in finer detail with all of the World map's map types, and sculpted both ways. The Satellite look shows the land as from orbit, with clouds, weather and a night side. Sculpt can move whole islands and cut craters and calderas whose lakes fill with rain. Rivers meander as their slope and size set, worlds build faster, and a title screen greets you. Everything is in five languages besides English.</p>
 <h3 id="create">Create</h3>
 <ul>
@@ -336,14 +374,45 @@
 <ul>
 <li>A stroke painted inside a small region keeps the finest detail away from it, but the region's coarser layers are still built again whole, so the update takes about as long as before (about 16 seconds for a 50-mile region). An edit made on the world map within about 100 km of a small region still builds the whole region again: the world spreads it over its cells of about 100 km, and a small region lies in one or two of them.</li>
 </ul>
-      </div></article>
+      </div>
+    </article>
+    <nav class="release-pager" aria-label="Neighbouring releases">
+      <a href="/releases/v0.9.13/">← CartoVox Delta V12</a>
+      <a href="/releases/v0.9.15/">CartoVox Delta V14 →</a>
+    </nav>
   </div>
 </main>
 <footer class="footer">
-  <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/img/lockup-v3.svg?v=457fbc1a9d" width="200" height="258" alt="CartoVox" loading="lazy" decoding="async">
+      <p class="footer-tag">Simulate. Map. Write. Play.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <p class="footer-h">CartoVox</p>
+        <a href="/features/">Features</a>
+        <a href="/discover/">Discover</a>
+        <a href="/#download">Download</a>
+        <a href="/releases/">Releases</a>
+      </div>
+      <div>
+        <p class="footer-h">Learn</p>
+        <a href="/guide/">Guide</a>
+        <a href="/guide/videos/">Video guides</a>
+        <a href="/features/#faq">FAQ</a>
+        <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord community</a>
+      </div>
+      <div>
+        <p class="footer-h">Legal</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/eula/">Licence</a>
+        <a href="/third-party-notices/">Third-party notices</a>
+      </div>
+    </nav>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds and screenshots shown here were made with it. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
-<script src="/js/site.js?v=b6530a3583" defer></script>
+<script src="/js/site.js?v=b57a5ebe1e" defer></script>
 </body>
 </html>
