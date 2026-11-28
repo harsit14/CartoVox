@@ -207,7 +207,7 @@ written beside it for `srcset` (cards and phones use it). The 1.1 pages use the
 `app-v11-*` screenshots (whole screens) and `app-v11-card-*` (16:10 crops of
 the same captures for the home cards); older `app-*` files remain for pages
 that still cite them. Discover pictures go to `img/discover/<id>.webp` at
-640 px through `build-discover.py`, which also rewrites the gallery between
+560 px through `build-discover.py`, which also rewrites the gallery between
 its markers in `discover/index.html`.
 
 The `--through` release argument names the newest version actually shared with

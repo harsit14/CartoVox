@@ -5,7 +5,7 @@
 
 <app> is a CartoVox checkout (or a source export of the released tag). The
 script reads web/assets/discover/catalogue.json, re-encodes the pictures of the
-curated entries below as small WebP files in img/discover/, and rewrites the
+curated entries below as 560 px WebP files in img/discover/, and rewrites the
 gallery between the markers in discover/index.html. Names, pitches, kinds and
 rarities come from the catalogue verbatim, so the page cannot drift from what
 the app's Discover offers. Run tools/stamp-assets.py afterwards.
@@ -60,13 +60,13 @@ def picture(app: Path, row: dict) -> Path:
     return app / "web" / row["picture"]
 
 
-def encode(src: Path, dest: Path, width: int = 640) -> tuple[int, int]:
+def encode(src: Path, dest: Path, width: int = 560) -> tuple[int, int]:
     im = Image.open(src)
     im = im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") else "RGB")
     if im.width > width:
         im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
     dest.parent.mkdir(parents=True, exist_ok=True)
-    im.save(dest, "WEBP", quality=78, method=6)
+    im.save(dest, "WEBP", quality=76, method=6)
     return im.size
 
 
