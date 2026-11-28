@@ -16,10 +16,14 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ASSETS = ("css/site.css", "css/guide.css", "js/site.js", "js/guide.js")
+ASSETS = ("css/site.css", "css/guide.css", "js/site.js", "js/guide.js", "js/globe.js")
 BRANDING = ("img/nav-mark-v3.svg", "img/wordmark-v3.svg", "img/lockup-v3.svg",
             "favicon.ico", "img/icon-32.png", "img/icon-64.png", "img/icon-180.png",
             "img/icon-192.png", "img/icon-512.png", "img/social-card.jpg")
+# The map furniture and the home page's globe (tools/build-furniture.py,
+# tools/build-globe.py): referenced from site.css as well as pages.
+FURNITURE = ("img/globe-eofordal.webp", "img/globe-eofordal-poster.webp", "img/meridian-ring.svg",
+             "img/rose.svg", "img/rose-paper.svg", "img/rose-small.svg")
 FONTS = tuple(path.relative_to(ROOT).as_posix() for path in sorted((ROOT / "fonts").glob("*.woff2")))
 SCREENSHOTS = tuple(path.relative_to(ROOT).as_posix()
                     for path in [*sorted((ROOT / "img").glob("app-*.webp")),
@@ -36,6 +40,8 @@ def main() -> None:
     for rel in FONTS:
         digest = hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()[:10]
         font_stamps[rel] = digest
+    for rel in FURNITURE:
+        font_stamps[rel] = hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()[:10]
     css_path = ROOT / "css" / "site.css"
     css = original_css = css_path.read_text(encoding="utf-8")
     for rel, digest in font_stamps.items():

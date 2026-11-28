@@ -17,10 +17,17 @@ from fontTools.ttLib import TTFont
 ROOT = Path(__file__).resolve().parents[1]
 FONTS = (
     "Cinzel-Variable.woff2",
-    "Inter-Variable.woff2",
+    "Archivo-Variable.woff2",
+    "DMMono-Regular.woff2",
     "Newsreader-Variable.woff2",
     "Newsreader-Italic-Variable.woff2",
 )
+# Variable axes the site never reaches are cut before subsetting. Archivo is
+# the app's interface face (the Survey Sheet): the site sets labels at
+# width 100 and the margin capitals condensed, between weights 400 and 700.
+AXES = {
+    "Archivo-Variable.woff2": {"wght": (400, 700), "wdth": (75, 100)},
+}
 
 
 def site_characters() -> set[int]:
@@ -43,6 +50,9 @@ def main() -> None:
         source = ROOT / "font-sources" / name
         target = ROOT / "fonts" / name
         font = TTFont(source)
+        if name in AXES:
+            from fontTools.varLib import instancer
+            font = instancer.instantiateVariableFont(font, AXES[name])
         options = subset.Options()
         options.layout_features = ["*"]
         options.name_IDs = ["*"]

@@ -29,10 +29,10 @@
   <link rel="apple-touch-icon" href="/img/icon-180.png?v=b0b84997cd">
   <link rel="manifest" href="/site.webmanifest?v=1998f66507">
 
-  <link rel="preload" href="/fonts/Newsreader-Variable.woff2?v=a15870e67a" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/Inter-Variable.woff2?v=a9dc0b3734" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/img/app-v11-hero.webp?v=129bcd36b0" as="image" type="image/webp" imagesrcset="/img/app-v11-hero-900.webp?v=e4976a2aa2 900w, /img/app-v11-hero.webp?v=129bcd36b0 1800w" imagesizes="(max-width: 1152px) calc(100vw - 32px), 1120px" fetchpriority="high">
-  <link rel="stylesheet" href="/css/site.css?v=e8d00b03b4">
+  <link rel="preload" href="/fonts/Newsreader-Variable.woff2?v=b79b4dc9a1" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/Archivo-Variable.woff2?v=92315055ef" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/img/globe-eofordal-poster.webp?v=a48ed7d0fa" as="image" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="/css/site.css?v=aa5891a34f">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -60,7 +60,7 @@
 <main id="main">
 
   <section class="intro" aria-labelledby="intro-title">
-    <div class="wrap">
+    <div class="wrap intro-grid">
       <div class="intro-copy">
         <p class="eyebrow">Worldbuilding for authors and game masters</p>
         <h1 id="intro-title">A living world.<br><em>Every map, story and game in it.</em></h1>
@@ -69,60 +69,98 @@
           <a class="btn btn-gold btn-lg" href="#download"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v10.2l3.6-3.6 1.4 1.4-6 6-6-6 1.4-1.4 3.6 3.6V3Zm-7 15h2v2h12v-2h2v4H4v-4Z"/></svg>Download free</a>
           <a class="btn btn-ghost btn-lg" href="/features/">See everything it does</a>
         </div>
-        <ul class="intro-facts" aria-label="At a glance">
-          <li>Free, no account</li>
-          <li>Works offline</li>
-          <li>macOS · Windows · Linux</li>
-          <li>No generative AI</li>
-        </ul>
+        <dl class="facts" aria-label="At a glance">
+          <div><dt>Price</dt><dd>Free</dd></div>
+          <div><dt>Account</dt><dd>None</dd></div>
+          <div><dt>Internet</dt><dd>Not needed</dd></div>
+          <div><dt>Runs on</dt><dd>macOS · Windows · Linux</dd></div>
+          <div><dt>Generative AI</dt><dd>None</dd></div>
+        </dl>
       </div>
-      <div class="intro-shot">
-        <figure class="shot"><img src="/img/app-v11-hero.webp?v=129bcd36b0" srcset="/img/app-v11-hero-900.webp?v=e4976a2aa2 900w, /img/app-v11-hero.webp?v=129bcd36b0 1800w" sizes="(max-width: 1152px) calc(100vw - 32px), 1120px" width="1800" height="1125" alt="CartoVox showing Uzbadnyxil, a ringed world: a relief map of five continents with lettered realms, seas and peaks, and the planet with its rings beside measured facts" fetchpriority="high" decoding="async"></figure>
-        <p class="cap">Uzbadnyxil, a ringed world built in one click from Discover. A real CartoVox 1.1 screen.</p>
+      <figure class="globe" data-globe="/img/globe-eofordal.webp?v=25a82c6d47">
+        <div class="globe-stage">
+          <img class="globe-ring" src="/img/meridian-ring.svg?v=cc415b59da" width="600" height="600" alt="">
+          <div class="globe-disc"><canvas width="560" height="560" role="img" aria-label="Eofordal, a world simulated by CartoVox, turning slowly with a graticule of meridians and parallels"></canvas></div>
+          <img class="globe-rose" src="/img/rose-small.svg?v=ea749cc023" width="160" height="160" alt="">
+        </div>
+        <figcaption class="globe-cap"><span class="mono">Eofordal · seed 20260914</span>The example world every new copy of CartoVox opens on, drawn from its own map. <span class="globe-hint">Drag to turn it.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="band plate-band" id="screen" aria-labelledby="screen-title">
+    <div class="wrap sheet">
+      <div class="plate-head">
+        <p class="plate-no">Plate I</p>
+        <h2 id="screen-title" class="plate-title">Uzbadnyxil, a ringed world</h2>
+        <p class="stamp" aria-label="Simulated, not painted"><span>Simulated</span><span>not painted</span></p>
       </div>
+      <figure class="annotated">
+        <div class="annotated-img">
+          <img src="/img/app-v11-hero.webp?v=129bcd36b0" srcset="/img/app-v11-hero-900.webp?v=e4976a2aa2 900w, /img/app-v11-hero.webp?v=129bcd36b0 1800w" sizes="(max-width: 1228px) calc(100vw - 48px), 1180px" width="1800" height="1125" alt="CartoVox showing Uzbadnyxil, a ringed world: a relief map of five continents with lettered realms, seas and peaks, and the planet with its rings beside measured facts" decoding="async">
+          <span class="pin pin-1" aria-hidden="true">1</span>
+          <span class="pin pin-2" aria-hidden="true">2</span>
+          <span class="pin pin-3" aria-hidden="true">3</span>
+          <span class="pin pin-4" aria-hidden="true">4</span>
+          <span class="pin pin-5" aria-hidden="true">5</span>
+        </div>
+        <figcaption>
+          <p class="plate-meta">A real CartoVox 1.1 screen, built in one click from Discover. Key:</p>
+          <ol class="key">
+            <li><b>Rivers</b> found their own way to the sea, down the ground the plates raised.</li>
+            <li><b>Realms</b> lettered across the land they hold.</li>
+            <li><b>The planet</b> itself, rings and all.</li>
+            <li><b>Measured</b> from the simulation: 29.9&nbsp;% land, the tallest peak 6&nbsp;900&nbsp;m.</li>
+            <li><b>A scale bar</b> true at the equator.</li>
+          </ol>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
   <section class="band" id="strengths" aria-labelledby="strengths-title">
     <div class="wrap">
       <div class="band-head">
-        <p class="eyebrow">What only CartoVox does</p>
+        <p class="eyebrow"><span class="plate-no">Plate II</span>What only CartoVox does</p>
         <h2 id="strengths-title">One world that knows why it looks the way it does.</h2>
         <p>Other tools draw a picture. CartoVox simulates a place, so every map, city, chapter and session agrees with it.</p>
       </div>
-      <ul class="strengths">
+      <div class="legend">
+        <p class="legend-title" aria-hidden="true"><span>Legend</span></p>
+        <ul class="strengths">
         <li class="strength">
-          <img src="/img/app-v11-card-climate-900.webp?v=39bf2a2882" srcset="/img/app-v11-card-climate-900.webp?v=39bf2a2882 900w, /img/app-v11-card-climate.webp?v=1fd7162490 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="Köppen climate zones across Uzbadnyxil’s continents, from rainforest to ice cap, with the ringed planet beside the map" loading="lazy" decoding="async">
-          <div class="strength-body"><h3>A planet that actually works</h3><p>Plates raise the mountains, winds carry the rain and rivers find the sea. Every desert, forest and harbour has a reason you can click and read.</p><a class="link-arrow" href="/features/#worlds">Worlds <span aria-hidden="true">→</span></a></div>
+          <div class="strength-media"><img src="/img/app-v11-card-climate-900.webp?v=39bf2a2882" srcset="/img/app-v11-card-climate-900.webp?v=39bf2a2882 900w, /img/app-v11-card-climate.webp?v=1fd7162490 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="Köppen climate zones across Uzbadnyxil’s continents, from rainforest to ice cap, with the ringed planet beside the map" loading="lazy" decoding="async"></div>
+          <div class="strength-body"><p class="legend-key" aria-hidden="true"><svg class="sym" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 19.5 8.5 9l3.6 5.6 2.8-3.8 5.6 8.7Z"/><path d="M7 11.6l1.5 1.4 1.4-1.2"/></svg><span>A</span></p><h3>A planet that actually works</h3><p>Plates raise the mountains, winds carry the rain and rivers find the sea. Every desert, forest and harbour has a reason you can click and read.</p><a class="link-arrow" href="/features/#worlds">Worlds <span aria-hidden="true">→</span></a></div>
         </li>
         <li class="strength">
-          <img src="/img/app-v11-card-atlas-900.webp?v=77d7361905" srcset="/img/app-v11-card-atlas-900.webp?v=77d7361905 900w, /img/app-v11-card-atlas.webp?v=284913e499 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="An illustrated atlas plate of Uzbadnyxil with lettered realms, seas and cities, beside a list of 21 city plans" loading="lazy" decoding="async">
-          <div class="strength-body"><h3>Maps true at every zoom</h3><p>Over 90 maps of one world, from the globe down to continents and regions simulated in finer detail, drawn as atlas plates in many styles.</p><a class="link-arrow" href="/features/#maps">Maps and exports <span aria-hidden="true">→</span></a></div>
+          <div class="strength-media"><img src="/img/app-v11-card-atlas-900.webp?v=77d7361905" srcset="/img/app-v11-card-atlas-900.webp?v=77d7361905 900w, /img/app-v11-card-atlas.webp?v=284913e499 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="An illustrated atlas plate of Uzbadnyxil with lettered realms, seas and cities, beside a list of 21 city plans" loading="lazy" decoding="async"></div>
+          <div class="strength-body"><p class="legend-key" aria-hidden="true"><svg class="sym" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c5 0 8.5 3 8.5 7.6S16.4 20.5 12 20.5 3.5 17 3.5 11.8 7 3.5 12 3.5Z"/><path d="M12 7.6c3 0 4.6 1.8 4.6 4.1S14.4 16.6 12 16.6 7.6 14.5 7.6 12 9 7.6 12 7.6Z"/><path d="M12 10.8c.9 0 1.4.5 1.4 1.1s-.6 1.2-1.4 1.2-1.3-.6-1.3-1.2.4-1.1 1.3-1.1Z"/></svg><span>B</span></p><h3>Maps true at every zoom</h3><p>Over 90 maps of one world, from the globe down to continents and regions simulated in finer detail, drawn as atlas plates in many styles.</p><a class="link-arrow" href="/features/#maps">Maps and exports <span aria-hidden="true">→</span></a></div>
         </li>
         <li class="strength">
-          <img src="/img/app-v11-card-city-900.webp?v=76ea842c1a" srcset="/img/app-v11-card-city-900.webp?v=76ea842c1a 900w, /img/app-v11-card-city.webp?v=9686b798d4 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="City builder showing Nudazoth, a walled river city of 200,000 people, planned on its own ground in the world" loading="lazy" decoding="async">
-          <div class="strength-body"><h3>Cities and dungeons on real ground</h3><p>This city grew on its world’s own river, coast and savanna. Streets, sewers, keeps and ship decks all follow the ground they stand on.</p><a class="link-arrow" href="/features/#build">Cities, scenes and dungeons <span aria-hidden="true">→</span></a></div>
+          <div class="strength-media"><img src="/img/app-v11-card-city-900.webp?v=76ea842c1a" srcset="/img/app-v11-card-city-900.webp?v=76ea842c1a 900w, /img/app-v11-card-city.webp?v=9686b798d4 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="City builder showing Nudazoth, a walled river city of 200,000 people, planned on its own ground in the world" loading="lazy" decoding="async"></div>
+          <div class="strength-body"><p class="legend-key" aria-hidden="true"><svg class="sym" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20.5h18M5 20.5V10l3.5-2.5L12 10v10.5M12 20.5V6.5L15.5 4 19 6.5v14"/><path d="M8.5 13v2M15.5 9.5v2M15.5 14v2"/></svg><span>C</span></p><h3>Cities and dungeons on real ground</h3><p>This city grew on its world’s own river, coast and savanna. Streets, sewers, keeps and ship decks all follow the ground they stand on.</p><a class="link-arrow" href="/features/#build">Cities, scenes and dungeons <span aria-hidden="true">→</span></a></div>
         </li>
         <li class="strength">
-          <img src="/img/app-v11-card-manuscript-900.webp?v=6391376a21" srcset="/img/app-v11-card-manuscript-900.webp?v=6391376a21 900w, /img/app-v11-card-manuscript.webp?v=a86339f834 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="The Manuscript editor with a chapter set in Nudazoth, its place names underlined as links, and the Insights panel" loading="lazy" decoding="async">
-          <div class="strength-body"><h3>Writing beside the map</h3><p>Place names in your chapters link to the world. Rename a city once and review it across every book; continuity checks flag travel and dates that don’t fit.</p><a class="link-arrow" href="/features/#writing">Writing and lore <span aria-hidden="true">→</span></a></div>
+          <div class="strength-media"><img src="/img/app-v11-card-manuscript-900.webp?v=6391376a21" srcset="/img/app-v11-card-manuscript-900.webp?v=6391376a21 900w, /img/app-v11-card-manuscript.webp?v=a86339f834 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="The Manuscript editor with a chapter set in Nudazoth, its place names underlined as links, and the Insights panel" loading="lazy" decoding="async"></div>
+          <div class="strength-body"><p class="legend-key" aria-hidden="true"><svg class="sym" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5C13 4.5 8 9.6 6.2 17.4L5 20.5"/><path d="M8.6 14.6c4.1-.1 7.6-2.7 9.7-7.4M11 11.5h4"/></svg><span>D</span></p><h3>Writing beside the map</h3><p>Place names in your chapters link to the world. Rename a city once and review it across every book; continuity checks flag travel and dates that don’t fit.</p><a class="link-arrow" href="/features/#writing">Writing and lore <span aria-hidden="true">→</span></a></div>
         </li>
         <li class="strength">
-          <img src="/img/app-v11-card-tabletop-900.webp?v=b718163b8c" srcset="/img/app-v11-card-tabletop-900.webp?v=b718163b8c 900w, /img/app-v11-card-tabletop.webp?v=bef76bc2dd 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="The tabletop with a galleon deck, its doors and lights, and four named NPC tokens" loading="lazy" decoding="async">
-          <div class="strength-body"><h3>Play at the table</h3><p>Fog of war, tokens, dice and ambience on scenes from your world, with players joining from their own phone, tablet or computer.</p><a class="link-arrow" href="/features/#table">The table <span aria-hidden="true">→</span></a></div>
+          <div class="strength-media"><img src="/img/app-v11-card-tabletop-900.webp?v=b718163b8c" srcset="/img/app-v11-card-tabletop-900.webp?v=b718163b8c 900w, /img/app-v11-card-tabletop.webp?v=bef76bc2dd 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="The tabletop with a galleon deck, its doors and lights, and four named NPC tokens" loading="lazy" decoding="async"></div>
+          <div class="strength-body"><p class="legend-key" aria-hidden="true"><svg class="sym" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 7.6v8.8L12 21l-8-4.6V7.6Z"/><path d="M12 7.2l4.3 7.4H7.7Z"/></svg><span>E</span></p><h3>Play at the table</h3><p>Fog of war, tokens, dice and ambience on scenes from your world, with players joining from their own phone, tablet or computer.</p><a class="link-arrow" href="/features/#table">The table <span aria-hidden="true">→</span></a></div>
         </li>
         <li class="strength">
-          <img src="/img/app-v11-card-cataclysm-900.webp?v=ff41191ad8" srcset="/img/app-v11-card-cataclysm-900.webp?v=ff41191ad8 900w, /img/app-v11-card-cataclysm.webp?v=43e24886e8 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="Cataclysm Lab spreading a supervolcano’s ash cloud across a continent, with its explosivity, ash reach and caldera size" loading="lazy" decoding="async">
-          <div class="strength-body"><h3>What happens next</h3><p>Erupt a volcano, spread a plague, cut a canal or dam a valley, and see which towns, harvests and roads change. Keep it in the world’s history.</p><a class="link-arrow" href="/features/#events">What happens next <span aria-hidden="true">→</span></a></div>
+          <div class="strength-media"><img src="/img/app-v11-card-cataclysm-900.webp?v=ff41191ad8" srcset="/img/app-v11-card-cataclysm-900.webp?v=ff41191ad8 900w, /img/app-v11-card-cataclysm.webp?v=43e24886e8 1800w" sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1040px) calc(50vw - 26px), 380px" width="900" height="562" alt="Cataclysm Lab spreading a supervolcano’s ash cloud across a continent, with its explosivity, ash reach and caldera size" loading="lazy" decoding="async"></div>
+          <div class="strength-body"><p class="legend-key" aria-hidden="true"><svg class="sym" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 20.5 8.6 11h6.8l6.1 9.5Z"/><path d="M10.3 11 9 6.5M13.7 11 15 6.5M12 11V4"/></svg><span>F</span></p><h3>What happens next</h3><p>Erupt a volcano, spread a plague, cut a canal or dam a valley, and see which towns, harvests and roads change. Keep it in the world’s history.</p><a class="link-arrow" href="/features/#events">What happens next <span aria-hidden="true">→</span></a></div>
         </li>
-      </ul>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="band band-alt" id="uses" aria-labelledby="uses-title">
     <div class="wrap">
       <div class="band-head band-head-center">
-        <p class="eyebrow">One world, every use</p>
+        <p class="eyebrow"><span class="plate-no">Plate III</span>One world, every use</p>
         <h2 id="uses-title">Map it, write it, play it, build on it.</h2>
         <p>Four workspaces open the same saved world, so a name changed in one is changed in all.</p>
       </div>
@@ -181,28 +219,29 @@
             </ul>
           </div>
         </div>
-      </div>
     </div>
   </section>
 
   <section class="band" id="compare" aria-labelledby="compare-title">
     <div class="wrap">
       <div class="band-head">
-        <p class="eyebrow">How it compares</p>
+        <p class="eyebrow"><span class="plate-no">Plate IV</span>How it compares</p>
         <h2 id="compare-title">Five tools you juggle, or one world.</h2>
         <p>Worldbuilders usually stitch together a map painter, a wiki, a writing app, a virtual tabletop and a city generator, and copy every name between them.</p>
       </div>
-      <table class="compare-table">
-        <caption class="sr-only">What each job usually takes, compared with CartoVox</caption>
-        <thead><tr><th scope="col">The job</th><th scope="col">Usually</th><th scope="col" class="cv">In CartoVox</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">A map of the world</th><td data-label="Usually">A map painter: you draw every coast, river and forest by hand, and nothing knows why it is there.</td><td class="cv" data-label="In CartoVox">Simulated from plates, winds and rain, then drawn in the style you choose. Sculpt or redraw it and the rivers, climate and names follow.</td></tr>
-          <tr><th scope="row">Places, people and history</th><td data-label="Usually">A worldbuilding wiki, filled in from a blank page and kept in step with the map by hand.</td><td class="cv" data-label="In CartoVox">A Compendium and Chronicle written from the simulation, every entry linked to its place on the map.</td></tr>
-          <tr><th scope="row">The book</th><td data-label="Usually">A writing app that knows nothing about your world.</td><td class="cv" data-label="In CartoVox">A Manuscript beside the map: linked place names, renames reviewed across books, travel and date checks.</td></tr>
-          <tr><th scope="row">Game night</th><td data-label="Usually">A virtual tabletop, often with an account and a subscription.</td><td class="cv" data-label="In CartoVox">A tabletop built in: fog, tokens, dice and ambience, players on their own devices, scenes exported to other tabletops when you want.</td></tr>
-          <tr><th scope="row">Towns and dungeons</th><td data-label="Usually">A city or dungeon generator that ignores your terrain.</td><td class="cv" data-label="In CartoVox">City builder and Scene Studio on the world’s own ground, coasts and rivers, from sewers to ship decks.</td></tr>
-        </tbody>
-      </table>
+      <div class="ledger">
+        <table class="compare-table">
+          <caption class="sr-only">What each job usually takes, compared with CartoVox</caption>
+          <thead><tr><td class="ledger-no" aria-hidden="true">No.</td><th scope="col">The job</th><th scope="col">Usually</th><th scope="col" class="cv">In CartoVox</th></tr></thead>
+          <tbody>
+          <tr><td class="ledger-no" aria-hidden="true">01</td><th scope="row">A map of the world</th><td data-label="Usually">A map painter: you draw every coast, river and forest by hand, and nothing knows why it is there.</td><td class="cv" data-label="In CartoVox">Simulated from plates, winds and rain, then drawn in the style you choose. Sculpt or redraw it and the rivers, climate and names follow.</td></tr>
+          <tr><td class="ledger-no" aria-hidden="true">02</td><th scope="row">Places, people and history</th><td data-label="Usually">A worldbuilding wiki, filled in from a blank page and kept in step with the map by hand.</td><td class="cv" data-label="In CartoVox">A Compendium and Chronicle written from the simulation, every entry linked to its place on the map.</td></tr>
+          <tr><td class="ledger-no" aria-hidden="true">03</td><th scope="row">The book</th><td data-label="Usually">A writing app that knows nothing about your world.</td><td class="cv" data-label="In CartoVox">A Manuscript beside the map: linked place names, renames reviewed across books, travel and date checks.</td></tr>
+          <tr><td class="ledger-no" aria-hidden="true">04</td><th scope="row">Game night</th><td data-label="Usually">A virtual tabletop, often with an account and a subscription.</td><td class="cv" data-label="In CartoVox">A tabletop built in: fog, tokens, dice and ambience, players on their own devices, scenes exported to other tabletops when you want.</td></tr>
+          <tr><td class="ledger-no" aria-hidden="true">05</td><th scope="row">Towns and dungeons</th><td data-label="Usually">A city or dungeon generator that ignores your terrain.</td><td class="cv" data-label="In CartoVox">City builder and Scene Studio on the world’s own ground, coasts and rivers, from sewers to ship decks.</td></tr>
+          </tbody>
+        </table>
+      </div>
       <div class="compare-sum">
         <div><b>One connected tool</b><span>One world file instead of five apps and five copies of every name.</span></div>
         <div><b>Free</b><span>No price, no subscription, no royalties on what you make.</span></div>
@@ -212,25 +251,28 @@
     </div>
   </section>
 
-  <section class="band band-alt" id="promises" aria-labelledby="promises-title">
+  <section class="band band-paper" id="promises" aria-labelledby="promises-title">
     <div class="wrap">
-      <div class="band-head">
-        <p class="eyebrow">Our promises</p>
-        <h2 id="promises-title">Your world stays yours.</h2>
+      <div class="paper-sheet">
+        <div class="band-head">
+          <p class="eyebrow"><span class="plate-no">Plate V</span>Our promises</p>
+          <h2 id="promises-title">Your world stays yours.</h2>
+        </div>
+        <ul class="promises">
+          <li><h3>Free</h3><p>No price, invite or access code. What you make is yours to publish and sell, with no royalties or required credit. <a href="/eula/">Licence</a></p></li>
+          <li><h3>Offline</h3><p>Worlds build on your computer and every workspace works without an internet connection.</p></li>
+          <li><h3>Private</h3><p>No account and no analytics. The app only checks for updates, and you can turn that off. <a href="/privacy/">Privacy</a></p></li>
+          <li><h3>Your files</h3><p>Worlds are folders on your disk. Export images, SVG, PDF, GeoJSON, EPUB, DOCX, VTT scenes and project backups.</p></li>
+        </ul>
+        <img class="paper-rose" src="/img/rose-paper.svg?v=c9514ced8c" width="320" height="320" alt="" loading="lazy" decoding="async">
       </div>
-      <ul class="promises">
-        <li><h3>Free</h3><p>No price, invite or access code. What you make is yours to publish and sell, with no royalties or required credit. <a href="/eula/">Licence</a></p></li>
-        <li><h3>Offline</h3><p>Worlds build on your computer and every workspace works without an internet connection.</p></li>
-        <li><h3>Private</h3><p>No account and no analytics. The app only checks for updates, and you can turn that off. <a href="/privacy/">Privacy</a></p></li>
-        <li><h3>Your files</h3><p>Worlds are folders on your disk. Export images, SVG, PDF, GeoJSON, EPUB, DOCX, VTT scenes and project backups.</p></li>
-      </ul>
     </div>
   </section>
 
   <section class="band" id="download" aria-labelledby="download-title">
     <div class="wrap download">
       <div class="download-copy">
-        <p class="eyebrow">Download</p>
+        <p class="eyebrow"><span class="plate-no">Plate VI</span>Download</p>
         <h2 id="download-title">Free for everyone.</h2>
         <!-- RELEASE-1.1: replace this note, the heading below and the four file links with 1.1's. -->
         <p class="download-soon"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1. It checks for updates, so it will offer you 1.1 when it is released.</p>
@@ -286,5 +328,6 @@
   </div>
 </footer>
 <script src="/js/site.js?v=1f3faa318b" defer></script>
+<script src="/js/globe.js?v=4739785087" defer></script>
 </body>
 </html>

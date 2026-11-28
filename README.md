@@ -18,9 +18,10 @@ together with the Delta service CartoVox's Delta builds talk to (`worker/`).
 | `privacy/` | What the site and the app do with your data |
 | `eula/`, `third-party-notices/` | Legal pages, rendered from the app's Markdown by `tools/build-legal.py` |
 | `404.html` | Off the edge of the map |
-| `css/site.css` | All styling; gold on midnight. The shared header and footer, then document, guide and video styles, then the 1.1 page blocks (`.band`, `.shot`, `.strength`, `.use`, `.compare-table`, `.area`, `.disc-*`) |
+| `css/site.css` | All styling: the app's Survey Sheet as an atlas (see “Design language” below). The shared header and footer, then document, guide and video styles, then the 1.1 page blocks (`.band`, `.shot`, `.strength`, `.use`, `.compare-table`, `.area`, `.disc-*`) |
+| `js/globe.js` | The home page's turning globe: Eofordal on a 2D canvas, still for reduced motion |
 | `js/site.js` | Navigation, accessible tabs (`[data-tabs]`), the features jump bar, the Discover filter, guide contents and video players |
-| `fonts/` | Subsetted Cinzel, Newsreader and Inter for the published pages |
+| `fonts/` | Subsetted Newsreader (prose), Archivo (interface), DM Mono (figures and notes) and Cinzel (map lettering) for the published pages: the app's own faces |
 | `font-sources/` | Unserved OFL font originals used to rebuild the subsets |
 | `img/` | Every image the site ships, derived by `tools/build-images.py` |
 | `_headers`, `_redirects` | Static-asset headers (CSP, caching) and short links (`/download`, `/beta` to the release page; `/delta`, `/invite` to the download section; `/discord`) |
@@ -39,6 +40,32 @@ the app; do not substitute mock-ups. The 1.1 screenshots were captured from
 the app's main branch (1.0.2 in development, released as 1.1) at 1600 × 1000,
 2×, from worlds built in one click from Discover (Uzbadnyxil, a ringed
 world; The Gilded Rim, a disc world); see `tools/studio-shots/README.md`.
+
+## Design language
+
+The site wears the app's Survey Sheet (`<app>/web/survey-sheet.css`): a
+sheet on a cartographer's desk, not a product template. Keep to it:
+
+- **The desk.** Dark ink with faint registration crosses every 160 px; on
+  a wide window both margins carry a printed map's degree border.
+- **Plates.** Each home section is a numbered plate (`.plate-no`: Plate I…VI,
+  in DM Mono), the Features areas are numbered in the jump bar. `.sheet`
+  draws crop marks at a block's corners; `.shot` frames a screenshot on a
+  ruled mat with an inner neatline.
+- **Four faces, one job each.** Newsreader for headlines and prose, Archivo
+  for the interface and the condensed margin capitals (`.eyebrow`), DM Mono
+  for figures, folios, captions and field notes, Cinzel only for map
+  lettering (plate titles, the legend's cartouche).
+- **Colour.** Brass for action and the current place, one red (`--stamp`)
+  only for marginalia (the Notice slip, the “Simulated, not painted”
+  stamp), parchment (`.paper-sheet`, the ledger's CartoVox column) for an
+  inset printed on paper. Square corners (2 px at most); no pills.
+- **Furniture is the app's.** The compass roses are drawn by the app's
+  Compass designer and the globe is the app's example world; rebuild them
+  with `tools/build-furniture.py <app>` and `tools/build-globe.py
+  <app>/web/title/starter-world.webp`. Annotation pins on Plate I point at
+  real things in that screenshot; move them (`.pin-1`…`.pin-5`) if the
+  screenshot changes.
 
 ## Shared header and footer
 
