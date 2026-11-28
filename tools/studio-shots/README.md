@@ -88,3 +88,23 @@ Pass task names (`water_security`, `agricultural_calendar`,
 `floodplain_exposure`, `climate_lab`, `reseed`, `languages`, `scene_world`)
 to capture a subset. All card images use the same 16:10 frame as the earlier
 product screenshots.
+
+## CartoVox 1.1 captures (November 2026)
+
+The `app-v11-*` screenshots were captured from the app's `main` branch
+(version string 1.0.2, released as 1.1) on 28 November 2026, in a sandbox
+(`CARTOVOX_DATA_DIR=/tmp/cvx-site-…`, `studio.py --port 8851`), with
+Playwright at a 1600 × 1000 viewport and device scale 2, dark scheme.
+Worlds were built through the app's own routes, never copied from a library:
+Discover's `great-rivers` (Amajima), `ringed-world` (Uzbadnyxil, used for
+most screens) and `the-gilded-rim` (a disc world, whose disc map is a second
+`region-world` job); the city is Nudazoth, generated as “a settlement in a
+world” on Uzbadnyxil, plus Discover's Aurenmark on blank ground; the ship and
+keep are Discover's `the-sovereigns-mercy` and `castle-greyhallow` through
+`/api/scenes/site`; the tabletop is Discover's `the-long-crossing` linked to
+Uzbadnyxil, with four Quick NPC tokens; the story canvas was imported as a
+board JSON with original notes; the manuscript chapter is original
+demonstration prose. Render Studio uses the Tabletop direction's composition
+preview; Cataclysm Lab is a 5,000 km³ supervolcano at 6.4° S, 68.4° E.
+Cards on the home page are 16:10 crops of the same PNGs. The sandbox was
+deleted after capture.

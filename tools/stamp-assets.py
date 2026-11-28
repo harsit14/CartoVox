@@ -22,7 +22,8 @@ BRANDING = ("img/nav-mark-v3.svg", "img/wordmark-v3.svg", "img/lockup-v3.svg",
             "img/icon-192.png", "img/icon-512.png", "img/social-card.jpg")
 FONTS = tuple(path.relative_to(ROOT).as_posix() for path in sorted((ROOT / "fonts").glob("*.woff2")))
 SCREENSHOTS = tuple(path.relative_to(ROOT).as_posix()
-                    for path in sorted((ROOT / "img").glob("app-*.webp")))
+                    for path in [*sorted((ROOT / "img").glob("app-*.webp")),
+                                 *sorted((ROOT / "img" / "discover").glob("*.webp"))])
 
 
 def stamp(text: str, rel: str, digest: str) -> str:
