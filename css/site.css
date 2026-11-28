@@ -607,7 +607,9 @@ kbd { font-family: var(--font-ui); font-size: 0.78em; padding: 1px 6px; border: 
 .facts div { flex: 0 1 auto; padding: 10px 14px 10px 0; margin-right: 14px; border-right: 1px solid var(--line); }
 .facts div:last-child { border-right: 0; margin-right: 0; }
 .facts dt { font: 600 0.64rem/1.4 var(--font-ui); font-stretch: 80%; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-3); }
-.facts dd { margin: 3px 0 0; font: 400 0.82rem/1.4 var(--font-mono); color: var(--text); white-space: nowrap; }
+.facts dd { margin: 3px 0 0; font: 400 0.82rem/1.4 var(--font-mono); color: var(--text); }
+@media (min-width: 641px) { .facts { display: grid; grid-template-columns: repeat(5, auto); justify-content: start; } .facts dt, .facts dd { white-space: nowrap; } }
+@media (min-width: 641px) and (max-width: 1240px) { .facts div:nth-child(4) dd { white-space: normal; } }
 
 /* The turning globe: a canvas on a still poster, inside a meridian ring. */
 .globe { margin: 0; justify-self: center; width: min(100%, 520px); }
@@ -700,6 +702,8 @@ kbd { font-family: var(--font-ui); font-size: 0.78em; padding: 1px 6px; border: 
 .has-js .use[hidden] { display: none; }
 .use h3 { font-size: 1.7rem; margin-bottom: 12px; }
 .use .eyebrow { margin-bottom: 10px; }
+.has-js .use .eyebrow { display: none; }
+.use-copy { padding-top: 18px; border-top: 3px double var(--neat); }
 .ticks { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 12px; }
 .ticks li { position: relative; padding-left: 24px; font-size: 1rem; line-height: 1.5; color: var(--text-2); }
 .ticks li::before { content: ""; position: absolute; left: 2px; top: 0.55em; width: 8px; height: 8px; border: 1px solid var(--gold); transform: rotate(45deg); }
@@ -821,6 +825,15 @@ kbd { font-family: var(--font-ui); font-size: 0.78em; padding: 1px 6px; border: 
 .disc-kind { color: var(--gold); font: 400 0.66rem/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
 .disc-count { margin: 16px 0 0; }
 
+/* Community: framed like the download block, quotes as ruled field notes. */
+.community-world, .community-discord { position: relative; background: var(--ink-1); border: 1px solid var(--neat); }
+.community-world::before, .community-discord::before { content: ""; position: absolute; inset: 4px; border: 1px solid var(--line); pointer-events: none; }
+.community-world-gallery figure > a { border-color: var(--line-strong); padding: 4px; background: var(--ink-0); }
+.community-world-gallery figcaption { font-family: var(--font-mono); font-size: 0.7rem; }
+.voice-card { background: none; border: 0; border-top: 3px double var(--neat); padding: 18px 2px 0; }
+.voice-card blockquote p { font-style: italic; }
+.voice-date { font-family: var(--font-mono); font-size: 0.68rem; }
+
 /* Page heads carry the app's compass rose in the margin. */
 .page-head + .band { padding-top: 16px; border-top: 0; }
 .page-head .wrap { position: relative; }
@@ -837,7 +850,7 @@ kbd { font-family: var(--font-ui); font-size: 0.78em; padding: 1px 6px; border: 
 
 /* The closing call as a cartouche: a double frame, the rose above. */
 .cta-band .wrap { max-width: 760px; padding: 56px 32px 48px; border: 1px solid var(--neat); outline: 1px solid var(--line); outline-offset: -6px; background: var(--ink-0); }
-.cta-band .wrap::before { content: ""; display: block; width: 64px; height: 64px; margin: -88px auto 22px; background: var(--ink-0) url("/img/rose-small.svg?v=ea749cc023") center / 56px no-repeat; }
+.cta-band .wrap::before { content: ""; display: block; width: 64px; height: 64px; margin: -28px auto 14px; background: url("/img/rose-small.svg?v=ea749cc023") center / contain no-repeat; }
 .cta-band h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
 
 /* Discover: a cabinet of specimens, each with a parchment label. */
