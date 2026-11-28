@@ -12,7 +12,7 @@
       links.classList.toggle("is-open", open);
       // A closed menu must be out of the tab order, not merely invisible.
       links.querySelectorAll("a").forEach((a) => { a.tabIndex = open ? 0 : -1; });
-      if (open) links.querySelector("a")?.focus();
+      if (open) setTimeout(() => links.querySelector("a")?.focus(), 60);
     };
     const isOpen = () => toggle.getAttribute("aria-expanded") === "true";
     const collapsed = window.matchMedia("(max-width: 860px)");

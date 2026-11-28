@@ -122,7 +122,7 @@ moved there from the old home page unchanged. It includes Discord's dark server 
 `1541886105606029484`. It loads lazily, keeps the supplied sandbox permissions,
 and fits narrow screens. The direct invite link remains available if the embed
 is blocked. `_headers` permits frames only from `https://discord.com/widget`;
-keep the widget disclosure in `privacy/` aligned with this third-party request.
+keep the widget disclosure in `privacy/` (which names the Discover page) aligned with this third-party request.
 
 The landing page quotes Discord members only after permission for public attribution is confirmed. Keep their wording intact, name the author as shown in the server, and link each excerpt to its original message so visitors can read the context. The owner confirmed permission for the four members quoted in the September 2026 community section. A Discord message link from a private Delta channel is readable only by invited testers; note that on the page. Do not use a member's map, avatar, or other artwork without separate permission.
 
