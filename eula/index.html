@@ -15,25 +15,26 @@
 </head>
 <body class="doc-page">
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav is-scrolled">
+<!-- RELEASE-1.1: remove this note when CartoVox 1.1 is published (one <p> per page; grep RELEASE-1.1). -->
+<p class="soon-banner" role="note"><b>CartoVox 1.1 is coming soon.</b> Today’s download is CartoVox 1.0.1, which updates itself when 1.1 is out. <a href="/releases/">Release notes</a></p>
+<header class="nav">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="CartoVox home">
-      <img class="nav-mark" src="/img/nav-mark-v3.svg?v=b24d2ae901" width="40" height="40" alt="">
-      <img class="nav-wordmark" src="/img/wordmark-v3.svg?v=c9aff99348" width="652" height="126" alt="CartoVox">
+      <img class="nav-mark" src="/img/nav-mark-v3.svg" width="40" height="40" alt="">
+      <img class="nav-wordmark" src="/img/wordmark-v3.svg" width="652" height="126" alt="CartoVox">
     </a>
-    <nav class="nav-links doc-nav" id="nav-links" aria-label="Sections">
-      <a href="/">Home</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="/features/">Features</a>
+      <a href="/discover/">Discover</a>
       <a href="/guide/">Guide</a>
-      <a href="/releases/">Release notes</a>
-      <a href="/eula/">Licence</a>
-      <a href="/third-party-notices/">Third-party notices</a>
-      <a href="/privacy/">Privacy</a>
+      <a href="/releases/">Releases</a>
       <a class="btn btn-gold btn-sm nav-cta-mobile" href="/#download">Download free</a>
     </nav>
     <a class="btn btn-gold btn-sm nav-cta" href="/#download">Download free</a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="/features/">Features</a><a href="/discover/">Discover</a><a href="/guide/">Guide</a><a href="/releases/">Releases</a><a href="/#download">Download free</a></nav></noscript>
 <main id="main" class="doc">
   <article class="doc-body">
 <h1>CartoVox — End User License Agreement</h1>
@@ -173,8 +174,34 @@
   <p class="doc-note">This copy is published for reference. The authoritative text is the one shown inside the application, which you accept on first launch.</p>
 </main>
 <footer class="footer">
-  <div class="wrap footer-inner doc-footer">
-    <p class="footer-fine">© 2026 Harsit Upadhya. This site sets no cookies and runs no analytics.</p>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/img/lockup-v3.svg" width="200" height="258" alt="CartoVox" loading="lazy" decoding="async">
+      <p class="footer-tag">Simulate. Map. Write. Play.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <p class="footer-h">CartoVox</p>
+        <a href="/features/">Features</a>
+        <a href="/discover/">Discover</a>
+        <a href="/#download">Download</a>
+        <a href="/releases/">Releases</a>
+      </div>
+      <div>
+        <p class="footer-h">Learn</p>
+        <a href="/guide/">Guide</a>
+        <a href="/guide/videos/">Video guides</a>
+        <a href="/features/#faq">FAQ</a>
+        <a href="https://discord.gg/Y5aRPkk8g2" target="_blank" rel="noopener">Discord community</a>
+      </div>
+      <div>
+        <p class="footer-h">Legal</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/eula/">Licence</a>
+        <a href="/third-party-notices/">Third-party notices</a>
+      </div>
+    </nav>
+    <p class="footer-fine">© 2026 Harsit Upadhya. CartoVox is proprietary software; the worlds and screenshots shown here were made with it. This site sets no cookies and runs no analytics.</p>
   </div>
 </footer>
 <script src="/js/site.js?v=b6530a3583" defer></script>
